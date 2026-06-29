@@ -1,0 +1,207 @@
+{
+  "_meta": {
+    "title": "Certifizer item bank — Day 2 (Project Integration Management)",
+    "author": "Zoubir DAHIA",
+    "source": "Day 2 notes — Mr. Rachedi, 2026-06-15",
+    "knowledge_area": "integration",
+    "edition": "PMBOK 6",
+    "schema": {
+      "id": "string",
+      "type": "mcq | scenario",
+      "knowledge_area": "one of the 10 KA ids",
+      "process_group": "Initiating | Planning | Executing | Monitoring & Controlling | Closing",
+      "pmbok_ref": "process number",
+      "competency": "string",
+      "difficulty": "1 (easy) .. 3 (hard)",
+      "prompt": { "fr": "string", "en": "string" },
+      "options": { "fr": ["..."], "en": ["..."] },
+      "answer_index": "0-based index into options",
+      "rationale": { "fr": "string", "en": "string" }
+    },
+    "ingestion_note": "Loads into Certifizer's /api/items. The Item model already stores type, knowledge_area, process_group, competency, difficulty, rationale, source_note. To use the MCQ options + answer directly, add two columns to Item: options (JSON/text) and answer_index (int). Quiz mode can then serve vault-curated questions instead of generating fresh ones; mastery still updates via the same EVAL/grading path."
+  },
+  "items": [
+    {
+      "id": "int-d2-01", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Initiating", "pmbok_ref": "4.1", "competency": "Authorization", "difficulty": 1,
+      "prompt": { "fr": "Qui émet la charte de projet ?", "en": "Who issues the project charter?" },
+      "options": {
+        "fr": ["Le chef de projet seul", "Le sponsor / initiateur", "Le bureau qualité", "L'équipe projet"],
+        "en": ["The project manager alone", "The sponsor / initiator", "The quality office", "The project team"]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La charte est émise par le sponsor (qui a l'autorité de financer) ; elle autorise le projet et donne autorité au PM, qui peut aider à la rédiger.",
+        "en": "The charter is issued by the sponsor (who can fund it); it authorizes the project and empowers the PM, who may help draft it."
+      }
+    },
+    {
+      "id": "int-d2-02", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Initiating", "pmbok_ref": "4.1", "competency": "Authorization", "difficulty": 1,
+      "prompt": { "fr": "Que fait principalement la charte approuvée ?", "en": "What does the approved charter primarily do?" },
+      "options": {
+        "fr": ["Elle clôt le projet", "Elle détaille la WBS", "Elle démarre formellement le projet et donne autorité au PM", "Elle fixe le budget final"],
+        "en": ["Closes the project", "Details the WBS", "Formally starts the project and gives the PM authority", "Sets the final budget"]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "La charte approuvée démarre formellement le projet, documente les exigences initiales et donne crédibilité/autorité au chef de projet.",
+        "en": "The approved charter formally starts the project, documents initial requirements, and gives the PM credibility/authority."
+      }
+    },
+    {
+      "id": "int-d2-03", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Planning", "pmbok_ref": "4.2", "competency": "Integrated planning", "difficulty": 2,
+      "prompt": { "fr": "La charte vient d'être approuvée. Quelle est la prochaine activité du PM ?", "en": "The charter has just been approved. What is the PM's next activity?" },
+      "options": {
+        "fr": ["Commencer l'exécution du travail", "Créer la WBS", "Élaborer le plan de management du projet", "Clore l'initialisation"],
+        "en": ["Start executing the work", "Create the WBS", "Develop the project management plan", "Close initiation"]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "Après la charte, on élabore d'abord le plan de management (4.2), qui cadre le reste, dont la WBS.",
+        "en": "After the charter, you first develop the management plan (4.2), which frames the rest, including the WBS."
+      }
+    },
+    {
+      "id": "int-d2-04", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Planning", "pmbok_ref": "4.2", "competency": "Baselines", "difficulty": 1,
+      "prompt": { "fr": "Quelles sont les 3 références de base du plan de management ?", "en": "What are the 3 baselines of the management plan?" },
+      "options": {
+        "fr": ["Périmètre, qualité, risque", "Périmètre, échéancier, coûts", "Coûts, ressources, communication", "Délais, risque, approvisionnement"],
+        "en": ["Scope, quality, risk", "Scope, schedule, cost", "Cost, resource, communications", "Schedule, risk, procurement"]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Les 3 baselines sont périmètre, échéancier et coûts ; combinées, elles forment la baseline de mesure de la performance (PMB).",
+        "en": "The 3 baselines are scope, schedule, and cost; combined they form the performance measurement baseline (PMB)."
+      }
+    },
+    {
+      "id": "int-d2-05", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling", "pmbok_ref": "4.6", "competency": "Change control", "difficulty": 2,
+      "prompt": { "fr": "Une fois le plan approuvé (baselines posées), comment le modifier ?", "en": "Once the plan is approved (baselines set), how is it changed?" },
+      "options": {
+        "fr": ["Directement par le PM", "Par accord verbal du sponsor", "Uniquement via la maîtrise intégrée des modifications (4.6)", "Il ne peut jamais changer"],
+        "en": ["Directly by the PM", "By the sponsor's verbal agreement", "Only via Perform Integrated Change Control (4.6)", "It can never change"]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "Après baseline, toute modification passe par 4.6 (demande de changement, évaluation, décision).",
+        "en": "After baselining, every change goes through 4.6 (change request, evaluation, decision)."
+      }
+    },
+    {
+      "id": "int-d2-06", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Executing", "pmbok_ref": "4.3", "competency": "Execution", "difficulty": 2,
+      "prompt": { "fr": "Une mesure brute d'avancement est collectée pendant l'exécution. De quoi s'agit-il ?", "en": "A raw progress measurement is collected during execution. What is it?" },
+      "options": {
+        "fr": ["Work Performance Reports (WPR)", "Work Performance Information (WPI)", "Work Performance Data (WPD)", "Une demande de changement"],
+        "en": ["Work Performance Reports (WPR)", "Work Performance Information (WPI)", "Work Performance Data (WPD)", "A change request"]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "WPD = données brutes (4.3). Analysées vs baselines → WPI ; compilées et communiquées → WPR (4.5).",
+        "en": "WPD = raw data (4.3). Analyzed vs baselines → WPI; compiled and communicated → WPR (4.5)."
+      }
+    },
+    {
+      "id": "int-d2-07", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Executing", "pmbok_ref": "4.3", "competency": "Execution", "difficulty": 1,
+      "prompt": { "fr": "Quelle est une sortie clé de « Diriger et gérer le travail » ?", "en": "What is a key output of 'Direct and Manage Project Work'?" },
+      "options": {
+        "fr": ["La charte du projet", "Les livrables", "Le registre des risques", "La WBS"],
+        "en": ["The project charter", "Deliverables", "The risk register", "The WBS"]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Ce processus crée les livrables et génère les données de performance (WPD) ; il applique aussi les changements approuvés.",
+        "en": "This process creates deliverables and generates work performance data (WPD); it also implements approved changes."
+      }
+    },
+    {
+      "id": "int-d2-08", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Executing", "pmbok_ref": "4.4", "competency": "Knowledge management", "difficulty": 2,
+      "prompt": { "fr": "Connaissance « difficile à exprimer, personnelle » : quel type ?", "en": "Knowledge that is 'personal and hard to express': which type?" },
+      "options": {
+        "fr": ["Explicite", "Tacite", "Documentée", "Archivée"],
+        "en": ["Explicit", "Tacit", "Documented", "Archived"]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Tacite = personnelle, difficile à exprimer ; explicite = formalisable immédiatement. 4.4 exige de partager les deux, pas seulement de capitaliser.",
+        "en": "Tacit = personal, hard to express; explicit = readily documented. 4.4 requires sharing both, not just capturing."
+      }
+    },
+    {
+      "id": "int-d2-09", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Executing", "pmbok_ref": "4.4", "competency": "Knowledge management", "difficulty": 2,
+      "prompt": { "fr": "Quelle est la sortie clé de « Gérer les connaissances » ?", "en": "What is the key output of 'Manage Project Knowledge'?" },
+      "options": {
+        "fr": ["Le registre des leçons apprises", "Le change log", "Le rapport final", "La charte"],
+        "en": ["The lessons learned register", "The change log", "The final report", "The charter"]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "Le registre des leçons apprises est créé tôt, enrichi en continu, puis finalisé à la clôture.",
+        "en": "The lessons learned register is created early, enriched continuously, then finalized at closing."
+      }
+    },
+    {
+      "id": "int-d2-10", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling", "pmbok_ref": "4.5", "competency": "Steering", "difficulty": 2,
+      "prompt": { "fr": "Quelles sont deux sorties de « Maîtriser le travail du projet » ?", "en": "What are two outputs of 'Monitor and Control Project Work'?" },
+      "options": {
+        "fr": ["Charte et WBS", "Rapports de performance (WPR) et demandes de changement", "Livrables et budget", "Plan de communication et risques"],
+        "en": ["Charter and WBS", "Work performance reports (WPR) and change requests", "Deliverables and budget", "Communications plan and risks"]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "4.5 produit les WPR (information compilée et communiquée) et les demandes de changement qui partent vers 4.6.",
+        "en": "4.5 produces WPR (compiled, communicated information) and the change requests that flow to 4.6."
+      }
+    },
+    {
+      "id": "int-d2-11", "type": "scenario", "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling", "pmbok_ref": "4.6", "competency": "Change control", "difficulty": 3,
+      "prompt": { "fr": "L'équipe corrige un livrable qui ne respecte pas les exigences. Quel type de demande de changement ?", "en": "The team fixes a deliverable that does not meet requirements. Which change-request type?" },
+      "options": {
+        "fr": ["Action corrective", "Action préventive", "Réparation de défaut", "Mise à jour"],
+        "en": ["Corrective action", "Preventive action", "Defect repair", "Update"]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "Réparation de défaut = corriger un livrable non conforme. Corrective = réaligner la performance future ; préventive = réduire un risque futur ; mise à jour = modifier un document/plan.",
+        "en": "Defect repair = fix a non-conforming deliverable. Corrective = realign future performance; preventive = reduce a future risk; update = modify a document/plan."
+      }
+    },
+    {
+      "id": "int-d2-12", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling", "pmbok_ref": "4.6", "competency": "Change control", "difficulty": 2,
+      "prompt": { "fr": "Avant l'approbation des références de base, la maîtrise formelle des changements est-elle requise ?", "en": "Before baselines are approved, is formal change control required?" },
+      "options": {
+        "fr": ["Oui, toujours", "Non, elle n'est pas requise tant que les baselines ne sont pas approuvées", "Seulement si le CCB existe", "Seulement pour les coûts"],
+        "en": ["Yes, always", "No, it isn't required until baselines are approved", "Only if a CCB exists", "Only for cost"]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Tant que les baselines ne sont pas posées, il n'y a pas de référence à protéger ; la maîtrise formelle des changements démarre après leur approbation.",
+        "en": "Until baselines exist, there is no reference to protect; formal change control begins after they are approved."
+      }
+    },
+    {
+      "id": "int-d2-13", "type": "mcq", "knowledge_area": "integration",
+      "process_group": "Closing", "pmbok_ref": "4.7", "competency": "Closure", "difficulty": 1,
+      "prompt": { "fr": "Laquelle n'est PAS une activité de clôture (4.7) ?", "en": "Which is NOT a closing activity (4.7)?" },
+      "options": {
+        "fr": ["Archiver les informations du projet", "Transférer le livrable final", "Libérer les ressources de l'équipe", "Élaborer la WBS"],
+        "en": ["Archive project information", "Transition the final deliverable", "Release the team's resources", "Develop the WBS"]
+      },
+      "answer_index": 3,
+      "rationale": {
+        "fr": "La WBS se crée en planification (périmètre). La clôture archive, transfère, libère les ressources et produit le rapport final.",
+        "en": "The WBS is created in planning (scope). Closure archives, transitions, releases resources, and produces the final report."
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+from typing import Optional
+from datetime import datetime
+
+from sqlmodel import SQLModel, Field, create_engine, Session
+
+from .config import settings
+
+
+class Item(SQLModel, table=True):
+    """A curated question (bilingual). Loaded from app/data/*.json bank files."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    external_id: str = Field(index=True)        # e.g. "int-d2-01" (stable id for upsert)
+    type: str = "mcq"                            # mcq | scenario
+    knowledge_area: str = Field(index=True)
+    process_group: str = ""
+    pmbok_ref: str = ""
+    competency: str = ""
+    difficulty: int = 1                          # 1..3
+    prompt_fr: str = ""
+    prompt_en: str = ""
+    options_fr: str = "[]"                        # JSON-encoded list[str]
+    options_en: str = "[]"                        # JSON-encoded list[str]
+    answer_index: int = 0
+    rationale_fr: str = ""
+    rationale_en: str = ""
+    source_note: str = ""
+
+
+class Attempt(SQLModel, table=True):
+    """One graded answer by one learner."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    knowledge_area: str = Field(index=True)
+    item_external_id: Optional[str] = Field(default=None, index=True)
+    result: str                                   # correct | partial | incorrect
+    mode: str = ""
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class Mastery(SQLModel, table=True):
+    """Rolled-up mastery per learner x knowledge area (EWMA)."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    knowledge_area: str = Field(index=True)
+    score: float = 0.0
+    attempts: int = 0
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+# --- Database engine -------------------------------------------------------
+# Normalize the scheme: SQLAlchemy 2.x rejects the old "postgres://" form that
+# some providers still hand out; rewrite it to "postgresql://".
+_db_url = settings.database_url
+if _db_url.startswith("postgres://"):
+    _db_url = _db_url.replace("postgres://", "postgresql://", 1)
+
+if _db_url.startswith("sqlite"):
+    engine = create_engine(
+        _db_url, echo=False, connect_args={"check_same_thread": False}
+    )
+else:
+    # Postgres (e.g. Supabase). On a host that sleeps (Render free tier) the
+    # pooler drops idle connections, so verify each connection before use and
+    # recycle periodically; require TLS (Supabase enforces it).
+    engine = create_engine(
+        _db_url,
+        echo=False,
+        pool_pre_ping=True,
+        pool_recycle=1800,
+        connect_args={"sslmode": "require", "connect_timeout": 10},
+    )
+
+
+def init_db() -> None:
+    SQLModel.metadata.create_all(engine)
+
+
+def get_session():
+    with Session(engine) as session:
+        yield session
