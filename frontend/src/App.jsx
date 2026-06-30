@@ -217,7 +217,7 @@ export default function App() {
             )}
 
             {modeId === "parcours" ? (
-              <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} />
+              <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
             ) : modeId === "quiz" ? (
               <QuizPanel lang={lang} area={isKA ? focusId : null} learnerId={LEARNER_ID} onGraded={onGraded} t={t} />
             ) : (

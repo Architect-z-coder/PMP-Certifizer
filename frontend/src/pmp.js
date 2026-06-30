@@ -148,6 +148,8 @@ export const JT = {
   progress: { fr: "Progression", en: "Progress" },
   processes: { fr: "processus", en: "processes" },
   review: { fr: "Réviser", en: "Review" },
+  pick: { fr: "Sélectionne un processus à gauche pour voir le détail.", en: "Pick a process on the left to see its detail." },
+  notes: { fr: "Notes de session", en: "Session notes" },
   next: { fr: "à suivre", en: "next" },
   soon: { fr: "Détails depuis tes notes — à venir.", en: "Details from your notes — coming soon." },
   legend: { fr: "À découvrir · Fragile · En progrès · Maîtrisé", en: "To explore · Shaky · In progress · Mastered" },
