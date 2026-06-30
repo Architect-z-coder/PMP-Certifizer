@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from .config import settings
-from .models import Item, Attempt, Mastery, engine, init_db, get_session
+from .models import Item, Attempt, Mastery, ProcessMastery, engine, init_db, get_session
 from . import llm
 from .prompts import build_system
 from .mastery import apply_result, light, recommend, KA, KA_IDS, TOTAL_N
@@ -70,8 +70,17 @@ def rec_payload(ml: list[dict]):
     return {"area": rec["id"], "fr": rec["fr"], "en": rec["en"]} if rec else None
 
 
-def record(session: Session, learner_id: str, area: str, result: str, mode: str, item_external_id: Optional[str] = None):
+def process_mastery_list(session: Session, learner_id: str) -> list[dict]:
+    rows = session.exec(select(ProcessMastery).where(ProcessMastery.learner_id == learner_id)).all()
+    return [{"pmbok_ref": r.pmbok_ref, "area": r.knowledge_area,
+             "score": r.score, "attempts": r.attempts,
+             "light": light(r.score, r.attempts)} for r in rows]
+
+
+def record(session: Session, learner_id: str, area: str, result: str, mode: str,
+           item_external_id: Optional[str] = None, pmbok_ref: Optional[str] = None):
     session.add(Attempt(learner_id=learner_id, knowledge_area=area, result=result, mode=mode, item_external_id=item_external_id))
+    # area-level mastery
     row = session.exec(
         select(Mastery).where(Mastery.learner_id == learner_id, Mastery.knowledge_area == area)
     ).first()
@@ -81,6 +90,19 @@ def record(session: Session, learner_id: str, area: str, result: str, mode: str,
     else:
         row.score, row.attempts = apply_result(row.score, row.attempts, result)
     session.add(row)
+    # process-level mastery (only when we know which process the question targets)
+    if pmbok_ref:
+        prow = session.exec(
+            select(ProcessMastery).where(
+                ProcessMastery.learner_id == learner_id, ProcessMastery.pmbok_ref == pmbok_ref)
+        ).first()
+        if prow is None:
+            pscore, pattempts = apply_result(0.0, 0, result)
+            prow = ProcessMastery(learner_id=learner_id, pmbok_ref=pmbok_ref,
+                                  knowledge_area=area, score=pscore, attempts=pattempts)
+        else:
+            prow.score, prow.attempts = apply_result(prow.score, prow.attempts, result)
+        session.add(prow)
     session.commit()
 
 
@@ -118,7 +140,8 @@ async def chat(req: ChatRequest, session: Session = Depends(get_session)):
         reply = EVAL_RE.sub("", reply).strip()
 
     ml = mastery_list(session, req.learner_id)
-    return {"reply": reply, "verdict": verdict, "mastery": ml, "recommended": rec_payload(ml)}
+    return {"reply": reply, "verdict": verdict, "mastery": ml, "recommended": rec_payload(ml),
+            "processes": process_mastery_list(session, req.learner_id)}
 
 
 @app.get("/api/quiz/next")
@@ -154,17 +177,20 @@ def quiz_answer(body: QuizAnswer, session: Session = Depends(get_session)):
         return {"error": "unknown item"}
     correct = (body.choice_index == it.answer_index)
     result = "correct" if correct else "incorrect"
-    record(session, body.learner_id, it.knowledge_area, result, "quiz", item_external_id=it.external_id)
+    record(session, body.learner_id, it.knowledge_area, result, "quiz",
+           item_external_id=it.external_id, pmbok_ref=it.pmbok_ref)
     ml = mastery_list(session, body.learner_id)
     return {"correct": correct, "answer_index": it.answer_index,
             "rationale": {"fr": it.rationale_fr, "en": it.rationale_en},
-            "mastery": ml, "recommended": rec_payload(ml)}
+            "mastery": ml, "recommended": rec_payload(ml),
+            "processes": process_mastery_list(session, body.learner_id)}
 
 
 @app.get("/api/mastery/{learner_id}")
 def get_mastery(learner_id: str, session: Session = Depends(get_session)):
     ml = mastery_list(session, learner_id)
-    return {"mastery": ml, "recommended": rec_payload(ml)}
+    return {"mastery": ml, "recommended": rec_payload(ml),
+            "processes": process_mastery_list(session, learner_id)}
 
 
 @app.get("/api/items")

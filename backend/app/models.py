@@ -47,6 +47,17 @@ class Mastery(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
 
+class ProcessMastery(SQLModel, table=True):
+    """Rolled-up mastery per learner x process (PMBOK ref, e.g. '4.1'), EWMA."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    pmbok_ref: str = Field(index=True)
+    knowledge_area: str = Field(index=True)
+    score: float = 0.0
+    attempts: int = 0
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
 # --- Database engine -------------------------------------------------------
 # Normalize the scheme: SQLAlchemy 2.x rejects the old "postgres://" form that
 # some providers still hand out; rewrite it to "postgresql://".

@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu } from "lucide-react";
-import { C, KA, FOCUS, STARTERS, T, lightColor } from "./pmp.js";
+import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass } from "lucide-react";
+import { C, KA, FOCUS, STARTERS, T, JT, lightColor } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer } from "./api.js";
+import Journey from "./Journey.jsx";
 
 const LEARNER_ID = "demo"; // replace with auth'd user id later
 
@@ -27,6 +28,7 @@ export default function App() {
   const [projectContext, setProjectContext] = useState("");
   const [messages, setMessages] = useState([]);
   const [mastery, setMastery] = useState([]);
+  const [processes, setProcesses] = useState([]);
   const [recommended, setRecommended] = useState(null);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,7 +45,7 @@ export default function App() {
   const isKA = KA.some((k) => k.id === focusId);
 
   useEffect(() => {
-    getMastery(LEARNER_ID).then((d) => { setMastery(d.mastery); setRecommended(d.recommended); }).catch(() => {});
+    getMastery(LEARNER_ID).then((d) => { setMastery(d.mastery); setRecommended(d.recommended); setProcesses(d.processes || []); }).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -53,6 +55,7 @@ export default function App() {
   function onGraded(d) {
     if (d.mastery) setMastery(d.mastery);
     if (d.recommended) setRecommended(d.recommended);
+    if (d.processes) setProcesses(d.processes);
   }
 
   async function send(textArg) {
@@ -71,7 +74,8 @@ export default function App() {
   function reset() { setMessages([]); setError(null); setInput(""); }
   function studyArea(area) { setFocusId(area); setModeId("quiz"); if (isMobile) setNavOpen(false); }
 
-  const ActiveIcon = MODES.find((m) => m.id === modeId).icon;
+  const activeModeObj = MODES.find((m) => m.id === modeId);
+  const ActiveIcon = activeModeObj ? activeModeObj.icon : BookOpen;
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
 
   return (
@@ -151,6 +155,9 @@ export default function App() {
                   );
                 })}
               </div>
+              <button onClick={() => chooseMode("parcours")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "parcours" ? C.amber : C.inkLine}`, background: modeId === "parcours" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "parcours" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
+                <Compass size={15} color={modeId === "parcours" ? C.amber : "#9DB0C2"} /> {JT.parcours[lang]}
+              </button>
             </Section>
 
             <Section label={t("focus")}>
@@ -209,7 +216,9 @@ export default function App() {
               </button>
             )}
 
-            {modeId === "quiz" ? (
+            {modeId === "parcours" ? (
+              <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} />
+            ) : modeId === "quiz" ? (
               <QuizPanel lang={lang} area={isKA ? focusId : null} learnerId={LEARNER_ID} onGraded={onGraded} t={t} />
             ) : (
               <>

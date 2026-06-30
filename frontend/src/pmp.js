@@ -54,3 +54,102 @@ export function lightColor(state) {
   if (state.score < 0.75) return C.amber;
   return C.green;
 }
+
+// ---- Process groups (PMBOK 6) ----
+export const PG = {
+  init:  { fr: "Démarrage", en: "Initiating", c: "#8A6FB0" },
+  plan:  { fr: "Planification", en: "Planning", c: "#2E8C9E" },
+  exec:  { fr: "Exécution", en: "Executing", c: "#3DA776" },
+  mc:    { fr: "Maîtrise", en: "M&C", c: "#E89A3C" },
+  close: { fr: "Clôture", en: "Closing", c: "#D2664E" },
+};
+
+// ---- The 49 processes, keyed by knowledge-area id ----
+// pmbok ref (n) matches the item bank's pmbok_ref, so per-process mastery lines up.
+export const PROC = {
+  integration: [
+    { n: "4.1", fr: "Élaborer la charte du projet", en: "Develop Project Charter", pg: "init", roleFr: "Autorise le projet et nomme le chef de projet.", roleEn: "Authorizes the project and names the PM." },
+    { n: "4.2", fr: "Élaborer le plan de management", en: "Develop PM Plan", pg: "plan", roleFr: "Définit comment le projet est exécuté, suivi et clôturé.", roleEn: "Defines how the project is executed, monitored, closed." },
+    { n: "4.3", fr: "Diriger et gérer le travail", en: "Direct & Manage Project Work", pg: "exec", roleFr: "Réalise le travail et produit les livrables.", roleEn: "Performs the work and produces deliverables." },
+    { n: "4.4", fr: "Gérer les connaissances", en: "Manage Project Knowledge", pg: "exec", roleFr: "Capitalise les connaissances (leçons apprises).", roleEn: "Captures knowledge (lessons learned register)." },
+    { n: "4.5", fr: "Maîtriser le travail du projet", en: "Monitor & Control Project Work", pg: "mc", roleFr: "Suit l'avancement par rapport aux références de base.", roleEn: "Tracks progress against the baselines." },
+    { n: "4.6", fr: "Maîtrise intégrée des changements", en: "Perform Integrated Change Control", pg: "mc", roleFr: "Évalue et décide des demandes de changement.", roleEn: "Evaluates and decides change requests." },
+    { n: "4.7", fr: "Clore le projet ou la phase", en: "Close Project or Phase", pg: "close", roleFr: "Finalise, transfère le livrable, archive.", roleEn: "Finalizes, transfers deliverable, archives." },
+  ],
+  scope: [
+    { n: "5.1", fr: "Planifier le périmètre", en: "Plan Scope Management", pg: "plan" },
+    { n: "5.2", fr: "Recueillir les exigences", en: "Collect Requirements", pg: "plan" },
+    { n: "5.3", fr: "Définir le périmètre", en: "Define Scope", pg: "plan" },
+    { n: "5.4", fr: "Créer la SDP / WBS", en: "Create WBS", pg: "plan" },
+    { n: "5.5", fr: "Valider le périmètre", en: "Validate Scope", pg: "mc" },
+    { n: "5.6", fr: "Maîtriser le périmètre", en: "Control Scope", pg: "mc" },
+  ],
+  schedule: [
+    { n: "6.1", fr: "Planifier l'échéancier", en: "Plan Schedule Management", pg: "plan" },
+    { n: "6.2", fr: "Définir les activités", en: "Define Activities", pg: "plan" },
+    { n: "6.3", fr: "Organiser les activités", en: "Sequence Activities", pg: "plan" },
+    { n: "6.4", fr: "Estimer les durées", en: "Estimate Activity Durations", pg: "plan" },
+    { n: "6.5", fr: "Élaborer l'échéancier", en: "Develop Schedule", pg: "plan" },
+    { n: "6.6", fr: "Maîtriser l'échéancier", en: "Control Schedule", pg: "mc" },
+  ],
+  cost: [
+    { n: "7.1", fr: "Planifier les coûts", en: "Plan Cost Management", pg: "plan" },
+    { n: "7.2", fr: "Estimer les coûts", en: "Estimate Costs", pg: "plan" },
+    { n: "7.3", fr: "Déterminer le budget", en: "Determine Budget", pg: "plan" },
+    { n: "7.4", fr: "Maîtriser les coûts", en: "Control Costs", pg: "mc" },
+  ],
+  quality: [
+    { n: "8.1", fr: "Planifier la qualité", en: "Plan Quality Management", pg: "plan" },
+    { n: "8.2", fr: "Gérer la qualité", en: "Manage Quality", pg: "exec" },
+    { n: "8.3", fr: "Maîtriser la qualité", en: "Control Quality", pg: "mc" },
+  ],
+  resource: [
+    { n: "9.1", fr: "Planifier les ressources", en: "Plan Resource Management", pg: "plan" },
+    { n: "9.2", fr: "Estimer les ressources", en: "Estimate Activity Resources", pg: "plan" },
+    { n: "9.3", fr: "Obtenir les ressources", en: "Acquire Resources", pg: "exec" },
+    { n: "9.4", fr: "Développer l'équipe", en: "Develop Team", pg: "exec" },
+    { n: "9.5", fr: "Gérer l'équipe", en: "Manage Team", pg: "exec" },
+    { n: "9.6", fr: "Maîtriser les ressources", en: "Control Resources", pg: "mc" },
+  ],
+  comms: [
+    { n: "10.1", fr: "Planifier les communications", en: "Plan Communications Mgmt", pg: "plan" },
+    { n: "10.2", fr: "Gérer les communications", en: "Manage Communications", pg: "exec" },
+    { n: "10.3", fr: "Surveiller les communications", en: "Monitor Communications", pg: "mc" },
+  ],
+  risk: [
+    { n: "11.1", fr: "Planifier les risques", en: "Plan Risk Management", pg: "plan" },
+    { n: "11.2", fr: "Identifier les risques", en: "Identify Risks", pg: "plan" },
+    { n: "11.3", fr: "Analyse qualitative", en: "Qualitative Risk Analysis", pg: "plan" },
+    { n: "11.4", fr: "Analyse quantitative", en: "Quantitative Risk Analysis", pg: "plan" },
+    { n: "11.5", fr: "Planifier les réponses", en: "Plan Risk Responses", pg: "plan" },
+    { n: "11.6", fr: "Exécuter les réponses", en: "Implement Risk Responses", pg: "exec" },
+    { n: "11.7", fr: "Surveiller les risques", en: "Monitor Risks", pg: "mc" },
+  ],
+  procurement: [
+    { n: "12.1", fr: "Planifier les approvisionnements", en: "Plan Procurement Mgmt", pg: "plan" },
+    { n: "12.2", fr: "Procéder aux approvisionnements", en: "Conduct Procurements", pg: "exec" },
+    { n: "12.3", fr: "Maîtriser les approvisionnements", en: "Control Procurements", pg: "mc" },
+  ],
+  stakeholder: [
+    { n: "13.1", fr: "Identifier les parties prenantes", en: "Identify Stakeholders", pg: "init" },
+    { n: "13.2", fr: "Planifier l'engagement", en: "Plan Stakeholder Engagement", pg: "plan" },
+    { n: "13.3", fr: "Gérer l'engagement", en: "Manage Stakeholder Engagement", pg: "exec" },
+    { n: "13.4", fr: "Surveiller l'engagement", en: "Monitor Stakeholder Engagement", pg: "mc" },
+  ],
+};
+
+// ---- Parcours (Journey) view translations ----
+export const JT = {
+  parcours: { fr: "Parcours", en: "Journey" },
+  mapTitle: { fr: "Carte des connaissances", en: "Knowledge map" },
+  mapHint: { fr: "Touche un domaine pour ouvrir son parcours détaillé", en: "Tap an area to open its detailed journey" },
+  back: { fr: "Carte", en: "Map" },
+  mastered: { fr: "Maîtrisés", en: "Mastered" },
+  progress: { fr: "Progression", en: "Progress" },
+  processes: { fr: "processus", en: "processes" },
+  review: { fr: "Réviser", en: "Review" },
+  next: { fr: "à suivre", en: "next" },
+  soon: { fr: "Détails depuis tes notes — à venir.", en: "Details from your notes — coming soon." },
+  legend: { fr: "À découvrir · Fragile · En progrès · Maîtrisé", en: "To explore · Shaky · In progress · Mastered" },
+  empty: { fr: "Réponds à des questions pour faire vivre ta carte.", en: "Answer questions to bring your map to life." },
+};
