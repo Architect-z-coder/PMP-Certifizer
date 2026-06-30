@@ -1,0 +1,1066 @@
+{
+  "_meta": {
+    "source": "Certifizer — Intégration (banque approfondie, alignée PMBOK 6 + ECO 2026)",
+    "knowledge_area": "integration",
+    "orientation": "2026 ECO — situational / value / governance / predictive+agile+hybrid",
+    "note": "Trainer-agnostic. Trainer is session metadata only, not anchored here.",
+    "version": 1,
+    "item_count": 31
+  },
+  "items": [
+    {
+      "id": "int-x-4.1-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Initiating",
+      "pmbok_ref": "4.1",
+      "competency": "Authority & value",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Un sponsor vous demande de commencer à mobiliser l'équipe alors que la charte n'est pas encore signée. Que faites-vous d'abord ?",
+        "en": "A sponsor asks you to start mobilizing the team before the charter is signed. What do you do first?"
+      },
+      "options": {
+        "fr": [
+          "Mobiliser l'équipe : le sponsor a donné un ordre verbal",
+          "Obtenir la charte signée, qui fonde votre autorité et le financement",
+          "Élaborer le plan de management avant toute chose",
+          "Lancer l'identification des parties prenantes en parallèle"
+        ],
+        "en": [
+          "Mobilize the team — the sponsor gave a verbal go",
+          "Get the charter signed, which establishes your authority and funding",
+          "Develop the project management plan first",
+          "Start identifying stakeholders in parallel"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Sans charte signée, le PM n'a ni autorité formelle ni financement autorisé. Un ordre verbal n'est pas défendable au premier conflit. La charte précède la planification (4.2) et l'autorité d'engager des ressources.",
+        "en": "Without a signed charter the PM has no formal authority and no authorized funding. A verbal go isn't defensible at the first conflict. The charter precedes planning (4.2) and the authority to commit resources."
+      }
+    },
+    {
+      "id": "int-x-4.1-02",
+      "type": "mcq",
+      "knowledge_area": "integration",
+      "process_group": "Initiating",
+      "pmbok_ref": "4.1",
+      "competency": "Charter content",
+      "difficulty": 1,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Lequel de ces éléments N'EST PAS attendu dans une charte de projet ?",
+        "en": "Which of these is NOT expected in a project charter?"
+      },
+      "options": {
+        "fr": [
+          "Les objectifs mesurables et critères de succès",
+          "Le nom du chef de projet et son niveau d'autorité",
+          "La structure de découpage du travail (WBS) détaillée",
+          "Les risques de haut niveau et jalons sommaires"
+        ],
+        "en": [
+          "Measurable objectives and success criteria",
+          "The project manager's name and authority level",
+          "The detailed work breakdown structure (WBS)",
+          "High-level risks and summary milestones"
+        ]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "La charte reste de haut niveau : objectifs, autorité du PM, risques et jalons sommaires. La WBS est un produit de la planification du périmètre (5.4), pas de la charte. Confondre les deux est un piège classique.",
+        "en": "The charter stays high-level: objectives, PM authority, high-level risks and summary milestones. The WBS is an output of scope planning (5.4), not the charter. Confusing the two is a classic trap."
+      }
+    },
+    {
+      "id": "int-x-4.1-03",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Initiating",
+      "pmbok_ref": "4.1",
+      "competency": "Strategic alignment",
+      "difficulty": 3,
+      "perspective": "owner",
+      "approach": "any",
+      "prompt": {
+        "fr": "En cours de cadrage, vous constatez que le projet ne contribue à aucun objectif stratégique clair de l'organisation. Quelle est la meilleure action ?",
+        "en": "During initiation you find the project maps to no clear organizational strategic objective. Best action?"
+      },
+      "options": {
+        "fr": [
+          "Continuer : la décision de lancer revient au sponsor, pas au PM",
+          "Remonter au sponsor le défaut d'alignement sur la valeur avant d'investir davantage",
+          "Réduire le budget pour limiter le risque financier",
+          "Documenter l'écart dans le registre des risques et poursuivre"
+        ],
+        "en": [
+          "Proceed — the decision to launch is the sponsor's, not the PM's",
+          "Raise the value/alignment gap to the sponsor before investing further",
+          "Cut the budget to limit financial risk",
+          "Log the gap in the risk register and continue"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'orientation 2026 met la valeur et l'alignement stratégique au cœur du rôle. Un projet sans contribution à la valeur doit être questionné tôt auprès du sponsor — pas simplement journalisé. Poursuivre gaspille des ressources sur un projet possiblement injustifié.",
+        "en": "The 2026 orientation puts value and strategic alignment at the centre of the role. A project with no value contribution should be challenged early with the sponsor — not merely logged. Proceeding wastes resources on a possibly unjustified project."
+      }
+    },
+    {
+      "id": "int-x-4.1-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Initiating",
+      "pmbok_ref": "4.1",
+      "competency": "Charter authority",
+      "difficulty": 2,
+      "perspective": "contractor",
+      "approach": "any",
+      "prompt": {
+        "fr": "Côté entreprise (entrepreneur EPC), quel document interne joue le rôle de « charte » pour autoriser le projet de réalisation ?",
+        "en": "On the contractor (EPC) side, which internal document plays the 'charter' role authorizing the delivery project?"
+      },
+      "options": {
+        "fr": [
+          "Le contrat signé avec le maître d'ouvrage uniquement",
+          "Une charte/note de lancement interne qui nomme le PM et alloue les ressources",
+          "Le cahier des charges technique",
+          "Le planning directeur (master schedule)"
+        ],
+        "en": [
+          "The signed contract with the owner only",
+          "An internal launch charter/note that names the PM and allocates resources",
+          "The technical specification",
+          "The master schedule"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le contrat externe déclenche le projet, mais l'autorité interne du PM de l'entrepreneur vient d'une charte/note de lancement interne qui le nomme et engage les ressources. Le contrat seul n'attribue pas l'autorité interne ; le cahier des charges et le planning sont des produits ultérieurs.",
+        "en": "The external contract triggers the work, but the contractor PM's internal authority comes from an internal launch charter/note that names them and commits resources. The contract alone doesn't grant internal authority; the spec and schedule are later outputs."
+      }
+    },
+    {
+      "id": "int-x-4.1-05",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Initiating",
+      "pmbok_ref": "4.1",
+      "competency": "Assumptions",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Au cadrage, où consignez-vous les hypothèses et contraintes de haut niveau identifiées ?",
+        "en": "At initiation, where do you record the high-level assumptions and constraints you identify?"
+      },
+      "options": {
+        "fr": [
+          "Dans le plan de gestion des risques",
+          "Dans la charte et/ou le registre des hypothèses",
+          "Dans le registre des leçons apprises",
+          "Dans le journal des problèmes (issue log)"
+        ],
+        "en": [
+          "In the risk management plan",
+          "In the charter and/or the assumption log",
+          "In the lessons learned register",
+          "In the issue log"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Les hypothèses/contraintes de haut niveau apparaissent dans la charte et sont suivies dans le registre des hypothèses. Le journal des problèmes traite d'événements réalisés ; les leçons apprises capitalisent l'expérience — autres usages.",
+        "en": "High-level assumptions/constraints appear in the charter and are tracked in the assumption log. The issue log handles realized events; lessons learned capture experience — different purposes."
+      }
+    },
+    {
+      "id": "int-x-4.2-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Planning",
+      "pmbok_ref": "4.2",
+      "competency": "Plan integration",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Un directeur veut « sauter la planification » pour gagner deux semaines et démarrer les travaux. Quelle réponse est la plus alignée PMI ?",
+        "en": "An executive wants to 'skip planning' to save two weeks and start the work. Which response is most PMI-aligned?"
+      },
+      "options": {
+        "fr": [
+          "Accepter : livrer vite crée plus de valeur que planifier",
+          "Expliquer que le plan intègre les références de base qui permettront de piloter et de maîtriser les changements",
+          "Démarrer l'exécution et planifier en parallèle sans référence",
+          "Demander au sponsor d'arbitrer sans donner d'avis"
+        ],
+        "en": [
+          "Agree — delivering fast creates more value than planning",
+          "Explain that the plan sets the baselines that make control and change management possible",
+          "Start executing and plan in parallel with no baseline",
+          "Ask the sponsor to decide without offering a view"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le plan de management intègre les références (périmètre, échéancier, coûts) sans lesquelles on ne peut mesurer l'écart ni maîtriser les changements (4.6). Sauter la planification supprime la base de pilotage. Le PM conseille avec son jugement, il ne se défausse pas.",
+        "en": "The PM plan integrates the baselines (scope, schedule, cost) without which you can't measure variance or control change (4.6). Skipping planning removes the basis for control. The PM advises with judgement rather than abdicating."
+      }
+    },
+    {
+      "id": "int-x-4.2-02",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Planning",
+      "pmbok_ref": "4.2",
+      "competency": "Development approach",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "hybrid",
+      "prompt": {
+        "fr": "Le plan de management doit préciser l'approche de développement. Pour un projet dont le cœur est figé (génie civil) mais avec une partie logicielle incertaine, lequel choisir ?",
+        "en": "The PM plan must state the development approach. For a project with a fixed civil core but an uncertain software part, which fits?"
+      },
+      "options": {
+        "fr": [
+          "Entièrement prédictif pour tout maîtriser",
+          "Entièrement agile pour rester flexible",
+          "Hybride : prédictif sur le cœur figé, itératif sur la partie incertaine",
+          "Indéfini : on décidera en exécution"
+        ],
+        "en": [
+          "Fully predictive to control everything",
+          "Fully agile to stay flexible",
+          "Hybrid: predictive on the fixed core, iterative on the uncertain part",
+          "Undecided — we'll choose during execution"
+        ]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "Le choix se tailore selon le contexte (PMBOK 7). Un cœur figé et régulé appelle le prédictif ; une partie à périmètre incertain bénéficie de l'itératif — donc hybride. Tout-prédictif rigidifie l'incertain ; tout-agile fragilise le cœur régulé. L'approche se décide dans le plan, pas plus tard.",
+        "en": "The choice is tailored to context (PMBOK 7). A fixed, regulated core calls for predictive; an uncertain-scope part benefits from iterative — hence hybrid. All-predictive rigidifies the uncertain part; all-agile undermines the regulated core. The approach is set in the plan, not later."
+      }
+    },
+    {
+      "id": "int-x-4.2-03",
+      "type": "mcq",
+      "knowledge_area": "integration",
+      "process_group": "Planning",
+      "pmbok_ref": "4.2",
+      "competency": "Baselines",
+      "difficulty": 1,
+      "perspective": "both",
+      "approach": "predictive",
+      "prompt": {
+        "fr": "Quelles sont les trois références de base intégrées dans le plan de management du projet ?",
+        "en": "What are the three baselines integrated into the project management plan?"
+      },
+      "options": {
+        "fr": [
+          "Périmètre, échéancier, coûts",
+          "Qualité, risques, communications",
+          "Charte, WBS, registre des parties prenantes",
+          "Délais, ressources, approvisionnements"
+        ],
+        "en": [
+          "Scope, schedule, cost",
+          "Quality, risk, communications",
+          "Charter, WBS, stakeholder register",
+          "Schedule, resources, procurement"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "La référence de mesure de la performance combine les références de périmètre, d'échéancier et de coûts. Les autres sont des plans subsidiaires ou des documents, pas des références de base.",
+        "en": "The performance measurement baseline combines the scope, schedule and cost baselines. The others are subsidiary plans or documents, not baselines."
+      }
+    },
+    {
+      "id": "int-x-4.2-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Planning",
+      "pmbok_ref": "4.2",
+      "competency": "Progressive elaboration",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Tôt en planification, certains lots ne peuvent pas encore être détaillés faute d'information. Que fait un PM avisé ?",
+        "en": "Early in planning, some work packages can't be detailed yet due to missing information. What does a sound PM do?"
+      },
+      "options": {
+        "fr": [
+          "Bloquer la planification jusqu'à tout connaître",
+          "Planifier par vagues (rolling wave) : détailler le proche, esquisser le lointain",
+          "Inventer des estimations précises pour combler les vides",
+          "Externaliser ces lots pour éviter de les planifier"
+        ],
+        "en": [
+          "Halt planning until everything is known",
+          "Use rolling-wave planning: detail the near term, outline the far term",
+          "Invent precise estimates to fill the gaps",
+          "Outsource those packages to avoid planning them"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'élaboration progressive / planification par vagues détaille ce qui est connaissable maintenant et affine plus tard. Tout bloquer paralyse ; inventer des chiffres crée une fausse précision dangereuse.",
+        "en": "Progressive elaboration / rolling-wave planning details what is knowable now and refines later. Halting everything paralyzes the project; inventing numbers creates dangerous false precision."
+      }
+    },
+    {
+      "id": "int-x-4.2-05",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Planning",
+      "pmbok_ref": "4.2",
+      "competency": "Plan approval",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Le plan de management intégré est prêt. Quelle étape conditionne le passage à l'exécution ?",
+        "en": "The integrated PM plan is ready. What gates the move to execution?"
+      },
+      "options": {
+        "fr": [
+          "L'approbation formelle (baseline) par le sponsor / les parties prenantes clés",
+          "La validation du premier livrable",
+          "La signature des contrats d'approvisionnement",
+          "La tenue de la première réunion d'avancement"
+        ],
+        "en": [
+          "Formal approval (baselining) by the sponsor / key stakeholders",
+          "Validation of the first deliverable",
+          "Signing the procurement contracts",
+          "Holding the first status meeting"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "On fige (baseline) le plan par une approbation formelle avant d'exécuter, pour disposer d'une référence opposable. La validation des livrables (5.5) et les réunions surviennent ensuite.",
+        "en": "You baseline the plan with formal approval before executing, to have a reference you can hold work against. Deliverable validation (5.5) and meetings come afterwards."
+      }
+    },
+    {
+      "id": "int-x-4.3-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.3",
+      "competency": "Approved changes",
+      "difficulty": 3,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Un ingénieur applique de lui-même une modification « évidente » au livrable, sans passer par la maîtrise des changements. Le résultat est meilleur. Que faites-vous ?",
+        "en": "An engineer applies an 'obvious' change to the deliverable on their own, bypassing change control. The result is better. What do you do?"
+      },
+      "options": {
+        "fr": [
+          "Rien : le résultat est meilleur, donc le processus a bien fonctionné",
+          "Rétablir la discipline : seules les modifications approuvées (4.6) s'exécutent ; tracer l'écart et son impact",
+          "Récompenser l'initiative et inscrire la pratique au plan",
+          "Supprimer la modification immédiatement quel qu'en soit l'impact"
+        ],
+        "en": [
+          "Nothing — the result is better, so the process worked",
+          "Restore discipline: only approved changes (4.6) get implemented; record the deviation and its impact",
+          "Reward the initiative and write the practice into the plan",
+          "Remove the change immediately regardless of impact"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "« Diriger et gérer le travail » n'exécute que des modifications approuvées. Un bon résultat ne légitime pas le contournement de la maîtrise intégrée des changements (gold plating / changement non contrôlé). Le PM rétablit la gouvernance et évalue l'impact réel sur les références.",
+        "en": "Direct and Manage Project Work only implements approved changes. A good outcome doesn't legitimize bypassing integrated change control (gold plating / uncontrolled change). The PM restores governance and assesses the real impact on the baselines."
+      }
+    },
+    {
+      "id": "int-x-4.3-02",
+      "type": "mcq",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.3",
+      "competency": "Outputs",
+      "difficulty": 1,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Quel est le principal produit du processus « Diriger et gérer le travail du projet » ?",
+        "en": "What is the main output of 'Direct and Manage Project Work'?"
+      },
+      "options": {
+        "fr": [
+          "Les rapports sur la performance du travail",
+          "Les livrables",
+          "Les demandes de changement approuvées",
+          "La référence de base du périmètre"
+        ],
+        "en": [
+          "Work performance reports",
+          "Deliverables",
+          "Approved change requests",
+          "The scope baseline"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "C'est ici que les livrables sont produits. Les demandes approuvées sont une ENTRÉE (issues de 4.6) ; les rapports de performance viennent du suivi (4.5) ; la référence de périmètre vient de la planification.",
+        "en": "This is where deliverables are produced. Approved change requests are an INPUT (from 4.6); work performance reports come from monitoring (4.5); the scope baseline comes from planning."
+      }
+    },
+    {
+      "id": "int-x-4.3-03",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.3",
+      "competency": "Data vs reports",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Pendant l'exécution, vous collectez « 30 % des soudures terminées, 4 incidents qualité ». Comment qualifie-t-on cette information brute ?",
+        "en": "During execution you collect '30% of welds done, 4 quality incidents'. What is this raw information called?"
+      },
+      "options": {
+        "fr": [
+          "Données de performance du travail (work performance data)",
+          "Informations sur la performance du travail",
+          "Rapports sur la performance du travail",
+          "Mesures de la maîtrise de la qualité"
+        ],
+        "en": [
+          "Work performance data",
+          "Work performance information",
+          "Work performance reports",
+          "Quality control measurements"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "Les observations brutes = données (4.3). Analysées contre les références, elles deviennent des informations (4.5) ; mises en forme pour communication, des rapports. Le piège est de confondre données et rapports.",
+        "en": "Raw observations = data (4.3). Analyzed against baselines they become information (4.5); packaged for communication, reports. The trap is confusing data with reports."
+      }
+    },
+    {
+      "id": "int-x-4.3-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.3",
+      "competency": "Issues",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Un risque identifié se matérialise pendant les travaux et bloque une activité. Où l'enregistrez-vous et que déclenchez-vous ?",
+        "en": "An identified risk materializes during the work and blocks an activity. Where do you record it and what do you trigger?"
+      },
+      "options": {
+        "fr": [
+          "Dans le registre des risques ; aucune autre action",
+          "Dans le journal des problèmes (issue log) ; lancer la résolution et, si besoin, une demande de changement",
+          "Dans le registre des leçons apprises ; clôturer le risque",
+          "Dans la charte ; alerter uniquement le sponsor"
+        ],
+        "en": [
+          "In the risk register; no further action",
+          "In the issue log; start resolution and, if needed, raise a change request",
+          "In the lessons learned register; close the risk",
+          "In the charter; only alert the sponsor"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un risque réalisé devient un problème : il se suit dans le journal des problèmes, on lance la résolution et, si la réponse touche une référence, on passe par une demande de changement (4.6). Le registre des risques tracera le basculement, mais l'instrument de pilotage devient le journal des problèmes.",
+        "en": "A realized risk becomes an issue: track it in the issue log, drive resolution, and if the response touches a baseline, route a change request (4.6). The risk register records the transition, but the issue log becomes the control instrument."
+      }
+    },
+    {
+      "id": "int-x-4.4-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.4",
+      "competency": "Knowledge retention",
+      "difficulty": 3,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Un expert clé quittera l'équipe dans deux semaines. Quelle action protège le mieux le projet selon l'esprit « gérer les connaissances » ?",
+        "en": "A key expert leaves the team in two weeks. Which action best protects the project in the spirit of 'manage project knowledge'?"
+      },
+      "options": {
+        "fr": [
+          "Demander une prolongation de son contrat coûte que coûte",
+          "Organiser le transfert des connaissances tacites (pairage, documentation, leçons apprises) avant le départ",
+          "Attendre son remplaçant et lui faire tout redécouvrir",
+          "Geler les tâches concernées jusqu'à recrutement"
+        ],
+        "en": [
+          "Demand a contract extension at any cost",
+          "Organize transfer of tacit knowledge (pairing, documentation, lessons learned) before departure",
+          "Wait for a replacement and let them rediscover everything",
+          "Freeze the affected tasks until a hire is made"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Gérer les connaissances vise à préserver le savoir tacite et explicite. Le pairage, la documentation et les leçons apprises capturent ce qui partirait sinon avec la personne. Prolonger à tout prix ou geler le travail ne transfèrent pas le savoir.",
+        "en": "Managing project knowledge aims to preserve tacit and explicit knowledge. Pairing, documentation and lessons learned capture what would otherwise leave with the person. Extending at any cost or freezing work doesn't transfer knowledge."
+      }
+    },
+    {
+      "id": "int-x-4.4-02",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.4",
+      "competency": "Lessons learned timing",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "À quel moment alimente-t-on le registre des leçons apprises ?",
+        "en": "When is the lessons learned register populated?"
+      },
+      "options": {
+        "fr": [
+          "Uniquement à la clôture du projet",
+          "En continu, tout au long du projet",
+          "Seulement à la fin de chaque phase contractuelle",
+          "Seulement en cas d'incident majeur"
+        ],
+        "en": [
+          "Only at project closure",
+          "Continuously, throughout the project",
+          "Only at the end of each contractual phase",
+          "Only when a major incident occurs"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le registre des leçons apprises se nourrit en continu (4.4) puis se finalise en clôture (4.7). Le réserver à la fin fait perdre les enseignements en temps réel — piège fréquent.",
+        "en": "The lessons learned register is populated continuously (4.4) and finalized at closure (4.7). Saving it for the end loses real-time learning — a frequent trap."
+      }
+    },
+    {
+      "id": "int-x-4.4-03",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Executing",
+      "pmbok_ref": "4.4",
+      "competency": "Explicit vs tacit",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Votre équipe sait FAIRE une procédure complexe mais rien n'est écrit. Comment décrit-on ce savoir et que faites-vous ?",
+        "en": "Your team knows HOW to run a complex procedure but nothing is written down. How is this knowledge described and what do you do?"
+      },
+      "options": {
+        "fr": [
+          "Savoir explicite ; le diffuser tel quel",
+          "Savoir tacite ; l'expliciter via partage, démonstrations et documentation",
+          "Savoir obsolète ; l'ignorer",
+          "Savoir contractuel ; le verrouiller"
+        ],
+        "en": [
+          "Explicit knowledge; circulate it as-is",
+          "Tacit knowledge; make it explicit through sharing, demos and documentation",
+          "Obsolete knowledge; ignore it",
+          "Contractual knowledge; lock it down"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le savoir-faire non écrit est tacite. La gestion des connaissances cherche à l'expliciter et à le partager (interactions, démonstrations, documentation) pour qu'il ne dépende plus d'individus.",
+        "en": "Undocumented know-how is tacit. Knowledge management seeks to make it explicit and shareable (interactions, demos, documentation) so it no longer depends on individuals."
+      }
+    },
+    {
+      "id": "int-x-4.5-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.5",
+      "competency": "EVM interpretation",
+      "difficulty": 3,
+      "perspective": "both",
+      "approach": "predictive",
+      "prompt": {
+        "fr": "À mi-parcours : CPI = 0,85 et SPI = 0,90. Quelle lecture et première action sont correctes ?",
+        "en": "Mid-project: CPI = 0.85 and SPI = 0.90. Which reading and first action are correct?"
+      },
+      "options": {
+        "fr": [
+          "Tout va bien, les indices sont proches de 1",
+          "En dépassement de coûts et en retard ; analyser les causes et envisager une action corrective via demande de changement",
+          "En avance et sous budget ; accélérer",
+          "Indices non significatifs ; ignorer"
+        ],
+        "en": [
+          "All fine, the indices are close to 1",
+          "Over budget and behind schedule; analyze causes and consider corrective action via a change request",
+          "Ahead and under budget; speed up",
+          "Indices not meaningful; ignore"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "CPI < 1 = dépassement de coûts ; SPI < 1 = retard. Le suivi (4.5) détecte l'écart et recommande des actions correctives/préventives, formalisées en demandes de changement (4.6). Croire que « proche de 1 = bien » est un piège : 0,85 signifie 0,85 € de valeur par euro dépensé.",
+        "en": "CPI < 1 = over budget; SPI < 1 = behind schedule. Monitoring (4.5) detects the variance and recommends corrective/preventive actions, formalized as change requests (4.6). Thinking 'close to 1 = fine' is a trap: 0.85 means €0.85 of value per euro spent."
+      }
+    },
+    {
+      "id": "int-x-4.5-02",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.5",
+      "competency": "Where changes originate",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Le suivi révèle une dérive. Quel est le bon enchaînement PMI ?",
+        "en": "Monitoring reveals drift. What is the correct PMI sequence?"
+      },
+      "options": {
+        "fr": [
+          "Corriger directement le travail puis informer après coup",
+          "Émettre une demande de changement, la faire évaluer en maîtrise intégrée (4.6), puis exécuter si approuvée",
+          "Mettre à jour la référence de base soi-même pour refléter la réalité",
+          "Attendre la prochaine revue trimestrielle"
+        ],
+        "en": [
+          "Fix the work directly, then inform afterwards",
+          "Raise a change request, have it assessed in integrated change control (4.6), then implement if approved",
+          "Update the baseline yourself to reflect reality",
+          "Wait for the next quarterly review"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Les actions correctives/préventives naissent du suivi (4.5) mais transitent par la maîtrise intégrée des changements (4.6) avant exécution (4.3). Modifier soi-même une référence court-circuite la gouvernance.",
+        "en": "Corrective/preventive actions originate in monitoring (4.5) but pass through integrated change control (4.6) before execution (4.3). Editing a baseline yourself short-circuits governance."
+      }
+    },
+    {
+      "id": "int-x-4.5-03",
+      "type": "mcq",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.5",
+      "competency": "Reports vs information",
+      "difficulty": 1,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Le comité de pilotage reçoit un tableau de bord mensuel (avancement, CPI/SPI, tendances). Comment nomme-t-on ce produit ?",
+        "en": "The steering committee gets a monthly dashboard (progress, CPI/SPI, trends). What is this output called?"
+      },
+      "options": {
+        "fr": [
+          "Données de performance du travail",
+          "Rapports sur la performance du travail",
+          "Demandes de changement",
+          "Registre des problèmes"
+        ],
+        "en": [
+          "Work performance data",
+          "Work performance reports",
+          "Change requests",
+          "Issue register"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Mis en forme pour décision/communication, c'est un rapport de performance (sortie de 4.5). Les données sont brutes (4.3) ; l'information est l'analyse intermédiaire.",
+        "en": "Packaged for decision/communication, it's a work performance report (an output of 4.5). Data is raw (4.3); information is the intermediate analysis."
+      }
+    },
+    {
+      "id": "int-x-4.5-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.5",
+      "competency": "Forecast",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "predictive",
+      "prompt": {
+        "fr": "BAC = 1 000 k€, et l'écart de coût actuel est jugé représentatif du reste à venir. Quelle estimation à l'achèvement (EAC) est appropriée ?",
+        "en": "BAC = €1,000k and the current cost variance is judged typical of the rest. Which estimate at completion (EAC) is appropriate?"
+      },
+      "options": {
+        "fr": [
+          "EAC = BAC (l'écart se résorbera seul)",
+          "EAC = BAC / CPI",
+          "EAC = AC seulement",
+          "EAC = BAC + AC"
+        ],
+        "en": [
+          "EAC = BAC (the variance will fix itself)",
+          "EAC = BAC / CPI",
+          "EAC = AC only",
+          "EAC = BAC + AC"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Quand l'écart actuel est représentatif, EAC = BAC / CPI. Supposer une auto-correction (EAC = BAC) est optimiste et non défendable ; les autres formules ne correspondent pas à ce cas.",
+        "en": "When the current variance is typical, EAC = BAC / CPI. Assuming self-correction (EAC = BAC) is optimistic and indefensible; the other formulas don't fit this case."
+      }
+    },
+    {
+      "id": "int-x-4.6-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.6",
+      "competency": "Assess before deciding",
+      "difficulty": 3,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Le client demande oralement une fonctionnalité supplémentaire « rapide ». Quelle est la PREMIÈRE action du PM ?",
+        "en": "The customer verbally requests a 'quick' extra feature. What is the PM's FIRST action?"
+      },
+      "options": {
+        "fr": [
+          "Refuser : c'est hors périmètre",
+          "Accepter pour satisfaire le client",
+          "Documenter la demande et analyser son impact sur périmètre/délais/coûts/risques/qualité avant toute décision",
+          "Demander au sponsor de trancher immédiatement"
+        ],
+        "en": [
+          "Refuse — it's out of scope",
+          "Accept to keep the customer happy",
+          "Document the request and assess its impact on scope/schedule/cost/risk/quality before any decision",
+          "Ask the sponsor to decide immediately"
+        ]
+      },
+      "answer_index": 2,
+      "rationale": {
+        "fr": "La maîtrise intégrée des changements exige d'évaluer l'impact intégré AVANT de décider. Refuser ou accepter d'emblée saute l'analyse ; solliciter le sponsor sans dossier d'impact ne lui donne pas de quoi décider. La demande passe ensuite au CCB.",
+        "en": "Integrated change control requires assessing the integrated impact BEFORE deciding. Refusing or accepting outright skips the analysis; asking the sponsor with no impact case gives them nothing to decide on. The request then goes to the CCB."
+      }
+    },
+    {
+      "id": "int-x-4.6-02",
+      "type": "mcq",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.6",
+      "competency": "CCB",
+      "difficulty": 1,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Qui décide formellement de l'approbation ou du rejet d'une demande de changement ?",
+        "en": "Who formally decides to approve or reject a change request?"
+      },
+      "options": {
+        "fr": [
+          "Le chef de projet seul",
+          "Le comité de maîtrise des changements (CCB)",
+          "L'équipe qui réalise le travail",
+          "Le fournisseur concerné"
+        ],
+        "en": [
+          "The project manager alone",
+          "The change control board (CCB)",
+          "The team doing the work",
+          "The affected vendor"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La décision revient au CCB selon les règles définies dans le plan. Le PM prépare l'analyse d'impact et applique la décision, mais ne décide pas seul (sauf délégation explicite).",
+        "en": "The decision belongs to the CCB per the rules in the plan. The PM prepares the impact analysis and implements the decision but doesn't decide alone (unless explicitly delegated)."
+      }
+    },
+    {
+      "id": "int-x-4.6-03",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.6",
+      "competency": "Baseline update",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Une demande de changement est approuvée par le CCB. Que se passe-t-il ensuite côté références et exécution ?",
+        "en": "A change request is approved by the CCB. What happens next to the baselines and execution?"
+      },
+      "options": {
+        "fr": [
+          "On exécute sans toucher aux références",
+          "On met à jour les références impactées, puis « Diriger et gérer le travail » exécute le changement approuvé",
+          "On clôture le projet pour repartir sur une nouvelle charte",
+          "On informe seulement le client, sans rien changer"
+        ],
+        "en": [
+          "Implement without touching the baselines",
+          "Update the impacted baselines, then 'Direct and Manage Work' implements the approved change",
+          "Close the project and restart from a new charter",
+          "Just inform the customer, change nothing"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un changement approuvé met à jour les références concernées (périmètre/échéancier/coûts) puis est exécuté en 4.3. Exécuter sans actualiser les références fait diverger le plan de la réalité et casse le pilotage.",
+        "en": "An approved change updates the impacted baselines (scope/schedule/cost) and is then implemented in 4.3. Implementing without updating the baselines makes the plan diverge from reality and breaks control."
+      }
+    },
+    {
+      "id": "int-x-4.6-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.6",
+      "competency": "Gold plating",
+      "difficulty": 2,
+      "perspective": "contractor",
+      "approach": "any",
+      "prompt": {
+        "fr": "Une équipe ajoute des « améliorations » non demandées pour impressionner le client. Comment le PM doit-il qualifier et traiter cela ?",
+        "en": "A team adds unrequested 'enhancements' to impress the customer. How should the PM frame and handle this?"
+      },
+      "options": {
+        "fr": [
+          "Excellente initiative ; l'encourager",
+          "Gold plating : hors périmètre et hors maîtrise des changements ; recadrer et évaluer l'impact",
+          "Changement mineur ; l'intégrer silencieusement",
+          "Problème qualité ; ouvrir une non-conformité"
+        ],
+        "en": [
+          "Great initiative; encourage it",
+          "Gold plating: out of scope and outside change control; reset and assess impact",
+          "Minor change; fold it in silently",
+          "Quality issue; open a nonconformity"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Ajouter au-delà du périmètre approuvé (gold plating) consomme des ressources, introduit du risque et contourne la gouvernance. Le PM recadre vers la maîtrise des changements et évalue l'impact, au lieu d'encourager ou d'intégrer en douce.",
+        "en": "Adding beyond the approved scope (gold plating) consumes resources, introduces risk and bypasses governance. The PM redirects to change control and assesses impact, instead of encouraging or quietly folding it in."
+      }
+    },
+    {
+      "id": "int-x-4.6-05",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "4.6",
+      "competency": "Config management",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Sur un grand projet EPC, plusieurs versions de plans circulent et créent des erreurs. Quel dispositif de la maîtrise intégrée des changements adresse cela ?",
+        "en": "On a large EPC project, multiple drawing versions circulate and cause errors. Which part of integrated change control addresses this?"
+      },
+      "options": {
+        "fr": [
+          "La gestion de la configuration (versions, statut, traçabilité des éléments)",
+          "Le registre des parties prenantes",
+          "Le plan de communication",
+          "La réserve de management"
+        ],
+        "en": [
+          "Configuration management (versions, status, traceability of items)",
+          "The stakeholder register",
+          "The communications plan",
+          "The management reserve"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "La gestion de la configuration assure que chacun travaille sur la bonne version approuvée (identification, statut, traçabilité). C'est le volet « produit » de la maîtrise des changements, distinct du volet « décision » (CCB).",
+        "en": "Configuration management ensures everyone works from the correct approved version (identification, status, traceability). It's the 'product' side of change control, distinct from the 'decision' side (CCB)."
+      }
+    },
+    {
+      "id": "int-x-4.7-01",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Close terminated project",
+      "difficulty": 3,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "La direction annule le projet à mi-parcours pour raisons budgétaires. Que doit faire le PM ?",
+        "en": "Management cancels the project mid-way for budget reasons. What must the PM do?"
+      },
+      "options": {
+        "fr": [
+          "Disperser l'équipe immédiatement ; un projet annulé ne se clôture pas",
+          "Réaliser une clôture formelle : raisons documentées, transfert des éléments utilisables, leçons apprises, archivage, libération des ressources",
+          "Attendre une éventuelle relance avant toute action",
+          "Transférer le budget restant à un autre projet"
+        ],
+        "en": [
+          "Disband the team immediately — a cancelled project isn't closed",
+          "Perform a formal closure: documented reasons, transfer of usable items, lessons learned, archiving, resource release",
+          "Wait for a possible restart before doing anything",
+          "Transfer the remaining budget to another project"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Même annulé, un projet se clôture formellement (4.7) : on documente les raisons, on transfère ce qui est récupérable, on capitalise les leçons et on archive. Disperser sans clôturer perd la traçabilité et l'auditabilité.",
+        "en": "Even when cancelled, a project is formally closed (4.7): document the reasons, transfer what's salvageable, capture lessons, and archive. Disbanding without closing loses traceability and auditability."
+      }
+    },
+    {
+      "id": "int-x-4.7-02",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Final acceptance",
+      "difficulty": 2,
+      "perspective": "owner",
+      "approach": "any",
+      "prompt": {
+        "fr": "Avant de prononcer la clôture, quel élément le PM doit-il impérativement obtenir ?",
+        "en": "Before declaring closure, what must the PM obtain without fail?"
+      },
+      "options": {
+        "fr": [
+          "L'acceptation formelle des livrables par le client/sponsor",
+          "Le paiement de la dernière facture fournisseur",
+          "La mise à jour du planning",
+          "Le rapport d'avancement final uniquement"
+        ],
+        "en": [
+          "Formal acceptance of the deliverables by the customer/sponsor",
+          "Payment of the last vendor invoice",
+          "An updated schedule",
+          "The final progress report only"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "La clôture suppose l'acceptation formelle des livrables (lien avec « Valider le périmètre » 5.5). Sans acceptation, on ne peut pas clore proprement. Les autres éléments sont utiles mais ne conditionnent pas l'acceptation.",
+        "en": "Closure requires formal acceptance of the deliverables (linked to 'Validate Scope' 5.5). Without acceptance you can't close cleanly. The other items are useful but don't constitute acceptance."
+      }
+    },
+    {
+      "id": "int-x-4.7-03",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Benefits handover",
+      "difficulty": 3,
+      "perspective": "owner",
+      "approach": "any",
+      "prompt": {
+        "fr": "Le livrable (une station de pompage) est accepté. Pour que le projet crée réellement de la valeur, quelle action de clôture est essentielle (orientation 2026) ?",
+        "en": "The deliverable (a pumping station) is accepted. For the project to truly create value, which closure action is essential (2026 orientation)?"
+      },
+      "options": {
+        "fr": [
+          "Archiver les documents et s'arrêter là",
+          "Organiser le transfert vers l'exploitation et la réalisation des bénéfices (formation, exploitation, suivi de la valeur)",
+          "Libérer l'équipe avant tout transfert",
+          "Repousser le transfert à la prochaine revue budgétaire"
+        ],
+        "en": [
+          "Archive the documents and stop there",
+          "Arrange handover to operations and benefits realization (training, run, value tracking)",
+          "Release the team before any handover",
+          "Defer handover to the next budget review"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'orientation 2026 insiste sur la valeur : un livrable accepté ne crée de la valeur qu'une fois transféré à l'exploitation et ses bénéfices suivis. Archiver seul, ou libérer l'équipe avant le transfert, laisse la valeur non réalisée.",
+        "en": "The 2026 orientation stresses value: an accepted deliverable only creates value once handed to operations and its benefits tracked. Archiving alone, or releasing the team before handover, leaves value unrealized."
+      }
+    },
+    {
+      "id": "int-x-4.7-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Procurement closure",
+      "difficulty": 2,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Le projet inclut des contrats fournisseurs. Que comprend la clôture vis-à-vis de ces contrats ?",
+        "en": "The project includes vendor contracts. What does closure include regarding these contracts?"
+      },
+      "options": {
+        "fr": [
+          "Rien : les contrats se clôturent d'eux-mêmes",
+          "La clôture des approvisionnements : vérifier la livraison conforme, régler les litiges, formaliser la clôture contractuelle",
+          "Le renouvellement automatique des contrats",
+          "Le transfert des contrats à un autre projet"
+        ],
+        "en": [
+          "Nothing — contracts close themselves",
+          "Procurement closure: verify conforming delivery, settle disputes, formalize contract closure",
+          "Automatic renewal of the contracts",
+          "Transfer of the contracts to another project"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La clôture du projet/phase vérifie que les approvisionnements sont clos : conformité de la livraison, règlement des litiges, clôture contractuelle formelle. Les contrats ne se clôturent jamais « tout seuls ».",
+        "en": "Project/phase closure verifies procurement is closed: conforming delivery, dispute settlement, formal contract closure. Contracts never 'close themselves'."
+      }
+    },
+    {
+      "id": "int-x-4.7-05",
+      "type": "mcq",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Lessons finalized",
+      "difficulty": 1,
+      "perspective": "both",
+      "approach": "any",
+      "prompt": {
+        "fr": "Quel produit de connaissance est finalisé et archivé lors de la clôture ?",
+        "en": "Which knowledge output is finalized and archived at closure?"
+      },
+      "options": {
+        "fr": [
+          "La charte du projet",
+          "Le registre / rapport des leçons apprises",
+          "La référence de base des coûts",
+          "Le journal des problèmes encore ouvert"
+        ],
+        "en": [
+          "The project charter",
+          "The lessons learned register / report",
+          "The cost baseline",
+          "The still-open issue log"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Les leçons apprises, alimentées en continu (4.4), sont finalisées et versées aux actifs organisationnels à la clôture (4.7) pour servir aux projets futurs.",
+        "en": "Lessons learned, populated continuously (4.4), are finalized and added to organizational process assets at closure (4.7) to benefit future projects."
+      }
+    }
+  ]
+}
