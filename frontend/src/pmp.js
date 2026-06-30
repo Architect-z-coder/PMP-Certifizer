@@ -30,6 +30,7 @@ export const STARTERS = {
   quiz: { fr: "Pose-moi une question à choix multiple.", en: "Ask me a multiple-choice question." },
   scenario: { fr: "Donne-moi un cas concret type-examen.", en: "Give me a realistic exam scenario." },
   relate: { fr: "Comment ce concept s'applique à mon projet ?", en: "How does this concept apply to my project?" },
+  coreflexion: { fr: "Voici mon cas — réfléchis-le avec moi.", en: "Here's my case — think it through with me." },
 };
 
 export const T = {
@@ -155,3 +156,16 @@ export const JT = {
   legend: { fr: "À découvrir · Fragile · En progrès · Maîtrisé", en: "To explore · Shaky · In progress · Mastered" },
   empty: { fr: "Réponds à des questions pour faire vivre ta carte.", en: "Answer questions to bring your map to life." },
 };
+
+// ---- Cas réel (co-reflection) translations + lenses ----
+export const CR = {
+  casreel: { fr: "Cas réel", en: "Real case" },
+  casLabel: { fr: "Ton cas", en: "Your case" },
+  casPh: { fr: "Décris ta situation réelle : contexte projet, contrainte, décision en jeu…", en: "Describe your real situation: project context, constraint, decision at stake…" },
+  seat: { fr: "Depuis quel siège ?", en: "From which seat?" },
+};
+export const LENS = [
+  { id: "moa", fr: "Maître d'ouvrage", en: "Owner", c: "#2E8C9E", dFr: "Tu possèdes l'actif, le budget, la valeur.", dEn: "You own the asset, budget, value." },
+  { id: "moe", fr: "Maître d'œuvre", en: "Delivery lead", c: "#C57B2C", dFr: "Tu portes l'exécution et le contrat.", dEn: "You carry execution and the contract." },
+  { id: "both", fr: "Les deux angles", en: "Both angles", c: "#8A6FB0", dFr: "Compare les deux sièges côte à côte.", dEn: "Compare both seats side by side." },
+];

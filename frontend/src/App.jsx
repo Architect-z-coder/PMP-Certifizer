@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass } from "lucide-react";
-import { C, KA, FOCUS, STARTERS, T, JT, lightColor } from "./pmp.js";
+import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale } from "lucide-react";
+import { C, KA, FOCUS, STARTERS, T, JT, CR, LENS, lightColor } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer } from "./api.js";
 import Journey from "./Journey.jsx";
 
@@ -26,6 +26,7 @@ export default function App() {
   const [focusId, setFocusId] = useState("overview");
   const [modeId, setModeId] = useState("explain");
   const [projectContext, setProjectContext] = useState("");
+  const [lens, setLens] = useState("moa");
   const [messages, setMessages] = useState([]);
   const [mastery, setMastery] = useState([]);
   const [processes, setProcesses] = useState([]);
@@ -65,7 +66,7 @@ export default function App() {
     const next = [...messages, { role: "user", content: text }];
     setMessages(next); setInput(""); setLoading(true);
     try {
-      const data = await postChat({ learner_id: LEARNER_ID, lang, mode: modeId, focus: focusId, project_context: projectContext, messages: next });
+      const data = await postChat({ learner_id: LEARNER_ID, lang, mode: modeId, focus: focusId, project_context: projectContext, lens, messages: next });
       setMessages([...next, { role: "assistant", content: data.reply || "…" }]);
       onGraded(data);
     } catch (e) { setError(t("err")); } finally { setLoading(false); }
@@ -75,7 +76,7 @@ export default function App() {
   function studyArea(area) { setFocusId(area); setModeId("quiz"); if (isMobile) setNavOpen(false); }
 
   const activeModeObj = MODES.find((m) => m.id === modeId);
-  const ActiveIcon = activeModeObj ? activeModeObj.icon : BookOpen;
+  const ActiveIcon = modeId === "coreflexion" ? Scale : (activeModeObj ? activeModeObj.icon : BookOpen);
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
 
   return (
@@ -155,6 +156,9 @@ export default function App() {
                   );
                 })}
               </div>
+              <button onClick={() => chooseMode("coreflexion")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "coreflexion" ? C.amber : C.inkLine}`, background: modeId === "coreflexion" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "coreflexion" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
+                <Scale size={15} color={modeId === "coreflexion" ? C.amber : "#9DB0C2"} /> {CR.casreel[lang]}
+              </button>
               <button onClick={() => chooseMode("parcours")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "parcours" ? C.amber : C.inkLine}`, background: modeId === "parcours" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "parcours" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
                 <Compass size={15} color={modeId === "parcours" ? C.amber : "#9DB0C2"} /> {JT.parcours[lang]}
               </button>
@@ -179,6 +183,32 @@ export default function App() {
                 <textarea value={projectContext} onChange={(e) => setProjectContext(e.target.value)} placeholder={t("projectPh")} rows={4}
                   style={{ width: "100%", resize: "vertical", background: C.ink2, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 8, padding: "8px 9px", fontSize: 12, fontFamily: "'Inter', sans-serif", outline: "none" }} />
               </Section>
+            )}
+
+            {modeId === "coreflexion" && (
+              <>
+                <Section label={CR.seat[lang]}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                    {LENS.map((L) => {
+                      const on = L.id === lens;
+                      return (
+                        <button key={L.id} onClick={() => { setLens(L.id); if (messages.length) reset(); }}
+                          style={{ textAlign: "left", padding: "8px 10px", borderRadius: 9, border: `1px solid ${on ? L.c : C.inkLine}`, background: on ? C.ink2 : "transparent" }}>
+                          <span style={{ display: "flex", alignItems: "center", gap: 7 }}>
+                            <span style={{ width: 9, height: 9, borderRadius: "50%", background: L.c, flex: "none" }} />
+                            <span style={{ fontSize: 12.5, color: on ? "#fff" : "#9DB0C2", fontWeight: 600 }}>{L[lang]}</span>
+                          </span>
+                          <span style={{ display: "block", fontSize: 10.5, color: C.muted, marginTop: 3, paddingLeft: 16, lineHeight: 1.35 }}>{lang === "fr" ? L.dFr : L.dEn}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </Section>
+                <Section label={CR.casLabel[lang]}>
+                  <textarea value={projectContext} onChange={(e) => setProjectContext(e.target.value)} placeholder={CR.casPh[lang]} rows={5}
+                    style={{ width: "100%", resize: "vertical", background: C.ink2, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 8, padding: "8px 9px", fontSize: 12, fontFamily: "'Inter', sans-serif", outline: "none" }} />
+                </Section>
+              </>
             )}
 
             <Section label={t("readiness")}>

@@ -39,6 +39,7 @@ class ChatRequest(BaseModel):
     mode: str = "explain"
     focus: str = "overview"
     project_context: str = ""
+    lens: str = ""
     messages: list[Msg]
 
 
@@ -122,7 +123,7 @@ def health():
 @app.post("/api/chat")
 async def chat(req: ChatRequest, session: Session = Depends(get_session)):
     mm = mastery_map(session, req.learner_id)
-    system = build_system(req.lang, req.focus, req.mode, req.project_context, mm)
+    system = build_system(req.lang, req.focus, req.mode, req.project_context, mm, req.lens)
     messages = [{"role": m.role, "content": m.content} for m in req.messages]
 
     reply = await llm.chat(system, messages, max_tokens=1000)
