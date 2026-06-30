@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight } from "lucide-react";
+import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, lightColor } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer } from "./api.js";
 
@@ -32,6 +32,11 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const scrollRef = useRef(null);
+  const isMobile = useIsMobile();
+  const [navOpen, setNavOpen] = useState(false);
+
+  const chooseMode = (id) => { setModeId(id); if (isMobile) setNavOpen(false); };
+  const chooseFocus = (id) => { setFocusId(id); if (isMobile) setNavOpen(false); };
 
   const t = (k) => T[k][lang];
   const masteryById = Object.fromEntries(mastery.map((m) => [m.area, m]));
@@ -64,7 +69,7 @@ export default function App() {
   }
 
   function reset() { setMessages([]); setError(null); setInput(""); }
-  function studyArea(area) { setFocusId(area); setModeId("quiz"); }
+  function studyArea(area) { setFocusId(area); setModeId("quiz"); if (isMobile) setNavOpen(false); }
 
   const ActiveIcon = MODES.find((m) => m.id === modeId).icon;
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
@@ -74,6 +79,7 @@ export default function App() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
         * { box-sizing: border-box; } body { margin: 0; }
+        .app-shell { height: 100vh; height: 100dvh; }
         .ak-grid { background-image: linear-gradient(${C.inkLine} 1px, transparent 1px), linear-gradient(90deg, ${C.inkLine} 1px, transparent 1px); background-size: 22px 22px; }
         .ak-scroll::-webkit-scrollbar { width: 9px; } .ak-scroll::-webkit-scrollbar-thumb { background: #C3CDD7; border-radius: 9px; }
         .ak-side::-webkit-scrollbar { width: 7px; } .ak-side::-webkit-scrollbar-thumb { background: #2C405A; border-radius: 9px; }
@@ -87,9 +93,14 @@ export default function App() {
         @media (prefers-reduced-motion: reduce) { .ak-fade, .ak-dot, .ak-bar { animation: none; transition: none; } }
       `}</style>
 
-      <div style={{ display: "flex", flexDirection: "column", height: "100vh", overflow: "hidden" }}>
+      <div className="app-shell" style={{ display: "flex", flexDirection: "column", overflow: "hidden" }}>
         {/* Header */}
         <div className="ak-grid" style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 20px", borderBottom: `1px solid ${C.inkLine}` }}>
+          {isMobile && (
+            <button onClick={() => setNavOpen(true)} aria-label="Menu" style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, borderRadius: 9, border: `1px solid ${C.inkLine}`, background: C.ink2, color: "#9DB0C2", flexShrink: 0 }}>
+              <Menu size={20} />
+            </button>
+          )}
           <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden>
             <polygon points="20,5 35,32 5,32" fill="none" stroke={C.amber} strokeWidth="2" strokeLinejoin="round" />
             <circle cx="20" cy="5" r="2.6" fill={C.amber} /><circle cx="35" cy="32" r="2.6" fill={C.teal} /><circle cx="5" cy="32" r="2.6" fill="#fff" />
@@ -108,14 +119,32 @@ export default function App() {
         </div>
 
         <div style={{ display: "flex", flex: 1, minHeight: 0 }}>
+          {isMobile && navOpen && (
+            <div onClick={() => setNavOpen(false)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.45)", zIndex: 45 }} />
+          )}
           {/* Sidebar */}
-          <div className="ak-side" style={{ display: "flex", flexDirection: "column", gap: 16, padding: 16, width: 250, background: C.ink, borderRight: `1px solid ${C.inkLine}`, overflowY: "auto" }}>
+          <div className="ak-side" style={{
+            display: "flex", flexDirection: "column", gap: 16, padding: 16,
+            width: isMobile ? 272 : 250, maxWidth: isMobile ? "85vw" : "none",
+            background: C.ink, borderRight: `1px solid ${C.inkLine}`, overflowY: "auto",
+            ...(isMobile ? {
+              position: "fixed", top: 0, left: 0, bottom: 0, zIndex: 50,
+              transform: navOpen ? "translateX(0)" : "translateX(-100%)",
+              transition: "transform .28s ease",
+              boxShadow: navOpen ? "0 8px 40px rgba(0,0,0,0.5)" : "none",
+            } : {}),
+          }}>
+            {isMobile && (
+              <button onClick={() => setNavOpen(false)} aria-label="Fermer" style={{ alignSelf: "flex-end", display: "flex", alignItems: "center", justifyContent: "center", width: 34, height: 34, marginBottom: -6, borderRadius: 8, border: `1px solid ${C.inkLine}`, background: C.ink2, color: "#9DB0C2" }}>
+                <X size={18} />
+              </button>
+            )}
             <Section label={t("mode")}>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
                 {MODES.map((m) => {
                   const Icon = m.icon; const on = m.id === modeId;
                   return (
-                    <button key={m.id} onClick={() => setModeId(m.id)} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 4, padding: "8px 10px", borderRadius: 9, border: `1px solid ${on ? C.amber : C.inkLine}`, background: on ? "rgba(232,154,60,0.12)" : C.ink2, textAlign: "left" }}>
+                    <button key={m.id} onClick={() => chooseMode(m.id)} style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 4, padding: "8px 10px", borderRadius: 9, border: `1px solid ${on ? C.amber : C.inkLine}`, background: on ? "rgba(232,154,60,0.12)" : C.ink2, textAlign: "left" }}>
                       <Icon size={15} color={on ? C.amber : "#9DB0C2"} />
                       <span style={{ fontSize: 11.5, color: on ? "#fff" : "#9DB0C2", fontWeight: 500 }}>{m[lang]}</span>
                     </button>
@@ -129,7 +158,7 @@ export default function App() {
                 {FOCUS.map((f) => {
                   const on = f.id === focusId;
                   return (
-                    <button key={f.id} onClick={() => setFocusId(f.id)} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 8px", borderRadius: 7, border: `1px solid ${on ? C.teal : "transparent"}`, background: on ? C.ink2 : "transparent" }}>
+                    <button key={f.id} onClick={() => chooseFocus(f.id)} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 8px", borderRadius: 7, border: `1px solid ${on ? C.teal : "transparent"}`, background: on ? C.ink2 : "transparent" }}>
                       <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: C.ink, background: on ? C.teal : "#54657A", minWidth: 22, textAlign: "center", borderRadius: 4, padding: "1px 3px", fontWeight: 600 }}>{f.code}</span>
                       <span style={{ fontSize: 12, color: on ? "#fff" : "#9DB0C2" }}>{f[lang]}</span>
                     </button>
@@ -152,7 +181,7 @@ export default function App() {
                   const pct = st && st.attempts > 0 ? Math.round(st.score * 100) : 0;
                   const isRec = recommended && recommended.area === k.id;
                   return (
-                    <button key={k.id} onClick={() => setFocusId(k.id)} title={st && st.attempts > 0 ? `${pct}% · ${st.attempts}` : t("untested")}
+                    <button key={k.id} onClick={() => chooseFocus(k.id)} title={st && st.attempts > 0 ? `${pct}% · ${st.attempts}` : t("untested")}
                       style={{ display: "flex", alignItems: "center", gap: 8, background: "transparent", border: "none", padding: "1px 0" }}>
                       <span style={{ width: 6, height: 6, borderRadius: 50, background: col, flexShrink: 0 }} />
                       <span style={{ fontSize: 11, color: isRec ? C.amber : "#9DB0C2", flex: 1, textAlign: "left", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", fontWeight: isRec ? 600 : 400 }}>{k[lang]}</span>
@@ -294,6 +323,24 @@ function QuizPanel({ lang, area, learnerId, onGraded, t }) {
 
 function Center({ children }) {
   return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>{children}</div>;
+}
+
+function useIsMobile(breakpoint = 768) {
+  const [mobile, setMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= breakpoint : false
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    const update = () => setMobile(mq.matches);
+    update();
+    if (mq.addEventListener) mq.addEventListener("change", update);
+    else mq.addListener(update);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", update);
+      else mq.removeListener(update);
+    };
+  }, [breakpoint]);
+  return mobile;
 }
 
 function Section({ label, children }) {
