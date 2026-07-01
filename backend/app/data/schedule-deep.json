@@ -1,0 +1,425 @@
+{
+  "_meta": {
+    "source": "Certifizer — Échéancier (banque approfondie, ECO 2026)",
+    "knowledge_area": "schedule",
+    "item_count": 13
+  },
+  "items": [
+    {
+      "id": "sh-x-6.3-01",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.3",
+      "competency": "Dependency types",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Les fondations doivent être coulées avant de monter les murs. Quel type de liaison logique est-ce ?",
+        "en": "Foundations must be poured before walls go up. What logical relationship is this?"
+      },
+      "options": {
+        "fr": [
+          "Début-Début (SS)",
+          "Fin-Début (FS)",
+          "Fin-Fin (FF)",
+          "Début-Fin (SF)"
+        ],
+        "en": [
+          "Start-to-Start (SS)",
+          "Finish-to-Start (FS)",
+          "Finish-to-Finish (FF)",
+          "Start-to-Finish (SF)"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La tâche suivante ne peut débuter qu'après la fin de la précédente : c'est une liaison Fin-Début (FS), la plus courante.",
+        "en": "The successor can only start after the predecessor finishes: that's a Finish-to-Start (FS) relationship, the most common."
+      }
+    },
+    {
+      "id": "sh-x-6.3-02",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.3",
+      "competency": "Mandatory vs discretionary",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "L'équipe préfère finir la conception avant de coder, par bonne pratique, mais ce n'est pas techniquement obligatoire. Cette dépendance est…",
+        "en": "The team prefers to finish design before coding as good practice, though it isn't technically required. This dependency is…"
+      },
+      "options": {
+        "fr": [
+          "Obligatoire (hard logic) — non modifiable",
+          "Discrétionnaire (soft logic) — modifiable, utile pour le fast-tracking",
+          "Externe — hors du contrôle de l'équipe",
+          "Interne obligatoire imposée par un fournisseur"
+        ],
+        "en": [
+          "Mandatory (hard logic) — cannot change",
+          "Discretionary (soft logic) — changeable, relevant for fast-tracking",
+          "External — outside the team's control",
+          "Mandatory internal imposed by a vendor"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Une dépendance fondée sur une préférence/bonne pratique est discrétionnaire (soft logic). Elle peut être ajustée — c'est justement ce qu'on relâche pour faire du fast-tracking.",
+        "en": "A dependency based on preference/best practice is discretionary (soft logic). It can be adjusted — which is exactly what you relax to fast-track."
+      }
+    },
+    {
+      "id": "sh-x-6.3-03",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.3",
+      "competency": "Lead vs lag",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "On veut démarrer les tests 2 jours avant la fin complète du développement pour gagner du temps. Qu'introduit-on ?",
+        "en": "You want testing to start 2 days before development fully finishes, to save time. What do you introduce?"
+      },
+      "options": {
+        "fr": [
+          "Un décalage avec retard (lag) de 2 jours",
+          "Une avance (lead) de 2 jours sur une liaison FS",
+          "Une liaison Début-Fin (SF)",
+          "Une contrainte « dès que possible »"
+        ],
+        "en": [
+          "A lag of 2 days",
+          "A lead of 2 days on an FS relationship",
+          "A Start-to-Finish (SF) relationship",
+          "An 'as soon as possible' constraint"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Une avance (lead) permet de chevaucher : le successeur démarre avant la fin du prédécesseur. Un retard (lag) attend au contraire un délai imposé.",
+        "en": "A lead allows overlap: the successor starts before the predecessor finishes. A lag, by contrast, imposes a waiting delay."
+      }
+    },
+    {
+      "id": "sh-x-6.5-01",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.5",
+      "competency": "Critical path",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Qu'est-ce que le chemin critique d'un projet ?",
+        "en": "What is a project's critical path?"
+      },
+      "options": {
+        "fr": [
+          "Le chemin le plus coûteux",
+          "La plus longue séquence d'activités, qui détermine la durée minimale du projet, à marge nulle",
+          "Le chemin avec le plus de ressources",
+          "Le chemin le plus risqué"
+        ],
+        "en": [
+          "The most expensive path",
+          "The longest sequence of activities, which sets the project's minimum duration, with zero float",
+          "The path with the most resources",
+          "The riskiest path"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le chemin critique est la plus longue séquence de dépendances ; il fixe la durée minimale du projet et ses activités ont une marge (float) nulle. Tout retard sur ce chemin retarde le projet.",
+        "en": "The critical path is the longest sequence of dependencies; it sets the minimum project duration and its activities have zero float. Any delay on it delays the project."
+      }
+    },
+    {
+      "id": "sh-x-6.5-02",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.5",
+      "competency": "Total float",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Une activité a une marge totale (total float) de 4 jours. Que signifie-t-elle ?",
+        "en": "An activity has 4 days of total float. What does that mean?"
+      },
+      "options": {
+        "fr": [
+          "Elle doit être avancée de 4 jours",
+          "Elle peut glisser jusqu'à 4 jours sans retarder la date de fin du projet",
+          "Elle a 4 jours de retard",
+          "Elle nécessite 4 ressources de plus"
+        ],
+        "en": [
+          "It must be pulled in by 4 days",
+          "It can slip up to 4 days without delaying the project finish date",
+          "It is 4 days late",
+          "It needs 4 more resources"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La marge totale est le retard qu'une activité peut prendre sans repousser la fin du projet. Une activité du chemin critique a une marge totale nulle.",
+        "en": "Total float is how much an activity can slip without pushing the project finish. A critical-path activity has zero total float."
+      }
+    },
+    {
+      "id": "sh-x-6.5-03",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.5",
+      "competency": "Leveling vs smoothing",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Une ressource est surallouée. On accepte de prolonger le projet si nécessaire pour respecter sa disponibilité. Quelle technique ?",
+        "en": "A resource is over-allocated. You accept extending the project if needed to respect its availability. Which technique?"
+      },
+      "options": {
+        "fr": [
+          "Lissage des ressources (resource smoothing) — reste dans la marge",
+          "Nivellement des ressources (resource leveling) — peut modifier le chemin critique et la durée",
+          "Compression par crashing",
+          "Fast-tracking"
+        ],
+        "en": [
+          "Resource smoothing — stays within float",
+          "Resource leveling — can change the critical path and duration",
+          "Crashing",
+          "Fast-tracking"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le nivellement (leveling) est contraint par la disponibilité des ressources et peut allonger la durée et déplacer le chemin critique. Le lissage (smoothing) ajuste seulement dans la marge disponible, sans changer la date de fin.",
+        "en": "Leveling is resource-availability-constrained and may lengthen duration and shift the critical path. Smoothing only adjusts within available float, without changing the finish date."
+      }
+    },
+    {
+      "id": "sh-x-6.5-04",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.5",
+      "competency": "Smoothing",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "On veut réduire les pics d'utilisation d'une ressource sans repousser la date de fin. Quelle technique respecte cette contrainte ?",
+        "en": "You want to reduce a resource's usage peaks without pushing the finish date. Which technique respects that constraint?"
+      },
+      "options": {
+        "fr": [
+          "Le nivellement (leveling)",
+          "Le lissage (smoothing), qui n'utilise que la marge libre/totale disponible",
+          "Le crashing",
+          "L'ajout d'une contrainte imposée"
+        ],
+        "en": [
+          "Leveling",
+          "Smoothing, which only uses available free/total float",
+          "Crashing",
+          "Adding an imposed constraint"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le lissage ajuste les activités uniquement dans leur marge, donc sans changer la date de fin ni le chemin critique — exactement la contrainte posée.",
+        "en": "Smoothing shifts activities only within their float, so the finish date and critical path stay put — exactly the stated constraint."
+      }
+    },
+    {
+      "id": "sh-x-6.4-01",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.4",
+      "competency": "Three-point / PERT",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Optimiste=4, Probable=10, Pessimiste=22 jours. Quelle est l'estimation PERT (bêta) de la durée ?",
+        "en": "Optimistic=4, Most likely=10, Pessimistic=22 days. What is the PERT (beta) duration estimate?"
+      },
+      "options": {
+        "fr": [
+          "12 jours",
+          "11 jours",
+          "10 jours",
+          "13 jours"
+        ],
+        "en": [
+          "12 days",
+          "11 days",
+          "10 days",
+          "13 days"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "PERT bêta = (O + 4M + P) / 6 = (4 + 40 + 22)/6 = 66/6 = 11 jours. L'estimation à trois points pondère davantage la valeur la plus probable tout en tenant compte de l'incertitude.",
+        "en": "PERT beta = (O + 4M + P) / 6 = (4 + 40 + 22)/6 = 66/6 = 11 days. Three-point estimating weights the most likely value more while accounting for uncertainty."
+      }
+    },
+    {
+      "id": "sh-x-6.4-02",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.4",
+      "competency": "Estimation methods",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Quand une estimation analogue (top-down) est-elle la plus appropriée ?",
+        "en": "When is analogous (top-down) estimating most appropriate?"
+      },
+      "options": {
+        "fr": [
+          "Quand on dispose de peu d'information, tôt, en s'appuyant sur des projets passés similaires",
+          "Quand on a des données détaillées par unité de travail",
+          "Toujours, car c'est la plus précise",
+          "Uniquement en clôture de projet"
+        ],
+        "en": [
+          "When little detail is available early, drawing on similar past projects",
+          "When detailed per-unit data is available",
+          "Always, since it's the most accurate",
+          "Only at project closure"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "L'estimation analogue s'appuie sur l'historique de projets similaires ; rapide et peu coûteuse, elle est utile tôt quand le détail manque, mais moins précise que le paramétrique ou le bottom-up.",
+        "en": "Analogous estimating uses history from similar projects; fast and cheap, it's useful early when detail is scarce, but less accurate than parametric or bottom-up."
+      }
+    },
+    {
+      "id": "sh-x-6.5-05",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.5",
+      "competency": "Crashing",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Le projet est en retard. Le commanditaire fournit un budget pour ajouter des ressources sur les activités critiques afin de gagner du temps. Quelle technique ?",
+        "en": "The project is behind. The sponsor provides budget to add resources to critical activities to save time. Which technique?"
+      },
+      "options": {
+        "fr": [
+          "Fast-tracking",
+          "Crashing (compression par ajout de ressources, augmente le coût)",
+          "Nivellement",
+          "Lissage"
+        ],
+        "en": [
+          "Fast-tracking",
+          "Crashing (compress by adding resources, increases cost)",
+          "Leveling",
+          "Smoothing"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le crashing ajoute des ressources/coûts pour raccourcir des activités critiques. On l'applique là où le gain de durée par unité de coût est le meilleur. Il augmente le coût, pas forcément le risque.",
+        "en": "Crashing adds resources/cost to shorten critical activities. Apply it where the duration gain per unit of cost is best. It raises cost, not necessarily risk."
+      }
+    },
+    {
+      "id": "sh-x-6.5-06",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.5",
+      "competency": "Fast-tracking",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Sans budget supplémentaire, on décide d'exécuter en parallèle des phases normalement séquentielles pour gagner du temps. Quel est le principal effet ?",
+        "en": "With no extra budget, you run normally sequential phases in parallel to save time. What's the main effect?"
+      },
+      "options": {
+        "fr": [
+          "Fast-tracking — gagne du temps mais augmente le risque et le retravail potentiel",
+          "Crashing — augmente le coût",
+          "Nivellement — allonge la durée",
+          "Aucun effet secondaire"
+        ],
+        "en": [
+          "Fast-tracking — saves time but increases risk and potential rework",
+          "Crashing — increases cost",
+          "Leveling — lengthens duration",
+          "No side effect"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "Le fast-tracking chevauche des activités séquentielles (souvent en relâchant une dépendance discrétionnaire). Il ne coûte pas plus cher directement mais augmente le risque et le retravail.",
+        "en": "Fast-tracking overlaps sequential activities (often by relaxing a discretionary dependency). It doesn't directly cost more but raises risk and rework."
+      }
+    },
+    {
+      "id": "sh-x-6.2-01",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Planning",
+      "pmbok_ref": "6.2",
+      "competency": "Rolling wave",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "En début de projet, seules les premières phases sont détaillées en activités ; les phases lointaines restent à gros grain. Comment nomme-t-on cette planification ?",
+        "en": "Early on, only near-term phases are broken into activities; distant phases stay coarse. What is this planning called?"
+      },
+      "options": {
+        "fr": [
+          "Planification par vagues (rolling wave) — élaboration progressive",
+          "Nivellement des ressources",
+          "Estimation paramétrique",
+          "Compression de l'échéancier"
+        ],
+        "en": [
+          "Rolling wave planning — progressive elaboration",
+          "Resource leveling",
+          "Parametric estimating",
+          "Schedule compression"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "La planification par vagues détaille le travail proche et laisse le lointain à gros grain, à préciser plus tard : une forme d'élaboration progressive adaptée à l'incertitude.",
+        "en": "Rolling wave planning details near-term work and leaves distant work coarse, to refine later: a form of progressive elaboration suited to uncertainty."
+      }
+    },
+    {
+      "id": "sh-x-6.6-01",
+      "type": "scenario",
+      "knowledge_area": "schedule",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "6.6",
+      "competency": "Schedule control",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le rapport d'avancement montre un glissement de 5 jours sur le chemin critique. Quel réflexe est le plus approprié ?",
+        "en": "The status report shows a 5-day slip on the critical path. What's the most appropriate response?"
+      },
+      "options": {
+        "fr": [
+          "Ignorer, la marge absorbera",
+          "Analyser les options de compression (crashing/fast-tracking) et l'impact, puis passer par la maîtrise des changements si la référence change",
+          "Réduire le périmètre sans en informer personne",
+          "Attendre la clôture pour agir"
+        ],
+        "en": [
+          "Ignore it, float will absorb it",
+          "Analyze compression options (crashing/fast-tracking) and impact, then use change control if the baseline changes",
+          "Cut scope without telling anyone",
+          "Wait until closure to act"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un glissement sur le chemin critique n'a pas de marge pour l'absorber. On analyse les options de récupération et leurs impacts (coût/risque), et tout changement de référence passe par la maîtrise intégrée des changements.",
+        "en": "A critical-path slip has no float to absorb it. Analyze recovery options and their cost/risk impact; any baseline change goes through integrated change control."
+      }
+    }
+  ]
+}

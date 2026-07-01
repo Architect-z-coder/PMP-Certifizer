@@ -1,0 +1,425 @@
+{
+  "_meta": {
+    "source": "Certifizer — Périmètre (banque approfondie, ECO 2026)",
+    "knowledge_area": "scope",
+    "item_count": 13
+  },
+  "items": [
+    {
+      "id": "sc-x-5.2-01",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.2",
+      "competency": "Requirements",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Plusieurs parties prenantes donnent des exigences contradictoires sur le même livrable. Quelle est la meilleure démarche ?",
+        "en": "Several stakeholders give conflicting requirements for the same deliverable. Best approach?"
+      },
+      "options": {
+        "fr": [
+          "Retenir l'exigence de la partie prenante la plus haut placée",
+          "Faciliter la convergence (ateliers, priorisation) et tracer chaque exigence dans la matrice de traçabilité",
+          "Choisir soi-même l'exigence la plus simple à réaliser",
+          "Repousser la décision à la phase d'exécution"
+        ],
+        "en": [
+          "Take the most senior stakeholder's requirement",
+          "Facilitate convergence (workshops, prioritization) and trace each requirement in the traceability matrix",
+          "Pick the requirement that's easiest to build",
+          "Defer the decision to execution"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "On recueille et concilie les exigences par des techniques de groupe puis on les trace (matrice de traçabilité). Trancher par la hiérarchie ou la facilité ignore la valeur réelle et crée du retravail.",
+        "en": "Requirements are gathered and reconciled through group techniques, then traced (traceability matrix). Deciding by rank or ease ignores real value and creates rework."
+      }
+    },
+    {
+      "id": "sc-x-5.2-02",
+      "type": "mcq",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.2",
+      "competency": "Traceability",
+      "difficulty": 1,
+      "prompt": {
+        "fr": "À quoi sert la matrice de traçabilité des exigences ?",
+        "en": "What is the requirements traceability matrix for?"
+      },
+      "options": {
+        "fr": [
+          "Estimer les durées des activités",
+          "Relier chaque exigence à son origine et à son livrable, jusqu'à la vérification",
+          "Séquencer les activités du projet",
+          "Calculer le budget"
+        ],
+        "en": [
+          "Estimate activity durations",
+          "Link each requirement to its origin and deliverable, through to verification",
+          "Sequence project activities",
+          "Compute the budget"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La matrice de traçabilité suit chaque exigence de son origine jusqu'à sa réalisation et sa vérification, garantissant qu'aucune n'est perdue ni ajoutée.",
+        "en": "The traceability matrix follows each requirement from origin to delivery and verification, ensuring none is lost or added."
+      }
+    },
+    {
+      "id": "sc-x-5.3-01",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.3",
+      "competency": "Product vs project",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un commanditaire confond « périmètre produit » et « périmètre projet ». Quelle distinction est correcte ?",
+        "en": "A sponsor confuses 'product scope' and 'project scope'. Which distinction is correct?"
+      },
+      "options": {
+        "fr": [
+          "Ils sont identiques",
+          "Le périmètre produit = caractéristiques du livrable ; le périmètre projet = travail à réaliser pour le livrer",
+          "Le périmètre produit concerne les délais ; le périmètre projet la qualité",
+          "Le périmètre projet ne comprend pas le périmètre produit"
+        ],
+        "en": [
+          "They are identical",
+          "Product scope = the deliverable's features; project scope = the work needed to deliver it",
+          "Product scope is about schedule; project scope about quality",
+          "Project scope excludes product scope"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le périmètre produit décrit les caractéristiques/fonctions du livrable ; le périmètre projet décrit le travail nécessaire pour le produire. Le second englobe le premier.",
+        "en": "Product scope describes the deliverable's features/functions; project scope describes the work required to produce it. The latter encompasses the former."
+      }
+    },
+    {
+      "id": "sc-x-5.3-02",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.3",
+      "competency": "Scope statement",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Pourquoi l'énoncé du périmètre inclut-il explicitement les exclusions ?",
+        "en": "Why does the scope statement explicitly include exclusions?"
+      },
+      "options": {
+        "fr": [
+          "Pour rallonger le document",
+          "Pour cadrer les attentes et prévenir le glissement de périmètre en disant ce qui n'est PAS livré",
+          "Parce que le contrat l'impose toujours",
+          "Pour estimer les coûts"
+        ],
+        "en": [
+          "To make the document longer",
+          "To frame expectations and prevent scope creep by stating what is NOT delivered",
+          "Because the contract always requires it",
+          "To estimate costs"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Nommer explicitement les exclusions borne les attentes et protège contre le glissement de périmètre : ce qui n'est pas écrit comme livré ne l'est pas.",
+        "en": "Explicitly naming exclusions bounds expectations and guards against scope creep: what isn't stated as delivered isn't delivered."
+      }
+    },
+    {
+      "id": "sc-x-5.4-01",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.4",
+      "competency": "WBS 100%",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Une équipe crée une SDP (WBS) mais oublie un lot de travail nécessaire. Quel principe est violé ?",
+        "en": "A team builds a WBS but omits a needed work package. Which principle is violated?"
+      },
+      "options": {
+        "fr": [
+          "La règle des 100% (la SDP doit couvrir tout le travail, et rien de plus)",
+          "La loi de Parkinson",
+          "Le chemin critique",
+          "Le nivellement des ressources"
+        ],
+        "en": [
+          "The 100% rule (the WBS must capture all the work, and only the work)",
+          "Parkinson's law",
+          "The critical path",
+          "Resource leveling"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "La règle des 100% : la SDP contient la totalité du travail du périmètre — ni plus, ni moins. Un lot manquant signifie un travail non planifié, donc non estimé.",
+        "en": "The 100% rule: the WBS contains all of the scope's work — no more, no less. A missing package means unplanned, unestimated work."
+      }
+    },
+    {
+      "id": "sc-x-5.4-02",
+      "type": "mcq",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.4",
+      "competency": "Scope baseline",
+      "difficulty": 1,
+      "prompt": {
+        "fr": "Quels éléments composent la référence de base du périmètre (scope baseline) ?",
+        "en": "What makes up the scope baseline?"
+      },
+      "options": {
+        "fr": [
+          "L'énoncé du périmètre, la SDP et le dictionnaire de la SDP",
+          "La charte, le budget et l'échéancier",
+          "La matrice de traçabilité seule",
+          "Le registre des risques et le plan qualité"
+        ],
+        "en": [
+          "The scope statement, the WBS, and the WBS dictionary",
+          "The charter, budget, and schedule",
+          "The traceability matrix alone",
+          "The risk register and quality plan"
+        ]
+      },
+      "answer_index": 0,
+      "rationale": {
+        "fr": "La référence de base du périmètre = énoncé du périmètre + SDP + dictionnaire de la SDP. C'est la référence contre laquelle on maîtrise les changements de périmètre.",
+        "en": "The scope baseline = scope statement + WBS + WBS dictionary. It's the reference against which scope changes are controlled."
+      }
+    },
+    {
+      "id": "sc-x-5.4-03",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.4",
+      "competency": "Work package",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Jusqu'où décompose-t-on la SDP ?",
+        "en": "How far do you decompose the WBS?"
+      },
+      "options": {
+        "fr": [
+          "Jusqu'à la tâche individuelle d'une heure",
+          "Jusqu'au lot de travail : assez petit pour estimer coût et durée de façon fiable et en assigner la responsabilité",
+          "Jusqu'à un seul niveau, toujours",
+          "Jusqu'à ce que chaque élément tienne sur une page"
+        ],
+        "en": [
+          "To the individual one-hour task",
+          "To the work package: small enough to reliably estimate cost and duration and assign responsibility",
+          "To a single level, always",
+          "Until each element fits on one page"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "On décompose jusqu'au lot de travail — le niveau où l'on peut estimer et affecter la responsabilité de façon fiable. Trop fin devient de la micro-gestion ; trop grossier empêche l'estimation.",
+        "en": "Decompose to the work-package level — where you can reliably estimate and assign responsibility. Too fine becomes micromanagement; too coarse prevents estimation."
+      }
+    },
+    {
+      "id": "sc-x-5.5-01",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "5.5",
+      "competency": "Validate vs Control Quality",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Un livrable est techniquement conforme (vérifié en interne). Quelle est l'étape suivante avant de le considérer terminé ?",
+        "en": "A deliverable is technically correct (verified internally). What's the next step before it's considered done?"
+      },
+      "options": {
+        "fr": [
+          "Le clore directement : la conformité suffit",
+          "Obtenir l'acceptation formelle du client (Valider le périmètre) — la validation est externe, la maîtrise qualité était interne",
+          "Relancer une inspection qualité",
+          "Mettre à jour le budget"
+        ],
+        "en": [
+          "Close it directly — correctness is enough",
+          "Get formal customer acceptance (Validate Scope) — validation is external, quality control was internal",
+          "Run another quality inspection",
+          "Update the budget"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Maîtriser la qualité (8.3) = conformité, en interne. Valider le périmètre (5.5) = acceptation formelle par le client, en externe. Un livrable correct n'est « terminé » qu'une fois accepté.",
+        "en": "Control Quality (8.3) = correctness, internal. Validate Scope (5.5) = formal customer acceptance, external. A correct deliverable is only 'done' once accepted."
+      }
+    },
+    {
+      "id": "sc-x-5.5-02",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "5.5",
+      "competency": "Sequence",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Dans quel ordre interviennent normalement « Maîtriser la qualité » et « Valider le périmètre » ?",
+        "en": "In what order do 'Control Quality' and 'Validate Scope' normally occur?"
+      },
+      "options": {
+        "fr": [
+          "Valider le périmètre d'abord, puis maîtriser la qualité",
+          "Maîtriser la qualité (conformité interne) d'abord, puis valider le périmètre (acceptation client)",
+          "Les deux en même temps, indifféremment",
+          "Seulement à la clôture, jamais avant"
+        ],
+        "en": [
+          "Validate Scope first, then Control Quality",
+          "Control Quality (internal correctness) first, then Validate Scope (customer acceptance)",
+          "Both at once, interchangeably",
+          "Only at closure, never before"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "On vérifie d'abord la conformité en interne (8.3), puis on présente le livrable conforme au client pour acceptation formelle (5.5). Présenter un livrable non vérifié risque un rejet.",
+        "en": "You first verify correctness internally (8.3), then present the conforming deliverable to the customer for formal acceptance (5.5). Presenting an unverified deliverable risks rejection."
+      }
+    },
+    {
+      "id": "sc-x-5.6-01",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "5.6",
+      "competency": "Scope creep",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "En cours d'exécution, le client demande directement à un ingénieur d'ajouter « juste une petite fonction ». L'ingénieur s'exécute. Comment nomme-t-on cela et que faire ?",
+        "en": "During execution, the client asks an engineer directly to add 'just a small feature'. The engineer complies. What is this and what should happen?"
+      },
+      "options": {
+        "fr": [
+          "Bonne réactivité — rien à faire",
+          "Glissement de périmètre (scope creep) : ajout non contrôlé ; recadrer vers la maîtrise intégrée des changements et évaluer l'impact",
+          "Gold plating de la part du client",
+          "Une non-conformité qualité"
+        ],
+        "en": [
+          "Good responsiveness — nothing to do",
+          "Scope creep: an uncontrolled addition; redirect through integrated change control and assess impact",
+          "Gold plating by the client",
+          "A quality nonconformity"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un ajout hors du périmètre approuvé, sans passer par la maîtrise des changements, est un glissement de périmètre (scope creep). On le recadre vers 4.6 et on évalue l'impact avant toute décision.",
+        "en": "An addition outside approved scope, bypassing change control, is scope creep. Redirect it through 4.6 and assess impact before any decision."
+      }
+    },
+    {
+      "id": "sc-x-5.6-02",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "5.6",
+      "competency": "Gold plating",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "L'équipe ajoute d'elle-même des fonctionnalités « bonus » non demandées. Quel est le terme et le risque ?",
+        "en": "The team adds unrequested 'bonus' features on its own. What's the term and the risk?"
+      },
+      "options": {
+        "fr": [
+          "Scope creep ; risque nul",
+          "Gold plating ; consomme ressources, ajoute du risque et n'ajoute pas de valeur reconnue par le client",
+          "Élaboration progressive ; risque nul",
+          "Nivellement ; risque de retard"
+        ],
+        "en": [
+          "Scope creep; no risk",
+          "Gold plating; consumes resources, adds risk, and adds no value the customer recognizes",
+          "Progressive elaboration; no risk",
+          "Leveling; risk of delay"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Ajouter au-delà du périmètre à sa propre initiative = gold plating. Cela dépense des ressources et introduit du risque pour une valeur non demandée. On s'en tient au périmètre approuvé.",
+        "en": "Adding beyond scope on one's own initiative = gold plating. It spends resources and adds risk for value that wasn't requested. Stick to the approved scope."
+      }
+    },
+    {
+      "id": "sc-x-5.1-01",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Planning",
+      "pmbok_ref": "5.1",
+      "competency": "Agile scope",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Sur une partie du projet menée en agile, comment le périmètre est-il géré différemment du prédictif ?",
+        "en": "On the agile portion of the project, how is scope handled differently from predictive?"
+      },
+      "options": {
+        "fr": [
+          "Il est figé dès le départ comme en prédictif",
+          "Il est élaboré progressivement via un backlog priorisé et affiné à chaque itération",
+          "Il n'existe pas de périmètre en agile",
+          "Il est décidé uniquement par le chef de projet"
+        ],
+        "en": [
+          "It is fixed up front as in predictive",
+          "It is elaborated progressively via a prioritized, refined backlog each iteration",
+          "There is no scope in agile",
+          "It is decided by the project manager alone"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "En agile/hybride, le périmètre s'affine par un backlog priorisé, itération après itération (élaboration progressive), au lieu d'être figé dans une référence dès le départ.",
+        "en": "In agile/hybrid, scope is refined through a prioritized backlog, iteration by iteration (progressive elaboration), rather than fixed in a baseline up front."
+      }
+    },
+    {
+      "id": "sc-x-5.6-03",
+      "type": "scenario",
+      "knowledge_area": "scope",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "5.6",
+      "competency": "Change vs creep",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Quelle est la différence essentielle entre un changement de périmètre légitime et un glissement de périmètre ?",
+        "en": "What's the essential difference between a legitimate scope change and scope creep?"
+      },
+      "options": {
+        "fr": [
+          "Aucune, ce sont des synonymes",
+          "Le changement légitime passe par la maîtrise intégrée des changements (évalué, approuvé, référence mise à jour) ; le glissement est non contrôlé",
+          "Le changement est toujours refusé, le glissement toujours accepté",
+          "Le glissement vient du client, le changement de l'équipe"
+        ],
+        "en": [
+          "None, they're synonyms",
+          "A legitimate change goes through integrated change control (assessed, approved, baseline updated); creep is uncontrolled",
+          "A change is always refused, creep always accepted",
+          "Creep comes from the client, a change from the team"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un changement légitime est évalué et approuvé via 4.6, puis la référence est mise à jour. Le glissement échappe à ce contrôle. La discipline de gouvernance fait toute la différence.",
+        "en": "A legitimate change is assessed and approved via 4.6, then the baseline is updated. Creep escapes that control. The governance discipline is the whole difference."
+      }
+    }
+  ]
+}
