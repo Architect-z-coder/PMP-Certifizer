@@ -180,3 +180,59 @@ export const LENS = [
   { id: "moe", fr: "Maître d'œuvre", en: "Delivery lead", c: "#C57B2C", dFr: "Tu portes l'exécution et le contrat.", dEn: "You carry execution and the contract." },
   { id: "both", fr: "Les deux angles", en: "Both angles", c: "#8A6FB0", dFr: "Compare les deux sièges côte à côte.", dEn: "Compare both seats side by side." },
 ];
+
+// ---- 2026 ECO structure + crosswalk from existing content ----
+// Each task maps to existing per-process (refs) or per-area (area) mastery so the
+// current content rolls up into the new domain view with NO backend change.
+// status: solid (deep bank) | amorce (some content) | build (to write)
+export const ECO_DOMAINS = [
+  { id: "people",  fr: "Personnes", en: "People", wt: 33, c: "#8A6FB0" },
+  { id: "process", fr: "Processus", en: "Process", wt: 41, c: "#2E8C9E" },
+  { id: "biz",     fr: "Environnement d'affaires", en: "Business Environment", wt: 26, c: "#E89A3C" },
+];
+export const ECO_TASKS = {
+  people: [
+    { id: "pe1", fr: "Bâtir une vision & un climat de confiance", en: "Build shared vision & trust", status: "build" },
+    { id: "pe2", fr: "Gérer les conflits", en: "Manage conflict", status: "build" },
+    { id: "pe3", fr: "Diriger l'équipe", en: "Lead the team", status: "build" },
+    { id: "pe4", fr: "Soutenir la performance de l'équipe", en: "Support team performance", status: "build" },
+    { id: "pe5", fr: "Mobiliser les parties prenantes", en: "Engage stakeholders", status: "amorce", area: "stakeholder", srcFr: "↔ Parties prenantes", srcEn: "↔ Stakeholder" },
+    { id: "pe6", fr: "Négocier & bâtir le consensus", en: "Negotiate & build consensus", status: "build" },
+    { id: "pe7", fr: "Assurer le transfert des connaissances", en: "Ensure knowledge transfer", status: "amorce", refs: ["4.4"], area: "integration", srcFr: "← processus 4.4", srcEn: "← process 4.4" },
+    { id: "pe8", fr: "Planifier & gérer la communication", en: "Plan & manage communication", status: "amorce", area: "comms", srcFr: "↔ Communications", srcEn: "↔ Communications" },
+  ],
+  process: [
+    { id: "pr1", fr: "Plan de management intégré & livraison", en: "Integrated PM plan & delivery", status: "solid", refs: ["4.1", "4.2", "4.3", "4.5"], area: "integration", srcFr: "← Intégration (banque approfondie)", srcEn: "← Integration (deep bank)" },
+    { id: "pr2", fr: "Gérer le périmètre", en: "Manage scope", status: "amorce", area: "scope", srcFr: "← Périmètre 5.x", srcEn: "← Scope 5.x" },
+    { id: "pr3", fr: "Livraison par la valeur", en: "Value-based delivery", status: "build" },
+    { id: "pr4", fr: "Planifier & gérer les ressources", en: "Plan & manage resources", status: "build", area: "resource" },
+    { id: "pr5", fr: "Planifier & gérer les approvisionnements", en: "Plan & manage procurement", status: "build", area: "procurement" },
+    { id: "pr6", fr: "Gérer les finances du projet", en: "Manage project finances", status: "build", area: "cost" },
+    { id: "pr7", fr: "Gérer la qualité (+ durabilité)", en: "Manage quality (+ sustainability)", status: "build", area: "quality" },
+    { id: "pr8", fr: "Planifier & gérer l'échéancier", en: "Plan & manage schedule", status: "amorce", area: "schedule", srcFr: "← Échéancier 6.x", srcEn: "← Schedule 6.x" },
+    { id: "pr9", fr: "Communiquer le statut du projet", en: "Communicate project status", status: "build" },
+    { id: "pr10", fr: "Gérer la clôture du projet", en: "Manage project closure", status: "amorce", refs: ["4.7"], area: "integration", srcFr: "← processus 4.7", srcEn: "← process 4.7" },
+  ],
+  biz: [
+    { id: "be1", fr: "Établir la gouvernance du projet", en: "Establish project governance", status: "build" },
+    { id: "be2", fr: "Gérer la conformité (+ durabilité)", en: "Manage compliance (+ sustainability)", status: "build" },
+    { id: "be3", fr: "Maîtrise intégrée des changements", en: "Manage integrated change control", status: "amorce", refs: ["4.6"], area: "integration", srcFr: "← processus 4.6", srcEn: "← process 4.6" },
+    { id: "be4", fr: "Gérer les risques", en: "Manage risk", status: "amorce", area: "risk", srcFr: "↔ Risques", srcEn: "↔ Risk" },
+    { id: "be5", fr: "Soutenir l'amélioration continue", en: "Support continuous improvement", status: "build" },
+    { id: "be6", fr: "Soutenir le changement organisationnel", en: "Support organizational change", status: "build" },
+    { id: "be7", fr: "Évaluer & livrer la valeur / bénéfices", en: "Evaluate & deliver value / benefits", status: "build" },
+    { id: "be8", fr: "Environnement externe (IA, ESG)", en: "External environment (AI, ESG)", status: "build" },
+  ],
+};
+export const ECOT = {
+  title: { fr: "Parcours ECO 2026", en: "2026 ECO journey" },
+  hint: { fr: "Touche un domaine pour ouvrir ses tâches", en: "Tap a domain to open its tasks" },
+  tasks: { fr: "tâches", en: "tasks" },
+  agile: { fr: "~60% agile & hybride · tissé partout", en: "~60% agile & hybrid · woven throughout" },
+  review: { fr: "Réviser", en: "Review" },
+  toBuild: { fr: "À bâtir — contenu à venir", en: "To build — content coming" },
+  back: { fr: "Domaines", en: "Domains" },
+  legend: { fr: "Solide · Amorcé · À bâtir", en: "Solid · Started · To build" },
+  pick: { fr: "Sélectionne une tâche pour voir le détail.", en: "Pick a task to see its detail." },
+};
+export const ECO_STATUS_COLOR = { solid: "#3DA776", amorce: "#E89A3C", build: "#B8C2CC" };
