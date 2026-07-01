@@ -1,0 +1,17 @@
+name: keep-warm
+
+# Pings the Render backend so the free instance doesn't sleep (which causes
+# a ~40s cold start on the first visit — bad for a live demo).
+# If the Render URL changes, edit the curl line below.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # every 10 minutes
+  workflow_dispatch: {}        # lets you run it manually from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping backend /health
+        run: curl -fsS https://pmp-cerifizer.onrender.com/health || true

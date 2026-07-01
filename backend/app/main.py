@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from .config import settings
-from .models import Item, Attempt, Mastery, ProcessMastery, engine, init_db, get_session
+from .models import Item, Attempt, Mastery, ProcessMastery, Reflexe, Flag, engine, init_db, get_session
 from . import llm
 from .prompts import build_system
 from .mastery import apply_result, light, recommend, KA, KA_IDS, TOTAL_N
@@ -192,6 +192,68 @@ def get_mastery(learner_id: str, session: Session = Depends(get_session)):
     ml = mastery_list(session, learner_id)
     return {"mastery": ml, "recommended": rec_payload(ml),
             "processes": process_mastery_list(session, learner_id)}
+
+
+class ReflexeIn(BaseModel):
+    learner_id: str = "demo"
+    seat: str = ""
+    text: str = ""
+    case_excerpt: str = ""
+
+
+@app.get("/api/reflexes/{learner_id}")
+def list_reflexes(learner_id: str, session: Session = Depends(get_session)):
+    rows = session.exec(
+        select(Reflexe).where(Reflexe.learner_id == learner_id).order_by(Reflexe.created_at.desc())
+    ).all()
+    return [{"id": r.id, "seat": r.seat, "text": r.text, "case_excerpt": r.case_excerpt} for r in rows]
+
+
+@app.post("/api/reflexes")
+def add_reflexe(body: ReflexeIn, session: Session = Depends(get_session)):
+    text = (body.text or "").strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="empty reflexe")
+    # de-dupe identical text for the same learner
+    existing = session.exec(
+        select(Reflexe).where(Reflexe.learner_id == body.learner_id, Reflexe.text == text)
+    ).first()
+    if existing:
+        return {"id": existing.id, "seat": existing.seat, "text": existing.text, "duplicate": True}
+    r = Reflexe(learner_id=body.learner_id, seat=body.seat, text=text, case_excerpt=(body.case_excerpt or "")[:180])
+    session.add(r)
+    session.commit()
+    session.refresh(r)
+    return {"id": r.id, "seat": r.seat, "text": r.text, "duplicate": False}
+
+
+@app.delete("/api/reflexes/{reflexe_id}")
+def delete_reflexe(reflexe_id: int, learner_id: str = "demo", session: Session = Depends(get_session)):
+    r = session.get(Reflexe, reflexe_id)
+    if r and r.learner_id == learner_id:
+        session.delete(r)
+        session.commit()
+    return {"ok": True}
+
+
+class FlagIn(BaseModel):
+    learner_id: str = "demo"
+    external_id: str
+    reason: str = ""
+
+
+@app.post("/api/flag")
+def add_flag(body: FlagIn, session: Session = Depends(get_session)):
+    session.add(Flag(learner_id=body.learner_id, item_external_id=body.external_id, reason=(body.reason or "")[:400]))
+    session.commit()
+    return {"ok": True}
+
+
+@app.get("/api/flags")
+def list_flags(session: Session = Depends(get_session)):
+    rows = session.exec(select(Flag).order_by(Flag.created_at.desc())).all()
+    return [{"id": r.id, "learner_id": r.learner_id, "external_id": r.item_external_id,
+             "reason": r.reason, "at": r.created_at.isoformat()} for r in rows]
 
 
 @app.get("/api/items")

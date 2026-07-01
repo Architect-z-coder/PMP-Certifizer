@@ -35,6 +35,13 @@ export const STARTERS = {
 
 export const T = {
   tagline: { fr: "Conseiller de révision PMP · adaptatif", en: "PMP revision advisor · adaptive" },
+  welcome: { fr: "Bienvenue sur Certifizer", en: "Welcome to Certifizer" },
+  welcomeSub: { fr: "Entre ton nom ou un code pour suivre ta progression sur cet appareil.", en: "Enter your name or a code to track your progress on this device." },
+  namePh: { fr: "Ton nom ou un code…", en: "Your name or a code…" },
+  startBtn: { fr: "Commencer", en: "Start" },
+  switchUser: { fr: "changer", en: "switch" },
+  flag: { fr: "⚑ Signaler cette question", en: "⚑ Report this question" },
+  flagged: { fr: "✓ Signalé — merci", en: "✓ Reported — thanks" },
   focus: { fr: "Sujet", en: "Focus" }, mode: { fr: "Mode", en: "Mode" },
   project: { fr: "Mon projet (pour « relier »)", en: "My project (for relate)" },
   projectPh: { fr: "Ex : réhabilitation d'une station de pompage, équipe de 8…", en: "e.g. pumping-station overhaul, team of 8…" },
@@ -163,6 +170,10 @@ export const CR = {
   casLabel: { fr: "Ton cas", en: "Your case" },
   casPh: { fr: "Décris ta situation réelle : contexte projet, contrainte, décision en jeu…", en: "Describe your real situation: project context, constraint, decision at stake…" },
   seat: { fr: "Depuis quel siège ?", en: "From which seat?" },
+  mesReflexes: { fr: "Mes réflexes", en: "My reflexes" },
+  save: { fr: "＋ Sauver dans mes réflexes", en: "＋ Save to my reflexes" },
+  saved: { fr: "✓ Sauvé", en: "✓ Saved" },
+  emptyRef: { fr: "Les réflexes que tu sauves depuis un cas s'accumulent ici.", en: "The reflexes you save from a case gather here." },
 };
 export const LENS = [
   { id: "moa", fr: "Maître d'ouvrage", en: "Owner", c: "#2E8C9E", dFr: "Tu possèdes l'actif, le budget, la valeur.", dEn: "You own the asset, budget, value." },

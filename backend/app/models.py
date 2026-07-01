@@ -58,6 +58,25 @@ class ProcessMastery(SQLModel, table=True):
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
 
+class Reflexe(SQLModel, table=True):
+    """A transferable judgement heuristic the learner saved from a Cas réel session."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    seat: str = ""          # moa | moe | both
+    text: str = ""
+    case_excerpt: str = ""
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class Flag(SQLModel, table=True):
+    """A learner-reported issue on a question (quality review loop)."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    item_external_id: str = Field(index=True)
+    reason: str = ""
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
 # --- Database engine -------------------------------------------------------
 # Normalize the scheme: SQLAlchemy 2.x rejects the old "postgres://" form that
 # some providers still hand out; rewrite it to "postgresql://".

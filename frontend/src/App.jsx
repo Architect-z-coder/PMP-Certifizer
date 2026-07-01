@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, CR, LENS, lightColor } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem } from "./api.js";
 import Journey from "./Journey.jsx";
 
-const LEARNER_ID = "demo"; // replace with auth'd user id later
+const readLS = (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } };
+const slugify = (s) => s.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
 
 const MODES = [
   { id: "explain", icon: BookOpen, fr: "Expliquer", en: "Explain" },
@@ -27,6 +28,28 @@ export default function App() {
   const [modeId, setModeId] = useState("explain");
   const [projectContext, setProjectContext] = useState("");
   const [lens, setLens] = useState("moa");
+  const [reflexes, setReflexes] = useState([]);
+  const [learner, setLearner] = useState(() => readLS("cz_learner"));
+  const [learnerName, setLearnerName] = useState(() => readLS("cz_name"));
+  function signIn(name) {
+    const nm = name.trim(); if (!nm) return;
+    const slug = slugify(nm) || ("u" + Date.now());
+    try { localStorage.setItem("cz_learner", slug); localStorage.setItem("cz_name", nm); } catch { /* private mode */ }
+    setLearner(slug); setLearnerName(nm);
+  }
+  function signOut() {
+    try { localStorage.removeItem("cz_learner"); localStorage.removeItem("cz_name"); } catch { /* */ }
+    setLearner(""); setLearnerName(""); setMessages([]); setMastery([]); setProcesses([]); setReflexes([]); setRecommended(null); setModeId("explain"); setFocusId("overview");
+  }
+  const SEAT_COLOR = { moa: "#2E8C9E", moe: "#C57B2C", both: "#8A6FB0" };
+  const savedTexts = new Set(reflexes.map((r) => r.text));
+  const extractReflexe = (content) => {
+    const m = /⟡\s*R[ée]flexe\s*:\s*(.+)/i.exec(content || "");
+    return m ? m[1].trim().replace(/^[«"]\s*/, "").replace(/\s*[»"]$/, "") : null;
+  };
+  const refreshReflexes = () => getReflexes(learner).then(setReflexes).catch(() => {});
+  const doSaveReflexe = (text) => saveReflexe({ learner_id: learner, seat: lens, text, case_excerpt: projectContext.slice(0, 180) }).then(refreshReflexes).catch(() => {});
+  const doDeleteReflexe = (id) => deleteReflexe(id, learner).then(refreshReflexes).catch(() => {});
   const [messages, setMessages] = useState([]);
   const [mastery, setMastery] = useState([]);
   const [processes, setProcesses] = useState([]);
@@ -46,7 +69,16 @@ export default function App() {
   const isKA = KA.some((k) => k.id === focusId);
 
   useEffect(() => {
-    getMastery(LEARNER_ID).then((d) => { setMastery(d.mastery); setRecommended(d.recommended); setProcesses(d.processes || []); }).catch(() => {});
+    if (!learner) return;
+    getMastery(learner).then((d) => { setMastery(d.mastery); setRecommended(d.recommended); setProcesses(d.processes || []); }).catch(() => {});
+    getReflexes(learner).then(setReflexes).catch(() => {});
+  }, [learner]);
+
+  // keep the free-tier backend warm: ping on load, then periodically while open
+  useEffect(() => {
+    pingHealth();
+    const id = setInterval(pingHealth, 10 * 60 * 1000);
+    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -66,7 +98,7 @@ export default function App() {
     const next = [...messages, { role: "user", content: text }];
     setMessages(next); setInput(""); setLoading(true);
     try {
-      const data = await postChat({ learner_id: LEARNER_ID, lang, mode: modeId, focus: focusId, project_context: projectContext, lens, messages: next });
+      const data = await postChat({ learner_id: learner, lang, mode: modeId, focus: focusId, project_context: projectContext, lens, messages: next });
       setMessages([...next, { role: "assistant", content: data.reply || "…" }]);
       onGraded(data);
     } catch (e) { setError(t("err")); } finally { setLoading(false); }
@@ -78,6 +110,8 @@ export default function App() {
   const activeModeObj = MODES.find((m) => m.id === modeId);
   const ActiveIcon = modeId === "coreflexion" ? Scale : (activeModeObj ? activeModeObj.icon : BookOpen);
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
+
+  if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} t={t} />;
 
   return (
     <div style={{ background: C.ink, fontFamily: "'Inter', system-ui, sans-serif", color: C.text }}>
@@ -114,7 +148,7 @@ export default function App() {
             <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 19, color: "#fff", letterSpacing: ".2px" }}>
               Certifizer <span style={{ color: C.muted, fontWeight: 500, fontSize: 11, fontFamily: "'IBM Plex Mono', monospace" }}>PMP</span>
             </div>
-            <div style={{ color: "#9DB0C2", fontSize: 11.5 }}>{t("tagline")} · <span style={{ color: "#7E90A4" }}>Zoubir DAHIA</span></div>
+            <div style={{ color: "#9DB0C2", fontSize: 11.5 }}>{t("tagline")} · <span style={{ color: "#7E90A4" }}>{learnerName || learner}</span> <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, padding: "0 0 0 2px", textDecoration: "underline" }}>{t("switchUser")}</button></div>
           </div>
           <div style={{ display: "flex", gap: 4, padding: 2, background: C.ink2, borderRadius: 8, border: `1px solid ${C.inkLine}` }}>
             {["fr", "en"].map((l) => (
@@ -208,6 +242,21 @@ export default function App() {
                   <textarea value={projectContext} onChange={(e) => setProjectContext(e.target.value)} placeholder={CR.casPh[lang]} rows={5}
                     style={{ width: "100%", resize: "vertical", background: C.ink2, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 8, padding: "8px 9px", fontSize: 12, fontFamily: "'Inter', sans-serif", outline: "none" }} />
                 </Section>
+                <Section label={CR.mesReflexes[lang] + (reflexes.length ? " · " + reflexes.length : "")}>
+                  {reflexes.length === 0 ? (
+                    <div style={{ fontSize: 11, color: "#54657A", fontStyle: "italic", lineHeight: 1.45 }}>{CR.emptyRef[lang]}</div>
+                  ) : (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                      {reflexes.map((r) => (
+                        <div key={r.id} style={{ display: "flex", gap: 7, alignItems: "flex-start", background: C.ink2, border: `1px solid ${C.inkLine}`, borderRadius: 8, padding: "7px 9px" }}>
+                          <span style={{ width: 8, height: 8, borderRadius: "50%", background: SEAT_COLOR[r.seat] || "#54657A", flex: "none", marginTop: 4 }} />
+                          <span style={{ flex: 1, fontSize: 11, color: "#C7D2DE", lineHeight: 1.45 }}>{r.text}</span>
+                          <button onClick={() => doDeleteReflexe(r.id)} title="Supprimer" style={{ background: "none", border: "none", color: "#54657A", cursor: "pointer", flex: "none", padding: 0, lineHeight: 0 }}><X size={13} /></button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Section>
               </>
             )}
 
@@ -249,7 +298,7 @@ export default function App() {
             {modeId === "parcours" ? (
               <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
             ) : modeId === "quiz" ? (
-              <QuizPanel lang={lang} area={isKA ? focusId : null} learnerId={LEARNER_ID} onGraded={onGraded} t={t} />
+              <QuizPanel lang={lang} area={isKA ? focusId : null} learnerId={learner} onGraded={onGraded} t={t} />
             ) : (
               <>
                 <div ref={scrollRef} className="ak-scroll" style={{ flex: 1, padding: "20px", overflowY: "auto" }}>
@@ -261,11 +310,23 @@ export default function App() {
                       <button onClick={() => send(STARTERS[modeId][lang])} style={{ fontSize: 12.5, color: C.text, background: C.card, border: `1px solid ${C.line}`, borderRadius: 20, padding: "8px 16px", fontWeight: 500 }}>{STARTERS[modeId][lang]}</button>
                     </div>
                   )}
-                  {messages.map((m, i) => (
-                    <div key={i} className="ak-fade" style={{ marginBottom: 14, display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}>
-                      <div style={{ maxWidth: "82%", fontSize: 13.5, lineHeight: 1.6, whiteSpace: "pre-wrap", padding: "10px 14px", borderRadius: 12, background: m.role === "user" ? C.ink : C.card, color: m.role === "user" ? "#EAF0F6" : C.text, border: m.role === "user" ? "none" : `1px solid ${C.line}`, borderLeft: m.role === "assistant" ? `3px solid ${C.teal}` : "none" }}>{m.content}</div>
-                    </div>
-                  ))}
+                  {messages.map((m, i) => {
+                    const ref = m.role === "assistant" ? extractReflexe(m.content) : null;
+                    const isSaved = ref && savedTexts.has(ref);
+                    return (
+                      <div key={i} className="ak-fade" style={{ marginBottom: 14, display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}>
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: m.role === "user" ? "flex-end" : "flex-start", maxWidth: "82%" }}>
+                          <div style={{ fontSize: 13.5, lineHeight: 1.6, whiteSpace: "pre-wrap", padding: "10px 14px", borderRadius: 12, maxWidth: "100%", background: m.role === "user" ? C.ink : C.card, color: m.role === "user" ? "#EAF0F6" : C.text, border: m.role === "user" ? "none" : `1px solid ${C.line}`, borderLeft: m.role === "assistant" ? `3px solid ${C.teal}` : "none" }}>{m.content}</div>
+                          {ref && (
+                            <button onClick={() => !isSaved && doSaveReflexe(ref)} disabled={isSaved}
+                              style={{ marginTop: 7, fontSize: 11.5, fontWeight: 600, borderRadius: 8, padding: "6px 11px", border: "none", cursor: isSaved ? "default" : "pointer", background: isSaved ? "#E4F3EC" : C.amber, color: isSaved ? C.green : C.ink }}>
+                              {isSaved ? CR.saved[lang] : CR.save[lang]}
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
                   {loading && (
                     <div className="ak-fade" style={{ display: "flex", gap: 6, alignItems: "center", color: C.muted, fontSize: 12.5, padding: "4px 2px" }}>
                       <span className="ak-dot" /><span className="ak-dot" style={{ animationDelay: ".2s" }} /><span className="ak-dot" style={{ animationDelay: ".4s" }} />
@@ -299,13 +360,20 @@ function QuizPanel({ lang, area, learnerId, onGraded, t }) {
   const [picked, setPicked] = useState(null);
   const [res, setRes] = useState(null);
   const [err, setErr] = useState(null);
+  const [flagged, setFlagged] = useState(false);
 
   async function load() {
-    setLoading(true); setPicked(null); setRes(null); setErr(null);
+    setLoading(true); setPicked(null); setRes(null); setErr(null); setFlagged(false);
     try { const d = await getQuizNext(learnerId, area); setQ(d.item); }
     catch (e) { setErr(t("err")); } finally { setLoading(false); }
   }
   useEffect(() => { load(); /* reload on area change */ }, [area]);
+
+  function doFlag() {
+    if (flagged || !q) return;
+    setFlagged(true);
+    flagItem({ learner_id: learnerId, external_id: q.external_id, reason: "" }).catch(() => {});
+  }
 
   async function answer(i) {
     if (res) return;
@@ -355,6 +423,13 @@ function QuizPanel({ lang, area, learnerId, onGraded, t }) {
             </button>
           </div>
         )}
+
+        <div style={{ marginTop: 18, textAlign: "right" }}>
+          <button onClick={doFlag} disabled={flagged}
+            style={{ background: "none", border: "none", color: flagged ? C.green : C.muted, fontSize: 11.5, cursor: flagged ? "default" : "pointer" }}>
+            {flagged ? t("flagged") : t("flag")}
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -362,6 +437,34 @@ function QuizPanel({ lang, area, learnerId, onGraded, t }) {
 
 function Center({ children }) {
   return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>{children}</div>;
+}
+
+function Gate({ lang, setLang, onStart, t }) {
+  const [name, setName] = useState("");
+  return (
+    <div style={{ background: C.ink, minHeight: "100vh", height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Inter', system-ui, sans-serif" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap'); body{margin:0}`}</style>
+      <div style={{ width: "100%", maxWidth: 380, background: C.ink2, border: `1px solid ${C.inkLine}`, borderRadius: 16, padding: "28px 26px", textAlign: "center" }}>
+        <svg width="46" height="46" viewBox="0 0 40 40" style={{ marginBottom: 14 }}>
+          <polygon points="20,5 35,32 5,32" fill="none" stroke={C.amber} strokeWidth="2" strokeLinejoin="round" />
+          <circle cx="20" cy="5" r="2.6" fill={C.amber} /><circle cx="35" cy="32" r="2.6" fill={C.teal} /><circle cx="5" cy="32" r="2.6" fill="#fff" />
+        </svg>
+        <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "#fff", marginBottom: 8 }}>{t("welcome")}</div>
+        <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.5, marginBottom: 18 }}>{t("welcomeSub")}</div>
+        <input value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") onStart(name); }} placeholder={t("namePh")} autoFocus
+          style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
+        <button onClick={() => onStart(name)} disabled={!name.trim()}
+          style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: name.trim() ? C.amber : "#33475F", color: name.trim() ? C.ink : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
+          {t("startBtn")}
+        </button>
+        <div style={{ display: "flex", justifyContent: "center", gap: 4, marginTop: 16 }}>
+          {["fr", "en"].map((l) => (
+            <button key={l} onClick={() => setLang(l)} style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, padding: "3px 9px", borderRadius: 6, background: lang === l ? C.amber : "transparent", color: lang === l ? C.ink : "#9DB0C2", fontWeight: 600, border: "none" }}>{l.toUpperCase()}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function useIsMobile(breakpoint = 768) {
