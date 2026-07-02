@@ -216,7 +216,7 @@ export const ECO_TASKS = {
   biz: [
     { id: "be1", fr: "Établir la gouvernance du projet", en: "Establish project governance", status: "solid", refs: ["BE.1"], area: "be_governance", srcFr: "← Gouvernance (banque approfondie)", srcEn: "← Governance (deep bank)" },
     { id: "be2", fr: "Gérer la conformité (+ durabilité)", en: "Manage compliance (+ sustainability)", status: "solid", refs: ["BE.2"], area: "be_compliance", srcFr: "← Conformité & ESG (banque approfondie)", srcEn: "← Compliance & ESG (deep bank)" },
-    { id: "be3", fr: "Maîtrise intégrée des changements", en: "Manage integrated change control", status: "amorce", refs: ["4.6"], area: "integration", srcFr: "← processus 4.6", srcEn: "← process 4.6" },
+    { id: "be3", fr: "Maîtrise intégrée des changements", en: "Manage integrated change control", status: "solid", refs: ["4.6"], area: "integration", srcFr: "← Intégration 4.6 (approfondie)", srcEn: "← Integration 4.6 (deepened)" },
     { id: "be4", fr: "Gérer les risques", en: "Manage risk", status: "solid", refs: ["11.1", "11.5"], area: "risk", srcFr: "← Risques (banque approfondie)", srcEn: "← Risk (deep bank)" },
     { id: "be5", fr: "Soutenir l'amélioration continue", en: "Support continuous improvement", status: "solid", refs: ["BE.5"], area: "be_improvement", srcFr: "← Amélioration continue (banque approfondie)", srcEn: "← Continuous improvement (deep bank)" },
     { id: "be6", fr: "Soutenir le changement organisationnel", en: "Support organizational change", status: "solid", refs: ["BE.6"], area: "be_orgchange", srcFr: "← Changement organisationnel (banque approfondie)", srcEn: "← Org change (deep bank)" },
