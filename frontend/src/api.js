@@ -53,6 +53,32 @@ export async function deleteReflexe(id, learnerId) {
   return r.json();
 }
 
+export async function getReadiness(learnerId) {
+  const u = new URL(`${BASE}/api/readiness`);
+  u.searchParams.set("learner_id", learnerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`readiness ${r.status}`);
+  return r.json();
+}
+
+export async function getSessionNext(learnerId, size = 10) {
+  const u = new URL(`${BASE}/api/session/next`);
+  u.searchParams.set("learner_id", learnerId);
+  u.searchParams.set("size", String(size));
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`session/next ${r.status}`);
+  return r.json();
+}
+
+export async function getMissed(learnerId, dueOnly = true) {
+  const u = new URL(`${BASE}/api/missed`);
+  u.searchParams.set("learner_id", learnerId);
+  u.searchParams.set("due_only", String(dueOnly));
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`missed ${r.status}`);
+  return r.json();
+}
+
 export async function pingHealth() {
   try { await fetch(`${BASE}/health`, { cache: "no-store" }); } catch { /* warming */ }
 }

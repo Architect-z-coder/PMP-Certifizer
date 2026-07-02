@@ -164,6 +164,43 @@ export const JT = {
   empty: { fr: "Réponds à des questions pour faire vivre ta carte.", en: "Answer questions to bring your map to life." },
 };
 
+// ---- Ma préparation (learner cockpit, wave 18) ----
+export const PT = {
+  prepa: { fr: "Ma préparation", en: "My preparation" },
+  hello: { fr: "Bonjour", en: "Hello" },
+  readyLabel: { fr: "Prêt·e examen", en: "Exam-ready" },
+  readyHint: { fr: "Ton indice pondère ta maîtrise par le poids réel de l'examen (33·41·26).", en: "Your index weights mastery by the real exam weights (33·41·26)." },
+  priorityNow: { fr: "Priorité du moment", en: "Top priority now" },
+  attempts: { fr: "Tentatives", en: "Attempts" },
+  streak: { fr: "Série", en: "Streak" },
+  exam: { fr: "Examen 09/07", en: "Exam 07/09" },
+  days: { fr: "j", en: "d" },
+  sessionTitle: { fr: "Séance du jour", en: "Today's session" },
+  sessionSub: { fr: "questions · ≈ 15 min · composée pour toi", en: "questions · ≈ 15 min · composed for you" },
+  launch: { fr: "Lancer ma séance", en: "Start my session" },
+  compWeak: { fr: "leviers prioritaires", en: "priority levers" },
+  compMissed: { fr: "à retravailler", en: "to review" },
+  compMaint: { fr: "entretien", en: "maintenance" },
+  byDomain: { fr: "Ma maîtrise par domaine", en: "My mastery by domain" },
+  levers: { fr: "Mes leviers prioritaires", en: "My priority levers" },
+  leversSub: { fr: "poids examen × faiblesse", en: "exam weight × weakness" },
+  revise: { fr: "Réviser", en: "Review" },
+  missedTitle: { fr: "À retravailler — mes questions ratées", en: "To review — my missed questions" },
+  missedEmpty: { fr: "Aucune question en attente de révision. Beau travail !", en: "No questions due for review. Nice work!" },
+  replay: { fr: "Rejouer mes ratées", en: "Replay my missed" },
+  reflexTitle: { fr: "Mes réflexes", en: "My reflexes" },
+  reflexEmpty: { fr: "Sauve des réflexes depuis le mode Cas réel pour bâtir ta bibliothèque de jugement.", en: "Save reflexes from Cas réel mode to build your judgment library." },
+  domPeople: { fr: "Personnes", en: "People" },
+  domProcess: { fr: "Processus", en: "Process" },
+  domBusiness: { fr: "Env. d'affaires", en: "Business Env." },
+  loading: { fr: "Chargement de ta préparation…", en: "Loading your preparation…" },
+  needData: { fr: "Réponds à quelques questions (mode « Me tester ») pour activer ton tableau de préparation.", en: "Answer a few questions (Quiz mode) to activate your preparation cockpit." },
+  strong: { fr: "fort", en: "strong" },
+  weak: { fr: "fragile", en: "shaky" },
+  missCount: { fr: "ratée", en: "missed" },
+  reviewDue: { fr: "à revoir", en: "due" },
+};
+
 // ---- Cas réel (co-reflection) translations + lenses ----
 export const CR = {
   casreel: { fr: "Cas réel", en: "Real case" },

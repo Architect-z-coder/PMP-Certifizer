@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale } from "lucide-react";
-import { C, KA, FOCUS, STARTERS, T, JT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem } from "./api.js";
+import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
+import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed } from "./api.js";
 import Journey from "./Journey.jsx";
 
 const readLS = (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } };
@@ -196,6 +196,9 @@ export default function App() {
               <button onClick={() => chooseMode("parcours")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "parcours" ? C.amber : C.inkLine}`, background: modeId === "parcours" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "parcours" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
                 <Compass size={15} color={modeId === "parcours" ? C.amber : "#9DB0C2"} /> {JT.parcours[lang]}
               </button>
+              <button onClick={() => chooseMode("prepa")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "prepa" ? C.amber : C.inkLine}`, background: modeId === "prepa" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "prepa" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
+                <Gauge size={15} color={modeId === "prepa" ? C.amber : "#9DB0C2"} /> {PT.prepa[lang]}
+              </button>
             </Section>
 
             <Section label={t("focus")}>
@@ -297,6 +300,8 @@ export default function App() {
 
             {modeId === "parcours" ? (
               <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
+            ) : modeId === "prepa" ? (
+              <PrepaPanel lang={lang} learnerId={learner} learnerName={learnerName} mastery={mastery} reflexes={reflexes} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
             ) : modeId === "quiz" ? (
               <QuizPanel lang={lang} area={isKA ? focusId : null} learnerId={learner} onGraded={onGraded} t={t} />
             ) : (
@@ -350,6 +355,200 @@ export default function App() {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyArea, isMobile }) {
+  const [data, setData] = useState(null);
+  const [missed, setMissed] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const p = (k) => PT[k][lang];
+
+  useEffect(() => {
+    if (!learnerId) return;
+    setLoading(true);
+    Promise.all([
+      getReadiness(learnerId).catch(() => null),
+      getMissed(learnerId, true).catch(() => ({ count: 0, items: [] })),
+    ]).then(([r, m]) => { setData(r); setMissed(m); setLoading(false); });
+  }, [learnerId]);
+
+  const totalAttempts = mastery.reduce((s, m) => s + (m.attempts || 0), 0);
+  const DOMS = [
+    { id: "people", label: p("domPeople"), color: "#8A6FB0" },
+    { id: "process", label: p("domProcess"), color: "#2E8C9E" },
+    { id: "business", label: p("domBusiness"), color: "#E89A3C" },
+  ];
+  const domColor = (v) => (v >= 0.75 ? "#3DA776" : v >= 0.5 ? "#E8A765" : "#D2664E");
+  const KA_LABEL = Object.fromEntries(KA.map((k) => [k.id, k[lang]]));
+
+  const pad = isMobile ? "16px" : "22px";
+
+  if (loading) {
+    return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontSize: 13 }}>{p("loading")}</div>;
+  }
+  if (!data || totalAttempts === 0) {
+    return (
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: pad }}>
+        <Gauge size={30} color={C.teal} style={{ marginBottom: 14 }} />
+        <div style={{ color: C.muted, fontSize: 13, maxWidth: 340, lineHeight: 1.6 }}>{p("needData")}</div>
+      </div>
+    );
+  }
+
+  const rd = data.readiness;
+  const pct = Math.round(rd.score * 100);
+  const ring = 2 * Math.PI * 50;
+  const off = ring * (1 - rd.score);
+  const label = rd.label[lang];
+
+  return (
+    <div className="ak-scroll" style={{ flex: 1, overflowY: "auto", padding: pad, background: C.paper }}>
+      {/* HERO */}
+      <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "auto 1fr auto", gap: 18, alignItems: "center", background: "linear-gradient(135deg,#16263B,#0E1A2B)", borderRadius: 14, padding: "18px 20px", color: "#EAF0F6", marginBottom: 14 }}>
+        <div style={{ position: "relative", width: 118, height: 118, margin: isMobile ? "0 auto 12px" : 0 }}>
+          <svg width="118" height="118" viewBox="0 0 118 118" style={{ transform: "rotate(-90deg)" }}>
+            <circle cx="59" cy="59" r="50" fill="none" stroke="rgba(255,255,255,.10)" strokeWidth="11" />
+            <circle cx="59" cy="59" r="50" fill="none" stroke={C.amber} strokeWidth="11" strokeLinecap="round" strokeDasharray={ring} strokeDashoffset={off} />
+          </svg>
+          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 27, color: "#fff" }}>{pct}%</div>
+            <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 8.5, letterSpacing: 1, textTransform: "uppercase", color: "#9DB0C2" }}>{p("readyLabel")}</div>
+          </div>
+        </div>
+        <div>
+          <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 17, marginBottom: 5 }}>{p("hello")} {learnerName || learnerId} — <span style={{ color: C.amber }}>{label}</span></div>
+          <div style={{ fontSize: 12.5, color: "#B8C7D6", lineHeight: 1.55 }}>{p("readyHint")}</div>
+          {data.top_levers && data.top_levers[0] && (
+            <div style={{ fontSize: 12.5, color: "#B8C7D6", marginTop: 6 }}>{p("priorityNow")} : <b style={{ color: C.amber }}>{data.top_levers[0][lang]}</b></div>
+          )}
+        </div>
+        <div style={{ display: "flex", flexDirection: isMobile ? "row" : "column", gap: 9, justifyContent: "center", marginTop: isMobile ? 14 : 0 }}>
+          <HStat icon={<Flame size={13} color={C.amber} />} v={totalAttempts} l={p("attempts")} />
+          <HStat v="J−7" l={p("exam")} />
+        </div>
+      </div>
+
+      {/* SESSION DU JOUR */}
+      <SessionCard lang={lang} learnerId={learnerId} missedCount={missed ? missed.count : 0} onStudyArea={onStudyArea} p={p} />
+
+      <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+        {/* MAÎTRISE PAR DOMAINE */}
+        <Card title={p("byDomain")} mb={isMobile ? 12 : 0}>
+          {DOMS.map((d) => {
+            const dv = rd.domains[d.id];
+            const v = dv ? dv.score : 0;
+            return (
+              <div key={d.id} style={{ padding: "9px 0", borderBottom: `1px solid ${C.line}` }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 600, marginBottom: 6 }}>
+                  <span style={{ color: d.color }}>{d.label} · {Math.round((dv?.weight || 0) * 100)}%</span>
+                  <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 12 }}>{Math.round(v * 100)}%</span>
+                </div>
+                <div style={{ height: 8, background: "#E4EAF0", borderRadius: 6, overflow: "hidden" }}>
+                  <span style={{ display: "block", height: "100%", width: `${Math.round(v * 100)}%`, background: d.color, borderRadius: 6 }} />
+                </div>
+              </div>
+            );
+          })}
+        </Card>
+
+        {/* LEVIERS PRIORITAIRES */}
+        <Card title={p("levers")} sub={p("leversSub")}>
+          {data.top_levers.map((l) => (
+            <button key={l.area} onClick={() => onStudyArea(l.area)} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", width: "100%", background: "none", border: "none", borderBottom: `1px solid ${C.line}`, cursor: "pointer", textAlign: "left" }}>
+              <span style={{ width: 10, height: 10, borderRadius: "50%", background: domColor(l.score), flex: "none" }} />
+              <span style={{ flex: 1 }}>
+                <span style={{ display: "block", fontSize: 12.5, fontWeight: 600, color: C.text }}>{l[lang]}</span>
+                <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10.5, color: C.muted }}>{p("revise")} · {Math.round(l.score * 100)}%</span>
+              </span>
+              <ArrowRight size={14} color={C.teal} />
+            </button>
+          ))}
+        </Card>
+
+        {/* À RETRAVAILLER */}
+        <Card title={p("missedTitle")} mb={isMobile ? 12 : 0} mt={12}>
+          {missed && missed.items.length > 0 ? (
+            <>
+              {missed.items.slice(0, 4).map((m, i) => (
+                <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", padding: "9px 0", borderBottom: `1px solid ${C.line}` }}>
+                  <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9.5, color: C.teal, background: "#EAF1F3", padding: "2px 7px", borderRadius: 5, whiteSpace: "nowrap", fontWeight: 600, marginTop: 2 }}>{m.item_external_id}</span>
+                  <span style={{ flex: 1, fontSize: 12, lineHeight: 1.45, color: C.text }}>{m.prompt ? m.prompt[lang] : m.knowledge_area}</span>
+                  <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: "#B5701E", whiteSpace: "nowrap", marginTop: 2 }}>{p("reviewDue")}</span>
+                </div>
+              ))}
+              {missed.items[0] && (
+                <button onClick={() => onStudyArea(missed.items[0].knowledge_area)} style={{ marginTop: 11, width: "100%", padding: 10, border: `1px solid ${C.teal}`, borderRadius: 10, background: "#fff", color: C.teal, fontWeight: 600, fontSize: 12.5, cursor: "pointer" }}>{p("replay")} →</button>
+              )}
+            </>
+          ) : (
+            <div style={{ fontSize: 12, color: C.muted, padding: "6px 0", lineHeight: 1.5 }}>{p("missedEmpty")}</div>
+          )}
+        </Card>
+
+        {/* RÉFLEXES */}
+        <Card title={p("reflexTitle") + (reflexes.length ? " · " + reflexes.length : "")} mt={12}>
+          {reflexes.length > 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {reflexes.slice(0, 4).map((r) => (
+                <div key={r.id} style={{ background: "#F4F8F9", border: `1px dashed ${C.teal}`, borderRadius: 10, padding: "10px 12px", fontSize: 11.5, lineHeight: 1.5, color: C.text }}>{r.text}</div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ fontSize: 12, color: C.muted, padding: "6px 0", lineHeight: 1.5 }}>{p("reflexEmpty")}</div>
+          )}
+        </Card>
+      </div>
+    </div>
+  );
+}
+
+function HStat({ icon, v, l }) {
+  return (
+    <div style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.09)", borderRadius: 10, padding: "8px 13px", textAlign: "center", minWidth: 100 }}>
+      <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 18, color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>{icon}{v}</div>
+      <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 8.5, letterSpacing: 1, textTransform: "uppercase", color: "#9DB0C2" }}>{l}</div>
+    </div>
+  );
+}
+
+function SessionCard({ lang, learnerId, missedCount, onStudyArea, p }) {
+  const [sess, setSess] = useState(null);
+  useEffect(() => {
+    if (!learnerId) return;
+    getSessionNext(learnerId, 10).then(setSess).catch(() => setSess(null));
+  }, [learnerId]);
+  const comp = sess ? sess.composition : { weak_priority: 0, missed_due: 0, maintenance: 0 };
+  const size = sess ? sess.size : 10;
+  const firstArea = sess && sess.items && sess.items[0] ? sess.items[0].knowledge_area : null;
+  return (
+    <div style={{ background: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.amber}`, borderRadius: 12, padding: "14px 16px", marginBottom: 14 }}>
+      <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.muted, marginBottom: 8 }}>⟡ {p("sessionTitle")}</div>
+      <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 10 }}>{size} {p("sessionSub")}</div>
+      <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginBottom: 12 }}>
+        {comp.weak_priority > 0 && <Chip c="r">{comp.weak_priority} × {p("compWeak")}</Chip>}
+        {comp.missed_due > 0 && <Chip c="o">{comp.missed_due} × {p("compMissed")}</Chip>}
+        {comp.maintenance > 0 && <Chip>{comp.maintenance} × {p("compMaint")}</Chip>}
+      </div>
+      <button onClick={() => firstArea && onStudyArea(firstArea)} disabled={!firstArea} style={{ width: "100%", padding: 12, border: "none", borderRadius: 11, background: firstArea ? C.amber : "#C3CDD7", color: C.ink, fontWeight: 700, fontSize: 14, cursor: firstArea ? "pointer" : "default", fontFamily: "'Space Grotesk',sans-serif" }}>{p("launch")} →</button>
+    </div>
+  );
+}
+
+function Chip({ c, children }) {
+  const bg = c === "r" ? "#F7E3DD" : c === "o" ? "#FBEEDD" : "#EAF1F3";
+  const col = c === "r" ? "#D2664E" : c === "o" ? "#B5701E" : C.teal;
+  return <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10.5, padding: "4px 10px", borderRadius: 20, fontWeight: 600, background: bg, color: col }}>{children}</span>;
+}
+
+function Card({ title, sub, children, mb = 0, mt = 0 }) {
+  return (
+    <div style={{ background: C.card, border: `1px solid ${C.line}`, borderRadius: 12, padding: "14px 16px", marginBottom: mb, marginTop: mt }}>
+      <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.muted, marginBottom: 10 }}>
+        {title}{sub && <span style={{ textTransform: "none", letterSpacing: 0, color: "#9AA8B6" }}> · {sub}</span>}
+      </div>
+      {children}
     </div>
   );
 }
