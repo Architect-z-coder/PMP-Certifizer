@@ -204,14 +204,14 @@ export const ECO_TASKS = {
   process: [
     { id: "pr1", fr: "Plan de management intégré & livraison", en: "Integrated PM plan & delivery", status: "solid", refs: ["4.1", "4.2", "4.3", "4.5"], area: "integration", srcFr: "← Intégration (banque approfondie)", srcEn: "← Integration (deep bank)" },
     { id: "pr2", fr: "Gérer le périmètre", en: "Manage scope", status: "solid", area: "scope", srcFr: "← Périmètre 5.x", srcEn: "← Scope 5.x" },
-    { id: "pr3", fr: "Livraison par la valeur", en: "Value-based delivery", status: "build" },
-    { id: "pr4", fr: "Planifier & gérer les ressources", en: "Plan & manage resources", status: "build", area: "resource" },
-    { id: "pr5", fr: "Planifier & gérer les approvisionnements", en: "Plan & manage procurement", status: "build", area: "procurement" },
-    { id: "pr6", fr: "Gérer les finances du projet", en: "Manage project finances", status: "build", area: "cost" },
-    { id: "pr7", fr: "Gérer la qualité (+ durabilité)", en: "Manage quality (+ sustainability)", status: "build", area: "quality" },
+    { id: "pr3", fr: "Livraison par la valeur", en: "Value-based delivery", status: "solid", refs: ["PR.3"], area: "pr_value", srcFr: "← banque Processus", srcEn: "← Process bank" },
+    { id: "pr4", fr: "Planifier & gérer les ressources", en: "Plan & manage resources", status: "solid", refs: ["9.3", "9.4", "9.6"], area: "resource", srcFr: "← Ressources 9.x", srcEn: "← Resource 9.x" },
+    { id: "pr5", fr: "Planifier & gérer les approvisionnements", en: "Plan & manage procurement", status: "solid", refs: ["12.1", "12.3"], area: "procurement", srcFr: "← Approvisionnement 12.x", srcEn: "← Procurement 12.x" },
+    { id: "pr6", fr: "Gérer les finances du projet", en: "Manage project finances", status: "solid", refs: ["7.3", "7.4"], area: "cost", srcFr: "← Coûts 7.x (EVM, réserves)", srcEn: "← Cost 7.x (EVM, reserves)" },
+    { id: "pr7", fr: "Gérer la qualité (+ durabilité)", en: "Manage quality (+ sustainability)", status: "solid", refs: ["8.1", "8.2"], area: "quality", srcFr: "← Qualité 8.x + ESG", srcEn: "← Quality 8.x + ESG" },
     { id: "pr8", fr: "Planifier & gérer l'échéancier", en: "Plan & manage schedule", status: "solid", area: "schedule", srcFr: "← Échéancier 6.x", srcEn: "← Schedule 6.x" },
-    { id: "pr9", fr: "Communiquer le statut du projet", en: "Communicate project status", status: "build" },
-    { id: "pr10", fr: "Gérer la clôture du projet", en: "Manage project closure", status: "amorce", refs: ["4.7"], area: "integration", srcFr: "← processus 4.7", srcEn: "← process 4.7" },
+    { id: "pr9", fr: "Communiquer le statut du projet", en: "Communicate project status", status: "solid", refs: ["PR.9"], area: "comms", srcFr: "← banque Processus ↔ Communications", srcEn: "← Process bank ↔ Communications" },
+    { id: "pr10", fr: "Gérer la clôture du projet", en: "Manage project closure", status: "solid", refs: ["4.7"], area: "integration", srcFr: "← Clôture 4.7 (approfondie)", srcEn: "← Closure 4.7 (deepened)" },
   ],
   biz: [
     { id: "be1", fr: "Établir la gouvernance du projet", en: "Establish project governance", status: "solid", refs: ["BE.1"], area: "be_governance", srcFr: "← Gouvernance (banque approfondie)", srcEn: "← Governance (deep bank)" },
@@ -229,6 +229,9 @@ export const BE_AREAS = ["be_governance", "be_compliance", "be_improvement", "be
 // People-domain quizzable areas (non-KA), same pattern as BE_AREAS.
 // pe5 reuses the existing 'stakeholder' KA and pe8 reuses 'comms' -> zero wiring for those.
 export const PEOPLE_AREAS = ["pe_vision", "pe_conflict", "pe_lead", "pe_performance", "pe_negotiation", "pe_knowledge"];
+// Process-domain quizzable areas (non-KA): value delivery is ECO-new; the other
+// filled tasks (resources, procurement, finances, quality, status, closure) reuse existing KAs.
+export const PR_AREAS = ["pr_value"];
 export const ECOT = {
   title: { fr: "Parcours ECO 2026", en: "2026 ECO journey" },
   hint: { fr: "Touche un domaine pour ouvrir ses tâches", en: "Tap a domain to open its tasks" },

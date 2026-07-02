@@ -1,0 +1,681 @@
+{
+  "_meta": {
+    "source": "Certifizer — Processus, tâches complémentaires (ECO 2026)",
+    "domain": "process",
+    "item_count": 21
+  },
+  "items": [
+    {
+      "id": "pr-x-PR.3-01",
+      "type": "scenario",
+      "knowledge_area": "pr_value",
+      "process_group": "Executing",
+      "pmbok_ref": "PR.3",
+      "competency": "Incremental value",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un projet hybride de 18 mois prévoit de tout livrer à la fin. Le sponsor s'inquiète : « et si le marché change d'ici là ? ». Quelle est la MEILLEURE réponse du chef de projet ?",
+        "en": "An 18-month hybrid project plans to deliver everything at the end. The sponsor worries: 'what if the market shifts by then?'. What is the project manager's BEST response?"
+      },
+      "options": {
+        "fr": [
+          "Rassurer : le plan a été approuvé, on s'y tient",
+          "Restructurer la livraison en incréments de valeur : livrer tôt les éléments à plus forte valeur, recueillir du feedback et ajuster",
+          "Accélérer le projet en ajoutant des ressources",
+          "Ajouter une clause de non-responsabilité au plan"
+        ],
+        "en": [
+          "Reassure: the plan was approved, we stick to it",
+          "Restructure delivery into value increments: deliver highest-value elements early, gather feedback, and adjust",
+          "Accelerate the project by adding resources",
+          "Add a disclaimer clause to the plan"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La livraison par la valeur privilégie des incréments précoces à forte valeur : le projet capture de la valeur plus tôt et peut s'adapter au marché. S'accrocher au plan ou accélérer un « big bang » ne réduit pas le risque d'obsolescence.",
+        "en": "Value-based delivery favors early, high-value increments: the project captures value sooner and can adapt to the market. Clinging to the plan or accelerating a big bang doesn't reduce the obsolescence risk."
+      }
+    },
+    {
+      "id": "pr-x-PR.3-02",
+      "type": "scenario",
+      "knowledge_area": "pr_value",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "PR.3",
+      "competency": "Outputs vs outcomes",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Six mois après la mise en service d'un nouveau portail, l'équipe célèbre : livré dans les délais et le budget. Mais seuls 12% des utilisateurs cibles l'utilisent. Comment le chef de projet devrait-il lire cette situation ?",
+        "en": "Six months after a new portal goes live, the team celebrates: delivered on time and budget. But only 12% of target users use it. How should the project manager read this situation?"
+      },
+      "options": {
+        "fr": [
+          "Le projet est un succès : délais et budget tenus",
+          "Le livrable (output) est là, mais la valeur (outcome) ne se réalise pas : analyser les causes d'adoption et agir avec le métier",
+          "C'est le problème de l'exploitation, plus du projet",
+          "Lancer une campagne d'e-mails pour promouvoir le portail"
+        ],
+        "en": [
+          "The project is a success: on time and on budget",
+          "The output is there, but the value (outcome) isn't materializing: analyze adoption causes and act with the business",
+          "That's operations' problem now, not the project's",
+          "Launch an e-mail campaign to promote the portal"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'ECO 2026 mesure le succès par la valeur et les bénéfices, pas seulement par le triangle délai-coût-périmètre. Un livrable non adopté ne réalise pas de valeur : on diagnostique (besoin, ergonomie, conduite du changement) et on agit. Se déclarer « succès » ou se défausser est le piège.",
+        "en": "The 2026 ECO measures success by value and benefits, not just the time-cost-scope triangle. An unadopted deliverable realizes no value: diagnose (need, usability, change management) and act. Declaring 'success' or passing the buck is the trap."
+      }
+    },
+    {
+      "id": "pr-x-PR.3-03",
+      "type": "scenario",
+      "knowledge_area": "pr_value",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "PR.3",
+      "competency": "Value-based decisions",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "À mi-parcours, une évolution réglementaire rend le bénéfice attendu du projet largement caduc. L'équipe veut finir : « on a déjà dépensé 60% du budget ». Que devrait faire le chef de projet ?",
+        "en": "Midway, a regulatory change makes the project's expected benefit largely obsolete. The team wants to finish: 'we've already spent 60% of the budget'. What should the project manager do?"
+      },
+      "options": {
+        "fr": [
+          "Terminer le projet : tant d'argent a déjà été investi",
+          "Réévaluer le business case avec le sponsor et recommander de pivoter ou d'arrêter : les coûts passés ne justifient pas de détruire de la valeur future",
+          "Réduire discrètement le périmètre pour finir plus vite",
+          "Continuer en attendant que quelqu'un d'autre pose la question"
+        ],
+        "en": [
+          "Finish the project: so much money is already invested",
+          "Reassess the business case with the sponsor and recommend pivoting or stopping: past costs don't justify destroying future value",
+          "Quietly cut scope to finish faster",
+          "Continue and wait for someone else to raise the question"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Raisonner « on a déjà dépensé » est le biais des coûts irrécupérables (sunk cost). La décision se prend sur la valeur FUTURE : réévaluer le business case et recommander en transparence — y compris l'arrêt. C'est de l'intendance (stewardship).",
+        "en": "Reasoning 'we've already spent' is the sunk-cost fallacy. The decision rests on FUTURE value: reassess the business case and recommend transparently — including termination. That is stewardship."
+      }
+    },
+    {
+      "id": "pr-x-9.3-01",
+      "type": "scenario",
+      "knowledge_area": "resource",
+      "process_group": "Executing",
+      "pmbok_ref": "9.3",
+      "competency": "Acquiring resources",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le manager fonctionnel refuse de libérer l'ingénieur prévu au plan, invoquant ses propres priorités. Le lot critique démarre dans deux semaines. Que devrait faire le chef de projet EN PREMIER ?",
+        "en": "The functional manager refuses to release the engineer planned for the project, citing his own priorities. The critical work package starts in two weeks. What should the project manager do FIRST?"
+      },
+      "options": {
+        "fr": [
+          "Escalader immédiatement au sponsor",
+          "Négocier avec le manager fonctionnel : rappeler les engagements du plan de ressources, comprendre sa contrainte et chercher un arrangement (calendrier partagé, profil équivalent)",
+          "Recruter un consultant externe sans attendre",
+          "Décaler le lot critique et absorber le retard"
+        ],
+        "en": [
+          "Escalate immediately to the sponsor",
+          "Negotiate with the functional manager: recall the resource plan commitments, understand his constraint, and seek an arrangement (shared calendar, equivalent profile)",
+          "Hire an external consultant right away",
+          "Slip the critical work package and absorb the delay"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'obtention des ressources (9.3) passe d'abord par la négociation avec le détenteur des ressources, sur la base des engagements documentés. L'escalade vient si la négociation échoue ; recruter ou glisser le planning sont des décisions prématurées avant d'avoir négocié.",
+        "en": "Acquiring resources (9.3) starts with negotiating with the resource owner, based on documented commitments. Escalation comes if negotiation fails; hiring or slipping the schedule are premature before negotiating."
+      }
+    },
+    {
+      "id": "pr-x-9.4-02",
+      "type": "scenario",
+      "knowledge_area": "resource",
+      "process_group": "Executing",
+      "pmbok_ref": "9.4",
+      "competency": "Team development",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Trois semaines après le kick-off, l'équipe nouvellement formée multiplie frictions et rivalités : chacun défend son territoire. Comment le chef de projet devrait-il interpréter et agir ?",
+        "en": "Three weeks after kick-off, the newly formed team shows growing friction and rivalry: everyone defends their turf. How should the project manager read this and act?"
+      },
+      "options": {
+        "fr": [
+          "L'équipe est mal composée : demander des remplacements",
+          "C'est la phase de tension (storming) du développement d'équipe : faciliter activement, clarifier rôles et règles communes pour passer à la normalisation",
+          "Ignorer : les adultes règlent leurs différends seuls",
+          "Imposer le silence sur les désaccords en réunion"
+        ],
+        "en": [
+          "The team is badly composed: request replacements",
+          "This is the storming stage of team development: facilitate actively, clarify roles and shared rules to move toward norming",
+          "Ignore it: adults settle their own differences",
+          "Ban disagreements from being voiced in meetings"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le storming est une étape normale (Tuckman : forming, storming, norming, performing) : le rôle du leader est d'accompagner activement — clarifier les rôles, poser les règles — pas de remplacer les gens ni d'étouffer le conflit, ce qui fige l'équipe dans la tension.",
+        "en": "Storming is a normal stage (Tuckman: forming, storming, norming, performing): the leader's role is to actively facilitate — clarify roles, set rules — not replace people or suppress conflict, which freezes the team in tension."
+      }
+    },
+    {
+      "id": "pr-x-9.6-03",
+      "type": "scenario",
+      "knowledge_area": "resource",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "9.6",
+      "competency": "Physical resources",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Sur un projet EPC, les équipements critiques d'une unité arrivent avec des écarts par rapport au plan de ressources : quantités partielles, stockage saturé sur site. Quelle est la MEILLEURE action ?",
+        "en": "On an EPC project, a unit's critical equipment arrives with gaps versus the resource plan: partial quantities, saturated on-site storage. What is the BEST action?"
+      },
+      "options": {
+        "fr": [
+          "Accepter les livraisons partielles et improviser le stockage",
+          "Maîtriser les ressources physiques : comparer l'utilisation réelle au plan, analyser les écarts (approvisionnement, logistique) et déclencher les actions correctives via le processus de changement",
+          "Suspendre toutes les livraisons jusqu'à nouvel ordre",
+          "Transférer le problème au responsable du chantier"
+        ],
+        "en": [
+          "Accept the partial deliveries and improvise storage",
+          "Control physical resources: compare actual usage to plan, analyze the gaps (procurement, logistics), and trigger corrective actions through the change process",
+          "Suspend all deliveries until further notice",
+          "Hand the problem to the site manager"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La maîtrise des ressources (9.6) couvre aussi les ressources physiques : mesurer les écarts par rapport au plan, en analyser les causes et corriger de façon maîtrisée. Improviser ou tout suspendre crée d'autres risques ; se défausser n'est pas maîtriser.",
+        "en": "Control Resources (9.6) also covers physical resources: measure gaps versus plan, analyze causes, and correct in a controlled way. Improvising or suspending everything creates new risks; passing the buck is not control."
+      }
+    },
+    {
+      "id": "pr-x-12.1-01",
+      "type": "scenario",
+      "knowledge_area": "procurement",
+      "process_group": "Planning",
+      "pmbok_ref": "12.1",
+      "competency": "Contract type selection",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Le périmètre d'un lot est encore très incertain (technologie émergente), mais l'organisation veut contracter vite. L'acheteur propose un forfait ferme « pour se protéger ». Quel est le risque de cette approche ?",
+        "en": "A work package's scope is still highly uncertain (emerging technology), but the organization wants to contract fast. The buyer proposes a firm fixed price 'for protection'. What is the risk of this approach?"
+      },
+      "options": {
+        "fr": [
+          "Aucun : le forfait protège toujours l'acheteur",
+          "Avec un périmètre incertain, le forfait pousse le vendeur à gonfler sa marge de risque ou à multiplier les réclamations : un contrat à coûts remboursables ou en régie encadrée est souvent plus adapté",
+          "Le forfait est illégal pour les technologies émergentes",
+          "Le forfait empêche toute relation avec le vendeur"
+        ],
+        "en": [
+          "None: fixed price always protects the buyer",
+          "With uncertain scope, fixed price pushes the seller to inflate risk margins or multiply claims: a cost-reimbursable or controlled T&M contract often fits better",
+          "Fixed price is illegal for emerging technologies",
+          "Fixed price prevents any relationship with the seller"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le type de contrat répartit le risque : un forfait exige un périmètre bien défini. Sur un périmètre flou, le vendeur se protège (prix gonflé, réclamations) et l'acheteur paie l'incertitude autrement. C'est un grand classique de l'examen.",
+        "en": "Contract type allocates risk: fixed price requires well-defined scope. On fuzzy scope, the seller protects himself (inflated price, claims) and the buyer pays for uncertainty another way. A great exam classic."
+      }
+    },
+    {
+      "id": "pr-x-12.3-02",
+      "type": "scenario",
+      "knowledge_area": "procurement",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "12.3",
+      "competency": "Contract change control",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un fournisseur exécute des travaux supplémentaires demandés oralement par un ingénieur de l'équipe, puis facture un avenant. Le contrat exige des ordres écrits. Que devrait faire le chef de projet ?",
+        "en": "A supplier performs extra work orally requested by a team engineer, then invoices a change order. The contract requires written orders. What should the project manager do?"
+      },
+      "options": {
+        "fr": [
+          "Payer la facture pour préserver la relation",
+          "Traiter le cas via l'administration du contrat : rappeler la clause d'ordres écrits, évaluer le travail réellement réalisé et régulariser par le processus formel — puis verrouiller la discipline côté équipe",
+          "Refuser tout paiement et menacer le fournisseur",
+          "Demander à l'ingénieur de rembourser les travaux"
+        ],
+        "en": [
+          "Pay the invoice to preserve the relationship",
+          "Handle it through contract administration: recall the written-orders clause, assess the work actually done, and regularize via the formal process — then lock in discipline on the team side",
+          "Refuse all payment and threaten the supplier",
+          "Ask the engineer to reimburse the work"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La maîtrise des approvisionnements (12.3) passe par l'administration du contrat : les changements suivent la voie contractuelle formelle. Payer sans process valide le précédent ; refuser brutalement expose au litige. Et la vraie correction est interne : plus d'instructions orales.",
+        "en": "Control Procurements (12.3) works through contract administration: changes follow the formal contractual path. Paying without process validates the precedent; brute refusal invites litigation. And the real fix is internal: no more oral instructions."
+      }
+    },
+    {
+      "id": "pr-x-12.1-03",
+      "type": "scenario",
+      "knowledge_area": "procurement",
+      "process_group": "Planning",
+      "pmbok_ref": "12.1",
+      "competency": "Make-or-buy",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "L'équipe hésite à développer un module en interne ou à l'acheter. Quels critères une analyse « faire ou faire-faire » (make-or-buy) devrait-elle peser en PRIORITÉ ?",
+        "en": "The team hesitates between building a module in-house or buying it. Which criteria should a make-or-buy analysis weigh as a PRIORITY?"
+      },
+      "options": {
+        "fr": [
+          "Uniquement le prix d'achat le plus bas",
+          "Coût complet (cycle de vie), disponibilité des compétences, criticité stratégique du savoir-faire, risques et délais de chaque option",
+          "La préférence personnelle du sponsor",
+          "Toujours faire en interne pour garder le contrôle"
+        ],
+        "en": [
+          "Only the lowest purchase price",
+          "Full life-cycle cost, skills availability, strategic criticality of the know-how, and each option's risks and lead times",
+          "The sponsor's personal preference",
+          "Always build in-house to keep control"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le make-or-buy compare les options sur le coût complet, les capacités internes, la valeur stratégique du savoir-faire, les risques et les délais — pas seulement le prix d'achat. « Toujours en interne » ou « toujours le moins cher » sont des réflexes, pas des analyses.",
+        "en": "Make-or-buy compares options on full cost, internal capabilities, strategic value of the know-how, risks, and lead times — not just purchase price. 'Always in-house' or 'always cheapest' are reflexes, not analyses."
+      }
+    },
+    {
+      "id": "pr-x-7.4-01",
+      "type": "scenario",
+      "knowledge_area": "cost",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "7.4",
+      "competency": "EVM interpretation",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Le rapport valeur acquise du mois indique : CPI = 0,85 et SPI = 1,10. Quelle lecture est correcte, et quelle est la préoccupation prioritaire ?",
+        "en": "This month's earned value report shows: CPI = 0.85 and SPI = 1.10. Which reading is correct, and what is the priority concern?"
+      },
+      "options": {
+        "fr": [
+          "Le projet est en retard et sous le budget",
+          "Le projet est en avance sur l'échéancier mais dépense plus que prévu pour le travail réalisé : la dérive des coûts est la préoccupation prioritaire",
+          "Le projet est en avance et sous le budget : tout va bien",
+          "Les deux indices doivent être multipliés pour conclure"
+        ],
+        "en": [
+          "The project is behind schedule and under budget",
+          "The project is ahead of schedule but spending more than planned for the work performed: cost overrun is the priority concern",
+          "The project is ahead and under budget: all is well",
+          "The two indices must be multiplied to conclude"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "CPI < 1 : chaque unité de travail coûte plus que prévu (dérive de coûts). SPI > 1 : avance sur l'échéancier. L'avance peut d'ailleurs expliquer le surcoût (accélération payée cher). Lire correctement CPI/SPI est un incontournable de l'examen.",
+        "en": "CPI < 1: each unit of work costs more than planned (cost overrun). SPI > 1: ahead of schedule. The acceleration may even explain the overrun (bought speed). Reading CPI/SPI correctly is an exam must."
+      }
+    },
+    {
+      "id": "pr-x-7.4-02",
+      "type": "scenario",
+      "knowledge_area": "cost",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "7.4",
+      "competency": "Forecasting (EAC)",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Un dérapage de coûts vient d'une cause ponctuelle désormais corrigée (erreur d'achat isolée). Le sponsor demande le coût final estimé (EAC). Quelle hypothèse de prévision est la plus appropriée ?",
+        "en": "A cost overrun came from a one-off cause now corrected (an isolated purchasing error). The sponsor asks for the estimate at completion (EAC). Which forecasting assumption is most appropriate?"
+      },
+      "options": {
+        "fr": [
+          "EAC = BAC / CPI : la dérive continuera au même rythme",
+          "EAC = AC + (BAC − EV) : l'écart est atypique, le travail restant est prévu au rythme budgété",
+          "EAC = BAC : ignorer l'écart déjà constaté",
+          "EAC = AC : le projet s'arrête aux coûts actuels"
+        ],
+        "en": [
+          "EAC = BAC / CPI: the drift will continue at the same rate",
+          "EAC = AC + (BAC − EV): the variance is atypical, remaining work is forecast at the budgeted rate",
+          "EAC = BAC: ignore the variance already incurred",
+          "EAC = AC: the project stops at current costs"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le choix de la formule EAC dépend de la nature de l'écart : atypique (ponctuel, corrigé) → AC + (BAC − EV) ; typique (structurel) → BAC / CPI. Utiliser BAC/CPI sur un écart ponctuel sur-pénalise la prévision ; ignorer l'écart la sous-estime.",
+        "en": "The EAC formula depends on the variance's nature: atypical (one-off, fixed) → AC + (BAC − EV); typical (structural) → BAC / CPI. Using BAC/CPI on a one-off over-penalizes the forecast; ignoring the variance understates it."
+      }
+    },
+    {
+      "id": "pr-x-7.3-03",
+      "type": "scenario",
+      "knowledge_area": "cost",
+      "process_group": "Planning",
+      "pmbok_ref": "7.3",
+      "competency": "Baseline vs reserves",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un risque identifié au registre se matérialise et coûte 80 k€. Le chef de projet veut puiser dans la réserve. Laquelle, et avec quelle autorité ?",
+        "en": "A risk identified in the register materializes and costs €80k. The project manager wants to draw on a reserve. Which one, and under whose authority?"
+      },
+      "options": {
+        "fr": [
+          "La réserve de management, sur simple décision du chef de projet",
+          "La réserve pour aléas (contingency), prévue pour les risques identifiés et gérée dans la référence de base des coûts par le chef de projet",
+          "La réserve de management, car toutes les réserves sont identiques",
+          "Aucune : demander une rallonge budgétaire au client"
+        ],
+        "en": [
+          "The management reserve, at the PM's sole discretion",
+          "The contingency reserve, set aside for identified risks and managed within the cost baseline by the project manager",
+          "The management reserve, since all reserves are the same",
+          "None: request a budget extension from the client"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La réserve pour aléas couvre les risques IDENTIFIÉS (« known unknowns ») et fait partie de la référence de base des coûts, sous l'autorité du chef de projet. La réserve de management couvre l'imprévu (« unknown unknowns »), hors référence de base, et exige l'accord de la direction.",
+        "en": "The contingency reserve covers IDENTIFIED risks ('known unknowns') and sits inside the cost baseline, under the PM's authority. The management reserve covers the unforeseen ('unknown unknowns'), outside the baseline, and requires management approval."
+      }
+    },
+    {
+      "id": "pr-x-8.2-01",
+      "type": "scenario",
+      "knowledge_area": "quality",
+      "process_group": "Executing",
+      "pmbok_ref": "8.2",
+      "competency": "Prevention over inspection",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Des défauts de soudure récurrents sont détectés au contrôle final, générant des reprises coûteuses. Le responsable qualité propose de doubler les inspections finales. Quelle est la MEILLEURE réponse ?",
+        "en": "Recurring weld defects are caught at final inspection, driving costly rework. The quality lead proposes doubling final inspections. What is the BEST response?"
+      },
+      "options": {
+        "fr": [
+          "Accepter : plus d'inspections = plus de qualité",
+          "Remonter à la cause racine (procédé, qualification, matériaux) et renforcer la prévention : la qualité se construit dans le processus, elle ne s'inspecte pas à la fin",
+          "Sanctionner les soudeurs responsables",
+          "Assouplir les critères d'acceptation pour réduire les reprises"
+        ],
+        "en": [
+          "Accept: more inspections = more quality",
+          "Trace the root cause (process, qualification, materials) and strengthen prevention: quality is built into the process, not inspected in at the end",
+          "Sanction the responsible welders",
+          "Loosen acceptance criteria to reduce rework"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Principe fondamental : la prévention prime sur l'inspection. Doubler les inspections détecte plus de défauts mais n'en réduit pas la production ; l'analyse de cause racine et l'amélioration du procédé traitent la source. Assouplir les critères sacrifie la qualité.",
+        "en": "Core principle: prevention over inspection. Doubling inspections catches more defects but doesn't reduce their creation; root-cause analysis and process improvement treat the source. Loosening criteria sacrifices quality."
+      }
+    },
+    {
+      "id": "pr-x-8.1-02",
+      "type": "scenario",
+      "knowledge_area": "quality",
+      "process_group": "Planning",
+      "pmbok_ref": "8.1",
+      "competency": "Cost of quality",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Pour tenir le budget, un chef de projet supprime la formation qualité et les revues de conception (« coûts évitables »). Six mois plus tard, les coûts de reprise explosent. Quel concept ce cas illustre-t-il ?",
+        "en": "To hold the budget, a project manager cuts quality training and design reviews ('avoidable costs'). Six months later, rework costs explode. Which concept does this case illustrate?"
+      },
+      "options": {
+        "fr": [
+          "La loi de Murphy",
+          "Le coût de la qualité : réduire les coûts de conformité (prévention, évaluation) augmente les coûts de non-conformité (défaillances internes et externes), souvent bien plus élevés",
+          "Le chemin critique",
+          "La compression des délais (crashing)"
+        ],
+        "en": [
+          "Murphy's law",
+          "Cost of quality: cutting conformance costs (prevention, appraisal) inflates non-conformance costs (internal and external failures), often far higher",
+          "The critical path",
+          "Schedule crashing"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le coût de la qualité distingue conformité (prévention + évaluation) et non-conformité (défaillances internes/externes). Économiser sur la prévention transfère — en l'amplifiant — le coût vers les défaillances. Les défaillances externes (chez le client) sont les plus chères.",
+        "en": "Cost of quality separates conformance (prevention + appraisal) from non-conformance (internal/external failures). Saving on prevention shifts — and amplifies — cost into failures. External failures (at the customer) are the costliest."
+      }
+    },
+    {
+      "id": "pr-x-8.1-03",
+      "type": "scenario",
+      "knowledge_area": "quality",
+      "process_group": "Planning",
+      "pmbok_ref": "8.1",
+      "competency": "Sustainability in quality",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le client d'un projet industriel exige que les critères ESG (émissions, gestion des déchets de chantier) soient traités comme des exigences à part entière. Comment le chef de projet devrait-il les intégrer ?",
+        "en": "An industrial project's client requires ESG criteria (emissions, site waste management) to be treated as first-class requirements. How should the project manager integrate them?"
+      },
+      "options": {
+        "fr": [
+          "Les mentionner dans l'annexe RSE du rapport final",
+          "Les intégrer au plan de management de la qualité : métriques mesurables, critères d'acceptation, contrôles planifiés — au même rang que les exigences techniques",
+          "Les traiter uniquement si le budget le permet en fin de projet",
+          "Les déléguer entièrement au département développement durable"
+        ],
+        "en": [
+          "Mention them in the final report's CSR annex",
+          "Integrate them into the quality management plan: measurable metrics, acceptance criteria, planned controls — on par with technical requirements",
+          "Address them only if budget allows at project end",
+          "Delegate them entirely to the sustainability department"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'ECO 2026 fait de la durabilité un contenu testable : les exigences ESG se traitent comme des exigences — métriques, critères d'acceptation, contrôles — intégrées au plan qualité. Les reléguer en annexe ou en option de fin de projet garantit qu'elles ne seront pas tenues.",
+        "en": "The 2026 ECO makes sustainability testable content: ESG requirements are handled as requirements — metrics, acceptance criteria, controls — integrated into the quality plan. Relegating them to an annex or end-of-project option guarantees they won't be met."
+      }
+    },
+    {
+      "id": "pr-x-PR.9-01",
+      "type": "scenario",
+      "knowledge_area": "comms",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "PR.9",
+      "competency": "Honest status reporting",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Le projet est objectivement « rouge » (retard et surcoût). Le sponsor suggère de le présenter « orange » au comité pour « ne pas affoler ». Que devrait faire le chef de projet ?",
+        "en": "The project is objectively 'red' (delay and overrun). The sponsor suggests presenting it 'amber' to the committee 'to avoid panic'. What should the project manager do?"
+      },
+      "options": {
+        "fr": [
+          "Suivre le sponsor : c'est lui le responsable hiérarchique",
+          "Présenter le statut réel avec les faits, accompagné d'un plan de redressement et d'options : l'intégrité du reporting fonde la confiance de la gouvernance",
+          "Présenter « orange » mais glisser la vérité en aparté",
+          "Ne pas présenter de statut ce mois-ci"
+        ],
+        "en": [
+          "Follow the sponsor: he's the hierarchical authority",
+          "Present the real status with facts, accompanied by a recovery plan and options: reporting integrity underpins governance trust",
+          "Present 'amber' but slip the truth in a side conversation",
+          "Skip this month's status report"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le reporting sincère est une exigence d'éthique et de gouvernance : la valeur d'un statut vient de sa fiabilité. Un « rouge » accompagné d'un plan de redressement est crédible ; un « orange » maquillé détruit la confiance quand la vérité éclate — et elle éclate.",
+        "en": "Truthful reporting is an ethics and governance requirement: a status is only worth its reliability. A 'red' with a recovery plan is credible; a doctored 'amber' destroys trust when the truth surfaces — and it does."
+      }
+    },
+    {
+      "id": "pr-x-PR.9-02",
+      "type": "scenario",
+      "knowledge_area": "comms",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "PR.9",
+      "competency": "Meaningful metrics",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le rapport mensuel liste 40 indicateurs, mais le comité repose toujours les mêmes questions : « où en est-on vraiment ? que décider ? ». Que devrait faire le chef de projet ?",
+        "en": "The monthly report lists 40 indicators, yet the committee keeps asking the same questions: 'where do we really stand? what should we decide?'. What should the project manager do?"
+      },
+      "options": {
+        "fr": [
+          "Ajouter encore des indicateurs pour être exhaustif",
+          "Recentrer le rapport sur l'essentiel décisionnel : tendances des références de base, valeur livrée, risques majeurs, décisions attendues — chaque indicateur doit servir une décision",
+          "Supprimer le rapport mensuel devenu inutile",
+          "Envoyer les données brutes et laisser le comité trier"
+        ],
+        "en": [
+          "Add even more indicators to be exhaustive",
+          "Refocus the report on decision essentials: baseline trends, value delivered, top risks, decisions needed — every indicator must serve a decision",
+          "Drop the now-useless monthly report",
+          "Send raw data and let the committee sort it out"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Communiquer le statut, c'est permettre la décision : tendances plutôt qu'instantanés, valeur plutôt que volume, risques et décisions attendues en tête. L'exhaustivité qui noie l'essentiel est une forme de non-communication.",
+        "en": "Communicating status means enabling decisions: trends over snapshots, value over volume, top risks and pending decisions up front. Exhaustiveness that drowns the essentials is a form of non-communication."
+      }
+    },
+    {
+      "id": "pr-x-PR.9-03",
+      "type": "scenario",
+      "knowledge_area": "comms",
+      "process_group": "Monitoring & Controlling",
+      "pmbok_ref": "PR.9",
+      "competency": "Communicating bad news",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le chef de projet découvre qu'un jalon contractuel majeur sera manqué de six semaines. La revue de direction est dans trois semaines. Quand et comment communiquer ?",
+        "en": "The project manager discovers a major contractual milestone will be missed by six weeks. The steering review is in three weeks. When and how to communicate?"
+      },
+      "options": {
+        "fr": [
+          "Attendre la revue : c'est le canal officiel prévu",
+          "Informer sans délai le sponsor et les parties prenantes clés, avec l'analyse d'impact et des options de redressement — les mauvaises nouvelles ne s'améliorent pas en vieillissant",
+          "Attendre d'être certain à 100% du retard exact",
+          "L'annoncer d'abord au client pour prendre les devants"
+        ],
+        "en": [
+          "Wait for the review: it's the planned official channel",
+          "Inform the sponsor and key stakeholders without delay, with an impact analysis and recovery options — bad news doesn't improve with age",
+          "Wait until 100% certain of the exact delay",
+          "Announce it to the client first to get ahead of it"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Les mauvaises nouvelles se communiquent tôt, avec analyse et options : chaque semaine de silence réduit les marges de manœuvre de la gouvernance. Attendre la revue ou la certitude absolue est le piège ; court-circuiter le sponsor vers le client en est un autre.",
+        "en": "Bad news is communicated early, with analysis and options: every week of silence shrinks governance's room to act. Waiting for the review or absolute certainty is one trap; bypassing the sponsor to the client is another."
+      }
+    },
+    {
+      "id": "pr-x-4.7-04",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Premature termination",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "La direction annule un projet à 40% d'avancement pour raisons stratégiques. L'équipe veut « tourner la page immédiatement ». Que devrait faire le chef de projet ?",
+        "en": "Management cancels a project at 40% progress for strategic reasons. The team wants to 'move on immediately'. What should the project manager do?"
+      },
+      "options": {
+        "fr": [
+          "Dissoudre l'équipe le jour même : le projet n'existe plus",
+          "Conduire une clôture formelle : documenter l'état des livrables, clôturer les contrats, archiver, consigner les leçons et libérer les ressources de façon ordonnée",
+          "Laisser les contrats fournisseurs expirer d'eux-mêmes",
+          "Poursuivre discrètement en espérant un revirement"
+        ],
+        "en": [
+          "Disband the team that same day: the project no longer exists",
+          "Run a formal closure: document deliverable status, close contracts, archive, capture lessons, and release resources in an orderly way",
+          "Let supplier contracts lapse on their own",
+          "Quietly continue hoping for a reversal"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un projet annulé se clôt formellement (4.7) : état des livrables, clôture contractuelle, archives, leçons apprises, libération ordonnée des ressources. Abandonner sans clore laisse des engagements ouverts, des litiges potentiels et un savoir perdu.",
+        "en": "A cancelled project is formally closed (4.7): deliverable status, contract closure, archives, lessons learned, orderly resource release. Walking away leaves open commitments, potential disputes, and lost knowledge."
+      }
+    },
+    {
+      "id": "pr-x-4.7-05",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Closure sequence",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le dernier livrable vient d'être remis. Le chef de projet prépare la clôture. Quelle étape doit être sécurisée EN PREMIER ?",
+        "en": "The last deliverable has just been handed over. The project manager prepares closure. Which step must be secured FIRST?"
+      },
+      "options": {
+        "fr": [
+          "Organiser la fête de fin de projet",
+          "Obtenir l'acceptation formelle des livrables par le client / sponsor selon les critères définis",
+          "Réaffecter immédiatement toute l'équipe",
+          "Supprimer les accès et archiver les documents"
+        ],
+        "en": [
+          "Organize the end-of-project party",
+          "Obtain formal acceptance of the deliverables by the client / sponsor per the defined criteria",
+          "Immediately reassign the whole team",
+          "Remove access rights and archive documents"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'acceptation formelle des livrables est la porte d'entrée de la clôture : sans elle, libérer l'équipe ou archiver expose à des reprises sans ressources. La séquence : acceptation → clôture contractuelle et administrative → leçons → libération → archivage.",
+        "en": "Formal deliverable acceptance is the gateway to closure: without it, releasing the team or archiving exposes you to rework with no resources. The sequence: acceptance → contract and admin closure → lessons → release → archiving."
+      }
+    },
+    {
+      "id": "pr-x-4.7-06",
+      "type": "scenario",
+      "knowledge_area": "integration",
+      "process_group": "Closing",
+      "pmbok_ref": "4.7",
+      "competency": "Transition & benefits",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "À la clôture d'un projet de nouvelle unité, l'exploitant se plaint : « on nous livre les clés sans mode d'emploi ». Qu'est-ce que la clôture aurait dû prévoir ?",
+        "en": "At closure of a new unit project, operations complains: 'we get the keys with no manual'. What should closure have provided for?"
+      },
+      "options": {
+        "fr": [
+          "Rien : l'exploitation commence après le projet, c'est son problème",
+          "Un transfert organisé vers l'exploitation : documentation, formation, période d'accompagnement et relais de la mesure des bénéfices vers l'organisation",
+          "Une simple réunion de remise des clés",
+          "La prolongation indéfinie du projet en support"
+        ],
+        "en": [
+          "Nothing: operations starts after the project, it's their problem",
+          "An organized transition to operations: documentation, training, a support period, and handover of benefits measurement to the organization",
+          "A simple key-handover meeting",
+          "Extending the project indefinitely as support"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La clôture organise la transition vers l'exploitation : documentation, formation, accompagnement — et le relais de la réalisation des bénéfices, qui se mesure APRÈS le projet. Livrer « les clés sans mode d'emploi » détruit la valeur au dernier kilomètre.",
+        "en": "Closure organizes the transition to operations: documentation, training, support — and the handover of benefits realization, which is measured AFTER the project. Delivering 'keys with no manual' destroys value in the last mile."
+      }
+    }
+  ]
+}
