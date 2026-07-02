@@ -199,6 +199,20 @@ export const PT = {
   weak: { fr: "fragile", en: "shaky" },
   missCount: { fr: "ratée", en: "missed" },
   reviewDue: { fr: "à revoir", en: "due" },
+  sessLoading: { fr: "Préparation de ta séance…", en: "Preparing your session…" },
+  sessRetry: { fr: "Le serveur se réveille — réessayer", en: "Server waking up — retry" },
+  sessGo: { fr: "Question", en: "Question" },
+  sessOf: { fr: "sur", en: "of" },
+  sessNext: { fr: "Continuer →", en: "Continue →" },
+  sessFinish: { fr: "Terminer la séance", en: "Finish session" },
+  sessDone: { fr: "Séance terminée !", en: "Session complete!" },
+  sessScore: { fr: "Ton score", en: "Your score" },
+  sessCorrect: { fr: "bonnes réponses", en: "correct" },
+  sessAgain: { fr: "Nouvelle séance", en: "New session" },
+  sessBack: { fr: "Retour à ma préparation", en: "Back to my preparation" },
+  sessReflex: { fr: "⟡ À retenir", en: "⟡ Key takeaway" },
+  correct: { fr: "Correct", en: "Correct" },
+  incorrect: { fr: "Incorrect", en: "Incorrect" },
 };
 
 // ---- Cas réel (co-reflection) translations + lenses ----

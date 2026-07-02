@@ -162,6 +162,7 @@ def record(session: Session, learner_id: str, area: str, result: str, mode: str,
 
 def item_public(it: Item) -> dict:
     return {"external_id": it.external_id, "type": it.type, "pmbok_ref": it.pmbok_ref,
+            "knowledge_area": it.knowledge_area,
             "process_group": it.process_group, "difficulty": it.difficulty,
             "prompt": {"fr": it.prompt_fr, "en": it.prompt_en},
             "options": {"fr": json.loads(it.options_fr), "en": json.loads(it.options_en)}}

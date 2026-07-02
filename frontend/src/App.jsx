@@ -363,6 +363,7 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
   const [data, setData] = useState(null);
   const [missed, setMissed] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [runner, setRunner] = useState(null); // active session items, or null
   const p = (k) => PT[k][lang];
 
   useEffect(() => {
@@ -395,6 +396,11 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
         <div style={{ color: C.muted, fontSize: 13, maxWidth: 340, lineHeight: 1.6 }}>{p("needData")}</div>
       </div>
     );
+  }
+
+  if (runner) {
+    return <SessionRunner lang={lang} learnerId={learnerId} items={runner}
+      onExit={() => { setRunner(null); getReadiness(learnerId).then(setData).catch(() => {}); getMissed(learnerId, true).then(setMissed).catch(() => {}); }} p={p} isMobile={isMobile} />;
   }
 
   const rd = data.readiness;
@@ -431,7 +437,7 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
       </div>
 
       {/* SESSION DU JOUR */}
-      <SessionCard lang={lang} learnerId={learnerId} missedCount={missed ? missed.count : 0} onStudyArea={onStudyArea} p={p} />
+      <SessionCard lang={lang} learnerId={learnerId} onStart={(items) => setRunner(items)} p={p} />
 
       <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         {/* MAÎTRISE PAR DOMAINE */}
@@ -513,15 +519,21 @@ function HStat({ icon, v, l }) {
   );
 }
 
-function SessionCard({ lang, learnerId, missedCount, onStudyArea, p }) {
+function SessionCard({ lang, learnerId, onStart, p }) {
   const [sess, setSess] = useState(null);
-  useEffect(() => {
-    if (!learnerId) return;
-    getSessionNext(learnerId, 10).then(setSess).catch(() => setSess(null));
-  }, [learnerId]);
+  const [state, setState] = useState("loading"); // loading | ready | error
+  const load = () => {
+    setState("loading");
+    getSessionNext(learnerId, 10)
+      .then((s) => { setSess(s); setState("ready"); })
+      .catch(() => setState("error"));
+  };
+  useEffect(() => { if (learnerId) load(); }, [learnerId]);
+
   const comp = sess ? sess.composition : { weak_priority: 0, missed_due: 0, maintenance: 0 };
   const size = sess ? sess.size : 10;
-  const firstArea = sess && sess.items && sess.items[0] ? sess.items[0].knowledge_area : null;
+  const canStart = state === "ready" && sess && sess.items && sess.items.length > 0;
+
   return (
     <div style={{ background: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.amber}`, borderRadius: 12, padding: "14px 16px", marginBottom: 14 }}>
       <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.muted, marginBottom: 8 }}>⟡ {p("sessionTitle")}</div>
@@ -531,7 +543,91 @@ function SessionCard({ lang, learnerId, missedCount, onStudyArea, p }) {
         {comp.missed_due > 0 && <Chip c="o">{comp.missed_due} × {p("compMissed")}</Chip>}
         {comp.maintenance > 0 && <Chip>{comp.maintenance} × {p("compMaint")}</Chip>}
       </div>
-      <button onClick={() => firstArea && onStudyArea(firstArea)} disabled={!firstArea} style={{ width: "100%", padding: 12, border: "none", borderRadius: 11, background: firstArea ? C.amber : "#C3CDD7", color: C.ink, fontWeight: 700, fontSize: 14, cursor: firstArea ? "pointer" : "default", fontFamily: "'Space Grotesk',sans-serif" }}>{p("launch")} →</button>
+      {state === "error" ? (
+        <button onClick={load} style={{ width: "100%", padding: 12, border: `1px solid ${C.amber}`, borderRadius: 11, background: "#fff", color: "#B5701E", fontWeight: 700, fontSize: 13.5, cursor: "pointer", fontFamily: "'Space Grotesk',sans-serif", display: "flex", alignItems: "center", justifyContent: "center", gap: 7 }}>
+          <RefreshCw size={15} /> {p("sessRetry")}
+        </button>
+      ) : (
+        <button onClick={() => canStart && onStart(sess.items)} disabled={!canStart} style={{ width: "100%", padding: 12, border: "none", borderRadius: 11, background: canStart ? C.amber : "#C3CDD7", color: C.ink, fontWeight: 700, fontSize: 14, cursor: canStart ? "pointer" : "default", fontFamily: "'Space Grotesk',sans-serif" }}>
+          {state === "loading" ? p("sessLoading") : `${p("launch")} →`}
+        </button>
+      )}
+    </div>
+  );
+}
+
+function SessionRunner({ lang, learnerId, items, onExit, p, isMobile }) {
+  const [idx, setIdx] = useState(0);
+  const [picked, setPicked] = useState(null);
+  const [graded, setGraded] = useState(null);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [done, setDone] = useState(false);
+  const pad = isMobile ? "16px" : "22px";
+  const it = items[idx];
+
+  function choose(ci) {
+    if (graded) return;
+    setPicked(ci);
+    postQuizAnswer({ learner_id: learnerId, external_id: it.external_id, choice_index: ci })
+      .then((r) => { setGraded(r); if (r.correct) setCorrectCount((c) => c + 1); })
+      .catch(() => { setPicked(null); }); // network hiccup: let them tap again
+  }
+  function next() {
+    if (idx + 1 >= items.length) { setDone(true); return; }
+    setIdx(idx + 1); setPicked(null); setGraded(null);
+  }
+
+  if (done) {
+    const pctc = Math.round((correctCount / items.length) * 100);
+    return (
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: pad, background: C.paper }}>
+        <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 22, color: C.text, marginBottom: 10 }}>{p("sessDone")}</div>
+        <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 46, color: pctc >= 70 ? "#3DA776" : pctc >= 50 ? "#E8A765" : "#D2664E" }}>{correctCount}/{items.length}</div>
+        <div style={{ fontSize: 13, color: C.muted, marginBottom: 24 }}>{p("sessScore")} · {pctc}% {p("sessCorrect")}</div>
+        <button onClick={onExit} style={{ padding: "11px 20px", border: "none", borderRadius: 11, background: C.amber, color: C.ink, fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "'Space Grotesk',sans-serif" }}>{p("sessBack")}</button>
+      </div>
+    );
+  }
+
+  const opts = it.options[lang];
+  return (
+    <div className="ak-scroll" style={{ flex: 1, overflowY: "auto", padding: pad, background: C.paper }}>
+      {/* progress */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+        <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 11, color: C.muted, whiteSpace: "nowrap" }}>{p("sessGo")} {idx + 1} {p("sessOf")} {items.length}</div>
+        <div style={{ flex: 1, height: 6, background: "#E4EAF0", borderRadius: 4, overflow: "hidden" }}>
+          <span style={{ display: "block", height: "100%", width: `${((idx + (graded ? 1 : 0)) / items.length) * 100}%`, background: C.amber, borderRadius: 4, transition: "width .3s" }} />
+        </div>
+        <button onClick={onExit} style={{ background: "none", border: "none", color: C.muted, cursor: "pointer", padding: 0, lineHeight: 0 }}><X size={16} /></button>
+      </div>
+
+      <div style={{ maxWidth: 680, margin: "0 auto" }}>
+        <div style={{ fontSize: 15, lineHeight: 1.55, color: C.text, marginBottom: 16, fontWeight: 500 }}>{it.prompt[lang]}</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+          {opts.map((o, i) => {
+            const isRight = graded && i === graded.answer_index;
+            const isWrongPick = graded && i === picked && !graded.correct;
+            const bg = isRight ? "#E4F3EC" : isWrongPick ? "#F7E3DD" : "#fff";
+            const bd = isRight ? "#3DA776" : isWrongPick ? "#D2664E" : C.line;
+            return (
+              <button key={i} onClick={() => choose(i)} disabled={!!graded} style={{ textAlign: "left", padding: "12px 14px", borderRadius: 11, border: `1px solid ${bd}`, background: bg, cursor: graded ? "default" : "pointer", fontSize: 13.5, lineHeight: 1.5, color: C.text, display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontWeight: 600, color: C.muted, flex: "none" }}>{String.fromCharCode(65 + i)}</span>
+                <span style={{ flex: 1 }}>{o}</span>
+                {isRight && <Check size={16} color="#3DA776" style={{ flex: "none" }} />}
+                {isWrongPick && <X size={16} color="#D2664E" style={{ flex: "none" }} />}
+              </button>
+            );
+          })}
+        </div>
+
+        {graded && (
+          <div className="ak-fade" style={{ marginTop: 16 }}>
+            <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14, color: graded.correct ? "#3DA776" : "#D2664E", marginBottom: 6 }}>{graded.correct ? p("correct") : p("incorrect")}</div>
+            <div style={{ fontSize: 13, lineHeight: 1.6, color: C.text, background: C.card, border: `1px solid ${C.line}`, borderLeft: `3px solid ${C.teal}`, borderRadius: 10, padding: "11px 14px" }}>{graded.rationale[lang]}</div>
+            <button onClick={next} style={{ marginTop: 14, width: "100%", padding: 12, border: "none", borderRadius: 11, background: C.ink, color: "#fff", fontWeight: 600, fontSize: 13.5, cursor: "pointer", fontFamily: "'Space Grotesk',sans-serif" }}>{idx + 1 >= items.length ? p("sessFinish") : p("sessNext")}</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
