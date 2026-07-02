@@ -1,7 +1,7 @@
 from typing import Optional
 from datetime import datetime
 
-from sqlmodel import SQLModel, Field, create_engine, Session
+from sqlmodel import SQLModel, Field, create_engine, Session, text
 
 from .config import settings
 
@@ -119,8 +119,35 @@ else:
     )
 
 
+def _ensure_columns() -> None:
+    """Additive, idempotent migrations for columns that create_all() won't add to
+    tables that already exist (e.g. last_practiced_at on a pre-existing `mastery`).
+    Safe to run on every startup; does nothing if the column is already there."""
+    # (table, column, type) — keep types portable between Postgres and sqlite.
+    additive = [("mastery", "last_practiced_at", "TIMESTAMP")]
+    is_sqlite = _db_url.startswith("sqlite")
+    with engine.begin() as conn:
+        for table, col, coltype in additive:
+            try:
+                if is_sqlite:
+                    cols = [r[1] for r in conn.exec_driver_sql(
+                        f"PRAGMA table_info({table})").fetchall()]
+                    if col not in cols:
+                        conn.exec_driver_sql(
+                            f"ALTER TABLE {table} ADD COLUMN {col} {coltype}")
+                else:
+                    # Postgres supports IF NOT EXISTS -> naturally idempotent.
+                    conn.exec_driver_sql(
+                        f"ALTER TABLE {table} ADD COLUMN IF NOT EXISTS {col} {coltype}")
+            except Exception:
+                # A missing table (fresh DB) is handled by create_all below/above;
+                # never let a migration probe crash startup.
+                pass
+
+
 def init_db() -> None:
     SQLModel.metadata.create_all(engine)
+    _ensure_columns()
 
 
 def get_session():
