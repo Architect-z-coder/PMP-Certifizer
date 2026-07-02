@@ -44,6 +44,24 @@ class Mastery(SQLModel, table=True):
     knowledge_area: str = Field(index=True)
     score: float = 0.0
     attempts: int = 0
+    # last_practiced_at feeds the non-punitive freshness / maintenance logic.
+    # Nullable + defaulted so existing rows keep working (additive migration).
+    last_practiced_at: Optional[datetime] = Field(default=None)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class MissedQueue(SQLModel, table=True):
+    """Spaced-repetition queue for items a learner got wrong.
+    review_stage 0->1->2->3, intervals 1d, 3d, 7d, then resolved."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    item_external_id: str = Field(index=True)
+    knowledge_area: str = Field(index=True)
+    miss_count: int = 1
+    review_stage: int = 0
+    next_review_at: datetime = Field(default_factory=datetime.utcnow)
+    resolved: bool = Field(default=False, index=True)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
 
