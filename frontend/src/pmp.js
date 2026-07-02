@@ -192,14 +192,14 @@ export const ECO_DOMAINS = [
 ];
 export const ECO_TASKS = {
   people: [
-    { id: "pe1", fr: "Bâtir une vision & un climat de confiance", en: "Build shared vision & trust", status: "build" },
-    { id: "pe2", fr: "Gérer les conflits", en: "Manage conflict", status: "build" },
-    { id: "pe3", fr: "Diriger l'équipe", en: "Lead the team", status: "build" },
-    { id: "pe4", fr: "Soutenir la performance de l'équipe", en: "Support team performance", status: "build" },
-    { id: "pe5", fr: "Mobiliser les parties prenantes", en: "Engage stakeholders", status: "amorce", area: "stakeholder", srcFr: "↔ Parties prenantes", srcEn: "↔ Stakeholder" },
-    { id: "pe6", fr: "Négocier & bâtir le consensus", en: "Negotiate & build consensus", status: "build" },
-    { id: "pe7", fr: "Assurer le transfert des connaissances", en: "Ensure knowledge transfer", status: "amorce", refs: ["4.4"], area: "integration", srcFr: "← processus 4.4", srcEn: "← process 4.4" },
-    { id: "pe8", fr: "Planifier & gérer la communication", en: "Plan & manage communication", status: "amorce", area: "comms", srcFr: "↔ Communications", srcEn: "↔ Communications" },
+    { id: "pe1", fr: "Bâtir une vision & un climat de confiance", en: "Build shared vision & trust", status: "solid", refs: ["PE.1"], area: "pe_vision", srcFr: "← banque People", srcEn: "← People bank" },
+    { id: "pe2", fr: "Gérer les conflits", en: "Manage conflict", status: "solid", refs: ["PE.2"], area: "pe_conflict", srcFr: "← banque People", srcEn: "← People bank" },
+    { id: "pe3", fr: "Diriger l'équipe", en: "Lead the team", status: "solid", refs: ["PE.3"], area: "pe_lead", srcFr: "← banque People", srcEn: "← People bank" },
+    { id: "pe4", fr: "Soutenir la performance de l'équipe", en: "Support team performance", status: "solid", refs: ["PE.4"], area: "pe_performance", srcFr: "← banque People", srcEn: "← People bank" },
+    { id: "pe5", fr: "Mobiliser les parties prenantes", en: "Engage stakeholders", status: "solid", refs: ["PE.5"], area: "stakeholder", srcFr: "← banque People ↔ Parties prenantes", srcEn: "← People bank ↔ Stakeholder" },
+    { id: "pe6", fr: "Négocier & bâtir le consensus", en: "Negotiate & build consensus", status: "solid", refs: ["PE.6"], area: "pe_negotiation", srcFr: "← banque People", srcEn: "← People bank" },
+    { id: "pe7", fr: "Assurer le transfert des connaissances", en: "Ensure knowledge transfer", status: "solid", refs: ["4.4", "PE.7"], area: "pe_knowledge", srcFr: "← banque People + processus 4.4", srcEn: "← People bank + process 4.4" },
+    { id: "pe8", fr: "Planifier & gérer la communication", en: "Plan & manage communication", status: "solid", refs: ["PE.8"], area: "comms", srcFr: "← banque People ↔ Communications", srcEn: "← People bank ↔ Communications" },
   ],
   process: [
     { id: "pr1", fr: "Plan de management intégré & livraison", en: "Integrated PM plan & delivery", status: "solid", refs: ["4.1", "4.2", "4.3", "4.5"], area: "integration", srcFr: "← Intégration (banque approfondie)", srcEn: "← Integration (deep bank)" },
@@ -226,6 +226,9 @@ export const ECO_TASKS = {
 };
 // BE task-areas that aren't among the 10 knowledge areas but ARE quizzable
 export const BE_AREAS = ["be_governance", "be_compliance", "be_improvement", "be_orgchange", "be_value", "be_external"];
+// People-domain quizzable areas (non-KA), same pattern as BE_AREAS.
+// pe5 reuses the existing 'stakeholder' KA and pe8 reuses 'comms' -> zero wiring for those.
+export const PEOPLE_AREAS = ["pe_vision", "pe_conflict", "pe_lead", "pe_performance", "pe_negotiation", "pe_knowledge"];
 export const ECOT = {
   title: { fr: "Parcours ECO 2026", en: "2026 ECO journey" },
   hint: { fr: "Touche un domaine pour ouvrir ses tâches", en: "Tap a domain to open its tasks" },
