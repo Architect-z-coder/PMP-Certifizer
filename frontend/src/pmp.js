@@ -214,16 +214,18 @@ export const ECO_TASKS = {
     { id: "pr10", fr: "Gérer la clôture du projet", en: "Manage project closure", status: "amorce", refs: ["4.7"], area: "integration", srcFr: "← processus 4.7", srcEn: "← process 4.7" },
   ],
   biz: [
-    { id: "be1", fr: "Établir la gouvernance du projet", en: "Establish project governance", status: "build" },
-    { id: "be2", fr: "Gérer la conformité (+ durabilité)", en: "Manage compliance (+ sustainability)", status: "build" },
+    { id: "be1", fr: "Établir la gouvernance du projet", en: "Establish project governance", status: "solid", refs: ["BE.1"], area: "be_governance", srcFr: "← Gouvernance (banque approfondie)", srcEn: "← Governance (deep bank)" },
+    { id: "be2", fr: "Gérer la conformité (+ durabilité)", en: "Manage compliance (+ sustainability)", status: "solid", refs: ["BE.2"], area: "be_compliance", srcFr: "← Conformité & ESG (banque approfondie)", srcEn: "← Compliance & ESG (deep bank)" },
     { id: "be3", fr: "Maîtrise intégrée des changements", en: "Manage integrated change control", status: "amorce", refs: ["4.6"], area: "integration", srcFr: "← processus 4.6", srcEn: "← process 4.6" },
-    { id: "be4", fr: "Gérer les risques", en: "Manage risk", status: "amorce", area: "risk", srcFr: "↔ Risques", srcEn: "↔ Risk" },
-    { id: "be5", fr: "Soutenir l'amélioration continue", en: "Support continuous improvement", status: "build" },
-    { id: "be6", fr: "Soutenir le changement organisationnel", en: "Support organizational change", status: "build" },
-    { id: "be7", fr: "Évaluer & livrer la valeur / bénéfices", en: "Evaluate & deliver value / benefits", status: "build" },
-    { id: "be8", fr: "Environnement externe (IA, ESG)", en: "External environment (AI, ESG)", status: "build" },
+    { id: "be4", fr: "Gérer les risques", en: "Manage risk", status: "solid", refs: ["11.1", "11.5"], area: "risk", srcFr: "← Risques (banque approfondie)", srcEn: "← Risk (deep bank)" },
+    { id: "be5", fr: "Soutenir l'amélioration continue", en: "Support continuous improvement", status: "solid", refs: ["BE.5"], area: "be_improvement", srcFr: "← Amélioration continue (banque approfondie)", srcEn: "← Continuous improvement (deep bank)" },
+    { id: "be6", fr: "Soutenir le changement organisationnel", en: "Support organizational change", status: "solid", refs: ["BE.6"], area: "be_orgchange", srcFr: "← Changement organisationnel (banque approfondie)", srcEn: "← Org change (deep bank)" },
+    { id: "be7", fr: "Évaluer & livrer la valeur / bénéfices", en: "Evaluate & deliver value / benefits", status: "solid", refs: ["BE.7"], area: "be_value", srcFr: "← Valeur & bénéfices (banque approfondie)", srcEn: "← Value & benefits (deep bank)" },
+    { id: "be8", fr: "Environnement externe (IA, ESG)", en: "External environment (AI, ESG)", status: "solid", refs: ["BE.8"], area: "be_external", srcFr: "← IA, ESG & externe (banque approfondie)", srcEn: "← AI, ESG & external (deep bank)" },
   ],
 };
+// BE task-areas that aren't among the 10 knowledge areas but ARE quizzable
+export const BE_AREAS = ["be_governance", "be_compliance", "be_improvement", "be_orgchange", "be_value", "be_external"];
 export const ECOT = {
   title: { fr: "Parcours ECO 2026", en: "2026 ECO journey" },
   hint: { fr: "Touche un domaine pour ouvrir ses tâches", en: "Tap a domain to open its tasks" },

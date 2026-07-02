@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale } from "lucide-react";
-import { C, KA, FOCUS, STARTERS, T, JT, CR, LENS, lightColor } from "./pmp.js";
+import { C, KA, FOCUS, STARTERS, T, JT, CR, LENS, lightColor, BE_AREAS } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem } from "./api.js";
 import Journey from "./Journey.jsx";
 
@@ -66,7 +66,7 @@ export default function App() {
 
   const t = (k) => T[k][lang];
   const masteryById = Object.fromEntries(mastery.map((m) => [m.area, m]));
-  const isKA = KA.some((k) => k.id === focusId);
+  const isKA = KA.some((k) => k.id === focusId) || BE_AREAS.includes(focusId);
 
   useEffect(() => {
     if (!learner) return;

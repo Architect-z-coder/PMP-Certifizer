@@ -1,0 +1,649 @@
+{
+  "_meta": {
+    "source": "Certifizer — Environnement d'affaires (banque approfondie, ECO 2026)",
+    "domain": "business_environment",
+    "item_count": 20
+  },
+  "items": [
+    {
+      "id": "be-x-BE.1-01",
+      "type": "scenario",
+      "knowledge_area": "be_governance",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.1",
+      "competency": "Governance vs management",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un chef de projet confond « gouvernance » et « management » du projet. Quelle distinction est correcte ?",
+        "en": "A project manager confuses project 'governance' and 'management'. Which distinction is correct?"
+      },
+      "options": {
+        "fr": [
+          "Ils sont identiques",
+          "La gouvernance fixe le cadre de décision, d'autorité et de surveillance ; le management exécute le travail à l'intérieur de ce cadre",
+          "La gouvernance concerne l'équipe ; le management le client",
+          "La gouvernance n'existe que dans les projets publics"
+        ],
+        "en": [
+          "They are identical",
+          "Governance sets the framework of decision rights, authority, and oversight; management executes the work within that frame",
+          "Governance is about the team; management about the client",
+          "Governance exists only in public projects"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La gouvernance définit qui décide, quelles limites d'autorité et quels contrôles s'appliquent ; le management conduit le travail dans ce cadre. En 2026, la gouvernance est élevée en Tâche 1 du domaine Environnement d'affaires.",
+        "en": "Governance defines who decides, what authority limits and controls apply; management runs the work within that frame. In 2026, governance is elevated to Task 1 of the Business Environment domain."
+      }
+    },
+    {
+      "id": "be-x-BE.1-02",
+      "type": "scenario",
+      "knowledge_area": "be_governance",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.1",
+      "competency": "Escalation / authority",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Une décision dépasse le seuil d'autorité du chef de projet (impact budgétaire majeur). Quel est le bon réflexe de gouvernance ?",
+        "en": "A decision exceeds the project manager's authority threshold (major budget impact). What's the right governance response?"
+      },
+      "options": {
+        "fr": [
+          "Décider quand même pour ne pas retarder",
+          "Escalader au comité de pilotage / à l'instance de gouvernance selon le cadre défini, avec une recommandation étayée",
+          "Laisser l'équipe voter",
+          "Attendre que le problème disparaisse"
+        ],
+        "en": [
+          "Decide anyway to avoid delay",
+          "Escalate to the steering committee / governance body per the defined framework, with a supported recommendation",
+          "Let the team vote",
+          "Wait for the issue to go away"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La gouvernance définit des seuils d'autorité et des voies d'escalade. Au-delà de son mandat, le chef de projet escalade à l'instance compétente avec une recommandation — il ne décide pas hors de son autorité.",
+        "en": "Governance defines authority thresholds and escalation paths. Beyond their mandate, the PM escalates to the proper body with a recommendation — they don't decide outside their authority."
+      }
+    },
+    {
+      "id": "be-x-BE.1-03",
+      "type": "scenario",
+      "knowledge_area": "be_governance",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.1",
+      "competency": "Tailoring governance",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Deux projets diffèrent fortement en taille et risque. Comment la gouvernance devrait-elle s'appliquer ?",
+        "en": "Two projects differ greatly in size and risk. How should governance apply?"
+      },
+      "options": {
+        "fr": [
+          "Un cadre identique et lourd pour tous",
+          "Une gouvernance adaptée (tailoring) à la complexité et au risque, ni sur- ni sous-dimensionnée",
+          "Aucune gouvernance pour les petits projets",
+          "La gouvernance est fixée par le chef de projet seul"
+        ],
+        "en": [
+          "An identical, heavy framework for all",
+          "Governance tailored to complexity and risk, neither over- nor under-sized",
+          "No governance for small projects",
+          "Governance is set by the PM alone"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La gouvernance s'adapte au contexte : un cadre proportionné à la taille, au risque et à l'importance. Trop lourde, elle étouffe ; trop légère, elle laisse dériver.",
+        "en": "Governance is tailored to context: a framework proportionate to size, risk, and significance. Too heavy, it smothers; too light, it lets things drift."
+      }
+    },
+    {
+      "id": "be-x-BE.2-01",
+      "type": "scenario",
+      "knowledge_area": "be_compliance",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.2",
+      "competency": "Compliance classification",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Au démarrage, quelle est la première étape face aux exigences de conformité (réglementaires, HSE, ESG) ?",
+        "en": "At initiation, what's the first step regarding compliance requirements (regulatory, HSE, ESG)?"
+      },
+      "options": {
+        "fr": [
+          "Les traiter à la fin, à la clôture",
+          "Les identifier et les classifier, puis les intégrer au plan et à la maîtrise du projet",
+          "Supposer que le client s'en charge",
+          "Les ignorer si elles ralentissent le projet"
+        ],
+        "en": [
+          "Handle them at the end, at closure",
+          "Identify and classify them, then build them into the plan and controls",
+          "Assume the client handles them",
+          "Ignore them if they slow the project"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La conformité s'identifie et se classifie tôt, puis s'intègre au plan et aux contrôles. La reléguer à la clôture crée un risque majeur de non-conformité et de retravail.",
+        "en": "Compliance is identified and classified early, then built into the plan and controls. Deferring it to closure creates major nonconformity and rework risk."
+      }
+    },
+    {
+      "id": "be-x-BE.2-02",
+      "type": "scenario",
+      "knowledge_area": "be_compliance",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.2",
+      "competency": "Non-compliance response",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Un audit révèle une non-conformité réglementaire sur un lot déjà réalisé. Quelle est la meilleure réponse ?",
+        "en": "An audit reveals a regulatory nonconformity on already-completed work. Best response?"
+      },
+      "options": {
+        "fr": [
+          "Livrer quand même et espérer que personne ne le remarque",
+          "Évaluer l'impact, traiter la cause, corriger via la maîtrise des changements, et documenter — la conformité prime sur le planning",
+          "Cacher le constat au commanditaire",
+          "Attendre la prochaine phase"
+        ],
+        "en": [
+          "Deliver anyway and hope nobody notices",
+          "Assess impact, address the cause, correct it through change control, and document — compliance outranks schedule",
+          "Hide the finding from the sponsor",
+          "Wait for the next phase"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Une non-conformité se traite : impact, cause, correction tracée via la maîtrise des changements, communication. La conformité n'est pas négociable contre le délai, et la dissimuler aggrave le risque légal.",
+        "en": "A nonconformity must be addressed: impact, cause, tracked correction via change control, communication. Compliance isn't traded against schedule, and hiding it worsens legal risk."
+      }
+    },
+    {
+      "id": "be-x-BE.2-03",
+      "type": "scenario",
+      "knowledge_area": "be_compliance",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.2",
+      "competency": "Sustainability / ESG",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Le commanditaire demande d'intégrer des critères de durabilité (ESG) au projet. Comment le chef de projet les traite-t-il au mieux ?",
+        "en": "The sponsor asks to embed sustainability (ESG) criteria in the project. How does the PM best handle them?"
+      },
+      "options": {
+        "fr": [
+          "Comme un slogan sans impact sur le plan",
+          "Comme des exigences à part entière : intégrées au périmètre, à la qualité, aux risques et aux critères de succès",
+          "Uniquement en communication externe",
+          "En les repoussant après la livraison"
+        ],
+        "en": [
+          "As a slogan with no effect on the plan",
+          "As real requirements: built into scope, quality, risk, and success criteria",
+          "Only in external communications",
+          "By deferring them until after delivery"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La durabilité/ESG devient un contenu testable en 2026 : on la traite comme des exigences réelles, intégrées au périmètre, à la qualité, aux risques et aux critères de succès — pas comme un habillage.",
+        "en": "Sustainability/ESG becomes testable content in 2026: treat it as real requirements woven into scope, quality, risk, and success criteria — not as window dressing."
+      }
+    },
+    {
+      "id": "be-x-11.1-01",
+      "type": "scenario",
+      "knowledge_area": "risk",
+      "process_group": "Business Environment",
+      "pmbok_ref": "11.1",
+      "competency": "Risk vs issue",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un événement incertain pourrait affecter le projet le mois prochain. Un autre problème bloque l'équipe aujourd'hui. Comment les qualifier ?",
+        "en": "One uncertain event might affect the project next month. Another problem is blocking the team today. How to classify them?"
+      },
+      "options": {
+        "fr": [
+          "Les deux sont des risques",
+          "Le futur incertain est un risque (registre des risques) ; le blocage actuel est un problème/issue (journal des problèmes)",
+          "Les deux sont des problèmes",
+          "Aucun des deux ne se suit"
+        ],
+        "en": [
+          "Both are risks",
+          "The uncertain future one is a risk (risk register); today's blocker is an issue (issue log)",
+          "Both are issues",
+          "Neither is tracked"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un risque est un événement futur incertain ; un problème (issue) est déjà survenu et agit maintenant. On les suit dans des registres distincts et on les traite différemment.",
+        "en": "A risk is an uncertain future event; an issue has already occurred and is acting now. They're tracked in separate logs and handled differently."
+      }
+    },
+    {
+      "id": "be-x-11.5-02",
+      "type": "scenario",
+      "knowledge_area": "risk",
+      "process_group": "Business Environment",
+      "pmbok_ref": "11.5",
+      "competency": "Threat responses",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Un risque de rupture d'approvisionnement critique est identifié. On signe un contrat d'assurance/pénalités transférant l'impact financier au fournisseur. Quelle stratégie ?",
+        "en": "A critical supply-disruption risk is identified. You sign an insurance/penalty contract transferring the financial impact to the supplier. Which strategy?"
+      },
+      "options": {
+        "fr": [
+          "Éviter (avoid)",
+          "Transférer (transfer)",
+          "Accepter (accept)",
+          "Exploiter (exploit)"
+        ],
+        "en": [
+          "Avoid",
+          "Transfer",
+          "Accept",
+          "Exploit"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Transférer déplace l'impact d'une menace à un tiers (assurance, garantie, clause). Éviter supprimerait la cause ; atténuer réduirait probabilité/impact ; accepter ne ferait rien de proactif. Exploiter concerne les opportunités.",
+        "en": "Transfer shifts a threat's impact to a third party (insurance, warranty, clause). Avoid would remove the cause; mitigate would reduce probability/impact; accept would do nothing proactive. Exploit is for opportunities."
+      }
+    },
+    {
+      "id": "be-x-11.5-03",
+      "type": "scenario",
+      "knowledge_area": "risk",
+      "process_group": "Business Environment",
+      "pmbok_ref": "11.5",
+      "competency": "Secondary/residual risk",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Après avoir appliqué une réponse au risque, un nouveau risque apparaît, créé par cette réponse elle-même. Comment le nomme-t-on ?",
+        "en": "After applying a risk response, a new risk appears, created by that response itself. What is it called?"
+      },
+      "options": {
+        "fr": [
+          "Risque résiduel",
+          "Risque secondaire",
+          "Risque inhérent",
+          "Réserve de contingence"
+        ],
+        "en": [
+          "Residual risk",
+          "Secondary risk",
+          "Inherent risk",
+          "Contingency reserve"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un risque secondaire naît directement d'une réponse au risque. À distinguer du risque résiduel, qui est ce qui subsiste après la réponse. Les deux doivent être consignés au registre.",
+        "en": "A secondary risk arises directly from a risk response. Distinct from residual risk, which is what remains after the response. Both belong in the register."
+      }
+    },
+    {
+      "id": "be-x-BE.5-01",
+      "type": "scenario",
+      "knowledge_area": "be_improvement",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.5",
+      "competency": "Lessons / retrospective",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Quand les leçons apprises et les rétrospectives apportent-elles le plus de valeur ?",
+        "en": "When do lessons learned and retrospectives add the most value?"
+      },
+      "options": {
+        "fr": [
+          "Uniquement à la clôture, une seule fois",
+          "En continu, tout au long du projet, pour ajuster immédiatement (pas seulement à la fin)",
+          "Jamais, c'est bureaucratique",
+          "Seulement si le projet échoue"
+        ],
+        "en": [
+          "Only at closure, once",
+          "Continuously, throughout the project, to adjust immediately (not only at the end)",
+          "Never — it's bureaucratic",
+          "Only if the project fails"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'amélioration continue capitalise en continu : rétrospectives régulières, ajustements immédiats, mise à jour des actifs organisationnels. Attendre la clôture prive le projet en cours de ces gains.",
+        "en": "Continuous improvement captures value throughout: regular retrospectives, immediate adjustments, updated organizational assets. Waiting for closure denies the running project those gains."
+      }
+    },
+    {
+      "id": "be-x-BE.5-02",
+      "type": "scenario",
+      "knowledge_area": "be_improvement",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.5",
+      "competency": "Process improvement",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Une rétrospective identifie un goulet récurrent dans le processus de revue. Quel est le bon esprit d'amélioration continue ?",
+        "en": "A retrospective finds a recurring bottleneck in the review process. What's the right continuous-improvement mindset?"
+      },
+      "options": {
+        "fr": [
+          "Blâmer la personne responsable",
+          "Traiter la cause du processus par de petites améliorations itératives, et mesurer l'effet",
+          "Ignorer, ce n'est pas au périmètre",
+          "Attendre une réorganisation complète"
+        ],
+        "en": [
+          "Blame the responsible person",
+          "Address the process cause with small, iterative improvements, and measure the effect",
+          "Ignore it — out of scope",
+          "Wait for a full reorganization"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'amélioration continue vise le processus, pas la personne : petites boucles d'amélioration mesurées (esprit Kaizen). Blâmer casse la confiance ; attendre un grand soir empêche les gains immédiats.",
+        "en": "Continuous improvement targets the process, not the person: small, measured improvement loops (Kaizen spirit). Blame breaks trust; waiting for a big-bang prevents immediate gains."
+      }
+    },
+    {
+      "id": "be-x-BE.6-01",
+      "type": "scenario",
+      "knowledge_area": "be_orgchange",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.6",
+      "competency": "Change adoption",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Un projet livre un nouvel outil parfaitement conforme, mais les équipes métier refusent de l'utiliser. Qu'est-ce qui a manqué ?",
+        "en": "A project delivers a perfectly compliant new tool, but business teams refuse to use it. What was missing?"
+      },
+      "options": {
+        "fr": [
+          "Rien — la conformité technique suffit",
+          "La gestion du changement organisationnel : préparer, engager et accompagner l'adoption par les personnes",
+          "Un budget plus élevé",
+          "Un chemin critique plus court"
+        ],
+        "en": [
+          "Nothing — technical compliance is enough",
+          "Organizational change management: preparing, engaging, and supporting people's adoption",
+          "A bigger budget",
+          "A shorter critical path"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La valeur ne se réalise que si le changement est adopté. Livrer un outil conforme sans préparer les personnes (communication, formation, accompagnement, sponsor visible) mène au rejet. La conduite du changement fait partie du rôle.",
+        "en": "Value is only realized if the change is adopted. Delivering a compliant tool without preparing people (communication, training, support, visible sponsor) leads to rejection. Change management is part of the role."
+      }
+    },
+    {
+      "id": "be-x-BE.6-02",
+      "type": "scenario",
+      "knowledge_area": "be_orgchange",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.6",
+      "competency": "Resistance",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Face à une résistance au changement d'une partie de l'organisation, quelle approche est la plus efficace ?",
+        "en": "Facing resistance to change from part of the organization, which approach is most effective?"
+      },
+      "options": {
+        "fr": [
+          "L'imposer par l'autorité seule",
+          "Comprendre la cause de la résistance, impliquer les parties prenantes tôt et communiquer le « pourquoi » et les bénéfices",
+          "Attendre que la résistance cesse d'elle-même",
+          "Retirer le changement définitivement"
+        ],
+        "en": [
+          "Impose it by authority alone",
+          "Understand the root of the resistance, involve stakeholders early, and communicate the 'why' and the benefits",
+          "Wait for resistance to fade on its own",
+          "Withdraw the change permanently"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La résistance se traite en comprenant sa cause et en impliquant tôt les parties prenantes, avec un « pourquoi » clair et des bénéfices tangibles. L'autorité seule génère une conformité de façade, pas l'adhésion.",
+        "en": "Resistance is addressed by understanding its root and engaging stakeholders early, with a clear 'why' and tangible benefits. Authority alone yields surface compliance, not buy-in."
+      }
+    },
+    {
+      "id": "be-x-BE.6-03",
+      "type": "scenario",
+      "knowledge_area": "be_orgchange",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.6",
+      "competency": "Sponsor in change",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Quel est le rôle clé du commanditaire (sponsor) dans un changement organisationnel ?",
+        "en": "What is the sponsor's key role in an organizational change?"
+      },
+      "options": {
+        "fr": [
+          "Rester invisible et déléguer tout au chef de projet",
+          "Porter et rendre visible le changement, débloquer les obstacles et soutenir activement l'adoption",
+          "Approuver le budget puis disparaître",
+          "Gérer les tâches quotidiennes de l'équipe"
+        ],
+        "en": [
+          "Stay invisible and delegate everything to the PM",
+          "Champion and visibly back the change, clear obstacles, and actively support adoption",
+          "Approve the budget then disappear",
+          "Manage the team's daily tasks"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Un sponsor actif et visible est le premier facteur de réussite d'un changement : il porte le « pourquoi », débloque les obstacles et soutient l'adoption. Un sponsor absent condamne souvent le changement.",
+        "en": "An active, visible sponsor is the top success factor in change: they carry the 'why', clear obstacles, and support adoption. An absent sponsor often dooms the change."
+      }
+    },
+    {
+      "id": "be-x-BE.7-01",
+      "type": "scenario",
+      "knowledge_area": "be_value",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.7",
+      "competency": "Benefits realization",
+      "difficulty": 3,
+      "prompt": {
+        "fr": "Un projet a livré tous ses livrables dans les délais et le budget, mais les bénéfices attendus ne se matérialisent pas. Du point de vue 2026, le projet est-il un succès ?",
+        "en": "A project delivered all outputs on time and budget, but the expected benefits don't materialize. From a 2026 view, is it a success?"
+      },
+      "options": {
+        "fr": [
+          "Oui : délais + budget = succès",
+          "Pas pleinement : le succès se mesure aussi à la valeur/aux bénéfices réalisés, pas seulement aux livrables",
+          "Impossible à juger",
+          "Oui, tant que le client a signé"
+        ],
+        "en": [
+          "Yes: on time + on budget = success",
+          "Not fully: success is also measured by value/benefits realized, not only by outputs",
+          "Impossible to judge",
+          "Yes, as long as the client signed off"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'ECO 2026 déplace la définition du succès vers la valeur et les bénéfices réalisés, au-delà du triangle délais-coût-périmètre. Des livrables conformes sans bénéfices ne constituent pas un plein succès.",
+        "en": "The 2026 ECO shifts the definition of success toward value and realized benefits, beyond the time-cost-scope triangle. Compliant outputs without benefits aren't a full success."
+      }
+    },
+    {
+      "id": "be-x-BE.7-02",
+      "type": "scenario",
+      "knowledge_area": "be_value",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.7",
+      "competency": "Business case",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "En cours de projet, l'environnement change et le cas d'affaires (business case) n'est plus valable. Que devrait faire le chef de projet ?",
+        "en": "Mid-project, the environment shifts and the business case is no longer valid. What should the PM do?"
+      },
+      "options": {
+        "fr": [
+          "Continuer coûte que coûte jusqu'à la livraison",
+          "Le signaler à la gouvernance : un projet dont le cas d'affaires n'est plus valable peut devoir être réorienté ou arrêté",
+          "Modifier discrètement les livrables",
+          "Ignorer, ce n'est pas son rôle"
+        ],
+        "en": [
+          "Continue at all costs until delivery",
+          "Raise it to governance: a project whose business case is no longer valid may need to be redirected or stopped",
+          "Quietly change the deliverables",
+          "Ignore it — not their role"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Le projet sert le cas d'affaires. S'il n'est plus valable, poursuivre détruit de la valeur. Le chef de projet le signale à la gouvernance, qui décide de réorienter ou d'arrêter. Surveiller la validité du business case fait partie du rôle.",
+        "en": "The project serves the business case. If it's no longer valid, continuing destroys value. The PM raises it to governance, which decides to redirect or stop. Monitoring business-case validity is part of the role."
+      }
+    },
+    {
+      "id": "be-x-BE.7-03",
+      "type": "scenario",
+      "knowledge_area": "be_value",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.7",
+      "competency": "Value delivery / MVP",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Comment livrer de la valeur plus tôt sur un projet à forte incertitude ?",
+        "en": "How can you deliver value earlier on a high-uncertainty project?"
+      },
+      "options": {
+        "fr": [
+          "Tout livrer en une seule fois à la fin",
+          "Livrer par incréments prioritisés (ex. produit minimum viable), pour réaliser et valider des bénéfices tôt",
+          "Attendre que tout le périmètre soit figé",
+          "Retarder toute livraison jusqu'à certitude totale"
+        ],
+        "en": [
+          "Deliver everything at once at the end",
+          "Deliver in prioritized increments (e.g. a minimum viable product), to realize and validate benefits early",
+          "Wait until the entire scope is frozen",
+          "Delay any delivery until total certainty"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "La livraison de valeur incrémentale (MVP, incréments priorisés) réalise des bénéfices et valide les hypothèses tôt — au cœur de l'approche agile/hybride que privilégie l'examen 2026.",
+        "en": "Incremental value delivery (MVP, prioritized increments) realizes benefits and validates assumptions early — central to the agile/hybrid approach the 2026 exam favors."
+      }
+    },
+    {
+      "id": "be-x-BE.8-01",
+      "type": "scenario",
+      "knowledge_area": "be_external",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.8",
+      "competency": "EEFs / external shifts",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Un nouveau règlement externe entre en vigueur pendant le projet et modifie une contrainte. Comment nomme-t-on ce type de facteur et que faire ?",
+        "en": "A new external regulation takes effect during the project and changes a constraint. What is this kind of factor, and what to do?"
+      },
+      "options": {
+        "fr": [
+          "Un actif organisationnel — l'ignorer",
+          "Un facteur environnemental de l'entreprise (EEF) : évaluer l'impact et l'intégrer via la maîtrise des changements",
+          "Un risque secondaire — le supprimer",
+          "Un problème interne à l'équipe"
+        ],
+        "en": [
+          "An organizational process asset — ignore it",
+          "An enterprise environmental factor (EEF): assess the impact and integrate it through change control",
+          "A secondary risk — delete it",
+          "An internal team issue"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "Les facteurs environnementaux de l'entreprise (EEF) — réglementation, marché, contexte — s'imposent au projet. On en évalue l'impact et on les intègre via la maîtrise des changements, plutôt que de les subir.",
+        "en": "Enterprise environmental factors (EEFs) — regulation, market, context — are imposed on the project. Assess their impact and integrate them through change control, rather than being blindsided."
+      }
+    },
+    {
+      "id": "be-x-BE.8-02",
+      "type": "scenario",
+      "knowledge_area": "be_external",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.8",
+      "competency": "AI in project management",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "L'organisation introduit des outils d'IA pour l'analyse et le reporting projet. Quel est le bon positionnement du chef de projet ?",
+        "en": "The organization introduces AI tools for project analytics and reporting. What's the PM's right stance?"
+      },
+      "options": {
+        "fr": [
+          "Refuser tout outil d'IA par principe",
+          "Exploiter l'IA comme aide à la décision, tout en gardant le jugement, l'éthique et la responsabilité humains",
+          "Déléguer toutes les décisions à l'IA",
+          "Cacher l'usage de l'IA aux parties prenantes"
+        ],
+        "en": [
+          "Refuse all AI tools on principle",
+          "Leverage AI as decision support while keeping human judgment, ethics, and accountability",
+          "Delegate all decisions to the AI",
+          "Hide AI usage from stakeholders"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'IA en gestion de projet — contenu nouveau en 2026 — augmente l'analyse et le reporting, mais le jugement, l'éthique et la responsabilité restent humains. Ni rejet de principe, ni délégation aveugle.",
+        "en": "AI in project management — new 2026 content — augments analysis and reporting, but judgment, ethics, and accountability stay human. Neither blanket refusal nor blind delegation."
+      }
+    },
+    {
+      "id": "be-x-BE.8-03",
+      "type": "scenario",
+      "knowledge_area": "be_external",
+      "process_group": "Business Environment",
+      "pmbok_ref": "BE.8",
+      "competency": "Scanning the environment",
+      "difficulty": 2,
+      "prompt": {
+        "fr": "Pourquoi surveiller en continu l'environnement externe (marché, réglementation, technologie) pendant le projet ?",
+        "en": "Why continuously scan the external environment (market, regulation, technology) during the project?"
+      },
+      "options": {
+        "fr": [
+          "Ce n'est pas nécessaire une fois la charte signée",
+          "Parce que des changements externes peuvent modifier la valeur, les risques ou la validité du projet, exigeant une adaptation",
+          "Uniquement pour le marketing",
+          "Seulement à la clôture"
+        ],
+        "en": [
+          "It's unnecessary once the charter is signed",
+          "Because external shifts can change the project's value, risks, or validity, requiring adaptation",
+          "Only for marketing",
+          "Only at closure"
+        ]
+      },
+      "answer_index": 1,
+      "rationale": {
+        "fr": "L'environnement externe évolue : un changement de marché, de réglementation ou de technologie peut modifier la valeur, les risques ou la raison d'être du projet. La veille permet d'adapter à temps plutôt que de subir.",
+        "en": "The external environment evolves: a market, regulatory, or technology shift can change the project's value, risks, or rationale. Scanning enables timely adaptation rather than being caught out."
+      }
+    }
+  ]
+}
