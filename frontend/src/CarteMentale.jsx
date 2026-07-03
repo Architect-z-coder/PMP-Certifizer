@@ -58,6 +58,7 @@ export default function CarteMentale({ lang, readiness, levers, features, master
   const [selected, setSelected] = useState(null);
   const [focus, setFocus] = useState(false);
   const [pres, setPres] = useState(false);
+  const [mapUpgrade, setMapUpgrade] = useState(false);
   const L = (o) => (lang === "en" ? o.en : o.fr);
 
   // mastery lookup per area -> {score, attempts, days_since}
@@ -156,14 +157,34 @@ export default function CarteMentale({ lang, readiness, levers, features, master
       <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", padding: "11px 14px", borderBottom: `1px solid ${C.line}`, background: "#F7FAFC" }}>
         <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14, color: C.text, marginRight: 4 }}>{t("Carte mentale PMP", "PMP mind-map")}</div>
         <div style={{ display: "flex", gap: 3, background: "#fff", border: `1px solid ${C.line}`, borderRadius: 10, padding: 3 }}>
-          {[13, 26].map((n) => (
-            <button key={n} onClick={() => { setDens(n); setSelected(null); }} style={{ border: "none", background: dens === n ? C.ink : "transparent", color: dens === n ? "#fff" : C.muted, fontWeight: 700, fontSize: 11.5, padding: "6px 11px", borderRadius: 7, cursor: "pointer" }}>{n === 13 ? t("13 thèmes", "13 themes") : t("26 tâches", "26 tasks")}</button>
-          ))}
+          {[13, 26].map((n) => {
+            // full_map detailed view (26 tasks) is a premium feature; free = preview (13 themes).
+            const mapPreview = features && features.full_map && features.full_map.access === "preview";
+            const locked = n === 26 && mapPreview;
+            return (
+              <button key={n} onClick={() => { if (locked) { setMapUpgrade(true); return; } setDens(n); setSelected(null); }}
+                style={{ border: "none", background: dens === n ? C.ink : "transparent", color: dens === n ? "#fff" : C.muted, fontWeight: 700, fontSize: 11.5, padding: "6px 11px", borderRadius: 7, cursor: "pointer", display: "flex", alignItems: "center", gap: 5 }}>
+                {n === 13 ? t("13 thèmes", "13 themes") : t("26 tâches", "26 tasks")}{locked ? <span style={{ fontSize: 10 }}>🔒</span> : null}
+              </button>
+            );
+          })}
         </div>
         <button onClick={() => { setFocus(!focus); }} style={{ border: `1px solid ${focus ? C.amber : C.line}`, background: focus ? "rgba(232,154,60,.12)" : "#fff", color: focus ? "#9A651E" : C.muted, fontWeight: 700, fontSize: 11.5, padding: "6px 11px", borderRadius: 9, cursor: "pointer" }}>🎯 {t("Chemin critique", "Critical path")}</button>
         <button onClick={() => { setPres(!pres); setFocus(!pres); }} style={{ border: `1px solid ${pres ? C.ink : C.line}`, background: pres ? C.ink : "#fff", color: pres ? "#fff" : C.muted, fontWeight: 700, fontSize: 11.5, padding: "6px 11px", borderRadius: 9, cursor: "pointer" }}>{t("Mode présentation", "Presentation")}</button>
         <div style={{ marginLeft: "auto", background: C.ink, color: "#fff", borderRadius: 999, padding: "6px 12px", fontFamily: "'IBM Plex Mono',monospace", fontSize: 10.5 }}>{dens === 13 ? t("13 thèmes", "13 themes") : t("26 tâches", "26 tasks")} · 3 {t("domaines", "domains")}</div>
       </div>
+
+      {mapUpgrade && (
+        <div style={{ margin: "11px 14px 0", background: "linear-gradient(180deg,rgba(232,154,60,.07),rgba(232,154,60,.14))", border: `1px dashed ${C.amber}`, borderRadius: 11, padding: "12px 14px", display: "flex", alignItems: "center", gap: 11 }}>
+          <span style={{ fontSize: 17 }}>🗺️</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 12.5, fontWeight: 700, color: "#16202E" }}>{t("La carte détaillée (26 tâches) est une fonction Premium", "The detailed map (26 tasks) is a Premium feature")}</div>
+            <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.4 }}>{t("Votre carte de base (13 thèmes) reste complète et gratuite. Premium ajoute le détail par tâche ECO.", "Your base map (13 themes) stays complete and free. Premium adds per-ECO-task detail.")}</div>
+          </div>
+          <button style={{ border: "none", borderRadius: 9, background: C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 11.5, padding: "8px 13px", cursor: "pointer", whiteSpace: "nowrap" }}>{t("Voir Premium", "See Premium")}</button>
+          <button onClick={() => setMapUpgrade(false)} style={{ border: "none", background: "none", color: C.muted, fontSize: 16, cursor: "pointer", lineHeight: 1 }}>×</button>
+        </div>
+      )}
 
       {pres && (
         <div style={{ margin: "12px 14px 0", background: "linear-gradient(135deg,#172A42,#0E1A2B)", color: "#EAF0F6", borderRadius: 12, padding: "12px 14px" }}>
