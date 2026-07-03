@@ -3,6 +3,7 @@ import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed } from "./api.js";
 import Journey from "./Journey.jsx";
+import CarteMentale from "./CarteMentale.jsx";
 
 const readLS = (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } };
 const slugify = (s) => s.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
@@ -435,6 +436,23 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
           <HStat v="J−7" l={p("exam")} />
         </div>
       </div>
+
+      {/* CARTE MENTALE — la carte est le labo */}
+      <CarteMentale
+        lang={lang}
+        readiness={rd}
+        levers={data.top_levers || []}
+        masteryByArea={(() => {
+          const staleAreas = new Set((data.stale_mastered || []).map((s) => s.area));
+          const out = {};
+          (mastery || []).forEach((m) => {
+            out[m.area] = { score: m.score, attempts: m.attempts, light: m.light, days_since: staleAreas.has(m.area) ? 30 : 0 };
+          });
+          return out;
+        })()}
+        onStudyArea={(a) => onStudyArea(a)}
+        isMobile={isMobile}
+      />
 
       {/* SESSION DU JOUR */}
       <SessionCard lang={lang} learnerId={learnerId} onStart={(items) => setRunner(items)} p={p} />
