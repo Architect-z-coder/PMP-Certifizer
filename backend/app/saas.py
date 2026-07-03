@@ -202,7 +202,7 @@ FEATURES = [
     "weak_area_preview",  # zones faibles
     "adaptive_session",   # moteur adaptatif complet
     "full_critical_path", # chemin critique personnel complet
-    "spaced_repetition",  # répétition espacée des erreurs
+    "spaced_repetition",  # révision adaptative des erreurs (libellé UI: apprentissage adaptatif)
     "refresh_decay",      # logique de fraîcheur / entretien
     "exam_simulator",     # simulateur d'examen
     "full_history",       # historique de progression complet
@@ -294,8 +294,38 @@ def features_for(session: Session, user_id: int) -> dict:
     out = {}
     for f in FEATURES:
         access = matrix.get(f, "none")
-        entry = {"access": access}
+        entry = {"access": access, "label": FEATURE_LABELS.get(f, {"fr": f, "en": f}),
+                 "intelligent": f in PREMIUM_INTELLIGENT}
         if access == "preview" and f in PREVIEW_LIMITS:
             entry["preview_limit"] = PREVIEW_LIMITS[f]
         out[f] = entry
     return out
+
+
+# User-facing labels (plain language, NO jargon like "répétition espacée").
+# The frontend reads these so wording stays consistent and professional.
+FEATURE_LABELS = {
+    "basic_practice":     {"fr": "Pratique des questions",        "en": "Question practice"},
+    "basic_map":          {"fr": "Carte PMP de base",             "en": "Basic PMP map"},
+    "basic_readiness":    {"fr": "Score de préparation",          "en": "Readiness score"},
+    "weak_area_preview":  {"fr": "Vos zones à renforcer",         "en": "Your weak areas"},
+    "adaptive_session":   {"fr": "Séances adaptatives",           "en": "Adaptive sessions"},
+    "full_critical_path": {"fr": "Chemin critique personnel",     "en": "Personal critical path"},
+    # "apprentissage adaptatif" — plain language instead of "répétition espacée"
+    "spaced_repetition":  {"fr": "Apprentissage adaptatif de vos erreurs", "en": "Adaptive learning from your mistakes"},
+    "refresh_decay":      {"fr": "Révision d'entretien",          "en": "Maintenance review"},
+    "exam_simulator":     {"fr": "Simulateur d'examen",           "en": "Exam simulator"},
+    "full_history":       {"fr": "Historique de progression",     "en": "Progress history"},
+    "full_map":           {"fr": "Carte mentale détaillée",       "en": "Detailed mind map"},
+    "recommendations":    {"fr": "Recommandations",               "en": "Recommendations"},
+    "trainer_dashboard":  {"fr": "Cockpit formateur",             "en": "Trainer cockpit"},
+    "targeted_sessions":  {"fr": "Séances ciblées",               "en": "Targeted sessions"},
+    "cohort_heatmap":     {"fr": "Heatmap cohorte",               "en": "Cohort heatmap"},
+}
+
+# The "premium intelligent" layer — features that define why premium is worth it.
+# Chemin critique fait explicitement partie de cette couche intelligente.
+PREMIUM_INTELLIGENT = [
+    "adaptive_session", "full_critical_path", "spaced_repetition",
+    "refresh_decay", "exam_simulator", "recommendations",
+]
