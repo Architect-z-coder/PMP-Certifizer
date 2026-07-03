@@ -91,9 +91,10 @@ export async function flagItem(payload) {
   return r.json();
 }
 
-export async function getCohortOverview(cohortId) {
+export async function getCohortOverview(cohortId, trainerId) {
   const u = new URL(`${BASE}/api/cohort/overview`);
   if (cohortId) u.searchParams.set("cohort_id", cohortId);
+  if (trainerId) u.searchParams.set("trainer_id", trainerId);
   const r = await fetch(u);
   if (!r.ok) throw new Error(`cohort/overview ${r.status}`);
   return r.json();

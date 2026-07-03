@@ -135,7 +135,7 @@ export default function App() {
             </div>
             <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, textDecoration: "underline" }}>{t("switchUser")}</button>
           </div>
-          <CockpitFormateur lang={lang} isMobile={isMobile} />
+          <CockpitFormateur lang={lang} isMobile={isMobile} trainerId={learner} />
         </div>
       </div>
     );

@@ -21,7 +21,7 @@ function areaLabel(area, lang) { const o = AREA_LABEL[area]; return o ? (lang ==
 
 function color(m) { return m >= 0.75 ? "#3DA776" : m >= 0.5 ? "#E8A765" : "#D2664E"; }
 
-export default function CockpitFormateur({ lang, isMobile }) {
+export default function CockpitFormateur({ lang, isMobile, trainerId }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
@@ -31,8 +31,8 @@ export default function CockpitFormateur({ lang, isMobile }) {
 
   useEffect(() => {
     setLoading(true);
-    getCohortOverview().then((d) => { setData(d); setLoading(false); }).catch((e) => { setErr(String(e)); setLoading(false); });
-  }, []);
+    getCohortOverview(null, trainerId).then((d) => { setData(d); setLoading(false); }).catch((e) => { setErr(String(e)); setLoading(false); });
+  }, [trainerId]);
 
   if (loading) return <Center>{t("Chargement de la cohorte…", "Loading cohort…")}</Center>;
   if (err || !data) return <Center>{t("Impossible de charger la cohorte. Le serveur se réveille peut-être — réessayez.", "Could not load the cohort. The server may be waking up — try again.")}</Center>;

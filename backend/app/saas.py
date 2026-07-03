@@ -418,3 +418,54 @@ def learner_public_ids_for_cohort(session: Session, cohort_id: int) -> list[str]
         return []
     users = session.exec(select(User).where(User.id.in_(uids))).all()
     return sorted(u.public_id for u in users)
+
+
+# ======================================================================
+# PHASE 2 — Seed de démonstration (Option A)
+# ======================================================================
+def seed_demo_cohort(session: Session, trainer_public_id: str = "formateur") -> dict:
+    """Met en place une démo cloisonnée, idempotente :
+    - une Organization "Démo"
+    - une Cohort "PMP-2026-A"
+    - y rattache TOUS les apprenants existants (learner_id non réservés) comme membres
+    - rattache un formateur (public_id=trainer_public_id) comme trainer
+    Permet de voir le cockpit cloisonné fonctionner sans écrans de gestion."""
+    from .models import Mastery  # local import
+    reserved = {"demo", "formateur", "trainer", "coach", trainer_public_id}
+
+    # 1) organization
+    org = session.exec(select(Organization).where(Organization.name == "Démo")).first()
+    if not org:
+        org = Organization(name="Démo", seats=100, status="active")
+        session.add(org); session.commit(); session.refresh(org)
+
+    # 2) cohort
+    coh = session.exec(select(Cohort).where(Cohort.code == "PMP-2026-A")).first()
+    if not coh:
+        coh = Cohort(code="PMP-2026-A", org_id=org.id, name="Promotion de démonstration")
+        session.add(coh); session.commit(); session.refresh(coh)
+
+    # 3) trainer
+    tu = get_or_create_user(session, trainer_public_id, "Formateur")
+    has = session.exec(select(CohortMembership).where(
+        CohortMembership.cohort_id == coh.id, CohortMembership.user_id == tu.id,
+        CohortMembership.role_in_cohort == "trainer")).first()
+    if not has:
+        session.add(CohortMembership(cohort_id=coh.id, user_id=tu.id, role_in_cohort="trainer"))
+        session.commit()
+
+    # 4) learners = every existing non-reserved learner_id
+    lids = set(r for r in session.exec(select(Mastery.learner_id).distinct()).all()
+               if r and r not in reserved)
+    added = 0
+    for lid in sorted(lids):
+        u = get_or_create_user(session, lid)
+        exists = session.exec(select(CohortMembership).where(
+            CohortMembership.cohort_id == coh.id, CohortMembership.user_id == u.id,
+            CohortMembership.role_in_cohort == "learner")).first()
+        if not exists:
+            session.add(CohortMembership(cohort_id=coh.id, user_id=u.id, role_in_cohort="learner"))
+            added += 1
+    session.commit()
+    return {"org_id": org.id, "cohort_id": coh.id, "cohort_code": coh.code,
+            "trainer": trainer_public_id, "learners_linked": added, "learners_total": len(lids)}

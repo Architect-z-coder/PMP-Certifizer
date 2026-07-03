@@ -483,7 +483,39 @@ def list_flags(session: Session = Depends(get_session)):
 _RESERVED_LEARNERS = {"demo", "formateur", "trainer"}
 
 
-def _cohort_learner_ids(session: Session, cohort_id: Optional[str]) -> list[str]:
+def _cohort_learner_ids(session: Session, cohort_id: Optional[str],
+                        trainer_id: Optional[str] = None) -> list[str]:
+    """Resolve the set of learner_ids the cockpit should aggregate.
+
+    Priority (server-side scoping — spec §4):
+    1. If a trainer_id is given, restrict to the learners of THAT trainer's
+       cohorts via CohortMembership (real cloisonnement). A trainer never sees
+       learners outside their cohorts.
+    2. Else if a cohort code is given, use the real Cohort + memberships.
+    3. Else fall back to the legacy prefix behavior (demo / all learners).
+    """
+    # 1) trainer-scoped: only their cohorts' learners (strict cloisonnement).
+    # Applies to any provided trainer_id, including "formateur" (demo trainer).
+    if trainer_id:
+        tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
+        pubs: list[str] = []
+        if tu:
+            for cid in saas.cohorts_where_trainer(session, tu.id):
+                pubs.extend(saas.learner_public_ids_for_cohort(session, cid))
+        # A named trainer only ever sees their own cohorts — unknown or cohort-less
+        # trainers see nothing. Never fall through to "all learners".
+        return sorted(set(pubs))
+
+    # 2) explicit cohort code -> real cohort membership
+    if cohort_id and cohort_id not in ("", "all"):
+        coh = session.exec(select(saas.Cohort).where(saas.Cohort.code == cohort_id)).first()
+        if coh:
+            pubs = saas.learner_public_ids_for_cohort(session, coh.id)
+            if pubs:
+                return sorted(set(pubs))
+        # fall through to legacy prefix if no real cohort found
+
+    # 3) legacy: all non-reserved learners, optional string-prefix filter
     rows = session.exec(select(Mastery.learner_id).distinct()).all()
     ids = [r for r in rows if r and r not in _RESERVED_LEARNERS]
     if cohort_id and cohort_id not in ("", "all"):
@@ -494,11 +526,21 @@ def _cohort_learner_ids(session: Session, cohort_id: Optional[str]) -> list[str]
     return sorted(ids)
 
 
+@app.post("/api/admin/seed-demo-cohort")
+def seed_demo_cohort_endpoint(trainer_id: Optional[str] = "formateur",
+                              session: Session = Depends(get_session)):
+    """One-shot demo setup (Option A): creates org + PMP-2026-A cohort, links all
+    existing learners and a trainer. Idempotent. Lets the cloisonné cockpit work."""
+    return saas.seed_demo_cohort(session, trainer_id or "formateur")
+
+
 @app.get("/api/cohort/overview")
-def cohort_overview(cohort_id: Optional[str] = None, session: Session = Depends(get_session)):
+def cohort_overview(cohort_id: Optional[str] = None, trainer_id: Optional[str] = None,
+                    session: Session = Depends(get_session)):
     """Everything the trainer cockpit needs, aggregated across the cohort.
-    Reuses the exact same per-learner math (readiness, levers, staleness)."""
-    learner_ids = _cohort_learner_ids(session, cohort_id)
+    Reuses the exact same per-learner math (readiness, levers, staleness).
+    When trainer_id is given, results are cloisonnés to that trainer's cohorts."""
+    learner_ids = _cohort_learner_ids(session, cohort_id, trainer_id)
     n = len(learner_ids)
 
     # per-learner readiness + activity
