@@ -463,6 +463,126 @@ def list_flags(session: Session = Depends(get_session)):
              "reason": r.reason, "at": r.created_at.isoformat()} for r in rows]
 
 
+# ---------- COHORT AGGREGATION (trainer cockpit) ----------
+# A cohort is, for now, the set of distinct learner_ids present in Mastery,
+# excluding reserved/trainer accounts. No schema change: cohort membership is
+# derived. `cohort_id` is accepted for forward-compat (learner_ids sharing a
+# prefix like "PMP-2026-A:") but defaults to "all real learners".
+_RESERVED_LEARNERS = {"demo", "formateur", "trainer"}
+
+
+def _cohort_learner_ids(session: Session, cohort_id: Optional[str]) -> list[str]:
+    rows = session.exec(select(Mastery.learner_id).distinct()).all()
+    ids = [r for r in rows if r and r not in _RESERVED_LEARNERS]
+    if cohort_id and cohort_id not in ("", "all"):
+        pref = cohort_id if cohort_id.endswith(":") else cohort_id + ":"
+        scoped = [i for i in ids if i.startswith(pref)]
+        if scoped:
+            ids = scoped
+    return sorted(ids)
+
+
+@app.get("/api/cohort/overview")
+def cohort_overview(cohort_id: Optional[str] = None, session: Session = Depends(get_session)):
+    """Everything the trainer cockpit needs, aggregated across the cohort.
+    Reuses the exact same per-learner math (readiness, levers, staleness)."""
+    learner_ids = _cohort_learner_ids(session, cohort_id)
+    n = len(learner_ids)
+
+    # per-learner readiness + activity
+    learners = []
+    now = datetime.utcnow()
+    for lid in learner_ids:
+        rows = _mastery_rows(session, lid)
+        rd = readiness_from_masteries(rows)
+        total_attempts = sum(int(r.get("attempts", 0) or 0) for r in rows)
+        # last activity across this learner's mastery rows
+        last = session.exec(select(Mastery.updated_at).where(Mastery.learner_id == lid)
+                            .order_by(Mastery.updated_at.desc())).first()
+        days_inactive = round((now - last).total_seconds() / 86400.0, 1) if last else None
+        # display name = part after "cohort:" prefix if present, else id
+        disp = lid.split(":", 1)[1] if ":" in lid else lid
+        learners.append({"learner_id": lid, "name": disp,
+                         "readiness": round(rd["score"], 4),
+                         "attempts": total_attempts,
+                         "days_inactive": days_inactive})
+
+    # cohort-average mastery per KA area (only counting learners who attempted it)
+    area_scores: dict = {}
+    for lid in learner_ids:
+        for r in _mastery_rows(session, lid):
+            if (r.get("attempts", 0) or 0) > 0:
+                area_scores.setdefault(r["area"], []).append(r["score"])
+    per_area = []
+    for k in KA:
+        vals = area_scores.get(k["id"], [])
+        avg = sum(vals) / len(vals) if vals else 0.0
+        weak = sum(1 for v in vals if v < 0.5)
+        per_area.append({"area": k["id"], "fr": k["fr"], "en": k["en"],
+                         "domain": AREA_DOMAIN.get(k["id"], ""),
+                         "avg": round(avg, 4), "learners_tested": len(vals),
+                         "learners_fragile": weak,
+                         "priority": round((k["n"] / TOTAL_N) * (1.0 - avg), 4)})
+
+    # cohort readiness = mean of per-learner readiness (real coverage)
+    cohort_ready = round(sum(l["readiness"] for l in learners) / n, 4) if n else 0.0
+    ready_ct = sum(1 for l in learners if l["readiness"] >= 0.85)
+    building_ct = sum(1 for l in learners if 0.5 <= l["readiness"] < 0.85)
+    risk_ct = sum(1 for l in learners if l["readiness"] < 0.5)
+    active7 = sum(1 for l in learners if l["days_inactive"] is not None and l["days_inactive"] <= 7)
+
+    # fragile topics = weakest ATTEMPTED cohort areas by priority (weight x weakness).
+    # Untouched areas (no learner tested) are excluded — a trainer wants topics the
+    # cohort is struggling with, not topics simply not yet covered.
+    attempted = [a for a in per_area if a["learners_tested"] > 0]
+    fragile = sorted(attempted, key=lambda x: x["priority"], reverse=True)[:5]
+    not_started = [{"area": a["area"], "fr": a["fr"], "en": a["en"], "domain": a["domain"]}
+                   for a in per_area if a["learners_tested"] == 0]
+
+    # critical path (collective) = same priority ordering, top 4 attempted
+    crit = [{"area": a["area"], "fr": a["fr"], "en": a["en"], "domain": a["domain"],
+             "avg": a["avg"]} for a in fragile[:4]]
+
+    # action groups by readiness band
+    def band(l):
+        if l["days_inactive"] is not None and l["days_inactive"] > 7:
+            return "accompany"
+        if l["readiness"] < 0.5:
+            return "accompany"
+        if l["readiness"] < 0.7:
+            return "consolidate"
+        if l["readiness"] < 0.85:
+            return "challenge"
+        return "maintain"
+    groups = {"accompany": [], "consolidate": [], "challenge": [], "maintain": []}
+    for l in learners:
+        groups[band(l)].append(l)
+
+    # flags summary (quality loop) — count per item
+    flags = session.exec(select(Flag)).all()
+    fmap: dict = {}
+    for f in flags:
+        e = fmap.setdefault(f.item_external_id, {"external_id": f.item_external_id, "count": 0, "reasons": []})
+        e["count"] += 1
+        if f.reason:
+            e["reasons"].append(f.reason)
+    flag_list = sorted(fmap.values(), key=lambda x: x["count"], reverse=True)[:8]
+
+    return {
+        "cohort_id": cohort_id or "all",
+        "size": n,
+        "learners": learners,
+        "readiness": {"score": cohort_ready, "ready": ready_ct,
+                      "building": building_ct, "at_risk": risk_ct, "active7": active7},
+        "per_area": per_area,
+        "fragile_topics": fragile,
+        "not_started": not_started,
+        "critical_path": crit,
+        "groups": {k: v for k, v in groups.items()},
+        "flags": flag_list,
+    }
+
+
 @app.get("/api/items")
 def list_items(area: Optional[str] = None, session: Session = Depends(get_session)):
     q = select(Item)

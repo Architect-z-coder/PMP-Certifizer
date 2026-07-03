@@ -40,6 +40,7 @@ export const T = {
   namePh: { fr: "Ton nom ou un code…", en: "Your name or a code…" },
   startBtn: { fr: "Commencer", en: "Start" },
   switchUser: { fr: "changer", en: "switch" },
+  cockpitTitle: { fr: "Cockpit formateur", en: "Trainer cockpit" },
   flag: { fr: "⚑ Signaler cette question", en: "⚑ Report this question" },
   flagged: { fr: "✓ Signalé — merci", en: "✓ Reported — thanks" },
   focus: { fr: "Sujet", en: "Focus" }, mode: { fr: "Mode", en: "Mode" },

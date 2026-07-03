@@ -4,6 +4,7 @@ import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOP
 import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed } from "./api.js";
 import Journey from "./Journey.jsx";
 import CarteMentale from "./CarteMentale.jsx";
+import CockpitFormateur from "./CockpitFormateur.jsx";
 
 const readLS = (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } };
 const slugify = (s) => s.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40);
@@ -113,6 +114,28 @@ export default function App() {
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
 
   if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} t={t} />;
+
+  // Trainer access: logging in as "formateur" opens the cohort cockpit instead of the learner UI.
+  const isFormateur = ["formateur", "trainer", "coach"].includes((learner || "").toLowerCase()) || (learnerName || "").toLowerCase() === "formateur";
+  if (isFormateur) {
+    return (
+      <div style={{ background: C.ink, fontFamily: "'Inter', system-ui, sans-serif", color: C.text }}>
+        <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap'); *{box-sizing:border-box} body{margin:0} .ak-scroll::-webkit-scrollbar{width:9px} .ak-scroll::-webkit-scrollbar-thumb{background:#C3CDD7;border-radius:9px}`}</style>
+        <div style={{ height: "100dvh", minHeight: "100vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 20px", borderBottom: `1px solid ${C.inkLine}`, background: C.ink }}>
+            <svg width="24" height="24" viewBox="0 0 40 40"><polygon points="20,6 34,32 6,32" fill="none" stroke={C.amber} strokeWidth="2" strokeLinejoin="round" /></svg>
+            <span style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 17, color: "#fff" }}>Certifizer <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: C.muted }}>PMP</span></span>
+            <span style={{ fontSize: 12, color: "#9DB0C2" }}>{t("cockpitTitle")}</span>
+            <div style={{ marginLeft: "auto", display: "flex", gap: 2, background: C.ink2, borderRadius: 8, padding: 2, border: `1px solid ${C.inkLine}` }}>
+              {["fr", "en"].map((l) => <button key={l} onClick={() => setLang(l)} style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 11, padding: "3px 9px", borderRadius: 6, background: lang === l ? C.amber : "transparent", color: lang === l ? C.ink : "#9DB0C2", fontWeight: 600, border: "none" }}>{l.toUpperCase()}</button>)}
+            </div>
+            <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, textDecoration: "underline" }}>{t("switchUser")}</button>
+          </div>
+          <CockpitFormateur lang={lang} isMobile={isMobile} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ background: C.ink, fontFamily: "'Inter', system-ui, sans-serif", color: C.text }}>
