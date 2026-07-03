@@ -33,15 +33,17 @@ export default function App() {
   const [reflexes, setReflexes] = useState([]);
   const [learner, setLearner] = useState(() => readLS("cz_learner"));
   const [learnerName, setLearnerName] = useState(() => readLS("cz_name"));
-  function signIn(name) {
+  const [role, setRole] = useState(() => readLS("cz_role"));
+  function signIn(name, asTrainer = false) {
     const nm = name.trim(); if (!nm) return;
     const slug = slugify(nm) || ("u" + Date.now());
-    try { localStorage.setItem("cz_learner", slug); localStorage.setItem("cz_name", nm); } catch { /* private mode */ }
-    setLearner(slug); setLearnerName(nm);
+    const r = asTrainer ? "trainer" : "learner";
+    try { localStorage.setItem("cz_learner", slug); localStorage.setItem("cz_name", nm); localStorage.setItem("cz_role", r); } catch { /* private mode */ }
+    setLearner(slug); setLearnerName(nm); setRole(r);
   }
   function signOut() {
-    try { localStorage.removeItem("cz_learner"); localStorage.removeItem("cz_name"); } catch { /* */ }
-    setLearner(""); setLearnerName(""); setMessages([]); setMastery([]); setProcesses([]); setReflexes([]); setRecommended(null); setModeId("explain"); setFocusId("overview");
+    try { localStorage.removeItem("cz_learner"); localStorage.removeItem("cz_name"); localStorage.removeItem("cz_role"); } catch { /* */ }
+    setLearner(""); setLearnerName(""); setRole(""); setMessages([]); setMastery([]); setProcesses([]); setReflexes([]); setRecommended(null); setModeId("explain"); setFocusId("overview");
   }
   const SEAT_COLOR = { moa: "#2E8C9E", moe: "#C57B2C", both: "#8A6FB0" };
   const savedTexts = new Set(reflexes.map((r) => r.text));
@@ -115,8 +117,8 @@ export default function App() {
 
   if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} t={t} />;
 
-  // Trainer access: logging in as "formateur" opens the cohort cockpit instead of the learner UI.
-  const isFormateur = ["formateur", "trainer", "coach"].includes((learner || "").toLowerCase()) || (learnerName || "").toLowerCase() === "formateur";
+  // Trainer access: chosen via the "Accès formateur" panel (role flag), or the legacy "formateur" keyword.
+  const isFormateur = role === "trainer" || ["formateur", "trainer", "coach"].includes((learner || "").toLowerCase()) || (learnerName || "").toLowerCase() === "formateur";
   if (isFormateur) {
     return (
       <div style={{ background: C.ink, fontFamily: "'Inter', system-ui, sans-serif", color: C.text }}>
@@ -804,9 +806,9 @@ function Gate({ lang, setLang, onStart, t }) {
           <>
             <div style={{ borderTop: `1px solid ${C.inkLine}`, marginTop: 4, paddingTop: 18 }}>
               <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: C.teal, marginBottom: 12 }}>🎛️ {t("trainerAccess")}</div>
-              <input value={trainerName} onChange={(e) => setTrainerName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && trainerName.trim()) onStart(trainerName); }} placeholder={t("trainerPh")} autoFocus
+              <input value={trainerName} onChange={(e) => setTrainerName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && trainerName.trim()) onStart(trainerName, true); }} placeholder={t("trainerPh")} autoFocus
                 style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
-              <button onClick={() => onStart(trainerName)} disabled={!trainerName.trim()}
+              <button onClick={() => onStart(trainerName, true)} disabled={!trainerName.trim()}
                 style={{ width: "100%", padding: "12px", border: `1px solid ${trainerName.trim() ? C.teal : C.inkLine}`, borderRadius: 11, background: "transparent", color: trainerName.trim() ? "#EAF0F6" : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
                 {t("trainerOpen")}
               </button>
