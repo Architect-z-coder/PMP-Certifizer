@@ -14,6 +14,7 @@ from datetime import datetime, timedelta
 from .models import (Item, Attempt, Mastery, ProcessMastery, Reflexe, Flag,
                      MissedQueue, engine, init_db, get_session)
 from . import llm
+from . import saas
 from .prompts import build_system
 from .mastery import (apply_result, light, recommend, KA, KA_IDS, TOTAL_N,
                       difficulties_for, SR_INTERVALS_DAYS, SR_MAX_STAGE,
@@ -243,10 +244,21 @@ def quiz_answer(body: QuizAnswer, session: Session = Depends(get_session)):
     it = session.exec(select(Item).where(Item.external_id == body.external_id)).first()
     if it is None:
         return {"error": "unknown item"}
+    # Anti-abuse ceiling only (spec: freemium is feature-based, not usage-punitive).
+    # This is set high enough to never hit in normal study; it just guards cost/abuse.
+    user = saas.get_or_create_user(session, body.learner_id)
+    if not saas.can_answer(session, user.id):
+        return {"error": "rate_limited", "plan": saas.effective_plan(session, user.id),
+                "limit": saas.FREE_LIMIT_PER_DAY,
+                "message_fr": "Vous avez répondu à énormément de questions aujourd'hui. Faites une pause et revenez demain — votre progression est enregistrée.",
+                "message_en": "You've answered a great many questions today. Take a break and come back tomorrow — your progress is saved."}
     correct = (body.choice_index == it.answer_index)
     result = "correct" if correct else "incorrect"
     record(session, body.learner_id, it.knowledge_area, result, "quiz",
            item_external_id=it.external_id, pmbok_ref=it.pmbok_ref)
+    # Count this answer against the daily quota only for free users.
+    if saas.effective_plan(session, user.id) == "free":
+        saas.record_answer(session, user.id)
     ml = mastery_list(session, body.learner_id)
     return {"correct": correct, "answer_index": it.answer_index,
             "rationale": {"fr": it.rationale_fr, "en": it.rationale_en},
@@ -583,7 +595,27 @@ def cohort_overview(cohort_id: Optional[str] = None, session: Session = Depends(
     }
 
 
-@app.get("/api/items")
+@app.get("/api/me")
+def get_me(learner_id: str, session: Session = Depends(get_session)):
+    """Who is connected + effective plan + feature access map + anti-abuse quota.
+    The freemium model is FEATURE-BASED: the frontend reads `features` to decide
+    what to show full, in preview, or locked. DailyUsage is only anti-abuse."""
+    user = saas.get_or_create_user(session, learner_id)
+    plan = saas.effective_plan(session, user.id)
+    used = saas.usage_today(session, user.id).questions_answered
+    remaining = None if plan == "premium" else max(0, saas.FREE_LIMIT_PER_DAY - used)
+    return {
+        "user": {"id": user.id, "public_id": user.public_id, "name": user.name,
+                 "created_from": user.created_from},
+        "roles": saas.roles_for(session, user.id),
+        "effective_plan": plan,
+        "features": saas.features_for(session, user.id),
+        "anti_abuse_limit": saas.FREE_LIMIT_PER_DAY,
+        "questions_used_today": used,
+        "questions_remaining_today": remaining,
+    }
+
+
 def list_items(area: Optional[str] = None, session: Session = Depends(get_session)):
     q = select(Item)
     if area:
@@ -595,3 +627,11 @@ def list_items(area: Optional[str] = None, session: Session = Depends(get_sessio
 init_db()
 from .seed import load_item_banks  # noqa: E402
 load_item_banks()
+
+# Backfill: turn existing learner_ids into User rows (idempotent, safe every boot).
+try:
+    with Session(engine) as _s:
+        saas.migrate_learners(_s)
+except Exception:
+    # Never let a backfill probe crash startup; it retries next boot.
+    pass

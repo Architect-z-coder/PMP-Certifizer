@@ -146,6 +146,9 @@ def _ensure_columns() -> None:
 
 
 def init_db() -> None:
+    # Register SaaS Phase 1 tables (User, UserRole, Entitlement, DailyUsage) so
+    # create_all picks them up. Import here to avoid a circular import at module load.
+    from . import saas  # noqa: F401
     SQLModel.metadata.create_all(engine)
     _ensure_columns()
 
