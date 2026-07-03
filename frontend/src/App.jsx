@@ -485,6 +485,8 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
       {/* SESSION DU JOUR */}
       <SessionCard lang={lang} learnerId={learnerId} onStart={(items) => setRunner(items)} p={p} />
 
+      <IntelligentFeatures lang={lang} me={me} />
+
       <div style={{ display: isMobile ? "block" : "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         {/* MAÎTRISE PAR DOMAINE */}
         <Card title={p("byDomain")} mb={isMobile ? 12 : 0}>
@@ -846,6 +848,90 @@ function useIsMobile(breakpoint = 768) {
     };
   }, [breakpoint]);
   return mobile;
+}
+
+function IntelligentFeatures({ lang, me }) {
+  const [showUpgrade, setShowUpgrade] = React.useState(false);
+  const t = (fr, en) => (lang === "en" ? en : fr);
+  if (!me || !me.features) return null;
+  const f = me.features;
+  const plan = me.effective_plan;
+  const premium = plan === "premium" || plan === "institution";
+
+  // The premium intelligent features to surface as cards.
+  const cards = [
+    { key: "exam_simulator", icon: "\u{1F4DD}",
+      descFr: "Entraînez-vous dans les conditions réelles : 180 questions, 230 minutes, score prédictif par domaine.",
+      descEn: "Train in real conditions: 180 questions, 230 minutes, predictive score per domain." },
+    { key: "spaced_repetition", icon: "\u{1F9E0}",
+      descFr: "Le système réintroduit vos erreurs au bon moment pour ancrer durablement vos acquis.",
+      descEn: "The system reintroduces your mistakes at the right time to lock in what you learn." },
+  ];
+
+  return (
+    <>
+      <div style={{ marginTop: 12 }}>
+        <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14, marginBottom: 3 }}>{t("Fonctions intelligentes", "Intelligent features")}</div>
+        <div style={{ fontSize: 11.5, color: C.muted, marginBottom: 11 }}>{premium ? t("Débloquées avec votre plan.", "Unlocked with your plan.") : t("La couche qui vous guide vraiment — incluse en Premium.", "The layer that truly guides you — included with Premium.")}</div>
+        <div style={{ display: isMobileWidth() ? "block" : "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          {cards.map((c) => {
+            const access = (f[c.key] && f[c.key].access) || "none";
+            const label = (f[c.key] && f[c.key].label) ? f[c.key].label[lang] : c.key;
+            const locked = access === "none";
+            return (
+              <div key={c.key} style={{
+                background: locked ? "linear-gradient(135deg,#1B2E45,#0E1A2B)" : C.card,
+                border: locked ? "1px solid rgba(255,255,255,.08)" : `1px solid ${C.line}`,
+                borderRadius: 14, padding: 16, color: locked ? "#EAF0F6" : C.text, position: "relative",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 8 }}>
+                  <span style={{ width: 34, height: 34, borderRadius: 9, background: locked ? "rgba(232,154,60,.16)" : "#F1EAF7", border: locked ? `1px solid ${C.amber}` : "none", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>{locked ? "\u{1F512}" : c.icon}</span>
+                  <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14 }}>{label}</div>
+                </div>
+                <div style={{ fontSize: 12, lineHeight: 1.5, color: locked ? "#B8C7D6" : C.muted, marginBottom: locked ? 12 : 0 }}>{lang === "en" ? c.descEn : c.descFr}</div>
+                {locked && (
+                  <button onClick={() => setShowUpgrade(true)} style={{ border: "none", borderRadius: 9, background: C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 12, padding: "9px 14px", cursor: "pointer", width: "100%" }}>{t("Débloquer avec Premium", "Unlock with Premium")}</button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {showUpgrade && <UpgradeModal lang={lang} onClose={() => setShowUpgrade(false)} />}
+    </>
+  );
+}
+
+function UpgradeModal({ lang, onClose }) {
+  const t = (fr, en) => (lang === "en" ? en : fr);
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(6,11,18,.72)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 300, padding: 20 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: C.card, borderRadius: 16, maxWidth: 460, width: "100%", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,.5)" }}>
+        <div style={{ height: 3, background: "linear-gradient(90deg,#E89A3C,#2E8C9E)" }} />
+        <div style={{ padding: "22px 24px" }}>
+          <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 18, marginBottom: 5 }}>{t("Certifizer est utile gratuitement. Il devient intelligent en Premium.", "Certifizer is useful for free. It becomes intelligent with Premium.")}</div>
+          <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.5, marginBottom: 16 }}>{t("Vous préparez déjà votre examen avec la pratique, la carte et votre score. Premium ajoute la couche qui vous guide vraiment.", "You already prepare with practice, the map and your score. Premium adds the layer that truly guides you.")}</div>
+          <div style={{ display: "flex", gap: 10, marginBottom: 16 }}>
+            <div style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 11, padding: 12 }}>
+              <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9.5, textTransform: "uppercase", letterSpacing: .5, color: C.muted, marginBottom: 8 }}>{t("Gratuit — vous l'avez", "Free — you have it")}</div>
+              {[t("Pratique des questions", "Question practice"), t("Carte PMP de base", "Basic PMP map"), t("Score de préparation", "Readiness score"), t("Aperçu des zones faibles", "Weak-area preview")].map((x, i) => <div key={i} style={{ fontSize: 11.5, lineHeight: 1.6, color: C.text }}>✓ {x}</div>)}
+            </div>
+            <div style={{ flex: 1, border: `1px solid ${C.amber}`, borderRadius: 11, padding: 12, background: "linear-gradient(180deg,rgba(232,154,60,.05),#fff)" }}>
+              <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9.5, textTransform: "uppercase", letterSpacing: .5, color: "#B5701E", marginBottom: 8 }}>{t("Premium — l'intelligence", "Premium — intelligence")}</div>
+              {[t("Séances adaptatives complètes", "Full adaptive sessions"), t("Chemin critique complet", "Full critical path"), t("Apprentissage adaptatif", "Adaptive learning"), t("Simulateur d'examen", "Exam simulator")].map((x, i) => <div key={i} style={{ fontSize: 11.5, lineHeight: 1.6, color: C.text }}>✓ {x}</div>)}
+            </div>
+          </div>
+          <button style={{ border: "none", borderRadius: 11, background: C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14, padding: "12px", cursor: "pointer", width: "100%" }}>{t("Passer à Premium", "Go Premium")}</button>
+          <div style={{ textAlign: "center", fontSize: 10.5, color: C.muted, marginTop: 9 }}>{t("Vous gardez toute votre progression. Aucune donnée ne se perd.", "You keep all your progress. Nothing is lost.")}</div>
+          <button onClick={onClose} style={{ display: "block", margin: "12px auto 0", background: "none", border: "none", color: C.muted, fontSize: 12, cursor: "pointer", textDecoration: "underline" }}>{t("Plus tard", "Later")}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function isMobileWidth() {
+  return typeof window !== "undefined" && window.innerWidth < 640;
 }
 
 function PlanBadge({ plan, lang }) {
