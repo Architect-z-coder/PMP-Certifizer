@@ -64,6 +64,47 @@ class DailyUsage(SQLModel, table=True):
 
 
 # ======================================================================
+# PHASE 2 — Institution : Organization, Cohort, CohortMembership
+# ======================================================================
+# Le cloisonnement B2B repose sur ces trois tables. Une organisation contient
+# des cohortes ; une cohorte contient des membres (apprenants + formateurs) via
+# CohortMembership (le pivot identité <-> appartenance de la spec §2.4).
+
+class Organization(SQLModel, table=True):
+    """Un client institutionnel. Frontière de cloisonnement : aucune donnée ne
+    traverse une organisation (spec §1.2)."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    name: str = ""
+    status: str = "active"                # active | suspended | trial
+    seats: int = 0                         # quota de licences
+    renewal_at: Optional[datetime] = Field(default=None)
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class Cohort(SQLModel, table=True):
+    """Une promo, identifiée par un code générique (ex. PMP-2026-A)."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    code: str = Field(index=True)          # ex. "PMP-2026-A"
+    org_id: int = Field(index=True, foreign_key="organization.id")
+    name: str = ""
+    exam_date: Optional[date] = Field(default=None)
+    status: str = "active"                 # active | archived
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class CohortMembership(SQLModel, table=True):
+    """Le pivot identité <-> appartenance (spec §2.4, Option A).
+    Le rôle formateur dans une cohorte est porté par role_in_cohort='trainer'."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    cohort_id: int = Field(index=True, foreign_key="cohort.id")
+    user_id: int = Field(index=True, foreign_key="user.id")
+    role_in_cohort: str = "learner"        # learner | assistant | trainer
+    status: str = "active"                 # active | invited | removed
+    joined_at: datetime = Field(default_factory=datetime.utcnow)
+    removed_at: Optional[datetime] = Field(default=None)
+
+
+# ======================================================================
 # 4. Resolver — effective_plan
 # ======================================================================
 PREMIUM_PLANS = ("premium", "institution")
@@ -329,3 +370,51 @@ PREMIUM_INTELLIGENT = [
     "adaptive_session", "full_critical_path", "spaced_repetition",
     "refresh_decay", "exam_simulator", "recommendations",
 ]
+
+
+# ======================================================================
+# PHASE 2 — Cloisonnement : résolution des périmètres (server-side)
+# ======================================================================
+def cohorts_where_trainer(session: Session, user_id: int) -> list[int]:
+    """IDs des cohortes où l'utilisateur est formateur actif (filtre de périmètre)."""
+    rows = session.exec(
+        select(CohortMembership.cohort_id).where(
+            CohortMembership.user_id == user_id,
+            CohortMembership.role_in_cohort == "trainer",
+            CohortMembership.status == "active",
+        )
+    ).all()
+    return sorted(set(rows))
+
+
+def cohort_learner_user_ids(session: Session, cohort_id: int) -> list[int]:
+    """User IDs des apprenants actifs d'une cohorte."""
+    rows = session.exec(
+        select(CohortMembership.user_id).where(
+            CohortMembership.cohort_id == cohort_id,
+            CohortMembership.role_in_cohort == "learner",
+            CohortMembership.status == "active",
+        )
+    ).all()
+    return sorted(set(rows))
+
+
+def org_of_cohort(session: Session, cohort_id: int) -> Optional[int]:
+    c = session.exec(select(Cohort).where(Cohort.id == cohort_id)).first()
+    return c.org_id if c else None
+
+
+def cohorts_in_org(session: Session, org_id: int) -> list[int]:
+    rows = session.exec(select(Cohort.id).where(Cohort.org_id == org_id,
+                                                Cohort.status == "active")).all()
+    return sorted(set(rows))
+
+
+def learner_public_ids_for_cohort(session: Session, cohort_id: int) -> list[str]:
+    """public_id (= learner_id) des apprenants d'une cohorte — pour brancher
+    l'agrégation cockpit existante, qui travaille sur des learner_id."""
+    uids = cohort_learner_user_ids(session, cohort_id)
+    if not uids:
+        return []
+    users = session.exec(select(User).where(User.id.in_(uids))).all()
+    return sorted(u.public_id for u in users)
