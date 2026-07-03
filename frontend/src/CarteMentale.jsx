@@ -53,7 +53,7 @@ function nodeColor(o) {
   return o.m >= 0.75 ? "#3DA776" : o.m >= 0.5 ? "#E8A765" : "#D2664E";
 }
 
-export default function CarteMentale({ lang, readiness, levers, masteryByArea, onStudyArea, isMobile }) {
+export default function CarteMentale({ lang, readiness, levers, features, masteryByArea, onStudyArea, isMobile }) {
   const [dens, setDens] = useState(13);
   const [selected, setSelected] = useState(null);
   const [focus, setFocus] = useState(false);
@@ -100,7 +100,15 @@ export default function CarteMentale({ lang, readiness, levers, masteryByArea, o
     });
     return ids.slice(0, 4);
   }, [levers, dens]);
-  const recIndex = (id) => { const i = recNodeIds.indexOf(id); return i < 0 ? 0 : i + 1; };
+
+  // Freemium gate: the critical path is a premium intelligent feature.
+  // Free plan gets a preview (first N steps); the rest is teased, not hidden.
+  const cpFeature = features && features.full_critical_path;
+  const cpPreview = cpFeature && cpFeature.access === "preview";
+  const cpLimit = (cpFeature && cpFeature.preview_limit) || 2;
+  const recNodeShown = cpPreview ? recNodeIds.slice(0, cpLimit) : recNodeIds;
+  const cpHidden = Math.max(0, recNodeIds.length - recNodeShown.length);
+  const recIndex = (id) => { const i = recNodeShown.indexOf(id); return i < 0 ? 0 : i + 1; };
 
   // nodes for current density
   const nodes = dens === 13 ? THEMES.map((t) => ({ id: t.id, d: t.d })) : ALL_TASKS.map((t) => ({ id: t.id, d: t.d }));
@@ -163,7 +171,7 @@ export default function CarteMentale({ lang, readiness, levers, masteryByArea, o
           <div style={{ fontSize: 12.5, lineHeight: 1.6, color: "#D6E0EA" }}>
             {t("« Voici ma carte PMP. En vert, les sujets maîtrisés ; en orange, en progression ; en rouge, mes priorités. Mon chemin critique : ",
                "\u201cHere is my PMP map. Green means mastered, orange in progress, red my priorities. My critical path: ")}
-            <b style={{ color: C.amber }}>{recNodeIds.map((id) => infoOf(id).l).join(" → ")}</b>. »
+            <b style={{ color: C.amber }}>{recNodeShown.map((id) => infoOf(id).l).join(" → ")}</b>. »
           </div>
         </div>
       )}
@@ -184,9 +192,9 @@ export default function CarteMentale({ lang, readiness, levers, masteryByArea, o
               return <path key={"e" + n.id} d={`M${hub.x} ${hub.y} Q ${(hub.x + p.x) / 2} ${(hub.y + p.y) / 2} ${p.x} ${p.y}`} fill="none" stroke="#C4D0DB" strokeWidth="1.4" style={{ opacity: dim ? 0.18 : 0.9 }} />;
             })}
             {/* recommended path (chemin critique) */}
-            {recNodeIds.map((id, i) => {
-              if (i === recNodeIds.length - 1) return null;
-              const a = P[id], b = P[recNodeIds[i + 1]]; if (!a || !b) return null;
+            {recNodeShown.map((id, i) => {
+              if (i === recNodeShown.length - 1) return null;
+              const a = P[id], b = P[recNodeShown[i + 1]]; if (!a || !b) return null;
               return <path key={"rec" + i} d={`M${a.x} ${a.y} C ${(a.x + b.x) / 2} ${a.y},${(a.x + b.x) / 2} ${b.y},${b.x} ${b.y}`} fill="none" stroke="#8A6FB0" strokeWidth="3.4" strokeDasharray="7 5" markerEnd="url(#cmArw)">
                 <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.1s" repeatCount="indefinite" /></path>;
             })}
@@ -220,6 +228,16 @@ export default function CarteMentale({ lang, readiness, levers, masteryByArea, o
               </g>;
             })}
           </svg>
+          {cpHidden > 0 && (
+            <div style={{ margin: "0 13px 10px", background: "linear-gradient(180deg,rgba(232,154,60,.06),rgba(232,154,60,.13))", border: `1px dashed ${C.amber}`, borderRadius: 11, padding: "11px 13px", display: "flex", alignItems: "center", gap: 11 }}>
+              <span style={{ fontSize: 17 }}>✨</span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#16202E" }}>{t(`+ ${cpHidden} étape${cpHidden > 1 ? "s" : ""} de votre chemin critique en Premium`, `+ ${cpHidden} more step${cpHidden > 1 ? "s" : ""} of your critical path with Premium`)}</div>
+                <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.4 }}>{t("Premium révèle votre chemin critique complet, calculé sur toutes vos zones.", "Premium reveals your full critical path, computed across all your areas.")}</div>
+              </div>
+              <button style={{ border: "none", borderRadius: 9, background: C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 11.5, padding: "8px 13px", cursor: "pointer", whiteSpace: "nowrap" }}>{t("Voir Premium", "See Premium")}</button>
+            </div>
+          )}
           {/* legend */}
           <div style={{ display: "flex", gap: 11, flexWrap: "wrap", alignItems: "center", padding: "9px 13px", borderTop: `1px solid ${C.line}`, background: "rgba(255,255,255,.94)", fontSize: 10.5, color: C.muted }}>
             <Lg c="#D2664E" x={t("Fragile", "Fragile")} />

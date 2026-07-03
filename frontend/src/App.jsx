@@ -329,7 +329,7 @@ export default function App() {
             {modeId === "parcours" ? (
               <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
             ) : modeId === "prepa" ? (
-              <PrepaPanel lang={lang} learnerId={learner} learnerName={learnerName} mastery={mastery} reflexes={reflexes} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
+              <PrepaPanel lang={lang} learnerId={learner} learnerName={learnerName} mastery={mastery} reflexes={reflexes} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} me={me} />
             ) : modeId === "quiz" ? (
               <QuizPanel lang={lang} area={isKA ? focusId : null} learnerId={learner} onGraded={onGraded} t={t} />
             ) : (
@@ -387,7 +387,7 @@ export default function App() {
   );
 }
 
-function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyArea, isMobile }) {
+function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyArea, isMobile, me }) {
   const [data, setData] = useState(null);
   const [missed, setMissed] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -469,6 +469,7 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
         lang={lang}
         readiness={rd}
         levers={data.top_levers || []}
+        features={me && me.features}
         masteryByArea={(() => {
           const staleAreas = new Set((data.stale_mastered || []).map((s) => s.area));
           const out = {};
