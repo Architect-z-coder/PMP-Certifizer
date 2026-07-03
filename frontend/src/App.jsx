@@ -777,6 +777,8 @@ function Center({ children }) {
 
 function Gate({ lang, setLang, onStart, t }) {
   const [name, setName] = useState("");
+  const [trainerOpen, setTrainerOpen] = useState(false);
+  const [trainerName, setTrainerName] = useState("");
   return (
     <div style={{ background: C.ink, minHeight: "100vh", height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Inter', system-ui, sans-serif" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap'); body{margin:0}`}</style>
@@ -786,13 +788,33 @@ function Gate({ lang, setLang, onStart, t }) {
           <circle cx="20" cy="5" r="2.6" fill={C.amber} /><circle cx="35" cy="32" r="2.6" fill={C.teal} /><circle cx="5" cy="32" r="2.6" fill="#fff" />
         </svg>
         <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "#fff", marginBottom: 8 }}>{t("welcome")}</div>
-        <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.5, marginBottom: 18 }}>{t("welcomeSub")}</div>
-        <input value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") onStart(name); }} placeholder={t("namePh")} autoFocus
-          style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
-        <button onClick={() => onStart(name)} disabled={!name.trim()}
-          style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: name.trim() ? C.amber : "#33475F", color: name.trim() ? C.ink : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
-          {t("startBtn")}
-        </button>
+
+        {!trainerOpen ? (
+          <>
+            <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.5, marginBottom: 18 }}>{t("welcomeSub")}</div>
+            <input value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && name.trim()) onStart(name); }} placeholder={t("namePh")} autoFocus
+              style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
+            <button onClick={() => onStart(name)} disabled={!name.trim()}
+              style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: name.trim() ? C.amber : "#33475F", color: name.trim() ? C.ink : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
+              {t("startBtn")}
+            </button>
+            <div onClick={() => setTrainerOpen(true)} style={{ marginTop: 18, fontSize: 12, color: "#7E90A4", cursor: "pointer", borderBottom: "1px dashed #3C526B", display: "inline-block", paddingBottom: 1 }}>{t("trainerLink")}</div>
+          </>
+        ) : (
+          <>
+            <div style={{ borderTop: `1px solid ${C.inkLine}`, marginTop: 4, paddingTop: 18 }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: C.teal, marginBottom: 12 }}>🎛️ {t("trainerAccess")}</div>
+              <input value={trainerName} onChange={(e) => setTrainerName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && trainerName.trim()) onStart(trainerName); }} placeholder={t("trainerPh")} autoFocus
+                style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
+              <button onClick={() => onStart(trainerName)} disabled={!trainerName.trim()}
+                style={{ width: "100%", padding: "12px", border: `1px solid ${trainerName.trim() ? C.teal : C.inkLine}`, borderRadius: 11, background: "transparent", color: trainerName.trim() ? "#EAF0F6" : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
+                {t("trainerOpen")}
+              </button>
+              <div onClick={() => setTrainerOpen(false)} style={{ marginTop: 12, fontSize: 11.5, color: "#7E90A4", cursor: "pointer" }}>{t("backLink")}</div>
+            </div>
+          </>
+        )}
+
         <div style={{ display: "flex", justifyContent: "center", gap: 4, marginTop: 16 }}>
           {["fr", "en"].map((l) => (
             <button key={l} onClick={() => setLang(l)} style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, padding: "3px 9px", borderRadius: 6, background: lang === l ? C.amber : "transparent", color: lang === l ? C.ink : "#9DB0C2", fontWeight: 600, border: "none" }}>{l.toUpperCase()}</button>
