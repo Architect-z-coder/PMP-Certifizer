@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe } from "./api.js";
 import Journey from "./Journey.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
@@ -34,6 +34,7 @@ export default function App() {
   const [learner, setLearner] = useState(() => readLS("cz_learner"));
   const [learnerName, setLearnerName] = useState(() => readLS("cz_name"));
   const [role, setRole] = useState(() => readLS("cz_role"));
+  const [me, setMe] = useState(null);   // {effective_plan, features, ...} from /api/me
   function signIn(name, asTrainer = false) {
     const nm = name.trim(); if (!nm) return;
     const slug = slugify(nm) || ("u" + Date.now());
@@ -76,6 +77,7 @@ export default function App() {
     if (!learner) return;
     getMastery(learner).then((d) => { setMastery(d.mastery); setRecommended(d.recommended); setProcesses(d.processes || []); }).catch(() => {});
     getReflexes(learner).then(setReflexes).catch(() => {});
+    getMe(learner).then(setMe).catch(() => {});
   }, [learner]);
 
   // keep the free-tier backend warm: ping on load, then periodically while open
@@ -174,7 +176,7 @@ export default function App() {
             <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 19, color: "#fff", letterSpacing: ".2px" }}>
               Certifizer <span style={{ color: C.muted, fontWeight: 500, fontSize: 11, fontFamily: "'IBM Plex Mono', monospace" }}>PMP</span>
             </div>
-            <div style={{ color: "#9DB0C2", fontSize: 11.5 }}>{t("tagline")} · <span style={{ color: "#7E90A4" }}>{learnerName || learner}</span> <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, padding: "0 0 0 2px", textDecoration: "underline" }}>{t("switchUser")}</button></div>
+            <div style={{ color: "#9DB0C2", fontSize: 11.5 }}>{t("tagline")} · <span style={{ color: "#7E90A4" }}>{learnerName || learner}</span> {me && <PlanBadge plan={me.effective_plan} lang={lang} />} <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, padding: "0 0 0 2px", textDecoration: "underline" }}>{t("switchUser")}</button></div>
           </div>
           <div style={{ display: "flex", gap: 4, padding: 2, background: C.ink2, borderRadius: 8, border: `1px solid ${C.inkLine}` }}>
             {["fr", "en"].map((l) => (
@@ -843,6 +845,19 @@ function useIsMobile(breakpoint = 768) {
     };
   }, [breakpoint]);
   return mobile;
+}
+
+function PlanBadge({ plan, lang }) {
+  const premium = plan === "premium" || plan === "institution";
+  const label = plan === "institution" ? "Institution" : premium ? "Premium" : (lang === "en" ? "Free" : "Gratuit");
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 5, fontFamily: "'IBM Plex Mono', monospace",
+      fontSize: 9.5, fontWeight: 600, padding: "2px 8px", borderRadius: 999, verticalAlign: "middle",
+      background: premium ? "linear-gradient(135deg,#E89A3C,#D2814E)" : "rgba(255,255,255,0.08)",
+      color: premium ? "#0E1A2B" : "#9DB0C2", border: premium ? "none" : "1px solid rgba(255,255,255,0.12)",
+    }}>● {label}</span>
+  );
 }
 
 function Section({ label, children }) {

@@ -98,3 +98,11 @@ export async function getCohortOverview(cohortId) {
   if (!r.ok) throw new Error(`cohort/overview ${r.status}`);
   return r.json();
 }
+
+export async function getMe(learnerId) {
+  const u = new URL(`${BASE}/api/me`);
+  u.searchParams.set("learner_id", learnerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`me ${r.status}`);
+  return r.json();
+}
