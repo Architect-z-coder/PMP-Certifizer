@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession } from "./api.js";
 import Journey from "./Journey.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
@@ -392,6 +392,8 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
   const [missed, setMissed] = useState(null);
   const [loading, setLoading] = useState(true);
   const [runner, setRunner] = useState(null); // active session items, or null
+  const [assigned, setAssigned] = useState([]);          // targeted sessions from the trainer
+  const [activeAssignment, setActiveAssignment] = useState(null); // assignment being run
   const p = (k) => PT[k][lang];
 
   useEffect(() => {
@@ -401,6 +403,7 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
       getReadiness(learnerId).catch(() => null),
       getMissed(learnerId, true).catch(() => ({ count: 0, items: [] })),
     ]).then(([r, m]) => { setData(r); setMissed(m); setLoading(false); });
+    getAssignedSessions(learnerId).then(setAssigned).catch(() => {});
   }, [learnerId]);
 
   const totalAttempts = mastery.reduce((s, m) => s + (m.attempts || 0), 0);
@@ -428,7 +431,14 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
 
   if (runner) {
     return <SessionRunner lang={lang} learnerId={learnerId} items={runner}
-      onExit={() => { setRunner(null); getReadiness(learnerId).then(setData).catch(() => {}); getMissed(learnerId, true).then(setMissed).catch(() => {}); }} p={p} isMobile={isMobile} />;
+      onDone={() => {
+        if (activeAssignment) {
+          completeAssignedSession(activeAssignment, learnerId).catch(() => {});
+          setActiveAssignment(null);
+          getAssignedSessions(learnerId).then(setAssigned).catch(() => {});
+        }
+      }}
+      onExit={() => { setRunner(null); setActiveAssignment(null); getReadiness(learnerId).then(setData).catch(() => {}); getMissed(learnerId, true).then(setMissed).catch(() => {}); getAssignedSessions(learnerId).then(setAssigned).catch(() => {}); }} p={p} isMobile={isMobile} />;
   }
 
   const rd = data.readiness;
@@ -483,6 +493,23 @@ function PrepaPanel({ lang, learnerId, learnerName, mastery, reflexes, onStudyAr
       />
 
       {/* SESSION DU JOUR */}
+      {assigned.filter((a) => a.status !== "completed").map((a) => (
+        <div key={a.assignment_id} style={{ background: "linear-gradient(135deg,#1B2E45,#0E1A2B)", border: `1px solid ${C.teal}`, borderRadius: 14, padding: "15px 17px", marginBottom: 12, color: "#EAF0F6", display: "flex", alignItems: "center", gap: 13, flexWrap: "wrap" }}>
+          <span style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(46,140,158,.2)", border: `1px solid ${C.teal}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, flex: "none" }}>🎯</span>
+          <div style={{ flex: 1, minWidth: 180 }}>
+            <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: "#7FD3E0", marginBottom: 3 }}>{lang === "en" ? "Assigned by your trainer" : "Assignée par votre formateur"}</div>
+            <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14.5 }}>{a.title}</div>
+            <div style={{ fontSize: 11.5, color: "#9DB0C2", marginTop: 2 }}>{a.question_count} {lang === "en" ? "questions" : "questions"}{a.status === "started" ? (lang === "en" ? " · in progress" : " · en cours") : ""}</div>
+          </div>
+          <button onClick={async () => {
+            try {
+              const r = await getAssignedSessionItems(a.assignment_id, learnerId);
+              if (r && r.items && r.items.length) { setActiveAssignment(a.assignment_id); setRunner(r.items); }
+            } catch (e) { /* stay calm */ }
+          }} style={{ border: "none", borderRadius: 10, background: C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 12.5, padding: "11px 17px", cursor: "pointer" }}>{a.status === "started" ? (lang === "en" ? "Continue" : "Reprendre") : (lang === "en" ? "Start" : "Commencer")}</button>
+        </div>
+      ))}
+
       <SessionCard lang={lang} learnerId={learnerId} onStart={(items) => setRunner(items)} p={p} />
 
       <IntelligentFeatures lang={lang} me={me} />
@@ -604,7 +631,7 @@ function SessionCard({ lang, learnerId, onStart, p }) {
   );
 }
 
-function SessionRunner({ lang, learnerId, items, onExit, p, isMobile }) {
+function SessionRunner({ lang, learnerId, items, onExit, p, isMobile, onDone }) {
   const [idx, setIdx] = useState(0);
   const [picked, setPicked] = useState(null);
   const [graded, setGraded] = useState(null);
@@ -621,7 +648,7 @@ function SessionRunner({ lang, learnerId, items, onExit, p, isMobile }) {
       .catch(() => { setPicked(null); }); // network hiccup: let them tap again
   }
   function next() {
-    if (idx + 1 >= items.length) { setDone(true); return; }
+    if (idx + 1 >= items.length) { setDone(true); if (onDone) onDone(); return; }
     setIdx(idx + 1); setPicked(null); setGraded(null);
   }
 

@@ -576,6 +576,76 @@ def list_targeted_sessions(trainer_id: str, session: Session = Depends(get_sessi
     return out
 
 
+@app.get("/api/learner/assigned-sessions")
+def learner_assigned_sessions(learner_id: str, session: Session = Depends(get_session)):
+    """Targeted sessions assigned to this learner (pending first)."""
+    import json as _json
+    u = session.exec(select(saas.User).where(saas.User.public_id == learner_id)).first()
+    if not u:
+        return []
+    rows = session.exec(select(saas.TargetedSessionAssignment)
+                        .where(saas.TargetedSessionAssignment.learner_id == u.id)).all()
+    out = []
+    for a in rows:
+        ts = session.exec(select(saas.TargetedSession)
+                          .where(saas.TargetedSession.id == a.session_id)).first()
+        if not ts:
+            continue
+        out.append({"assignment_id": a.id, "session_id": ts.id, "title": ts.title,
+                    "concepts": _json.loads(ts.selected_concepts or "[]"),
+                    "question_count": ts.question_count, "status": a.status})
+    # pending first, then completed
+    out.sort(key=lambda x: (x["status"] == "completed", -x["session_id"]))
+    return out
+
+
+@app.get("/api/learner/assigned-session/{assignment_id}/items")
+def assigned_session_items(assignment_id: int, learner_id: str,
+                           session: Session = Depends(get_session)):
+    """Compose the items for an assigned targeted session (its concepts only)."""
+    import json as _json
+    u = session.exec(select(saas.User).where(saas.User.public_id == learner_id)).first()
+    a = session.exec(select(saas.TargetedSessionAssignment)
+                     .where(saas.TargetedSessionAssignment.id == assignment_id)).first()
+    if not u or not a or a.learner_id != u.id:
+        return {"error": "not_your_assignment"}   # server-side scoping
+    ts = session.exec(select(saas.TargetedSession)
+                      .where(saas.TargetedSession.id == a.session_id)).first()
+    concepts = _json.loads(ts.selected_concepts or "[]") if ts else []
+    # pick items from the session's concepts, difficulty-mixed, de-duplicated
+    pool = []
+    for area in concepts:
+        pool.extend(session.exec(select(Item).where(Item.knowledge_area == area)).all())
+    random.shuffle(pool)
+    items = pool[: (ts.question_count if ts else 10)]
+    if a.status == "assigned":
+        a.status = "started"
+        session.add(a); session.commit()
+    return {"assignment_id": a.id, "title": ts.title if ts else "",
+            "items": [{"external_id": it.external_id, "area": it.knowledge_area,
+                       "type": it.type, "difficulty": it.difficulty,
+                       "prompt": {"fr": it.prompt_fr, "en": it.prompt_en},
+                       "options": {"fr": json.loads(it.options_fr or "[]"),
+                                   "en": json.loads(it.options_en or "[]")}}
+                      for it in items]}
+
+
+@app.post("/api/learner/assigned-session/{assignment_id}/complete")
+def complete_assigned_session(assignment_id: int, learner_id: str,
+                              session: Session = Depends(get_session)):
+    """Mark the learner's assignment completed — feeds the trainer's X/N counter."""
+    u = session.exec(select(saas.User).where(saas.User.public_id == learner_id)).first()
+    a = session.exec(select(saas.TargetedSessionAssignment)
+                     .where(saas.TargetedSessionAssignment.id == assignment_id)).first()
+    if not u or not a or a.learner_id != u.id:
+        return {"error": "not_your_assignment"}
+    if a.status != "completed":
+        a.status = "completed"
+        a.completed_at = datetime.utcnow()
+        session.add(a); session.commit()
+    return {"ok": True, "assignment_id": a.id, "status": a.status}
+
+
 @app.get("/api/cohort/overview")
 def cohort_overview(cohort_id: Optional[str] = None, trainer_id: Optional[str] = None,
                     session: Session = Depends(get_session)):

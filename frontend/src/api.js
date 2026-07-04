@@ -132,3 +132,27 @@ export async function getTargetedSessions(trainerId) {
   if (!r.ok) throw new Error(`targeted-sessions ${r.status}`);
   return r.json();
 }
+
+export async function getAssignedSessions(learnerId) {
+  const u = new URL(`${BASE}/api/learner/assigned-sessions`);
+  u.searchParams.set("learner_id", learnerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`assigned-sessions ${r.status}`);
+  return r.json();
+}
+
+export async function getAssignedSessionItems(assignmentId, learnerId) {
+  const u = new URL(`${BASE}/api/learner/assigned-session/${assignmentId}/items`);
+  u.searchParams.set("learner_id", learnerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`assigned items ${r.status}`);
+  return r.json();
+}
+
+export async function completeAssignedSession(assignmentId, learnerId) {
+  const u = new URL(`${BASE}/api/learner/assigned-session/${assignmentId}/complete`);
+  u.searchParams.set("learner_id", learnerId);
+  const r = await fetch(u, { method: "POST" });
+  if (!r.ok) throw new Error(`complete ${r.status}`);
+  return r.json();
+}
