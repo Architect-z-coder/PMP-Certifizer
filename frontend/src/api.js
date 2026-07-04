@@ -107,3 +107,11 @@ export async function getMe(learnerId) {
   if (!r.ok) throw new Error(`me ${r.status}`);
   return r.json();
 }
+
+export async function seedDemoCohort(trainerId) {
+  const u = new URL(`${BASE}/api/admin/seed-demo-cohort`);
+  if (trainerId) u.searchParams.set("trainer_id", trainerId);
+  const r = await fetch(u, { method: "POST" });
+  if (!r.ok) throw new Error(`seed ${r.status}`);
+  return r.json();
+}

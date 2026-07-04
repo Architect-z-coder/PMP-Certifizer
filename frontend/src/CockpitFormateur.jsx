@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { C, KA, ECO_DOMAINS, ECO_TASKS } from "./pmp.js";
-import { getCohortOverview } from "./api.js";
+import { getCohortOverview, seedDemoCohort } from "./api.js";
 
 /*
   CockpitFormateur — trainer action-cockpit.
@@ -27,6 +27,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
   const [err, setErr] = useState(null);
   const [tab, setTab] = useState(0);
   const [toast, setToast] = useState(false);
+  const [seeding, setSeeding] = useState(false);
   const t = (fr, en) => (lang === "en" ? en : fr);
 
   useEffect(() => {
@@ -36,7 +37,24 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
 
   if (loading) return <Center>{t("Chargement de la cohorte…", "Loading cohort…")}</Center>;
   if (err || !data) return <Center>{t("Impossible de charger la cohorte. Le serveur se réveille peut-être — réessayez.", "Could not load the cohort. The server may be waking up — try again.")}</Center>;
-  if (!data.size) return <Center>{t("Aucun apprenant dans cette cohorte pour l'instant.", "No learners in this cohort yet.")}</Center>;
+  if (!data.size) {
+    return (
+      <Center>
+        <div style={{ maxWidth: 400 }}>
+          <div style={{ fontSize: 34, marginBottom: 10 }}>🎛️</div>
+          <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16, color: C.text, marginBottom: 6 }}>{t("Votre cohorte est vide pour l'instant", "Your cohort is empty for now")}</div>
+          <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.55, marginBottom: 16 }}>{t("Aucun apprenant n'est encore rattaché à vos cohortes. Pour une démonstration, vous pouvez configurer la cohorte de démonstration : elle rattache les apprenants existants à la cohorte PMP-2026-A et vous en donne l'animation.", "No learners are linked to your cohorts yet. For a demo, you can set up the demo cohort: it links existing learners to PMP-2026-A and makes you its trainer.")}</div>
+          <button disabled={seeding} onClick={async () => {
+            setSeeding(true);
+            try { await seedDemoCohort(trainerId); const d = await getCohortOverview(null, trainerId); setData(d); } catch (e) { setErr(String(e)); }
+            setSeeding(false);
+          }} style={{ border: "none", borderRadius: 11, background: seeding ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13, padding: "12px 20px", cursor: seeding ? "default" : "pointer" }}>
+            {seeding ? t("Configuration…", "Setting up…") : t("Configurer la cohorte de démonstration", "Set up the demo cohort")}
+          </button>
+        </div>
+      </Center>
+    );
+  }
 
   const rd = data.readiness;
   const pct = Math.round(rd.score * 100);
