@@ -540,12 +540,46 @@ class TargetedSessionIn(BaseModel):
     concepts: list = []
     question_count: int = 10
     objective: str = ""
+    item_ids: list = []          # sélection figée validée en aperçu
+
+
+def _compose_items_for_concepts(session: Session, concepts: list, count: int) -> list:
+    """Compose a concrete question list from concepts (shared by preview & delivery)."""
+    pool = []
+    for area in concepts:
+        pool.extend(session.exec(select(Item).where(Item.knowledge_area == area)).all())
+    random.shuffle(pool)
+    return pool[:count]
+
+
+@app.get("/api/cohort/session-preview")
+def targeted_session_preview(trainer_id: str, concepts: Optional[str] = None,
+                             question_count: int = 10,
+                             session: Session = Depends(get_session)):
+    """L'aperçu AVANT assignation : les concepts proposés (chemin critique par défaut)
+    et les questions concrètes qui composeront la séance. Rien n'est créé."""
+    tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    if not saas.cohorts_where_trainer(session, tu.id):
+        return {"error": "no_cohort"}
+    clist = [c.strip() for c in (concepts or "").split(",") if c.strip()]
+    if not clist:
+        ov = cohort_overview(cohort_id=None, trainer_id=trainer_id, session=session)
+        clist = [c["area"] for c in ov.get("critical_path", [])][:2]
+    items = _compose_items_for_concepts(session, clist, question_count)
+    return {"concepts": clist, "question_count": question_count,
+            "items": [{"external_id": it.external_id, "area": it.knowledge_area,
+                       "difficulty": it.difficulty,
+                       "prompt": {"fr": it.prompt_fr, "en": it.prompt_en}}
+                      for it in items]}
 
 
 @app.post("/api/cohort/targeted-session")
 def create_targeted_session_endpoint(body: TargetedSessionIn, session: Session = Depends(get_session)):
     """The cockpit's 'Créer une séance ciblée' — for the trainer's own cohort only.
-    Concepts default to the cohort's current critical path if none provided."""
+    Concepts default to the cohort's current critical path if none provided.
+    If item_ids are provided (validated in preview), the selection is frozen."""
     tu = session.exec(select(saas.User).where(saas.User.public_id == body.trainer_id)).first()
     if not tu:
         return {"error": "unknown_trainer"}
@@ -562,7 +596,8 @@ def create_targeted_session_endpoint(body: TargetedSessionIn, session: Session =
     if not title:
         title = "Séance ciblée — " + ", ".join(concepts[:2]) if concepts else "Séance ciblée"
     return saas.create_targeted_session(session, body.trainer_id, cohort_id,
-                                        title, concepts, body.question_count, body.objective)
+                                        title, concepts, body.question_count, body.objective,
+                                        item_ids=body.item_ids or None)
 
 
 @app.get("/api/cohort/targeted-sessions")
@@ -612,12 +647,15 @@ def assigned_session_items(assignment_id: int, learner_id: str,
     ts = session.exec(select(saas.TargetedSession)
                       .where(saas.TargetedSession.id == a.session_id)).first()
     concepts = _json.loads(ts.selected_concepts or "[]") if ts else []
-    # pick items from the session's concepts, difficulty-mixed, de-duplicated
-    pool = []
-    for area in concepts:
-        pool.extend(session.exec(select(Item).where(Item.knowledge_area == area)).all())
-    random.shuffle(pool)
-    items = pool[: (ts.question_count if ts else 10)]
+    frozen = _json.loads(getattr(ts, "selected_items", None) or "[]") if ts else []
+    if frozen:
+        # the trainer validated an exact selection in preview -> serve exactly it, in order
+        by_id = {it.external_id: it for it in
+                 session.exec(select(Item).where(Item.external_id.in_(frozen))).all()}
+        items = [by_id[eid] for eid in frozen if eid in by_id]
+    else:
+        # legacy sessions (no frozen list): compose from concepts
+        items = _compose_items_for_concepts(session, concepts, ts.question_count if ts else 10)
     if a.status == "assigned":
         a.status = "started"
         session.add(a); session.commit()

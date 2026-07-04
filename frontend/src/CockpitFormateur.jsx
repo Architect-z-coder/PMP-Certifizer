@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { C, KA, ECO_DOMAINS, ECO_TASKS } from "./pmp.js";
-import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions } from "./api.js";
+import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions, getSessionPreview } from "./api.js";
 
 /*
   CockpitFormateur — trainer action-cockpit.
@@ -30,6 +30,8 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
   const [seeding, setSeeding] = useState(false);
   const [sessions, setSessions] = useState([]);
   const [creating, setCreating] = useState(false);
+  const [preview, setPreview] = useState(null);     // {concepts, items} being reviewed
+  const [previewLoading, setPreviewLoading] = useState(false);
   const t = (fr, en) => (lang === "en" ? en : fr);
 
   useEffect(() => {
@@ -38,17 +40,31 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
     getTargetedSessions(trainerId).then(setSessions).catch(() => {});
   }, [trainerId]);
 
-  async function onCreateSession() {
-    if (creating) return;
+  async function onOpenPreview() {
+    if (previewLoading) return;
+    setPreviewLoading(true);
+    try {
+      const pv = await getSessionPreview(trainerId, null, 10);
+      if (pv && pv.items) setPreview(pv);
+    } catch (e) { /* cockpit stays usable */ }
+    setPreviewLoading(false);
+  }
+
+  async function onConfirmCreate() {
+    if (creating || !preview) return;
     setCreating(true);
     try {
-      const r = await createTargetedSession(trainerId, { question_count: 10 });
+      const ids = preview.items.map((x) => x.external_id);
+      const r = await createTargetedSession(trainerId, {
+        concepts: preview.concepts, question_count: ids.length, item_ids: ids,
+      });
       if (r && r.session_id) {
+        setPreview(null);
         setToast({ title: r.title, assigned: r.assigned_count });
         setTimeout(() => setToast(null), 4200);
         getTargetedSessions(trainerId).then(setSessions).catch(() => {});
       }
-    } catch (e) { /* keep calm; cockpit stays usable */ }
+    } catch (e) { /* keep calm */ }
     setCreating(false);
   }
 
@@ -102,7 +118,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
             <Kpi v={rd.at_risk} l={t("à risque", "at risk")} c="#D2664E" />
           </div>
         </div>
-        <button onClick={onCreateSession} disabled={creating} style={{ background: creating ? "#C9D6E0" : C.amber, color: C.ink, border: "none", borderRadius: 11, padding: "13px 18px", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13.5, cursor: creating ? "default" : "pointer", whiteSpace: "nowrap", marginTop: isMobile ? 14 : 0 }}>＋ {creating ? t("Création…", "Creating…") : t("Créer une séance ciblée", "Create a targeted session")}</button>
+        <button onClick={onOpenPreview} disabled={previewLoading} style={{ background: previewLoading ? "#C9D6E0" : C.amber, color: C.ink, border: "none", borderRadius: 11, padding: "13px 18px", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13.5, cursor: previewLoading ? "default" : "pointer", whiteSpace: "nowrap", marginTop: isMobile ? 14 : 0 }}>＋ {previewLoading ? t("Préparation…", "Preparing…") : t("Créer une séance ciblée", "Create a targeted session")}</button>
       </div>
 
       {/* BLOCKERS */}
@@ -162,6 +178,44 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
       {tab === 1 && <ActionGroups data={data} lang={lang} isMobile={isMobile} />}
       {tab === 2 && <Heatmap data={data} lang={lang} />}
       {tab === 3 && <Quality data={data} lang={lang} />}
+
+      {preview && (
+        <div onClick={() => setPreview(null)} style={{ position: "fixed", inset: 0, background: "rgba(6,11,18,.72)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 250, padding: 16 }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: "#fff", borderRadius: 16, maxWidth: 560, width: "100%", maxHeight: "86vh", display: "flex", flexDirection: "column", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,.5)" }}>
+            <div style={{ height: 3, background: "linear-gradient(90deg,#E89A3C,#8A6FB0)" }} />
+            <div style={{ padding: "18px 20px 12px" }}>
+              <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16.5 }}>{t("Aperçu de la séance avant assignation", "Session preview before assigning")}</div>
+              <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5, marginTop: 4 }}>
+                {t("Sujets : ", "Topics: ")}<b style={{ color: "#5E4980" }}>{preview.concepts.join(", ")}</b> · {preview.items.length} {t("questions. Vos apprenants recevront exactement ces questions. Retirez celles qui ne conviennent pas.", "questions. Your learners will receive exactly these questions. Remove any that don't fit.")}
+              </div>
+            </div>
+            <div className="ak-scroll" style={{ overflowY: "auto", padding: "4px 20px", flex: 1 }}>
+              {preview.items.map((q, i) => (
+                <div key={q.external_id} style={{ display: "flex", alignItems: "flex-start", gap: 10, border: `1px solid ${C.line}`, borderRadius: 11, padding: "10px 12px", marginBottom: 8 }}>
+                  <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: C.muted, paddingTop: 2, flex: "none" }}>{i + 1}.</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 12, lineHeight: 1.45, color: C.text }}>{(q.prompt[lang] || q.prompt.fr || "").slice(0, 150)}{(q.prompt[lang] || q.prompt.fr || "").length > 150 ? "…" : ""}</div>
+                    <div style={{ display: "flex", gap: 6, marginTop: 5 }}>
+                      <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, background: "#F1EAF7", color: "#5E4980", borderRadius: 999, padding: "2px 8px" }}>{q.area}</span>
+                      <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, background: "#EDF1F5", color: C.muted, borderRadius: 999, padding: "2px 8px" }}>{t("difficulté", "difficulty")} {q.difficulty}</span>
+                    </div>
+                  </div>
+                  <button onClick={() => setPreview({ ...preview, items: preview.items.filter((x) => x.external_id !== q.external_id) })}
+                    title={t("Retirer cette question", "Remove this question")}
+                    style={{ border: "none", background: "none", color: C.muted, fontSize: 15, cursor: "pointer", lineHeight: 1, padding: 2 }}>×</button>
+                </div>
+              ))}
+              {preview.items.length === 0 && (
+                <div style={{ textAlign: "center", color: C.muted, fontSize: 12.5, padding: "18px 0" }}>{t("Toutes les questions ont été retirées — annulez et rouvrez l'aperçu.", "All questions removed — cancel and reopen the preview.")}</div>
+              )}
+            </div>
+            <div style={{ display: "flex", gap: 10, padding: "14px 20px 18px", borderTop: `1px solid ${C.line}` }}>
+              <button onClick={() => setPreview(null)} style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 11, background: "#fff", color: C.muted, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13, padding: "12px", cursor: "pointer" }}>{t("Annuler", "Cancel")}</button>
+              <button onClick={onConfirmCreate} disabled={creating || preview.items.length === 0} style={{ flex: 2, border: "none", borderRadius: 11, background: creating || preview.items.length === 0 ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13, padding: "12px", cursor: creating || preview.items.length === 0 ? "default" : "pointer" }}>{creating ? t("Assignation…", "Assigning…") : t(`Confirmer et assigner (${preview.items.length} questions)`, `Confirm and assign (${preview.items.length} questions)`)}</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {toast && (
         <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", background: "#0E1A2B", color: "#EAF0F6", border: "1px solid #3DA776", borderRadius: 12, padding: "13px 18px", fontSize: 13, zIndex: 200, boxShadow: "0 12px 40px rgba(0,0,0,.4)", display: "flex", alignItems: "center", gap: 11 }}>

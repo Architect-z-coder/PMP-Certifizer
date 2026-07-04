@@ -156,3 +156,13 @@ export async function completeAssignedSession(assignmentId, learnerId) {
   if (!r.ok) throw new Error(`complete ${r.status}`);
   return r.json();
 }
+
+export async function getSessionPreview(trainerId, concepts, questionCount = 10) {
+  const u = new URL(`${BASE}/api/cohort/session-preview`);
+  u.searchParams.set("trainer_id", trainerId);
+  if (concepts && concepts.length) u.searchParams.set("concepts", concepts.join(","));
+  u.searchParams.set("question_count", questionCount);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`session-preview ${r.status}`);
+  return r.json();
+}

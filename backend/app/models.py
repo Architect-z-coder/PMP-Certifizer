@@ -124,7 +124,8 @@ def _ensure_columns() -> None:
     tables that already exist (e.g. last_practiced_at on a pre-existing `mastery`).
     Safe to run on every startup; does nothing if the column is already there."""
     # (table, column, type) — keep types portable between Postgres and sqlite.
-    additive = [("mastery", "last_practiced_at", "TIMESTAMP")]
+    additive = [("mastery", "last_practiced_at", "TIMESTAMP"),
+                ("targetedsession", "selected_items", "TEXT")]
     is_sqlite = _db_url.startswith("sqlite")
     with engine.begin() as conn:
         for table, col, coltype in additive:

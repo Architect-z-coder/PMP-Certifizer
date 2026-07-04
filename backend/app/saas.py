@@ -482,6 +482,7 @@ class TargetedSession(SQLModel, table=True):
     title: str = ""
     objective: str = ""
     selected_concepts: str = "[]"          # JSON list[str] d'areas (portable)
+    selected_items: str = "[]"             # JSON list[str] d'external_id — la sélection FIGÉE vue en aperçu
     question_count: int = 10
     assigned_to: str = "cohort"            # cohort | group | selected_learners
     status: str = "assigned"               # draft | assigned | completed
@@ -500,9 +501,10 @@ class TargetedSessionAssignment(SQLModel, table=True):
 
 def create_targeted_session(session: Session, trainer_public_id: str, cohort_id: int,
                             title: str, concepts: list, question_count: int = 10,
-                            objective: str = "") -> dict:
+                            objective: str = "", item_ids: Optional[list] = None) -> dict:
     """Crée une séance ciblée et l'assigne à tous les apprenants actifs de la cohorte.
-    Le cloisonnement est vérifié : le formateur doit animer cette cohorte."""
+    Si item_ids est fourni (validé en aperçu par le formateur), la sélection est FIGÉE :
+    l'apprenant recevra exactement ces questions. Cloisonnement vérifié."""
     import json as _json
     tu = session.exec(select(User).where(User.public_id == trainer_public_id)).first()
     if not tu:
@@ -512,6 +514,7 @@ def create_targeted_session(session: Session, trainer_public_id: str, cohort_id:
     ts = TargetedSession(cohort_id=cohort_id, created_by=tu.id, title=title[:200],
                          objective=(objective or "")[:400],
                          selected_concepts=_json.dumps(list(concepts or [])),
+                         selected_items=_json.dumps(list(item_ids or [])),
                          question_count=int(question_count or 10),
                          assigned_to="cohort", status="assigned")
     session.add(ts); session.commit(); session.refresh(ts)
