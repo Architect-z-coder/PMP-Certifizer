@@ -142,8 +142,10 @@ def record(session: Session, learner_id: str, area: str, result: str, mode: str,
         row.last_practiced_at = now
         row.updated_at = now
     session.add(row)
-    # spaced-repetition queue (Rule D) — only when we know the specific item
-    if item_external_id:
+    # spaced-repetition queue (Rule D) — only when we know the specific item.
+    # Trainer-authored items (v34) stay OUT of the global adaptive queue: the
+    # engine cannot re-serve them (decision: targeted sessions + cohort bank only).
+    if item_external_id and not item_external_id.startswith(saas.TRAINER_ITEM_PREFIX):
         _update_missed_queue(session, learner_id, item_external_id, area, result, now)
     # process-level mastery (only when we know which process the question targets)
     if pmbok_ref:
@@ -242,7 +244,12 @@ def quiz_next(learner_id: str = "demo", area: Optional[str] = None, session: Ses
 @app.post("/api/quiz/answer")
 def quiz_answer(body: QuizAnswer, session: Session = Depends(get_session)):
     it = session.exec(select(Item).where(Item.external_id == body.external_id)).first()
-    if it is None:
+    tit = None
+    if it is None and body.external_id.startswith(saas.TRAINER_ITEM_PREFIX):
+        # v34 — question rédigée par un formateur (séance ciblée uniquement)
+        tit = session.exec(select(saas.TrainerItem)
+                           .where(saas.TrainerItem.external_id == body.external_id)).first()
+    if it is None and tit is None:
         return {"error": "unknown item"}
     # Anti-abuse ceiling only (spec: freemium is feature-based, not usage-punitive).
     # This is set high enough to never hit in normal study; it just guards cost/abuse.
@@ -252,16 +259,28 @@ def quiz_answer(body: QuizAnswer, session: Session = Depends(get_session)):
                 "limit": saas.FREE_LIMIT_PER_DAY,
                 "message_fr": "Vous avez répondu à énormément de questions aujourd'hui. Faites une pause et revenez demain — votre progression est enregistrée.",
                 "message_en": "You've answered a great many questions today. Take a break and come back tomorrow — your progress is saved."}
-    correct = (body.choice_index == it.answer_index)
-    result = "correct" if correct else "incorrect"
-    record(session, body.learner_id, it.knowledge_area, result, "quiz",
-           item_external_id=it.external_id, pmbok_ref=it.pmbok_ref)
+    if tit is not None:
+        correct = (body.choice_index == tit.answer_index)
+        result = "correct" if correct else "incorrect"
+        # La progression compte (mastery de zone), mais la question ne rejoint pas
+        # la file adaptative globale (record() la filtre par son préfixe).
+        record(session, body.learner_id, tit.knowledge_area, result, "targeted",
+               item_external_id=tit.external_id)
+        rationale = {"fr": tit.rationale or "", "en": tit.rationale or ""}
+        answer_index = tit.answer_index
+    else:
+        correct = (body.choice_index == it.answer_index)
+        result = "correct" if correct else "incorrect"
+        record(session, body.learner_id, it.knowledge_area, result, "quiz",
+               item_external_id=it.external_id, pmbok_ref=it.pmbok_ref)
+        rationale = {"fr": it.rationale_fr, "en": it.rationale_en}
+        answer_index = it.answer_index
     # Count this answer against the daily quota only for free users.
     if saas.effective_plan(session, user.id) == "free":
         saas.record_answer(session, user.id)
     ml = mastery_list(session, body.learner_id)
-    return {"correct": correct, "answer_index": it.answer_index,
-            "rationale": {"fr": it.rationale_fr, "en": it.rationale_en},
+    return {"correct": correct, "answer_index": answer_index,
+            "rationale": rationale,
             "mastery": ml, "recommended": rec_payload(ml),
             "processes": process_mastery_list(session, body.learner_id)}
 
@@ -600,6 +619,162 @@ def create_targeted_session_endpoint(body: TargetedSessionIn, session: Session =
                                         item_ids=body.item_ids or None)
 
 
+# ----------------------------------------------------------------------
+# v34 — Boîte à outils d'édition du formateur
+# ----------------------------------------------------------------------
+@app.get("/api/cohort/question-bank")
+def cohort_question_bank(trainer_id: str, area: Optional[str] = None,
+                         difficulty: Optional[int] = None, search: Optional[str] = None,
+                         limit: int = 200, session: Session = Depends(get_session)):
+    """La banque consultable par le formateur pour composer une séance : les
+    questions officielles + les questions de SON organisation. Cloisonné :
+    formateur inconnu ou sans cohorte = rien. Consultation seule, ne crée rien."""
+    tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    orgs = saas.trainer_org_ids(session, tu.id)
+    if not orgs:
+        return {"error": "no_cohort"}
+    limit = max(1, min(int(limit or 200), 400))
+    q = (search or "").strip().lower()
+
+    out = []
+    # 1) official bank
+    stmt = select(Item)
+    if area:
+        stmt = stmt.where(Item.knowledge_area == area)
+    if difficulty in (1, 2, 3):
+        stmt = stmt.where(Item.difficulty == difficulty)
+    for it in session.exec(stmt).all():
+        if q and q not in (it.prompt_fr or "").lower() and q not in (it.prompt_en or "").lower():
+            continue
+        out.append({"external_id": it.external_id, "area": it.knowledge_area,
+                    "difficulty": it.difficulty,
+                    "prompt": {"fr": it.prompt_fr, "en": it.prompt_en},
+                    "trainer_authored": False})
+        if len(out) >= limit:
+            break
+    # 2) this trainer's org questions (cloisonnées — jamais celles d'une autre org)
+    for ti in saas.trainer_items_for_orgs(session, orgs):
+        if area and ti.knowledge_area != area:
+            continue
+        if difficulty in (1, 2, 3) and ti.difficulty != difficulty:
+            continue
+        if q and q not in (ti.prompt or "").lower():
+            continue
+        pub = saas.trainer_item_public(session, ti)
+        out.append({"external_id": pub["external_id"], "area": pub["area"],
+                    "difficulty": pub["difficulty"], "prompt": pub["prompt"],
+                    "trainer_authored": True, "author": pub["author"]})
+    return {"items": out[: limit + 50], "total": len(out)}
+
+
+class TrainerItemIn(BaseModel):
+    trainer_id: str
+    knowledge_area: str = "integration"
+    prompt: str = ""
+    options: list = []
+    answer_index: int = -1
+    rationale: str = ""
+    difficulty: int = 2
+    lang: str = "fr"
+
+
+@app.post("/api/cohort/trainer-item")
+def create_trainer_item_endpoint(body: TrainerItemIn, session: Session = Depends(get_session)):
+    """Le formateur crée SA question (v34). Elle rejoint la banque de son
+    organisation et peut être placée dans la séance en cours de composition.
+    Elle n'entre jamais dans le moteur adaptatif global."""
+    return saas.create_trainer_item(session, body.trainer_id,
+                                    knowledge_area=body.knowledge_area,
+                                    prompt=body.prompt, options=body.options,
+                                    answer_index=body.answer_index,
+                                    rationale=body.rationale,
+                                    difficulty=body.difficulty, lang=body.lang)
+
+
+class PolishIn(BaseModel):
+    trainer_id: str
+    prompt: str = ""
+    options: list = []
+    rationale: str = ""
+    lang: str = "fr"
+
+
+POLISH_SYSTEM = """You are a strict copy editor for professional PMP exam questions.
+You receive a draft question written by a trainer (statement, four answer options, explanation).
+Rewrite it with:
+- correct spelling and grammar,
+- formal address (STRICT vouvoiement if the text is French — never 'tu'),
+- professional exam form: a clear situational statement ending with a question, four plausible, parallel options,
+- plain language, no jargon.
+ABSOLUTE RULES:
+- NEVER change the meaning of the question or of any option.
+- NEVER change which option is the correct one, and never reorder the options.
+- Answer in the SAME language as the draft.
+- Reply with ONLY a JSON object, no markdown fences, no commentary:
+{"prompt": "...", "options": ["...","...","...","..."], "rationale": "..."}"""
+
+
+def _parse_polish_json(raw: str) -> Optional[dict]:
+    """Parse la réponse du modèle (tolère les clôtures ``` et le texte parasite)."""
+    if not raw:
+        return None
+    txt = raw.strip()
+    txt = re.sub(r"^```(?:json)?", "", txt).strip()
+    txt = re.sub(r"```$", "", txt).strip()
+    # au besoin, isoler le premier objet JSON
+    if not txt.startswith("{"):
+        m = re.search(r"\{.*\}", txt, re.DOTALL)
+        if not m:
+            return None
+        txt = m.group(0)
+    try:
+        data = json.loads(txt)
+    except Exception:
+        return None
+    prompt = str(data.get("prompt", "")).strip()
+    options = data.get("options", [])
+    rationale = str(data.get("rationale", "")).strip()
+    if not prompt or not isinstance(options, list) or len(options) != 4:
+        return None
+    options = [str(o).strip() for o in options]
+    if any(not o for o in options):
+        return None
+    return {"prompt": prompt, "options": options, "rationale": rationale}
+
+
+@app.post("/api/cohort/polish-question")
+async def polish_question(body: PolishIn, session: Session = Depends(get_session)):
+    """Correction de formulation (v34) : orthographe, vouvoiement, forme d'examen.
+    Renvoie une PROPOSITION — rien n'est enregistré, le formateur garde le dernier mot."""
+    tu = session.exec(select(saas.User).where(saas.User.public_id == body.trainer_id)).first()
+    if not tu or not saas.trainer_org_ids(session, tu.id):
+        return {"error": "unknown_trainer"}
+    draft_opts = [str(o or "").strip() for o in (body.options or [])]
+    if not (body.prompt or "").strip() or len(draft_opts) != 4 or any(not o for o in draft_opts):
+        return {"error": "invalid_question",
+                "message_fr": "L'énoncé et les quatre réponses sont requis avant la correction.",
+                "message_en": "The statement and all four answers are required before polishing."}
+    user_msg = json.dumps({"prompt": body.prompt.strip(), "options": draft_opts,
+                           "rationale": (body.rationale or "").strip()}, ensure_ascii=False)
+    try:
+        raw = await llm.chat(POLISH_SYSTEM, [{"role": "user", "content": user_msg}], max_tokens=900)
+    except Exception:
+        return {"error": "llm_unavailable",
+                "message_fr": "La correction est momentanément indisponible. Vous pouvez ajouter votre question telle quelle.",
+                "message_en": "Polishing is temporarily unavailable. You can still add your question as written."}
+    proposal = _parse_polish_json(raw)
+    if not proposal:
+        return {"error": "llm_unavailable",
+                "message_fr": "La correction est momentanément indisponible. Vous pouvez ajouter votre question telle quelle.",
+                "message_en": "Polishing is temporarily unavailable. You can still add your question as written."}
+    changed = (proposal["prompt"] != body.prompt.strip()
+               or proposal["options"] != draft_opts
+               or proposal["rationale"] != (body.rationale or "").strip())
+    return {"proposal": proposal, "changed": changed}
+
+
 @app.get("/api/cohort/targeted-sessions")
 def list_targeted_sessions(trainer_id: str, session: Session = Depends(get_session)):
     tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
@@ -649,13 +824,30 @@ def assigned_session_items(assignment_id: int, learner_id: str,
     concepts = _json.loads(ts.selected_concepts or "[]") if ts else []
     frozen = _json.loads(getattr(ts, "selected_items", None) or "[]") if ts else []
     if frozen:
-        # the trainer validated an exact selection in preview -> serve exactly it, in order
+        # the trainer validated an exact selection in preview -> serve exactly it,
+        # in order. v34: the frozen list can mix bank items and trainer-authored
+        # items ("trainer-…" ids) — resolve both, keep the trainer's order.
         by_id = {it.external_id: it for it in
                  session.exec(select(Item).where(Item.external_id.in_(frozen))).all()}
-        items = [by_id[eid] for eid in frozen if eid in by_id]
-    else:
-        # legacy sessions (no frozen list): compose from concepts
-        items = _compose_items_for_concepts(session, concepts, ts.question_count if ts else 10)
+        t_by_id = saas.trainer_items_by_external_ids(session, frozen)
+        payload_items = []
+        for eid in frozen:
+            if eid in by_id:
+                it = by_id[eid]
+                payload_items.append({"external_id": it.external_id, "area": it.knowledge_area,
+                                      "type": it.type, "difficulty": it.difficulty,
+                                      "prompt": {"fr": it.prompt_fr, "en": it.prompt_en},
+                                      "options": {"fr": json.loads(it.options_fr or "[]"),
+                                                  "en": json.loads(it.options_en or "[]")}})
+            elif eid in t_by_id:
+                payload_items.append(saas.trainer_item_public(session, t_by_id[eid]))
+        if a.status == "assigned":
+            a.status = "started"
+            session.add(a); session.commit()
+        return {"assignment_id": a.id, "title": ts.title if ts else "",
+                "items": payload_items}
+    # legacy sessions (no frozen list): compose from concepts
+    items = _compose_items_for_concepts(session, concepts, ts.question_count if ts else 10)
     if a.status == "assigned":
         a.status = "started"
         session.add(a); session.commit()

@@ -166,3 +166,33 @@ export async function getSessionPreview(trainerId, concepts, questionCount = 10)
   if (!r.ok) throw new Error(`session-preview ${r.status}`);
   return r.json();
 }
+
+// ---- v34 : boîte à outils d'édition du formateur ----
+export async function getQuestionBank(trainerId, { area, difficulty, search } = {}) {
+  const u = new URL(`${BASE}/api/cohort/question-bank`);
+  u.searchParams.set("trainer_id", trainerId);
+  if (area) u.searchParams.set("area", area);
+  if (difficulty) u.searchParams.set("difficulty", difficulty);
+  if (search) u.searchParams.set("search", search);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`question-bank ${r.status}`);
+  return r.json();
+}
+
+export async function createTrainerItem(trainerId, payload) {
+  const r = await fetch(`${BASE}/api/cohort/trainer-item`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ trainer_id: trainerId, ...payload }),
+  });
+  if (!r.ok) throw new Error(`trainer-item ${r.status}`);
+  return r.json();
+}
+
+export async function polishQuestion(trainerId, payload) {
+  const r = await fetch(`${BASE}/api/cohort/polish-question`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ trainer_id: trainerId, ...payload }),
+  });
+  if (!r.ok) throw new Error(`polish-question ${r.status}`);
+  return r.json();
+}

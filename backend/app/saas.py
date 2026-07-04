@@ -542,3 +542,110 @@ def sessions_for_cohort(session: Session, cohort_id: int) -> list[dict]:
                     "assigned": len(asg), "completed": done,
                     "created_at": ts.created_at.isoformat()})
     return out
+
+
+# ======================================================================
+# v34 — TrainerItem : questions créées par les formateurs (boîte à outils d'édition)
+# ======================================================================
+# Périmètre VOLONTAIREMENT limité (décision produit v34) :
+# - Les questions formateur vivent UNIQUEMENT dans les séances ciblées et la
+#   banque de leurs cohortes. Elles n'entrent JAMAIS dans le moteur adaptatif
+#   global ni dans le contenu servi aux autres organisations (cloisonnement).
+# - Pas de traduction imposée : le formateur écrit dans sa langue.
+# - Un vrai outil d'auteur (brouillons, versions, relecture) viendra plus tard
+#   si le besoin se confirme — ne pas sur-construire maintenant.
+TRAINER_ITEM_PREFIX = "trainer-"
+
+
+class TrainerItem(SQLModel, table=True):
+    """Une question rédigée par un formateur, cloisonnée à son organisation."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    external_id: str = Field(index=True)            # "trainer-<hex>" — espace de noms distinct de la banque
+    org_id: int = Field(index=True, foreign_key="organization.id")
+    created_by: int = Field(index=True, foreign_key="user.id")
+    knowledge_area: str = Field(index=True)
+    difficulty: int = 2                              # 1..3
+    prompt: str = ""
+    options: str = "[]"                              # JSON list[str] (4 réponses)
+    answer_index: int = 0
+    rationale: str = ""
+    lang: str = "fr"                                 # langue d'écriture (pas de traduction imposée)
+    status: str = "active"                           # active | archived
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+def trainer_org_ids(session: Session, user_id: int) -> list[int]:
+    """Organisations où l'utilisateur est formateur actif (via ses cohortes)."""
+    orgs = set()
+    for cid in cohorts_where_trainer(session, user_id):
+        oid = org_of_cohort(session, cid)
+        if oid:
+            orgs.add(oid)
+    return sorted(orgs)
+
+
+def create_trainer_item(session: Session, trainer_public_id: str, *, knowledge_area: str,
+                        prompt: str, options: list, answer_index: int,
+                        rationale: str = "", difficulty: int = 2, lang: str = "fr") -> dict:
+    """Crée une question formateur, cloisonnée à SON organisation. Validation stricte."""
+    import json as _json, uuid as _uuid
+    tu = session.exec(select(User).where(User.public_id == trainer_public_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    orgs = trainer_org_ids(session, tu.id)
+    if not orgs:
+        return {"error": "no_cohort"}
+    prompt = (prompt or "").strip()
+    opts = [str(o or "").strip() for o in (options or [])]
+    if not prompt or len(opts) != 4 or any(not o for o in opts):
+        return {"error": "invalid_question",
+                "message_fr": "L'énoncé et les quatre réponses sont requis.",
+                "message_en": "The statement and all four answers are required."}
+    try:
+        ai = int(answer_index)
+    except (TypeError, ValueError):
+        ai = -1
+    if ai not in (0, 1, 2, 3):
+        return {"error": "invalid_answer_index",
+                "message_fr": "Veuillez indiquer la bonne réponse.",
+                "message_en": "Please mark the correct answer."}
+    diff = int(difficulty) if str(difficulty) in ("1", "2", "3") else 2
+    ti = TrainerItem(external_id=TRAINER_ITEM_PREFIX + _uuid.uuid4().hex[:12],
+                     org_id=orgs[0], created_by=tu.id,
+                     knowledge_area=(knowledge_area or "").strip() or "integration",
+                     difficulty=diff, prompt=prompt[:2000],
+                     options=_json.dumps(opts), answer_index=ai,
+                     rationale=(rationale or "").strip()[:2000],
+                     lang=(lang if lang in ("fr", "en") else "fr"))
+    session.add(ti); session.commit(); session.refresh(ti)
+    return {"item": trainer_item_public(session, ti)}
+
+
+def trainer_item_public(session: Session, ti: TrainerItem) -> dict:
+    """Forme publique d'une question formateur — même contrat que les items de la
+    banque (prompt/options bilingues : le texte d'auteur sert les deux langues)."""
+    import json as _json
+    opts = _json.loads(ti.options or "[]")
+    author = session.exec(select(User).where(User.id == ti.created_by)).first()
+    return {"external_id": ti.external_id, "area": ti.knowledge_area,
+            "type": "mcq", "difficulty": ti.difficulty,
+            "prompt": {"fr": ti.prompt, "en": ti.prompt},
+            "options": {"fr": opts, "en": opts},
+            "trainer_authored": True, "author": (author.name if author else ""),
+            "lang": ti.lang}
+
+
+def trainer_items_for_orgs(session: Session, org_ids: list[int]) -> list[TrainerItem]:
+    if not org_ids:
+        return []
+    return session.exec(select(TrainerItem).where(TrainerItem.org_id.in_(org_ids),
+                                                  TrainerItem.status == "active")).all()
+
+
+def trainer_items_by_external_ids(session: Session, ids: list[str]) -> dict:
+    """Résolution des identifiants 'trainer-…' (pour la sélection figée d'une séance)."""
+    wanted = [i for i in (ids or []) if isinstance(i, str) and i.startswith(TRAINER_ITEM_PREFIX)]
+    if not wanted:
+        return {}
+    rows = session.exec(select(TrainerItem).where(TrainerItem.external_id.in_(wanted))).all()
+    return {r.external_id: r for r in rows}

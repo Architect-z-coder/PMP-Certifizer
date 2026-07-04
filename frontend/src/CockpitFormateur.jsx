@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { C, KA, ECO_DOMAINS, ECO_TASKS } from "./pmp.js";
-import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions, getSessionPreview } from "./api.js";
+import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions, getSessionPreview, getQuestionBank, createTrainerItem, polishQuestion } from "./api.js";
 
 /*
   CockpitFormateur — trainer action-cockpit.
@@ -50,11 +50,12 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
     setPreviewLoading(false);
   }
 
-  async function onConfirmCreate() {
+  async function onConfirmCreate(editedItems) {
     if (creating || !preview) return;
+    const finalItems = editedItems || preview.items;
     setCreating(true);
     try {
-      const ids = preview.items.map((x) => x.external_id);
+      const ids = finalItems.map((x) => x.external_id);
       const r = await createTargetedSession(trainerId, {
         concepts: preview.concepts, question_count: ids.length, item_ids: ids,
       });
@@ -180,41 +181,8 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
       {tab === 3 && <Quality data={data} lang={lang} />}
 
       {preview && (
-        <div onClick={() => setPreview(null)} style={{ position: "fixed", inset: 0, background: "rgba(6,11,18,.72)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 250, padding: 16 }}>
-          <div onClick={(e) => e.stopPropagation()} style={{ background: "#fff", borderRadius: 16, maxWidth: 560, width: "100%", maxHeight: "86vh", display: "flex", flexDirection: "column", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,.5)" }}>
-            <div style={{ height: 3, background: "linear-gradient(90deg,#E89A3C,#8A6FB0)" }} />
-            <div style={{ padding: "18px 20px 12px" }}>
-              <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 16.5 }}>{t("Aperçu de la séance avant assignation", "Session preview before assigning")}</div>
-              <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5, marginTop: 4 }}>
-                {t("Sujets : ", "Topics: ")}<b style={{ color: "#5E4980" }}>{preview.concepts.join(", ")}</b> · {preview.items.length} {t("questions. Vos apprenants recevront exactement ces questions. Retirez celles qui ne conviennent pas.", "questions. Your learners will receive exactly these questions. Remove any that don't fit.")}
-              </div>
-            </div>
-            <div className="ak-scroll" style={{ overflowY: "auto", padding: "4px 20px", flex: 1 }}>
-              {preview.items.map((q, i) => (
-                <div key={q.external_id} style={{ display: "flex", alignItems: "flex-start", gap: 10, border: `1px solid ${C.line}`, borderRadius: 11, padding: "10px 12px", marginBottom: 8 }}>
-                  <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: C.muted, paddingTop: 2, flex: "none" }}>{i + 1}.</span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 12, lineHeight: 1.45, color: C.text }}>{(q.prompt[lang] || q.prompt.fr || "").slice(0, 150)}{(q.prompt[lang] || q.prompt.fr || "").length > 150 ? "…" : ""}</div>
-                    <div style={{ display: "flex", gap: 6, marginTop: 5 }}>
-                      <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, background: "#F1EAF7", color: "#5E4980", borderRadius: 999, padding: "2px 8px" }}>{q.area}</span>
-                      <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, background: "#EDF1F5", color: C.muted, borderRadius: 999, padding: "2px 8px" }}>{t("difficulté", "difficulty")} {q.difficulty}</span>
-                    </div>
-                  </div>
-                  <button onClick={() => setPreview({ ...preview, items: preview.items.filter((x) => x.external_id !== q.external_id) })}
-                    title={t("Retirer cette question", "Remove this question")}
-                    style={{ border: "none", background: "none", color: C.muted, fontSize: 15, cursor: "pointer", lineHeight: 1, padding: 2 }}>×</button>
-                </div>
-              ))}
-              {preview.items.length === 0 && (
-                <div style={{ textAlign: "center", color: C.muted, fontSize: 12.5, padding: "18px 0" }}>{t("Toutes les questions ont été retirées — annulez et rouvrez l'aperçu.", "All questions removed — cancel and reopen the preview.")}</div>
-              )}
-            </div>
-            <div style={{ display: "flex", gap: 10, padding: "14px 20px 18px", borderTop: `1px solid ${C.line}` }}>
-              <button onClick={() => setPreview(null)} style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 11, background: "#fff", color: C.muted, fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13, padding: "12px", cursor: "pointer" }}>{t("Annuler", "Cancel")}</button>
-              <button onClick={onConfirmCreate} disabled={creating || preview.items.length === 0} style={{ flex: 2, border: "none", borderRadius: 11, background: creating || preview.items.length === 0 ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13, padding: "12px", cursor: creating || preview.items.length === 0 ? "default" : "pointer" }}>{creating ? t("Assignation…", "Assigning…") : t(`Confirmer et assigner (${preview.items.length} questions)`, `Confirm and assign (${preview.items.length} questions)`)}</button>
-            </div>
-          </div>
-        </div>
+        <SessionEditor lang={lang} trainerId={trainerId} preview={preview} creating={creating}
+          onCancel={() => setPreview(null)} onConfirm={onConfirmCreate} />
       )}
 
       {toast && (
@@ -354,3 +322,308 @@ function Intervention({ al, alc, alb, title, desc, cta, amber, impact }) {
 function Kpi({ v, l, c }) { return <div><div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 22, color: c || "#fff" }}>{v}</div><div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 8.5, letterSpacing: 0.5, textTransform: "uppercase", color: "#8FA6BC", marginTop: 2 }}>{l}</div></div>; }
 function Lg({ c, x }) { return <span style={{ display: "flex", alignItems: "center", gap: 5 }}><span style={{ width: 11, height: 11, borderRadius: "50%", background: c, display: "inline-block" }} />{x}</span>; }
 function Center({ children }) { return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontSize: 13, padding: 30, textAlign: "center", lineHeight: 1.6 }}>{children}</div>; }
+
+/* ======================================================================
+   v34 — SessionEditor : la boîte à outils d'édition du formateur.
+   Quatre outils : retirer (✕), remplacer (↻ suggestion même zone),
+   réordonner (▲▼), ajouter (banque cloisonnée) — plus « Créer ma question »
+   avec correction de formulation par l'IA (proposition, jamais imposée).
+   NOTE PRODUIT : version volontairement légère. Un véritable outil d'auteur
+   (brouillons, relecture, versions) viendra plus tard si le besoin se confirme.
+   ====================================================================== */
+function SessionEditor({ lang, trainerId, preview, creating, onCancel, onConfirm }) {
+  const t = (fr, en) => (lang === "en" ? en : fr);
+  const [items, setItems] = useState(preview.items);
+  const [bank, setBank] = useState(null);            // cache de la banque cloisonnée
+  const [bankLoading, setBankLoading] = useState(false);
+  const [panel, setPanel] = useState(null);          // null | "bank" | "author"
+  const [bSearch, setBSearch] = useState("");
+  const [bArea, setBArea] = useState("");
+  const [bDiff, setBDiff] = useState("");
+  const [swap, setSwap] = useState(null);            // {forId, candidate, tried:[]}
+  // formulaire « ma question »
+  const emptyForm = { prompt: "", opts: ["", "", "", ""], good: -1, rationale: "", area: (preview.concepts && preview.concepts[0]) || "integration", diff: 2 };
+  const [form, setForm] = useState(emptyForm);
+  const [saving, setSaving] = useState(false);
+  const [polishBusy, setPolishBusy] = useState(false);
+  const [proposal, setProposal] = useState(null);    // {prompt, options, rationale} | {msg}
+
+  const inSel = (eid) => items.some((x) => x.external_id === eid);
+  const areaOptions = useMemo(() => {
+    const ids = [...new Set([...(preview.concepts || []), ...KA.map((k) => k.id)])];
+    return ids;
+  }, [preview.concepts]);
+
+  async function loadBank() {
+    if (bank || bankLoading) return bank;
+    setBankLoading(true);
+    try { const r = await getQuestionBank(trainerId, {}); const b = (r && r.items) || []; setBank(b); setBankLoading(false); return b; }
+    catch (e) { setBankLoading(false); return []; }
+  }
+
+  function move(i, dir) {
+    const next = [...items]; const tmp = next[i]; next[i] = next[i + dir]; next[i + dir] = tmp;
+    setItems(next);
+  }
+  function removeQ(eid) {
+    setItems(items.filter((x) => x.external_id !== eid));
+    if (swap && swap.forId === eid) setSwap(null);
+  }
+  async function suggestSwap(eid) {
+    const b = (await loadBank()) || bank || [];
+    const q = items.find((x) => x.external_id === eid);
+    if (!q) return;
+    const tried = swap && swap.forId === eid ? swap.tried : [];
+    let pool = b.filter((x) => x.area === q.area && !inSel(x.external_id) && !tried.includes(x.external_id));
+    if (!pool.length) pool = b.filter((x) => !inSel(x.external_id) && !tried.includes(x.external_id));
+    if (!pool.length) { setSwap({ forId: eid, candidate: null, tried }); return; }
+    pool.sort((a, c) => Math.abs(a.difficulty - q.difficulty) - Math.abs(c.difficulty - q.difficulty));
+    setSwap({ forId: eid, candidate: pool[0], tried: [...tried, pool[0].external_id] });
+  }
+  function doSwap() {
+    if (!swap || !swap.candidate) return;
+    setItems(items.map((x) => (x.external_id === swap.forId ? swap.candidate : x)));
+    setSwap(null);
+  }
+  function addFromBank(b) { if (!inSel(b.external_id)) setItems([...items, b]); }
+
+  async function openPanel(which) {
+    setPanel(panel === which ? null : which);
+    setProposal(null);
+    if (which === "bank") loadBank();
+  }
+
+  async function onPolish() {
+    if (polishBusy) return;
+    const opts = form.opts.map((o) => o.trim());
+    if (!form.prompt.trim() || opts.some((o) => !o)) {
+      setProposal({ msg: t("Complétez d'abord l'énoncé et les quatre réponses — la correction s'occupe du reste.", "Fill in the statement and all four answers first — polishing takes care of the rest.") });
+      return;
+    }
+    setPolishBusy(true); setProposal(null);
+    try {
+      const r = await polishQuestion(trainerId, { prompt: form.prompt.trim(), options: opts, rationale: form.rationale.trim(), lang });
+      if (r && r.proposal) {
+        if (r.changed) setProposal(r.proposal);
+        else setProposal({ msg: t("✓ Aucune correction nécessaire — votre formulation respecte déjà le vouvoiement et la forme d'examen.", "✓ No correction needed — your wording already matches the exam form.") });
+      } else {
+        setProposal({ msg: (r && (lang === "en" ? r.message_en : r.message_fr)) || t("La correction est momentanément indisponible.", "Polishing is temporarily unavailable.") });
+      }
+    } catch (e) {
+      setProposal({ msg: t("La correction est momentanément indisponible. Vous pouvez ajouter votre question telle quelle.", "Polishing is temporarily unavailable. You can still add your question as written.") });
+    }
+    setPolishBusy(false);
+  }
+  function applyProposal() {
+    if (!proposal || proposal.msg) return;
+    setForm({ ...form, prompt: proposal.prompt, opts: proposal.options, rationale: proposal.rationale || form.rationale });
+    setProposal(null);
+  }
+
+  async function onSaveMyQuestion() {
+    if (saving) return;
+    const opts = form.opts.map((o) => o.trim());
+    if (!form.prompt.trim() || opts.some((o) => !o) || form.good < 0) {
+      setProposal({ msg: t("Veuillez compléter l'énoncé, les quatre réponses, et cocher la bonne réponse.", "Please fill in the statement, all four answers, and mark the correct one.") });
+      return;
+    }
+    setSaving(true);
+    try {
+      const r = await createTrainerItem(trainerId, {
+        knowledge_area: form.area, prompt: form.prompt.trim(), options: opts,
+        answer_index: form.good, rationale: form.rationale.trim(), difficulty: form.diff, lang,
+      });
+      if (r && r.item) {
+        setItems([...items, r.item]);
+        if (bank) setBank([...bank, { external_id: r.item.external_id, area: r.item.area, difficulty: r.item.difficulty, prompt: r.item.prompt, trainer_authored: true }]);
+        setForm(emptyForm); setProposal(null); setPanel(null);
+      } else {
+        setProposal({ msg: (r && (lang === "en" ? r.message_en : r.message_fr)) || t("Enregistrement impossible — réessayez.", "Could not save — try again.") });
+      }
+    } catch (e) {
+      setProposal({ msg: t("Enregistrement impossible — le serveur se réveille peut-être, réessayez.", "Could not save — the server may be waking up, try again.") });
+    }
+    setSaving(false);
+  }
+
+  const bankRows = (bank || []).filter((b) => !inSel(b.external_id)
+    && (!bArea || b.area === bArea)
+    && (!bDiff || String(b.difficulty) === bDiff)
+    && (!bSearch || ((b.prompt.fr || "") + " " + (b.prompt.en || "")).toLowerCase().includes(bSearch.toLowerCase())));
+
+  const mono = "'IBM Plex Mono',monospace";
+  const grotesk = "'Space Grotesk',sans-serif";
+  const inputStyle = { width: "100%", border: `1px solid ${C.line}`, borderRadius: 8, padding: "8px 10px", fontSize: 12.5, fontFamily: "'Inter',sans-serif", color: C.text, outline: "none", boxSizing: "border-box" };
+  const smallLabel = { fontFamily: mono, fontSize: 9.5, letterSpacing: 1, textTransform: "uppercase", color: C.muted, margin: "10px 0 4px" };
+  const pillBtn = (active, color) => ({ border: `1px dashed ${color}`, background: active ? color : "transparent", color: active ? "#fff" : color, borderRadius: 9, padding: "7px 12px", fontWeight: 600, fontSize: 12, cursor: "pointer", fontFamily: "'Inter',sans-serif" });
+
+  return (
+    <div onClick={onCancel} style={{ position: "fixed", inset: 0, background: "rgba(6,11,18,.72)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 250, padding: 16 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: "#fff", borderRadius: 16, maxWidth: 640, width: "100%", maxHeight: "88vh", display: "flex", flexDirection: "column", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,.5)" }}>
+        <div style={{ height: 3, background: "linear-gradient(90deg,#E89A3C,#8A6FB0)" }} />
+        <div style={{ padding: "16px 20px 10px" }}>
+          <div style={{ fontFamily: grotesk, fontWeight: 700, fontSize: 16.5 }}>{t("Composez votre séance ciblée", "Compose your targeted session")}</div>
+          <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5, marginTop: 4 }}>
+            {t("Sujets : ", "Topics: ")}<b style={{ color: "#5E4980" }}>{preview.concepts.map((c) => areaLabel(c, lang)).join(", ")}</b> · {t("Vos apprenants recevront exactement ces questions, dans cet ordre.", "Your learners will receive exactly these questions, in this order.")}
+          </div>
+          <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap", alignItems: "center" }}>
+            <span style={{ fontFamily: mono, fontSize: 11, color: "#fff", background: C.teal, padding: "4px 11px", borderRadius: 999, fontWeight: 600 }}>{items.length} {t("question" + (items.length > 1 ? "s" : ""), "question" + (items.length > 1 ? "s" : ""))}</span>
+            <span style={{ flex: 1 }} />
+            <button onClick={() => openPanel("bank")} style={pillBtn(panel === "bank", C.teal)}>＋ {t("Ajouter depuis la banque", "Add from the bank")}</button>
+            <button onClick={() => openPanel("author")} style={pillBtn(panel === "author", "#B5701E")}>✍️ {t("Créer ma question", "Create my question")}</button>
+          </div>
+        </div>
+
+        <div className="ak-scroll" style={{ overflowY: "auto", padding: "4px 20px", flex: 1 }}>
+          {items.map((q, i) => (
+            <div key={q.external_id} style={{ border: `1px solid ${swap && swap.forId === q.external_id ? C.amber : C.line}`, borderRadius: 11, padding: "10px 12px", marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 1, flex: "none" }}>
+                  <button disabled={i === 0} onClick={() => move(i, -1)} title={t("Monter", "Move up")} style={{ width: 22, height: 18, border: `1px solid ${C.line}`, background: "#fff", borderRadius: 5, color: i === 0 ? "#D5DEE6" : C.muted, fontSize: 9, cursor: i === 0 ? "default" : "pointer", lineHeight: 1, padding: 0 }}>▲</button>
+                  <span style={{ fontFamily: mono, fontSize: 10, color: C.muted }}>{i + 1}</span>
+                  <button disabled={i === items.length - 1} onClick={() => move(i, 1)} title={t("Descendre", "Move down")} style={{ width: 22, height: 18, border: `1px solid ${C.line}`, background: "#fff", borderRadius: 5, color: i === items.length - 1 ? "#D5DEE6" : C.muted, fontSize: 9, cursor: i === items.length - 1 ? "default" : "pointer", lineHeight: 1, padding: 0 }}>▼</button>
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 12, lineHeight: 1.45, color: C.text }}>{(q.prompt[lang] || q.prompt.fr || "").slice(0, 150)}{(q.prompt[lang] || q.prompt.fr || "").length > 150 ? "…" : ""}</div>
+                  <div style={{ display: "flex", gap: 6, marginTop: 5, flexWrap: "wrap" }}>
+                    <span style={{ fontFamily: mono, fontSize: 9, background: "#F1EAF7", color: "#5E4980", borderRadius: 999, padding: "2px 8px" }}>{areaLabel(q.area, lang)}</span>
+                    <span style={{ fontFamily: mono, fontSize: 9, background: "#EDF1F5", color: C.muted, borderRadius: 999, padding: "2px 8px" }}>{t("difficulté", "difficulty")} {q.difficulty}</span>
+                    {q.trainer_authored && <span style={{ fontFamily: mono, fontSize: 9, background: "#F0EAF7", color: "#8A6FB0", borderRadius: 999, padding: "2px 8px" }}>✍️ {t("Ma question", "My question")}</span>}
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 5, flex: "none" }}>
+                  <button onClick={() => suggestSwap(q.external_id)} title={t("Remplacer par une question similaire", "Replace with a similar question")}
+                    style={{ width: 26, height: 26, border: `1px solid ${C.line}`, background: "#fff", borderRadius: 7, color: C.muted, fontSize: 12, cursor: "pointer", lineHeight: 1 }}>↻</button>
+                  <button onClick={() => removeQ(q.external_id)} title={t("Retirer cette question", "Remove this question")}
+                    style={{ width: 26, height: 26, border: `1px solid ${C.line}`, background: "#fff", borderRadius: 7, color: C.muted, fontSize: 13, cursor: "pointer", lineHeight: 1 }}>×</button>
+                </div>
+              </div>
+              {swap && swap.forId === q.external_id && (
+                <div className="ak-fade" style={{ background: "#FDF7EE", border: `1px dashed ${C.amber}`, borderRadius: 9, padding: "9px 11px", marginTop: 8 }}>
+                  <div style={{ fontFamily: mono, fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: "#B5701E", marginBottom: 4 }}>↻ {t("Suggestion — même zone, difficulté proche", "Suggestion — same area, similar difficulty")}</div>
+                  {swap.candidate ? (
+                    <>
+                      <div style={{ fontSize: 12, lineHeight: 1.45, marginBottom: 7 }}>{(swap.candidate.prompt[lang] || swap.candidate.prompt.fr || "").slice(0, 150)}…</div>
+                      <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
+                        <button onClick={doSwap} style={{ border: "none", borderRadius: 7, padding: "6px 12px", background: C.amber, color: "#0E1A2B", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>{t("Remplacer", "Replace")}</button>
+                        <button onClick={() => suggestSwap(q.external_id)} style={{ border: `1px solid ${C.line}`, borderRadius: 7, padding: "6px 12px", background: "#fff", color: C.muted, fontWeight: 600, fontSize: 12, cursor: "pointer" }}>{t("Autre suggestion", "Another suggestion")}</button>
+                        <button onClick={() => setSwap(null)} style={{ border: `1px solid ${C.line}`, borderRadius: 7, padding: "6px 12px", background: "#fff", color: C.muted, fontWeight: 600, fontSize: 12, cursor: "pointer" }}>{t("Garder l'originale", "Keep the original")}</button>
+                      </div>
+                    </>
+                  ) : (
+                    <div style={{ fontSize: 12, color: C.muted }}>{bankLoading ? t("Recherche d'une suggestion…", "Looking for a suggestion…") : t("Aucune autre question disponible pour cette zone.", "No other question available for this area.")}</div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+          {items.length === 0 && (
+            <div style={{ textAlign: "center", color: C.muted, fontSize: 12.5, padding: "18px 0" }}>{t("Toutes les questions ont été retirées — ajoutez-en depuis la banque ou créez la vôtre.", "All questions removed — add some from the bank or create your own.")}</div>
+          )}
+
+          {panel === "bank" && (
+            <div className="ak-fade" style={{ border: `1px solid ${C.teal}`, borderRadius: 12, padding: "12px 13px", marginBottom: 10 }}>
+              <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.teal, marginBottom: 8 }}>{t("Banque de questions — vos cohortes", "Question bank — your cohorts")}</div>
+              <div style={{ display: "flex", gap: 7, flexWrap: "wrap", marginBottom: 9 }}>
+                <input value={bSearch} onChange={(e) => setBSearch(e.target.value)} placeholder={t("Rechercher dans les énoncés…", "Search the statements…")} style={{ ...inputStyle, flex: 1, minWidth: 140, width: "auto" }} />
+                <select value={bArea} onChange={(e) => setBArea(e.target.value)} style={{ ...inputStyle, width: "auto" }}>
+                  <option value="">{t("Toutes les zones", "All areas")}</option>
+                  {areaOptions.map((a) => <option key={a} value={a}>{areaLabel(a, lang)}</option>)}
+                </select>
+                <select value={bDiff} onChange={(e) => setBDiff(e.target.value)} style={{ ...inputStyle, width: "auto" }}>
+                  <option value="">{t("Toutes difficultés", "All difficulties")}</option>
+                  <option value="1">{t("Fondamental", "Foundational")}</option>
+                  <option value="2">{t("Intermédiaire", "Intermediate")}</option>
+                  <option value="3">{t("Avancé", "Advanced")}</option>
+                </select>
+              </div>
+              {bankLoading && <div style={{ fontSize: 12, color: C.muted, padding: "6px 0" }}>{t("Chargement de la banque…", "Loading the bank…")}</div>}
+              {!bankLoading && bankRows.slice(0, 30).map((b) => (
+                <div key={b.external_id} style={{ display: "flex", gap: 9, alignItems: "flex-start", padding: "8px 0", borderBottom: `1px solid ${C.line}` }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 12, lineHeight: 1.45 }}>{(b.prompt[lang] || b.prompt.fr || "").slice(0, 130)}…</div>
+                    <div style={{ display: "flex", gap: 6, marginTop: 4, flexWrap: "wrap" }}>
+                      <span style={{ fontFamily: mono, fontSize: 9, background: "#F1EAF7", color: "#5E4980", borderRadius: 999, padding: "2px 8px" }}>{areaLabel(b.area, lang)}</span>
+                      <span style={{ fontFamily: mono, fontSize: 9, background: "#EDF1F5", color: C.muted, borderRadius: 999, padding: "2px 8px" }}>{t("difficulté", "difficulty")} {b.difficulty}</span>
+                      {b.trainer_authored && <span style={{ fontFamily: mono, fontSize: 9, background: "#F0EAF7", color: "#8A6FB0", borderRadius: 999, padding: "2px 8px" }}>✍️ {t("Ma question", "My question")}</span>}
+                    </div>
+                  </div>
+                  <button onClick={() => addFromBank(b)} style={{ flex: "none", border: `1px solid ${C.teal}`, background: "#F2F8FA", color: C.teal, borderRadius: 7, padding: "5px 11px", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>＋ {t("Ajouter", "Add")}</button>
+                </div>
+              ))}
+              {!bankLoading && bank && bankRows.length === 0 && (
+                <div style={{ fontSize: 12, color: C.muted, fontStyle: "italic", padding: "6px 0" }}>{t("Aucune question ne correspond à ces filtres.", "No question matches these filters.")}</div>
+              )}
+            </div>
+          )}
+
+          {panel === "author" && (
+            <div className="ak-fade" style={{ border: `1px solid ${C.amber}`, borderRadius: 12, padding: "12px 13px", marginBottom: 10 }}>
+              <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: "#B5701E", marginBottom: 4 }}>✍️ {t("Votre question — visible uniquement par vos cohortes", "Your question — visible only to your cohorts")}</div>
+              <div style={smallLabel}>{t("Énoncé", "Statement")}</div>
+              <textarea rows={3} value={form.prompt} onChange={(e) => setForm({ ...form, prompt: e.target.value })}
+                placeholder={t("Décrivez la situation, puis posez la question…", "Describe the situation, then ask the question…")}
+                style={{ ...inputStyle, resize: "vertical" }} />
+              <div style={smallLabel}>{t("Réponses — cochez la bonne réponse", "Answers — mark the correct one")}</div>
+              {form.opts.map((o, i) => (
+                <div key={i} style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6 }}>
+                  <input type="radio" name="good" checked={form.good === i} onChange={() => setForm({ ...form, good: i })} style={{ accentColor: "#3DA776", flex: "none", width: 15, height: 15 }} />
+                  <input value={o} onChange={(e) => { const opts = [...form.opts]; opts[i] = e.target.value; setForm({ ...form, opts }); }}
+                    placeholder={t("Réponse ", "Answer ") + String.fromCharCode(65 + i)} style={inputStyle} />
+                </div>
+              ))}
+              <div style={smallLabel}>{t("Explication — affichée à l'apprenant après sa réponse", "Explanation — shown to the learner after answering")}</div>
+              <textarea rows={2} value={form.rationale} onChange={(e) => setForm({ ...form, rationale: e.target.value })}
+                placeholder={t("Pourquoi cette réponse est la bonne…", "Why this answer is correct…")} style={{ ...inputStyle, resize: "vertical" }} />
+              <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+                <select value={form.area} onChange={(e) => setForm({ ...form, area: e.target.value })} style={{ ...inputStyle, flex: 1, width: "auto" }}>
+                  {areaOptions.map((a) => <option key={a} value={a}>{areaLabel(a, lang)}</option>)}
+                </select>
+                <select value={form.diff} onChange={(e) => setForm({ ...form, diff: parseInt(e.target.value, 10) })} style={{ ...inputStyle, flex: 1, width: "auto" }}>
+                  <option value="1">{t("Fondamental", "Foundational")}</option>
+                  <option value="2">{t("Intermédiaire", "Intermediate")}</option>
+                  <option value="3">{t("Avancé", "Advanced")}</option>
+                </select>
+              </div>
+              <div style={{ display: "flex", gap: 7, marginTop: 11, flexWrap: "wrap" }}>
+                <button onClick={onPolish} disabled={polishBusy} style={{ border: `1px solid ${C.teal}`, background: "#fff", color: C.teal, borderRadius: 8, padding: "7px 13px", fontWeight: 600, fontSize: 12, cursor: polishBusy ? "default" : "pointer" }}>
+                  {polishBusy ? t("Correction en cours…", "Polishing…") : "✨ " + t("Corriger la formulation", "Polish the wording")}
+                </button>
+                <button onClick={onSaveMyQuestion} disabled={saving} style={{ border: "none", background: saving ? "#C9D6E0" : C.amber, color: "#0E1A2B", borderRadius: 8, padding: "7px 13px", fontWeight: 700, fontSize: 12, cursor: saving ? "default" : "pointer", fontFamily: grotesk }}>
+                  {saving ? t("Enregistrement…", "Saving…") : t("Ajouter à la séance", "Add to the session")}
+                </button>
+                <button onClick={() => { setForm(emptyForm); setProposal(null); setPanel(null); }} style={{ border: `1px solid ${C.line}`, background: "#fff", color: C.muted, borderRadius: 8, padding: "7px 13px", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>{t("Annuler", "Cancel")}</button>
+              </div>
+              {proposal && (
+                <div className="ak-fade" style={{ background: "#F2F8FA", border: `1px dashed ${C.teal}`, borderRadius: 9, padding: "10px 12px", marginTop: 10 }}>
+                  {proposal.msg ? (
+                    <div style={{ fontSize: 12.5, lineHeight: 1.5, color: C.text }}>{proposal.msg}</div>
+                  ) : (
+                    <>
+                      <div style={{ fontFamily: mono, fontSize: 9, letterSpacing: 1, textTransform: "uppercase", color: C.teal, marginBottom: 6 }}>✨ {t("Correction proposée — orthographe · vouvoiement · forme d'examen", "Proposed correction — spelling · formal address · exam form")}</div>
+                      <div style={{ fontSize: 12.5, lineHeight: 1.5, marginBottom: 5 }}><b style={{ fontFamily: mono, fontSize: 9, color: C.muted, textTransform: "uppercase", display: "block" }}>{t("Énoncé", "Statement")}</b>{proposal.prompt}</div>
+                      <div style={{ fontSize: 12.5, lineHeight: 1.55, marginBottom: 5 }}><b style={{ fontFamily: mono, fontSize: 9, color: C.muted, textTransform: "uppercase", display: "block" }}>{t("Réponses", "Answers")}</b>{proposal.options.map((o, i) => <span key={i}>{String.fromCharCode(65 + i)}. {o}{form.good === i ? " ✓" : ""}<br /></span>)}</div>
+                      {proposal.rationale && <div style={{ fontSize: 12.5, lineHeight: 1.5, marginBottom: 7 }}><b style={{ fontFamily: mono, fontSize: 9, color: C.muted, textTransform: "uppercase", display: "block" }}>{t("Explication", "Explanation")}</b>{proposal.rationale}</div>}
+                      <div style={{ display: "flex", gap: 7 }}>
+                        <button onClick={applyProposal} style={{ border: "none", borderRadius: 7, padding: "6px 12px", background: C.teal, color: "#fff", fontWeight: 600, fontSize: 12, cursor: "pointer" }}>{t("Appliquer la correction", "Apply the correction")}</button>
+                        <button onClick={() => setProposal(null)} style={{ border: `1px solid ${C.line}`, borderRadius: 7, padding: "6px 12px", background: "#fff", color: C.muted, fontWeight: 600, fontSize: 12, cursor: "pointer" }}>{t("Garder ma version", "Keep my version")}</button>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+              <div style={{ fontSize: 11, color: C.muted, marginTop: 9, lineHeight: 1.5 }}>{t("Votre question rejoint aussi la banque de vos cohortes : vous pourrez la réutiliser dans de futures séances. La correction est une proposition — vous gardez toujours le dernier mot.", "Your question also joins your cohorts' bank so you can reuse it in future sessions. The correction is a proposal — you always have the final say.")}</div>
+            </div>
+          )}
+        </div>
+
+        <div style={{ display: "flex", gap: 10, padding: "14px 20px 18px", borderTop: `1px solid ${C.line}` }}>
+          <button onClick={onCancel} style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 11, background: "#fff", color: C.muted, fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: "pointer" }}>{t("Annuler", "Cancel")}</button>
+          <button onClick={() => onConfirm(items)} disabled={creating || items.length === 0} style={{ flex: 2, border: "none", borderRadius: 11, background: creating || items.length === 0 ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: creating || items.length === 0 ? "default" : "pointer" }}>
+            {creating ? t("Assignation…", "Assigning…") : t(`Confirmer et assigner (${items.length} questions)`, `Confirm and assign (${items.length} questions)`)}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
