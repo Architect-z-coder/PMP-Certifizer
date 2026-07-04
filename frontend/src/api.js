@@ -115,3 +115,20 @@ export async function seedDemoCohort(trainerId) {
   if (!r.ok) throw new Error(`seed ${r.status}`);
   return r.json();
 }
+
+export async function createTargetedSession(trainerId, opts = {}) {
+  const r = await fetch(`${BASE}/api/cohort/targeted-session`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ trainer_id: trainerId, ...opts }),
+  });
+  if (!r.ok) throw new Error(`targeted-session ${r.status}`);
+  return r.json();
+}
+
+export async function getTargetedSessions(trainerId) {
+  const u = new URL(`${BASE}/api/cohort/targeted-sessions`);
+  u.searchParams.set("trainer_id", trainerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`targeted-sessions ${r.status}`);
+  return r.json();
+}

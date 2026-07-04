@@ -534,6 +534,48 @@ def seed_demo_cohort_endpoint(trainer_id: Optional[str] = "formateur",
     return saas.seed_demo_cohort(session, trainer_id or "formateur")
 
 
+class TargetedSessionIn(BaseModel):
+    trainer_id: str
+    title: str = ""
+    concepts: list = []
+    question_count: int = 10
+    objective: str = ""
+
+
+@app.post("/api/cohort/targeted-session")
+def create_targeted_session_endpoint(body: TargetedSessionIn, session: Session = Depends(get_session)):
+    """The cockpit's 'Créer une séance ciblée' — for the trainer's own cohort only.
+    Concepts default to the cohort's current critical path if none provided."""
+    tu = session.exec(select(saas.User).where(saas.User.public_id == body.trainer_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    cohorts = saas.cohorts_where_trainer(session, tu.id)
+    if not cohorts:
+        return {"error": "no_cohort"}
+    cohort_id = cohorts[0]  # MVP: the trainer's first cohort
+    concepts = list(body.concepts or [])
+    title = body.title
+    if not concepts:
+        # default to the cohort's critical path (reuse the aggregation)
+        ov = cohort_overview(cohort_id=None, trainer_id=body.trainer_id, session=session)
+        concepts = [c["area"] for c in ov.get("critical_path", [])][:2]
+    if not title:
+        title = "Séance ciblée — " + ", ".join(concepts[:2]) if concepts else "Séance ciblée"
+    return saas.create_targeted_session(session, body.trainer_id, cohort_id,
+                                        title, concepts, body.question_count, body.objective)
+
+
+@app.get("/api/cohort/targeted-sessions")
+def list_targeted_sessions(trainer_id: str, session: Session = Depends(get_session)):
+    tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
+    if not tu:
+        return []
+    out = []
+    for cid in saas.cohorts_where_trainer(session, tu.id):
+        out.extend(saas.sessions_for_cohort(session, cid))
+    return out
+
+
 @app.get("/api/cohort/overview")
 def cohort_overview(cohort_id: Optional[str] = None, trainer_id: Optional[str] = None,
                     session: Session = Depends(get_session)):

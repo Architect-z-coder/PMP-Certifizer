@@ -469,3 +469,73 @@ def seed_demo_cohort(session: Session, trainer_public_id: str = "formateur") -> 
     session.commit()
     return {"org_id": org.id, "cohort_id": coh.id, "cohort_code": coh.code,
             "trainer": trainer_public_id, "learners_linked": added, "learners_total": len(lids)}
+
+
+# ======================================================================
+# PHASE 2 — Étape 10 : TargetedSession + TargetedSessionAssignment (spec §2.9/2.9b)
+# ======================================================================
+class TargetedSession(SQLModel, table=True):
+    """Une séance ciblée composée par un formateur pour sa cohorte."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    cohort_id: int = Field(index=True, foreign_key="cohort.id")
+    created_by: int = Field(index=True, foreign_key="user.id")   # le formateur
+    title: str = ""
+    objective: str = ""
+    selected_concepts: str = "[]"          # JSON list[str] d'areas (portable)
+    question_count: int = 10
+    assigned_to: str = "cohort"            # cohort | group | selected_learners
+    status: str = "assigned"               # draft | assigned | completed
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class TargetedSessionAssignment(SQLModel, table=True):
+    """Qui doit faire la séance — et qui l'a terminée (spec §2.9b)."""
+    id: Optional[int] = Field(default=None, primary_key=True)
+    session_id: int = Field(index=True, foreign_key="targetedsession.id")
+    learner_id: int = Field(index=True, foreign_key="user.id")
+    status: str = "assigned"               # assigned | started | completed
+    assigned_at: datetime = Field(default_factory=datetime.utcnow)
+    completed_at: Optional[datetime] = Field(default=None)
+
+
+def create_targeted_session(session: Session, trainer_public_id: str, cohort_id: int,
+                            title: str, concepts: list, question_count: int = 10,
+                            objective: str = "") -> dict:
+    """Crée une séance ciblée et l'assigne à tous les apprenants actifs de la cohorte.
+    Le cloisonnement est vérifié : le formateur doit animer cette cohorte."""
+    import json as _json
+    tu = session.exec(select(User).where(User.public_id == trainer_public_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    if cohort_id not in cohorts_where_trainer(session, tu.id):
+        return {"error": "not_your_cohort"}   # server-side scoping, spec §1.5
+    ts = TargetedSession(cohort_id=cohort_id, created_by=tu.id, title=title[:200],
+                         objective=(objective or "")[:400],
+                         selected_concepts=_json.dumps(list(concepts or [])),
+                         question_count=int(question_count or 10),
+                         assigned_to="cohort", status="assigned")
+    session.add(ts); session.commit(); session.refresh(ts)
+    learner_ids = cohort_learner_user_ids(session, cohort_id)
+    for uid in learner_ids:
+        session.add(TargetedSessionAssignment(session_id=ts.id, learner_id=uid))
+    session.commit()
+    return {"session_id": ts.id, "title": ts.title, "concepts": list(concepts or []),
+            "question_count": ts.question_count, "assigned_count": len(learner_ids)}
+
+
+def sessions_for_cohort(session: Session, cohort_id: int) -> list[dict]:
+    """Les séances ciblées d'une cohorte, avec l'avancement (X/N terminées)."""
+    import json as _json
+    out = []
+    rows = session.exec(select(TargetedSession).where(TargetedSession.cohort_id == cohort_id)
+                        .order_by(TargetedSession.created_at.desc())).all()
+    for ts in rows:
+        asg = session.exec(select(TargetedSessionAssignment)
+                           .where(TargetedSessionAssignment.session_id == ts.id)).all()
+        done = sum(1 for a in asg if a.status == "completed")
+        out.append({"id": ts.id, "title": ts.title,
+                    "concepts": _json.loads(ts.selected_concepts or "[]"),
+                    "question_count": ts.question_count, "status": ts.status,
+                    "assigned": len(asg), "completed": done,
+                    "created_at": ts.created_at.isoformat()})
+    return out

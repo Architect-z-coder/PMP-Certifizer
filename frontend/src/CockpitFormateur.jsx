@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { C, KA, ECO_DOMAINS, ECO_TASKS } from "./pmp.js";
-import { getCohortOverview, seedDemoCohort } from "./api.js";
+import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions } from "./api.js";
 
 /*
   CockpitFormateur — trainer action-cockpit.
@@ -26,14 +26,31 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
   const [tab, setTab] = useState(0);
-  const [toast, setToast] = useState(false);
+  const [toast, setToast] = useState(null);   // null | {title, assigned}
   const [seeding, setSeeding] = useState(false);
+  const [sessions, setSessions] = useState([]);
+  const [creating, setCreating] = useState(false);
   const t = (fr, en) => (lang === "en" ? en : fr);
 
   useEffect(() => {
     setLoading(true);
     getCohortOverview(null, trainerId).then((d) => { setData(d); setLoading(false); }).catch((e) => { setErr(String(e)); setLoading(false); });
+    getTargetedSessions(trainerId).then(setSessions).catch(() => {});
   }, [trainerId]);
+
+  async function onCreateSession() {
+    if (creating) return;
+    setCreating(true);
+    try {
+      const r = await createTargetedSession(trainerId, { question_count: 10 });
+      if (r && r.session_id) {
+        setToast({ title: r.title, assigned: r.assigned_count });
+        setTimeout(() => setToast(null), 4200);
+        getTargetedSessions(trainerId).then(setSessions).catch(() => {});
+      }
+    } catch (e) { /* keep calm; cockpit stays usable */ }
+    setCreating(false);
+  }
 
   if (loading) return <Center>{t("Chargement de la cohorte…", "Loading cohort…")}</Center>;
   if (err || !data) return <Center>{t("Impossible de charger la cohorte. Le serveur se réveille peut-être — réessayez.", "Could not load the cohort. The server may be waking up — try again.")}</Center>;
@@ -85,7 +102,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
             <Kpi v={rd.at_risk} l={t("à risque", "at risk")} c="#D2664E" />
           </div>
         </div>
-        <button onClick={() => { setToast(true); setTimeout(() => setToast(false), 3200); }} style={{ background: C.amber, color: C.ink, border: "none", borderRadius: 11, padding: "13px 18px", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13.5, cursor: "pointer", whiteSpace: "nowrap", marginTop: isMobile ? 14 : 0 }}>＋ {t("Créer une séance ciblée", "Create a targeted session")}</button>
+        <button onClick={onCreateSession} disabled={creating} style={{ background: creating ? "#C9D6E0" : C.amber, color: C.ink, border: "none", borderRadius: 11, padding: "13px 18px", fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 13.5, cursor: creating ? "default" : "pointer", whiteSpace: "nowrap", marginTop: isMobile ? 14 : 0 }}>＋ {creating ? t("Création…", "Creating…") : t("Créer une séance ciblée", "Create a targeted session")}</button>
       </div>
 
       {/* BLOCKERS */}
@@ -114,6 +131,26 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
         <Intervention al={t("entretien", "maintenance")} alc="#2E7D57" alb="#E4F3EC" title={t("Rappel collectif", "Collective refresh")} desc={t("Sujets acquis mais peu pratiqués récemment par la cohorte.", "Topics mastered but little practised lately by the cohort.")} cta={t("Ajouter un rappel →", "Add a refresh →")} impact={t("maintient l'acquis", "keeps mastery fresh")} />
       </div>
 
+      {sessions.length > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 3 }}>{t("Séances ciblées créées", "Created targeted sessions")}</div>
+          <div style={{ fontSize: 12, color: C.muted, marginBottom: 10 }}>{t("Assignées à la cohorte — suivi de réalisation.", "Assigned to the cohort — completion tracking.")}</div>
+          {sessions.map((s) => (
+            <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 11, background: C.card, border: `1px solid ${C.line}`, borderRadius: 12, padding: "11px 14px", marginBottom: 8 }}>
+              <span style={{ width: 28, height: 28, borderRadius: 8, background: "#F1EAF7", color: "#5E4980", display: "flex", alignItems: "center", justifyContent: "center", flex: "none", fontSize: 14 }}>🎯</span>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.title}</div>
+                <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 10, color: C.muted }}>{s.question_count} {t("questions", "questions")} · {s.concepts.join(", ")}</div>
+              </div>
+              <div style={{ textAlign: "right", flex: "none" }}>
+                <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, fontSize: 14, color: s.completed === s.assigned && s.assigned > 0 ? "#3DA776" : C.text }}>{s.completed}/{s.assigned}</div>
+                <div style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 9, color: C.muted }}>{t("terminées", "completed")}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* TABS */}
       <div style={{ display: "flex", gap: 6, marginBottom: 13, flexWrap: "wrap" }}>
         {[t("Carte cohorte", "Cohort map"), t("Groupes d'action", "Action groups"), t("Heatmap détaillée", "Detailed heatmap"), t("Qualité des questions", "Question quality")].map((lbl, i) => (
@@ -129,7 +166,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
       {toast && (
         <div style={{ position: "fixed", bottom: 24, left: "50%", transform: "translateX(-50%)", background: "#0E1A2B", color: "#EAF0F6", border: "1px solid #3DA776", borderRadius: 12, padding: "13px 18px", fontSize: 13, zIndex: 200, boxShadow: "0 12px 40px rgba(0,0,0,.4)", display: "flex", alignItems: "center", gap: 11 }}>
           <span style={{ width: 24, height: 24, borderRadius: "50%", background: "#3DA776", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700 }}>✓</span>
-          <span>{t("Séance ciblée créée — ", "Targeted session created — ")}<b style={{ color: "#3DA776" }}>{data.critical_path.slice(0, 2).map((c) => (lang === "en" ? c.en : c.fr)).join(" + ")}</b>{t(" · 10 questions.", " · 10 questions.")}</span>
+          <span>{t("Séance ciblée créée — ", "Targeted session created — ")}<b style={{ color: "#3DA776" }}>{toast.title}</b>{t(` · assignée à ${toast.assigned} apprenant${toast.assigned > 1 ? "s" : ""}.`, ` · assigned to ${toast.assigned} learner${toast.assigned > 1 ? "s" : ""}.`)}</span>
         </div>
       )}
     </div>
