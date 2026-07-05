@@ -501,8 +501,12 @@ class TargetedSessionAssignment(SQLModel, table=True):
 
 def create_targeted_session(session: Session, trainer_public_id: str, cohort_id: int,
                             title: str, concepts: list, question_count: int = 10,
-                            objective: str = "", item_ids: Optional[list] = None) -> dict:
-    """Crée une séance ciblée et l'assigne à tous les apprenants actifs de la cohorte.
+                            objective: str = "", item_ids: Optional[list] = None,
+                            learner_public_ids: Optional[list] = None) -> dict:
+    """Crée une séance ciblée et l'assigne aux apprenants actifs de la cohorte.
+    Si learner_public_ids est fourni (v36), seuls CES apprenants la reçoivent —
+    chaque id est validé côté serveur comme membre actif de la cohorte
+    (cloisonnement : impossible d'assigner hors de sa cohorte).
     Si item_ids est fourni (validé en aperçu par le formateur), la sélection est FIGÉE :
     l'apprenant recevra exactement ces questions. Cloisonnement vérifié."""
     import json as _json
@@ -511,19 +515,32 @@ def create_targeted_session(session: Session, trainer_public_id: str, cohort_id:
         return {"error": "unknown_trainer"}
     if cohort_id not in cohorts_where_trainer(session, tu.id):
         return {"error": "not_your_cohort"}   # server-side scoping, spec §1.5
+    member_ids = cohort_learner_user_ids(session, cohort_id)
+    target_ids = member_ids
+    assigned_to = "cohort"
+    if learner_public_ids:
+        wanted = {str(p) for p in learner_public_ids if p}
+        users = session.exec(select(User).where(User.public_id.in_(wanted))).all() if wanted else []
+        member_set = set(member_ids)
+        target_ids = sorted(u.id for u in users if u.id in member_set)
+        if not target_ids:
+            return {"error": "no_valid_learners",
+                    "message_fr": "Aucun des destinataires sélectionnés n'appartient à votre cohorte.",
+                    "message_en": "None of the selected recipients belong to your cohort."}
+        assigned_to = "selected_learners"
     ts = TargetedSession(cohort_id=cohort_id, created_by=tu.id, title=title[:200],
                          objective=(objective or "")[:400],
                          selected_concepts=_json.dumps(list(concepts or [])),
                          selected_items=_json.dumps(list(item_ids or [])),
                          question_count=int(question_count or 10),
-                         assigned_to="cohort", status="assigned")
+                         assigned_to=assigned_to, status="assigned")
     session.add(ts); session.commit(); session.refresh(ts)
-    learner_ids = cohort_learner_user_ids(session, cohort_id)
-    for uid in learner_ids:
+    for uid in target_ids:
         session.add(TargetedSessionAssignment(session_id=ts.id, learner_id=uid))
     session.commit()
     return {"session_id": ts.id, "title": ts.title, "concepts": list(concepts or []),
-            "question_count": ts.question_count, "assigned_count": len(learner_ids)}
+            "question_count": ts.question_count, "assigned_count": len(target_ids),
+            "assigned_to": assigned_to}
 
 
 def sessions_for_cohort(session: Session, cohort_id: int) -> list[dict]:

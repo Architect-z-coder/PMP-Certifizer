@@ -51,7 +51,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
     setPreviewLoading(false);
   }
 
-  async function onConfirmCreate(editedItems) {
+  async function onConfirmCreate(editedItems, learnerIds) {
     if (creating || !preview) return;
     const finalItems = editedItems || preview.items;
     setCreating(true);
@@ -59,6 +59,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
       const ids = finalItems.map((x) => x.external_id);
       const r = await createTargetedSession(trainerId, {
         concepts: preview.concepts, question_count: ids.length, item_ids: ids,
+        learner_ids: learnerIds || [],
       });
       if (r && r.session_id) {
         setPreview(null);
@@ -186,6 +187,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
 
       {preview && (
         <SessionEditor lang={lang} trainerId={trainerId} preview={preview} creating={creating}
+          learners={data.learners || []}
           onCancel={() => setPreview(null)} onConfirm={onConfirmCreate} />
       )}
 
@@ -339,9 +341,15 @@ function Center({ children }) { return <div style={{ flex: 1, display: "flex", a
    NOTE PRODUIT : version volontairement légère. Un véritable outil d'auteur
    (brouillons, relecture, versions) viendra plus tard si le besoin se confirme.
    ====================================================================== */
-function SessionEditor({ lang, trainerId, preview, creating, onCancel, onConfirm }) {
+function SessionEditor({ lang, trainerId, preview, creating, onCancel, onConfirm, learners = [] }) {
   const t = (fr, en) => (lang === "en" ? en : fr);
   const [items, setItems] = useState(preview.items);
+  // v36 — destinataires : tous cochés par défaut (cas rapide « toute la cohorte »)
+  const [recipients, setRecipients] = useState(() => new Set(learners.map((l) => l.learner_id)));
+  const toggleRecipient = (lid) => setRecipients((prev) => {
+    const next = new Set(prev); next.has(lid) ? next.delete(lid) : next.add(lid); return next;
+  });
+  const allCohort = learners.length > 0 && recipients.size === learners.length;
   const [bank, setBank] = useState(null);            // cache de la banque cloisonnée
   const [bankLoading, setBankLoading] = useState(false);
   const [panel, setPanel] = useState(null);          // null | "bank" | "author"
@@ -623,12 +631,42 @@ function SessionEditor({ lang, trainerId, preview, creating, onCancel, onConfirm
               <div style={{ fontSize: 11, color: C.muted, marginTop: 9, lineHeight: 1.5 }}>{t("Votre question rejoint aussi la banque de vos cohortes : vous pourrez la réutiliser dans de futures séances. La correction est une proposition — vous gardez toujours le dernier mot.", "Your question also joins your cohorts' bank so you can reuse it in future sessions. The correction is a proposal — you always have the final say.")}</div>
             </div>
           )}
+          {learners.length > 0 && (
+            <div style={{ border: `1px solid ${C.line}`, borderRadius: 12, padding: "12px 13px", marginBottom: 12 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 7 }}>
+                <span style={{ fontFamily: mono, fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.muted }}>{t("Destinataires", "Recipients")}</span>
+                <span style={{ fontFamily: mono, fontSize: 10, background: "#8A6FB0", color: "#fff", borderRadius: 999, padding: "1px 8px" }}>{recipients.size}</span>
+                <span style={{ flex: 1 }} />
+                <button onClick={() => setRecipients(new Set(learners.map((l) => l.learner_id)))} style={{ border: `1px solid ${C.line}`, background: "#fff", color: C.muted, borderRadius: 999, padding: "3px 11px", fontSize: 11, fontWeight: 600, cursor: "pointer" }}>{t("Tous", "All")}</button>
+                <button onClick={() => setRecipients(new Set())} style={{ border: `1px solid ${C.line}`, background: "#fff", color: C.muted, borderRadius: 999, padding: "3px 11px", fontSize: 11, fontWeight: 600, cursor: "pointer" }}>{t("Aucun", "None")}</button>
+              </div>
+              <div className="ak-scroll" style={{ maxHeight: 170, overflowY: "auto" }}>
+                {learners.map((l) => {
+                  const rd = l.readiness || 0;
+                  const riskBg = rd >= 0.75 ? "#E4F3EC" : rd >= 0.5 ? "#FBEEDD" : "#F7E3DD";
+                  const riskCol = rd >= 0.75 ? "#3DA776" : rd >= 0.5 ? "#B5701E" : "#D2664E";
+                  const riskLbl = rd >= 0.75 ? t("prêt", "ready") : rd >= 0.5 ? t("en construction", "building") : t("à risque", "at risk");
+                  return (
+                    <label key={l.learner_id} style={{ display: "flex", alignItems: "center", gap: 9, padding: "6px 2px", borderBottom: `1px solid ${C.line}`, cursor: "pointer" }}>
+                      <input type="checkbox" checked={recipients.has(l.learner_id)} onChange={() => toggleRecipient(l.learner_id)} style={{ accentColor: C.teal, width: 15, height: 15, flex: "none" }} />
+                      <span style={{ flex: 1, fontSize: 12.5, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.name}</span>
+                      <span style={{ fontFamily: mono, fontSize: 9, padding: "2px 8px", borderRadius: 999, fontWeight: 600, background: riskBg, color: riskCol, flex: "none" }}>{riskLbl}</span>
+                    </label>
+                  );
+                })}
+              </div>
+              <div style={{ fontSize: 11, color: C.muted, marginTop: 7, lineHeight: 1.5 }}>{t("Par défaut, toute la cohorte est cochée. Décochez pour cibler — par exemple uniquement les apprenants à risque sur ces sujets.", "By default the whole cohort is selected. Untick to target — for example only the learners at risk on these topics.")}</div>
+            </div>
+          )}
         </div>
 
         <div style={{ display: "flex", gap: 10, padding: "14px 20px 18px", borderTop: `1px solid ${C.line}` }}>
           <button onClick={onCancel} style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 11, background: "#fff", color: C.muted, fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: "pointer" }}>{t("Annuler", "Cancel")}</button>
-          <button onClick={() => onConfirm(items)} disabled={creating || items.length === 0} style={{ flex: 2, border: "none", borderRadius: 11, background: creating || items.length === 0 ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: creating || items.length === 0 ? "default" : "pointer" }}>
-            {creating ? t("Assignation…", "Assigning…") : t(`Confirmer et assigner (${items.length} questions)`, `Confirm and assign (${items.length} questions)`)}
+          <button onClick={() => onConfirm(items, allCohort ? [] : [...recipients])} disabled={creating || items.length === 0 || (learners.length > 0 && recipients.size === 0)} style={{ flex: 2, border: "none", borderRadius: 11, background: creating || items.length === 0 || (learners.length > 0 && recipients.size === 0) ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: creating || items.length === 0 || (learners.length > 0 && recipients.size === 0) ? "default" : "pointer" }}>
+            {creating ? t("Assignation…", "Assigning…")
+              : learners.length > 0
+                ? t(`Assigner à ${recipients.size} apprenant${recipients.size > 1 ? "s" : ""} (${items.length} questions)`, `Assign to ${recipients.size} learner${recipients.size > 1 ? "s" : ""} (${items.length} questions)`)
+                : t(`Confirmer et assigner (${items.length} questions)`, `Confirm and assign (${items.length} questions)`)}
           </button>
         </div>
       </div>

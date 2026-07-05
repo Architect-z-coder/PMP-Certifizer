@@ -560,6 +560,7 @@ class TargetedSessionIn(BaseModel):
     question_count: int = 10
     objective: str = ""
     item_ids: list = []          # sélection figée validée en aperçu
+    learner_ids: list = []       # v36 — destinataires (public_id) ; vide = toute la cohorte
 
 
 def _compose_items_for_concepts(session: Session, concepts: list, count: int) -> list:
@@ -616,7 +617,8 @@ def create_targeted_session_endpoint(body: TargetedSessionIn, session: Session =
         title = "Séance ciblée — " + ", ".join(concepts[:2]) if concepts else "Séance ciblée"
     return saas.create_targeted_session(session, body.trainer_id, cohort_id,
                                         title, concepts, body.question_count, body.objective,
-                                        item_ids=body.item_ids or None)
+                                        item_ids=body.item_ids or None,
+                                        learner_public_ids=body.learner_ids or None)
 
 
 # ----------------------------------------------------------------------
