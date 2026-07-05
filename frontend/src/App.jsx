@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite } from "./api.js";
 import Journey from "./Journey.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
@@ -41,6 +41,24 @@ export default function App() {
     const r = asTrainer ? "trainer" : "learner";
     try { localStorage.setItem("cz_learner", slug); localStorage.setItem("cz_name", nm); localStorage.setItem("cz_role", r); } catch { /* private mode */ }
     setLearner(slug); setLearnerName(nm); setRole(r);
+  }
+
+  // v35 — invitation par lien (?invite=TOKEN)
+  const [inviteToken, setInviteToken] = useState(() => {
+    try { return new URLSearchParams(window.location.search).get("invite") || ""; } catch { return ""; }
+  });
+  function clearInviteParam() {
+    try {
+      const u = new URL(window.location.href);
+      u.searchParams.delete("invite");
+      window.history.replaceState({}, "", u.pathname + (u.search || ""));
+    } catch { /* */ }
+  }
+  function onInviteJoined(publicId, nm, joinedRole) {
+    const r = joinedRole === "trainer" ? "trainer" : "learner";
+    try { localStorage.setItem("cz_learner", publicId); localStorage.setItem("cz_name", nm); localStorage.setItem("cz_role", r); } catch { /* */ }
+    setLearner(publicId); setLearnerName(nm); setRole(r);
+    clearInviteParam(); setInviteToken("");
   }
   function signOut() {
     try { localStorage.removeItem("cz_learner"); localStorage.removeItem("cz_name"); localStorage.removeItem("cz_role"); } catch { /* */ }
@@ -117,6 +135,7 @@ export default function App() {
   const ActiveIcon = modeId === "coreflexion" ? Scale : (activeModeObj ? activeModeObj.icon : BookOpen);
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
 
+  if (inviteToken) return <InviteGate lang={lang} setLang={setLang} token={inviteToken} currentId={learner} currentName={learnerName} onJoined={onInviteJoined} onDismiss={() => { clearInviteParam(); setInviteToken(""); }} />;
   if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} t={t} />;
 
   // Trainer access: chosen via the "Accès formateur" panel (role flag), or the legacy "formateur" keyword.
@@ -979,6 +998,107 @@ function Section({ label, children }) {
     <div>
       <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: "1.5px", textTransform: "uppercase", color: "#6E8093", marginBottom: 7 }}>{label}</div>
       {children}
+    </div>
+  );
+}
+
+/* ======================================================================
+   v35 — InviteGate : acceptation d'une invitation par lien (?invite=TOKEN).
+   Vouvoiement strict. Si un profil existe déjà sur cet appareil, l'apprenant
+   rejoint la cohorte AVEC ce profil (progression conservée).
+   ====================================================================== */
+function InviteGate({ lang, setLang, token, currentId, currentName, onJoined, onDismiss }) {
+  const t2 = (fr, en) => (lang === "en" ? en : fr);
+  const [info, setInfo] = useState(null);      // {cohort_code, name, role, status} | {error}
+  const [name, setName] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState(null);
+
+  useEffect(() => {
+    getInviteInfo(token).then((r) => { setInfo(r); if (r && r.name) setName(r.name); })
+      .catch(() => setInfo({ error: "network" }));
+  }, [token]);
+
+  async function join(useExisting) {
+    if (busy) return;
+    setBusy(true); setErr(null);
+    try {
+      const r = await acceptInvite(token, useExisting
+        ? { existingPublicId: currentId }
+        : { name: name.trim() });
+      if (r && r.ok) { onJoined(r.learner_id, r.name || name.trim() || currentName, r.role); return; }
+      if (r && r.error === "already_used") setErr(t2("Ce lien a déjà été utilisé. Veuillez demander un nouveau lien à votre formateur.", "This link has already been used. Please ask your trainer for a new one."));
+      else if (r && r.error === "revoked") setErr(t2("Ce lien a été révoqué. Veuillez demander un nouveau lien à votre formateur.", "This link has been revoked. Please ask your trainer for a new one."));
+      else if (r && r.error === "seats_exhausted") setErr(lang === "en" ? r.message_en : r.message_fr);
+      else if (r && r.error === "name_required") setErr(t2("Veuillez saisir votre nom pour rejoindre la cohorte.", "Please enter your name to join the cohort."));
+      else setErr(t2("Ce lien d'invitation n'est pas valide.", "This invitation link is not valid."));
+    } catch (e) {
+      setErr(t2("Connexion impossible — le serveur se réveille peut-être, réessayez dans un instant.", "Could not connect — the server may be waking up, try again in a moment."));
+    }
+    setBusy(false);
+  }
+
+  const invalid = info && (info.error || info.status === "revoked" || info.status === "accepted");
+  const invalidMsg = info && (info.status === "accepted"
+    ? t2("Ce lien a déjà été utilisé.", "This link has already been used.")
+    : info.status === "revoked"
+      ? t2("Ce lien a été révoqué.", "This link has been revoked.")
+      : t2("Ce lien d'invitation n'est pas valide.", "This invitation link is not valid."));
+
+  return (
+    <div style={{ background: C.ink, minHeight: "100vh", height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Inter', system-ui, sans-serif" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap'); body{margin:0}`}</style>
+      <div style={{ width: "100%", maxWidth: 400, background: C.ink2, border: `1px solid ${C.inkLine}`, borderRadius: 16, padding: "28px 26px", textAlign: "center" }}>
+        <svg width="46" height="46" viewBox="0 0 40 40" style={{ marginBottom: 14 }}>
+          <polygon points="20,5 35,32 5,32" fill="none" stroke={C.amber} strokeWidth="2" strokeLinejoin="round" />
+          <circle cx="20" cy="5" r="2.6" fill={C.amber} /><circle cx="35" cy="32" r="2.6" fill={C.teal} /><circle cx="5" cy="32" r="2.6" fill="#fff" />
+        </svg>
+
+        {!info && <div style={{ color: "#9DB0C2", fontSize: 13 }}>{t2("Vérification de votre invitation…", "Checking your invitation…")}</div>}
+
+        {info && invalid && (
+          <>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 19, color: "#fff", marginBottom: 10 }}>{t2("Invitation indisponible", "Invitation unavailable")}</div>
+            <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.6, marginBottom: 18 }}>{invalidMsg} {t2("Veuillez demander un nouveau lien à votre formateur.", "Please ask your trainer for a new link.")}</div>
+            <button onClick={onDismiss} style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: C.amber, color: C.ink, fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif", cursor: "pointer" }}>{t2("Continuer vers Certifizer", "Continue to Certifizer")}</button>
+          </>
+        )}
+
+        {info && !invalid && (
+          <>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 19, color: "#fff", marginBottom: 8 }}>
+              {t2("Invitation à rejoindre la cohorte", "Invitation to join cohort")} <span style={{ fontFamily: "'IBM Plex Mono', monospace", color: "#7FD3E0" }}>{info.cohort_code}</span>
+            </div>
+            <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.6, marginBottom: 18 }}>
+              {info.role === "trainer"
+                ? t2("Vous êtes invité comme formateur : vous aurez accès au cockpit de la cohorte.", "You are invited as a trainer: you will have access to the cohort cockpit.")
+                : t2("Votre formateur vous a transmis ce lien. Votre progression est personnelle et commence immédiatement.", "Your trainer sent you this link. Your progress is personal and starts right away.")}
+            </div>
+
+            {currentId ? (
+              <>
+                <button onClick={() => join(true)} disabled={busy}
+                  style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: busy ? "#33475F" : C.amber, color: busy ? "#6E8093" : C.ink, fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif", cursor: busy ? "default" : "pointer" }}>
+                  {busy ? t2("Rattachement…", "Joining…") : t2(`Rejoindre avec mon profil (${currentName})`, `Join with my profile (${currentName})`)}
+                </button>
+                <div style={{ color: "#7E90A4", fontSize: 11.5, marginTop: 10, lineHeight: 1.5 }}>{t2("Votre progression actuelle est conservée.", "Your current progress is kept.")}</div>
+              </>
+            ) : (
+              <>
+                <input value={name} onChange={(e) => setName(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter" && name.trim()) join(false); }}
+                  placeholder={t2("Votre nom", "Your name")} autoFocus
+                  style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif", textAlign: "center", boxSizing: "border-box" }} />
+                <button onClick={() => join(false)} disabled={busy || !name.trim()}
+                  style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: busy || !name.trim() ? "#33475F" : C.amber, color: busy || !name.trim() ? "#6E8093" : C.ink, fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif", cursor: busy || !name.trim() ? "default" : "pointer" }}>
+                  {busy ? t2("Rattachement…", "Joining…") : t2("Rejoindre la cohorte", "Join the cohort")}
+                </button>
+              </>
+            )}
+            {err && <div style={{ color: "#E8A0A0", fontSize: 12.5, lineHeight: 1.55, marginTop: 12 }}>{err}</div>}
+          </>
+        )}
+      </div>
     </div>
   );
 }

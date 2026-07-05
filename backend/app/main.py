@@ -775,6 +775,53 @@ async def polish_question(body: PolishIn, session: Session = Depends(get_session
     return {"proposal": proposal, "changed": changed}
 
 
+# ----------------------------------------------------------------------
+# v35 — Étape 11 : Invitations par lien (option A, sans envoi d'email)
+# ----------------------------------------------------------------------
+class InvitationsIn(BaseModel):
+    trainer_id: str
+    entries: list = []          # [{name?, email?, role?}]
+
+
+@app.post("/api/cohort/invitations")
+def create_invitations_endpoint(body: InvitationsIn, session: Session = Depends(get_session)):
+    """Crée un lien personnel PAR entrée (lot accepté) — cloisonné au formateur."""
+    return saas.create_invitations(session, body.trainer_id, body.entries)
+
+
+@app.get("/api/cohort/invitations")
+def list_invitations_endpoint(trainer_id: str, session: Session = Depends(get_session)):
+    return saas.invitations_for_trainer(session, trainer_id)
+
+
+class RevokeIn(BaseModel):
+    trainer_id: str
+
+
+@app.post("/api/cohort/invitations/{invitation_id}/revoke")
+def revoke_invitation_endpoint(invitation_id: int, body: RevokeIn,
+                               session: Session = Depends(get_session)):
+    return saas.revoke_invitation(session, body.trainer_id, invitation_id)
+
+
+@app.get("/api/invite/{token}")
+def invitation_info_endpoint(token: str, session: Session = Depends(get_session)):
+    """Consultation publique d'un lien d'invitation (code cohorte + état seulement)."""
+    return saas.invitation_info(session, token)
+
+
+class AcceptIn(BaseModel):
+    name: str = ""
+    existing_public_id: str = ""   # profil déjà connu → progression conservée
+
+
+@app.post("/api/invite/{token}/accept")
+def accept_invitation_endpoint(token: str, body: AcceptIn,
+                               session: Session = Depends(get_session)):
+    return saas.accept_invitation(session, token, name=body.name,
+                                  existing_public_id=body.existing_public_id)
+
+
 @app.get("/api/cohort/targeted-sessions")
 def list_targeted_sessions(trainer_id: str, session: Session = Depends(get_session)):
     tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()

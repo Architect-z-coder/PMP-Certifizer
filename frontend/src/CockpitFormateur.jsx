@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { C, KA, ECO_DOMAINS, ECO_TASKS } from "./pmp.js";
-import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions, getSessionPreview, getQuestionBank, createTrainerItem, polishQuestion } from "./api.js";
+import { getCohortOverview, seedDemoCohort, createTargetedSession, getTargetedSessions, getSessionPreview, getQuestionBank, createTrainerItem, polishQuestion, createInvitations, getInvitations, revokeInvitation } from "./api.js";
 
 /*
   CockpitFormateur — trainer action-cockpit.
@@ -32,6 +32,7 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
   const [creating, setCreating] = useState(false);
   const [preview, setPreview] = useState(null);     // {concepts, items} being reviewed
   const [previewLoading, setPreviewLoading] = useState(false);
+  const [invitesOpen, setInvitesOpen] = useState(false);   // v35 — panneau d'invitations
   const t = (fr, en) => (lang === "en" ? en : fr);
 
   useEffect(() => {
@@ -101,6 +102,9 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
           {t("Cohorte", "Cohort")} <b style={{ fontFamily: "'IBM Plex Mono',monospace", color: "#7FD3E0" }}>PMP-2026-A</b> ▾
         </span>
         <span>{data.size} {t("apprenants", "learners")}</span>
+        <button onClick={() => setInvitesOpen(true)} style={{ border: `1px dashed ${C.teal}`, background: "rgba(46,140,158,.08)", color: C.teal, borderRadius: 999, padding: "4px 12px", fontSize: 11.5, fontWeight: 600, cursor: "pointer", fontFamily: "'Inter',sans-serif" }}>
+          ✉ {t("Inviter des apprenants", "Invite learners")}
+        </button>
         <span style={{ marginLeft: "auto", fontFamily: "'IBM Plex Mono',monospace", fontSize: 10.5, background: "rgba(46,140,158,.15)", color: C.teal, border: `1px solid ${C.teal}`, borderRadius: 999, padding: "4px 11px" }}>● {t("accès formateur", "trainer access")}</span>
       </div>
 
@@ -183,6 +187,10 @@ export default function CockpitFormateur({ lang, isMobile, trainerId }) {
       {preview && (
         <SessionEditor lang={lang} trainerId={trainerId} preview={preview} creating={creating}
           onCancel={() => setPreview(null)} onConfirm={onConfirmCreate} />
+      )}
+
+      {invitesOpen && (
+        <InvitePanel lang={lang} trainerId={trainerId} onClose={() => setInvitesOpen(false)} />
       )}
 
       {toast && (
@@ -622,6 +630,156 @@ function SessionEditor({ lang, trainerId, preview, creating, onCancel, onConfirm
           <button onClick={() => onConfirm(items)} disabled={creating || items.length === 0} style={{ flex: 2, border: "none", borderRadius: 11, background: creating || items.length === 0 ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: creating || items.length === 0 ? "default" : "pointer" }}>
             {creating ? t("Assignation…", "Assigning…") : t(`Confirmer et assigner (${items.length} questions)`, `Confirm and assign (${items.length} questions)`)}
           </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ======================================================================
+   v35 — InvitePanel : invitations par lien (étape 11, option A).
+   Le formateur colle sa liste (noms et/ou emails, séparés librement), un lien
+   personnel et à usage unique est créé par personne, et il envoie lui-même
+   les liens par le canal de son choix. L'email est stocké : l'envoi
+   automatique se branchera dessus quand l'auth lien magique arrivera.
+   ====================================================================== */
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function parseInviteEntries(raw) {
+  const parts = (raw || "").split(/[\n,;]+/).map((s) => s.trim()).filter(Boolean);
+  const seen = new Set(); const out = [];
+  for (const p of parts) {
+    const key = p.toLowerCase();
+    if (seen.has(key)) continue; seen.add(key);
+    out.push(EMAIL_RE.test(p) ? { email: p, name: "" } : { name: p, email: "" });
+  }
+  return out;
+}
+
+function inviteLink(token) {
+  try { return `${window.location.origin}/?invite=${token}`; }
+  catch { return `/?invite=${token}`; }
+}
+
+function InvitePanel({ lang, trainerId, onClose }) {
+  const t = (fr, en) => (lang === "en" ? en : fr);
+  const [invs, setInvs] = useState(null);
+  const [bulk, setBulk] = useState("");
+  const [role, setRole] = useState("learner");
+  const [busy, setBusy] = useState(false);
+  const [copied, setCopied] = useState(null);       // id | "all"
+  const [err, setErr] = useState(null);
+  const entries = useMemo(() => parseInviteEntries(bulk), [bulk]);
+  const mono = "'IBM Plex Mono',monospace";
+  const grotesk = "'Space Grotesk',sans-serif";
+
+  useEffect(() => {
+    getInvitations(trainerId).then(setInvs).catch(() => setInvs([]));
+  }, [trainerId]);
+
+  async function onCreate() {
+    if (busy || !entries.length) return;
+    setBusy(true); setErr(null);
+    try {
+      const r = await createInvitations(trainerId, entries.map((e) => ({ ...e, role })));
+      if (r && r.created) {
+        setBulk("");
+        setInvs([...(r.created || []), ...(invs || [])]);
+      } else {
+        setErr(t("Création impossible — réessayez.", "Could not create — try again."));
+      }
+    } catch (e) { setErr(t("Création impossible — le serveur se réveille peut-être, réessayez.", "Could not create — the server may be waking up, try again.")); }
+    setBusy(false);
+  }
+
+  function copyText(text, key) {
+    const done = () => { setCopied(key); setTimeout(() => setCopied(null), 1800); };
+    try { navigator.clipboard.writeText(text).then(done, done); } catch { done(); }
+  }
+  function copyAll() {
+    const pending = (invs || []).filter((v) => v.status === "pending");
+    if (!pending.length) return;
+    copyText(pending.map((v) => `${v.name || v.email || t("Invité", "Invitee")} — ${inviteLink(v.token)}`).join("\n"), "all");
+  }
+  async function onRevoke(id) {
+    try {
+      const r = await revokeInvitation(trainerId, id);
+      if (r && r.ok) setInvs(invs.map((v) => (v.id === id ? { ...v, status: "revoked" } : v)));
+    } catch (e) { /* le panneau reste utilisable */ }
+  }
+
+  const pendingCount = (invs || []).filter((v) => v.status === "pending").length;
+
+  return (
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(6,11,18,.72)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 250, padding: 16 }}>
+      <div onClick={(e) => e.stopPropagation()} style={{ background: "#fff", borderRadius: 16, maxWidth: 620, width: "100%", maxHeight: "88vh", display: "flex", flexDirection: "column", overflow: "hidden", boxShadow: "0 24px 70px rgba(0,0,0,.5)" }}>
+        <div style={{ height: 3, background: "linear-gradient(90deg,#2E8C9E,#E89A3C)" }} />
+        <div style={{ padding: "16px 20px 12px" }}>
+          <div style={{ fontFamily: grotesk, fontWeight: 700, fontSize: 16.5 }}>{t("Invitations — votre cohorte", "Invitations — your cohort")}</div>
+          <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.55, marginTop: 4 }}>
+            {t("Collez votre liste (noms ou emails, mélangés). Un lien personnel et à usage unique est créé par personne — vous l'envoyez vous-même par le canal de votre choix.", "Paste your list (names or emails, mixed). One personal, single-use link is created per person — you send it yourself through any channel you like.")}
+          </div>
+        </div>
+
+        <div className="ak-scroll" style={{ overflowY: "auto", padding: "0 20px", flex: 1 }}>
+          <div style={{ border: `1px solid ${C.line}`, borderRadius: 12, padding: "12px 13px", marginBottom: 12 }}>
+            <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.muted, marginBottom: 7 }}>{t("Nouvelles invitations", "New invitations")}</div>
+            <textarea rows={4} value={bulk} onChange={(e) => setBulk(e.target.value)}
+              placeholder={t("Collez votre liste telle quelle — un par ligne, ou séparés par des virgules :\nA. Benali, s.meziane@entreprise.dz\nk.hamidi@entreprise.dz ; N. Cherif", "Paste your list as is — one per line, or comma-separated:\nA. Benali, s.meziane@company.com\nk.hamidi@company.com ; N. Cherif")}
+              style={{ width: "100%", border: `1px solid ${C.line}`, borderRadius: 9, padding: "9px 11px", fontSize: 13, fontFamily: "'Inter',sans-serif", color: C.text, outline: "none", resize: "vertical", lineHeight: 1.6, boxSizing: "border-box" }} />
+            <div style={{ display: "flex", gap: 8, marginTop: 9, alignItems: "center", flexWrap: "wrap" }}>
+              <select value={role} onChange={(e) => setRole(e.target.value)} style={{ border: `1px solid ${C.line}`, borderRadius: 9, padding: "8px 10px", fontSize: 12.5, fontFamily: "'Inter',sans-serif", background: "#fff", color: C.text, outline: "none" }}>
+                <option value="learner">{t("Apprenants", "Learners")}</option>
+                <option value="trainer">{t("Formateur", "Trainer")}</option>
+              </select>
+              <button onClick={onCreate} disabled={busy || !entries.length}
+                style={{ border: "none", borderRadius: 10, padding: "9px 15px", background: busy || !entries.length ? "#C9D6E0" : C.amber, color: "#0E1A2B", fontWeight: 700, fontSize: 13, cursor: busy || !entries.length ? "default" : "pointer", fontFamily: grotesk }}>
+                {busy ? t("Création…", "Creating…") : t(`Créer les liens (${entries.length})`, `Create the links (${entries.length})`)}
+              </button>
+              <span style={{ fontSize: 11, color: C.muted, lineHeight: 1.45 }}>{t("Emails reconnus automatiquement · doublons ignorés.", "Emails detected automatically · duplicates ignored.")}</span>
+            </div>
+            {err && <div style={{ fontSize: 12, color: "#D2664E", marginTop: 7 }}>{err}</div>}
+          </div>
+
+          <div style={{ border: `1px solid ${C.line}`, borderRadius: 12, padding: "12px 13px", marginBottom: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+              <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: 1.2, textTransform: "uppercase", color: C.muted }}>{t("Invitations de la cohorte", "Cohort invitations")} <span style={{ background: C.teal, color: "#fff", borderRadius: 999, padding: "1px 8px", letterSpacing: 0 }}>{(invs || []).length}</span></div>
+              <span style={{ flex: 1 }} />
+              {pendingCount > 0 && (
+                <button onClick={copyAll} style={{ border: `1px solid ${copied === "all" ? "#3DA776" : C.teal}`, background: copied === "all" ? "#3DA776" : "#F2F8FA", color: copied === "all" ? "#fff" : C.teal, borderRadius: 8, padding: "5px 11px", fontWeight: 600, fontSize: 11.5, cursor: "pointer" }}>
+                  {copied === "all" ? t(`✓ ${pendingCount} lien${pendingCount > 1 ? "s copiés" : " copié"}`, `✓ ${pendingCount} link${pendingCount > 1 ? "s" : ""} copied`) : "📋 " + t("Copier tous les liens en attente", "Copy all pending links")}
+                </button>
+              )}
+            </div>
+            {invs === null && <div style={{ fontSize: 12, color: C.muted, padding: "6px 0" }}>{t("Chargement…", "Loading…")}</div>}
+            {invs !== null && invs.length === 0 && <div style={{ fontSize: 12.5, color: C.muted, fontStyle: "italic", padding: "6px 0" }}>{t("Aucune invitation pour l'instant — créez vos premiers liens ci-dessus.", "No invitations yet — create your first links above.")}</div>}
+            {(invs || []).map((v) => (
+              <div key={v.id} style={{ display: "flex", gap: 10, alignItems: "center", padding: "9px 0", borderBottom: `1px solid ${C.line}` }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600 }}>{v.name || v.email || <span style={{ color: C.muted, fontWeight: 400 }}>{t("(sans nom — l'invité saisira le sien)", "(no name — the invitee will enter theirs)")}</span>}</div>
+                  {v.email && v.name && <div style={{ fontFamily: mono, fontSize: 10.5, color: C.muted, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{v.email}</div>}
+                  <div style={{ fontFamily: mono, fontSize: 10.5, color: C.muted, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{inviteLink(v.token).replace(/^https?:\/\//, "")}</div>
+                </div>
+                {v.role === "trainer" && <span style={{ fontFamily: mono, fontSize: 9.5, padding: "3px 9px", borderRadius: 20, fontWeight: 600, background: "#F0EAF7", color: "#8A6FB0", flex: "none" }}>{t("formateur", "trainer")}</span>}
+                {v.status === "accepted" && <span style={{ fontFamily: mono, fontSize: 9.5, padding: "3px 9px", borderRadius: 20, fontWeight: 600, background: "#E4F3EC", color: "#3DA776", flex: "none" }}>✓ {t("acceptée", "accepted")}</span>}
+                {v.status === "revoked" && <span style={{ fontFamily: mono, fontSize: 9.5, padding: "3px 9px", borderRadius: 20, fontWeight: 600, background: "#EDF1F5", color: C.muted, flex: "none" }}>{t("révoquée", "revoked")}</span>}
+                {v.status === "pending" && (
+                  <>
+                    <span style={{ fontFamily: mono, fontSize: 9.5, padding: "3px 9px", borderRadius: 20, fontWeight: 600, background: "#FBEEDD", color: "#B5701E", flex: "none" }}>{t("en attente", "pending")}</span>
+                    <button onClick={() => copyText(inviteLink(v.token), v.id)} style={{ flex: "none", border: `1px solid ${copied === v.id ? "#3DA776" : C.teal}`, background: copied === v.id ? "#3DA776" : "#F2F8FA", color: copied === v.id ? "#fff" : C.teal, borderRadius: 8, padding: "5px 11px", fontWeight: 600, fontSize: 11.5, cursor: "pointer" }}>
+                      {copied === v.id ? t("✓ Copié", "✓ Copied") : t("Copier le lien", "Copy the link")}
+                    </button>
+                    <button onClick={() => onRevoke(v.id)} title={t("Révoquer cette invitation", "Revoke this invitation")}
+                      style={{ flex: "none", border: `1px solid ${C.line}`, background: "#fff", color: C.muted, borderRadius: 8, width: 27, height: 27, cursor: "pointer", fontSize: 13, lineHeight: 1 }}>✕</button>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "flex", padding: "12px 20px 16px", borderTop: `1px solid ${C.line}` }}>
+          <button onClick={onClose} style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 11, background: "#fff", color: C.muted, fontFamily: grotesk, fontWeight: 700, fontSize: 13, padding: "12px", cursor: "pointer" }}>{t("Fermer", "Close")}</button>
         </div>
       </div>
     </div>

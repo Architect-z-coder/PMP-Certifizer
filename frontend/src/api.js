@@ -196,3 +196,45 @@ export async function polishQuestion(trainerId, payload) {
   if (!r.ok) throw new Error(`polish-question ${r.status}`);
   return r.json();
 }
+
+// ---- v35 : invitations par lien (étape 11, option A) ----
+export async function createInvitations(trainerId, entries) {
+  const r = await fetch(`${BASE}/api/cohort/invitations`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ trainer_id: trainerId, entries }),
+  });
+  if (!r.ok) throw new Error(`invitations ${r.status}`);
+  return r.json();
+}
+
+export async function getInvitations(trainerId) {
+  const u = new URL(`${BASE}/api/cohort/invitations`);
+  u.searchParams.set("trainer_id", trainerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`invitations ${r.status}`);
+  return r.json();
+}
+
+export async function revokeInvitation(trainerId, invitationId) {
+  const r = await fetch(`${BASE}/api/cohort/invitations/${invitationId}/revoke`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ trainer_id: trainerId }),
+  });
+  if (!r.ok) throw new Error(`revoke ${r.status}`);
+  return r.json();
+}
+
+export async function getInviteInfo(token) {
+  const r = await fetch(`${BASE}/api/invite/${encodeURIComponent(token)}`);
+  if (!r.ok) throw new Error(`invite ${r.status}`);
+  return r.json();
+}
+
+export async function acceptInvite(token, { name = "", existingPublicId = "" } = {}) {
+  const r = await fetch(`${BASE}/api/invite/${encodeURIComponent(token)}/accept`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, existing_public_id: existingPublicId }),
+  });
+  if (!r.ok) throw new Error(`accept ${r.status}`);
+  return r.json();
+}

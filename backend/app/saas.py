@@ -649,3 +649,175 @@ def trainer_items_by_external_ids(session: Session, ids: list[str]) -> dict:
         return {}
     rows = session.exec(select(TrainerItem).where(TrainerItem.external_id.in_(wanted))).all()
     return {r.external_id: r for r in rows}
+
+
+# ======================================================================
+# v35 — Étape 11 : Invitations par lien (spec §2.5, option A sans envoi d'email)
+# ======================================================================
+# Chaque invitation = UN lien personnel, unique et à usage unique.
+# Le formateur crée les liens (en lot : noms et/ou emails collés tels quels)
+# et les envoie lui-même par le canal de son choix. L'email est stocké :
+# quand l'auth lien magique arrivera, l'envoi automatique se branchera dessus.
+import secrets as _secrets
+
+
+class Invitation(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    token: str = Field(index=True, unique=True)          # secret d'URL, usage unique
+    cohort_id: int = Field(index=True, foreign_key="cohort.id")
+    org_id: int = Field(index=True)
+    role: str = "learner"                                 # learner | trainer
+    name: str = ""                                        # nom suggéré (facultatif)
+    email: str = ""                                       # facultatif (option A)
+    status: str = "pending"                               # pending | accepted | revoked
+    created_by: int = Field(index=True, foreign_key="user.id")
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    accepted_at: Optional[datetime] = Field(default=None)
+    accepted_by: Optional[int] = Field(default=None)      # User.id une fois acceptée
+
+
+def _invitation_public(inv: Invitation, cohort_code: str) -> dict:
+    return {"id": inv.id, "token": inv.token, "cohort_code": cohort_code,
+            "role": inv.role, "name": inv.name, "email": inv.email,
+            "status": inv.status,
+            "created_at": inv.created_at.isoformat(),
+            "accepted_at": inv.accepted_at.isoformat() if inv.accepted_at else None}
+
+
+def create_invitations(session: Session, trainer_public_id: str, entries: list) -> dict:
+    """Crée une invitation PAR entrée {name?, email?, role?} — cloisonné à la
+    première cohorte du formateur (même convention MVP que les séances ciblées)."""
+    tu = session.exec(select(User).where(User.public_id == trainer_public_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    cohorts = cohorts_where_trainer(session, tu.id)
+    if not cohorts:
+        return {"error": "no_cohort"}
+    cohort_id = cohorts[0]
+    coh = session.exec(select(Cohort).where(Cohort.id == cohort_id)).first()
+    created = []
+    for e in (entries or [])[:200]:                        # garde-fou anti-abus
+        name = str((e or {}).get("name", "") or "").strip()[:120]
+        email = str((e or {}).get("email", "") or "").strip()[:200]
+        role = (e or {}).get("role", "learner")
+        role = role if role in ("learner", "trainer") else "learner"
+        if not name and not email and created:
+            continue                                       # entrées vides ignorées (sauf 1re volontaire)
+        inv = Invitation(token=_secrets.token_urlsafe(9), cohort_id=cohort_id,
+                         org_id=coh.org_id, role=role, name=name, email=email,
+                         created_by=tu.id)
+        session.add(inv); session.commit(); session.refresh(inv)
+        created.append(_invitation_public(inv, coh.code))
+    return {"created": created, "cohort_code": coh.code}
+
+
+def invitations_for_trainer(session: Session, trainer_public_id: str) -> list:
+    """Les invitations des cohortes du formateur (cloisonné), récentes d'abord."""
+    tu = session.exec(select(User).where(User.public_id == trainer_public_id)).first()
+    if not tu:
+        return []
+    out = []
+    for cid in cohorts_where_trainer(session, tu.id):
+        coh = session.exec(select(Cohort).where(Cohort.id == cid)).first()
+        rows = session.exec(select(Invitation).where(Invitation.cohort_id == cid)
+                            .order_by(Invitation.created_at.desc())).all()
+        out.extend(_invitation_public(r, coh.code if coh else "") for r in rows)
+    return out
+
+
+def revoke_invitation(session: Session, trainer_public_id: str, invitation_id: int) -> dict:
+    """Révoque une invitation EN ATTENTE d'une de SES cohortes (cloisonné)."""
+    tu = session.exec(select(User).where(User.public_id == trainer_public_id)).first()
+    if not tu:
+        return {"error": "unknown_trainer"}
+    inv = session.exec(select(Invitation).where(Invitation.id == invitation_id)).first()
+    if not inv or inv.cohort_id not in cohorts_where_trainer(session, tu.id):
+        return {"error": "not_your_invitation"}
+    if inv.status != "pending":
+        return {"error": "not_pending"}
+    inv.status = "revoked"
+    session.add(inv); session.commit()
+    return {"ok": True, "id": inv.id, "status": inv.status}
+
+
+def invitation_info(session: Session, token: str) -> dict:
+    """Consultation publique d'un lien : ne révèle QUE le code cohorte, le nom
+    suggéré et l'état — jamais l'organisation ni les autres invités."""
+    inv = session.exec(select(Invitation).where(Invitation.token == token)).first()
+    if not inv:
+        return {"error": "invalid_invitation"}
+    coh = session.exec(select(Cohort).where(Cohort.id == inv.cohort_id)).first()
+    return {"cohort_code": coh.code if coh else "", "name": inv.name,
+            "role": inv.role, "status": inv.status}
+
+
+def _free_public_id(session: Session, base: str) -> str:
+    """Slug libre : base, base-2, base-3… (ne réutilise jamais un id existant)."""
+    import re as _re
+    slug = _re.sub(r"[^a-z0-9]+", "-", (base or "").lower()).strip("-")[:40] or ("u%d" % int(datetime.utcnow().timestamp()))
+    cand, n = slug, 1
+    while session.exec(select(User).where(User.public_id == cand)).first():
+        n += 1
+        cand = f"{slug}-{n}"
+    return cand
+
+
+def accept_invitation(session: Session, token: str, name: str = "",
+                      existing_public_id: str = "") -> dict:
+    """Accepte un lien : usage unique. Crée l'identité (ou rattache le profil
+    existant, progression conservée) + l'appartenance à la cohorte. Vérifie le
+    quota de licences de l'organisation (souple : seulement si seats > 0)."""
+    inv = session.exec(select(Invitation).where(Invitation.token == token)).first()
+    if not inv:
+        return {"error": "invalid_invitation"}
+    if inv.status == "revoked":
+        return {"error": "revoked"}
+    if inv.status == "accepted":
+        return {"error": "already_used"}
+    coh = session.exec(select(Cohort).where(Cohort.id == inv.cohort_id)).first()
+    org = session.exec(select(Organization).where(Organization.id == inv.org_id)).first()
+
+    # quota de licences (souple) — uniquement pour les apprenants
+    if inv.role == "learner" and org and org.seats and org.seats > 0:
+        used = set()
+        for cid in cohorts_in_org(session, org.id):
+            used.update(cohort_learner_user_ids(session, cid))
+        if len(used) >= org.seats:
+            return {"error": "seats_exhausted",
+                    "message_fr": "Toutes les places de cette organisation sont utilisées. Veuillez contacter votre formateur.",
+                    "message_en": "All seats for this organisation are in use. Please contact your trainer."}
+
+    # identité : profil existant (progression conservée) ou nouveau
+    u = None
+    if existing_public_id:
+        u = session.exec(select(User).where(User.public_id == existing_public_id)).first()
+    if u is None:
+        display = (name or inv.name or "").strip()
+        if not display:
+            return {"error": "name_required",
+                    "message_fr": "Veuillez saisir votre nom pour rejoindre la cohorte.",
+                    "message_en": "Please enter your name to join the cohort."}
+        pid = _free_public_id(session, display)
+        u = User(public_id=pid, name=display[:120],
+                 email=inv.email or None, created_from="invitation")
+        session.add(u); session.commit(); session.refresh(u)
+        session.add(UserRole(user_id=u.id, role="learner", scope_type="platform"))
+        session.commit()
+
+    # appartenance (idempotente) au rôle porté par l'invitation
+    has = session.exec(select(CohortMembership).where(
+        CohortMembership.cohort_id == inv.cohort_id, CohortMembership.user_id == u.id,
+        CohortMembership.role_in_cohort == inv.role)).first()
+    if not has:
+        session.add(CohortMembership(cohort_id=inv.cohort_id, user_id=u.id,
+                                     role_in_cohort=inv.role))
+        session.commit()
+
+    inv.status = "accepted"
+    inv.accepted_at = datetime.utcnow()
+    inv.accepted_by = u.id
+    if not inv.name:
+        inv.name = u.name
+    session.add(inv); session.commit()
+    return {"ok": True, "learner_id": u.public_id, "name": u.name,
+            "cohort_code": coh.code if coh else "", "role": inv.role}
