@@ -838,3 +838,116 @@ def accept_invitation(session: Session, token: str, name: str = "",
     session.add(inv); session.commit()
     return {"ok": True, "learner_id": u.public_id, "name": u.name,
             "cohort_code": coh.code if coh else "", "role": inv.role}
+
+
+# ======================================================================
+# v37 — Code de classe (rejoindre une cohorte en libre-service) + email de récupération
+# ======================================================================
+# Décisions verrouillées : le code de classe EST le code de cohorte (ex. PMP-2026-A) ;
+# une cohorte active est rejoignable en permanence (pas d'interrupteur formateur).
+# L'email est FACULTATIF : le nom reste l'identité de départ, l'email est un
+# rattachement de récupération (multi-appareils, lien magique v38). Stocké dès v37.
+def cohort_by_code(session: Session, code: str) -> Optional["Cohort"]:
+    """Résout un code de classe (insensible à la casse/espaces) vers une cohorte active."""
+    c = (code or "").strip().upper()
+    if not c:
+        return None
+    for coh in session.exec(select(Cohort).where(Cohort.status == "active")).all():
+        if (coh.code or "").strip().upper() == c:
+            return coh
+    return None
+
+
+def class_code_info(session: Session, code: str) -> dict:
+    """Consultation publique d'un code de classe : ne révèle QUE le code normalisé
+    et son existence — jamais l'organisation ni la liste des membres."""
+    coh = cohort_by_code(session, code)
+    if not coh:
+        return {"error": "invalid_code"}
+    return {"cohort_code": coh.code, "found": True}
+
+
+def join_by_class_code(session: Session, code: str, name: str = "",
+                       existing_public_id: str = "", email: str = "") -> dict:
+    """Rejoindre une cohorte via son code de classe (libre-service, permanent).
+    Crée l'identité (ou rattache un profil existant → progression conservée) et
+    l'appartenance apprenant. Respecte le quota de licences (souple)."""
+    coh = cohort_by_code(session, code)
+    if not coh:
+        return {"error": "invalid_code",
+                "message_fr": "Ce code de classe est introuvable. Vérifiez auprès de votre formateur.",
+                "message_en": "This class code was not found. Please check with your trainer."}
+    org = session.exec(select(Organization).where(Organization.id == coh.org_id)).first()
+
+    # profil existant (progression conservée) ou nouveau
+    u = None
+    if existing_public_id:
+        u = session.exec(select(User).where(User.public_id == existing_public_id)).first()
+    if u is None:
+        display = (name or "").strip()
+        if not display:
+            return {"error": "name_required",
+                    "message_fr": "Veuillez saisir votre nom pour rejoindre la classe.",
+                    "message_en": "Please enter your name to join the class."}
+
+    # quota de licences (souple) — seulement si l'apprenant n'est pas déjà membre
+    already = False
+    if u is not None:
+        already = u.id in cohort_learner_user_ids(session, coh.id)
+    if not already and org and org.seats and org.seats > 0:
+        used = set()
+        for cid in cohorts_in_org(session, org.id):
+            used.update(cohort_learner_user_ids(session, cid))
+        if len(used) >= org.seats:
+            return {"error": "seats_exhausted",
+                    "message_fr": "Toutes les places de cette organisation sont utilisées. Veuillez contacter votre formateur.",
+                    "message_en": "All seats for this organisation are in use. Please contact your trainer."}
+
+    if u is None:
+        pid = _free_public_id(session, display)
+        u = User(public_id=pid, name=display[:120],
+                 email=(email.strip() or None), created_from="class_code")
+        session.add(u); session.commit(); session.refresh(u)
+        session.add(UserRole(user_id=u.id, role="learner", scope_type="platform"))
+        session.commit()
+    elif email and not u.email:
+        u.email = email.strip()
+        session.add(u); session.commit()
+
+    # appartenance apprenant (idempotente)
+    has = session.exec(select(CohortMembership).where(
+        CohortMembership.cohort_id == coh.id, CohortMembership.user_id == u.id,
+        CohortMembership.role_in_cohort == "learner")).first()
+    if not has:
+        session.add(CohortMembership(cohort_id=coh.id, user_id=u.id,
+                                     role_in_cohort="learner"))
+        session.commit()
+
+    return {"ok": True, "learner_id": u.public_id, "name": u.name,
+            "cohort_code": coh.code}
+
+
+def link_email(session: Session, public_id: str, email: str) -> dict:
+    """Lie un email de récupération à un profil (facultatif). Un même email ne
+    peut pas être rattaché à deux profils différents (source de confusion)."""
+    e = (email or "").strip()
+    if not _valid_email(e):
+        return {"error": "invalid_email",
+                "message_fr": "Veuillez saisir une adresse email valide.",
+                "message_en": "Please enter a valid email address."}
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    clash = session.exec(select(User).where(User.email == e)).first()
+    if clash and clash.id != u.id:
+        return {"error": "email_taken",
+                "message_fr": "Cet email est déjà lié à un autre profil.",
+                "message_en": "This email is already linked to another profile."}
+    u.email = e
+    session.add(u); session.commit()
+    return {"ok": True, "email": e}
+
+
+def _valid_email(e: str) -> bool:
+    import re as _re
+    return bool(_re.match(r"^[^\s@]+@[^\s@]+\.[^\s@]+$", (e or "").strip()))

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail } from "./api.js";
 import Journey from "./Journey.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
@@ -59,6 +59,18 @@ export default function App() {
     try { localStorage.setItem("cz_learner", publicId); localStorage.setItem("cz_name", nm); localStorage.setItem("cz_role", r); } catch { /* */ }
     setLearner(publicId); setLearnerName(nm); setRole(r);
     clearInviteParam(); setInviteToken("");
+  }
+  // v37 — rejoindre par code de classe (libre-service). Après succès, on propose
+  // (facultatif) de lier un email de récupération.
+  const [offerEmailRecovery, setOfferEmailRecovery] = useState(false);
+  async function onJoinClass(code, nm) {
+    const r = await joinClass({ code, name: nm });
+    if (r && r.ok) {
+      try { localStorage.setItem("cz_learner", r.learner_id); localStorage.setItem("cz_name", r.name); localStorage.setItem("cz_role", "learner"); } catch { /* */ }
+      setLearner(r.learner_id); setLearnerName(r.name); setRole("learner");
+      setOfferEmailRecovery(true);
+    }
+    return r;
   }
   function signOut() {
     try { localStorage.removeItem("cz_learner"); localStorage.removeItem("cz_name"); localStorage.removeItem("cz_role"); } catch { /* */ }
@@ -136,7 +148,8 @@ export default function App() {
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
 
   if (inviteToken) return <InviteGate lang={lang} setLang={setLang} token={inviteToken} currentId={learner} currentName={learnerName} onJoined={onInviteJoined} onDismiss={() => { clearInviteParam(); setInviteToken(""); }} />;
-  if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} t={t} />;
+  if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} onJoinClass={onJoinClass} t={t} />;
+  if (offerEmailRecovery) return <EmailRecoveryGate lang={lang} learnerId={learner} t={t} onDone={() => setOfferEmailRecovery(false)} />;
 
   // Trainer access: chosen via the "Accès formateur" panel (role flag), or the legacy "formateur" keyword.
   const isFormateur = role === "trainer" || ["formateur", "trainer", "coach"].includes((learner || "").toLowerCase()) || (learnerName || "").toLowerCase() === "formateur";
@@ -828,10 +841,30 @@ function Center({ children }) {
   return <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>{children}</div>;
 }
 
-function Gate({ lang, setLang, onStart, t }) {
+function Gate({ lang, setLang, onStart, onJoinClass, t }) {
   const [name, setName] = useState("");
   const [trainerOpen, setTrainerOpen] = useState(false);
   const [trainerName, setTrainerName] = useState("");
+  const [classOpen, setClassOpen] = useState(false);
+  const [classCode, setClassCode] = useState("");
+  const [className, setClassName] = useState("");
+  const [classBusy, setClassBusy] = useState(false);
+  const [classErr, setClassErr] = useState(null);
+
+  async function doJoin() {
+    const code = classCode.trim(); const nm = className.trim();
+    if (!code || !nm || classBusy) return;
+    setClassBusy(true); setClassErr(null);
+    try {
+      const r = await onJoinClass(code, nm);
+      if (r && r.error) {
+        setClassErr(lang === "en" ? (r.message_en || "This class code was not found.") : (r.message_fr || "Ce code de classe est introuvable."));
+      }
+    } catch (e) {
+      setClassErr(lang === "en" ? "Could not connect — the server may be waking up, try again." : "Connexion impossible — le serveur se réveille peut-être, réessayez.");
+    }
+    setClassBusy(false);
+  }
   return (
     <div style={{ background: C.ink, minHeight: "100vh", height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Inter', system-ui, sans-serif" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap'); body{margin:0}`}</style>
@@ -842,7 +875,7 @@ function Gate({ lang, setLang, onStart, t }) {
         </svg>
         <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "#fff", marginBottom: 8 }}>{t("welcome")}</div>
 
-        {!trainerOpen ? (
+        {!trainerOpen && !classOpen ? (
           <>
             <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.5, marginBottom: 18 }}>{t("welcomeSub")}</div>
             <input value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && name.trim()) onStart(name); }} placeholder={t("namePh")} autoFocus
@@ -851,7 +884,25 @@ function Gate({ lang, setLang, onStart, t }) {
               style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: name.trim() ? C.amber : "#33475F", color: name.trim() ? C.ink : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
               {t("startBtn")}
             </button>
-            <div onClick={() => setTrainerOpen(true)} style={{ marginTop: 18, fontSize: 12, color: "#7E90A4", cursor: "pointer", borderBottom: "1px dashed #3C526B", display: "inline-block", paddingBottom: 1 }}>{t("trainerLink")}</div>
+            <div onClick={() => { setClassOpen(true); setClassErr(null); }} style={{ marginTop: 16, fontSize: 12.5, color: C.teal, cursor: "pointer", borderBottom: `1px dashed ${C.teal}`, display: "inline-block", paddingBottom: 1 }}>{t("classLink")}</div>
+            <div onClick={() => setTrainerOpen(true)} style={{ marginTop: 14, fontSize: 12, color: "#7E90A4", cursor: "pointer", borderBottom: "1px dashed #3C526B", display: "inline-block", paddingBottom: 1 }}>{t("trainerLink")}</div>
+          </>
+        ) : classOpen ? (
+          <>
+            <div style={{ borderTop: `1px solid ${C.inkLine}`, marginTop: 4, paddingTop: 18 }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: C.teal, marginBottom: 6 }}>🎓 {t("classTitle")}</div>
+              <div style={{ color: "#9DB0C2", fontSize: 12.5, lineHeight: 1.55, marginBottom: 14 }}>{t("classSub")}</div>
+              <input value={classCode} onChange={(e) => { setClassCode(e.target.value.toUpperCase()); setClassErr(null); }} placeholder={t("classCodePh")} autoFocus
+                style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 10, fontFamily: "'IBM Plex Mono', monospace", letterSpacing: 2, textAlign: "center", textTransform: "uppercase" }} />
+              <input value={className} onChange={(e) => setClassName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") doJoin(); }} placeholder={t("classNameLabel")}
+                style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
+              <button onClick={doJoin} disabled={!classCode.trim() || !className.trim() || classBusy}
+                style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: (classCode.trim() && className.trim() && !classBusy) ? C.amber : "#33475F", color: (classCode.trim() && className.trim() && !classBusy) ? C.ink : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
+                {classBusy ? t("classJoining") : t("classJoinBtn")}
+              </button>
+              {classErr && <div style={{ color: "#E8A0A0", fontSize: 12.5, lineHeight: 1.5, marginTop: 11 }}>{classErr}</div>}
+              <div onClick={() => { setClassOpen(false); setClassErr(null); }} style={{ marginTop: 12, fontSize: 11.5, color: "#7E90A4", cursor: "pointer" }}>{t("backLink")}</div>
+            </div>
           </>
         ) : (
           <>
@@ -1096,6 +1147,65 @@ function InviteGate({ lang, setLang, token, currentId, currentName, onJoined, on
               </>
             )}
             {err && <div style={{ color: "#E8A0A0", fontSize: 12.5, lineHeight: 1.55, marginTop: 12 }}>{err}</div>}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ======================================================================
+   v37 — EmailRecoveryGate : proposition FACULTATIVE de lier un email après
+   l'entrée (rejoindre par code ou par nom). « Plus tard » toujours possible.
+   L'email relie le profil entre appareils et prépare le lien magique (v38).
+   ====================================================================== */
+function EmailRecoveryGate({ lang, learnerId, t, onDone }) {
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState(null);
+  const [done, setDone] = useState(false);
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+
+  async function link() {
+    if (!valid || busy) return;
+    setBusy(true); setErr(null);
+    try {
+      const r = await linkEmail(learnerId, email.trim());
+      if (r && r.ok) { setDone(true); setTimeout(onDone, 1100); }
+      else setErr(lang === "en" ? (r.message_en || "Could not link this email.") : (r.message_fr || "Impossible de lier cet email."));
+    } catch (e) {
+      setErr(lang === "en" ? "Could not connect — try again." : "Connexion impossible — réessayez.");
+    }
+    setBusy(false);
+  }
+
+  return (
+    <div style={{ background: C.ink, minHeight: "100vh", height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Inter', system-ui, sans-serif" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap'); body{margin:0}`}</style>
+      <div style={{ width: "100%", maxWidth: 380, background: C.ink2, border: `1px solid ${C.inkLine}`, borderRadius: 16, padding: "28px 26px", textAlign: "center", position: "relative" }}>
+        <span style={{ position: "absolute", top: 12, right: 12, fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#9DB0C2", background: C.ink, border: `1px solid ${C.inkLine}`, borderRadius: 20, padding: "3px 10px" }}>● {lang === "en" ? "Free" : "Gratuit"}</span>
+        <svg width="44" height="44" viewBox="0 0 40 40" style={{ marginBottom: 14 }}>
+          <polygon points="20,5 35,32 5,32" fill="none" stroke={C.amber} strokeWidth="2" strokeLinejoin="round" />
+          <circle cx="20" cy="5" r="2.6" fill={C.amber} /><circle cx="35" cy="32" r="2.6" fill={C.teal} /><circle cx="5" cy="32" r="2.6" fill="#fff" />
+        </svg>
+        {done ? (
+          <>
+            <div style={{ width: 50, height: 50, borderRadius: "50%", background: "rgba(61,167,118,.15)", border: `2px solid ${C.green || "#3DA776"}`, display: "flex", alignItems: "center", justifyContent: "center", color: "#3DA776", fontSize: 24, margin: "0 auto 14px" }}>✓</div>
+            <div style={{ color: "#B8C7D6", fontSize: 13.5, lineHeight: 1.5 }}>{t("emailRecDone")}</div>
+          </>
+        ) : (
+          <>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 19, color: "#fff", marginBottom: 8 }}>{t("emailRecTitle")}</div>
+            <div style={{ color: "#9DB0C2", fontSize: 12.5, lineHeight: 1.55, marginBottom: 16 }}>{t("emailRecSub")}</div>
+            <input value={email} onChange={(e) => { setEmail(e.target.value); setErr(null); }} onKeyDown={(e) => { if (e.key === "Enter") link(); }} placeholder="vous@exemple.com" type="email" autoFocus
+              style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
+            <button onClick={link} disabled={!valid || busy}
+              style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: valid && !busy ? C.amber : "#33475F", color: valid && !busy ? C.ink : "#6E8093", fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
+              {busy ? (lang === "en" ? "Linking…" : "Liaison…") : t("emailRecBtn")}
+            </button>
+            {err && <div style={{ color: "#E8A0A0", fontSize: 12.5, lineHeight: 1.5, marginTop: 11 }}>{err}</div>}
+            <div onClick={onDone} style={{ marginTop: 14, fontSize: 12.5, color: "#7E90A4", cursor: "pointer" }}>{t("emailRecLater")}</div>
+            <div style={{ color: "#5E6E7F", fontSize: 11, marginTop: 12, lineHeight: 1.5 }}>{t("emailRecPrivacy")}</div>
           </>
         )}
       </div>

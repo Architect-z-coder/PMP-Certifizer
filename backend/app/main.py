@@ -791,6 +791,39 @@ def create_invitations_endpoint(body: InvitationsIn, session: Session = Depends(
     return saas.create_invitations(session, body.trainer_id, body.entries)
 
 
+# ----------------------------------------------------------------------
+# v37 — Code de classe (rejoindre en libre-service) + email de récupération
+# ----------------------------------------------------------------------
+@app.get("/api/class/{code}")
+def class_code_info_endpoint(code: str, session: Session = Depends(get_session)):
+    """Vérifie publiquement qu'un code de classe existe (ne révèle rien d'autre)."""
+    return saas.class_code_info(session, code)
+
+
+class JoinClassIn(BaseModel):
+    code: str
+    name: str = ""
+    existing_public_id: str = ""
+    email: str = ""
+
+
+@app.post("/api/class/join")
+def join_class_endpoint(body: JoinClassIn, session: Session = Depends(get_session)):
+    return saas.join_by_class_code(session, body.code, name=body.name,
+                                   existing_public_id=body.existing_public_id,
+                                   email=body.email)
+
+
+class LinkEmailIn(BaseModel):
+    learner_id: str
+    email: str = ""
+
+
+@app.post("/api/me/link-email")
+def link_email_endpoint(body: LinkEmailIn, session: Session = Depends(get_session)):
+    return saas.link_email(session, body.learner_id, body.email)
+
+
 @app.get("/api/cohort/invitations")
 def list_invitations_endpoint(trainer_id: str, session: Session = Depends(get_session)):
     return saas.invitations_for_trainer(session, trainer_id)

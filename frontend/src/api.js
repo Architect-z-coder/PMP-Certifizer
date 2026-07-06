@@ -238,3 +238,28 @@ export async function acceptInvite(token, { name = "", existingPublicId = "" } =
   if (!r.ok) throw new Error(`accept ${r.status}`);
   return r.json();
 }
+
+// ---- v37 : code de classe (libre-service) + email de récupération ----
+export async function getClassInfo(code) {
+  const r = await fetch(`${BASE}/api/class/${encodeURIComponent(code)}`);
+  if (!r.ok) throw new Error(`class ${r.status}`);
+  return r.json();
+}
+
+export async function joinClass({ code, name = "", existingPublicId = "", email = "" }) {
+  const r = await fetch(`${BASE}/api/class/join`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ code, name, existing_public_id: existingPublicId, email }),
+  });
+  if (!r.ok) throw new Error(`join ${r.status}`);
+  return r.json();
+}
+
+export async function linkEmail(learnerId, email) {
+  const r = await fetch(`${BASE}/api/me/link-email`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ learner_id: learnerId, email }),
+  });
+  if (!r.ok) throw new Error(`link-email ${r.status}`);
+  return r.json();
+}
