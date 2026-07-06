@@ -17,6 +17,16 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./certifizer.db"
     cors_origins: str = "http://localhost:5173"
 
+    # v38 — Email transactionnel (Brevo). Clé posée en variable d'env sur Render.
+    # Tant que brevo_api_key est vide, l'app ne tente aucun envoi (dégradation propre).
+    brevo_api_key: str = ""
+    brevo_sender_email: str = ""          # expéditeur par défaut au pilote ; domaine propre plus tard
+    brevo_sender_name: str = "Certifizer"
+    # URL publique du front, pour construire les liens magiques et d'invitation.
+    public_app_url: str = "https://pmp-certifizer.vercel.app"
+    # Secret de signature des jetons de lien magique (posé en env ; défaut dev only).
+    magic_link_secret: str = "dev-magic-secret-change-me"
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     @property

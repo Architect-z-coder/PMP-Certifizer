@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail, requestMagicLink, consumeMagicLink } from "./api.js";
 import Journey from "./Journey.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
@@ -47,6 +47,32 @@ export default function App() {
   const [inviteToken, setInviteToken] = useState(() => {
     try { return new URLSearchParams(window.location.search).get("invite") || ""; } catch { return ""; }
   });
+  // v38 — lien magique (?magic=TOKEN) : reconnexion par email
+  const [magicToken, setMagicToken] = useState(() => {
+    try { return new URLSearchParams(window.location.search).get("magic") || ""; } catch { return ""; }
+  });
+  const [magicState, setMagicState] = useState(magicToken ? "checking" : null);
+  function clearMagicParam() {
+    try {
+      const u = new URL(window.location.href);
+      u.searchParams.delete("magic");
+      window.history.replaceState({}, "", u.pathname + (u.search || ""));
+    } catch { /* */ }
+  }
+  useEffect(() => {
+    if (!magicToken) return;
+    consumeMagicLink(magicToken).then((r) => {
+      if (r && r.ok) {
+        const rr = r.role === "trainer" ? "trainer" : "learner";
+        try { localStorage.setItem("cz_learner", r.learner_id); localStorage.setItem("cz_name", r.name); localStorage.setItem("cz_role", rr); } catch { /* */ }
+        setLearner(r.learner_id); setLearnerName(r.name); setRole(rr);
+        setMagicState("ok"); clearMagicParam();
+        setTimeout(() => { setMagicToken(""); setMagicState(null); }, 1400);
+      } else {
+        setMagicState(r && r.error === "expired" ? "expired" : "invalid");
+      }
+    }).catch(() => setMagicState("invalid"));
+  }, [magicToken]);
   function clearInviteParam() {
     try {
       const u = new URL(window.location.href);
@@ -147,6 +173,7 @@ export default function App() {
   const ActiveIcon = modeId === "coreflexion" ? Scale : (activeModeObj ? activeModeObj.icon : BookOpen);
   const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
 
+  if (magicToken && magicState && magicState !== "ok") return <MagicGate lang={lang} setLang={setLang} state={magicState} onDismiss={() => { clearMagicParam(); setMagicToken(""); setMagicState(null); }} />;
   if (inviteToken) return <InviteGate lang={lang} setLang={setLang} token={inviteToken} currentId={learner} currentName={learnerName} onJoined={onInviteJoined} onDismiss={() => { clearInviteParam(); setInviteToken(""); }} />;
   if (!learner) return <Gate lang={lang} setLang={setLang} onStart={signIn} onJoinClass={onJoinClass} t={t} />;
   if (offerEmailRecovery) return <EmailRecoveryGate lang={lang} learnerId={learner} t={t} onDone={() => setOfferEmailRecovery(false)} />;
@@ -850,6 +877,25 @@ function Gate({ lang, setLang, onStart, onJoinClass, t }) {
   const [className, setClassName] = useState("");
   const [classBusy, setClassBusy] = useState(false);
   const [classErr, setClassErr] = useState(null);
+  const [recoverOpen, setRecoverOpen] = useState(false);
+  const [recEmail, setRecEmail] = useState("");
+  const [recBusy, setRecBusy] = useState(false);
+  const [recMsg, setRecMsg] = useState(null);
+  const [recErr, setRecErr] = useState(null);
+
+  async function doRecover() {
+    const e = recEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) || recBusy) { setRecErr(lang === "en" ? "Enter a valid email." : "Saisissez un email valide."); return; }
+    setRecBusy(true); setRecErr(null); setRecMsg(null);
+    try {
+      const r = await requestMagicLink(e, lang);
+      if (r && r.ok) setRecMsg(lang === "en" ? r.message_en : r.message_fr);
+      else setRecErr(lang === "en" ? (r.message_en || "Email sending is not available.") : (r.message_fr || "L'envoi d'email n'est pas disponible."));
+    } catch (e2) {
+      setRecErr(lang === "en" ? "Could not connect — try again." : "Connexion impossible — réessayez.");
+    }
+    setRecBusy(false);
+  }
 
   async function doJoin() {
     const code = classCode.trim(); const nm = className.trim();
@@ -875,7 +921,7 @@ function Gate({ lang, setLang, onStart, onJoinClass, t }) {
         </svg>
         <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 22, color: "#fff", marginBottom: 8 }}>{t("welcome")}</div>
 
-        {!trainerOpen && !classOpen ? (
+        {!trainerOpen && !classOpen && !recoverOpen ? (
           <>
             <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.5, marginBottom: 18 }}>{t("welcomeSub")}</div>
             <input value={name} onChange={(e) => setName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter" && name.trim()) onStart(name); }} placeholder={t("namePh")} autoFocus
@@ -885,7 +931,32 @@ function Gate({ lang, setLang, onStart, onJoinClass, t }) {
               {t("startBtn")}
             </button>
             <div onClick={() => { setClassOpen(true); setClassErr(null); }} style={{ marginTop: 16, fontSize: 12.5, color: C.teal, cursor: "pointer", borderBottom: `1px dashed ${C.teal}`, display: "inline-block", paddingBottom: 1 }}>{t("classLink")}</div>
+            <div onClick={() => setRecoverOpen(true)} style={{ marginTop: 12, fontSize: 12, color: "#9DB0C2", cursor: "pointer" }}>{t("recoverLink")}</div>
             <div onClick={() => setTrainerOpen(true)} style={{ marginTop: 14, fontSize: 12, color: "#7E90A4", cursor: "pointer", borderBottom: "1px dashed #3C526B", display: "inline-block", paddingBottom: 1 }}>{t("trainerLink")}</div>
+          </>
+        ) : recoverOpen ? (
+          <>
+            <div style={{ borderTop: `1px solid ${C.inkLine}`, marginTop: 4, paddingTop: 18 }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: C.teal, marginBottom: 6 }}>✉ {t("recoverTitle")}</div>
+              <div style={{ color: "#9DB0C2", fontSize: 12.5, lineHeight: 1.55, marginBottom: 14 }}>{t("recoverSub")}</div>
+              {recMsg ? (
+                <>
+                  <div style={{ background: "rgba(46,140,158,.12)", border: `1px solid ${C.teal}`, borderRadius: 10, padding: "12px 14px", color: "#CDE7EC", fontSize: 12.5, lineHeight: 1.55 }}>{recMsg}</div>
+                  <div onClick={() => { setRecoverOpen(false); setRecMsg(null); setRecEmail(""); }} style={{ marginTop: 14, fontSize: 12, color: "#7E90A4", cursor: "pointer" }}>{t("backLink")}</div>
+                </>
+              ) : (
+                <>
+                  <input value={recEmail} onChange={(e) => { setRecEmail(e.target.value); setRecErr(null); }} onKeyDown={(e) => { if (e.key === "Enter") doRecover(); }} placeholder="vous@exemple.com" type="email" autoFocus
+                    style={{ width: "100%", background: C.ink, color: "#E6EDF4", border: `1px solid ${C.inkLine}`, borderRadius: 10, padding: "11px 13px", fontSize: 14, outline: "none", marginBottom: 12, fontFamily: "'Inter', sans-serif" }} />
+                  <button onClick={doRecover} disabled={recBusy}
+                    style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: recBusy ? "#33475F" : C.amber, color: recBusy ? "#6E8093" : C.ink, fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {recBusy ? t("recoverSending") : t("recoverBtn")}
+                  </button>
+                  {recErr && <div style={{ color: "#E8A0A0", fontSize: 12.5, lineHeight: 1.5, marginTop: 11 }}>{recErr}</div>}
+                  <div onClick={() => { setRecoverOpen(false); setRecErr(null); }} style={{ marginTop: 12, fontSize: 11.5, color: "#7E90A4", cursor: "pointer" }}>{t("backLink")}</div>
+                </>
+              )}
+            </div>
           </>
         ) : classOpen ? (
           <>
@@ -1206,6 +1277,43 @@ function EmailRecoveryGate({ lang, learnerId, t, onDone }) {
             {err && <div style={{ color: "#E8A0A0", fontSize: 12.5, lineHeight: 1.5, marginTop: 11 }}>{err}</div>}
             <div onClick={onDone} style={{ marginTop: 14, fontSize: 12.5, color: "#7E90A4", cursor: "pointer" }}>{t("emailRecLater")}</div>
             <div style={{ color: "#5E6E7F", fontSize: 11, marginTop: 12, lineHeight: 1.5 }}>{t("emailRecPrivacy")}</div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ======================================================================
+   v38 — MagicGate : écran affiché pendant/à l'échec du traitement d'un
+   lien magique (?magic=TOKEN). Le succès bascule directement dans l'app.
+   ====================================================================== */
+function MagicGate({ lang, setLang, state, onDismiss }) {
+  const t2 = (fr, en) => (lang === "en" ? en : fr);
+  const msg = state === "expired"
+    ? t2("Ce lien de connexion a expiré. Demandez-en un nouveau depuis l'accueil.", "This sign-in link has expired. Request a new one from the home screen.")
+    : state === "invalid"
+      ? t2("Ce lien de connexion n'est pas valide.", "This sign-in link is not valid.")
+      : t2("Connexion en cours…", "Signing you in…");
+  const checking = state === "checking";
+  return (
+    <div style={{ background: C.ink, minHeight: "100vh", height: "100dvh", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Inter', system-ui, sans-serif" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap'); body{margin:0} @keyframes spin{to{transform:rotate(360deg)}}`}</style>
+      <div style={{ width: "100%", maxWidth: 380, background: C.ink2, border: `1px solid ${C.inkLine}`, borderRadius: 16, padding: "30px 26px", textAlign: "center" }}>
+        <svg width="46" height="46" viewBox="0 0 40 40" style={{ marginBottom: 16 }}>
+          <polygon points="20,5 35,32 5,32" fill="none" stroke={C.amber} strokeWidth="2" strokeLinejoin="round" />
+          <circle cx="20" cy="5" r="2.6" fill={C.amber} /><circle cx="35" cy="32" r="2.6" fill={C.teal} /><circle cx="5" cy="32" r="2.6" fill="#fff" />
+        </svg>
+        {checking ? (
+          <>
+            <div style={{ width: 28, height: 28, border: `3px solid ${C.inkLine}`, borderTopColor: C.amber, borderRadius: "50%", margin: "0 auto 14px", animation: "spin .8s linear infinite" }} />
+            <div style={{ color: "#9DB0C2", fontSize: 13.5 }}>{msg}</div>
+          </>
+        ) : (
+          <>
+            <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 18, color: "#fff", marginBottom: 10 }}>{t2("Lien indisponible", "Link unavailable")}</div>
+            <div style={{ color: "#9DB0C2", fontSize: 13, lineHeight: 1.6, marginBottom: 18 }}>{msg}</div>
+            <button onClick={onDismiss} style={{ width: "100%", padding: "12px", border: "none", borderRadius: 11, background: C.amber, color: C.ink, fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif", cursor: "pointer" }}>{t2("Continuer vers Certifizer", "Continue to Certifizer")}</button>
           </>
         )}
       </div>

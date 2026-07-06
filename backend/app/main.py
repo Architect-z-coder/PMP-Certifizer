@@ -15,6 +15,7 @@ from .models import (Item, Attempt, Mastery, ProcessMastery, Reflexe, Flag,
                      MissedQueue, engine, init_db, get_session)
 from . import llm
 from . import saas
+from . import email_service
 from .prompts import build_system
 from .mastery import (apply_result, light, recommend, KA, KA_IDS, TOTAL_N,
                       difficulties_for, SR_INTERVALS_DAYS, SR_MAX_STAGE,
@@ -783,12 +784,32 @@ async def polish_question(body: PolishIn, session: Session = Depends(get_session
 class InvitationsIn(BaseModel):
     trainer_id: str
     entries: list = []          # [{name?, email?, role?}]
+    lang: str = "fr"
+    send_email: bool = True     # v38 — envoyer automatiquement si Brevo configuré
 
 
 @app.post("/api/cohort/invitations")
-def create_invitations_endpoint(body: InvitationsIn, session: Session = Depends(get_session)):
-    """Crée un lien personnel PAR entrée (lot accepté) — cloisonné au formateur."""
-    return saas.create_invitations(session, body.trainer_id, body.entries)
+async def create_invitations_endpoint(body: InvitationsIn, session: Session = Depends(get_session)):
+    """Crée un lien personnel PAR entrée (lot accepté) — cloisonné au formateur.
+    v38 : si Brevo est configuré et qu'une entrée a un email, le lien lui est
+    envoyé automatiquement. Sinon, comportement v35 inchangé (copie manuelle)."""
+    result = saas.create_invitations(session, body.trainer_id, body.entries)
+    if result.get("error"):
+        return result
+    created = result.get("created", [])
+    sent, email_configured = 0, email_service.is_configured()
+    if body.send_email and email_configured:
+        base = settings.public_app_url.rstrip("/")
+        for inv in created:
+            if inv.get("email"):
+                link = f"{base}/?invite={inv['token']}"
+                subj, html = email_service.invitation_email(link, inv.get("cohort_code", ""), body.lang)
+                r = await email_service.send_email(inv["email"], subj, html, inv.get("name", ""))
+                if r.get("ok"):
+                    sent += 1
+    result["emails_sent"] = sent
+    result["email_configured"] = email_configured
+    return result
 
 
 # ----------------------------------------------------------------------
@@ -822,6 +843,59 @@ class LinkEmailIn(BaseModel):
 @app.post("/api/me/link-email")
 def link_email_endpoint(body: LinkEmailIn, session: Session = Depends(get_session)):
     return saas.link_email(session, body.learner_id, body.email)
+
+
+# ----------------------------------------------------------------------
+# v38 — Lien magique (reconnexion par email, via Brevo)
+# ----------------------------------------------------------------------
+class MagicRequestIn(BaseModel):
+    email: str
+    lang: str = "fr"
+
+
+@app.post("/api/auth/magic/request")
+async def magic_request_endpoint(body: MagicRequestIn, session: Session = Depends(get_session)):
+    """Envoie un lien magique à l'email fourni — SI un profil y est rattaché.
+    Réponse volontairement neutre (ne révèle pas si l'email existe) pour la vie privée.
+    Nécessite Brevo configuré ; sinon message clair (dégradation propre)."""
+    neutral = {"ok": True,
+               "message_fr": "Si un compte est lié à cet email, un lien de connexion vient d'être envoyé.",
+               "message_en": "If an account is linked to this email, a sign-in link has just been sent."}
+    if not saas._valid_email(body.email):
+        return {"error": "invalid_email",
+                "message_fr": "Veuillez saisir une adresse email valide.",
+                "message_en": "Please enter a valid email address."}
+    if not email_service.is_configured():
+        return {"error": "email_unavailable",
+                "message_fr": "L'envoi d'email n'est pas encore activé. Contactez votre formateur.",
+                "message_en": "Email sending is not enabled yet. Please contact your trainer."}
+    u = saas.user_by_email(session, body.email)
+    if u:
+        token = saas.make_magic_token(u.public_id)
+        base = settings.public_app_url.rstrip("/")
+        link = f"{base}/?magic={token}"
+        subj, html = email_service.magic_link_email(link, body.lang)
+        await email_service.send_email(u.email, subj, html, u.name)
+    return neutral   # même réponse que l'email existe ou non
+
+
+class MagicConsumeIn(BaseModel):
+    token: str
+
+
+@app.post("/api/auth/magic/consume")
+def magic_consume_endpoint(body: MagicConsumeIn, session: Session = Depends(get_session)):
+    """Consomme un jeton de lien magique → renvoie l'identité à restaurer côté client."""
+    r = saas.resolve_magic_token(session, body.token)
+    if r.get("error") == "expired":
+        return {"error": "expired",
+                "message_fr": "Ce lien de connexion a expiré. Demandez-en un nouveau.",
+                "message_en": "This sign-in link has expired. Please request a new one."}
+    if r.get("error"):
+        return {"error": "invalid_token",
+                "message_fr": "Ce lien de connexion n'est pas valide.",
+                "message_en": "This sign-in link is not valid."}
+    return r
 
 
 @app.get("/api/cohort/invitations")

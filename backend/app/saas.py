@@ -951,3 +951,76 @@ def link_email(session: Session, public_id: str, email: str) -> dict:
 def _valid_email(e: str) -> bool:
     import re as _re
     return bool(_re.match(r"^[^\s@]+@[^\s@]+\.[^\s@]+$", (e or "").strip()))
+
+
+# ======================================================================
+# v38 — Lien magique (reconnexion par email, sans mot de passe)
+# ======================================================================
+# Jeton signé HMAC (public_id + expiration), sans table dédiée. À usage unique
+# de fait : l'action côté client remplace l'identité locale ; le jeton expire vite.
+import hmac as _hmac, hashlib as _hashlib, base64 as _b64, time as _time, json as _json2
+
+_MAGIC_TTL = 30 * 60   # 30 minutes
+
+
+def _b64e(raw: bytes) -> str:
+    return _b64.urlsafe_b64encode(raw).decode().rstrip("=")
+
+
+def _b64d(s: str) -> bytes:
+    pad = "=" * (-len(s) % 4)
+    return _b64.urlsafe_b64decode(s + pad)
+
+
+def _sign(payload_b64: str) -> str:
+    from .config import settings as _st
+    secret = (_st.magic_link_secret or "dev").encode()
+    sig = _hmac.new(secret, payload_b64.encode(), _hashlib.sha256).digest()
+    return _b64e(sig)
+
+
+def make_magic_token(public_id: str) -> str:
+    payload = {"pid": public_id, "exp": int(_time.time()) + _MAGIC_TTL}
+    payload_b64 = _b64e(_json2.dumps(payload, separators=(",", ":")).encode())
+    return f"{payload_b64}.{_sign(payload_b64)}"
+
+
+def verify_magic_token(token: str) -> dict:
+    """Vérifie la signature + l'expiration. Renvoie {ok, public_id} ou {error}."""
+    try:
+        payload_b64, sig = (token or "").split(".", 1)
+    except ValueError:
+        return {"error": "invalid_token"}
+    if not _hmac.compare_digest(sig, _sign(payload_b64)):
+        return {"error": "invalid_token"}
+    try:
+        payload = _json2.loads(_b64d(payload_b64))
+    except Exception:
+        return {"error": "invalid_token"}
+    if int(payload.get("exp", 0)) < int(_time.time()):
+        return {"error": "expired"}
+    return {"ok": True, "public_id": payload.get("pid", "")}
+
+
+def user_by_email(session: Session, email: str) -> Optional["User"]:
+    e = (email or "").strip()
+    if not e:
+        return None
+    return session.exec(select(User).where(User.email == e)).first()
+
+
+def resolve_magic_token(session: Session, token: str) -> dict:
+    """Résout un jeton magique en identité, si l'utilisateur existe toujours."""
+    v = verify_magic_token(token)
+    if v.get("error"):
+        return v
+    u = session.exec(select(User).where(User.public_id == v["public_id"])).first()
+    if not u:
+        return {"error": "invalid_token"}
+    return {"ok": True, "learner_id": u.public_id, "name": u.name,
+            "role": _primary_role(session, u.id)}
+
+
+def _primary_role(session: Session, user_id: int) -> str:
+    """Renvoie 'trainer' si l'utilisateur est formateur d'au moins une cohorte."""
+    return "trainer" if cohorts_where_trainer(session, user_id) else "learner"

@@ -263,3 +263,22 @@ export async function linkEmail(learnerId, email) {
   if (!r.ok) throw new Error(`link-email ${r.status}`);
   return r.json();
 }
+
+// ---- v38 : lien magique (reconnexion par email) ----
+export async function requestMagicLink(email, lang = "fr") {
+  const r = await fetch(`${BASE}/api/auth/magic/request`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, lang }),
+  });
+  if (!r.ok) throw new Error(`magic-request ${r.status}`);
+  return r.json();
+}
+
+export async function consumeMagicLink(token) {
+  const r = await fetch(`${BASE}/api/auth/magic/consume`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token }),
+  });
+  if (!r.ok) throw new Error(`magic-consume ${r.status}`);
+  return r.json();
+}
