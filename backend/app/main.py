@@ -507,43 +507,31 @@ def _cohort_learner_ids(session: Session, cohort_id: Optional[str],
                         trainer_id: Optional[str] = None) -> list[str]:
     """Resolve the set of learner_ids the cockpit should aggregate.
 
-    Priority (server-side scoping — spec §4):
-    1. If a trainer_id is given, restrict to the learners of THAT trainer's
-       cohorts via CohortMembership (real cloisonnement). A trainer never sees
-       learners outside their cohorts.
-    2. Else if a cohort code is given, use the real Cohort + memberships.
-    3. Else fall back to the legacy prefix behavior (demo / all learners).
-    """
-    # 1) trainer-scoped: only their cohorts' learners (strict cloisonnement).
-    # Applies to any provided trainer_id, including "formateur" (demo trainer).
-    if trainer_id:
-        tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
-        pubs: list[str] = []
-        if tu:
-            for cid in saas.cohorts_where_trainer(session, tu.id):
-                pubs.extend(saas.learner_public_ids_for_cohort(session, cid))
-        # A named trainer only ever sees their own cohorts — unknown or cohort-less
-        # trainers see nothing. Never fall through to "all learners".
-        return sorted(set(pubs))
+    v39 — DURCISSEMENT IDOR : le cloisonnement passe UNIQUEMENT par le formateur.
+    Un `trainer_id` valide est désormais OBLIGATOIRE. On ne résout plus jamais
+    une cohorte par son seul code (`?cohort_id=PMP-2026-A` ne suffit plus), et on
+    ne retombe plus sur « tous les apprenants ». Sans trainer_id valide → liste vide.
 
-    # 2) explicit cohort code -> real cohort membership
+    Cette restriction ne casse rien : le cockpit (frontend) et les appels internes
+    passent toujours trainer_id, et cohort_id vaut toujours None.
+    """
+    if not trainer_id:
+        return []
+    tu = session.exec(select(saas.User).where(saas.User.public_id == trainer_id)).first()
+    if not tu:
+        return []
+    pubs: list[str] = []
+    for cid in saas.cohorts_where_trainer(session, tu.id):
+        pubs.extend(saas.learner_public_ids_for_cohort(session, cid))
+    # Filtrage optionnel par cohorte — mais TOUJOURS à l'intérieur des cohortes
+    # du formateur (jamais un moyen d'élargir la portée).
     if cohort_id and cohort_id not in ("", "all"):
         coh = session.exec(select(saas.Cohort).where(saas.Cohort.code == cohort_id)).first()
-        if coh:
+        if coh and coh.id in saas.cohorts_where_trainer(session, tu.id):
             pubs = saas.learner_public_ids_for_cohort(session, coh.id)
-            if pubs:
-                return sorted(set(pubs))
-        # fall through to legacy prefix if no real cohort found
-
-    # 3) legacy: all non-reserved learners, optional string-prefix filter
-    rows = session.exec(select(Mastery.learner_id).distinct()).all()
-    ids = [r for r in rows if r and r not in _RESERVED_LEARNERS]
-    if cohort_id and cohort_id not in ("", "all"):
-        pref = cohort_id if cohort_id.endswith(":") else cohort_id + ":"
-        scoped = [i for i in ids if i.startswith(pref)]
-        if scoped:
-            ids = scoped
-    return sorted(ids)
+        else:
+            return []   # cohorte inconnue ou hors périmètre du formateur
+    return sorted(set(pubs))
 
 
 @app.post("/api/admin/seed-demo-cohort")
@@ -1036,8 +1024,16 @@ def complete_assigned_session(assignment_id: int, learner_id: str,
 def cohort_overview(cohort_id: Optional[str] = None, trainer_id: Optional[str] = None,
                     session: Session = Depends(get_session)):
     """Everything the trainer cockpit needs, aggregated across the cohort.
-    Reuses the exact same per-learner math (readiness, levers, staleness).
-    When trainer_id is given, results are cloisonnés to that trainer's cohorts."""
+
+    v39 — DURCISSEMENT IDOR : `trainer_id` est OBLIGATOIRE. Sans lui, l'endpoint
+    ne renvoie plus rien (auparavant, `?cohort_id=PMP-2026-A` seul exposait la
+    progression de toute la cohorte). Le cloisonnement est strictement serveur.
+    """
+    if not trainer_id:
+        return {"error": "trainer_required",
+                "message_fr": "Accès réservé au formateur de la cohorte.",
+                "message_en": "Access restricted to the cohort's trainer.",
+                "n": 0, "learners": []}
     learner_ids = _cohort_learner_ids(session, cohort_id, trainer_id)
     n = len(learner_ids)
 
