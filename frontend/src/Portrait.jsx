@@ -108,8 +108,8 @@ export default function Portrait({ learnerId, lang = "fr" }) {
 
   const pos = useMemo(() => (p ? layout(p.nodes) : {}), [p]);
 
-  if (err) return <div style={{ padding: 24, color: C.red, fontSize: 13 }}>{err}</div>;
-  if (!p) return <div style={{ padding: 40, textAlign: "center", color: C.muted, fontSize: 13.5 }}>{t("loading")}</div>;
+  if (err) return <div style={{ flex: 1, padding: 24, color: C.red, fontSize: 13, overflowY: "auto" }}>{err}</div>;
+  if (!p) return <div style={{ flex: 1, padding: 40, textAlign: "center", color: C.muted, fontSize: 13.5 }}>{t("loading")}</div>;
 
   const hasData = p.total_answers > 0;
   const cp = p.critical_path || [];
@@ -125,7 +125,7 @@ export default function Portrait({ learnerId, lang = "fr" }) {
   const traj = p.trajectory || [];
 
   return (
-    <div style={{ background: "#0A1422", padding: "22px 14px", minHeight: "100%" }}>
+    <div className="ak-scroll" style={{ background: "#0A1422", padding: "22px 14px 40px", flex: 1, minHeight: 0, overflowY: "auto" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
         .pt-sheet{background:${C.paper};border:1px solid ${C.rule};max-width:840px;margin:0 auto;

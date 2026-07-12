@@ -379,7 +379,7 @@ export default function App() {
           </div>
 
           {/* Main */}
-          <div style={{ display: "flex", flexDirection: "column", flex: 1, background: C.paper, minWidth: 0 }}>
+          <div style={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0, background: C.paper, minWidth: 0 }}>
             {recObj && (
               <button onClick={() => studyArea(recObj.id)} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 16px", borderBottom: `1px solid ${C.line}`, background: "#FFF7EC", border: "none", textAlign: "left", width: "100%" }}>
                 <Target size={15} color={C.amber} />
