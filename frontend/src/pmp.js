@@ -200,6 +200,7 @@ export const JT = {
 // ---- Ma préparation (learner cockpit, wave 18) ----
 export const PT = {
   prepa: { fr: "Ma préparation", en: "My preparation" },
+  portrait: { fr: "Mon portrait", en: "My portrait" },
   hello: { fr: "Bonjour", en: "Hello" },
   readyLabel: { fr: "Prêt·e examen", en: "Exam-ready" },
   readyHint: { fr: "Ton indice pondère ta maîtrise par le poids réel de l'examen (33·41·26).", en: "Your index weights mastery by the real exam weights (33·41·26)." },

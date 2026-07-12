@@ -9,18 +9,19 @@ from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from .config import settings
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from .models import (Item, Attempt, Mastery, ProcessMastery, Reflexe, Flag,
-                     MissedQueue, engine, init_db, get_session)
+                     MissedQueue, ReadinessSnapshot, engine, init_db, get_session)
 from . import llm
 from . import saas
 from . import email_service
+from . import portrait as portrait_mod
 from .prompts import build_system
 from .mastery import (apply_result, light, recommend, KA, KA_IDS, TOTAL_N,
                       difficulties_for, SR_INTERVALS_DAYS, SR_MAX_STAGE,
                       recency_confidence, stale_level, effective_mastery,
-                      readiness_from_masteries, AREA_DOMAIN)
+                      readiness_from_masteries, AREA_DOMAIN, KA_BY_ID)
 
 app = FastAPI(title="Certifizer API", version="0.2.0")
 
@@ -1171,3 +1172,110 @@ try:
 except Exception:
     # Never let a backfill probe crash startup; it retries next boot.
     pass
+
+
+# ======================================================================
+# v40 — Portrait d'apprentissage
+# ======================================================================
+def _snapshot_today(session: Session, learner_id: str, readiness: float) -> None:
+    """Enregistre au plus un instantané par jour et par apprenant (idempotent)."""
+    day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    existing = session.exec(select(ReadinessSnapshot).where(
+        ReadinessSnapshot.learner_id == learner_id,
+        ReadinessSnapshot.day == day)).first()
+    if existing:
+        existing.readiness = readiness
+        session.add(existing)
+    else:
+        session.add(ReadinessSnapshot(learner_id=learner_id,
+                                      readiness=readiness, day=day))
+    session.commit()
+
+
+@app.get("/api/portrait")
+def get_portrait(learner_id: str = "demo", lang: str = "fr",
+                 session: Session = Depends(get_session)):
+    """Le portrait d'apprentissage : la carte, le chemin critique, la lecture,
+    la trajectoire, la projection et les réflexes de l'apprenant.
+
+    Tout est calculé à partir de SES données. Aucun appel LLM : déterministe,
+    reproductible, gratuit.
+    """
+    rows = _mastery_rows(session, learner_id)
+    r = readiness_from_masteries(rows)
+    readiness = float(r.get("score", 0.0))
+
+    mm = {row["area"]: row for row in rows}
+    scores = {k["id"]: (mm[k["id"]]["score"] if k["id"] in mm and mm[k["id"]]["attempts"] > 0 else 0.0)
+              for k in KA}
+    attempts = {k["id"]: (mm[k["id"]]["attempts"] if k["id"] in mm else 0) for k in KA}
+
+    # --- la carte : chaque domaine, son état, ses dépendances ---
+    def state(ka_id):
+        a, s = attempts[ka_id], scores[ka_id]
+        if a == 0:
+            return "untouched"          # vous attend
+        if s >= 0.70:
+            return "acquired"
+        if s >= 0.45:
+            return "in_progress"
+        return "fragile"
+
+    nodes = [{
+        "area": k["id"],
+        "label": k["fr"] if lang != "en" else k["en"],
+        "score": round(scores[k["id"]], 4),
+        "attempts": attempts[k["id"]],
+        "state": state(k["id"]),
+        "depends_on": portrait_mod.DEPENDS_ON.get(k["id"], []),
+        "domain": AREA_DOMAIN.get(k["id"], ""),
+    } for k in KA]
+
+    cpath = portrait_mod.critical_path(scores)
+    reading = portrait_mod.reading(scores, attempts, lang)
+
+    # --- trajectoire : on enregistre le point du jour, puis on relit l'historique ---
+    if any(a > 0 for a in attempts.values()):
+        _snapshot_today(session, learner_id, readiness)
+    snaps = session.exec(select(ReadinessSnapshot)
+                         .where(ReadinessSnapshot.learner_id == learner_id)
+                         .order_by(ReadinessSnapshot.day)).all()
+    trajectory = [{"day": s.day, "readiness": round(s.readiness, 4)} for s in snaps]
+    proj = portrait_mod.projection(
+        [{"at": s.at if s.at.tzinfo else s.at.replace(tzinfo=timezone.utc),
+          "readiness": s.readiness} for s in snaps], lang)
+
+    # --- réflexes : les mots de l'apprenant (issus des « Cas réels ») ---
+    refl = session.exec(select(Reflexe).where(Reflexe.learner_id == learner_id)
+                        .order_by(Reflexe.id.desc())).all()
+    SEAT_LABEL = {"moa": ("Maître d'ouvrage", "Owner"),
+                  "moe": ("Maître d'œuvre", "Contractor"),
+                  "both": ("Les deux angles", "Both seats")}
+    reflexes = [{"text": x.text,
+                 "seat": x.seat or "",
+                 "seat_label": SEAT_LABEL.get(x.seat, ("", ""))[0 if lang != "en" else 1],
+                 "at": x.created_at.isoformat() if x.created_at else ""}
+                for x in refl]
+
+    # --- pondération ECO : on réutilise le calcul officiel (une seule source de vérité) ---
+    eco = {d: round(v["score"], 4) for d, v in (r.get("domains") or {}).items()}
+
+    total_answers = sum(attempts.values())
+    acquired = sum(1 for k in KA if state(k["id"]) == "acquired")
+
+    return {
+        "learner_id": learner_id,
+        "readiness": round(readiness, 4),
+        "acquired": acquired,
+        "total_areas": len(KA),
+        "total_answers": total_answers,
+        "nodes": nodes,
+        "critical_path": cpath,
+        "reading": reading,
+        "trajectory": trajectory,
+        "projection": proj,
+        "reflexes": reflexes,
+        "eco": eco,
+        "target": portrait_mod.TARGET,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }

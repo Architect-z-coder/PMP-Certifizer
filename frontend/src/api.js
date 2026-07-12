@@ -282,3 +282,13 @@ export async function consumeMagicLink(token) {
   if (!r.ok) throw new Error(`magic-consume ${r.status}`);
   return r.json();
 }
+
+// ---- v40 : portrait d'apprentissage ----
+export async function getPortrait(learnerId, lang = "fr") {
+  const u = new URL(`${BASE}/api/portrait`);
+  u.searchParams.set("learner_id", learnerId);
+  u.searchParams.set("lang", lang);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`portrait ${r.status}`);
+  return r.json();
+}

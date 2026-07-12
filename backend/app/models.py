@@ -1,5 +1,5 @@
 from typing import Optional
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlmodel import SQLModel, Field, create_engine, Session, text
 
@@ -74,6 +74,20 @@ class ProcessMastery(SQLModel, table=True):
     score: float = 0.0
     attempts: int = 0
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+class ReadinessSnapshot(SQLModel, table=True):
+    """v40 — Instantané de la préparation, au plus un par jour et par apprenant.
+
+    Alimente la trajectoire et la projection du portrait d'apprentissage.
+    Table ajoutée (migration additive) : les données existantes ne bougent pas.
+    Sans historique, le portrait affiche simplement « la trajectoire se dessine ».
+    """
+    id: Optional[int] = Field(default=None, primary_key=True)
+    learner_id: str = Field(index=True)
+    readiness: float = 0.0
+    day: str = Field(index=True, default="")   # YYYY-MM-DD — une entrée par jour
+    at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class Reflexe(SQLModel, table=True):

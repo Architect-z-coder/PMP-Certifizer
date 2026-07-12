@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw } from "lucide-react";
+import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw, FileText } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail, requestMagicLink, consumeMagicLink } from "./api.js";
 import Journey from "./Journey.jsx";
+import Portrait from "./Portrait.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
 
@@ -286,6 +287,9 @@ export default function App() {
               <button onClick={() => chooseMode("prepa")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "prepa" ? C.amber : C.inkLine}`, background: modeId === "prepa" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "prepa" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
                 <Gauge size={15} color={modeId === "prepa" ? C.amber : "#9DB0C2"} /> {PT.prepa[lang]}
               </button>
+              <button onClick={() => chooseMode("portrait")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "portrait" ? C.amber : C.inkLine}`, background: modeId === "portrait" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "portrait" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
+                <FileText size={15} color={modeId === "portrait" ? C.amber : "#9DB0C2"} /> {PT.portrait[lang]}
+              </button>
             </Section>
 
             <Section label={t("focus")}>
@@ -387,6 +391,8 @@ export default function App() {
 
             {modeId === "parcours" ? (
               <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
+            ) : modeId === "portrait" ? (
+              <Portrait learnerId={learner} lang={lang} />
             ) : modeId === "prepa" ? (
               <PrepaPanel lang={lang} learnerId={learner} learnerName={learnerName} mastery={mastery} reflexes={reflexes} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} me={me} />
             ) : modeId === "quiz" ? (
