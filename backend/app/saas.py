@@ -32,6 +32,9 @@ class User(SQLModel, table=True):
     # grâce court, le compte est désactivé, mais rien n'est encore effacé.
     # Nullable + défaut = migration additive (les comptes existants ne bougent pas).
     deletion_requested_at: Optional[datetime] = Field(default=None)
+    # v43 — rappels de suppression déjà envoyés (ex. "7,1"). Le cron tourne toutes
+    # les 10 min : sans cette trace, il enverrait le même rappel 144 fois par jour.
+    deletion_reminders: str = Field(default="")
 
 
 # ---------- 2. UserRole (rôle à scope) ----------
@@ -1124,6 +1127,9 @@ def cancel_deletion(session: Session, public_id: str) -> dict:
     if not u:
         return {"error": "unknown_user"}
     u.deletion_requested_at = None
+    # v43 — on remet les rappels à zéro : si la personne resupprime un jour,
+    # elle doit à nouveau recevoir ses rappels J-7 et J-1.
+    u.deletion_reminders = ""
     session.add(u)
     session.commit()
     return {"ok": True, "restored": True}
@@ -1225,3 +1231,59 @@ def unlink_email(session: Session, public_id: str) -> dict:
     u.email = None
     session.add(u); session.commit()
     return {"ok": True, "email": None}
+
+
+# ======================================================================
+# v43 — Rappels avant effacement définitif (J-7 et J-1)
+# ======================================================================
+# Quelqu'un qui a demandé la suppression il y a trois semaines a probablement
+# oublié le compte à rebours. Deux rappels lui laissent une vraie dernière chance
+# de récupérer son travail. C'est du soin, pas de la rétention commerciale :
+# le message est factuel, digne, et rappelle simplement qu'un clic suffit encore.
+REMINDER_DAYS = (7, 1)      # jours restants déclenchant un rappel
+
+
+def _reminders_sent(u: "User") -> set[int]:
+    raw = (u.deletion_reminders or "").strip()
+    return {int(x) for x in raw.split(",") if x.strip().isdigit()} if raw else set()
+
+
+def _mark_reminder(session: Session, u: "User", day: int) -> None:
+    sent = _reminders_sent(u) | {day}
+    u.deletion_reminders = ",".join(str(d) for d in sorted(sent, reverse=True))
+    session.add(u)
+    session.commit()
+
+
+def deletion_reminders_due(session: Session) -> list[dict]:
+    """Qui doit recevoir un rappel maintenant, et lequel.
+
+    Renvoie [{user, days_left, milestone}]. Un rappel n'est JAMAIS envoyé deux
+    fois (le cron tourne toutes les 10 min — sans cette garde, ce serait 144
+    envois par jour). Sans email lié, on ne renvoie rien : rien à envoyer.
+    """
+    import math
+    now = datetime.utcnow()
+    due = []
+    pending = session.exec(select(User).where(
+        User.deletion_requested_at != None)).all()      # noqa: E711
+    for u in pending:
+        if not u.email:
+            continue
+        purge_at = u.deletion_requested_at + timedelta(days=GRACE_DAYS)
+        remaining = purge_at - now
+        if remaining.total_seconds() <= 0:
+            continue                                    # la purge s'en charge
+        # ⚠️ timedelta.days TRONQUE : à 23h59 du terme il renvoie 0, pas 1.
+        # On arrondit au jour supérieur — il reste bien « 1 jour ».
+        days_left = math.ceil(remaining.total_seconds() / 86400)
+
+        already = _reminders_sent(u)
+        # On prend le palier le PLUS PROCHE encore atteignable (1 avant 7),
+        # sinon quelqu'un à J-1 recevrait le message « encore 7 jours ».
+        for milestone in sorted(REMINDER_DAYS):
+            if days_left <= milestone and milestone not in already:
+                due.append({"user": u, "days_left": days_left,
+                            "milestone": milestone})
+                break                                   # un seul rappel à la fois
+    return due

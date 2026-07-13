@@ -1416,3 +1416,52 @@ class UnlinkIn(BaseModel):
 def unlink_email_endpoint(body: UnlinkIn, session: Session = Depends(get_session)):
     """Retire l'email (il est facultatif — on doit pouvoir le retirer)."""
     return saas.unlink_email(session, body.learner_id)
+
+
+@app.post("/api/admin/send-reminders")
+async def send_reminders_endpoint(session: Session = Depends(get_session)):
+    """Envoie les rappels J-7 et J-1 avant effacement définitif.
+
+    Appelé par le cron. Idempotent : un rappel n'est jamais envoyé deux fois
+    (trace en base). Le rappel FINAL rejoint les données — dernière chance de
+    récupérer son travail si le premier email s'est perdu.
+    """
+    if not email_service.is_configured():
+        return {"ok": True, "sent": [], "reason": "email_not_configured"}
+
+    from . import export as export_mod
+    from . import portrait_html
+
+    due = saas.deletion_reminders_due(session)
+    sent = []
+    for item in due:
+        u, days_left, milestone = item["user"], item["days_left"], item["milestone"]
+        final = milestone == 1
+        try:
+            attachments = None
+            if final:
+                # Dernière chance : on rejoint son travail.
+                p = get_portrait(learner_id=u.public_id, lang="fr", session=session)
+                mem = session.exec(select(saas.CohortMembership).where(
+                    saas.CohortMembership.user_id == u.id,
+                    saas.CohortMembership.role_in_cohort == "learner")).first()
+                cohort = ""
+                if mem:
+                    coh = session.exec(select(saas.Cohort).where(saas.Cohort.id == mem.cohort_id)).first()
+                    cohort = coh.code if coh else ""
+                attachments = [
+                    {"name": "certifizer-mon-portrait.html",
+                     "content": portrait_html.render_portrait_html(p, u.name, cohort, "fr").encode("utf-8")},
+                    {"name": "certifizer-mes-donnees.xlsx",
+                     "content": export_mod.build_export(p, u.name, u.email or "", cohort, "fr")},
+                ]
+            subj, html = email_service.reminder_email(days_left, final, "fr")
+            res = await email_service.send_email(u.email, subj, html, u.name,
+                                                 attachments=attachments)
+            if res.get("ok"):
+                saas._mark_reminder(session, u, milestone)
+                sent.append({"learner_id": u.public_id, "milestone": milestone})
+        except Exception as e:
+            # Un rappel qui échoue ne doit jamais bloquer les autres.
+            print(f"[reminder] {u.public_id} J-{milestone} : {type(e).__name__} — {e}")
+    return {"ok": True, "sent": sent, "count": len(sent)}

@@ -140,7 +140,8 @@ def _ensure_columns() -> None:
     # (table, column, type) — keep types portable between Postgres and sqlite.
     additive = [("mastery", "last_practiced_at", "TIMESTAMP"),
                 ("targetedsession", "selected_items", "TEXT"),
-                ("user", "deletion_requested_at", "TIMESTAMP")]   # v41 — droit à l'effacement
+                ("user", "deletion_requested_at", "TIMESTAMP"),   # v41 — droit à l'effacement
+                ("user", "deletion_reminders", "TEXT")]            # v43 — rappels J-7 / J-1
     is_sqlite = _db_url.startswith("sqlite")
     with engine.begin() as conn:
         for table, col, coltype in additive:

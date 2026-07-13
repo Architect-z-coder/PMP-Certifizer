@@ -23,3 +23,12 @@ jobs:
     steps:
       - name: Purge expired accounts (grace period over)
         run: curl -fsS -X POST https://pmp-cerifizer.onrender.com/api/admin/purge-expired || true
+
+  # v43 — rappels J-7 et J-1 avant effacement définitif. Idempotent : un rappel
+  # n'est jamais envoyé deux fois (trace en base), même si le cron tourne toutes
+  # les 10 minutes. Le rappel final rejoint les données de la personne.
+  reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send deletion reminders (D-7 and D-1)
+        run: curl -fsS -X POST https://pmp-cerifizer.onrender.com/api/admin/send-reminders || true

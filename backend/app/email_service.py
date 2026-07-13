@@ -165,3 +165,57 @@ def deletion_email(days: int, lang: str = "fr") -> tuple:
             "<p style='font-size:12px;color:#5E6E7F;margin-top:14px'>Nous vous envoyons ceci sans que vous l'ayez "
             "demandé, parce qu'on regrette parfois d'avoir perdu son travail. Il vous appartient.</p>")
     return subj, _shell("Vos données, avant votre départ", body, lang)
+
+
+def reminder_email(days_left: int, final: bool, lang: str = "fr") -> tuple:
+    """Rappel avant effacement définitif.
+
+    Ton : factuel et digne. On ne supplie pas, on ne culpabilise pas — on rappelle
+    simplement qu'un clic suffit encore, et on redonne son travail à la personne.
+    Le rappel FINAL (J-1) rejoint les données : si le premier email s'est perdu,
+    c'est la dernière chance de récupérer son travail.
+    """
+    if lang == "en":
+        if final:
+            subj = "Tomorrow, your Certifizer account is erased"
+            lead = ("<p style='font-size:14px;line-height:1.6;color:#16202E'>This is the last message you'll "
+                    "receive from us. <b>Tomorrow, your account and all your progress are permanently erased.</b></p>"
+                    "<p style='font-size:14px;line-height:1.6;color:#16202E'>If you'd rather keep it, one click "
+                    "still restores everything — your progress is intact until then.</p>"
+                    "<p style='font-size:13.5px;line-height:1.6;color:#16202E'>Your data is attached again, in "
+                    "case the first email got lost: your <b>learning portrait</b> and your <b>raw data</b>.</p>")
+            title = "Tomorrow — last chance to restore"
+        else:
+            subj = f"Your Certifizer account is erased in {days_left} days"
+            lead = (f"<p style='font-size:14px;line-height:1.6;color:#16202E'>You asked to delete your Certifizer "
+                    f"account. <b>In {days_left} days, everything is permanently erased</b> — your progress, your "
+                    f"reflexes, your map.</p>"
+                    "<p style='font-size:14px;line-height:1.6;color:#16202E'>If you've changed your mind, one click "
+                    "restores it all. Nothing is lost yet.</p>")
+            title = f"{days_left} days left"
+        body = lead + ("<p style='font-size:12px;color:#5E6E7F;margin-top:16px'>If you meant to leave, you can "
+                       "ignore this — it will happen on its own.</p>")
+        return subj, _shell(title, body, lang)
+
+    if final:
+        subj = "Demain, votre compte Certifizer est effacé"
+        lead = ("<p style='font-size:14px;line-height:1.6;color:#16202E'>C'est le dernier message que vous "
+                "recevrez de notre part. <b>Demain, votre compte et toute votre progression seront effacés "
+                "définitivement.</b></p>"
+                "<p style='font-size:14px;line-height:1.6;color:#16202E'>Si vous préférez le garder, un clic "
+                "suffit encore à tout récupérer — votre progression est intacte jusque-là.</p>"
+                "<p style='font-size:13.5px;line-height:1.6;color:#16202E'>Vos données sont à nouveau jointes, "
+                "au cas où le premier email se serait perdu : votre <b>portrait d'apprentissage</b> et vos "
+                "<b>données brutes</b>.</p>")
+        title = "Demain — dernière chance de récupérer"
+    else:
+        subj = f"Votre compte Certifizer sera effacé dans {days_left} jours"
+        lead = (f"<p style='font-size:14px;line-height:1.6;color:#16202E'>Vous avez demandé la suppression de "
+                f"votre compte Certifizer. <b>Dans {days_left} jours, tout sera effacé définitivement</b> — votre "
+                f"progression, vos réflexes, votre carte.</p>"
+                "<p style='font-size:14px;line-height:1.6;color:#16202E'>Si vous avez changé d'avis, un clic "
+                "suffit à tout récupérer. Rien n'est encore perdu.</p>")
+        title = f"Encore {days_left} jours"
+    body = lead + ("<p style='font-size:12px;color:#5E6E7F;margin-top:16px'>Si votre décision est prise, vous "
+                   "pouvez ignorer ce message — l'effacement se fera de lui-même.</p>")
+    return subj, _shell(title, body, lang)
