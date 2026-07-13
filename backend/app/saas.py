@@ -12,7 +12,7 @@ Principes non négociables (spec §1) :
 Tout est additif : ces tables s'ajoutent sans toucher aux tables du moteur.
 """
 from typing import Optional
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 from sqlmodel import SQLModel, Field, Session, select
 
@@ -28,6 +28,10 @@ class User(SQLModel, table=True):
     access_code: Optional[str] = Field(default=None)         # onboarding classe rapide
     created_from: str = "public"                             # public | invitation | admin_created
     created_at: datetime = Field(default_factory=datetime.utcnow)
+    # v41 — droit à l'effacement. Non nul = suppression demandée : le délai de
+    # grâce court, le compte est désactivé, mais rien n'est encore effacé.
+    # Nullable + défaut = migration additive (les comptes existants ne bougent pas).
+    deletion_requested_at: Optional[datetime] = Field(default=None)
 
 
 # ---------- 2. UserRole (rôle à scope) ----------
@@ -1024,3 +1028,188 @@ def resolve_magic_token(session: Session, token: str) -> dict:
 def _primary_role(session: Session, user_id: int) -> str:
     """Renvoie 'trainer' si l'utilisateur est formateur d'au moins une cohorte."""
     return "trainer" if cohorts_where_trainer(session, user_id) else "learner"
+
+
+# ======================================================================
+# v41 — Bascule de plan pour les tests (RÉSERVÉE AUX FORMATEURS)
+# ======================================================================
+# Pourquoi restreinte : l'app est déjà en production. Une bascule libre
+# laisserait n'importe quel apprenant se donner le premium — et ruinerait la
+# crédibilité du modèle devant un client institutionnel.
+# Le formateur (et plus tard le super-admin) peut basculer SON PROPRE profil,
+# pour vérifier les fonctions premium. Jamais celui d'un autre.
+def is_trainer(session: Session, public_id: str) -> bool:
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return False
+    return bool(cohorts_where_trainer(session, u.id))
+
+
+def set_test_plan(session: Session, public_id: str, plan: str) -> dict:
+    """Bascule le plan effectif de SON PROPRE profil (formateur uniquement).
+
+    'premium' → crée un entitlement admin_grant sans échéance.
+    'free'    → annule les entitlements admin_grant (laisse intacts les droits
+                réels : institution, achat…, qu'on ne touche jamais).
+    """
+    if plan not in ("free", "premium"):
+        return {"error": "bad_plan"}
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    if not is_trainer(session, public_id):
+        # Un apprenant ne peut pas s'auto-promouvoir. Réponse volontairement sobre.
+        return {"error": "forbidden",
+                "message_fr": "Cette action est réservée au formateur.",
+                "message_en": "This action is restricted to trainers."}
+
+    grants = session.exec(select(Entitlement).where(
+        Entitlement.user_id == u.id, Entitlement.source == "admin_grant")).all()
+
+    if plan == "premium":
+        active = [e for e in grants if e.status == "active"]
+        if not active:
+            session.add(Entitlement(user_id=u.id, source="admin_grant",
+                                    plan="premium", status="active"))
+            session.commit()
+    else:
+        for e in grants:
+            if e.status == "active":
+                e.status = "cancelled"
+                session.add(e)
+        session.commit()
+
+    return {"ok": True, "effective_plan": effective_plan(session, u.id)}
+
+
+# ======================================================================
+# v41 — Suppression de compte : droit à l'effacement (RGPD art. 17 / loi 18-07)
+# ======================================================================
+# Modèle retenu (validé par Zoubir) :
+#   1. l'apprenant télécharge ses données (portabilité) — géré côté API export ;
+#   2. il confirme (saisie du mot SUPPRIMER, côté UI) ;
+#   3. le compte est DÉSACTIVÉ, pas encore effacé → délai de grâce de 30 jours,
+#      pendant lequel il peut TOUT récupérer d'un clic ;
+#   4. passé le délai, effacement définitif et irréversible.
+# Le délai de grâce n'entrave pas le droit à l'effacement : il le sécurise contre
+# l'erreur. Un effacement immédiat reste possible sur demande (contact@certifizer.app).
+#
+# Seul l'apprenant peut supprimer son compte. Un formateur ne peut effacer personne.
+GRACE_DAYS = 30
+
+
+def request_deletion(session: Session, public_id: str) -> dict:
+    """Marque le compte pour suppression. Le compte devient inutilisable et
+    invisible du formateur, mais rien n'est encore effacé."""
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    if u.deletion_requested_at:
+        return {"ok": True, "already": True,
+                "deletion_requested_at": u.deletion_requested_at.isoformat(),
+                "purge_at": (u.deletion_requested_at + timedelta(days=GRACE_DAYS)).isoformat()}
+    now = datetime.utcnow()
+    u.deletion_requested_at = now
+    session.add(u)
+    session.commit()
+    return {"ok": True,
+            "deletion_requested_at": now.isoformat(),
+            "purge_at": (now + timedelta(days=GRACE_DAYS)).isoformat(),
+            "grace_days": GRACE_DAYS}
+
+
+def cancel_deletion(session: Session, public_id: str) -> dict:
+    """Annule la suppression pendant le délai de grâce — tout est récupéré."""
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    u.deletion_requested_at = None
+    session.add(u)
+    session.commit()
+    return {"ok": True, "restored": True}
+
+
+def deletion_status(session: Session, public_id: str) -> dict:
+    """L'état de suppression d'un compte : ni demandée, en grâce, ou à purger."""
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    if not u.deletion_requested_at:
+        return {"pending": False}
+    purge_at = u.deletion_requested_at + timedelta(days=GRACE_DAYS)
+    days_left = max(0, (purge_at - datetime.utcnow()).days)
+    return {"pending": True,
+            "deletion_requested_at": u.deletion_requested_at.isoformat(),
+            "purge_at": purge_at.isoformat(),
+            "days_left": days_left,
+            "grace_days": GRACE_DAYS}
+
+
+def purge_account(session: Session, public_id: str) -> dict:
+    """EFFACEMENT DÉFINITIF. Supprime réellement toutes les données de la personne.
+
+    Appelé (a) automatiquement après le délai de grâce, (b) sur demande explicite
+    d'effacement immédiat. Irréversible — d'où la double barrière en amont.
+    """
+    from .models import (Mastery, ProcessMastery, Attempt, Reflexe, Flag,
+                         MissedQueue, ReadinessSnapshot)
+
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    uid, pid = u.id, u.public_id
+    erased = {}
+
+    # 1) données d'apprentissage (indexées par public_id)
+    for model, label in ((Mastery, "mastery"), (ProcessMastery, "process_mastery"),
+                         (Attempt, "attempts"), (Reflexe, "reflexes"),
+                         (Flag, "flags"), (MissedQueue, "missed"),
+                         (ReadinessSnapshot, "snapshots")):
+        rows = session.exec(select(model).where(model.learner_id == pid)).all()
+        for r in rows:
+            session.delete(r)
+        erased[label] = len(rows)
+
+    # 2) données de compte (indexées par user.id)
+    for model, label in ((CohortMembership, "memberships"), (UserRole, "roles"),
+                         (Entitlement, "entitlements"), (DailyUsage, "usage")):
+        rows = session.exec(select(model).where(model.user_id == uid)).all()
+        for r in rows:
+            session.delete(r)
+        erased[label] = len(rows)
+
+    # 2b) séances qui lui étaient assignées (ici learner_id est un User.id)
+    assigns = session.exec(select(TargetedSessionAssignment).where(
+        TargetedSessionAssignment.learner_id == uid)).all()
+    for a in assigns:
+        session.delete(a)
+    erased["assignments"] = len(assigns)
+
+    # 3) invitations le concernant — elles portent son nom et son email
+    invs = session.exec(select(Invitation).where(Invitation.accepted_by == uid)).all()
+    if u.email:
+        by_mail = session.exec(select(Invitation).where(Invitation.email == u.email)).all()
+        seen = {i.id for i in invs}
+        invs += [i for i in by_mail if i.id not in seen]
+    for i in invs:
+        session.delete(i)
+    erased["invitations"] = len(invs)
+
+    # 4) l'identité elle-même — en dernier
+    session.delete(u)
+    session.commit()
+    return {"ok": True, "erased": erased, "public_id": pid}
+
+
+def purge_expired_accounts(session: Session) -> dict:
+    """Efface les comptes dont le délai de grâce est écoulé. Idempotent."""
+    cutoff = datetime.utcnow() - timedelta(days=GRACE_DAYS)
+    due = session.exec(select(User).where(
+        User.deletion_requested_at != None,          # noqa: E711
+        User.deletion_requested_at <= cutoff)).all()
+    purged = []
+    for u in due:
+        pid = u.public_id
+        purge_account(session, pid)
+        purged.append(pid)
+    return {"ok": True, "purged": purged, "count": len(purged)}

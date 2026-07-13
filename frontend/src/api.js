@@ -292,3 +292,47 @@ export async function getPortrait(learnerId, lang = "fr") {
   if (!r.ok) throw new Error(`portrait ${r.status}`);
   return r.json();
 }
+
+// ---- v41 : bascule de plan pour les tests (formateur uniquement) ----
+export async function setTestPlan(learnerId, plan) {
+  const r = await fetch(`${BASE}/api/me/test-plan`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ learner_id: learnerId, plan }),
+  });
+  if (!r.ok) throw new Error(`test-plan ${r.status}`);
+  return r.json();
+}
+
+// ---- v41 : export des données + suppression de compte ----
+export function exportMyDataUrl(learnerId, lang = "fr") {
+  const u = new URL(`${BASE}/api/me/export`);
+  u.searchParams.set("learner_id", learnerId);
+  u.searchParams.set("lang", lang);
+  return u.toString();
+}
+
+export async function getDeletionStatus(learnerId) {
+  const u = new URL(`${BASE}/api/me/deletion`);
+  u.searchParams.set("learner_id", learnerId);
+  const r = await fetch(u);
+  if (!r.ok) throw new Error(`deletion ${r.status}`);
+  return r.json();
+}
+
+export async function requestDeletion(learnerId) {
+  const r = await fetch(`${BASE}/api/me/delete`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ learner_id: learnerId }),
+  });
+  if (!r.ok) throw new Error(`delete ${r.status}`);
+  return r.json();
+}
+
+export async function cancelDeletion(learnerId) {
+  const r = await fetch(`${BASE}/api/me/delete/cancel`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ learner_id: learnerId }),
+  });
+  if (!r.ok) throw new Error(`cancel ${r.status}`);
+  return r.json();
+}

@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw, FileText } from "lucide-react";
+import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw, FileText, Shield } from "lucide-react";
 import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
-import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail, requestMagicLink, consumeMagicLink } from "./api.js";
+import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail, requestMagicLink, consumeMagicLink, setTestPlan } from "./api.js";
 import Journey from "./Journey.jsx";
 import Portrait from "./Portrait.jsx";
+import MesDonnees from "./MesDonnees.jsx";
 import CarteMentale from "./CarteMentale.jsx";
 import CockpitFormateur from "./CockpitFormateur.jsx";
 
@@ -90,6 +91,20 @@ export default function App() {
   // v37 — rejoindre par code de classe (libre-service). Après succès, on propose
   // (facultatif) de lier un email de récupération.
   const [offerEmailRecovery, setOfferEmailRecovery] = useState(false);
+  // v41 — bascule de plan pour les tests. Le bouton n'est affiché que si
+  // me.is_trainer ; le serveur revérifie de toute façon (l'UI ne protège rien).
+  async function togglePlan() {
+    if (!me || !me.is_trainer) return;
+    const next = me.effective_plan === "premium" ? "free" : "premium";
+    try {
+      const r = await setTestPlan(learner, next);
+      if (r && r.ok) {
+        const fresh = await getMe(learner);
+        setMe(fresh);
+      }
+    } catch (e) { /* silencieux : outil de test */ }
+  }
+
   async function onJoinClass(code, nm) {
     const r = await joinClass({ code, name: nm });
     if (r && r.ok) {
@@ -236,7 +251,12 @@ export default function App() {
             <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 19, color: "#fff", letterSpacing: ".2px" }}>
               Certifizer <span style={{ color: C.muted, fontWeight: 500, fontSize: 11, fontFamily: "'IBM Plex Mono', monospace" }}>PMP</span>
             </div>
-            <div style={{ color: "#9DB0C2", fontSize: 11.5 }}>{t("tagline")} · <span style={{ color: "#7E90A4" }}>{learnerName || learner}</span> {me && <PlanBadge plan={me.effective_plan} lang={lang} />} <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, padding: "0 0 0 2px", textDecoration: "underline" }}>{t("switchUser")}</button></div>
+            <div style={{ color: "#9DB0C2", fontSize: 11.5 }}>{t("tagline")} · <span style={{ color: "#7E90A4" }}>{learnerName || learner}</span> {me && <PlanBadge plan={me.effective_plan} lang={lang} />} {me && me.is_trainer && (
+              <button onClick={togglePlan} title={lang === "en" ? "Trainer only — test premium features" : "Formateur uniquement — tester les fonctions premium"}
+                style={{ background: "none", border: `1px solid ${C.inkLine}`, color: me.effective_plan === "premium" ? C.amber : "#7E90A4", fontSize: 10, padding: "1px 7px", borderRadius: 10, marginLeft: 4, fontFamily: "'IBM Plex Mono', monospace", cursor: "pointer" }}>
+                ⇄ {me.effective_plan === "premium" ? (lang === "en" ? "test: free" : "test : gratuit") : (lang === "en" ? "test: premium" : "test : premium")}
+              </button>
+            )} <button onClick={signOut} style={{ background: "none", border: "none", color: C.teal, fontSize: 11, padding: "0 0 0 2px", textDecoration: "underline" }}>{t("switchUser")}</button></div>
           </div>
           <div style={{ display: "flex", gap: 4, padding: 2, background: C.ink2, borderRadius: 8, border: `1px solid ${C.inkLine}` }}>
             {["fr", "en"].map((l) => (
@@ -289,6 +309,9 @@ export default function App() {
               </button>
               <button onClick={() => chooseMode("portrait")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "portrait" ? C.amber : C.inkLine}`, background: modeId === "portrait" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "portrait" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
                 <FileText size={15} color={modeId === "portrait" ? C.amber : "#9DB0C2"} /> {PT.portrait[lang]}
+              </button>
+              <button onClick={() => chooseMode("donnees")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "donnees" ? C.amber : C.inkLine}`, background: modeId === "donnees" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "donnees" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
+                <Shield size={15} color={modeId === "donnees" ? C.amber : "#9DB0C2"} /> {PT.donnees[lang]}
               </button>
             </Section>
 
@@ -393,6 +416,8 @@ export default function App() {
               <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
             ) : modeId === "portrait" ? (
               <Portrait learnerId={learner} lang={lang} />
+            ) : modeId === "donnees" ? (
+              <MesDonnees learnerId={learner} learnerName={learnerName} lang={lang} />
             ) : modeId === "prepa" ? (
               <PrepaPanel lang={lang} learnerId={learner} learnerName={learnerName} mastery={mastery} reflexes={reflexes} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} me={me} />
             ) : modeId === "quiz" ? (

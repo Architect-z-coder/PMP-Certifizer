@@ -2,7 +2,7 @@ name: keep-warm
 
 # Pings the Render backend so the free instance doesn't sleep (which causes
 # a ~40s cold start on the first visit — bad for a live demo).
-# If the Render URL changes, edit the curl line below.
+# If the Render URL changes, edit the curl lines below.
 
 on:
   schedule:
@@ -15,3 +15,11 @@ jobs:
     steps:
       - name: Ping backend /health
         run: curl -fsS https://pmp-cerifizer.onrender.com/health || true
+
+  # v41 — droit à l'effacement : purge les comptes dont le délai de grâce (30 j)
+  # est écoulé. Idempotent : sans effet s'il n'y a rien à purger.
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Purge expired accounts (grace period over)
+        run: curl -fsS -X POST https://pmp-cerifizer.onrender.com/api/admin/purge-expired || true

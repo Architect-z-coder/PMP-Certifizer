@@ -1145,6 +1145,7 @@ def get_me(learner_id: str, session: Session = Depends(get_session)):
         "user": {"id": user.id, "public_id": user.public_id, "name": user.name,
                  "created_from": user.created_from},
         "roles": saas.roles_for(session, user.id),
+        "is_trainer": saas.is_trainer(session, user.public_id),   # v41 — pilote la bascule de test
         "effective_plan": plan,
         "features": saas.features_for(session, user.id),
         "anti_abuse_limit": saas.FREE_LIMIT_PER_DAY,
@@ -1263,8 +1264,11 @@ def get_portrait(learner_id: str = "demo", lang: str = "fr",
     total_answers = sum(attempts.values())
     acquired = sum(1 for k in KA if state(k["id"]) == "acquired")
 
+    u_self = session.exec(select(saas.User).where(saas.User.public_id == learner_id)).first()
+
     return {
         "learner_id": learner_id,
+        "email": (u_self.email if u_self else "") or "",
         "readiness": round(readiness, 4),
         "acquired": acquired,
         "total_areas": len(KA),
@@ -1279,3 +1283,76 @@ def get_portrait(learner_id: str = "demo", lang: str = "fr",
         "target": portrait_mod.TARGET,
         "generated_at": datetime.now(timezone.utc).isoformat(),
     }
+
+
+# ----------------------------------------------------------------------
+# v41 — Bascule de plan pour les tests (formateur uniquement)
+# ----------------------------------------------------------------------
+class TestPlanIn(BaseModel):
+    learner_id: str
+    plan: str = "premium"       # free | premium
+
+
+@app.post("/api/me/test-plan")
+def set_test_plan_endpoint(body: TestPlanIn, session: Session = Depends(get_session)):
+    """Permet au FORMATEUR de basculer SON PROPRE plan, pour vérifier les
+    fonctions premium. Un apprenant reçoit un refus : l'app est en production,
+    une bascule libre laisserait n'importe qui s'auto-promouvoir."""
+    return saas.set_test_plan(session, body.learner_id, body.plan)
+
+
+# ======================================================================
+# v41 — Export des données + suppression de compte (droit à l'effacement)
+# ======================================================================
+@app.get("/api/me/export")
+def export_my_data(learner_id: str, lang: str = "fr",
+                   session: Session = Depends(get_session)):
+    """Télécharge TOUTES les données de l'apprenant en Excel (portabilité).
+    Construit à partir du portrait : une seule source de vérité."""
+    from fastapi.responses import Response
+    from . import export as export_mod
+
+    p = get_portrait(learner_id=learner_id, lang=lang, session=session)
+    u = session.exec(select(saas.User).where(saas.User.public_id == learner_id)).first()
+    cohort = ""
+    if u:
+        mem = session.exec(select(saas.CohortMembership).where(
+            saas.CohortMembership.user_id == u.id,
+            saas.CohortMembership.role_in_cohort == "learner")).first()
+        if mem:
+            coh = session.exec(select(saas.Cohort).where(saas.Cohort.id == mem.cohort_id)).first()
+            cohort = coh.code if coh else ""
+    blob = export_mod.build_export(p, (u.name if u else ""), (u.email if u else "") or "", cohort, lang)
+    fname = f"certifizer-mes-donnees-{learner_id}.xlsx"
+    return Response(content=blob,
+                    media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    headers={"Content-Disposition": f'attachment; filename="{fname}"'})
+
+
+class DeleteIn(BaseModel):
+    learner_id: str
+
+
+@app.get("/api/me/deletion")
+def deletion_status_endpoint(learner_id: str, session: Session = Depends(get_session)):
+    return saas.deletion_status(session, learner_id)
+
+
+@app.post("/api/me/delete")
+def request_deletion_endpoint(body: DeleteIn, session: Session = Depends(get_session)):
+    """Demande de suppression : le compte est désactivé, le délai de grâce court.
+    Rien n'est encore effacé — l'apprenant peut tout récupérer."""
+    return saas.request_deletion(session, body.learner_id)
+
+
+@app.post("/api/me/delete/cancel")
+def cancel_deletion_endpoint(body: DeleteIn, session: Session = Depends(get_session)):
+    """Annule la suppression pendant le délai de grâce : tout est restauré."""
+    return saas.cancel_deletion(session, body.learner_id)
+
+
+@app.post("/api/admin/purge-expired")
+def purge_expired_endpoint(session: Session = Depends(get_session)):
+    """Efface les comptes dont le délai de grâce est écoulé.
+    Appelé par le cron keepwarm (idempotent, sans effet s'il n'y a rien à purger)."""
+    return saas.purge_expired_accounts(session)
