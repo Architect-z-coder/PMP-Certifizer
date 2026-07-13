@@ -389,8 +389,10 @@ export default function App() {
                   );
                 })}
               </div>
-              <div style={{ marginTop: 9, fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#54657A", lineHeight: 1.6 }}>
-                <span style={{ color: C.amber }}>2·24·10·12·1</span>=49 · ECO 09/07/26
+              <div style={{ marginTop: 9, fontFamily: "'IBM Plex Mono', monospace", fontSize: 10, color: "#54657A", lineHeight: 1.7 }}>
+                <div><span style={{ color: C.amber }}>ECO PMP 2026</span> · {lang === "en" ? "in force" : "en vigueur"}</div>
+                <div>3 {lang === "en" ? "domains" : "domaines"} · 26 {lang === "en" ? "tasks" : "tâches"}</div>
+                <div>33 % · 41 % · 26 %</div>
               </div>
             </Section>
           </div>

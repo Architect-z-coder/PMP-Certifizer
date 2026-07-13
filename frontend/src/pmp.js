@@ -22,7 +22,7 @@ export const FOCUS = [
   { id: "overview", fr: "Vue d'ensemble (Day 1)", en: "Overview (Day 1)", code: "D1" },
   ...KA.map((k, i) => ({ ...k, code: String(i + 1) })),
   { id: "triangle", fr: "Triangle des contraintes", en: "Triple constraint", code: "Δ" },
-  { id: "process", fr: "Groupes & 49 processus", en: "Groups & 49 processes", code: "PG" },
+  { id: "process", fr: "Groupes de processus", en: "Process groups", code: "PG" },
 ];
 
 export const STARTERS = {
@@ -96,7 +96,9 @@ export function lightColor(state) {
   return C.green;
 }
 
-// ---- Process groups (PMBOK 6) ----
+// ---- Process groups — RÉFÉRENTIEL DE PRATIQUE, pas la structure de l'examen.
+// L'examen suit l'ECO 2026 (3 domaines / 26 tâches). Ce découpage reste un
+// échafaudage mental utile, mais ne doit JAMAIS être présenté comme le blueprint. ----
 export const PG = {
   init:  { fr: "Démarrage", en: "Initiating", c: "#8A6FB0" },
   plan:  { fr: "Planification", en: "Planning", c: "#2E8C9E" },
@@ -105,7 +107,8 @@ export const PG = {
   close: { fr: "Clôture", en: "Closing", c: "#D2664E" },
 };
 
-// ---- The 49 processes, keyed by knowledge-area id ----
+// ---- Processus par domaine de connaissance (héritage PMBOK 6).
+// Conservé comme aide au raisonnement — PAS comme architecture de l'examen. ----
 // pmbok ref (n) matches the item bank's pmbok_ref, so per-process mastery lines up.
 export const PROC = {
   integration: [
