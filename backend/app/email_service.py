@@ -128,6 +128,16 @@ def deletion_email(days: int, lang: str = "fr") -> tuple:
                 f"<p style='font-size:14px;line-height:1.6;color:#16202E'>Your account stays recoverable for "
                 f"<b>{days} days</b>. If you change your mind, sign back in and cancel the deletion — nothing is lost. "
                 f"After that, everything is erased for good.</p>"
+                "<div style='margin-top:18px;padding:14px 15px;background:#EAF1F3;border-left:3px solid #2E8C9E;"
+                "border-radius:6px'>"
+                "<div style='font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#2E8C9E;"
+                "font-weight:bold;margin-bottom:7px'>What the research says</div>"
+                "<p style='font-size:13px;line-height:1.65;color:#16202E;margin:0 0 8px'>Knowledge that isn't "
+                "maintained decays — that's the <b>forgetting curve</b>, documented since Ebbinghaus. What you "
+                "built here won't vanish at once, but it will fade without reactivation.</p>"
+                "<p style='font-size:13px;line-height:1.65;color:#16202E;margin:0'>What holds it best isn't "
+                "revision — <b>it's use</b>. Applying these concepts to your real projects remains the strongest "
+                "way to keep them.</p></div>"
                 "<p style='font-size:12px;color:#5E6E7F;margin-top:14px'>We're sending this without you asking, "
                 "because people sometimes regret losing their work. It's yours.</p>")
         return subj, _shell("Your data, before you go", body, lang)
@@ -142,6 +152,16 @@ def deletion_email(days: int, lang: str = "fr") -> tuple:
             f"<p style='font-size:14px;line-height:1.6;color:#16202E'>Votre compte reste récupérable pendant "
             f"<b>{days} jours</b>. Si vous changez d'avis, reconnectez-vous et annulez la suppression — rien n'est "
             f"perdu. Passé ce délai, tout sera effacé définitivement.</p>"
+            "<div style='margin-top:18px;padding:14px 15px;background:#EAF1F3;border-left:3px solid #2E8C9E;"
+            "border-radius:6px'>"
+            "<div style='font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#2E8C9E;"
+            "font-weight:bold;margin-bottom:7px'>Ce que dit la recherche</div>"
+            "<p style='font-size:13px;line-height:1.65;color:#16202E;margin:0 0 8px'>La connaissance non "
+            "entretenue se dégrade — c'est la <b>courbe de l'oubli</b>, documentée depuis Ebbinghaus. Ce que vous "
+            "avez construit ici ne disparaîtra pas d'un coup, mais s'estompera sans réactivation.</p>"
+            "<p style='font-size:13px;line-height:1.65;color:#16202E;margin:0'>Ce qui la retient le mieux, ce "
+            "n'est pas la révision — <b>c'est l'usage</b>. Appliquer ces concepts à vos vrais projets reste le "
+            "moyen le plus solide de les garder.</p></div>"
             "<p style='font-size:12px;color:#5E6E7F;margin-top:14px'>Nous vous envoyons ceci sans que vous l'ayez "
             "demandé, parce qu'on regrette parfois d'avoir perdu son travail. Il vous appartient.</p>")
     return subj, _shell("Vos données, avant votre départ", body, lang)

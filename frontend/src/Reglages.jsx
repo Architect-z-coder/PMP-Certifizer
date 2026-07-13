@@ -82,6 +82,9 @@ const T = {
   gWhy1: { fr: "Une suppression accidentelle reste réversible.", en: "An accidental deletion stays reversible." },
   gWhy2: { fr: "Un clic suffit à tout récupérer, progression intacte.", en: "One click restores everything, progress intact." },
   gWhy3: { fr: "Effacement immédiat possible sur demande à contact@certifizer.app.", en: "Immediate erasure available on request at contact@certifizer.app." },
+  sciT: { fr: "Ce que dit la recherche", en: "What the research says" },
+  sci1: { fr: "La connaissance non entretenue se dégrade — c'est la courbe de l'oubli, documentée depuis Ebbinghaus. Ce que vous avez construit ici ne disparaîtra pas d'un coup, mais s'estompera sans réactivation.", en: "Knowledge that isn't maintained decays — that's the forgetting curve, documented since Ebbinghaus. What you built here won't vanish at once, but it will fade without reactivation." },
+  sci2: { fr: "Ce qui la retient le mieux, ce n'est pas la révision — c'est l'usage. Appliquer ces concepts à vos vrais projets reste le moyen le plus solide de les garder.", en: "What holds it best isn't revision — it's use. Applying these concepts to your real projects remains the strongest way to keep them." },
 
   loading: { fr: "Chargement…", en: "Loading…" },
 };
@@ -195,6 +198,17 @@ export default function Reglages({ learnerId, learnerName, lang, setLang, me, re
               <div>• {t("gWhy2")}</div>
               <div>• {t("gWhy3")}</div>
             </div>
+          </div>
+
+          {/* Un fait, pas un argument de rétention. La connaissance se dégrade —
+              c'est vrai, c'est utile à savoir, et ça ne cherche pas à retenir
+              qui que ce soit par la peur. Aucun taux chiffré : notre logique de
+              décroissance est un outil de priorisation, pas un modèle prédictif
+              de la mémoire humaine. Une fausse précision serait une manipulation. */}
+          <div style={{ background: "#EAF1F3", borderLeft: `3px solid ${C.teal}`, borderRadius: 8, padding: "14px 15px" }}>
+            <div style={{ ...S, color: C.teal, marginBottom: 7 }}>{t("sciT")}</div>
+            <div style={{ fontSize: 12.8, lineHeight: 1.7, color: C.text, marginBottom: 8 }}>{t("sci1")}</div>
+            <div style={{ fontSize: 12.8, lineHeight: 1.7, color: C.text }}>{t("sci2")}</div>
           </div>
         </div>
       </div>
