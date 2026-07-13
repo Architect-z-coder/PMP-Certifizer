@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { BookOpen, HelpCircle, Puzzle, Lightbulb, Send, RotateCcw, Target, Check, X, ArrowRight, Menu, Compass, Scale, Gauge, Flame, RefreshCw, FileText, Settings } from "lucide-react";
-import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS } from "./pmp.js";
+import { C, KA, FOCUS, STARTERS, T, JT, PT, CR, LENS, lightColor, BE_AREAS, PEOPLE_AREAS, PR_AREAS, areaLabel } from "./pmp.js";
 import { postChat, getMastery, getQuizNext, postQuizAnswer, getReflexes, saveReflexe, deleteReflexe, pingHealth, flagItem, getReadiness, getSessionNext, getMissed, getMe, getAssignedSessions, getAssignedSessionItems, completeAssignedSession, getInviteInfo, acceptInvite, joinClass, linkEmail, requestMagicLink, consumeMagicLink, setTestPlan } from "./api.js";
 import Journey from "./Journey.jsx";
 import Portrait from "./Portrait.jsx";
@@ -186,7 +186,11 @@ export default function App() {
 
   const activeModeObj = MODES.find((m) => m.id === modeId);
   const ActiveIcon = modeId === "coreflexion" ? Scale : (activeModeObj ? activeModeObj.icon : BookOpen);
-  const recObj = recommended ? KA.find((k) => k.id === recommended.area) : null;
+  // v45 — le moteur peut recommander une zone ECO native (gouvernance, vision…),
+  // pas seulement les 10 zones classiques : on résout le libellé sur les 23.
+  const recObj = recommended && recommended.area
+    ? { id: recommended.area, fr: areaLabel(recommended.area, "fr"), en: areaLabel(recommended.area, "en") }
+    : null;
 
   if (magicToken && magicState && magicState !== "ok") return <MagicGate lang={lang} setLang={setLang} state={magicState} onDismiss={() => { clearMagicParam(); setMagicToken(""); setMagicState(null); }} />;
   if (inviteToken) return <InviteGate lang={lang} setLang={setLang} token={inviteToken} currentId={learner} currentName={learnerName} onJoined={onInviteJoined} onDismiss={() => { clearInviteParam(); setInviteToken(""); }} />;

@@ -333,3 +333,34 @@ export const ECOT = {
   pick: { fr: "Sélectionne une tâche pour voir le détail.", en: "Pick a task to see its detail." },
 };
 export const ECO_STATUS_COLOR = { solid: "#3DA776", amorce: "#E89A3C", build: "#B8C2CC" };
+
+
+// ---- v45 — libellés de TOUTES les zones recommandables (10 classiques + 13 ECO).
+// Le moteur peut désormais recommander une zone ECO native (gouvernance, vision…) ;
+// sans ces libellés, le bandeau « À travailler en priorité » afficherait un id brut.
+export const AREA_LABELS = {
+  integration: { fr: "Intégration", en: "Integration" },
+  scope: { fr: "Périmètre", en: "Scope" },
+  schedule: { fr: "Échéancier", en: "Schedule" },
+  cost: { fr: "Coûts", en: "Cost" },
+  quality: { fr: "Qualité", en: "Quality" },
+  resource: { fr: "Ressources", en: "Resource" },
+  comms: { fr: "Communications", en: "Communications" },
+  risk: { fr: "Risques", en: "Risk" },
+  procurement: { fr: "Approvisionnement", en: "Procurement" },
+  stakeholder: { fr: "Parties prenantes", en: "Stakeholder" },
+  pe_vision: { fr: "Vision & confiance", en: "Vision & trust" },
+  pe_conflict: { fr: "Gestion des conflits", en: "Conflict management" },
+  pe_lead: { fr: "Diriger l'équipe", en: "Lead the team" },
+  pe_performance: { fr: "Performance de l'équipe", en: "Team performance" },
+  pe_negotiation: { fr: "Négociation & consensus", en: "Negotiation & consensus" },
+  pe_knowledge: { fr: "Transfert des connaissances", en: "Knowledge transfer" },
+  pr_value: { fr: "Livraison par la valeur", en: "Value delivery" },
+  be_governance: { fr: "Gouvernance", en: "Governance" },
+  be_compliance: { fr: "Conformité & durabilité", en: "Compliance & sustainability" },
+  be_improvement: { fr: "Amélioration continue", en: "Continuous improvement" },
+  be_orgchange: { fr: "Changement organisationnel", en: "Organisational change" },
+  be_value: { fr: "Valeur & bénéfices", en: "Value & benefits" },
+  be_external: { fr: "Environnement externe (IA, ESG)", en: "External environment (AI, ESG)" },
+};
+export const areaLabel = (id, lang) => (AREA_LABELS[id] || {})[lang] || (AREA_LABELS[id] || {}).fr || id;

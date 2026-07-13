@@ -5,6 +5,20 @@ FOCUS_LABELS = {
     "overview": {"fr": "Vue d'ensemble (Day 1)", "en": "Overview (Day 1)"},
     "triangle": {"fr": "Triangle des contraintes", "en": "Triple constraint"},
     "process": {"fr": "Groupes de processus", "en": "Process groups"},
+    # v45 — zones ECO natives (le moteur peut désormais les recommander)
+    "pe_vision": {"fr": "Vision & confiance", "en": "Vision & trust"},
+    "pe_conflict": {"fr": "Gestion des conflits", "en": "Conflict management"},
+    "pe_lead": {"fr": "Diriger l'équipe", "en": "Lead the team"},
+    "pe_performance": {"fr": "Performance de l'équipe", "en": "Team performance"},
+    "pe_negotiation": {"fr": "Négociation & consensus", "en": "Negotiation & consensus"},
+    "pe_knowledge": {"fr": "Transfert des connaissances", "en": "Knowledge transfer"},
+    "pr_value": {"fr": "Livraison par la valeur", "en": "Value delivery"},
+    "be_governance": {"fr": "Gouvernance", "en": "Governance"},
+    "be_compliance": {"fr": "Conformité & durabilité", "en": "Compliance & sustainability"},
+    "be_improvement": {"fr": "Amélioration continue", "en": "Continuous improvement"},
+    "be_orgchange": {"fr": "Changement organisationnel", "en": "Organisational change"},
+    "be_value": {"fr": "Valeur & bénéfices", "en": "Value & benefits"},
+    "be_external": {"fr": "Environnement externe (IA, ESG)", "en": "External environment (AI, ESG)"},
     **{k["id"]: {"fr": k["fr"], "en": k["en"]} for k in KA},
 }
 

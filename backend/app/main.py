@@ -210,18 +210,14 @@ def quiz_next(learner_id: str = "demo", area: Optional[str] = None, session: Ses
     if not areas_with_items:
         return {"item": None, "area": area, "reason": "empty_bank"}
 
-    # choose area: requested (if it has items) else best weakness x weight among areas that have items
+    # v45 — choix de la zone : celle demandée (si elle a des questions), sinon la
+    # faiblesse la plus coûteuse À L'EXAMEN — pondérée par les poids ECO 2026 RÉELS,
+    # et parmi TOUTES les zones qui ont du contenu (y compris les zones ECO natives :
+    # gouvernance, conformité, vision, conflits… qui n'étaient jamais recommandées).
     if area not in areas_with_items:
         mm = mastery_map(session, learner_id)
-        best, best_p = None, -1.0
-        for k in KA:
-            if k["id"] not in areas_with_items:
-                continue
-            m = mm.get(k["id"]); mastery = m["score"] if m and m["attempts"] > 0 else 0.0
-            p = (k["n"] / TOTAL_N) * (1.0 - mastery)
-            if p > best_p:
-                best_p, best = p, k["id"]
-        area = best
+        best = recommend(mm, only=areas_with_items)
+        area = best["id"] if best else None
 
     items = session.exec(select(Item).where(Item.knowledge_area == area)).all()
     seen = {a.item_external_id for a in session.exec(

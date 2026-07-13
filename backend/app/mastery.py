@@ -2,7 +2,11 @@
 
 mastery score: EWMA, recent answers weigh more (alpha = 0.4)
 priority:      exam_weight(area) x (1 - mastery)
-exam_weight:   PMBOK 6 process count per area / 49  (proxy; refine with real ECO weights)
+exam_weight:   v45 — poids ECO 2026 RÉELS (People 33 / Process 41 / Business Env. 26),
+               répartis entre les zones de chaque domaine.
+               AVANT : nombre de processus PMBOK 6 / 49 — ce qui sur-priorisait
+               Process (71 % au lieu de 41 %) et sous-priorisait Business
+               Environment (14 % au lieu de 26 %, alors qu'il a TRIPLÉ à l'examen).
 """
 
 from typing import Optional
@@ -44,15 +48,24 @@ def light(score: float, attempts: int) -> str:
     return "green"
 
 
-def recommend(mastery_map: dict):
-    """mastery_map: {area_id: {'score': float, 'attempts': int}} -> best KA dict."""
+def recommend(mastery_map: dict, only: Optional[set] = None):
+    """La zone à travailler en priorité : poids ECO x (1 - maîtrise).
+
+    v45 — parcourt TOUTES les zones (10 classiques + 13 ECO natives), et pondère
+    par les poids ECO 2026 réels. Avant, seules les 10 zones PMBOK étaient
+    considérées, avec un poids issu du décompte de processus PMBOK 6.
+
+    `only` : restreindre aux zones qui ont réellement des questions.
+    """
     best, best_p = None, -1.0
-    for k in KA:
-        m = mastery_map.get(k["id"])
+    for a in ALL_AREAS:
+        if only is not None and a["id"] not in only:
+            continue
+        m = mastery_map.get(a["id"])
         mastery = m["score"] if m and m["attempts"] > 0 else 0.0
-        p = (k["n"] / TOTAL_N) * (1.0 - mastery)
+        p = eco_weight(a["id"]) * (1.0 - mastery)
         if p > best_p:
-            best_p, best = p, k
+            best_p, best = p, a
     return best
 
 
@@ -123,6 +136,51 @@ AREA_DOMAIN = {
     "be_improvement": "business", "be_orgchange": "business", "be_value": "business",
     "be_external": "business",
 }
+
+
+# ---------------------------------------------------------------------------
+# v45 — Zones ECO natives (celles où vit le contenu écrit POUR l'ECO 2026).
+# Elles existaient dans AREA_DOMAIN mais n'étaient PAS dans KA : le moteur ne
+# pouvait donc jamais les recommander. 38 questions sur 135 étaient invisibles
+# pour la recommandation. Corrigé ici.
+# ---------------------------------------------------------------------------
+ECO_AREAS = [
+    # People
+    {"id": "pe_vision", "fr": "Vision & confiance", "en": "Vision & trust"},
+    {"id": "pe_conflict", "fr": "Gestion des conflits", "en": "Conflict management"},
+    {"id": "pe_lead", "fr": "Diriger l'équipe", "en": "Lead the team"},
+    {"id": "pe_performance", "fr": "Performance de l'équipe", "en": "Team performance"},
+    {"id": "pe_negotiation", "fr": "Négociation & consensus", "en": "Negotiation & consensus"},
+    {"id": "pe_knowledge", "fr": "Transfert des connaissances", "en": "Knowledge transfer"},
+    # Process
+    {"id": "pr_value", "fr": "Livraison par la valeur", "en": "Value delivery"},
+    # Business Environment
+    {"id": "be_governance", "fr": "Gouvernance", "en": "Governance"},
+    {"id": "be_compliance", "fr": "Conformité & durabilité", "en": "Compliance & sustainability"},
+    {"id": "be_improvement", "fr": "Amélioration continue", "en": "Continuous improvement"},
+    {"id": "be_orgchange", "fr": "Changement organisationnel", "en": "Organisational change"},
+    {"id": "be_value", "fr": "Valeur & bénéfices", "en": "Value & benefits"},
+    {"id": "be_external", "fr": "Environnement externe (IA, ESG)", "en": "External environment (AI, ESG)"},
+]
+
+# Toutes les zones que le moteur peut recommander : les 10 classiques + les 13 ECO.
+ALL_AREAS = KA + ECO_AREAS
+ALL_AREA_IDS = [a["id"] for a in ALL_AREAS]
+ALL_AREA_BY_ID = {a["id"]: a for a in ALL_AREAS}
+
+
+def eco_weight(area_id: str) -> float:
+    """Poids d'examen d'une zone, dérivé des poids ECO 2026 RÉELS.
+
+    Le poids du domaine (33 / 41 / 26) est réparti entre ses zones. La somme des
+    poids d'un domaine redonne donc exactement son poids ECO — ce que l'ancien
+    calcul (processus PMBOK 6 / 49) ne faisait pas du tout.
+    """
+    dom = AREA_DOMAIN.get(area_id)
+    if not dom:
+        return 0.0
+    n_in_dom = sum(1 for a in ALL_AREA_IDS if AREA_DOMAIN.get(a) == dom)
+    return DOMAIN_WEIGHT[dom] / n_in_dom if n_in_dom else 0.0
 
 READINESS_LABELS = [
     (0.85, "exam_ready", "Prêt·e pour l'examen", "Exam-ready"),
