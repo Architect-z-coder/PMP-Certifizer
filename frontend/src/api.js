@@ -336,3 +336,13 @@ export async function cancelDeletion(learnerId) {
   if (!r.ok) throw new Error(`cancel ${r.status}`);
   return r.json();
 }
+
+// ---- v42 : retirer l'email (il est facultatif) ----
+export async function unlinkEmail(learnerId) {
+  const r = await fetch(`${BASE}/api/me/unlink-email`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ learner_id: learnerId }),
+  });
+  if (!r.ok) throw new Error(`unlink-email ${r.status}`);
+  return r.json();
+}

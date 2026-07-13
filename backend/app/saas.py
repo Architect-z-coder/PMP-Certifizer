@@ -1213,3 +1213,15 @@ def purge_expired_accounts(session: Session) -> dict:
         purge_account(session, pid)
         purged.append(pid)
     return {"ok": True, "purged": purged, "count": len(purged)}
+
+
+def unlink_email(session: Session, public_id: str) -> dict:
+    """Retire l'email de récupération. L'email est FACULTATIF (décision verrouillée) :
+    on doit donc pouvoir le retirer, pas seulement l'ajouter. Conséquence assumée :
+    plus de lien magique possible — l'apprenant en est averti côté interface."""
+    u = session.exec(select(User).where(User.public_id == public_id)).first()
+    if not u:
+        return {"error": "unknown_user"}
+    u.email = None
+    session.add(u); session.commit()
+    return {"ok": True, "email": None}

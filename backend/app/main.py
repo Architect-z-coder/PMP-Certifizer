@@ -1265,10 +1265,19 @@ def get_portrait(learner_id: str = "demo", lang: str = "fr",
     acquired = sum(1 for k in KA if state(k["id"]) == "acquired")
 
     u_self = session.exec(select(saas.User).where(saas.User.public_id == learner_id)).first()
+    cohort_code = ""
+    if u_self:
+        _mem = session.exec(select(saas.CohortMembership).where(
+            saas.CohortMembership.user_id == u_self.id,
+            saas.CohortMembership.role_in_cohort == "learner")).first()
+        if _mem:
+            _coh = session.exec(select(saas.Cohort).where(saas.Cohort.id == _mem.cohort_id)).first()
+            cohort_code = _coh.code if _coh else ""
 
     return {
         "learner_id": learner_id,
         "email": (u_self.email if u_self else "") or "",
+        "cohort": cohort_code,
         "readiness": round(readiness, 4),
         "acquired": acquired,
         "total_areas": len(KA),
@@ -1397,3 +1406,13 @@ def purge_expired_endpoint(session: Session = Depends(get_session)):
     """Efface les comptes dont le délai de grâce est écoulé.
     Appelé par le cron keepwarm (idempotent, sans effet s'il n'y a rien à purger)."""
     return saas.purge_expired_accounts(session)
+
+
+class UnlinkIn(BaseModel):
+    learner_id: str
+
+
+@app.post("/api/me/unlink-email")
+def unlink_email_endpoint(body: UnlinkIn, session: Session = Depends(get_session)):
+    """Retire l'email (il est facultatif — on doit pouvoir le retirer)."""
+    return saas.unlink_email(session, body.learner_id)
