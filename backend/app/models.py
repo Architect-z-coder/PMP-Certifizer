@@ -144,21 +144,26 @@ def _ensure_columns() -> None:
     is_sqlite = _db_url.startswith("sqlite")
     with engine.begin() as conn:
         for table, col, coltype in additive:
+            # ⚠️ "user" est un MOT RÉSERVÉ en PostgreSQL : sans guillemets,
+            # `ALTER TABLE user …` échoue. On cite systématiquement le nom de
+            # table (valide en Postgres ET en SQLite).
+            q = f'"{table}"'
             try:
                 if is_sqlite:
                     cols = [r[1] for r in conn.exec_driver_sql(
                         f"PRAGMA table_info({table})").fetchall()]
                     if col not in cols:
                         conn.exec_driver_sql(
-                            f"ALTER TABLE {table} ADD COLUMN {col} {coltype}")
+                            f'ALTER TABLE {q} ADD COLUMN {col} {coltype}')
                 else:
                     # Postgres supports IF NOT EXISTS -> naturally idempotent.
                     conn.exec_driver_sql(
-                        f"ALTER TABLE {table} ADD COLUMN IF NOT EXISTS {col} {coltype}")
-            except Exception:
-                # A missing table (fresh DB) is handled by create_all below/above;
-                # never let a migration probe crash startup.
-                pass
+                        f'ALTER TABLE {q} ADD COLUMN IF NOT EXISTS {col} {coltype}')
+            except Exception as e:
+                # Une table absente (base neuve) est gérée par create_all.
+                # On ne laisse jamais une sonde de migration casser le démarrage —
+                # mais on TRACE, sinon un échec reste invisible (leçon v41).
+                print(f"[migration] {table}.{col} : {type(e).__name__} — {e}")
 
 
 def init_db() -> None:
