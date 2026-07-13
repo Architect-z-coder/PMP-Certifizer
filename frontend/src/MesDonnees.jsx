@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPortrait, exportMyDataUrl, getDeletionStatus, requestDeletion, cancelDeletion } from "./api.js";
+import { getPortrait, exportMyDataUrl, getDeletionStatus, requestDeletion, cancelDeletion, linkEmail } from "./api.js";
 
 /* ======================================================================
    v41 — « Mes données » : portabilité + droit à l'effacement.
@@ -33,7 +33,14 @@ const T = {
   refl: { fr: "Réflexes sauvegardés", en: "Reflexes saved" },
   dl: { fr: "Télécharger mes données", en: "Download my data" },
   dlSub: { fr: "Un fichier Excel avec votre progression complète, votre chemin critique, vos réflexes et votre trajectoire. Utilisable ailleurs.", en: "An Excel file with your full progress, critical path, reflexes and trajectory. Usable elsewhere." },
-  dlBtn: { fr: "⭳ Télécharger (Excel)", en: "⭳ Download (Excel)" },
+  dlBtn: { fr: "⭳ Mes données brutes (Excel)", en: "⭳ My raw data (Excel)" },
+  dlPortrait: { fr: "⭳ Mon portrait d'apprentissage (PDF)", en: "⭳ My learning portrait (PDF)" },
+  dlPortraitSub: { fr: "Le document qui montre votre carte, votre chemin critique et vos réflexes. Le bel objet — imprimable, partageable.", en: "The document showing your map, critical path and reflexes. The beautiful one — printable, shareable." },
+  dlBoth: { fr: "Deux fichiers, deux usages", en: "Two files, two uses" },
+  mailWill: { fr: "📧 Nous vous enverrons aussi ces deux fichiers par email, automatiquement — même si vous oubliez de les télécharger.", en: "📧 We'll also email you both files automatically — even if you forget to download them." },
+  mailNo: { fr: "Vous n'avez pas lié d'email. Ajoutez-en un pour recevoir vos données avant l'effacement — facultatif.", en: "You haven't linked an email. Add one to receive your data before erasure — optional." },
+  mailAdd: { fr: "Lier cet email", en: "Link this email" },
+  mailOk: { fr: "✓ Email lié — vos données vous seront envoyées.", en: "✓ Email linked — your data will be sent to you." },
   danger: { fr: "Zone sensible", en: "Sensitive zone" },
   delSub: { fr: "La suppression efface définitivement votre compte et toute votre progression.", en: "Deletion permanently erases your account and all your progress." },
   delBtn: { fr: "Supprimer mon compte", en: "Delete my account" },
@@ -59,13 +66,26 @@ const T = {
   loading: { fr: "Chargement…", en: "Loading…" },
 };
 
-export default function MesDonnees({ learnerId, learnerName, lang = "fr", onDeleted }) {
+export default function MesDonnees({ learnerId, learnerName, lang = "fr", onDeleted, onOpenPortrait }) {
   const [p, setP] = useState(null);
   const [del, setDel] = useState(null);        // statut de suppression
   const [step, setStep] = useState("home");    // home | confirm
   const [word, setWord] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mail, setMail] = useState("");
+  const [mailDone, setMailDone] = useState(false);
   const t = (k) => T[k][lang] || T[k].fr;
+
+  async function addMail() {
+    const e = mail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) || busy) return;
+    setBusy(true);
+    try {
+      const r = await linkEmail(learnerId, e);
+      if (r && r.ok) { setMailDone(true); setP(await getPortrait(learnerId, lang)); }
+    } catch (err) { /* */ }
+    setBusy(false);
+  }
 
   useEffect(() => {
     let alive = true;
@@ -149,12 +169,36 @@ export default function MesDonnees({ learnerId, learnerName, lang = "fr", onDele
           </div>
 
           <div style={{ background: "#EAF1F3", border: `1px solid ${C.teal}`, borderRadius: 10, padding: "13px 15px", marginBottom: 14 }}>
-            <div style={{ fontSize: 12.8, lineHeight: 1.6, marginBottom: 9 }}>💡 {t("cBefore")}</div>
-            <a href={exportMyDataUrl(learnerId, lang)} download
-              style={{ display: "block", textAlign: "center", background: C.teal, color: "#fff", borderRadius: 9, padding: "10px", fontWeight: 700, fontSize: 13, textDecoration: "none", fontFamily: "'Space Grotesk', sans-serif" }}>
-              {t("dlBtn")}
-            </a>
+            <div style={{ fontSize: 12.8, lineHeight: 1.6, marginBottom: 10 }}>💡 {t("cBefore")}</div>
+            <div style={{ display: "grid", gap: 8 }}>
+              <button onClick={() => onOpenPortrait && onOpenPortrait()}
+                style={{ background: C.ink, color: "#fff", border: "none", borderRadius: 9, padding: "10px", fontWeight: 700, fontSize: 13, fontFamily: "'Space Grotesk', sans-serif", cursor: "pointer" }}>
+                {t("dlPortrait")}
+              </button>
+              <a href={exportMyDataUrl(learnerId, lang)} download
+                style={{ display: "block", textAlign: "center", background: C.teal, color: "#fff", borderRadius: 9, padding: "10px", fontWeight: 700, fontSize: 13, textDecoration: "none", fontFamily: "'Space Grotesk', sans-serif" }}>
+                {t("dlBtn")}
+              </a>
+            </div>
           </div>
+
+          {(p.email || mailDone) ? (
+            <div style={{ background: "#E4F3EC", border: `1px solid ${C.green}`, borderRadius: 10, padding: "12px 14px", marginBottom: 14, fontSize: 12.5, lineHeight: 1.6, color: C.text }}>
+              {mailDone ? t("mailOk") : t("mailWill")}
+            </div>
+          ) : (
+            <div style={{ background: "#FFF7EC", border: `1px solid ${C.amber}`, borderRadius: 10, padding: "12px 14px", marginBottom: 14 }}>
+              <div style={{ fontSize: 12.5, lineHeight: 1.6, marginBottom: 9 }}>{t("mailNo")}</div>
+              <div style={{ display: "flex", gap: 7 }}>
+                <input value={mail} onChange={(e) => setMail(e.target.value)} placeholder="vous@exemple.com" type="email"
+                  style={{ flex: 1, border: `1px solid ${C.line}`, borderRadius: 8, padding: "9px 11px", fontSize: 13, outline: "none" }} />
+                <button onClick={addMail} disabled={busy}
+                  style={{ background: C.amber, color: C.ink, border: "none", borderRadius: 8, padding: "9px 14px", fontWeight: 700, fontSize: 12.5, cursor: "pointer", whiteSpace: "nowrap" }}>
+                  {t("mailAdd")}
+                </button>
+              </div>
+            </div>
+          )}
 
           <div style={{ marginBottom: 10 }}>
             <label style={{ fontSize: 12.5, color: C.muted, display: "block", marginBottom: 5 }}>{t("cType")}</label>
@@ -197,7 +241,12 @@ export default function MesDonnees({ learnerId, learnerName, lang = "fr", onDele
         </div>
 
         <div style={card}>
-          <div style={S}>{t("dl")}</div>
+          <div style={S}>{t("dlBoth")}</div>
+          <div style={{ fontSize: 12.8, lineHeight: 1.55, color: C.muted, marginBottom: 11 }}>{t("dlPortraitSub")}</div>
+          <button onClick={() => onOpenPortrait && onOpenPortrait()}
+            style={{ width: "100%", background: C.ink, color: "#fff", border: "none", borderRadius: 9, padding: "11px", fontWeight: 700, fontSize: 13.5, fontFamily: "'Space Grotesk', sans-serif", cursor: "pointer", marginBottom: 9 }}>
+            {t("dlPortrait")}
+          </button>
           <div style={{ fontSize: 12.8, lineHeight: 1.55, color: C.muted, marginBottom: 10 }}>{t("dlSub")}</div>
           <a href={exportMyDataUrl(learnerId, lang)} download
             style={{ display: "block", textAlign: "center", background: C.teal, color: "#fff", borderRadius: 9, padding: "11px", fontWeight: 700, fontSize: 13.5, textDecoration: "none", fontFamily: "'Space Grotesk', sans-serif" }}>

@@ -1339,10 +1339,51 @@ def deletion_status_endpoint(learner_id: str, session: Session = Depends(get_ses
 
 
 @app.post("/api/me/delete")
-def request_deletion_endpoint(body: DeleteIn, session: Session = Depends(get_session)):
+async def request_deletion_endpoint(body: DeleteIn, lang: str = "fr",
+                                    session: Session = Depends(get_session)):
     """Demande de suppression : le compte est désactivé, le délai de grâce court.
-    Rien n'est encore effacé — l'apprenant peut tout récupérer."""
-    return saas.request_deletion(session, body.learner_id)
+    Rien n'est encore effacé — l'apprenant peut tout récupérer.
+
+    ⭐ Et surtout : on lui ENVOIE ses données par email, sans qu'il l'ait demandé.
+    Beaucoup de gens suppriment vite et regrettent plus tard. Son portrait et son
+    Excel arrivent dans sa boîte : son travail lui est rendu d'office.
+    """
+    r = saas.request_deletion(session, body.learner_id)
+    if r.get("error"):
+        return r
+
+    u = session.exec(select(saas.User).where(saas.User.public_id == body.learner_id)).first()
+    r["email_sent"] = False
+    if u and u.email and email_service.is_configured():
+        try:
+            from . import export as export_mod
+            from . import portrait_html
+
+            p = get_portrait(learner_id=body.learner_id, lang=lang, session=session)
+            mem = session.exec(select(saas.CohortMembership).where(
+                saas.CohortMembership.user_id == u.id,
+                saas.CohortMembership.role_in_cohort == "learner")).first()
+            cohort = ""
+            if mem:
+                coh = session.exec(select(saas.Cohort).where(saas.Cohort.id == mem.cohort_id)).first()
+                cohort = coh.code if coh else ""
+
+            xlsx = export_mod.build_export(p, u.name, u.email or "", cohort, lang)
+            html_portrait = portrait_html.render_portrait_html(p, u.name, cohort, lang)
+
+            subj, body_html = email_service.deletion_email(saas.GRACE_DAYS, lang)
+            res = await email_service.send_email(
+                u.email, subj, body_html, u.name,
+                attachments=[
+                    {"name": "certifizer-mon-portrait.html", "content": html_portrait.encode("utf-8")},
+                    {"name": "certifizer-mes-donnees.xlsx", "content": xlsx},
+                ])
+            r["email_sent"] = bool(res.get("ok"))
+        except Exception as e:
+            # L'envoi ne doit JAMAIS empêcher la suppression : le droit à
+            # l'effacement prime sur le confort d'un email.
+            print(f"[deletion-email] échec : {type(e).__name__} — {e}")
+    return r
 
 
 @app.post("/api/me/delete/cancel")

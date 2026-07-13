@@ -54,6 +54,7 @@ export default function App() {
     try { return new URLSearchParams(window.location.search).get("magic") || ""; } catch { return ""; }
   });
   const [magicState, setMagicState] = useState(magicToken ? "checking" : null);
+  const [portraitAutoPrint, setPortraitAutoPrint] = useState(false);
   function clearMagicParam() {
     try {
       const u = new URL(window.location.href);
@@ -138,7 +139,12 @@ export default function App() {
   const isMobile = useIsMobile();
   const [navOpen, setNavOpen] = useState(false);
 
-  const chooseMode = (id) => { setModeId(id); if (isMobile) setNavOpen(false); };
+  const chooseMode = (id) => {
+    setModeId(id);
+    // L'auto-impression ne vaut que pour l'ouverture venue de « Mes données ».
+    if (id !== "portrait") setPortraitAutoPrint(false);
+    if (isMobile) setNavOpen(false);
+  };
   const chooseFocus = (id) => { setFocusId(id); if (isMobile) setNavOpen(false); };
 
   const t = (k) => T[k][lang];
@@ -307,7 +313,7 @@ export default function App() {
               <button onClick={() => chooseMode("prepa")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "prepa" ? C.amber : C.inkLine}`, background: modeId === "prepa" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "prepa" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
                 <Gauge size={15} color={modeId === "prepa" ? C.amber : "#9DB0C2"} /> {PT.prepa[lang]}
               </button>
-              <button onClick={() => chooseMode("portrait")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "portrait" ? C.amber : C.inkLine}`, background: modeId === "portrait" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "portrait" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
+              <button onClick={() => { setPortraitAutoPrint(false); chooseMode("portrait"); }} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "portrait" ? C.amber : C.inkLine}`, background: modeId === "portrait" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "portrait" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
                 <FileText size={15} color={modeId === "portrait" ? C.amber : "#9DB0C2"} /> {PT.portrait[lang]}
               </button>
               <button onClick={() => chooseMode("donnees")} style={{ marginTop: 6, width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 7, padding: "9px 10px", borderRadius: 9, border: `1px solid ${modeId === "donnees" ? C.amber : C.inkLine}`, background: modeId === "donnees" ? "rgba(232,154,60,0.12)" : C.ink2, color: modeId === "donnees" ? "#fff" : "#9DB0C2", fontWeight: 500, fontSize: 12 }}>
@@ -415,9 +421,9 @@ export default function App() {
             {modeId === "parcours" ? (
               <Journey lang={lang} mastery={mastery} processes={processes} recommended={recommended} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} />
             ) : modeId === "portrait" ? (
-              <Portrait learnerId={learner} lang={lang} />
+              <Portrait learnerId={learner} lang={lang} autoPrint={portraitAutoPrint} />
             ) : modeId === "donnees" ? (
-              <MesDonnees learnerId={learner} learnerName={learnerName} lang={lang} />
+              <MesDonnees learnerId={learner} learnerName={learnerName} lang={lang} onOpenPortrait={() => { setPortraitAutoPrint(true); chooseMode("portrait"); }} />
             ) : modeId === "prepa" ? (
               <PrepaPanel lang={lang} learnerId={learner} learnerName={learnerName} mastery={mastery} reflexes={reflexes} onStudyArea={(a) => studyArea(a)} isMobile={isMobile} me={me} />
             ) : modeId === "quiz" ? (

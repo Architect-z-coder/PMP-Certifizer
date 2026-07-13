@@ -17,8 +17,12 @@ def is_configured() -> bool:
 
 
 async def send_email(to_email: str, subject: str, html: str,
-                     to_name: str = "") -> dict:
-    """Envoie un email transactionnel. Ne lève jamais : renvoie un dict de statut."""
+                     to_name: str = "", attachments: list | None = None) -> dict:
+    """Envoie un email transactionnel. Ne lève jamais : renvoie un dict de statut.
+
+    attachments : [{"name": "fichier.xlsx", "content": <bytes>}] — encodées en
+    base64 pour Brevo. Utilisé pour rendre ses données à l'apprenant qui part.
+    """
     if not is_configured():
         return {"ok": False, "reason": "not_configured"}
     if not to_email:
@@ -30,6 +34,13 @@ async def send_email(to_email: str, subject: str, html: str,
         "subject": subject,
         "htmlContent": html,
     }
+    if attachments:
+        import base64
+        payload["attachment"] = [
+            {"name": a["name"],
+             "content": base64.b64encode(a["content"]).decode()}
+            for a in attachments if a.get("content")
+        ]
     headers = {"api-key": settings.brevo_api_key,
                "Content-Type": "application/json", "accept": "application/json"}
     try:
@@ -101,3 +112,36 @@ def invitation_email(link: str, cohort_code: str, lang: str = "fr") -> tuple:
             "<p style='font-size:12px;color:#5E6E7F;margin-top:14px'>Si le bouton ne fonctionne pas, copiez ce lien :<br>"
             f"<span style='color:#2E8C9E;word-break:break-all'>{link}</span></p>")
     return subj, _shell("Rejoindre votre cohorte", body, lang)
+
+
+def deletion_email(days: int, lang: str = "fr") -> tuple:
+    """Email envoyé quand l'apprenant demande la suppression de son compte.
+    Ses données sont JOINTES — il n'a rien demandé, mais il les retrouvera
+    peut-être un jour avec soulagement."""
+    if lang == "en":
+        subj = "Your Certifizer data — before your account is erased"
+        body = (f"<p style='font-size:14px;line-height:1.6;color:#16202E'>You asked to delete your Certifizer "
+                f"account. Before it goes, here is everything you built — attached to this email:</p>"
+                "<ul style='font-size:13.5px;line-height:1.8;color:#16202E'>"
+                "<li><b>Your learning portrait</b> (HTML — open it and press Ctrl+P to save as PDF)</li>"
+                "<li><b>Your raw data</b> (Excel — progress, critical path, reflexes, trajectory)</li></ul>"
+                f"<p style='font-size:14px;line-height:1.6;color:#16202E'>Your account stays recoverable for "
+                f"<b>{days} days</b>. If you change your mind, sign back in and cancel the deletion — nothing is lost. "
+                f"After that, everything is erased for good.</p>"
+                "<p style='font-size:12px;color:#5E6E7F;margin-top:14px'>We're sending this without you asking, "
+                "because people sometimes regret losing their work. It's yours.</p>")
+        return subj, _shell("Your data, before you go", body, lang)
+
+    subj = "Vos données Certifizer — avant l'effacement de votre compte"
+    body = ("<p style='font-size:14px;line-height:1.6;color:#16202E'>Vous avez demandé la suppression de votre "
+            "compte Certifizer. Avant qu'il ne disparaisse, voici tout ce que vous avez construit — "
+            "joint à cet email :</p>"
+            "<ul style='font-size:13.5px;line-height:1.8;color:#16202E'>"
+            "<li><b>Votre portrait d'apprentissage</b> (HTML — ouvrez-le et faites Ctrl+P pour l'enregistrer en PDF)</li>"
+            "<li><b>Vos données brutes</b> (Excel — progression, chemin critique, réflexes, trajectoire)</li></ul>"
+            f"<p style='font-size:14px;line-height:1.6;color:#16202E'>Votre compte reste récupérable pendant "
+            f"<b>{days} jours</b>. Si vous changez d'avis, reconnectez-vous et annulez la suppression — rien n'est "
+            f"perdu. Passé ce délai, tout sera effacé définitivement.</p>"
+            "<p style='font-size:12px;color:#5E6E7F;margin-top:14px'>Nous vous envoyons ceci sans que vous l'ayez "
+            "demandé, parce qu'on regrette parfois d'avoir perdu son travail. Il vous appartient.</p>")
+    return subj, _shell("Vos données, avant votre départ", body, lang)

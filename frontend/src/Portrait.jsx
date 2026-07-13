@@ -93,7 +93,7 @@ function layout(nodes) {
   return pos;
 }
 
-export default function Portrait({ learnerId, lang = "fr" }) {
+export default function Portrait({ learnerId, lang = "fr", autoPrint = false }) {
   const [p, setP] = useState(null);
   const [err, setErr] = useState(null);
   const t = (k) => T[k][lang] || T[k].fr;
@@ -107,6 +107,15 @@ export default function Portrait({ learnerId, lang = "fr" }) {
   }, [learnerId, lang]);
 
   const pos = useMemo(() => (p ? layout(p.nodes) : {}), [p]);
+
+  // Ouvert depuis « Mes données » (avant une suppression) : on propose
+  // l'impression tout de suite — l'apprenant est venu pour emporter son portrait.
+  useEffect(() => {
+    if (autoPrint && p) {
+      const id = setTimeout(() => window.print(), 700);
+      return () => clearTimeout(id);
+    }
+  }, [autoPrint, p]);
 
   if (err) return <div style={{ flex: 1, padding: 24, color: C.red, fontSize: 13, overflowY: "auto" }}>{err}</div>;
   if (!p) return <div style={{ flex: 1, padding: 40, textAlign: "center", color: C.muted, fontSize: 13.5 }}>{t("loading")}</div>;
