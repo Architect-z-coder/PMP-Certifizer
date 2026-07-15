@@ -1,0 +1,51 @@
+{
+  "_meta": {
+    "name": "Politique de conception Certifizer relative à l'ECO 2026",
+    "rule": "TOUT ce qui est ici est une DÉCISION ou HYPOTHÈSE PRODUIT Certifizer — rien ici n'est un fait PMI. Le référentiel des faits est pmp_eco_2026_canonical.json.",
+    "date": "2026-07-15"
+  },
+  "intra_domain_weighting": {
+    "status": "HYPOTHÈSE PRODUIT — non officielle",
+    "current_strategy": "Répartition égale du poids de domaine entre ses zones/tâches (introduite en v45 dans eco_weight()).",
+    "official_position": "PMI ne publie AUCUN poids par tâche. Seuls les poids de domaine (33/41/26) sont officiels ; chaque examen adresse toutes les tâches de chaque domaine.",
+    "obligation": "Toute présentation de eco_weight() doit dire 'hypothèse de conception Certifizer', jamais 'poids ECO réels'."
+  },
+  "ui_zones": {
+    "rule": "Une zone visible de l'interface PEUT regrouper plusieurs tâches officielles. En revanche, la maîtrise, la couverture et toute preuve DOIVENT être enregistrées au niveau du eco_task_id canonique (26 identités).",
+    "principle": "26 identifiants de tâches sont nécessaires ; 26 zones visibles ne le sont pas."
+  },
+  "question_tagging": {
+    "required_future_field": "eco_primary_task — obligatoire pour chaque question lors du réaudit (étape 2).",
+    "optional_field": "eco_secondary_tasks — étiquettes secondaires lorsqu'une question sert plusieurs tâches.",
+    "legacy_field": "knowledge_area — conservé comme métadonnée historique et filtre technique UNIQUEMENT ; jamais comme source d'autorité de domaine ou de tâche."
+  },
+  "certifizer_translations_fr": {
+    "note": "Traductions Certifizer, NON officielles. PMI ne publie ici que les intitulés anglais.",
+    "PE1": "Développer une vision commune",
+    "PE2": "Gérer les conflits",
+    "PE3": "Diriger l'équipe de projet",
+    "PE4": "Mobiliser les parties prenantes",
+    "PE5": "Aligner les attentes des parties prenantes",
+    "PE6": "Gérer les attentes des parties prenantes",
+    "PE7": "Assurer le transfert des connaissances",
+    "PE8": "Planifier et gérer la communication",
+    "PR1": "Élaborer un plan de management de projet intégré et planifier la livraison",
+    "PR2": "Élaborer et gérer le périmètre du projet",
+    "PR3": "Favoriser une livraison fondée sur la valeur",
+    "PR4": "Planifier et gérer les ressources",
+    "PR5": "Planifier et gérer les approvisionnements",
+    "PR6": "Planifier et gérer les finances",
+    "PR7": "Planifier et optimiser la qualité des produits/livrables",
+    "PR8": "Planifier et gérer l'échéancier",
+    "PR9": "Évaluer l'état du projet",
+    "PR10": "Gérer la clôture du projet",
+    "BE1": "Définir et établir la gouvernance du projet",
+    "BE2": "Planifier et gérer la conformité du projet",
+    "BE3": "Gérer et maîtriser les changements",
+    "BE4": "Lever les obstacles et gérer les problèmes",
+    "BE5": "Planifier et gérer les risques",
+    "BE6": "Amélioration continue",
+    "BE7": "Soutenir le changement organisationnel",
+    "BE8": "Évaluer les évolutions de l'environnement d'affaires externe"
+  }
+}
