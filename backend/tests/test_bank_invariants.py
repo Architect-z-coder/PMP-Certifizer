@@ -112,13 +112,14 @@ def test_taches_be_profondeur_et_difficultes():
         assert 3 in diffs, f"{t} : aucun niveau 3 (jugement)"
 
 
-def test_seed_idempotent(tmp_path):
-    """135 banques historiques + 15 (lot 2) = 150 au 1er passage ; +0 au second."""
-    pytest.importorskip("sqlmodel")
-    os.environ["DATABASE_URL"] = f"sqlite:///{tmp_path}/seed.db"
-    # import tardif : DATABASE_URL doit être posé avant
-    from app.models import init_db  # noqa: E402
+def test_seed_idempotent():
+    """Complétude (150 en base après seed) + idempotence (+0 au passage suivant),
+    sur la base partagée de la suite (voir conftest.py)."""
+    sqlmodel = pytest.importorskip("sqlmodel")
+    from app.models import init_db, engine, Item  # noqa: E402
     init_db()
     from app.seed import load_item_banks  # noqa: E402
-    assert load_item_banks() == 150
-    assert load_item_banks() == 0
+    load_item_banks()                       # complète si la base est vide ou partielle
+    assert load_item_banks() == 0           # idempotent
+    with sqlmodel.Session(engine) as s:
+        assert len(s.exec(sqlmodel.select(Item)).all()) == 150

@@ -18,6 +18,7 @@ from . import saas
 from . import email_service
 from . import portrait as portrait_mod
 from .prompts import build_system
+from . import eco as eco_engine
 from .mastery import (apply_result, light, recommend, KA, KA_IDS, TOTAL_N,
                       difficulties_for, SR_INTERVALS_DAYS, SR_MAX_STAGE,
                       recency_confidence, stale_level, effective_mastery,
@@ -306,21 +307,26 @@ def _mastery_rows(session: Session, learner_id: str) -> list[dict]:
     return out
 
 
+def _task_state(session, learner_id: str):
+    """v47 — maîtrise par tâche DÉRIVÉE de l'historique des tentatives (rejeu)."""
+    attempts = session.exec(
+        select(Attempt).where(Attempt.learner_id == learner_id)
+        .order_by(Attempt.created_at, Attempt.id)).all()
+    return eco_engine.replay_task_mastery(attempts)
+
+
 @app.get("/api/readiness")
 def get_readiness(learner_id: str = "demo", session: Session = Depends(get_session)):
+    """v47 — readiness sur les 26 tâches officielles, avec couverture honnête :
+    une tâche jamais tentée en direct compte 0 (une zone parfaite ne vaut plus
+    100 % de son domaine). Leviers = poids de tâche x (1 - maîtrise)."""
+    state = _task_state(session, learner_id)
+    r = eco_engine.readiness_from_tasks(state)
+    prio = eco_engine.task_priorities(state)
+    levers = [{"area": p["task"], "fr": p["fr"], "en": p["en"],
+               "score": p["score"], "priority": p["priority"],
+               "domain": p["domain"]} for p in prio]
     rows = _mastery_rows(session, learner_id)
-    r = readiness_from_masteries(rows)
-    # top 4 priority levers: exam_weight(area) x (1 - mastery), KA-based
-    mm = {row["area"]: row for row in rows}
-    levers = []
-    for k in KA:
-        row = mm.get(k["id"])
-        score = row["score"] if row and row["attempts"] > 0 else 0.0
-        levers.append({"area": k["id"], "fr": k["fr"], "en": k["en"],
-                       "score": round(score, 4),
-                       "priority": round((k["n"] / TOTAL_N) * (1.0 - score), 4),
-                       "domain": AREA_DOMAIN.get(k["id"], "")})
-    levers.sort(key=lambda x: x["priority"], reverse=True)
     # stale-but-mastered areas (maintenance candidates)
     stale = [{"area": row["area"], "score": round(row["score"], 4),
               "level": stale_level(row["days_since"])}
@@ -328,6 +334,20 @@ def get_readiness(learner_id: str = "demo", session: Session = Depends(get_sessi
              if row["attempts"] > 0 and row["score"] >= 0.75
              and stale_level(row["days_since"]) in ("stale", "critical")]
     return {"readiness": r, "top_levers": levers[:4], "stale_mastered": stale}
+
+
+@app.get("/api/eco/mastery")
+def eco_mastery(learner_id: str = "demo", session: Session = Depends(get_session)):
+    """v47 — maîtrise par tâche officielle ECO 2026, dérivée des tentatives.
+    26 lignes : score, tentatives (directes/totales), couverture, poids, fraîcheur."""
+    state = _task_state(session, learner_id)
+    rows = eco_engine.task_mastery_rows(state)
+    for r in rows:
+        r["last_practiced_at"] = r["last_practiced_at"].isoformat() if r["last_practiced_at"] else None
+        r["light"] = light(r["score"], r["direct_attempts"])
+    covered = sum(1 for r in rows if r["covered"])
+    return {"tasks": rows, "covered_tasks": covered, "task_count": len(rows),
+            "note": "Poids par tâche = hypothèse de conception Certifizer (PMI ne publie que les poids de domaine)."}
 
 
 @app.get("/api/missed")
@@ -360,37 +380,67 @@ def session_next(learner_id: str = "demo", size: int = 10,
     """Compose an adaptive session: weak-area priority + due missed + exam-weighted
     + one maintenance item, difficulty-targeted, de-duplicated."""
     all_items = session.exec(select(Item)).all()
-    by_area: dict[str, list[Item]] = {}
+    # v47 — les pools sont construits par TÂCHE PRIMAIRE officielle (mapping audité),
+    # les questions directes d'abord, les closest_fit en repli.
+    by_task: dict[str, list[Item]] = {}
     for it in all_items:
-        by_area.setdefault(it.knowledge_area, []).append(it)
-    mm = mastery_map(session, learner_id)
+        t = eco_engine.primary_task_of(it.external_id)
+        if t:
+            by_task.setdefault(t, []).append(it)
+    for pool in by_task.values():
+        pool.sort(key=lambda it: 0 if eco_engine.primary_is_direct(it.external_id) else 1)
+    state = _task_state(session, learner_id)
     rows = _mastery_rows(session, learner_id)
     now = datetime.utcnow()
     chosen: list[Item] = []
     used: set[str] = set()
 
-    def take(area: str, n: int):
-        pool = by_area.get(area, [])
+    def take(task: str, n: int):
+        pool = by_task.get(task, [])
         if not pool:
             return
-        m = mm.get(area)
-        want = difficulties_for(m["score"] if m else 0.0, m["attempts"] if m else 0)
-        ranked = ([it for it in pool if it.difficulty in want and it.external_id not in used]
+        s = state[task]
+        want = difficulties_for(s["score"] if s["direct_attempts"] > 0 else 0.0, s["attempts"])
+        directs = [it for it in pool if eco_engine.primary_is_direct(it.external_id)]
+        base = directs or pool
+        ranked = ([it for it in base if it.difficulty in want and it.external_id not in used]
+                  or [it for it in base if it.external_id not in used]
                   or [it for it in pool if it.external_id not in used])
         random.shuffle(ranked)
         for it in ranked[:n]:
             chosen.append(it); used.add(it.external_id)
 
-    # priority levers (KA weakness x weight)
-    levers = sorted(
-        KA, key=lambda k: (k["n"] / TOTAL_N) * (1.0 - (mm.get(k["id"], {}).get("score", 0.0)
-                          if mm.get(k["id"], {}).get("attempts", 0) > 0 else 0.0)),
-        reverse=True)
-    lever_ids = [k["id"] for k in levers if by_area.get(k["id"])]
+    # leviers : poids de tâche ECO x (1 - maîtrise couverte).
+    # Mélange AVANT tri stable : à priorités égales (apprenant neuf), l'ordre
+    # est aléatoire — sinon toutes les premières séances serviraient les mêmes
+    # tâches (BE1/BE2) et jamais BE4-BE8.
+    prio = eco_engine.task_priorities(state)
+    random.shuffle(prio)
+    prio.sort(key=lambda p: p["priority"], reverse=True)
+    lever_ids = [p["task"] for p in prio if by_task.get(p["task"])]
 
-    # 4 from top weak areas
-    for aid in lever_ids[:4]:
-        take(aid, 1)
+    # v47 — quotas de domaine : la séance reflète les poids d'examen (33/41/26),
+    # modulés par la faiblesse. Sans quotas, un apprenant neuf ne recevrait que
+    # du People (poids par tâche légèrement supérieur à poids égal par ailleurs).
+    quota = {"people": round(size * 0.33), "process": round(size * 0.41)}
+    quota["business"] = size - quota["people"] - quota["process"]
+    dom_count = {"people": 0, "process": 0, "business": 0}
+
+    def dom_of(task):
+        return eco_engine.TASK_BY_ID[task]["domain"]
+
+    def take_quota(task, n):
+        before = len(chosen)
+        if dom_count[dom_of(task)] >= quota[dom_of(task)]:
+            return
+        take(task, n)
+        dom_count[dom_of(task)] += len(chosen) - before
+
+    # 4 from top weak tasks (dans les quotas)
+    for aid in lever_ids[:6]:
+        if sum(dom_count.values()) >= 4:
+            break
+        take_quota(aid, 1)
 
     # 3 from due missed queue
     due = session.exec(select(MissedQueue).where(
@@ -405,20 +455,29 @@ def session_next(learner_id: str = "demo", size: int = 10,
         if it and it.external_id not in used:
             chosen.append(it); used.add(it.external_id); n_missed += 1
 
-    # 2 exam-weighted (heaviest areas regardless of mastery)
-    for k in sorted(KA, key=lambda k: k["n"], reverse=True):
+    # 2 exam-weighted (heaviest ECO tasks regardless of mastery), sous quotas
+    _heavy = list(eco_engine.TASK_IDS)
+    random.shuffle(_heavy)
+    _heavy.sort(key=eco_engine.task_weight, reverse=True)
+    for t in _heavy:
         if len([c for c in chosen]) >= size - 1:
             break
-        take(k["id"], 1)
+        take_quota(t, 1)
 
-    # 1 maintenance from a stale mastered area
-    stale_areas = [row["area"] for row in rows
-                   if row["attempts"] > 0 and row["score"] >= 0.75
-                   and stale_level(row["days_since"]) in ("stale", "critical")]
-    if stale_areas:
-        take(random.choice(stale_areas), 1)
+    # 1 maintenance from a stale mastered task (fraîcheur dérivée du rejeu)
+    stale_tasks = []
+    for t, s in state.items():
+        if s["direct_attempts"] > 0 and s["score"] >= 0.75 and s["last_practiced_at"]:
+            days = (now - s["last_practiced_at"]).total_seconds() / 86400.0
+            if stale_level(days) in ("stale", "critical"):
+                stale_tasks.append(t)
+    if stale_tasks:
+        take(random.choice(stale_tasks), 1)
 
-    # top up to size with remaining priority areas
+    # top up to size : priorité sous quotas, puis relâche les quotas si besoin
+    i = 0
+    while len(chosen) < size and i < len(lever_ids):
+        take_quota(lever_ids[i], 1); i += 1
     i = 0
     while len(chosen) < size and i < len(lever_ids):
         take(lever_ids[i], 1); i += 1
@@ -427,7 +486,7 @@ def session_next(learner_id: str = "demo", size: int = 10,
             "items": [item_public(it) for it in chosen[:size]],
             "composition": {"weak_priority": min(4, len(lever_ids)),
                             "missed_due": n_missed,
-                            "maintenance": 1 if stale_areas else 0}}
+                            "maintenance": 1 if stale_tasks else 0}}
 
 
 class ReflexeIn(BaseModel):
@@ -1039,7 +1098,8 @@ def cohort_overview(cohort_id: Optional[str] = None, trainer_id: Optional[str] =
     now = datetime.utcnow()
     for lid in learner_ids:
         rows = _mastery_rows(session, lid)
-        rd = readiness_from_masteries(rows)
+        # v47 — même calcul que /api/readiness : tâches officielles + couverture
+        rd = eco_engine.readiness_from_tasks(_task_state(session, lid))
         total_attempts = sum(int(r.get("attempts", 0) or 0) for r in rows)
         # last activity across this learner's mastery rows
         last = session.exec(select(Mastery.updated_at).where(Mastery.learner_id == lid)
@@ -1199,7 +1259,9 @@ def get_portrait(learner_id: str = "demo", lang: str = "fr",
     reproductible, gratuit.
     """
     rows = _mastery_rows(session, learner_id)
-    r = readiness_from_masteries(rows)
+    # v47 — même calcul que /api/readiness (tâches + couverture) ; la carte des
+    # zones du portrait passera aux 26 tâches en v48.
+    r = eco_engine.readiness_from_tasks(_task_state(session, learner_id))
     readiness = float(r.get("score", 0.0))
 
     mm = {row["area"]: row for row in rows}
