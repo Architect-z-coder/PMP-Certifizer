@@ -47,5 +47,9 @@
     "BE6": "Amélioration continue",
     "BE7": "Soutenir le changement organisationnel",
     "BE8": "Évaluer les évolutions de l'environnement d'affaires externe"
+  },
+  "v47_mastery_rules": {
+    "rule": "Le moteur DOIT distinguer trois natures de rattachement : 'direct' (enabler direct), secondaire (soutien), 'closest_fit' (rattachement approximatif).",
+    "closest_fit": "Une question closest_fit ne démontre pas seule la couverture d'une tâche et ne pèse pas dans la maîtrise comme une question directement alignée."
   }
 }

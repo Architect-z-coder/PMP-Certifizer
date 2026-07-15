@@ -37,3 +37,20 @@ Cible minimale ≥3 par tâche, priorité aux zéros et au poids d'examen :
 
 ## Suite de l'ordre figé
 Contre-vérification du mapping (seconde IA) → tests de couverture réécrits sur les compteurs validés → **v47 moteur** (26 `eco_task_id`) → lot de contenu ciblé ci-dessus.
+
+
+---
+
+## Addendum — Arbitrage post-audit (16/07/2026)
+
+**Règle d'arbitrage écrite** (désormais dans le mapping) : la tâche primaire est celle dont un enabler rend la bonne réponse justifiable ; une correction ne s'applique que si elle est ÉTABLIE ; sinon l'originel tient et le différend est consigné.
+
+**Appliqué** : PE.1-02 → **PE8** (forte) · 9.4-02 → **PE2** (probable). **Différends consignés (originel conservé)** : PE.6-03 (PE3 vs PE2) · int-x-4.1-02 (BE1 vs PR2 ; secondaire devenu PR2). **closest_fit** : int-d2-07, int-x-4.3-02 (confiance faible, ne démontrent pas la couverture PR1 — exigence v47 : trois natures de rattachement).
+
+**Compteurs ADOPTÉS** : People **28** (PE2 4 · PE3 6 · PE8 4) · Process **76** · BE **46** — inchangés au domaine. Scénario alternatif AI-2 (28/77/45) documenté : il correspond aux deux différends tranchés dans son sens. **PE6 = 0 et BE4 = 3 confirmés par les trois parties.**
+
+**SHA-256 du PDF officiel** : `8aefc40be4528a8b75de432b1912de8abb574456efff1c4d63af1a55e96d2654` (convergence de deux auditeurs indépendants). **Canonique : CONFORME** (26/26, 138/138, 0 divergence).
+
+**Pièce manquante consignée** : journal aveugle de l'audit non conservé (hash sans binaire) — voir `docs/audit/LISEZ-MOI.md`.
+
+**Décision v47** : les conditions de sortie du HOLD formulées par la méta-évaluation sont remplies SAUF la preuve d'aveuglement (non récupérable a posteriori → marquée non reproductible). Le mapping adopté peut servir de source au câblage v47, avec les deux différends visibles et les closest_fit distingués dans la maîtrise.

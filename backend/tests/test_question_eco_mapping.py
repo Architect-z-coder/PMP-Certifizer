@@ -61,3 +61,30 @@ def test_statut_proposition_explicite():
     meta = json.load(open(MAP, encoding="utf-8"))["_meta"]
     assert "PROPOSITION" in meta["status"], "le mapping ne doit jamais se présenter comme validé"
     assert meta["doctrinal_choices"], "les choix doctrinaux doivent rester visibles"
+
+
+def test_sentinelles_arbitrage_16_07():
+    """Les 4 décisions de l'audit adversarial du 16/07 — ne pas modifier sans nouvel arbitrage tracé."""
+    m = json.load(open(MAP, encoding="utf-8"))["mappings"]
+    # corrections ÉTABLIES appliquées
+    assert m["pe-x-PE.1-02"]["eco_primary_task"] == "PE8"
+    assert m["pr-x-9.4-02"]["eco_primary_task"] == "PE2"
+    # différends : l'originel tient ET le différend reste visible
+    assert m["pe-x-PE.6-03"]["eco_primary_task"] == "PE3" and "dispute" in m["pe-x-PE.6-03"]
+    assert m["int-x-4.1-02"]["eco_primary_task"] == "BE1" and "dispute" in m["int-x-4.1-02"]
+    assert m["int-x-4.1-02"]["eco_secondary_tasks"] == ["PR2"]
+
+
+def test_closest_fit_marques():
+    m = json.load(open(MAP, encoding="utf-8"))["mappings"]
+    for qid in ("int-d2-07", "int-x-4.3-02"):
+        e = m[qid]
+        assert e["mapping_type"] == "closest_fit" and e["confidence"] == "low"
+        assert e["direct_coverage_evidence"] is False
+    directs = sum(1 for e in m.values() if e["mapping_type"] == "direct")
+    assert directs == 148
+
+
+def test_sha_pdf_renseigne():
+    can = json.load(open(CAN, encoding="utf-8"))
+    assert can["_meta"]["pdf_sha256"] == "8aefc40be4528a8b75de432b1912de8abb574456efff1c4d63af1a55e96d2654"

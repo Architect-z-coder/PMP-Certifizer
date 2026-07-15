@@ -1,0 +1,1 @@
+(Archivé tel que reçu — verdict de la seconde IA, 16/07/2026 : canonique CONFORME au PDF PMI, SHA-256 8aefc40b…, aveugle 3/20 désaccords, tirage aléatoire 0/15 erreur, mécaniques conformes, HOLD v47 avec 7 exigences. Texte intégral conservé par Zoubir dans la conversation d'audit ; résumé opposable dans question_eco_mapping.json → _meta.audit_trail.)
