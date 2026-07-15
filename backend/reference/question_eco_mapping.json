@@ -1,0 +1,948 @@
+{
+  "_meta": {
+    "name": "Réaudit des 150 questions contre le référentiel canonique ECO 2026 — étape 2",
+    "date": "2026-07-15",
+    "method": "Jugement question par question (énoncé + bonne réponse) contre les intitulés et enablers officiels. L'ancienne zone (knowledge_area) n'a JAMAIS servi de source d'autorité.",
+    "status": "PROPOSITION — contre-vérification par seconde IA décidée par Zoubir (exercice de solidification). Décision : aucun réviseur humain à ce stade.",
+    "text_freeze_proof_sha256": {
+      "be-deep-2.json": "cb3a45b4a06995bacc75b23439e5299b9e3510888deb9587cde03d1e850fa491",
+      "be-deep.json": "b377def19cfc05fba85d28f977a4308ba70a8cef665df784cf8a966a2766b864",
+      "day2-integration.json": "9f299331d0af711036897ee158de0a32ae9639ca3100fef46738bae6cabf4a24",
+      "integration-deep.json": "4b523c8c7ba871a82e6dee0357985fba02fcddbc8122b55057cec9dc9ff8d4a4",
+      "people-deep.json": "234754c2363722bb20f8abe902ac48259b9624408a937d5bc3458ebd16351d99",
+      "process-gaps.json": "a2820b01a89993431ab4aa849a2182d179cb10448917c6b9ecdc243949143b6d",
+      "schedule-deep.json": "1a09ab05760814f209daf34dbf32906c0d12393919e438cef0d7d47c23678fda",
+      "scope-deep.json": "8eedd5e61e71c6a059ff0acd7226aacaceb47a55c3c714dde081218fa9ab1db1"
+    },
+    "doctrinal_choices": [
+      "Charte de projet (qui autorise, quelle autorité) → BE1 (gouvernance) plutôt que PR1 — 5 questions. À contester.",
+      "Valeur & bénéfices → PR3 (officiel 2026) — 5 questions requalifiées depuis l'ex-« BE7 »."
+    ],
+    "low_confidence_ids": [
+      "int-d2-07",
+      "int-x-4.3-02",
+      "be-x-BE.8-04"
+    ]
+  },
+  "mappings": {
+    "be-x-11.1-01": {
+      "eco_primary_task": "BE4",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "BE5"
+      ],
+      "note": "⭐ enabler BE4 exact : « Recognize when a risk becomes an issue »"
+    },
+    "be-x-11.1-02": {
+      "eco_primary_task": "BE5",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-11.5-02": {
+      "eco_primary_task": "BE5",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-11.5-03": {
+      "eco_primary_task": "BE5",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-11.5-04": {
+      "eco_primary_task": "BE5",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.1-01": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.1-02": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.1-03": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.1-04": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.1-05": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "contournement de gouvernance ; la demande est routée en demande de changement"
+    },
+    "be-x-BE.2-01": {
+      "eco_primary_task": "BE2",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.2-02": {
+      "eco_primary_task": "BE2",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.2-03": {
+      "eco_primary_task": "BE2",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR7"
+      ],
+      "note": "ESG : conformité d'abord, coût de la qualité/durabilité en écho"
+    },
+    "be-x-BE.2-04": {
+      "eco_primary_task": "BE2",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.2-05": {
+      "eco_primary_task": "BE2",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR8"
+      ],
+      "note": "conformité non négociable ; leviers de compression = échéancier"
+    },
+    "be-x-BE.5-01": {
+      "eco_primary_task": "BE6",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "leçons apprises / rétrospectives = BE6 officiel « Continuous improvement »"
+    },
+    "be-x-BE.5-02": {
+      "eco_primary_task": "BE6",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "leçons apprises / rétrospectives = BE6 officiel « Continuous improvement »"
+    },
+    "be-x-BE.5-03": {
+      "eco_primary_task": "BE6",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "leçons apprises / rétrospectives = BE6 officiel « Continuous improvement »"
+    },
+    "be-x-BE.5-04": {
+      "eco_primary_task": "BE6",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "leçons apprises / rétrospectives = BE6 officiel « Continuous improvement »"
+    },
+    "be-x-BE.5-05": {
+      "eco_primary_task": "BE6",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR7"
+      ],
+      "note": "correction systémique : amélioration continue + MAJ OPAs"
+    },
+    "be-x-BE.6-01": {
+      "eco_primary_task": "BE7",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "adoption / résistance / rôle du sponsor = BE7 officiel « Support organizational change »"
+    },
+    "be-x-BE.6-02": {
+      "eco_primary_task": "BE7",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "adoption / résistance / rôle du sponsor = BE7 officiel « Support organizational change »"
+    },
+    "be-x-BE.6-03": {
+      "eco_primary_task": "BE7",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "adoption / résistance / rôle du sponsor = BE7 officiel « Support organizational change »"
+    },
+    "be-x-BE.6-04": {
+      "eco_primary_task": "BE7",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [],
+      "note": "adoption / résistance / rôle du sponsor = BE7 officiel « Support organizational change »"
+    },
+    "be-x-BE.6-05": {
+      "eco_primary_task": "BE7",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR10"
+      ],
+      "note": "adoption vs livraison, à l'approche de la clôture"
+    },
+    "be-x-BE.7-01": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [],
+      "note": "🔴 requalifiées : la valeur/bénéfices est PR3 en 2026, PAS une tâche BE"
+    },
+    "be-x-BE.7-02": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [],
+      "note": "🔴 requalifiées : la valeur/bénéfices est PR3 en 2026, PAS une tâche BE"
+    },
+    "be-x-BE.7-03": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [],
+      "note": "🔴 requalifiées : la valeur/bénéfices est PR3 en 2026, PAS une tâche BE"
+    },
+    "be-x-BE.7-04": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR10"
+      ],
+      "note": "propriétaire des bénéfices : suivi des bénéfices (PR3) organisé à la transition (PR10)"
+    },
+    "be-x-BE.7-05": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [],
+      "note": "🔴 requalifiées : la valeur/bénéfices est PR3 en 2026, PAS une tâche BE"
+    },
+    "be-x-BE.8-01": {
+      "eco_primary_task": "BE8",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "BE3"
+      ]
+    },
+    "be-x-BE.8-02": {
+      "eco_primary_task": "BE8",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.8-03": {
+      "eco_primary_task": "BE8",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "be-x-BE.8-04": {
+      "eco_primary_task": "BE2",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "BE8"
+      ],
+      "note": "⚠️ confiance moyenne : le comportement testé est « politiques de confidentialité/données AVANT usage » = conformité (BE2) ; l'IA comme évolution techno externe reste secondaire (BE8)"
+    },
+    "be-x-BE.8-05": {
+      "eco_primary_task": "BE8",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "veille externe → analyse d'impact → maîtrise des changements"
+    },
+    "int-d2-01": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR1"
+      ],
+      "note": "⚠️ choix doctrinal : la charte (qui autorise, quelle autorité) = instrument de GOUVERNANCE (BE1 : structure, autorité, seuils) — à contester par la seconde IA"
+    },
+    "int-d2-02": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR1"
+      ],
+      "note": "⚠️ choix doctrinal : la charte (qui autorise, quelle autorité) = instrument de GOUVERNANCE (BE1 : structure, autorité, seuils) — à contester par la seconde IA"
+    },
+    "int-d2-03": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-04": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-05": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-06": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-07": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [],
+      "note": "⚠️ confiance faible : « sortie de Diriger et gérer = livrables » — vocabulaire processus PMBOK 6 sans tâche 2026 dédiée ; rattaché à PR1 (stratégie d'exécution/livraison). Candidates à révision de contenu"
+    },
+    "int-d2-08": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-09": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-10": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ]
+    },
+    "int-d2-11": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-12": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-d2-13": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.1-01": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR1"
+      ],
+      "note": "même choix doctrinal charte→BE1"
+    },
+    "int-x-4.1-02": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR1"
+      ],
+      "note": "même choix doctrinal charte→BE1"
+    },
+    "int-x-4.1-03": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE1"
+      ],
+      "note": "défaut d'alignement valeur : « Examine the business value throughout the project »"
+    },
+    "int-x-4.1-04": {
+      "eco_primary_task": "BE1",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR1"
+      ],
+      "note": "même choix doctrinal charte→BE1"
+    },
+    "int-x-4.1-05": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR9"
+      ],
+      "note": "journal des hypothèses : artefact de planification"
+    },
+    "int-x-4.2-01": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.2-02": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.2-03": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.2-04": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR8"
+      ],
+      "note": "élaboration progressive / rolling wave"
+    },
+    "int-x-4.2-05": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE1"
+      ],
+      "note": "approbation du plan = porte de gouvernance"
+    },
+    "int-x-4.3-01": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.3-02": {
+      "eco_primary_task": "PR1",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [],
+      "note": "⚠️ confiance faible : « sortie de Diriger et gérer = livrables » — vocabulaire processus PMBOK 6 sans tâche 2026 dédiée ; rattaché à PR1 (stratégie d'exécution/livraison). Candidates à révision de contenu"
+    },
+    "int-x-4.3-03": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.3-04": {
+      "eco_primary_task": "BE4",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "BE5"
+      ],
+      "note": "⭐ risque matérialisé → journal des problèmes : enablers BE4"
+    },
+    "int-x-4.4-01": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.4-02": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "BE6"
+      ],
+      "note": "registre des leçons : transfert de connaissances, alimente l'amélioration continue"
+    },
+    "int-x-4.4-03": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.5-01": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR6"
+      ],
+      "note": "lecture CPI/SPI = évaluation de l'état ; dimension financière secondaire"
+    },
+    "int-x-4.5-02": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ]
+    },
+    "int-x-4.5-03": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.5-04": {
+      "eco_primary_task": "PR6",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR9"
+      ],
+      "note": "EAC : anticiper les défis financiers"
+    },
+    "int-x-4.6-01": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.6-02": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.6-03": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.6-04": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR2"
+      ],
+      "note": "gold plating : changement non autorisé, touchant le périmètre"
+    },
+    "int-x-4.6-05": {
+      "eco_primary_task": "BE3",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PR9"
+      ],
+      "note": "l'énoncé ancre la config dans la maîtrise des changements ; la discipline des artefacts (PR9) en écho"
+    },
+    "int-x-4.7-01": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.7-02": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "int-x-4.7-03": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR3"
+      ]
+    },
+    "int-x-4.7-04": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR5"
+      ]
+    },
+    "int-x-4.7-05": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE6"
+      ]
+    },
+    "pe-x-PE.1-01": {
+      "eco_primary_task": "PE1",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.1-02": {
+      "eco_primary_task": "PE2",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE3"
+      ],
+      "note": "requalifiée : accords de travail / règles communes = enabler PE2 « environment that fosters adherence to common ground rules »"
+    },
+    "pe-x-PE.1-03": {
+      "eco_primary_task": "PE1",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.2-01": {
+      "eco_primary_task": "PE2",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.2-02": {
+      "eco_primary_task": "PE2",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.2-03": {
+      "eco_primary_task": "PE2",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.3-01": {
+      "eco_primary_task": "BE4",
+      "eco_domain": "BUSINESS_ENVIRONMENT",
+      "eco_secondary_tasks": [
+        "PE3"
+      ],
+      "note": "⭐ requalifiée : lever les obstacles administratifs = langage exact de BE4 « impediments, obstacles, and blockers for the team »"
+    },
+    "pe-x-PE.3-02": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.3-03": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.4-01": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [],
+      "note": "attentes claires au niveau équipe = enabler PE3 « Establish expectations at the team level »"
+    },
+    "pe-x-PE.4-02": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PR4"
+      ],
+      "note": "montée en compétence : soutenir les compétences de l'équipe (PE3)"
+    },
+    "pe-x-PE.4-03": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE5"
+      ],
+      "note": "responsabiliser (PE3) ; mentorat cité (enabler PE5)"
+    },
+    "pe-x-PE.5-01": {
+      "eco_primary_task": "PE4",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE5"
+      ],
+      "note": "engagement et ré-analyse des parties prenantes = PE4 (identifier/analyser/exécuter le plan d'engagement)"
+    },
+    "pe-x-PE.5-02": {
+      "eco_primary_task": "PE4",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "BE7"
+      ],
+      "note": "résistance d'une partie prenante à la digitalisation : engagement (PE4) sur fond de changement organisationnel"
+    },
+    "pe-x-PE.5-03": {
+      "eco_primary_task": "PE4",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE5"
+      ],
+      "note": "engagement et ré-analyse des parties prenantes = PE4 (identifier/analyser/exécuter le plan d'engagement)"
+    },
+    "pe-x-PE.6-01": {
+      "eco_primary_task": "PE5",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PR3"
+      ],
+      "note": "requalifiée : faciliter l'alignement des attentes de deux directions = enabler PE5 « Facilitate discussions to align expectations » ; critères de valeur (PR3)"
+    },
+    "pe-x-PE.6-02": {
+      "eco_primary_task": "PR5",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "requalifiée : négociation fournisseur sous contrat = PR5 (négociations d'accords, gestion des fournisseurs)"
+    },
+    "pe-x-PE.6-03": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE2"
+      ],
+      "note": "décision d'équipe timeboxée : diriger l'équipe / résoudre les problèmes"
+    },
+    "pe-x-PE.7-01": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.7-02": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "BE6"
+      ]
+    },
+    "pe-x-PE.7-03": {
+      "eco_primary_task": "PE7",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.8-01": {
+      "eco_primary_task": "PE8",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE4"
+      ],
+      "note": "stratégie de communication par audience (PE8) ; adaptation aux besoins des PP (enabler PE4)"
+    },
+    "pe-x-PE.8-02": {
+      "eco_primary_task": "PE8",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": []
+    },
+    "pe-x-PE.8-03": {
+      "eco_primary_task": "PE8",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PR9"
+      ],
+      "note": "information radiators / accès continu à l'état"
+    },
+    "pr-x-12.1-01": {
+      "eco_primary_task": "PR5",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-12.1-03": {
+      "eco_primary_task": "PR5",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-12.3-02": {
+      "eco_primary_task": "PR5",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ]
+    },
+    "pr-x-4.7-04": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-4.7-05": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-4.7-06": {
+      "eco_primary_task": "PR10",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE7"
+      ],
+      "note": "transition vers l'exploitant non prêt"
+    },
+    "pr-x-7.3-03": {
+      "eco_primary_task": "PR6",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-7.4-01": {
+      "eco_primary_task": "PR6",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR9"
+      ]
+    },
+    "pr-x-7.4-02": {
+      "eco_primary_task": "PR6",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-8.1-02": {
+      "eco_primary_task": "PR7",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-8.1-03": {
+      "eco_primary_task": "PR7",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE2"
+      ]
+    },
+    "pr-x-8.2-01": {
+      "eco_primary_task": "PR7",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-9.3-01": {
+      "eco_primary_task": "PR4",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-9.4-02": {
+      "eco_primary_task": "PE3",
+      "eco_domain": "PEOPLE",
+      "eco_secondary_tasks": [
+        "PE2"
+      ],
+      "note": "requalifiée : storming/Tuckman, clarifier rôles et règles = diriger l'équipe (PE3), pas gestion de ressources"
+    },
+    "pr-x-9.6-03": {
+      "eco_primary_task": "PR4",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "maîtrise des ressources physiques ; actions correctives via changements"
+    },
+    "pr-x-PR.3-01": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-PR.3-02": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-PR.3-03": {
+      "eco_primary_task": "PR3",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-PR.9-01": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-PR.9-02": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "pr-x-PR.9-03": {
+      "eco_primary_task": "PR9",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PE8"
+      ]
+    },
+    "sc-x-5.1-01": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.2-01": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.2-02": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.3-01": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.3-02": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.4-01": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.4-02": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.4-03": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sc-x-5.5-01": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR7"
+      ],
+      "note": "validation du périmètre : acceptation formelle (PR2), après maîtrise qualité (PR7)"
+    },
+    "sc-x-5.5-02": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "PR7"
+      ],
+      "note": "validation du périmètre : acceptation formelle (PR2), après maîtrise qualité (PR7)"
+    },
+    "sc-x-5.6-01": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "dérive de périmètre : gestion du périmètre, résolue par la maîtrise des changements"
+    },
+    "sc-x-5.6-02": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "dérive de périmètre : gestion du périmètre, résolue par la maîtrise des changements"
+    },
+    "sc-x-5.6-03": {
+      "eco_primary_task": "PR2",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": [
+        "BE3"
+      ],
+      "note": "dérive de périmètre : gestion du périmètre, résolue par la maîtrise des changements"
+    },
+    "sh-x-6.2-01": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.3-01": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.3-02": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.3-03": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.4-01": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.4-02": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.5-01": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.5-02": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.5-03": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.5-04": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.5-05": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.5-06": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    },
+    "sh-x-6.6-01": {
+      "eco_primary_task": "PR8",
+      "eco_domain": "PROCESS",
+      "eco_secondary_tasks": []
+    }
+  }
+}

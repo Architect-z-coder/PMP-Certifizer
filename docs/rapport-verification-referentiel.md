@@ -11,7 +11,7 @@
 | Enablers transcrits contre le PDF | **138/138** (People 39 · Process 64 · Business Environment 35) |
 | Poids de domaine | 33 / 41 / 26 — conformes p.5 |
 | Sentinelles sémantiques (PE4-6, PR3, PR9, BE4-7) | vertes (`tests/test_eco_canonical.py`) |
-| **Réviseur humain** | ⏳ **À RENSEIGNER — la transcription machine ne remplace pas la vérification humaine** |
+| **Contre-vérification** | **Décision Zoubir (15/07)** : confiée à une **seconde IA** (exercice de solidification) — pas de réviseur humain à ce stade. ⚠️ Limite assumée : une IA de contrôle n'est pas un formateur PMI. |
 | **Date de vérification humaine** | ⏳ à renseigner |
 | **SHA-256 du PDF source** | ⏳ à renseigner (télécharger le PDF, `sha256sum` ou `certutil -hashfile <pdf> SHA256`) |
 
