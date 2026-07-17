@@ -179,3 +179,21 @@ def primary_task_of(item_external_id: str) -> Optional[str]:
 def primary_is_direct(item_external_id: str) -> bool:
     p = PRIMARY.get(item_external_id)
     return bool(p) and p[1] != "closest_fit"
+
+# ---- Quarantaine de contenu (gouvernance, 16/07/2026) ----------------------
+# Une question n'est visible par l'apprenant QUE si elle est mappée au référentiel
+# (donc auditée ECO). Ce n'est PAS de la dégradation gracieuse : une question non
+# auditée ne doit atteindre AUCUNE route apprenant. Cycle de vie visé :
+#   draft -> mapped -> audited -> approved -> published (seul 'published' est servable)
+# Aujourd'hui, "mappée dans question_eco_mapping.json" = publiée. Quand un statut
+# explicite existera (Lot A+), ce garde lira ce statut.
+PUBLISHED_IDS = frozenset(PRIMARY.keys())
+
+
+def is_servable(item_external_id: str) -> bool:
+    return item_external_id in PUBLISHED_IDS
+
+
+def servable_filter(items):
+    """Filtre une liste d'Item : ne conserve que le contenu publié/audité."""
+    return [it for it in items if is_servable(it.external_id)]

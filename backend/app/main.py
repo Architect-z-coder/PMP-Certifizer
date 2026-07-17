@@ -220,7 +220,8 @@ def quiz_next(learner_id: str = "demo", area: Optional[str] = None, session: Ses
         best = recommend(mm, only=areas_with_items)
         area = best["id"] if best else None
 
-    items = session.exec(select(Item).where(Item.knowledge_area == area)).all()
+    items = eco_engine.servable_filter(
+        session.exec(select(Item).where(Item.knowledge_area == area)).all())
     seen = {a.item_external_id for a in session.exec(
         select(Attempt).where(Attempt.learner_id == learner_id)).all() if a.item_external_id}
 
@@ -379,7 +380,7 @@ def session_next(learner_id: str = "demo", size: int = 10,
                  session: Session = Depends(get_session)):
     """Compose an adaptive session: weak-area priority + due missed + exam-weighted
     + one maintenance item, difficulty-targeted, de-duplicated."""
-    all_items = session.exec(select(Item)).all()
+    all_items = eco_engine.servable_filter(session.exec(select(Item)).all())
     # v47 — les pools sont construits par TÂCHE PRIMAIRE officielle (mapping audité),
     # les questions directes d'abord, les closest_fit en repli.
     by_task: dict[str, list[Item]] = {}

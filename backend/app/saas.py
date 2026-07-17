@@ -12,6 +12,7 @@ Principes non négociables (spec §1) :
 Tout est additif : ces tables s'ajoutent sans toucher aux tables du moteur.
 """
 from typing import Optional
+import os
 from datetime import datetime, date, timedelta
 
 from sqlmodel import SQLModel, Field, Session, select
@@ -261,6 +262,16 @@ FEATURES = [
     "cohort_heatmap",     # heatmap cohorte
 ]
 
+# ════════════════════════════════════════════════════════════════════
+# OUVERTURE DE TEST (décision Zoubir, 16/07/2026)
+# Tant que le produit n'est pas finalisé à 100 %, TOUT LE MONDE a le plein
+# accès pour permettre un test complet. Le premium sera re-verrouillé en
+# passant OPEN_ACCESS_FOR_TESTING à False — une seule ligne, aucun autre
+# changement. La matrice `free` d'origine est PRÉSERVÉE intacte pour ce jour.
+# Peut aussi être piloté par la variable d'environnement OPEN_ACCESS=0/1.
+OPEN_ACCESS_FOR_TESTING = os.getenv("OPEN_ACCESS", "1") != "0"
+# ════════════════════════════════════════════════════════════════════
+
 # Matrice d'accès par plan. Valeurs : "full" | "preview" | "none".
 FEATURE_MATRIX = {
     "free": {
@@ -320,6 +331,12 @@ def _plan_for_features(session: Session, user_id: int) -> str:
     if has_institution:
         return "institution"
     if has_premium:
+        return "premium"
+    # Ouverture de test : un compte sans entitlement est élevé au plein accès
+    # personnel (premium). Les fonctions purement institution (cockpit, heatmap,
+    # séances assignées) restent gérées par leur propre plan — un apprenant ne
+    # devient pas formateur. Voir OPEN_ACCESS_FOR_TESTING.
+    if OPEN_ACCESS_FOR_TESTING:
         return "premium"
     return "free"
 

@@ -26,7 +26,9 @@
     "arbitration_rule": "Tâche primaire = celle dont un enabler rend la bonne réponse justifiable. Si plusieurs lectures sont soutenues par des enablers et que des évaluateurs indépendants divergent, une correction ne s'applique que si elle est ÉTABLIE (convergence ou enabler manifestement plus direct) ; sinon le mapping originel est conservé et le différend consigné dans 'dispute'.",
     "audit_trail": {
       "2026-07-16": "Audit adversarial (seconde IA) + méta-évaluation (troisième IA). 2 corrections appliquées (PE.1-02→PE8 forte ; 9.4-02→PE2 probable), 2 différends consignés (PE.6-03, int-x-4.1-02), closest_fit marqué (int-d2-07, int-x-4.3-02). Compteurs adoptés : People 28 / Process 76 / BE 46 (scénario alternatif AI-2 : 28/77/45 si les 2 différends étaient tranchés dans son sens). Journal aveugle de l'audit : SHA annoncé 50da059d… mais binaire NON conservé — antériorité de l'aveuglement NON reproductible (constat AI-3) ; à archiver sous docs/audit/ si récupérable."
-    }
+    },
+    "mapping_version": "mapping-2026.07.2",
+    "schema_version": "question-bank-1.0"
   },
   "mappings": {
     "be-x-11.1-01": {

@@ -10,7 +10,8 @@
     "pdf_sha256": "8aefc40be4528a8b75de432b1912de8abb574456efff1c4d63af1a55e96d2654",
     "pdf_sha256_note": "Empreinte calculée indépendamment par DEUX auditeurs IA distincts (15-16/07/2026) sur le binaire téléchargé depuis pmi.org (1 471 802 octets, 23 pages) — valeurs convergentes. Non calculée par la session auteur (binaire non transité). Anomalie de métadonnée interne du PDF ('Title: ... June 2019', CreationDate 23/06/2026) : gabarit Word PMI non actualisé — sans effet sur le contenu.",
     "content_rule": "CE FICHIER NE CONTIENT QUE DES FAITS ISSUS DU DOCUMENT PMI. Aucune traduction, aucun mapping de question, aucune zone d'interface, aucune pondération par tâche, aucune décision produit Certifizer. Ces éléments vivent dans certifizer_eco_design_policy.json.",
-    "task_weight_note": "PMI publie les poids PAR DOMAINE uniquement et déclare que chaque examen adresse toutes les tâches de chaque domaine ('Each PMP certification exam will include questions that address all tasks for a domain, and PMI will adhere to the percentage of coverage at the domain level', p.6). Aucun poids par tâche n'est publié."
+    "task_weight_note": "PMI publie les poids PAR DOMAINE uniquement et déclare que chaque examen adresse toutes les tâches de chaque domaine ('Each PMP certification exam will include questions that address all tasks for a domain, and PMI will adhere to the percentage of coverage at the domain level', p.6). Aucun poids par tâche n'est publié.",
+    "reference_version": "eco-2026-canonical-1.0"
   },
   "exam_facts": {
     "questions_total": 180,

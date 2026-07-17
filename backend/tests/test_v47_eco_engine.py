@@ -146,3 +146,13 @@ def test_readiness_coherent_apprenant_portrait(client):
     p_readiness = r2.get("readiness", {})
     val = p_readiness.get("score", p_readiness) if isinstance(p_readiness, dict) else p_readiness
     assert abs(float(val) - r1) < 1e-6, "portrait et apprenant doivent voir le MÊME readiness"
+
+
+def test_quarantaine_contenu():
+    """Gouvernance : seule une question mappée (auditée ECO) est servable.
+    Une question non mappée ne doit atteindre AUCUNE route apprenant."""
+    from app import eco
+    assert eco.is_servable("sh-x-6.5-01") is True          # mappée
+    assert eco.is_servable("fantome-non-mappe-999") is False  # inconnue → jamais servie
+    # tous les items de la banque actuelle sont publiés (150/150 mappés)
+    assert len(eco.PUBLISHED_IDS) == 150
