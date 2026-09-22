@@ -1,0 +1,337 @@
+{
+ "run_id": "20260921-1729",
+ "author_model": "gemini-2.5-flash",
+ "auditor_model": "gemini-2.5-flash",
+ "items": [
+  {
+   "id": "qL2-PE1-20260921-1729-1-01",
+   "enabler": "Help ensure a shared vision with key stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Vous dirigez un projet de transformation numérique. Après la diffusion initiale de la vision du projet, plusieurs parties prenantes clés expriment des attentes qui divergent significativement des objectifs définis. Elles semblent avoir interprété la vision de manière fragmentée, axée sur leurs intérêts immédiats plutôt que sur la portée globale.",
+    "en": "You are leading a digital transformation project. After the initial dissemination of the project vision, several key stakeholders express expectations that diverge significantly from the defined objectives. They seem to have interpreted the vision in a fragmented way, focusing on their immediate interests rather than the overall scope."
+   },
+   "options": {
+    "fr": [
+     "Rediffuser le document de vision original avec une note de rappel soulignant les points clés et les objectifs primordiaux du projet.",
+     "Organiser des ateliers interactifs pour discuter des interprétations, clarifier les malentendus et co-construire une compréhension unifiée de la vision.",
+     "Demander à chaque partie prenante de soumettre une proposition écrite de ses besoins, puis les compiler pour identifier les écarts et les résoudre unilatéralement.",
+     "Évaluer les impacts de ces divergences sur le calendrier et le budget, puis présenter les risques à la direction pour obtenir son arbitrage."
+    ],
+    "en": [
+     "Redistribute the original vision document with a reminder note emphasizing key points and the project's primary objectives.",
+     "Organize interactive workshops to discuss interpretations, clarify misunderstandings, and co-create a unified understanding of the vision.",
+     "Ask each stakeholder to submit a written proposal of their needs, then compile them to identify discrepancies and resolve them unilaterally.",
+     "Assess the impacts of these divergences on the schedule and budget, then present the risks to management for arbitration."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La divergence d'interprétation nécessite une approche collaborative pour construire une compréhension partagée. Les ateliers interactifs (option A) permettent d'engager les parties prenantes, de discuter ouvertement des points de vue et de forger un alignement. Rediffuser le document (option B) est insuffisant, car le problème n'est pas un manque d'information, mais une interprétation erronée. Compiler les besoins (option C) est une approche unilatérale qui ne favorise pas la construction d'une vision commune. Escalader à la direction (option D) est prématuré avant d'avoir tenté de résoudre le problème au niveau de l'équipe et des parties prenantes.",
+    "en": "Divergent interpretations require a collaborative approach to build a shared understanding. Interactive workshops (option A) allow for stakeholder engagement, open discussion of viewpoints, and forging alignment. Redistributing the document (option B) is insufficient, as the problem is not a lack of information but a misinterpretation. Compiling needs (option C) is a unilateral approach that does not foster the construction of a common vision. Escalating to management (option D) is premature before attempting to resolve the issue at the team and stakeholder level."
+   },
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE1-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260921-1729-1-02",
+   "enabler": "Promote the shared vision.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Votre projet de développement logiciel rencontre des défis techniques inattendus, ralentissant les progrès et affectant le moral de l'équipe. Bien que la vision du produit ait été clairement communiquée au début, l'équipe semble désormais concentrée uniquement sur la résolution des problèmes immédiats, perdant de vue l'objectif final du projet.",
+    "en": "Your software development project is encountering unexpected technical challenges, slowing progress and affecting team morale. Although the product vision was clearly communicated at the outset, the team now seems solely focused on resolving immediate problems, losing sight of the project's ultimate goal."
+   },
+   "options": {
+    "fr": [
+     "Mener une enquête anonyme et détaillée auprès de l'équipe de développement pour identifier les causes profondes du désengagement de ses membres et des difficultés opérationnelles perçues dans l'avancement des tâches.",
+     "Renforcer considérablement la supervision technique et allouer des ressources humaines et matérielles supplémentaires pour accélérer la résolution des problèmes techniques urgents qui ralentissent le projet.",
+     "Organiser une session de rappel de la vision, reliant explicitement les défis actuels aux bénéfices futurs du produit et au succès à long terme.",
+     "Réviser minutieusement le calendrier initial du projet et l'ensemble des livrables prévus, puis communiquer les ajustements nécessaires pour gérer efficacement les attentes de toutes les parties prenantes concernées."
+    ],
+    "en": [
+     "Conduct a comprehensive anonymous survey among all team members to identify the root causes of their disengagement and the operational difficulties they perceive in the project's progress.",
+     "Significantly strengthen the existing technical oversight and allocate substantial additional resources to accelerate the resolution of urgent technical problems currently impeding project advancement.",
+     "Organize a vision reminder session, explicitly linking current challenges to future product benefits and long-term success.",
+     "Thoroughly revise the initial project schedule and all anticipated deliverables, then communicate the necessary adjustments to effectively manage the expectations of all relevant stakeholders."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Lorsque l'équipe perd de vue l'objectif final en raison de défis, il est crucial de promouvoir activement la vision partagée. L'option A reconnecte les efforts quotidiens à la raison d'être du projet, redonnant du sens et de la motivation. L'option B se concentre uniquement sur la résolution des problèmes sans adresser la perte de vision. L'option C est une bonne pratique pour comprendre les problèmes, mais elle ne promeut pas directement la vision. L'option D est une action réactive de gestion des attentes, mais elle ne rétablit pas l'alignement et la motivation de l'équipe sur la vision.",
+    "en": "When the team loses sight of the ultimate goal due to challenges, it is crucial to actively promote the shared vision. Option A reconnects daily efforts to the project's purpose, restoring meaning and motivation. Option B focuses solely on problem resolution without addressing the loss of vision. Option C is a good practice for understanding issues, but it does not directly promote the vision. Option D is a reactive expectation management action, but it does not re-establish team alignment and motivation with the vision."
+   },
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE1-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260921-1729-1-03",
+   "enabler": "Keep the vision current.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Votre projet de refonte d'un système interne est à mi-parcours. Une nouvelle directive stratégique de l'entreprise vient d'être annoncée, modifiant légèrement les priorités organisationnelles. Bien que la vision initiale du projet reste globalement pertinente, certains aspects pourraient bénéficier d'une mise à jour pour maximiser l'alignement avec cette nouvelle direction.",
+    "en": "Your internal system redesign project is halfway through. A new strategic company directive has just been announced, slightly altering organizational priorities. Although the project's initial vision remains broadly relevant, certain aspects could benefit from an update to maximize alignment with this new direction."
+   },
+   "options": {
+    "fr": [
+     "Procéder au lancement d'une analyse d'écart approfondie et détaillée entre la vision actuelle du projet de refonte du système et les orientations de la nouvelle directive stratégique de l'organisation, en documentant avec précision tous les points de divergence potentiels qui pourraient survenir.",
+     "Continuer l'exécution du projet avec la vision existante actuellement définie, en supposant que les ajustements nécessaires seront gérés de manière adéquate lors des phases ultérieures de déploiement ou par le biais d'initiatives complémentaires distinctes.",
+     "Demander formellement à la haute direction de l'entreprise de bien vouloir fournir une interprétation officielle et des clarifications de la nouvelle directive stratégique et de ses implications directes pour le projet de refonte du système en cours.",
+     "Organiser une session avec les parties prenantes clés et l'équipe pour évaluer l'impact de la nouvelle directive sur la vision et proposer des ajustements ciblés."
+    ],
+    "en": [
+     "Proceed with the initiation of a comprehensive and detailed gap analysis between the current project vision for the system redesign and the new strategic organizational directive, meticulously documenting all potential points of divergence that may arise.",
+     "Continue the project's execution using the existing vision as currently defined, under the assumption that all necessary adjustments will be adequately managed during later phases of implementation or through separate complementary initiatives.",
+     "Formally request that the senior management of the company provide an official interpretation and clarifications of the new strategic directive and its direct implications for the ongoing internal system redesign project.",
+     "Organize a session with key stakeholders and the team to assess the impact of the new directive on the vision and propose targeted adjustments."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Maintenir la vision à jour est essentiel pour assurer l'alignement continu avec les objectifs stratégiques de l'organisation. L'option A est la plus proactive et collaborative, permettant une évaluation conjointe et des ajustements ciblés de la vision du projet. L'option B risque un désalignement progressif. L'option C délègue la responsabilité de l'analyse et ne favorise pas l'engagement de l'équipe. L'option D est une bonne première étape mais ne va pas jusqu'à la proposition d'ajustements et la validation collaborative, ce qui est nécessaire pour réellement mettre à jour la vision.",
+    "en": "Keeping the vision current is essential to ensure continuous alignment with the organization's strategic objectives. Option A is the most proactive and collaborative, allowing for joint assessment and targeted adjustments to the project vision. Option B risks gradual misalignment. Option C delegates analysis responsibility and does not foster team engagement. Option D is a good first step but does not extend to proposing adjustments and collaborative validation, which is necessary to truly update the vision."
+   },
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE1-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260921-1729-1-04",
+   "enabler": "Break down situations to identify the root cause of a misunderstanding of the vision.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une réunion d'avancement, vous constatez que deux chefs d'équipe interprètent différemment un aspect crucial de la vision du projet, ce qui commence à se traduire par des efforts dupliqués et des priorités contradictoires. Cette divergence n'était pas apparente lors des communications initiales.",
+    "en": "During a progress meeting, you observe that two team leads interpret a crucial aspect of the project vision differently, which is starting to result in duplicated efforts and conflicting priorities. This divergence was not apparent during initial communications."
+   },
+   "options": {
+    "fr": [
+     "Organiser une discussion ciblée avec les deux chefs d'équipe pour explorer leurs interprétations, identifier les points de divergence et comprendre la source du malentendu.",
+     "Revoir et clarifier en détail le document officiel de vision du projet avec l'ensemble des membres de l'équipe, en insistant particulièrement sur les points spécifiques qui semblent actuellement prêter à confusion.",
+     "Demander à chaque chef d'équipe impliqué de documenter sa compréhension détaillée de la vision du projet, et ensuite de la présenter pour une comparaison formelle et une décision de résolution par la direction.",
+     "Évaluer minutieusement l'impact des efforts dupliqués sur le budget global et le calendrier prévisionnel du projet, puis ajuster les plans opérationnels pour atténuer les conséquences immédiates de cette situation."
+    ],
+    "en": [
+     "Organize a targeted discussion with both team leads to explore their interpretations, identify points of divergence, and understand the source of the misunderstanding.",
+     "Conduct a thorough review and clarification of the official project vision document with all members of the project team, specifically emphasizing those particular points that currently appear to be causing confusion.",
+     "Request that each involved team lead formally document their detailed understanding of the project vision, and subsequently present it for a structured formal comparison and a definitive resolution by the project management.",
+     "Carefully assess the potential impact of the duplicated efforts on the overall project budget and the established schedule, and then proceed to adjust the operational plans in order to mitigate the immediate negative consequences of this situation."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Pour résoudre un malentendu sur la vision, il est essentiel d'en identifier la cause profonde. L'option A permet une exploration directe et ciblée avec les personnes concernées pour comprendre d'où vient la divergence, avant d'agir. L'option B est trop générale et risque de ne pas adresser la cause spécifique du malentendu entre ces deux chefs d'équipe. L'option C est trop formelle et potentiellement conflictuelle, et délègue la résolution à la direction sans tentative de compréhension. L'option D gère les symptômes (efforts dupliqués) mais ne résout pas la cause du malentendu sur la vision.",
+    "en": "To resolve a misunderstanding of the vision, it is essential to identify its root cause. Option A allows for direct and targeted exploration with the involved individuals to understand the source of the divergence before taking action. Option B is too general and may not address the specific cause of the misunderstanding between these two team leads. Option C is overly formal and potentially confrontational, and delegates resolution to management without an attempt at understanding. Option D manages symptoms (duplicated efforts) but does not resolve the root cause of the vision misunderstanding."
+   },
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE1-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260901-1729-1-05",
+   "enabler": "Help ensure a shared vision with key stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Au début d'un nouveau projet complexe, vous constatez qu'une partie prenante majeure, bien que formellement alignée avec la vision, exprime fréquemment des préoccupations qui suggèrent une compréhension incomplète des interdépendances et des contraintes du projet, ce qui pourrait compromettre son soutien actif.",
+    "en": "At the start of a new complex project, you observe that a major stakeholder, although formally aligned with the vision, frequently expresses concerns that suggest an incomplete understanding of project interdependencies and constraints, which could jeopardize their active support."
+   },
+   "options": {
+    "fr": [
+     "Intensifier considérablement vos efforts pour la distribution régulière de rapports d'avancement du projet particulièrement détaillés et des diagrammes de Gantt actualisés, afin de mieux informer cette partie prenante clé sur les contraintes du projet identifiées.",
+     "Organiser une session individuelle ou en petit groupe pour discuter des préoccupations, présenter les interdépendances clés et co-construire une vision plus nuancée et complète.",
+     "Ignorer ces préoccupations exprimées tant qu'elles ne mènent pas à des blocages directs dans l'avancement des activités du projet, en se concentrant sur les autres parties prenantes plus immédiatement et clairement alignées avec la vision.",
+     "Escalader formellement le problème à la direction exécutive du projet, en signalant le risque potentiel de désengagement de cette partie prenante majeure en raison de sa compréhension actuellement limitée des enjeux."
+    ],
+    "en": [
+     "Significantly intensify your efforts for the consistent distribution of comprehensive project progress reports and updated Gantt charts, with the aim of better informing this key project stakeholder about the various identified constraints.",
+     "Organize an individual or small group session to discuss concerns, present key interdependencies, and co-build a more nuanced and complete vision.",
+     "Ignore these expressed concerns as long as they do not lead to direct blockages in project activities, focusing instead on other more immediately and clearly aligned stakeholders.",
+     "Formally escalate the issue to the project's executive management, reporting the potential risk of disengagement from this major stakeholder due to their currently limited understanding of the project's complexities."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La situation indique une compréhension incomplète de la vision, malgré un alignement formel. L'option A est la plus efficace pour construire une vision partagée plus profonde et nuancée. Une session ciblée permet de clarifier les interdépendances et d'intégrer les préoccupations de la partie prenante de manière collaborative. L'option B est une approche passive qui ne garantit pas une meilleure compréhension. L'option C risque d'aggraver le désengagement de la partie prenante. L'option D est une escalade prématurée avant d'avoir tenté une résolution directe et proactive avec la partie prenante.",
+    "en": "The situation indicates an incomplete understanding of the vision, despite formal alignment. Option A is the most effective for building a deeper, more nuanced shared vision. A targeted session allows for clarifying interdependencies and collaboratively integrating the stakeholder's concerns. Option B is a passive approach that does not guarantee better understanding. Option C risks exacerbating stakeholder disengagement. Option D is a premature escalation before attempting a direct and proactive resolution with the stakeholder."
+   },
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE1-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260921-1729-1-01",
+   "enabler": "Establish expectations at the team level.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors de la planification des sprints, un membre clé de votre équipe commence à manquer des livrables sans explication préalable, invoquant après coup des engagements externes. Cela perturbe la vélocité et la cohésion de l'équipe, qui commence à exprimer son mécontentement. Vous n'avez pas de charte d'équipe formelle sur l'engagement.",
+    "en": "During sprint planning, a key team member begins missing deliverables without prior explanation, later citing external commitments. This disrupts team velocity and cohesion, leading to team members expressing dissatisfaction. You do not have a formal team charter regarding commitment."
+   },
+   "options": {
+    "fr": [
+     "Demander au membre de l'équipe de projet de fournir un calendrier détaillé et transparent de tous ses engagements externes, afin que l'équipe puisse mieux planifier et ajuster ses propres tâches futures.",
+     "Rencontrer le membre de l'équipe en privé pour comprendre la situation, puis faciliter une discussion d'équipe sur les accords de travail et l'engagement mutuel.",
+     "Évoquer le problème de manière générale lors de la prochaine rétrospective d'équipe, en demandant aux membres de proposer des solutions collectives pour mieux gérer les retards imprévus et les ajustements de planification.",
+     "Notifier la situation problématique au responsable fonctionnel direct du membre de l'équipe, en suggérant des mesures disciplinaires appropriées pour le non-respect répété des engagements du projet."
+    ],
+    "en": [
+     "Formally request the team member to provide a detailed and transparent schedule of all their external commitments, so the project team can better plan and adjust its future tasks accordingly.",
+     "Meet privately with the team member to understand the situation, then facilitate a team discussion on working agreements and mutual commitment.",
+     "Raise the issue generally during the next team retrospective, asking all members to propose collective solutions for better managing unforeseen delays and planning adjustments.",
+     "Notify the functional manager of the team member regarding the problematic situation, suggesting appropriate disciplinary action for repeated non-compliance with established project commitments."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La première étape consiste à comprendre la situation avec l'individu concerné, puis à utiliser cette information pour renforcer ou établir des attentes claires au niveau de l'équipe. Cela permet de résoudre le problème individuel tout en améliorant la clarté et la cohésion de l'équipe. Demander un calendrier détaillé est une solution imposée qui ne résout pas la cause profonde du manque de communication ou d'engagement. Évoquer le problème en rétrospective sans discussion préalable avec l'individu risque de le mettre en porte-à-faux et ne cible pas directement la racine du problème. L'escalade immédiate au responsable fonctionnel est prématurée sans avoir tenté de résoudre le problème au niveau de l'équipe et de l'individu.",
+    "en": "The first step is to understand the situation with the individual concerned, then use this insight to reinforce or establish clear expectations at the team level. This addresses the individual issue while improving team clarity and cohesion. Requesting a detailed schedule is an imposed solution that doesn't address the root cause of the lack of communication or commitment. Raising the issue in a retrospective without prior discussion with the individual risks singling them out and does not directly target the root cause. Immediate escalation to the functional manager is premature without first attempting to resolve the issue at the team and individual level."
+   },
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE3-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260921-1729-1-02",
+   "enabler": "Empower the team.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Votre équipe auto-organisée, chargée d'optimiser un processus de déploiement, propose une nouvelle approche qui s'écarte des directives techniques standard de l'organisation. Ils ont mené une analyse approfondie des risques et des bénéfices, montrant une réduction potentielle de 30 % du temps de déploiement, mais cela implique l'utilisation d'outils non homologués.",
+    "en": "Your self-organizing team, tasked with optimizing a deployment process, proposes a new approach that deviates from standard organizational technical guidelines. They have conducted a thorough risk-benefit analysis, showing a potential 30% reduction in deployment time, but it involves using non-standard tools."
+   },
+   "options": {
+    "fr": [
+     "Demander formellement à votre équipe de documenter intégralement les détails de la nouvelle approche proposée et de la soumettre ensuite à un comité d'architecture technique de l'organisation pour une revue formelle approfondie avant toute implémentation effective.",
+     "Exiger que l'équipe aligne strictement sa proposition sur les directives techniques existantes de l'organisation et utilise uniquement des outils et des technologies déjà homologués avant de procéder à toute expérimentation ou développement.",
+     "Soutenir la proposition de l'équipe en facilitant l'accès aux ressources nécessaires et en les aidant à présenter leur analyse aux parties prenantes concernées pour approbation.",
+     "Autoriser une courte phase d'expérimentation strictement limitée avec la nouvelle approche, à la seule condition qu'elle soit entièrement et facilement réversible et qu'elle n'impacte en aucun cas les systèmes de production opérationnels."
+    ],
+    "en": [
+     "Formally ask your team to fully document all the comprehensive details of the new proposed approach and then submit it to the organizational technical architecture review board for a formal and thorough assessment before any actual implementation.",
+     "Require the team to strictly align their entire proposal with the existing technical guidelines of the organization and use only approved tools and technologies before proceeding with any experimentation or development.",
+     "Support the team's proposal by facilitating access to necessary resources and helping them present their analysis to relevant stakeholders for approval.",
+     "Authorize a short, strictly limited experimentation phase with the new approach, provided it is fully and easily reversible and does not impact any operational production systems in any way."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'équipe a fait preuve d'autonomie et d'une analyse rigoureuse. Le rôle du chef de projet est de soutenir cette initiative en facilitant les obstacles (outils non homologués) et en représentant leur proposition auprès des parties prenantes, renforçant ainsi l'autonomie. Exiger un alignement strict sur les directives étouffe l'innovation et l'autonomie. Demander une documentation complète et un examen formel est une approche bureaucratique qui retarde inutilement une équipe déjà proactive et qui a fait son analyse. Autoriser une expérimentation limitée est une option viable, mais moins proactive que de les aider à obtenir une approbation pour une mise en œuvre plus large, surtout après une analyse approfondie.",
+    "en": "The team has demonstrated autonomy and rigorous analysis. The project manager's role is to support this initiative by facilitating obstacles (non-standard tools) and representing their proposal to stakeholders, thereby reinforcing autonomy. Demanding strict alignment with guidelines stifles innovation and autonomy. Requesting full documentation and formal review is a bureaucratic approach that unnecessarily delays an already proactive team that has performed its analysis. Authorizing limited experimentation is a viable option, but less proactive than helping them gain approval for broader implementation, especially after a thorough analysis."
+   },
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE3-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260921-1729-1-03",
+   "enabler": "Solve problems.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Votre équipe rencontre un problème technique récurrent avec une intégration de module, causant des retards dans les livraisons. Plusieurs membres ont tenté des solutions individuelles sans succès durable. La tension monte à mesure que la date de livraison approche.",
+    "en": "Your team is experiencing a recurring technical issue with a module integration, causing delays in deliveries. Several members have attempted individual solutions without lasting success. Tension is rising as the delivery date approaches."
+   },
+   "options": {
+    "fr": [
+     "Contacter un expert externe spécialisé en intégration de modules pour une consultation immédiate, en vue d'obtenir rapidement une solution technique viable et de s'assurer du respect des délais de livraison prévus.",
+     "Désigner le problème technique à l'ingénieur le plus expérimenté au sein de l'équipe de développement, en lui conférant la pleine autorité décisionnelle pour identifier la cause et implémenter une solution dans les plus brefs délais.",
+     "Demander à l'ensemble des membres de l'équipe de documenter précisément leurs tentatives de résolution du problème et de soumettre un rapport détaillé pour une analyse centralisée effectuée par le chef de projet.",
+     "Organiser une session de résolution de problèmes collaborative avec les membres clés de l'équipe pour identifier la cause première et définir une solution durable."
+    ],
+    "en": [
+     "Contact an external integration specialist for an immediate consultation, with the express purpose of quickly securing a viable solution and ensuring the project's critical delivery deadlines are met.",
+     "Assign the recurring technical problem to the most experienced engineer within the development team, granting them full authority to thoroughly investigate, identify, and implement a definitive solution promptly.",
+     "Request that each individual team member meticulously document their attempted resolutions and subsequently submit a comprehensive report for a centralized analysis by the responsible project manager.",
+     "Organize a collaborative problem-solving session with key team members to identify the root cause and define a sustainable solution."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Lorsque des problèmes sont récurrents et résistent aux efforts individuels, une approche collaborative et structurée est nécessaire pour identifier la cause première. Cela permet de capitaliser sur l'intelligence collective de l'équipe. Assigner le problème à un seul expert est une solution rapide mais ne garantit pas une solution durable si la cause est systémique et ne renforce pas les capacités de l'équipe. Demander des rapports individuels est une approche passive qui ne favorise pas la résolution proactive. Contacter un expert externe est prématuré tant que l'équipe n'a pas épuisé ses propres ressources collaboratives pour une analyse approfondie.",
+    "en": "When problems are recurring and resist individual efforts, a collaborative and structured approach is necessary to identify the root cause. This leverages the team's collective intelligence. Assigning the problem to a single expert is a quick fix but doesn't guarantee a lasting solution if the cause is systemic, and it doesn't build team capability. Requesting individual reports is a passive approach that doesn't foster proactive resolution. Contacting an external expert is premature as long as the team has not exhausted its own collaborative resources for in-depth analysis."
+   },
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE3-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260921-1729-1-04",
+   "enabler": "Represent the voice of the team.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un de vos principaux sponsors contourne régulièrement votre rôle et contacte directement les membres de l'équipe avec des demandes de fonctionnalités urgentes et contradictoires. Cela crée de la confusion, du travail en double et démotive l'équipe, qui vous en a fait part.",
+    "en": "One of your key sponsors regularly bypasses your role and directly contacts team members with urgent, conflicting feature requests. This creates confusion, duplicate work, and demotivates the team, which they have communicated to you."
+   },
+   "options": {
+    "fr": [
+     "Planifier une rencontre avec le sponsor pour clarifier les canaux de communication et expliquer l'impact négatif de ses actions sur la productivité de l'équipe.",
+     "Demander aux membres de l'équipe de projet de rediriger toutes les demandes directes du sponsor vers votre rôle de chef de projet, dans le but de centraliser la communication et de filtrer les requêtes de manière plus efficace.",
+     "Adresser une note formelle et documentée au sponsor du projet ainsi qu'à sa hiérarchie directe, exposant en détail les perturbations significatives causées et exigeant le respect strict des procédures de communication établies.",
+     "Choisir d'ignorer complètement les demandes directes et non sollicitées du sponsor, et se concentrer exclusivement sur l'avancement du carnet de produit approuvé, en informant l'équipe de projet d'adopter la même approche."
+    ],
+    "en": [
+     "Schedule a meeting with the sponsor to clarify communication channels and explain the negative impact of their actions on team productivity.",
+     "Ask the project team members to redirect all direct sponsor requests to your project manager role, in order to centralize official project communication and effectively filter all incoming requests.",
+     "Send a formal, documented memorandum to the project sponsor and their direct management, detailing the significant disruptions caused and requesting strict adherence to the established communication procedures.",
+     "Opt to completely ignore the sponsor's direct and unsolicited requests, and focus exclusively on the approved product backlog, informing the project team to adopt the exact same approach."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La première étape est toujours une communication directe et professionnelle pour résoudre le problème. En rencontrant le sponsor, vous pouvez clarifier les attentes, expliquer l'impact et réaffirmer votre rôle de point de contact unique pour l'équipe, représentant ainsi la voix et les besoins de l'équipe. Demander à l'équipe de rediriger les demandes est une solution passive qui ne résout pas la cause du comportement du sponsor. Envoyer une note formelle est une escalade prématurée qui pourrait nuire à la relation. Ignorer les demandes n'est pas une solution constructive et peut entraîner des malentendus ou des tensions avec le sponsor.",
+    "en": "The first step is always direct, professional communication to resolve the issue. By meeting with the sponsor, you can clarify expectations, explain the impact, and reassert your role as the single point of contact for the team, thereby representing the team's voice and needs. Asking the team to redirect requests is a passive solution that doesn't address the root cause of the sponsor's behavior. Sending a formal memo is a premature escalation that could harm the relationship. Ignoring requests is not a constructive solution and can lead to misunderstandings or further tension with the sponsor."
+   },
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE3-20260921-1729-1",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260921-1729-1-05",
+   "enabler": "Support the team's varied experiences, skills, and perspectives.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une nouvelle développeuse junior, avec une expérience limitée mais une grande motivation, a rejoint votre équipe expérimentée. Elle hésite à contribuer aux discussions techniques de peur de dire des erreurs, ce qui limite l'intégration de ses idées et la richesse des échanges.",
+    "en": "A new junior developer, with limited experience but high motivation, has joined your experienced team. She hesitates to contribute to technical discussions for fear of making mistakes, which limits the integration of her ideas and the richness of exchanges."
+   },
+   "options": {
+    "fr": [
+     "Lui assigner des tâches plus simples et moins critiques initialement, afin qu'elle puisse prendre confiance sans pression excessive sur les livrables.",
+     "Mettre en place un système de mentorat informel et encourager un environnement où les erreurs sont vues comme des opportunités d'apprentissage collectif.",
+     "Organiser des sessions de formation technique intensives pour elle, afin d'aligner rapidement ses compétences sur celles des membres seniors de l'équipe.",
+     "Demander aux membres seniors de l'équipe de l'interroger directement lors des discussions pour s'assurer qu'elle participe activement et surmonte sa timidité."
+    ],
+    "en": [
+     "Assign her simpler, less critical tasks initially, so she can build confidence without excessive pressure on deliverables.",
+     "Implement an informal mentoring system and foster an environment where mistakes are viewed as collective learning opportunities.",
+     "Organize intensive technical training sessions for her, to quickly align her skills with those of the senior team members.",
+     "Ask senior team members to directly question her during discussions to ensure she actively participates and overcomes her shyness."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Pour intégrer les perspectives variées, il est crucial de créer un environnement psychologiquement sûr où la nouvelle développeuse se sent à l'aise de s'exprimer et d'apprendre. Le mentorat informel et la normalisation des erreurs comme apprentissages favorisent cela. Assigner uniquement des tâches simples ne l'aide pas à s'intégrer pleinement aux discussions techniques. Des formations intensives peuvent être utiles, mais ne résolvent pas le problème de confiance et de peur de l'erreur dans un contexte d'équipe. La forcer à parler en la questionnant directement pourrait augmenter sa pression et son anxiété, plutôt que de la rassurer.",
+    "en": "To integrate varied perspectives, it's crucial to create a psychologically safe environment where the new developer feels comfortable expressing herself and learning. Informal mentoring and normalizing mistakes as learning opportunities foster this. Assigning only simple tasks doesn't help her fully integrate into technical discussions. Intensive training can be useful but doesn't solve the problem of confidence and fear of making mistakes in a team context. Forcing her to speak by directly questioning her could increase her pressure and anxiety, rather than reassuring her."
+   },
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260921-1729",
+   "release": "qL2-PE3-20260921-1729-1",
+   "status": "approved"
+  }
+ ]
+}

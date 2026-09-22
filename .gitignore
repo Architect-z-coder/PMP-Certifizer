@@ -16,3 +16,7 @@ dist/
 
 # os
 .DS_Store
+backend/tools/anthropic_key.txt
+backend/tools/gemini_key.txt
+backend/tools/work/
+backend/tools/__pycache__/

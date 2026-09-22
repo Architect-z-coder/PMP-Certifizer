@@ -1,0 +1,347 @@
+{
+ "run_id": "20260922-0902",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-haiku-4-5",
+ "items": [
+  {
+   "id": "qL2-PE4-20260922-0902-1-01",
+   "enabler": "Identify stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un mois après le lancement, un directeur régional dont l'équipe utilisera le nouveau système contacte le chef de projet pour la première fois, exprimant des inquiétudes sur la charge de travail. Il n'apparaît sur aucun registre. Que doit faire le chef de projet ?",
+    "en": "One month after launch, a regional director whose team will use the new system contacts the project manager for the first time, raising concerns about workload. He appears on no register. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Ajouter le directeur au registre des parties prenantes et évaluer son influence et son intérêt avant d'ajuster l'engagement.",
+     "Transmettre ses inquiétudes au sponsor, ne pas le documenter, et considérer l'omission initiale comme relevant de la gouvernance.",
+     "Lui répondre directement sur la charge de travail, ne pas le documenter, et clore le sujet rapidement.",
+     "Attendre la prochaine revue trimestrielle, puis vérifier si d'autres parties prenantes similaires émergent."
+    ],
+    "en": [
+     "Add the director to the stakeholder register and assess his influence and interest before adjusting engagement.",
+     "Forward his concerns to the sponsor, skip documenting him, and treat the initial omission as a governance matter.",
+     "Respond to him directly about the workload, skip documenting him, and close the topic quickly.",
+     "Wait for the next quarterly review, then check whether other similar stakeholders emerge."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Un acteur affecté qui se manifeste doit d'abord être identifié et évalué : c'est la porte d'entrée de tout engagement structuré. Transmettre au sponsor sans documenter escalade une omission de registre au lieu de la corriger. Répondre directement sans le documenter traite le symptôme sans corriger l'omission, laissant le registre incomplet pour la suite du projet. Attendre la revue trimestrielle retarde une identification déjà réclamée par les faits, exposant le projet à un désengagement croissant.",
+    "en": "An affected party who comes forward must first be identified and assessed: this is the entry point for any structured engagement. Forwarding to the sponsor without documenting escalates a register omission instead of correcting it. Responding directly without documenting treats the symptom without fixing the omission, leaving the register incomplete for the rest of the project. Waiting for the quarterly review delays an identification already demanded by the facts, risking growing disengagement."
+   },
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE4-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260922-0902-1-02",
+   "enabler": "Analyze stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux parties prenantes figurent au registre avec un intérêt jugé faible lors du cadrage initial. Six mois plus tard, un changement réglementaire les rend directement responsables de la conformité du livrable. Le chef de projet le découvre en lisant un rapport externe. Que doit-il faire ?",
+    "en": "Two stakeholders are listed in the register with low interest assessed during initial scoping. Six months later, a regulatory change makes them directly accountable for the deliverable's compliance. The project manager discovers this while reading an external report. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Les inviter à la prochaine réunion de statut, ne pas revoir leur classification, et considérer que leur rôle formel n'a pas changé.",
+     "Réévaluer leur pouvoir et leur intérêt à la lumière du changement réglementaire et ajuster leur classification dans la grille.",
+     "Attendre leur propre demande d'implication, puis modifier leur position dans la grille d'analyse.",
+     "Informer le sponsor du changement réglementaire, ne pas mettre à jour la grille, et laisser l'analyse initiale en l'état."
+    ],
+    "en": [
+     "Invite them to the next status meeting, skip revising their classification, and treat their formal role as unchanged.",
+     "Reassess their power and interest in light of the regulatory change and adjust their classification on the grid.",
+     "Wait for them to request involvement, then change their position on the analysis grid.",
+     "Inform the sponsor of the regulatory change, skip updating the grid, and leave the initial analysis as is."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Un changement de contexte externe qui modifie la responsabilité réelle exige une réévaluation de la classification, condition d'un engagement adapté. Les inviter sans revoir la grille traite le symptôme sans corriger l'analyse sous-jacente, désormais obsolète. Attendre leur demande inverse la responsabilité : c'est au chef de projet d'anticiper, pas aux parties prenantes de réclamer. Informer le sponsor sans mettre à jour la grille documente le risque sans corriger l'outil qui guide les décisions d'engagement.",
+    "en": "An external context change that alters real accountability requires reassessing the classification, a precondition for adapted engagement. Inviting them without revising the grid treats the symptom without fixing the now-outdated underlying analysis. Waiting for their request reverses accountability: it is the project manager's role to anticipate, not the stakeholders' to demand. Informing the sponsor without updating the grid documents the risk without fixing the tool that guides engagement decisions."
+   },
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE4-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260922-0902-1-03",
+   "enabler": "Analyze and tailor communication to stakeholder needs.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un comité de direction reçoit habituellement des rapports détaillés de dix pages sur l'avancement technique. Lors du dernier comité, deux membres ont admis ne pas les avoir lus avant la réunion. Que doit faire le chef de projet pour la prochaine communication ?",
+    "en": "A steering committee usually receives detailed ten-page reports on technical progress. At the last meeting, two members admitted not having read them beforehand. What should the project manager do for the next communication?"
+   },
+   "options": {
+    "fr": [
+     "Ajouter une synthèse orale en début de réunion, tout en conservant le rapport complet inchangé.",
+     "Continuer le format de dix pages, mais l'envoyer trois jours plus tôt pour laisser plus de temps de lecture.",
+     "Condenser le rapport en un résumé exécutif d'une page centré sur les décisions attendues du comité.",
+     "Réduire la fréquence des rapports détaillés à une fois par trimestre, afin d'alléger la charge de lecture."
+    ],
+    "en": [
+     "Add a verbal summary at the start of the meeting, while keeping the full report unchanged.",
+     "Keep the ten-page format, but send it three days earlier to allow more reading time.",
+     "Condense the report into a one-page executive summary focused on the decisions expected from the committee.",
+     "Reduce the frequency of detailed reports to once per quarter, so as to lighten the reading load."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le problème est le format, pas le délai ni la fréquence : un résumé exécutif aligne le contenu sur le niveau de décision réel du comité. Envoyer plus tôt le même document ne corrige pas l'inadéquation entre le format et les besoins du destinataire. Ajouter une synthèse orale sans réduire le rapport écrit ne change rien à la charge de lecture qui a causé le problème initial. Réduire la fréquence n'adresse pas la densité du contenu, qui reste inadaptée à chaque occurrence restante.",
+    "en": "The problem is format, not timing or frequency: an executive summary aligns content with the committee's actual decision-making level. Sending the same document earlier does not fix the mismatch between format and recipient needs. Adding a verbal summary without shortening the written report does nothing to reduce the reading load that caused the original problem. Reducing frequency does not address content density, which remains unsuited to each remaining occurrence."
+   },
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE4-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260922-0902-1-04",
+   "enabler": "Execute the stakeholder engagement plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le plan d'engagement prévoit des ateliers mensuels avec un groupe d'utilisateurs clés. Après deux mois, le taux de présence est tombé à 20 %, sans qu'aucune raison n'ait été formellement recueillie. Que doit faire le chef de projet avant le prochain atelier ?",
+    "en": "The engagement plan calls for monthly workshops with a key user group. After two months, attendance has dropped to 20%, with no reason formally gathered. What should the project manager do before the next workshop?"
+   },
+   "options": {
+    "fr": [
+     "Déléguer l'animation des ateliers à un membre de l'équipe technique, afin d'alléger la charge du chef de projet.",
+     "Annuler les ateliers restants, puis remplacer l'engagement par des rapports écrits envoyés mensuellement.",
+     "Maintenir le format actuel, puis rappeler l'obligation de présence dans l'invitation du mois suivant.",
+     "Contacter individuellement quelques utilisateurs pour comprendre les causes de l'absentéisme avant d'ajuster le format."
+    ],
+    "en": [
+     "Delegate workshop facilitation to a technical team member, so as to lighten the project manager's workload.",
+     "Cancel the remaining workshops, then replace engagement with monthly written reports.",
+     "Keep the current format, then remind attendees of the attendance obligation in next month's invitation.",
+     "Individually contact a few users to understand the causes of the absenteeism before adjusting the format."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Une baisse de présence non expliquée exige un diagnostic avant tout ajustement du plan d'exécution, sans quoi la correction risque de viser la mauvaise cause. Annuler les ateliers remplace l'engagement interactif prévu par une diffusion passive, sans avoir diagnostiqué le problème réel. Rappeler l'obligation sans comprendre la cause traite un symptôme de discipline alors que la cause peut être organisationnelle. Déléguer l'animation ne répond pas à la question posée par la baisse de présence et pourrait l'aggraver si la relation de confiance est en cause.",
+    "en": "An unexplained drop in attendance requires diagnosis before adjusting the execution plan, otherwise the correction risks targeting the wrong cause. Cancelling the workshops replaces the planned interactive engagement with passive distribution, without having diagnosed the real problem. Reminding attendees of the obligation without understanding the cause treats a discipline symptom when the cause may be organizational. Delegating facilitation does not address the question raised by the attendance drop and could worsen it if trust is the underlying issue."
+   },
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE4-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260922-0902-1-05",
+   "enabler": "Build trust and influence stakeholders to accomplish project objectives.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un fournisseur clé exprime des réserves informelles sur un jalon serré, mais ne les a jamais formulées lors des réunions officielles. Le chef de projet l'apprend par un collègue. Que doit-il faire ?",
+    "en": "A key supplier expresses informal reservations about a tight milestone, but has never raised them in official meetings. The project manager learns of this from a colleague. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Rencontrer directement le fournisseur pour comprendre ses réserves et créer un espace où il peut les exprimer ouvertement.",
+     "Ignorer l'information et attendre qu'elle soit confirmée par le fournisseur lui-même en réunion officielle.",
+     "Signaler immédiatement le risque de retard au sponsor, sans avoir échangé au préalable avec le fournisseur.",
+     "Ajouter une clause de pénalité au contrat, afin de dissuader tout retard futur du fournisseur sur ce jalon."
+    ],
+    "en": [
+     "Meet directly with the supplier to understand his reservations and create a space where he can voice them openly.",
+     "Ignore the information and wait for it to be confirmed by the supplier himself in an official meeting.",
+     "Immediately report the delay risk to the sponsor, without having spoken beforehand with the supplier.",
+     "Add a penalty clause to the contract, so as to deter any future delay by the supplier on this milestone."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Construire la confiance suppose d'aller vers la partie prenante qui hésite à s'exprimer, plutôt que d'attendre ou de contourner la relation. Ignorer l'information laisse un signal faible se transformer en risque non géré par simple inaction. Escalader au sponsor sans dialogue préalable contourne la relation directe et traite comme confirmé un signal encore informel. Ajouter une clause de pénalité répond par la contrainte contractuelle à un problème de communication, ce qui peut détériorer la relation sans résoudre la cause.",
+    "en": "Building trust means going toward a stakeholder hesitant to speak up, rather than waiting or bypassing the relationship. Ignoring the information lets a weak signal turn into an unmanaged risk through simple inaction. Escalating to the sponsor without prior dialogue bypasses the direct relationship and treats a still-informal signal as confirmed. Adding a penalty clause responds to a communication problem with contractual pressure, which may damage the relationship without resolving the cause."
+   },
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE4-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260922-0902-1-01",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un nouveau projet compte un directeur financier qui bloque toute décision de dépense, et un chef d'équipe support qui exécute les tickets sans influence sur le budget. Le chef de projet classe ses parties prenantes sur une grille pouvoir/intérêt. Comment doit-il positionner ces deux personnes ?",
+    "en": "A new project has a finance director who blocks every spending decision, and a support team lead who executes tickets with no budget influence. The project manager is classifying stakeholders on a power/interest grid. How should he position these two people?"
+   },
+   "options": {
+    "fr": [
+     "Placer le chef d'équipe support en gérer de près, en raison de son intérêt quotidien élevé pour les tickets.",
+     "Placer le directeur financier en tenir informé, en raison de son intérêt pour le projet, limité au budget.",
+     "Placer le directeur financier en gérer de près, car il détient un pouvoir décisionnel élevé sur les dépenses.",
+     "Placer les deux parties prenantes dans une même catégorie, car elles interagissent, l'une et l'autre, avec le projet."
+    ],
+    "en": [
+     "Place the support team lead in manage closely, given his daily interest in tickets, which is high.",
+     "Place the finance director in keep informed, given his interest in the project, seemingly limited to budget.",
+     "Place the finance director in manage closely, since he holds high decision power over spending.",
+     "Place both stakeholders in one same category, given that they both interact, in some way, with the project."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le directeur financier a un pouvoir élevé (il bloque les dépenses), ce qui justifie gérer de près, indépendamment de son niveau d'intérêt apparent. La deuxième option confond intérêt et pouvoir : son pouvoir de blocage reste déterminant. La troisième surestime le pouvoir du chef d'équipe support, dont l'intérêt élevé ne s'accompagne d'aucune influence sur les décisions clés. La quatrième ignore que la grille distingue précisément pouvoir et intérêt, deux personnes interagissant avec le projet pouvant occuper des cases très différentes.",
+    "en": "The finance director has high power (he blocks spending), which justifies manage closely regardless of apparent interest level. The second option confuses interest with power: his blocking power remains decisive. The third overstates the support lead's power, whose high interest carries no influence over key decisions. The fourth ignores that the grid separates power and interest precisely, so two people who interact with the project can sit in very different cells."
+   },
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE5-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260922-0902-1-02",
+   "enabler": "Identify stakeholder expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le sponsor a signé la charte du projet il y a deux mois. Le chef de projet lance maintenant le plan de gestion des parties prenantes et doit déterminer les attentes du sponsor pour la phase de réalisation. Que doit-il faire ?",
+    "en": "The sponsor signed the project charter two months ago. The project manager is now launching the stakeholder management plan and needs to determine the sponsor's expectations for the execution phase. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Relire la charte signée et supposer que les attentes du sponsor sont restées inchangées depuis la signature.",
+     "Déduire les attentes du sponsor à partir des indicateurs de performance déjà présents dans la charte.",
+     "Demander au sponsor de rédiger, lui-même, la section attentes du plan de gestion des parties prenantes.",
+     "Organiser un entretien avec le sponsor pour clarifier ses attentes actuelles sur la réalisation."
+    ],
+    "en": [
+     "Reread the signed charter and assume that the sponsor's expectations remain unchanged since signing.",
+     "Infer the sponsor's expectations from the performance indicators already present in the charter.",
+     "Ask the sponsor to draft, on his own, the expectations section of the stakeholder management plan.",
+     "Hold a conversation with the sponsor to clarify his current expectations for execution."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Les attentes évoluent entre l'approbation de la charte et le lancement de l'exécution ; seul un échange direct avec le sponsor permet de les capter à ce stade. La première option repose sur une hypothèse non vérifiée, risquée après deux mois. La troisième délègue une tâche d'identification qui reste la responsabilité du chef de projet. La quatrième traite des indicateurs figés comme s'ils remplaçaient un dialogue actuel, alors qu'ils ne reflètent que l'intention initiale.",
+    "en": "Expectations shift between charter approval and execution kickoff; only a direct exchange with the sponsor captures them at this stage. The first option rests on an unverified assumption, risky after two months. The third delegates an identification task that remains the project manager's responsibility. The fourth treats fixed indicators as a substitute for a current dialogue, though they only reflect the original intent."
+   },
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE5-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260922-0902-1-03",
+   "enabler": "Facilitate discussions to align expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux départements attendent des livraisons contradictoires du même jalon : l'un veut une version stable, l'autre une version riche en fonctionnalités. Le chef de projet vient de découvrir cet écart lors d'un point de suivi. Que doit-il faire ensuite ?",
+    "en": "Two departments expect contradictory deliverables from the same milestone: one wants a stable release, the other a feature-rich one. The project manager just discovered this gap during a status check. What should he do next?"
+   },
+   "options": {
+    "fr": [
+     "Organiser une réunion conjointe avec les deux départements pour clarifier et aligner les attentes sur le jalon.",
+     "Choisir la version stable, celle-ci correspondant mieux à l'objectif qualité initial du projet.",
+     "Envoyer un courriel aux deux départements, signalant l'écart, sans proposer de rencontre.",
+     "Attendre le prochain comité de pilotage, laissant ainsi le sponsor trancher entre les deux attentes."
+    ],
+    "en": [
+     "Hold a joint meeting with both departments to clarify and align expectations on the milestone.",
+     "Choose the stable version, this one better matching the project's original quality objective.",
+     "Send an email to both departments, flagging the gap, without proposing a meeting.",
+     "Wait for the next steering committee, thereby letting the sponsor decide between the two expectations."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Un désaccord d'attentes entre deux parties prenantes se traite par une discussion facilitée qui permet aux deux voix de s'exprimer et de converger. La deuxième option tranche unilatéralement sans faire participer les départements concernés. La troisième signale le problème sans créer l'espace de dialogue nécessaire à un véritable alignement. La quatrième reporte inutilement une clarification que le chef de projet peut et doit faciliter lui-même, sans attendre une escalade.",
+    "en": "A disagreement in expectations between two stakeholders is addressed through a facilitated discussion that lets both voices be heard and converge. The second option decides unilaterally without involving the departments concerned. The third flags the problem without creating the dialogue space needed for real alignment. The fourth needlessly delays a clarification the project manager can and should facilitate himself, without waiting for escalation."
+   },
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE5-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260922-0902-1-04",
+   "enabler": "Organize and act on mentoring opportunities.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un membre junior de l'équipe peine depuis trois semaines à structurer ses comptes rendus de risques, malgré des rappels ponctuels du chef de projet. Ce dernier remarque aussi qu'un membre senior maîtrise bien cette compétence. Que doit-il faire ?",
+    "en": "A junior team member has struggled for three weeks to structure his risk reports, despite occasional reminders from the project manager. The project manager also notices a senior member handles this skill well. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Continuer les rappels ponctuels du chef de projet, espérant une amélioration progressive du junior.",
+     "Mettre en place un accompagnement structuré où le membre senior guide le junior sur cette compétence précise.",
+     "Réattribuer la rédaction des comptes rendus de risques au membre senior, à la place du junior.",
+     "Signaler la difficulté du junior au responsable des ressources humaines, pour une évaluation formelle."
+    ],
+    "en": [
+     "Continue the project manager's occasional reminders, in hopes of gradual improvement from the junior.",
+     "Set up a structured mentoring arrangement where the senior member guides the junior on this specific skill.",
+     "Reassign the risk report writing to the senior member, in place of the junior.",
+     "Report the junior's difficulty to the HR manager, for a formal evaluation."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Une compétence identifiée chez un senior et un besoin identifié chez un junior forment exactement l'occasion de mentorat que le chef de projet doit organiser activement. La deuxième option répète une approche déjà inefficace depuis trois semaines. La troisième contourne le développement de la compétence en déplaçant simplement la tâche. La quatrième escalade prématurément vers les ressources humaines une situation qui relève d'un accompagnement interne à l'équipe.",
+    "en": "A skill identified in a senior and a need identified in a junior form exactly the mentoring opportunity the project manager should actively organize. The second option repeats an approach already ineffective for three weeks. The third bypasses skill development by simply shifting the task elsewhere. The fourth prematurely escalates to HR a situation that calls for in-team mentoring."
+   },
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE5-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260922-0902-1-05",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un fournisseur externe fournit un composant critique mais n'a aucun droit de regard sur les décisions du projet ; un utilisateur final influent au sein du client final peut faire remonter des blocages au comité de direction. Le chef de projet doit les classer sur la grille pouvoir/intérêt. Comment doit-il procéder ?",
+    "en": "An external supplier delivers a critical component but has no say in project decisions; an influential end user within the client organization can escalate blockers to the executive committee. The project manager must classify them on the power/interest grid. How should he proceed?"
+   },
+   "options": {
+    "fr": [
+     "Classer l'utilisateur final en surveiller, car son statut d'utilisateur limite son influence réelle.",
+     "Classer le fournisseur en gérer de près, car la criticité de son composant équivaut à un pouvoir décisionnel.",
+     "Classer le fournisseur en tenir informé, car sa criticité technique ne lui donne pas de pouvoir décisionnel.",
+     "Classer les deux parties prenantes en gérer de près, car elles affectent toutes deux la réussite du projet."
+    ],
+    "en": [
+     "Classify the end user as monitor, since his user status limits his real influence.",
+     "Classify the supplier as manage closely, since the criticality of the component equals decision power.",
+     "Classify the supplier as keep informed, since technical criticality does not grant decision power.",
+     "Classify both stakeholders as manage closely, since both affect the project's success."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La criticité d'un composant n'équivaut pas à un pouvoir décisionnel sur le projet ; le fournisseur relève donc de tenir informé plutôt que d'une gestion rapprochée. La deuxième option confond importance technique et pouvoir formel. La troisième sous-estime l'utilisateur final, dont la capacité d'escalade vers le comité de direction constitue un pouvoir réel malgré son statut d'utilisateur. La quatrième uniformise deux profils très différents en ignorant que seul un pouvoir réel justifie une gestion rapprochée.",
+    "en": "A component's criticality does not equal decision power over the project; the supplier therefore falls under keep informed rather than close management. The second option confuses technical importance with formal power. The third underestimates the end user, whose ability to escalate to the executive committee constitutes real power despite his user status. The fourth flattens two very different profiles by ignoring that only real power justifies close management."
+   },
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260922-0902",
+   "release": "qL2-PE5-20260922-0902-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

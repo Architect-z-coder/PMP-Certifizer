@@ -1,0 +1,347 @@
+{
+ "run_id": "20260922-1039",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-haiku-4-5",
+ "items": [
+  {
+   "id": "qL2-PE2-20260922-1039-1-01",
+   "enabler": "Identify conflict sources.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux membres de l'équipe se disputent régulièrement sur les priorités des livrables. En creusant, le chef de projet découvre que leurs managers fonctionnels respectifs leur ont donné des objectifs de performance contradictoires. Que doit faire le chef de projet en premier ?",
+    "en": "Two team members repeatedly argue over deliverable priorities. Digging deeper, the project manager finds their respective functional managers gave them conflicting performance objectives. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Documenter le conflit d'objectifs entre les deux fonctions et le porter aux managers concernés pour clarifier les priorités.",
+     "Réunir les deux membres pour un exercice de cohésion d'équipe et renforcer ainsi leur communication interpersonnelle au quotidien.",
+     "Fixer une nouvelle règle d'équipe imposant la courtoisie et instaurer un cadre formel pour les échanges sur les priorités.",
+     "Réaffecter l'un des deux membres à une autre tâche et limiter ainsi le risque que le désaccord ne se reproduise."
+    ],
+    "en": [
+     "Document the objective conflict between the two functions and raise it with the relevant managers to clarify priorities.",
+     "Bring the two members together for a team-building exercise and thereby strengthen their ongoing interpersonal communication.",
+     "Set a new team rule requiring courtesy and establish a formal framework for discussions about priorities.",
+     "Reassign one of the two members to another task and thereby limit the risk of the disagreement recurring."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le fait décisif est que la source du conflit est structurelle : des objectifs contradictoires venus de l'extérieur de l'équipe. Documenter le conflit d'objectifs et le porter aux managers concernés traite la cause réelle. Réunir les deux membres pour un exercice de cohésion traite un symptôme interpersonnel alors que le problème est organisationnel. Fixer une règle de courtoisie encadre le comportement sans toucher à la cause. Réaffecter l'un des deux membres déplace le conflit sans le résoudre, puisque les objectifs contradictoires resteront en place pour quiconque occupera le poste.",
+    "en": "The decisive fact is that the conflict's source is structural: contradictory objectives set outside the team. Documenting the objective conflict and raising it with the relevant managers addresses the real cause. Bringing the two members together for team building treats an interpersonal symptom when the problem is organizational. Setting a courtesy rule constrains behavior without touching the cause. Reassigning one member moves the conflict elsewhere, since the contradictory objectives remain for whoever holds the role."
+   },
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE2-20260922-1039-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260922-1039-1-02",
+   "enabler": "Analyze the context for the conflict.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un fournisseur clé et l'équipe interne s'opposent sur la cause d'un retard. Le chef de projet a déjà entendu les deux parties séparément et leurs versions divergent fortement sur les faits. Que doit-il faire avant de proposer une solution ?",
+    "en": "A key supplier and the internal team disagree about the cause of a delay. The project manager has already heard both parties separately and their accounts of the facts diverge sharply. What should the project manager do before proposing a solution?"
+   },
+   "options": {
+    "fr": [
+     "Adopter la version du fournisseur, celui-ci possédant l'expertise technique reconnue sur le composant concerné.",
+     "Rassembler les éléments factuels vérifiables des deux côtés pour établir une chronologie commune des événements.",
+     "Adopter la version de l'équipe interne, celle-ci connaissant mieux le contexte global et l'historique du projet.",
+     "Proposer un compromis équitable, en répartissant la responsabilité perçue du retard entre les deux parties concernées."
+    ],
+    "en": [
+     "Adopt the supplier's version, given its recognized technical expertise on the component in question.",
+     "Gather verifiable factual elements from both sides to establish a shared timeline of events.",
+     "Adopt the internal team's version, given its stronger grasp of the project's overall context and history.",
+     "Propose a fair compromise, distributing the perceived responsibility for the delay between both involved parties."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le fait décisif est que les deux versions divergent sur les faits eux-mêmes, pas seulement sur leur interprétation. Rassembler les éléments factuels vérifiables établit une base commune avant tout jugement. Adopter la version du fournisseur ou celle de l'équipe interne revient à trancher sur la base de la confiance accordée à une source plutôt que sur la preuve. Proposer un compromis partageant la responsabilité saute l'étape du diagnostic : on ne peut pas répartir équitablement une cause qu'on n'a pas encore établie.",
+    "en": "The decisive fact is that the two accounts diverge on the facts themselves, not just their interpretation. Gathering verifiable factual elements establishes common ground before any judgment. Adopting the supplier's version or the internal team's version means deciding based on which source is trusted rather than on evidence. Proposing a compromise that shares responsibility skips the diagnostic step: you cannot fairly apportion a cause you have not yet established."
+   },
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE2-20260922-1039-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260922-1039-1-03",
+   "enabler": "Implement an agreed-on resolution strategy.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "L'équipe a convenu, lors d'une réunion, d'une stratégie de résolution pour un conflit de ressources entre deux sous-équipes : la priorité ira désormais à la sous-équipe dont le lot a le chemin critique. Une semaine plus tard, le chef de projet constate que l'ancienne pratique de partage informel continue. Que doit-il faire ?",
+    "en": "During a meeting, the team agreed on a resolution strategy for a resource conflict between two sub-teams: priority will now go to whichever sub-team's package sits on the critical path. A week later, the project manager notices the old informal sharing practice is still happening. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Réorganiser l'équipe en deux groupes distincts et supprimer ainsi toute dépendance en ressources entre eux.",
+     "Convoquer une nouvelle réunion et rediscuter entièrement la stratégie de résolution depuis son point de départ.",
+     "Rappeler la règle convenue aux deux sous-équipes et vérifier que l'allocation suit désormais le chemin critique.",
+     "Escalader la situation au sponsor et signaler que l'équipe refuse d'appliquer les décisions déjà prises."
+    ],
+    "en": [
+     "Reorganize the team into two separate groups and thereby remove any resource dependency between them.",
+     "Call a new meeting and fully re-discuss the resolution strategy starting from its original point.",
+     "Remind both sub-teams of the agreed rule and verify that allocation now follows the critical path.",
+     "Escalate the situation to the sponsor and report that the team refuses to apply the decisions already made."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le fait décisif est qu'une stratégie a déjà été convenue et qu'elle n'est simplement pas encore appliquée de façon cohérente — ce n'est pas un rejet de la décision ni un problème structurel. Rappeler la règle convenue et vérifier son application corrige l'écart au bon niveau. Réorganiser l'équipe en deux groupes est une réponse disproportionnée à un problème d'application, pas de conception. Reconvoquer une réunion pour tout rediscuter revient à annuler un accord déjà validé sans preuve qu'il soit mauvais. Escalader au sponsor traite un simple retard de mise en œuvre comme un refus délibéré, ce qu'aucun fait ne confirme encore.",
+    "en": "The decisive fact is that a strategy was already agreed and simply is not yet being applied consistently — this is not a rejection of the decision nor a structural problem. Reminding both sub-teams of the agreed rule and verifying application corrects the gap at the right level. Reorganizing the team into two groups is a disproportionate response to an implementation issue, not a design one. Calling a new meeting to fully re-discuss undoes an already-validated agreement without evidence it is flawed. Escalating to the sponsor treats a simple implementation lag as deliberate refusal, which no fact yet confirms."
+   },
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE2-20260922-1039-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260922-1039-1-04",
+   "enabler": "Communicate conflict management principles with the team and external stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un nouveau partenaire externe rejoint le projet et n'a jamais travaillé avec l'équipe auparavant. Aucun conflit ne s'est encore produit, mais l'historique du projet montre que les désaccords entre partenaires externes et équipe interne surviennent souvent lors des revues de jalons. Que doit faire le chef de projet ?",
+    "en": "A new external partner joins the project and has never worked with the team before. No conflict has occurred yet, but the project's history shows disagreements between external partners and the internal team often arise during milestone reviews. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Attendre la première revue de jalon et observer comment le partenaire réagit avant d'intervenir directement.",
+     "Demander au sponsor d'imposer au partenaire un accord de confidentialité renforcé dès son arrivée dans le projet.",
+     "Organiser un atelier de résolution de conflit une fois qu'un premier désaccord sera survenu avec ce partenaire.",
+     "Présenter au partenaire, dès son intégration, les principes de gestion des conflits adoptés par l'équipe et la façon dont les désaccords y sont traités."
+    ],
+    "en": [
+     "Wait for the first milestone review and observe how the partner reacts before intervening directly.",
+     "Ask the sponsor to impose a stricter confidentiality agreement on the partner right upon their arrival on the project.",
+     "Organize a conflict-resolution workshop once a first disagreement has occurred with this partner.",
+     "Present the team's conflict management principles to the partner right at onboarding, along with how disagreements are typically handled."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le fait décisif est que l'historique du projet identifie un point de friction récurrent et prévisible avec les partenaires externes. Présenter les principes de gestion des conflits dès l'intégration prévient ce risque connu avant qu'il ne se matérialise. Attendre la première revue de jalon pour observer laisse le risque connu se réaliser sans y avoir préparé le partenaire. Demander un accord de confidentialité renforcé répond à une préoccupation différente, sans lien avec la source de friction identifiée. Organiser un atelier après un premier désaccord traite le problème une fois qu'il est déjà survenu, alors que l'historique permettait de l'anticiper.",
+    "en": "The decisive fact is that the project's history identifies a recurring, predictable friction point with external partners. Presenting conflict management principles at onboarding prevents this known risk before it materializes. Waiting for the first milestone review to observe lets the known risk play out without having prepared the partner. Asking for a stricter confidentiality agreement addresses a different concern, unrelated to the identified friction source. Organizing a workshop after a first disagreement addresses the problem once it has already occurred, when the history allowed it to be anticipated."
+   },
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE2-20260922-1039-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260922-1039-1-05",
+   "enabler": "Manage and rectify ground rule violations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une réunion d'équipe, un membre interrompt systématiquement ses collègues, en violation de la règle de fonctionnement adoptée par l'équipe sur le tour de parole. C'est la première fois que ce comportement se produit avec cette personne. Que doit faire le chef de projet ?",
+    "en": "During a team meeting, one member repeatedly interrupts colleagues, violating the team's adopted ground rule on speaking turns. This is the first time this behavior has occurred with this person. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Rappeler la règle en aparté après la réunion et vérifier que le comportement s'améliore lors de la suivante.",
+     "Signaler l'incident au manager fonctionnel de la personne et envisager avec lui une mesure disciplinaire appropriée.",
+     "Retirer la personne de la réunion en cours et préserver ainsi le climat d'écoute pour le reste de l'équipe.",
+     "Réviser immédiatement la règle de tour de parole pour toute l'équipe et écarter ainsi toute ambiguïté persistante."
+    ],
+    "en": [
+     "Remind the person of the rule privately after the meeting and check whether the behavior improves at the next one.",
+     "Report the incident to the person's functional manager and consider with them an appropriate disciplinary action.",
+     "Remove the person from the current meeting and thereby preserve the listening climate for the rest of the team.",
+     "Immediately revise the team's speaking-turn rule for everyone and thereby remove any lingering ambiguity."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le fait décisif est qu'il s'agit d'une première occurrence, sans schéma établi. Rappeler la règle en aparté et vérifier l'amélioration correspond à une réponse proportionnée à un premier écart. Signaler au manager fonctionnel pour une mesure disciplinaire escalade prématurément une situation qui n'a pas encore montré de récurrence. Retirer la personne de la réunion est une réponse disproportionnée à un incident isolé et non répété. Réviser la règle pour toute l'équipe traite un manquement individuel comme s'il révélait un défaut de la règle elle-même, ce qu'aucun fait ne suggère ici.",
+    "en": "The decisive fact is that this is a first occurrence, with no established pattern. Reminding the person of the rule privately and checking for improvement is a proportionate response to a first lapse. Reporting to the functional manager for disciplinary action prematurely escalates a situation that has not yet shown recurrence. Removing the person from the meeting is a disproportionate response to an isolated, non-repeated incident. Revising the rule for the whole team treats an individual lapse as if it revealed a flaw in the rule itself, which no fact here suggests."
+   },
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE2-20260922-1039-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260922-1039-2-01",
+   "enabler": "Identify internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet lance une phase de conception. Le sponsor a communiqué des objectifs de haut niveau, mais aucun échange direct n'a eu lieu avec les utilisateurs finaux, qui seront pourtant les premiers à utiliser le produit livré. Que doit faire le chef de projet avant de valider les exigences fonctionnelles ?",
+    "en": "A project manager is starting a design phase. The sponsor has communicated high-level objectives, but no direct exchange has occurred with the end users, who will be the primary users of the delivered product. What should the project manager do before validating the functional requirements?"
+   },
+   "options": {
+    "fr": [
+     "Planifier des entretiens avec un échantillon d'utilisateurs finaux pour recueillir leurs attentes concrètes avant validation.",
+     "Organiser des ateliers avec les utilisateurs finaux pour recueillir leurs attentes concrètes avant validation.",
+     "Demander au sponsor de confirmer par écrit que ses objectifs représentent bien les besoins réels des utilisateurs finaux.",
+     "Diffuser un court sondage aux utilisateurs finaux afin de recueillir leurs attentes concrètes avant validation."
+    ],
+    "en": [
+     "Schedule interviews with a sample of end users to gather their concrete expectations before validation.",
+     "Organize workshops with end users to gather their concrete expectations before validation.",
+     "Ask the sponsor to confirm in writing that the objectives truly represent the end users' actual needs.",
+     "Distribute a brief survey to end users in order to gather their concrete expectations before validation."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les objectifs du sponsor ne remplacent pas la voix directe des utilisateurs finaux, qui vivront le produit au quotidien. Organiser des ateliers avec eux permet de capter des attentes concrètes avant que les exigences ne soient figées. Planifier des entretiens sur un échantillon restreint ou diffuser un sondage court recueille une information plus fragmentaire et moins interactive, donc moins fiable pour cerner des attentes nuancées à ce stade. Demander au sponsor de confirmer par écrit que ses objectifs représentent les besoins des utilisateurs revient à valider une hypothèse non vérifiée plutôt qu'à identifier les attentes réelles.",
+    "en": "The sponsor's objectives do not substitute for the direct voice of end users, who will live with the product daily. Organizing workshops with them captures concrete expectations before requirements are locked in. Scheduling interviews with a limited sample or distributing a short survey gathers more fragmented and less interactive information, making it less reliable for capturing nuanced expectations at this stage. Asking the sponsor to confirm in writing that the objectives represent user needs validates an unverified assumption rather than identifying actual expectations."
+   },
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE6-20260922-1039-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260922-1039-2-02",
+   "enabler": "Align and maintain outcomes to internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "À mi-parcours d'un projet, un livrable intermédiaire respecte les spécifications techniques initiales, mais le client externe indique lors d'une revue que ses priorités métier ont évolué depuis la signature du contrat. Que doit faire le chef de projet ?",
+    "en": "Midway through a project, an interim deliverable meets the original technical specifications, but the external customer indicates during a review that their business priorities have shifted since contract signature. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Rassurer le client en lui confirmant que le livrable respecte bien le contrat signé initialement avec lui.",
+     "Documenter l'évolution des priorités, puis poursuivre la production selon le plan initial validé sans le remettre en cause.",
+     "Évaluer avec le client l'écart entre les priorités actuelles et le plan, puis ajuster la trajectoire si nécessaire.",
+     "Transmettre l'information au comité de gouvernance, pour qu'il décide de la suite à donner au contrat en cours."
+    ],
+    "en": [
+     "Reassure the customer by confirming to them that the deliverable does comply with the originally signed contract.",
+     "Document the shift in priorities, then continue production according to the originally validated plan without revisiting it.",
+     "Assess with the customer the gap between current priorities and the plan, then adjust the trajectory if needed.",
+     "Forward the information to the governance board, so it can decide on the contract's continuation going forward."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Maintenir l'alignement avec les attentes du client suppose de traiter le changement de priorités comme une donnée active, pas comme un fait à archiver. Évaluer avec le client l'écart entre priorités actuelles et plan permet de décider ensemble si un ajustement est justifié. Rassurer le client en confirmant la conformité contractuelle ignore que la conformité technique ne garantit plus la valeur perçue. Documenter l'évolution et poursuivre selon le plan initial traite l'information comme passive alors qu'elle appelle une réponse. Transmettre au comité de gouvernance est prématuré : la situation ne dépasse pas encore le mandat du chef de projet à ce stade.",
+    "en": "Maintaining alignment with customer expectations means treating a priority shift as active information, not a fact to be filed away. Assessing with the customer the gap between current priorities and the plan allows a joint decision on whether an adjustment is warranted. Reassuring the customer by confirming contractual compliance ignores that technical compliance no longer guarantees perceived value. Documenting the shift and continuing per the original plan treats the information as passive when it calls for a response. Forwarding it to the governance board is premature: the situation does not yet exceed the project manager's mandate at this stage."
+   },
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE6-20260922-1039-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260922-1039-2-03",
+   "enabler": "Monitor internal and external customer satisfaction/expectations and respond as needed.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet reçoit un score de satisfaction interne en baisse constante depuis trois cycles de mesure, sans qu'aucune plainte formelle n'ait été déposée par les parties prenantes concernées. Que doit-il faire ?",
+    "en": "A project manager receives an internal satisfaction score that has been steadily declining over three measurement cycles, with no formal complaint filed by the stakeholders involved. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Attendre la tenue d'un quatrième cycle de mesure afin de confirmer la tendance avant toute action.",
+     "Renforcer, dans le prochain rapport d'avancement, la communication des réussites obtenues sur le projet.",
+     "Ajouter une question ouverte au prochain sondage, afin de préciser les causes possibles de cette baisse.",
+     "Organiser des échanges directs avec les parties prenantes concernées pour comprendre les causes de la baisse."
+    ],
+    "en": [
+     "Wait for a fourth measurement cycle to take place in order to confirm the trend before taking any action.",
+     "Strengthen, within the next progress report, the communication of the successes achieved on the project.",
+     "Add an open-ended question to the next survey, in order to clarify the possible causes of this decline.",
+     "Hold direct conversations with the stakeholders involved to understand the causes of the decline."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Trois cycles consécutifs de baisse constituent une tendance suffisamment établie pour agir, même sans plainte formelle : l'absence de plainte ne signifie pas l'absence de problème. Organiser des échanges directs avec les parties prenantes concernées permet d'obtenir une compréhension riche et rapide des causes. Attendre un quatrième cycle retarde une réponse déjà justifiée par le signal existant. Renforcer la communication des réussites traite un symptôme de perception sans chercher la cause réelle. Ajouter une question ouverte au prochain sondage reporte la collecte d'information à un cycle ultérieur alors qu'une clarification immédiate est possible.",
+    "en": "Three consecutive cycles of decline constitute a sufficiently established trend to act on, even without a formal complaint: the absence of a complaint does not mean the absence of a problem. Holding direct conversations with the stakeholders involved provides a rich and fast understanding of the causes. Waiting for a fourth cycle delays a response already justified by the existing signal. Strengthening the communication of successes addresses a perception symptom without seeking the real cause. Adding an open-ended question to the next survey postpones information gathering to a later cycle when immediate clarification is possible."
+   },
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE6-20260922-1039-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260922-1039-2-04",
+   "enabler": "Identify internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet démarre un projet interne dont les utilisateurs internes appartiennent à trois départements différents, chacun avec des priorités opérationnelles distinctes. Que doit-il faire pour cerner les attentes avant de figer le périmètre ?",
+    "en": "A project manager is starting an internal project whose internal users belong to three different departments, each with distinct operational priorities. What should he do to capture expectations before locking the scope?"
+   },
+   "options": {
+    "fr": [
+     "Rencontrer séparément un représentant de chaque département pour recueillir ses attentes spécifiques.",
+     "Rédiger une charte de projet reprenant simplement les objectifs généraux communiqués en amont par la direction.",
+     "Consulter uniquement le représentant du département le plus impacté par le changement pour définir le périmètre.",
+     "Diffuser une note de synthèse aux trois départements, puis attendre patiemment leurs retours écrits respectifs."
+    ],
+    "en": [
+     "Meet separately with a representative from each department to gather their specific expectations.",
+     "Draft a project charter that simply reflects the general objectives communicated beforehand by leadership.",
+     "Consult only the representative of the department most affected by the change to define the scope.",
+     "Distribute a summary note to the three departments, then patiently wait for their respective written feedback."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Trois départements aux priorités distinctes appellent une collecte différenciée : rencontrer séparément un représentant de chacun garantit que les attentes spécifiques de chaque groupe sont bien captées avant que le périmètre ne soit figé. Rédiger une charte reprenant les objectifs généraux de la direction saute l'étape de consultation des utilisateurs eux-mêmes. Consulter uniquement le département le plus impacté ignore les deux autres, dont les attentes comptent aussi. Diffuser une note de synthèse et attendre des retours écrits produit une information plus passive et moins approfondie qu'un échange direct avec chaque groupe.",
+    "en": "Three departments with distinct priorities call for differentiated collection: meeting separately with a representative from each ensures that each group's specific expectations are properly captured before the scope is locked. Drafting a charter reflecting leadership's general objectives skips the step of consulting the users themselves. Consulting only the most affected department ignores the other two, whose expectations also matter. Distributing a summary note and waiting for written feedback produces more passive and less thorough information than direct engagement with each group."
+   },
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE6-20260922-1039-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260922-1039-2-05",
+   "enabler": "Align and maintain outcomes to internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un client externe demande une modification mineure du produit livré, en cours de développement, arguant qu'elle correspond mieux à son usage réel. L'équipe technique indique que le changement est simple à intégrer mais qu'une revue d'impact n'a pas encore été réalisée. Que doit faire le chef de projet ?",
+    "en": "An external customer requests a minor modification to the product under development, arguing that it better fits their actual use. The technical team indicates the change is simple to integrate but that an impact review has not yet been performed. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Différer l'intégration du changement jusqu'à ce que la revue d'impact soit réalisée.",
+     "Intégrer directement le changement demandé, en se fondant sur la simplicité technique rapportée par l'équipe.",
+     "Refuser la demande formulée, afin de préserver le calendrier de livraison déjà communiqué au client.",
+     "Informer le client que le changement demandé sera traité une fois le projet en cours clôturé."
+    ],
+    "en": [
+     "Defer integrating the change until the impact review has been performed.",
+     "Integrate the requested change directly, based on the technical simplicity reported by the team.",
+     "Decline the request made, in order to preserve the delivery schedule already communicated to the customer.",
+     "Inform the customer that the requested change will be handled once the current project has closed."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La simplicité technique rapportée ne remplace pas une revue d'impact formelle, qui peut révéler des conséquences sur d'autres composants ou engagements. Différer l'intégration jusqu'à cette revue reste aligné avec les attentes du client tout en protégeant l'intégrité du produit. Intégrer directement le changement sur la base de la seule simplicité rapportée expose le projet à un risque non évalué. Refuser la demande pour préserver le calendrier ignore une attente légitime du client sans justification suffisante. Informer le client que le changement sera traité après la clôture du projet abandonne l'alignement avec ses attentes actuelles sans raison technique valable.",
+    "en": "Reported technical simplicity does not substitute for a formal impact review, which may reveal consequences for other components or commitments. Deferring integration until that review is complete keeps alignment with the customer's expectations while protecting product integrity. Integrating the change directly based solely on reported simplicity exposes the project to unassessed risk. Declining the request to preserve the schedule ignores a legitimate customer expectation without sufficient justification. Informing the customer that the change will be handled after project closure abandons alignment with current expectations without valid technical reason."
+   },
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260922-1039",
+   "release": "qL2-PE6-20260922-1039-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
