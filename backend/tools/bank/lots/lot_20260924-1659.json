@@ -1,0 +1,843 @@
+{
+ "run_id": "20260924-1659",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR10-20260924-1659-1-01",
+   "enabler": "Determine criteria to successfully close the project or phase.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet reprend un projet en cours de route, à mi-chemin de la phase d'exécution. Il constate qu'aucun critère de clôture n'a jamais été formalisé avec le sponsor, alors que la phase actuelle doit se terminer dans six semaines. L'équipe continue de produire les livrables prévus au plan initial. Que doit-il faire en priorité ?",
+    "en": "A project manager takes over a project midway through the execution phase. She finds that no closure criteria were ever formalized with the sponsor, even though the current phase is due to end in six weeks. The team continues producing the deliverables set out in the initial plan. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Poursuivre la production des livrables planifiés et reporter la définition des critères de clôture à la revue de fin de phase, dans six semaines.",
+     "Organiser dans les prochains jours une session avec le sponsor pour formaliser les critères de clôture de la phase en cours.",
+     "Demander à l'équipe qualité d'auditer les livrables produits jusqu'ici pour vérifier leur conformité au plan initial.",
+     "Transmettre au comité de gouvernance une demande de report de la date de fin de phase, faute de critères définis."
+    ],
+    "en": [
+     "Continue producing the planned deliverables and postpone defining closure criteria until the end-of-phase review, six weeks from now.",
+     "Arrange a session with the sponsor in the coming days to formalize the closure criteria for the current phase.",
+     "Ask the quality team to audit the deliverables produced so far for compliance with the initial plan.",
+     "Submit a request to the governance board to postpone the phase-end date, since criteria have not been defined."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Six semaines suffisent encore à clarifier ce que « terminé » signifie pour cette phase, et le faire maintenant évite de découvrir un désaccord au moment de la clôture. Attendre la revue de fin de phase revient à formaliser les critères après coup, quand il est trop tard pour orienter le travail restant. Auditer la conformité au plan initial ne répond pas à la question posée : le plan initial ne contenait pas de critères de clôture, donc rien ne garantit qu'il reflète les attentes réelles du sponsor. Demander un report au comité de gouvernance est prématuré : rien dans la situation n'indique que six semaines sont insuffisantes une fois les critères clarifiés.",
+    "en": "Six weeks is still enough time to clarify what 'done' means for this phase, and doing so now avoids discovering a disagreement at closure. Waiting for the end-of-phase review means formalizing criteria after the fact, when it is too late to steer the remaining work. Auditing compliance with the initial plan does not answer the question at hand: the initial plan contained no closure criteria, so nothing guarantees it reflects the sponsor's actual expectations. Requesting a postponement from the governance board is premature: nothing in the situation indicates that six weeks will be insufficient once criteria are clarified."
+   },
+   "decision_atom": "Décider si l'on formalise les critères de clôture de phase maintenant ou lors de la revue de fin de phase.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Six semaines restent avant la fin de phase, et aucun critère de clôture n'a jamais été formalisé avec le sponsor.",
+   "bascule": "Si la phase se terminait dans deux jours au lieu de six semaines, différer la clarification deviendrait la seule option réaliste et changerait la nature du choix.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PR10-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260924-1659-1-02",
+   "enabler": "Validate readiness for transition (e.g., to operations team or next phase).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet de mise à niveau d'un système interne approche de sa date de transition vers l'équipe d'exploitation. Le chef de projet a préparé la documentation technique et organisé une formation pour les opérateurs. L'équipe d'exploitation n'a pas encore confirmé qu'elle dispose des effectifs formés nécessaires pour prendre le relais à la date prévue. Que doit faire le chef de projet en priorité ?",
+    "en": "A project to upgrade an internal system is approaching its transition date to the operations team. The project manager has prepared the technical documentation and arranged training for the operators. The operations team has not yet confirmed that it has enough trained staff to take over on the planned date. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Diffuser la documentation technique finalisée à l'ensemble des opérateurs identifiés dans le plan de transition.",
+     "Ajouter une session de formation supplémentaire pour renforcer la maîtrise du système par les opérateurs déjà formés.",
+     "Obtenir de l'équipe d'exploitation la confirmation qu'elle dispose des effectifs formés nécessaires avant la date prévue.",
+     "Solliciter le sponsor pour qu'il tranche si la transition doit être maintenue à la date initialement prévue."
+    ],
+    "en": [
+     "Distribute the finalized technical documentation to all operators identified in the transition plan.",
+     "Add an extra training session to strengthen the operators' mastery of the system.",
+     "Obtain confirmation from the operations team that it has the trained staff needed before the planned date.",
+     "Ask the sponsor to decide whether the transition should proceed on the originally planned date."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La question de fond n'est pas technique ni pédagogique : c'est de savoir si l'équipe destinataire est prête, et c'est à elle de le confirmer. Diffuser la documentation et ajouter une formation sont des actions déjà engagées par le chef de projet, mais elles ne remplacent pas la confirmation attendue de l'autre partie. Solliciter le sponsor pour trancher la date déplace vers lui une décision qui ne lui revient pas encore : rien n'indique que l'équipe d'exploitation ne sera pas prête, seulement qu'elle n'a pas confirmé. C'est cette confirmation qu'il faut d'abord obtenir, directement auprès du propriétaire de la transition.",
+    "en": "The real question is not technical or pedagogical: it is whether the receiving team is ready, and that team is the one who must confirm it. Distributing documentation and adding training are actions the project manager has already taken, but they do not substitute for the confirmation expected from the other party. Asking the sponsor to decide on the date shifts to him a decision that is not yet his to make: nothing indicates the operations team will not be ready, only that it has not confirmed. That confirmation is what must be obtained first, directly from the owner of the transition."
+   },
+   "decision_atom": "Décider qui doit attester que l'équipe destinataire est prête à recevoir la transition.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'équipe d'exploitation elle-même n'a pas confirmé disposer des effectifs formés nécessaires.",
+   "bascule": "Si l'équipe d'exploitation avait déjà confirmé ses effectifs mais exprimé un doute sur leur niveau de maîtrise, renforcer la formation deviendrait l'action pertinente.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PR10-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260924-1659-1-03",
+   "enabler": "Obtain project stakeholder approval of project completion.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet prépare la clôture d'un projet et sollicite l'approbation formelle du sponsor. Celui-ci répond par courriel : « Tout me semble en ordre, vous pouvez avancer. » Aucun document d'acceptation formel n'a été signé, et le message ne mentionne aucun des livrables spécifiques du projet. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager is preparing project closure and requests formal approval from the sponsor. The sponsor replies by email: 'Everything looks fine to me, you can move forward.' No formal acceptance document has been signed, and the message does not mention any specific project deliverable. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Archiver le courriel du sponsor comme preuve d'approbation et lancer les activités de clôture administrative.",
+     "Informer l'équipe que le projet est approuvé et peut désormais être considéré comme terminé.",
+     "Relancer le sponsor pour obtenir des précisions sur les points restés ambigus dans sa réponse.",
+     "Faire signer au sponsor le document formel d'acceptation listant explicitement chaque livrable du projet."
+    ],
+    "en": [
+     "File the sponsor's email as proof of approval and launch the administrative closure activities.",
+     "Inform the team that the project is approved and can now be considered complete.",
+     "Follow up with the sponsor for clarification on the points left ambiguous in the reply.",
+     "Have the sponsor sign the formal acceptance document explicitly listing each project deliverable."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Une formule générale de satisfaction, envoyée par courriel et sans référence aux livrables, ne constitue pas une preuve d'acceptation formelle : elle ne permet pas de savoir ce que le sponsor a réellement examiné. Archiver ce courriel comme preuve d'approbation, ou considérer le projet terminé sur cette seule base, revient à traiter un signal informel comme s'il avait la valeur d'une acceptation documentée. Relancer pour obtenir des précisions reste utile mais insuffisant : même clarifié par écrit informel, le message n'aurait toujours pas la forme d'une acceptation traçable liée à chaque livrable. Il faut obtenir la signature du document formel qui liste explicitement ce qui est accepté.",
+    "en": "A general expression of satisfaction, sent by email with no reference to deliverables, does not constitute proof of formal acceptance: it gives no indication of what the sponsor actually reviewed. Filing this email as proof of approval, or treating the project as complete on that basis alone, both treat an informal signal as if it carried the weight of documented acceptance. Following up for clarification is useful but insufficient: even clarified in an informal written exchange, the message would still lack the form of a traceable acceptance tied to each deliverable. What is needed is the sponsor's signature on the formal document that explicitly lists what is being accepted."
+   },
+   "decision_atom": "Décider si une réponse informelle et générale du sponsor suffit comme preuve d'approbation de la clôture.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le message est un courriel non signé, ne cite aucun livrable spécifique du projet.",
+   "bascule": "Si le courriel du sponsor listait explicitement chaque livrable et portait une validation identifiable, il pourrait constituer une preuve suffisante sans document séparé.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PR10-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260924-1659-1-04",
+   "enabler": "Conclude activities to close the project or phase (e.g., final lessons learned, retrospectives, procurement, financials, resources).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet entame la clôture d'un projet. L'équipe est impatiente d'être libérée pour rejoindre de nouvelles affectations, et le sponsor souhaite recevoir rapidement le rapport financier final. Aucune session de retour d'expérience n'a encore été organisée. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager begins closing out a project. The team is eager to be released for new assignments, and the sponsor wants the final financial report quickly. No lessons-learned session has yet been organized. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser la session de retour d'expérience avant de libérer les membres de l'équipe vers leurs nouvelles affectations.",
+     "Transmettre au sponsor le rapport financier final, puis planifier la session de retour d'expérience une fois l'équipe dispersée.",
+     "Libérer l'équipe vers ses nouvelles affectations et organiser la session de retour d'expérience par visioconférence ultérieurement.",
+     "Clore les contrats des fournisseurs en priorité, en différant le retour d'expérience à une date à convenir avec le sponsor."
+    ],
+    "en": [
+     "Hold the lessons-learned session before releasing team members to their new assignments.",
+     "Send the final financial report to the sponsor, then schedule the lessons-learned session once the team has dispersed.",
+     "Release the team to their new assignments and organize the lessons-learned session later by videoconference.",
+     "Close out supplier contracts first, postponing the lessons-learned session to a date to be agreed with the sponsor."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les membres de l'équipe sont les détenteurs directs des enseignements du projet, et cette mémoire se dilue vite une fois chacun reparti sur d'autres priorités. Faire cette session avant la libération de l'équipe garantit une matière riche et immédiate. Transmettre d'abord le rapport financier, ou libérer l'équipe en reportant la session à plus tard, traite le retour d'expérience comme une activité qui peut attendre alors que c'est justement la disponibilité de l'équipe qui est la ressource rare ici. Clore les contrats fournisseurs en priorité répond à une autre échéance de clôture, mais ne règle pas le risque propre au retour d'expérience : perdre l'accès à la mémoire collective de l'équipe.",
+    "en": "Team members are the direct holders of the project's lessons, and that memory fades quickly once everyone has moved on to other priorities. Holding the session before releasing the team ensures rich, immediate input. Sending the financial report first, or releasing the team while postponing the session, both treat the lessons-learned activity as something that can wait, when it is precisely the team's availability that is the scarce resource here. Closing out supplier contracts first addresses a different closure deadline, but does not address the risk specific to lessons learned: losing access to the team's collective memory."
+   },
+   "decision_atom": "Décider dans quel ordre mener le retour d'expérience par rapport à la libération de l'équipe et aux autres activités de clôture.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "L'équipe est sur le point d'être libérée vers de nouvelles affectations, ce qui rend sa disponibilité temporaire et rare.",
+   "bascule": "Si l'équipe restait disponible plusieurs semaines après sa réaffectation, reporter la session ne coûterait plus la perte de mémoire collective.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PR10-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260924-1659-1-05",
+   "enabler": "Validate readiness for transition (e.g., to operations team or next phase).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux jours avant la transition planifiée vers l'équipe d'exploitation, un testeur signale au chef de projet une anomalie mineure sur une fonctionnalité secondaire, déjà connue et documentée avec un contournement validé par les utilisateurs pilotes. Le testeur suggère de reporter la transition pour corriger ce point. Que doit faire le chef de projet ?",
+    "en": "Two days before the planned transition to the operations team, a tester reports a minor defect in a secondary feature to the project manager — a defect already known and documented, with a workaround validated by pilot users. The tester suggests postponing the transition to fix this point. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Corriger l'anomalie avant la transition, en mobilisant l'équipe technique sur les deux jours restants.",
+     "Maintenir la date de transition prévue et consigner l'anomalie mineure comme point de suivi post-transition.",
+     "Transmettre la suggestion du testeur au comité de gouvernance pour arbitrage sur le report de la date.",
+     "Solliciter le sponsor pour qu'il valide personnellement le contournement déjà accepté par les utilisateurs pilotes."
+    ],
+    "en": [
+     "Fix the defect before the transition, mobilizing the technical team over the remaining two days.",
+     "Keep the planned transition date and log the minor defect as a post-transition follow-up item.",
+     "Forward the tester's suggestion to the governance board for a decision on postponing the date.",
+     "Ask the sponsor to personally validate the workaround already accepted by the pilot users."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'anomalie est mineure, déjà connue, et un contournement a déjà été validé par les utilisateurs pilotes : rien de nouveau ne justifie de remettre en cause la préparation de la transition. Mobiliser l'équipe technique en urgence traite un point mineur comme s'il était bloquant, au prix de deux jours de préparation critiques. Faire trancher le comité de gouvernance sur un simple report élève au niveau de la gouvernance une décision que la situation ne justifie pas : aucun élément ne remet en cause le contournement déjà en place. Solliciter une validation supplémentaire du sponsor sur un contournement déjà accepté par les utilisateurs ajoute une étape sans objet, alors que ce point doit simplement être suivi après la transition.",
+    "en": "The defect is minor, already known, and a workaround has already been validated by pilot users: nothing new justifies reconsidering the transition preparation. Mobilizing the technical team urgently treats a minor point as if it were blocking, at the cost of two critical days of preparation. Escalating a simple postponement question to the governance board raises to governance level a decision the situation does not warrant: nothing calls the existing workaround into question. Asking the sponsor for additional validation of a workaround already accepted by users adds a pointless step, when this item simply needs to be tracked after the transition."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à donner à une anomalie mineure déjà connue et contournée, signalée juste avant la transition.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'anomalie est déjà connue, documentée, et un contournement a déjà été validé par les utilisateurs pilotes.",
+   "bascule": "Si le contournement n'avait pas été validé par les utilisateurs pilotes, ou si l'anomalie touchait une fonctionnalité critique, une escalade ou une correction immédiate deviendrait justifiée.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PR10-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260924-1659-2-01",
+   "enabler": "Help ensure a shared vision with key stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet constate que deux responsables d'équipe décrivent différemment l'objectif principal du projet lors d'un point d'avancement. Le sponsor n'a pas encore validé formellement l'énoncé de vision, bien qu'il l'ait rédigé lui-même en début de projet. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager notices that two team leads describe the project's main objective differently during a status meeting. The sponsor has not yet formally validated the vision statement, even though the sponsor drafted it at project start. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Réunir les deux responsables d'équipe et leur demander de s'accorder ensemble sur une formulation commune de l'objectif.",
+     "Demander au sponsor de confirmer et de clarifier l'énoncé de vision auprès de l'ensemble de l'équipe.",
+     "Documenter dans le registre des risques la divergence observée et informer le sponsor de ce constat.",
+     "Rédiger une nouvelle version de l'énoncé de vision et la diffuser directement à toute l'équipe du projet."
+    ],
+    "en": [
+     "Bring the two team leads together and ask them to agree on a common wording for the objective.",
+     "Ask the sponsor to confirm and clarify the vision statement to the entire team.",
+     "Log the discrepancy in the risk register and notify the sponsor of this observation.",
+     "Draft a new version of the vision statement and distribute it directly to the whole team."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le sponsor a rédigé la vision mais ne l'a jamais validée formellement : c'est lui qui détient l'autorité sur son contenu, pas le chef de projet ni les responsables d'équipe. Faire converger les deux responsables entre eux traiterait le symptôme sans revenir à la source qui fait autorité, puisqu'ils pourraient s'accorder sur une interprétation encore différente de celle du sponsor. Documenter la divergence dans le registre des risques retarde une clarification qui ne coûte rien à demander maintenant. Rédiger soi-même une nouvelle version de la vision revient à s'attribuer une autorité qui appartient au sponsor. Solliciter le sponsor pour qu'il confirme et clarifie son propre énoncé respecte la source légitime de la vision.",
+    "en": "The sponsor drafted the vision but never formally validated it: the sponsor holds authority over its content, not the project manager or the team leads. Getting the two leads to align with each other would treat the symptom without returning to the authoritative source, since they could agree on an interpretation that still differs from the sponsor's. Logging the discrepancy in the risk register delays a clarification that costs nothing to request now. Drafting a new version alone means claiming authority that belongs to the sponsor. Asking the sponsor to confirm and clarify their own statement respects the legitimate source of the vision."
+   },
+   "decision_atom": "Décider qui doit trancher une divergence d'interprétation de la vision entre deux responsables d'équipe.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le sponsor a rédigé la vision mais ne l'a jamais validée formellement.",
+   "bascule": "Si le sponsor avait déjà validé formellement la vision et délégué son interprétation aux responsables, les faire s'accorder entre eux deviendrait acceptable.",
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE1-20260924-1659-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260924-1659-2-02",
+   "enabler": "Promote the shared vision.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une réunion mensuelle, un membre de l'équipe technique reformule la vision du projet avec une nuance légère, sans conséquence sur les décisions prises jusqu'ici ni sur les livrables en cours. Personne d'autre dans la salle ne relève d'écart. Que doit faire le chef de projet ?",
+    "en": "During a monthly meeting, a technical team member rephrases the project vision with a slight nuance, with no impact on decisions made so far or on deliverables in progress. No one else in the room raises a concern about the difference. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Convoquer une session dédiée de réalignement de la vision, y inviter les parties prenantes clés et documenter les conclusions.",
+     "Escalader la nuance observée au sponsor, lui demander une décision formelle et diffuser la formulation retenue.",
+     "Reformuler brièvement la vision dans les termes convenus, à la suite de l'intervention, sans autre action.",
+     "Demander à ce membre de rédiger une note écrite, d'expliquer l'origine de sa reformulation et de la transmettre à l'équipe."
+    ],
+    "en": [
+     "Convene a dedicated realignment session on the vision and invite all key stakeholders.",
+     "Escalate the observed nuance to the sponsor and request a formal decision on the exact wording.",
+     "Briefly restate the vision in the agreed terms right after the intervention, with no further action.",
+     "Ask this team member to write a note and explain the origin of their rephrasing."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La nuance n'a aucune conséquence sur les décisions ni sur les livrables, et aucune autre personne présente n'y voit un problème : la situation appelle un ajustement léger, pas un dispositif lourd. Convoquer une session dédiée avec toutes les parties prenantes clés mobilise des ressources disproportionnées pour un écart sans impact. Escalader au sponsor traite comme un conflit d'autorité ce qui n'est qu'une formulation imprécise. Demander une note écrite transforme un rappel anodin en une démarche d'investigation inutile. Reformuler brièvement la vision dans les termes convenus, sur le moment, remet les choses au clair à la mesure de l'enjeu réel.",
+    "en": "The nuance has no consequence on decisions or deliverables, and no one else present sees it as a problem: the situation calls for a light touch, not a heavy mechanism. Convening a dedicated session with all key stakeholders mobilizes disproportionate resources for an impact-free discrepancy. Escalating to the sponsor treats a minor wording issue as an authority conflict. Asking for a written note turns a harmless reminder into an unnecessary investigation. Briefly restating the vision in the agreed terms, on the spot, sets things straight in proportion to the actual stakes."
+   },
+   "decision_atom": "Décider de l'ampleur de la réaction à une reformulation légère de la vision sans impact.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "La nuance n'a aucune conséquence sur les décisions ni les livrables, et personne d'autre n'y voit un problème.",
+   "bascule": "Si plusieurs membres avaient repris cette nuance dans leurs décisions opérationnelles, une session dédiée deviendrait justifiée.",
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE1-20260924-1659-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20260924-1659-2-04",
+   "enabler": "Break down situations to identify the root cause of a misunderstanding of the vision.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet constate qu'une équipe fonctionnelle priorise systématiquement des tâches qui ne servent pas l'objectif principal du projet, alors que la vision a été communiquée par écrit à plusieurs reprises depuis le lancement. Que doit faire le chef de projet en premier lieu ?",
+    "en": "A project manager notices that a functional team consistently prioritizes tasks that do not serve the project's main objective, even though the vision has been communicated in writing several times since kickoff. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Échanger directement avec l'équipe pour comprendre ce qu'elle a retenu de la vision et pourquoi.",
+     "Remplacer le responsable de l'équipe fonctionnelle et confier le poste à une personne plus alignée sur la vision.",
+     "Renvoyer à l'équipe le document de vision déjà diffusé, accompagné d'un rappel de son importance.",
+     "Signaler l'écart de priorisation au comité de gouvernance et lui demander un arbitrage sur les priorités du projet."
+    ],
+    "en": [
+     "Talk directly with the team to understand what they retained from the vision and why.",
+     "Replace the functional team's lead and assign someone more aligned with the vision.",
+     "Resend the vision document to the team and remind them of its importance.",
+     "Report the prioritization gap to the governance committee and request arbitration on priorities."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La vision a été communiquée par écrit à plusieurs reprises, ce qui écarte l'hypothèse d'un simple défaut de diffusion : le problème se situe ailleurs, et il faut d'abord comprendre où, avant d'agir. Renvoyer le même document déjà diffusé répète une action qui n'a pas fonctionné sans chercher pourquoi. Signaler l'écart au comité de gouvernance fait porter à une instance externe un diagnostic que le chef de projet n'a pas encore posé lui-même. Remplacer le responsable de l'équipe suppose un problème de personne ou de volonté, alors qu'aucun fait de la situation ne l'établit. Échanger directement avec l'équipe pour comprendre ce qu'elle a compris de la vision permet d'identifier la cause réelle avant toute autre décision.",
+    "en": "The vision was communicated in writing several times, which rules out a simple distribution failure: the problem lies elsewhere, and it must first be located before acting. Resending the same already-distributed document repeats an action that has not worked without investigating why. Reporting the gap to the governance committee hands an external body a diagnosis the project manager has not yet made. Replacing the team lead assumes a personal or willingness issue, though nothing in the situation establishes that. Talking directly with the team to understand what they took away from the vision allows the real cause to be identified before any other decision."
+   },
+   "decision_atom": "Décider de la première action face à un désalignement persistant malgré une communication écrite répétée de la vision.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "La vision a été communiquée par écrit à plusieurs reprises depuis le lancement, ce qui écarte un simple défaut de diffusion.",
+   "bascule": "Si la vision n'avait jamais été communiquée formellement à cette équipe, renvoyer le document deviendrait une action pertinente.",
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE1-20260924-1659-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260924-1659-1-01",
+   "enabler": "Manage and rectify ground rule violations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe a convenu que les caméras seraient activées lors des réunions de suivi quotidiennes. Lors de la réunion de ce matin, un membre garde sa caméra éteinte pour la première fois, sans explication. La réunion se déroule normalement par ailleurs et l'équipe doit encore traiter plusieurs points urgents avant la fin du créneau prévu. Que doit faire le chef de projet ?",
+    "en": "A team agreed that cameras would stay on during daily stand-ups. During this morning's meeting, one member keeps their camera off for the first time, without explanation. The meeting otherwise proceeds normally, and the team still has several urgent items to cover before the scheduled slot ends. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Interrompre la réunion sur-le-champ pour rappeler la règle commune devant tout le groupe, avant de reprendre les points urgents restants.",
+     "Retirer la règle de caméra activée de la charte d'équipe dès la fin de la réunion, puisqu'un membre ne la respecte plus.",
+     "Signaler l'écart au sponsor du projet en fin de journée, et lui proposer qu'une décision de gouvernance soit prise.",
+     "Poursuivre la réunion jusqu'à son terme, puis aborder l'écart en privé avec ce membre après la séance."
+    ],
+    "en": [
+     "Pause the meeting immediately to remind the whole group of the shared rule, before resuming the remaining urgent items.",
+     "Remove the camera-on rule from the team charter right after the meeting, since one member no longer follows it.",
+     "Report the deviation to the project sponsor at the end of the day, and suggest that a governance decision be made.",
+     "Continue the meeting to its end, then address the deviation privately with that member afterward."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'écart est isolé, sans explication donnée, et la réunion contient encore plusieurs points urgents à traiter dans un créneau limité. Poursuivre la réunion jusqu'à son terme puis aborder l'écart en privé permet de traiter les urgences sans perdre de temps collectif, tout en donnant au membre concerné l'occasion de s'expliquer sans exposition publique. Interrompre la réunion devant tout le groupe pour un premier écart isolé est disproportionné et retarde les points urgents restants. Retirer la règle de la charte réagit à un cas unique comme s'il révélait un problème structurel, alors qu'aucune répétition n'est constatée. Signaler l'écart au sponsor traite un point de fonctionnement d'équipe comme une question de gouvernance, alors que rien n'indique que le chef de projet ne peut pas le régler lui-même.",
+    "en": "The deviation is isolated, unexplained, and the meeting still has several urgent items to cover in a limited slot. Continuing the meeting to its end and then addressing the deviation privately handles the urgent items without wasting group time, while giving the member a chance to explain without public exposure. Pausing the meeting in front of the whole group over a single, isolated deviation is disproportionate and delays the remaining urgent items. Removing the rule from the charter treats one instance as if it revealed a structural problem, when no pattern has been observed. Reporting the deviation to the sponsor escalates a team functioning matter to governance, when nothing suggests the project manager cannot resolve it directly."
+   },
+   "decision_atom": "Décider quand agir face à un premier écart isolé et inexpliqué à une règle commune, en pleine réunion chargée.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'écart est le premier constaté, sans explication, et la réunion contient encore des points urgents à traiter dans un créneau limité.",
+   "bascule": "Si l'écart se répétait pour la troisième fois consécutive, une intervention publique immédiate deviendrait justifiée.",
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE2-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260924-1659-1-02",
+   "enabler": "Establish an environment that fosters adherence to common ground rules.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe projet vient d'être formée. Le chef de projet propose une liste de règles de fonctionnement (délais de réponse, participation aux réunions, canaux de communication) et souhaite les mettre en place rapidement. Comment doit-il procéder pour maximiser l'adhésion durable de l'équipe à ces règles ?",
+    "en": "A project team has just been formed. The project manager drafts a list of working rules (response times, meeting attendance, communication channels) and wants to put them in place quickly. How should the project manager proceed to maximize the team's lasting adherence to these rules?"
+   },
+   "options": {
+    "fr": [
+     "Organiser un atelier avec l'équipe pour co-construire les règles à partir de sa proposition initiale.",
+     "Diffuser la liste de règles par courriel, avec une date d'entrée en vigueur immédiate dès réception.",
+     "Demander au sponsor de valider la liste de règles avant de la communiquer officiellement à l'équipe.",
+     "Publier la liste de règles sur l'espace de travail partagé, applicable dès la prochaine réunion."
+    ],
+    "en": [
+     "Hold a workshop with the team to co-build the rules starting from the initial proposal.",
+     "Send the list of rules by email, with an immediate effective date upon receipt.",
+     "Ask the sponsor to formally approve the list of rules before it reaches the team.",
+     "Post the list of rules on the shared workspace, applicable starting at the next meeting."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'adhésion durable à des règles de fonctionnement se construit avec les personnes qui devront les appliquer au quotidien, pas seulement en leur nom. Organiser un atelier de co-construction à partir de la proposition initiale donne à l'équipe la propriété des règles, ce qui favorise leur respect dans la durée. Diffuser la liste par courriel avec effet immédiat traite les règles comme une décision unilatérale imposée, sans donner à l'équipe l'occasion de se les approprier. Faire valider la liste par le sponsor place l'autorité sur ces règles de fonctionnement d'équipe entre les mains d'une partie prenante externe à l'équipe elle-même. Publier la liste sur l'espace partagé sans échange préalable revient au même écueil que la diffusion par courriel, seul le canal change.",
+    "en": "Lasting adherence to working rules is built with the people who will apply them daily, not merely on their behalf. Holding a co-building workshop starting from the initial proposal gives the team ownership of the rules, which supports lasting compliance. Sending the list by email with immediate effect treats the rules as a one-way decision imposed on the team, without giving them a chance to make it their own. Having the sponsor approve the list places authority over the team's working rules in the hands of a stakeholder outside the team itself. Posting the list on the shared workspace without prior discussion falls into the same trap as the email, only the channel differs."
+   },
+   "decision_atom": "Décider comment instaurer des règles de fonctionnement pour qu'elles soient durablement suivies par l'équipe.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'équipe vient d'être formée et les règles ne sont encore qu'une proposition du chef de projet, pas un accord collectif.",
+   "bascule": "Si les règles avaient déjà été négociées avec l'équipe lors d'une session précédente, les diffuser directement deviendrait acceptable.",
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE2-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260924-1659-1-03",
+   "enabler": "Identify conflict sources.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux membres d'une équipe projet se disputent régulièrement en réunion depuis deux semaines. Un troisième membre affirme au chef de projet qu'il s'agit, selon lui, d'une incompatibilité de personnalités entre les deux collègues. Le chef de projet n'a pas encore observé ces échanges lui-même ni examiné les sujets en discussion. Que doit-il faire avant de choisir une stratégie de résolution ?",
+    "en": "Two members of a project team have been arguing regularly in meetings for two weeks. A third member tells the project manager that, in their view, it is a personality clash between the two colleagues. The project manager has not yet observed these exchanges directly nor examined the topics under discussion. What should the project manager do before choosing a resolution strategy?"
+   },
+   "options": {
+    "fr": [
+     "Réorganiser les rôles des deux membres afin de limiter durablement leurs interactions directes.",
+     "Examiner le contenu des désaccords récents pour identifier ce qui les déclenche réellement.",
+     "Organiser une médiation formelle entre les deux membres dès la semaine prochaine, sans délai.",
+     "Informer le sponsor qu'un conflit de personnalités affecte actuellement la dynamique de l'équipe."
+    ],
+    "en": [
+     "Reorganize the two members' roles in order to durably limit their direct interactions.",
+     "Examine the content of the recent disagreements to identify what actually triggers them.",
+     "Arrange formal mediation between the two members as soon as next week, without delay.",
+     "Inform the sponsor that a personality conflict is currently affecting the team's dynamic."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le chef de projet dispose seulement de l'interprétation d'un tiers, sans avoir observé les échanges ni examiné les sujets en cause. Examiner le contenu des désaccords récents permet d'établir ce qui déclenche réellement le conflit avant d'agir sur cette base. Réorganiser les rôles agit déjà comme si l'explication de personnalités était confirmée, alors qu'elle n'a pas été vérifiée. Organiser une médiation formelle engage une démarche lourde sans savoir encore si le désaccord porte sur des faits, des priorités ou des relations. Informer le sponsor présente comme établi un diagnostic qui n'est pour l'instant que l'opinion d'un collègue.",
+    "en": "The project manager only has a third party's interpretation, without having observed the exchanges or examined the topics involved. Examining the content of the recent disagreements establishes what actually triggers the conflict before acting on that basis. Reorganizing the roles already acts as if the personality explanation were confirmed, when it has not been verified. Arranging formal mediation commits to a heavy process without yet knowing whether the disagreement is about facts, priorities, or relationships. Informing the sponsor presents as established a diagnosis that is, for now, only a colleague's opinion."
+   },
+   "decision_atom": "Décider s'il faut agir sur une explication de conflit rapportée par un tiers ou vérifier d'abord son fondement.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'explication de personnalités vient d'un tiers ; le chef de projet n'a ni observé les échanges ni examiné les sujets en discussion.",
+   "bascule": "Si le chef de projet avait lui-même observé plusieurs échanges hostiles sans lien avec le contenu discuté, agir sur l'hypothèse de personnalités deviendrait défendable.",
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE2-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20260924-1659-1-05",
+   "enabler": "Communicate conflict management principles with the team and external stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un fournisseur externe conteste, dans un courriel adressé au chef de projet, la manière dont un désaccord technique a été tranché avec l'équipe interne la semaine dernière. Le fournisseur affirme ne pas avoir été informé des principes utilisés par l'équipe pour résoudre ce type de désaccord. Le désaccord initial est déjà résolu et n'affecte plus les livrables. Que doit faire le chef de projet ?",
+    "en": "An external vendor disputes, in an email to the project manager, the way a technical disagreement was resolved with the internal team last week. The vendor states they were not informed of the principles the team uses to resolve this type of disagreement. The original disagreement is already resolved and no longer affects deliverables. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Rouvrir le désaccord technique déjà résolu pour permettre au fournisseur d'y participer pleinement.",
+     "Transmettre le courriel du fournisseur au comité de gouvernance en vue d'un arbitrage.",
+     "Attendre qu'une prochaine contestation similaire survienne avant d'agir sur ce point.",
+     "Partager avec le fournisseur les principes de gestion des désaccords utilisés par l'équipe."
+    ],
+    "en": [
+     "Reopen the already-resolved technical disagreement to let the vendor take part.",
+     "Forward the vendor's email to the governance board for formal arbitration.",
+     "Wait until a similar complaint recurs again before acting on this point.",
+     "Share with the vendor the disagreement management principles used by the team."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le désaccord initial est déjà résolu et n'affecte plus les livrables ; ce que le fournisseur signale, c'est l'absence d'information sur les principes utilisés, pas une contestation du résultat lui-même. Partager avec le fournisseur les principes de gestion des désaccords répond directement à ce manque, sans rouvrir un sujet clos. Rouvrir le désaccord déjà résolu traite comme non réglé un point qui ne l'est plus. Transmettre le courriel au comité de gouvernance escalade vers une instance supérieure une demande d'information qui relève directement du rôle du chef de projet. Attendre une contestation similaire laisse sans réponse un fournisseur externe qui a exprimé une attente claire dès maintenant.",
+    "en": "The original disagreement is already resolved and no longer affects deliverables; what the vendor is flagging is the lack of information about the principles used, not a challenge to the outcome itself. Sharing the disagreement management principles with the vendor directly addresses this gap without reopening a closed matter. Reopening the already-resolved disagreement treats as unsettled a point that no longer is. Forwarding the email to the governance board escalates to a higher body an information request that falls directly within the project manager's role. Waiting for a similar complaint leaves an external vendor's clearly stated expectation unanswered right now."
+   },
+   "decision_atom": "Décider comment répondre à une partie externe qui signale ne pas connaître les principes de gestion des désaccords de l'équipe.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le désaccord initial est déjà résolu et n'affecte plus les livrables ; ce qui manque au fournisseur, c'est l'information sur les principes utilisés.",
+   "bascule": "Si le fournisseur contestait le résultat même du désaccord et non l'absence d'information, transmettre au comité de gouvernance deviendrait pertinent.",
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE2-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260924-1659-1-01",
+   "enabler": "Solve problems.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un développeur signale qu'une intégration tierce échoue de façon intermittente depuis deux jours, sans qu'il ait pu identifier la cause. L'équipe a une démonstration client dans trois jours. Le chef d'équipe n'a pas encore vu les journaux d'erreurs ni discuté avec le développeur des pistes déjà écartées. Que doit-il faire en premier ?",
+    "en": "A developer reports that a third-party integration has been failing intermittently for two days, without having identified the cause. The team has a client demo in three days. The team lead has not yet seen the error logs or discussed with the developer which leads have already been ruled out. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Examiner avec le développeur les journaux d'erreurs et les pistes déjà écartées avant de proposer une direction.",
+     "Convoquer une réunion d'équipe élargie et recueillir des hypothèses de toute l'équipe sur la cause de l'échec intermittent.",
+     "Demander au fournisseur tiers un rapport détaillé sur la stabilité de son service et sur les incidents des derniers jours.",
+     "Réaffecter un second développeur au problème et accélérer ainsi la recherche d'une cause avant la démonstration."
+    ],
+    "en": [
+     "Review the error logs and already-ruled-out leads with the developer before suggesting a direction.",
+     "Call a broader team meeting and gather hypotheses from the whole team about the intermittent failure.",
+     "Ask the third-party vendor for a detailed report on their service stability and recent incident history.",
+     "Assign a second developer to the problem and speed up the search for a cause before the demo."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le chef d'équipe n'a vu ni les journaux ni les pistes déjà explorées : proposer une direction ou mobiliser des ressources maintenant reviendrait à agir avant de comprendre ce qui a déjà été tenté. Examiner ces éléments avec le développeur permet de cadrer le problème avant d'y répondre. Convoquer toute l'équipe disperse l'attention sur une base d'information encore incomplète. Solliciter le fournisseur suppose déjà que la cause est externe, ce qui n'est pas établi. Ajouter un second développeur avant de savoir ce qui a été écarté risque de dupliquer un travail déjà fait.",
+    "en": "The team lead has seen neither the logs nor the leads already explored: suggesting a direction or mobilizing resources now would mean acting before understanding what has already been tried. Reviewing this with the developer frames the problem before responding to it. Calling in the whole team spreads attention on a still-incomplete information base. Contacting the vendor already assumes the cause is external, which is not established. Adding a second developer before knowing what has been ruled out risks duplicating work already done."
+   },
+   "decision_atom": "Décider s'il faut agir/mobiliser des ressources sur un problème technique avant d'avoir examiné ce qui a déjà été exploré.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le chef d'équipe n'a pas encore vu les journaux d'erreurs ni discuté des pistes déjà écartées.",
+   "bascule": "Si le chef d'équipe avait déjà vu les journaux et connaissait les pistes écartées, mobiliser une ressource supplémentaire deviendrait défendable en premier.",
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE3-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260924-1659-1-02",
+   "enabler": "Represent the voice of the team.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'un point d'avancement, un membre de l'équipe confie au chef d'équipe que la charge de travail imposée par un changement de calendrier récent devient difficile à tenir, sans que cela ait encore affecté les livrables. Le chef d'équipe doit rencontrer le sponsor du projet le lendemain pour un point de routine. Que doit-il faire ?",
+    "en": "During a status check-in, a team member tells the team lead that the workload created by a recent schedule change is becoming difficult to sustain, though it has not yet affected deliverables. The team lead is meeting the project sponsor the next day for a routine check-in. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Attendre de constater un impact concret sur les livrables, puis seulement aborder la charge de travail avec le sponsor du projet.",
+     "Mentionner au sponsor, lors du point de routine, que le nouveau calendrier crée une pression significative sur l'équipe.",
+     "Organiser une réunion d'urgence avec le sponsor et la direction, et renégocier le calendrier avant la prochaine échéance du projet.",
+     "Demander au membre de l'équipe de documenter précisément ses heures, puis d'en parler ensuite à la direction du projet."
+    ],
+    "en": [
+     "Wait to see a concrete impact on deliverables, then only raise the workload issue with the project sponsor.",
+     "Mention to the sponsor, during the routine check-in, that the new schedule is creating significant pressure on the team.",
+     "Organize an emergency meeting with the sponsor and leadership, and renegotiate the schedule before the next milestone.",
+     "Ask the team member to precisely document their hours, then discuss it afterward with project leadership."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Un point de routine avec le sponsor est déjà prévu le lendemain : c'est l'occasion naturelle de relayer un signal qui n'a pas encore d'impact sur les livrables. Attendre un impact concret revient à laisser la situation se dégrader avant d'en parler, alors qu'un canal existe déjà. Organiser une réunion d'urgence traite comme une crise un signal encore précoce, ce qui est disproportionné au vu de l'absence d'impact sur les livrables. Demander une documentation précise avant d'en parler retarde inutilement un relais qui peut se faire dès le lendemain, sans preuve supplémentaire nécessaire à ce stade.",
+    "en": "A routine check-in with the sponsor is already scheduled for the next day: it is the natural opportunity to relay a signal that has no impact on deliverables yet. Waiting for a concrete impact lets the situation worsen before raising it, even though a channel already exists. Organizing an emergency meeting treats an early signal as a crisis, which is disproportionate given the absence of impact on deliverables. Asking for precise documentation before mentioning it delays a relay that can happen the very next day, without needing further proof at this stage."
+   },
+   "decision_atom": "Décider quand relayer au sponsor un signal de surcharge qui n'a pas encore affecté les livrables.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Un point de routine avec le sponsor est déjà prévu le lendemain.",
+   "bascule": "Si aucun point avec le sponsor n'était prévu avant plusieurs semaines, attendre un impact concret deviendrait plus défendable.",
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE3-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260924-1659-1-03",
+   "enabler": "Empower the team.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe doit choisir entre deux bibliothèques open source pour implémenter une fonctionnalité secondaire du produit, sans impact sur l'architecture globale. Les deux options sont réversibles à ce stade du projet. L'équipe demande au chef d'équipe de trancher pour gagner du temps. Que doit-il faire ?",
+    "en": "A team must choose between two open-source libraries to implement a secondary product feature, with no impact on the overall architecture. Both options are reversible at this stage of the project. The team asks the team lead to decide in order to save time. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Choisir lui-même la bibliothèque la plus utilisée dans l'industrie, et éviter ainsi tout débat prolongé au sein de l'équipe.",
+     "Reporter la décision à la prochaine revue de gouvernance, et valider ce choix avec l'ensemble des parties prenantes concernées.",
+     "Renvoyer la décision à l'équipe en précisant que le choix est réversible et sans impact sur l'architecture.",
+     "Demander à l'architecte technique du programme de trancher, puisqu'il connaît bien les deux bibliothèques et leurs usages."
+    ],
+    "en": [
+     "Choose the most widely used library himself, and thereby avoid a prolonged debate within the team.",
+     "Defer the decision to the next governance review, and validate the choice with all relevant stakeholders.",
+     "Send the decision back to the team, noting that the choice is reversible and has no architectural impact.",
+     "Ask the program's technical architect to decide, since he knows both libraries and their intended uses."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le choix est réversible et sans impact sur l'architecture : c'est précisément le type de décision que l'équipe peut assumer elle-même sans validation extérieure. Trancher personnellement prive l'équipe d'une décision qu'elle est capable de prendre. Reporter la décision à une revue de gouvernance traite comme structurante une décision qui ne l'est pas, au prix d'un délai inutile. Faire appel à l'architecte du programme mobilise une autorité externe pour un choix qui reste, par nature, réversible et local à l'équipe.",
+    "en": "The choice is reversible and has no architectural impact: this is exactly the kind of decision the team can own without outside validation. Deciding personally deprives the team of a decision it is capable of making. Deferring to a governance review treats a non-structural decision as if it were structural, at the cost of unnecessary delay. Calling on the program architect brings in outside authority for a choice that remains, by nature, reversible and local to the team."
+   },
+   "decision_atom": "Décider qui doit trancher un choix technique réversible et sans impact sur l'architecture.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les deux options sont explicitement réversibles et sans impact sur l'architecture globale.",
+   "bascule": "Si le choix engageait irréversiblement l'architecture globale, trancher lui-même ou consulter l'architecte deviendrait justifié.",
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE3-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260924-1659-1-04",
+   "enabler": "Establish clear roles and responsibilities within the team.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux membres de l'équipe se disputent depuis une semaine la responsabilité de la validation finale des livrables avant publication, chacun pensant que l'autre s'en charge. Aucun document de l'équipe n'attribue explicitement ce rôle. Le chef d'équipe en est informé. Que doit-il faire ?",
+    "en": "Two team members have spent a week disagreeing about who owns final validation of deliverables before release, each assuming the other handles it. No team document explicitly assigns this role. The team lead is informed. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Demander aux deux membres de se mettre d'accord entre eux, puis d'en informer le reste de l'équipe.",
+     "Attribuer temporairement la validation finale à celui des deux qui a le plus d'ancienneté, puis réévaluer ce choix plus tard.",
+     "Attendre le prochain incident de publication, puis observer lequel des deux membres interviendra en priorité.",
+     "Clarifier avec l'équipe qui détient la responsabilité de la validation finale et la consigner dans un document partagé."
+    ],
+    "en": [
+     "Ask the two members to agree between themselves, then inform the rest of the team of their decision.",
+     "Temporarily assign final validation to whichever of the two has more seniority, then revisit this choice later.",
+     "Wait for the next release incident, then observe which of the two members steps in first.",
+     "Clarify with the team who holds responsibility for final validation and record it in a shared document."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le problème vient de l'absence d'attribution explicite du rôle : la solution durable est que le chef d'équipe clarifie cette responsabilité avec l'équipe et la documente, pour que l'ambiguïté ne se reproduise pas. Demander aux deux membres de s'arranger entre eux laisse non résolue l'absence de définition formelle du rôle. Attribuer la responsabilité selon l'ancienneté introduit un critère qui n'a aucun lien avec les compétences requises pour cette tâche. Attendre un incident de publication expose l'équipe à un risque évitable simplement pour observer qui agira.",
+    "en": "The problem stems from the lack of explicit role assignment: the lasting solution is for the team lead to clarify this responsibility with the team and document it, so the ambiguity does not recur. Asking the two members to sort it out between themselves leaves the missing formal definition unresolved. Assigning responsibility by seniority introduces a criterion unrelated to the skills the task requires. Waiting for a release incident exposes the team to an avoidable risk just to observe who steps in."
+   },
+   "decision_atom": "Décider qui doit résoudre une ambiguïté de responsabilité entre deux membres, en l'absence de document l'attribuant.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Aucun document de l'équipe n'attribue explicitement le rôle de validation finale.",
+   "bascule": "Si un document existait déjà mais était simplement mal connu, demander aux deux membres de le retrouver ensemble deviendrait suffisant.",
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE3-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE3-20260924-1659-1-05",
+   "enabler": "Determine an appropriate leadership style.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef d'équipe rejoint une équipe expérimentée et autonome, qui livre régulièrement depuis deux ans sans incident majeur. Lors de sa première semaine, il remarque qu'un membre présente son avancement de façon un peu différente du format habituel, sans que cela nuise à la compréhension. Que doit-il faire ?",
+    "en": "A team lead joins an experienced, self-sufficient team that has delivered reliably for two years without major incidents. During his first week, he notices that one member presents progress updates in a slightly different format than usual, without any loss of clarity. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Ne rien changer pour l'instant et observer comment l'équipe fonctionne avant d'introduire des ajustements.",
+     "Demander immédiatement au membre concerné d'adopter le format standard utilisé par le reste de l'équipe habituée.",
+     "Organiser une session de formation et harmoniser les pratiques de présentation de toute l'équipe existante.",
+     "Signaler l'écart de format au sponsor du projet et vérifier qu'il n'entraîne pas de confusion en aval du projet."
+    ],
+    "en": [
+     "Make no changes for now and observe how the team operates before introducing adjustments.",
+     "Immediately ask the team member to adopt the standard format used by the rest of the established team.",
+     "Organize a training session and standardize presentation practices across the whole existing team.",
+     "Report the format variation to the project sponsor and verify it does not cause downstream confusion."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'équipe est expérimentée, autonome et livre sans incident depuis deux ans ; une variation mineure de présentation, sans perte de clarté, ne justifie pas une intervention immédiate de la part d'un chef d'équipe qui vient d'arriver. Observer d'abord permet de comprendre le fonctionnement réel de l'équipe avant d'agir. Demander un alignement immédiat sur le format standard traite comme un problème une variation sans conséquence. Organiser une formation pour toute l'équipe mobilise des ressources collectives pour un écart isolé et bénin. Alerter le sponsor donne à un détail de présentation une importance qu'il n'a pas.",
+    "en": "The team is experienced, self-sufficient, and has delivered without incident for two years; a minor presentation variation with no loss of clarity does not call for immediate intervention from a lead who just arrived. Observing first allows him to understand how the team actually operates before acting. Demanding immediate alignment with the standard format treats a harmless variation as a problem. Organizing training for the whole team mobilizes collective resources for an isolated, minor discrepancy. Alerting the sponsor gives a presentation detail more weight than it deserves."
+   },
+   "decision_atom": "Décider de l'ampleur de la réaction face à une variation mineure de pratique dans une équipe autonome et performante.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'équipe est expérimentée, autonome, livre sans incident depuis deux ans, et la variation n'entraîne aucune perte de clarté.",
+   "bascule": "Si la variation de format avait entraîné une perte de clarté ou une confusion réelle en aval, demander un alignement deviendrait justifié.",
+   "task_id": "PE3",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE3-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260924-1659-1-02",
+   "enabler": "Analyze stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "En préparant la matrice des parties prenantes, un chef de projet junior doute du niveau d'influence à attribuer à une responsable achats, car deux collègues ont des avis opposés sur son poids réel dans les décisions de sourcing. Le chef de projet junior partage l'équipe avec un chef de projet senior qui a déjà mené un projet similaire avec cette même responsable achats l'an dernier. Que doit faire le chef de projet junior en priorité ?",
+    "en": "While preparing the stakeholder matrix, a junior project manager is unsure what influence level to assign to a procurement lead, since two colleagues hold opposite views on her real weight in sourcing decisions. The junior project manager shares the team with a senior project manager who ran a similar project with this same procurement lead last year. What should the junior project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander au chef de projet senior, qui a une expérience directe et récente avec cette responsable achats, son évaluation de son influence réelle.",
+     "Retenir le niveau d'influence indiqué par le collègue le plus catégorique, sur la base de son avis tranché, sans consulter d'autre source, afin de clore la matrice rapidement.",
+     "Attribuer un niveau d'influence moyen à la responsable achats, à titre provisoire, en attendant que les avis des deux collègues finissent par converger.",
+     "Inscrire les deux avis contradictoires dans la matrice, les dater précisément, et laisser le comité de pilotage choisir lequel des deux retenir."
+    ],
+    "en": [
+     "Ask the senior project manager, who has direct and recent experience with this procurement lead, for his assessment of her real influence.",
+     "Adopt the influence level stated by the more assertive colleague, based on his firm opinion, without checking another source, in order to close the matrix quickly.",
+     "Assign a medium influence level to the procurement lead, as a temporary measure, while waiting for the two colleagues' views to eventually converge.",
+     "Record both conflicting opinions in the matrix, with their exact dates, and let the steering committee choose which one of the two to keep."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le chef de projet senior a mené un projet similaire avec cette même responsable achats l'an dernier : il détient une expérience directe et récente qui permet de trancher entre deux avis rapportés de seconde main. Retenir l'avis du collègue le plus catégorique confond l'assurance dans le ton avec la fiabilité de l'information, sans lien avec une expérience vérifiable. Attribuer un niveau moyen en attendant une convergence évite la décision au lieu de la fonder sur une source disponible et pertinente. Faire trancher le comité de pilotage sur un désaccord d'analyse interne à l'équipe projet mobilise une instance de gouvernance pour une question que l'analyse des parties prenantes doit résoudre elle-même.",
+    "en": "The senior project manager ran a similar project with this same procurement lead last year: he holds direct, recent experience that can settle a disagreement between two second-hand opinions. Adopting the more assertive colleague's view confuses confidence in tone with reliability of information, with no link to verifiable experience. Assigning a medium level while waiting for convergence avoids the decision instead of grounding it in an available, relevant source. Having the steering committee settle an internal analysis disagreement escalates a question that stakeholder analysis should resolve on its own."
+   },
+   "decision_atom": "Décider quelle source consulter pour trancher un désaccord sur le niveau d'influence à attribuer à une partie prenante.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Un collègue senior a une expérience directe et récente avec cette même partie prenante sur un projet similaire.",
+   "bascule": "Si aucun collègue n'avait d'expérience directe avec cette partie prenante, remonter au comité de pilotage deviendrait plus défendable.",
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE4-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260924-1659-1-04",
+   "enabler": "Analyze and tailor communication to stakeholder needs.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet doit présenter l'état d'avancement à un comité mixte réunissant pour la première fois des ingénieurs techniques et des responsables financiers, chacun habitué à des formats de reporting très différents. Elle dispose de deux jours avant la réunion et n'a encore jamais présenté devant ce comité conjoint. Que doit-elle faire en priorité ?",
+    "en": "A project manager must present status to a joint committee bringing together, for the first time, technical engineers and finance managers, each used to very different reporting formats. She has two days before the meeting and has never presented to this joint committee before. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Envoyer aux deux groupes le support détaillé habituellement utilisé pour les ingénieurs avant la réunion.",
+     "Préparer et dérouler successivement lors de la réunion une présentation technique puis une présentation financière distinctes.",
+     "Identifier avec un contact de chaque groupe les indicateurs clés attendus par chacun avant de construire le support.",
+     "Demander le report de la réunion jusqu'à validation d'un format de présentation commun aux deux groupes."
+    ],
+    "en": [
+     "Send both groups, ahead of the meeting, the same detailed material she normally uses for the engineers with technical focus.",
+     "Prepare and deliver in sequence at the meeting a distinct technical presentation followed by a distinct financial one.",
+     "Identify with a contact from each group the key indicators each expects, before building the material.",
+     "Ask the committee to postpone the meeting and hold a preliminary workshop until a shared presentation format has been validated."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "C'est la première réunion de ce comité mixte et les deux groupes ont des attentes de reporting très différentes : avant de construire quoi que ce soit, il faut d'abord savoir ce que chacun attend, en s'appuyant sur un contact de chaque côté. Envoyer le support habituel pour les ingénieurs ignore que les responsables financiers ont des besoins d'information différents. Préparer deux présentations séparées double le travail sans avoir vérifié si les indicateurs retenus correspondent réellement aux attentes de chaque groupe. Demander un report de la réunion retarde un échange qui peut être préparé en deux jours en clarifiant simplement les attentes au préalable.",
+    "en": "This is the joint committee's first meeting and the two groups have very different reporting expectations: before building anything, the first step is to find out what each side expects, using a contact from each group. Sending the material normally used for engineers overlooks that finance managers have different information needs. Preparing two separate presentations doubles the work without having checked whether the chosen indicators actually match each group's expectations. Asking to postpone the meeting delays an exchange that can be prepared within two days by simply clarifying expectations first."
+   },
+   "decision_atom": "Décider s'il faut construire directement un support de reporting ou d'abord clarifier les attentes de deux publics différents.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "C'est la première réunion de ce comité mixte, et les deux groupes ont des habitudes de reporting très différentes.",
+   "bascule": "Si les attentes des deux groupes étaient déjà connues et documentées, préparer directement deux présentations séparées deviendrait raisonnable.",
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE4-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260924-1659-1-01",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet rejoint une initiative en cours et découvre qu'aucune analyse formelle des parties prenantes n'a été réalisée. Une réunion de comité de pilotage est prévue dans deux jours, où plusieurs décisions structurantes seront discutées. Que doit-il faire en priorité ?",
+    "en": "A project manager joins an ongoing initiative and finds that no formal stakeholder analysis has ever been performed. A steering committee meeting is scheduled in two days, where several structuring decisions will be discussed. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Recenser et catégoriser les parties prenantes selon leur influence et leur intérêt avant la réunion de comité de pilotage.",
+     "Assister à la réunion de comité de pilotage pour observer les dynamiques, catégoriser les parties prenantes selon ses impressions, puis diffuser cette catégorisation à l'équipe.",
+     "Demander au sponsor de valider, lors de la prochaine revue trimestrielle, la liste de parties prenantes établie par l'équipe précédente pour le comité de pilotage.",
+     "Envoyer un sondage à l'ensemble des contacts du projet, recueillir leur avis sur les décisions à venir, puis les partager en réunion de comité."
+    ],
+    "en": [
+     "Identify and categorize stakeholders by influence and interest before the steering committee meeting.",
+     "Attend the steering committee meeting to observe the dynamics, categorize stakeholders based on his impressions, then share that categorization with the team.",
+     "Ask the sponsor, during the next quarterly review, to validate the stakeholder list established by the previous team for the steering committee.",
+     "Send a survey to all project contacts, gather their views on the upcoming decisions, then compile the results for the sponsor."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Des décisions structurantes seront discutées dans deux jours et aucune catégorisation n'existe : il faut établir cette base avant la réunion, pas après. Attendre la réunion pour observer les dynamiques revient à se présenter sans savoir qui a le pouvoir de trancher, alors que l'information peut être préparée à l'avance. Faire valider par le sponsor une liste héritée à la prochaine revue trimestrielle repousse la clarification bien après le moment où elle sera utile. Un sondage général donne un avis à chaque contact indépendamment de son influence réelle, ce qui n'est pas une catégorisation.",
+    "en": "Structuring decisions will be discussed in two days and no categorization exists: this groundwork must be laid before the meeting, not after. Waiting for the meeting to observe the dynamics means walking in without knowing who holds decision power, even though this information could be prepared in advance. Having the sponsor validate an inherited list at the next quarterly review pushes the clarification well past the moment it is needed. A general survey gives every contact a voice regardless of actual influence, which is not categorization."
+   },
+   "decision_atom": "Décider à quel moment établir la catégorisation des parties prenantes par rapport à une échéance de décision imminente.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Une réunion de comité de pilotage où seront discutées des décisions structurantes a lieu dans deux jours, et aucune catégorisation n'existe encore.",
+   "bascule": "Si la réunion n'impliquait aucune décision structurante et servait seulement à observer les dynamiques, catégoriser après serait défendable.",
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE5-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260924-1659-1-02",
+   "enabler": "Identify stakeholder expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet recueille les attentes d'un directeur métier concernant les livrables d'une phase à venir. Le directeur exprime une attente qui semble contredire un engagement contractuel déjà signé avec le client. Que doit-elle faire en priorité ?",
+    "en": "A project manager gathers expectations from a business director regarding deliverables for an upcoming phase. The director expresses an expectation that appears to contradict a contractual commitment already signed with the client. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Ajuster le plan de livraison selon l'attente exprimée par le directeur, qui connaît bien les besoins métier du projet.",
+     "Documenter l'attente exprimée et remonter la contradiction apparente au sponsor pour clarification avant toute décision.",
+     "Convoquer une réunion avec le client dès la semaine suivante et renégocier les termes contractuels concernés lors de cette réunion.",
+     "Informer l'équipe projet que les livrables de la phase à venir doivent être revus, puis appliquer la nouvelle orientation demandée."
+    ],
+    "en": [
+     "Adjust the delivery plan according to the expectation expressed by the director, who knows the business needs of the project well.",
+     "Document the expressed expectation and raise the apparent contradiction to the sponsor for clarification before any decision.",
+     "Convene a meeting with the client the following week and renegotiate the relevant contractual terms during that meeting.",
+     "Inform the project team that the deliverables for the upcoming phase must be revised, then apply the newly requested direction."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'attente contredit un engagement déjà signé avec le client : ce niveau de conflit dépasse ce qu'une cheffe de projet peut arbitrer seule et doit être remonté au sponsor pour clarification avant toute action. Ajuster directement le plan de livraison selon l'attente du directeur ignore que celle-ci entre en tension avec un engagement contractuel existant. Convoquer le client pour renégocier revient à agir sur le contrat avant même d'avoir confirmé que la contradiction est réelle et validée en interne. Informer l'équipe d'un changement d'orientation avant clarification propage une attente qui n'a pas encore été confirmée comme légitime.",
+    "en": "The expectation contradicts a commitment already signed with the client: this level of conflict is beyond what a project manager can resolve alone and must be escalated to the sponsor for clarification before any action. Directly adjusting the delivery plan based on the director's expectation ignores that it conflicts with an existing contractual commitment. Convening the client to renegotiate means acting on the contract before even confirming internally that the contradiction is real and validated. Informing the team of a new direction before clarification spreads an expectation that has not yet been confirmed as legitimate."
+   },
+   "decision_atom": "Décider s'il faut agir directement sur une attente exprimée ou l'escalader du fait de sa contradiction avec un engagement existant.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'attente exprimée par le directeur semble contredire un engagement contractuel déjà signé avec le client.",
+   "bascule": "Si l'attente du directeur ne contredisait aucun engagement existant, l'ajuster directement au plan de livraison serait justifié.",
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE5-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20260924-1659-1-05",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend qu'un analyste, classé comme partie prenante à faible influence lors de l'analyse initiale, a récemment été nommé référent technique officiel pour la validation finale d'un livrable majeur. Que doit-il faire en priorité ?",
+    "en": "A project manager learns that an analyst, categorized as a low-influence stakeholder during the initial analysis, has recently been appointed official technical referent for the final validation of a major deliverable. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Mettre à jour la catégorisation de cet analyste pour refléter son influence désormais accrue sur le livrable.",
+     "Organiser une revue complète de la matrice des parties prenantes, en y associant l'ensemble du comité de pilotage.",
+     "Attribuer à l'analyste un rôle de coordination portant sur l'ensemble des livrables restants du projet.",
+     "Programmer une formation sur la gestion des parties prenantes, destinée à l'ensemble de l'équipe projet."
+    ],
+    "en": [
+     "Update this analyst's categorization to reflect his now-increased influence over the deliverable.",
+     "Organize a full review of the stakeholder matrix, involving the entire steering committee in the process.",
+     "Assign the analyst a coordination role covering all remaining deliverables of the project.",
+     "Schedule stakeholder management training, intended for the entire project team."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le changement porte sur un seul rôle, celui de l'analyste devenu référent technique pour un livrable précis : la réponse proportionnée est de mettre à jour sa catégorisation, pas de refaire l'ensemble de l'exercice. Convoquer une revue complète de la matrice avec tout le comité de pilotage mobilise des ressources bien supérieures à ce que justifie le changement d'un seul statut. Attribuer à l'analyste une coordination sur tous les livrables restants dépasse largement son nouveau rôle, limité à la validation d'un livrable donné. Programmer une formation pour toute l'équipe traite un ajustement ponctuel de catégorisation comme un déficit général de compétence.",
+    "en": "The change concerns a single role, the analyst becoming technical referent for one specific deliverable: the proportionate response is to update his categorization, not redo the entire exercise. Convening a full matrix review with the whole steering committee mobilizes far more resources than a single status change warrants. Assigning the analyst coordination over all remaining deliverables far exceeds his new role, which is limited to validating one deliverable. Scheduling training for the entire team treats a single categorization adjustment as a general competency gap."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à apporter à un changement de statut touchant une seule partie prenante.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le changement concerne un rôle unique — un référent technique nommé pour la validation d'un livrable précis — pas l'ensemble du projet.",
+   "bascule": "Si plusieurs rôles à travers le projet avaient changé simultanément, une revue complète de la matrice deviendrait justifiée.",
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20260924-1659",
+   "release": "qL2-PE5-20260924-1659-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
