@@ -1,0 +1,159 @@
+{
+ "run_id": "20260923-0743",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR5-20260923-0743-1-01",
+   "enabler": "Execute a procurement management plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet gère un contrat de sous-traitance dont le livrable final n'est attendu que dans quatre mois. Le plan de gestion des approvisionnements prévoit une revue de conformité à mi-parcours, dans six semaines. Cette semaine, le fournisseur envoie un rapport d'avancement standard ne montrant aucune anomalie. Que doit faire le chef de projet à propos de la revue de conformité ?",
+    "en": "A project manager oversees a subcontract whose final deliverable is not due for four months. The procurement management plan schedules a mid-point compliance review in six weeks. This week, the vendor submits a standard progress report showing no anomalies. What should the project manager do regarding the compliance review?"
+   },
+   "options": {
+    "fr": [
+     "Avancer la revue de conformité à cette semaine, puisque le rapport d'avancement vient d'être reçu et que les données sont fraîches.",
+     "Annuler la revue de conformité prévue et la remplacer par un simple échange informel avec le fournisseur sur ses prochaines étapes.",
+     "Demander au sponsor du programme de statuer sur l'opportunité de maintenir la date de revue fixée dans le plan.",
+     "Maintenir la revue de conformité à la date prévue dans le plan, en s'appuyant sur le rapport reçu comme donnée d'entrée."
+    ],
+    "en": [
+     "Move the compliance review up to this week, since the progress report just arrived and the data is fresh.",
+     "Cancel the scheduled compliance review and replace it with an informal check-in with the vendor about next steps.",
+     "Ask the program sponsor to decide whether the review date fixed in the plan should be kept.",
+     "Keep the compliance review at the date set in the plan, using the received report as one input to it."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le rapport ne signale aucune anomalie et la revue de conformité, prévue dans le plan de gestion des approvisionnements, arrive dans six semaines : rien dans la situation ne justifie de modifier ce calendrier. Maintenir la revue à la date prévue, en utilisant le rapport reçu comme une donnée d'entrée parmi d'autres, respecte le plan établi. Avancer la revue à cette semaine traite un rapport routinier comme un déclencheur d'urgence, alors qu'aucune anomalie n'a été signalée. Annuler la revue et la remplacer par un échange informel abandonne un mécanisme de contrôle structuré sans motif apparent. Solliciter le sponsor pour statuer sur une date déjà fixée par le plan fait remonter à un niveau supérieur une décision de calendrier que le plan a déjà tranchée.",
+    "en": "The report shows no anomalies, and the compliance review scheduled in the procurement management plan is six weeks away: nothing in the situation justifies changing that timing. Keeping the review at its planned date, using the report as one input among others, respects the established plan. Moving the review up to this week treats a routine report as an emergency trigger, even though no anomaly was flagged. Cancelling the review and replacing it with an informal check-in drops a structured control mechanism without apparent cause. Asking the sponsor to decide on a date the plan has already fixed escalates a scheduling decision the plan has already settled."
+   },
+   "decision_atom": "Décider s'il faut modifier la date de la revue de conformité contractuelle suite à un rapport de routine.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le rapport reçu ne montre aucune anomalie, et la revue de conformité est prévue dans le plan à une date encore lointaine (six semaines).",
+   "bascule": "Si le rapport avait signalé une anomalie significative, avancer la revue deviendrait défendable.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-0743",
+   "release": "qL2-PR5-20260923-0743-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-0743-1-02",
+   "enabler": "Manage suppliers and contracts.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un fournisseur informatique livre un module en retard de dix jours par rapport au contrat. Le chef de projet constate l'écart et voit que l'équipe technique interne a déjà commencé à ajuster son calendrier pour absorber ce retard. Le contrat prévoit une clause de pénalité de retard applicable par le service achats. Que doit faire le chef de projet ?",
+    "en": "An IT vendor delivers a module ten days late relative to the contract. The project manager notices the gap and sees that the internal technical team has already begun adjusting its schedule to absorb the delay. The contract includes a late-delivery penalty clause administered by the procurement department. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Transmettre l'écart constaté au service achats, responsable contractuel de la clause de pénalité, pour qu'il évalue son application.",
+     "Appliquer directement la pénalité de retard prévue au contrat, puisque l'écart de dix jours est clairement mesurable.",
+     "Demander à l'équipe technique de formaliser l'ajustement de calendrier avant toute autre démarche liée au retard.",
+     "Négocier avec le fournisseur une remise commerciale équivalente au montant de la pénalité contractuelle prévue."
+    ],
+    "en": [
+     "Forward the observed gap to the procurement department, the contractual owner of the penalty clause, for it to assess enforcement.",
+     "Apply the contractual late-delivery penalty directly, since the ten-day gap is clearly measurable.",
+     "Ask the technical team to formalize its schedule adjustment before taking any other retard-related step.",
+     "Negotiate with the vendor a commercial discount equivalent to the amount of the contractual penalty."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La clause de pénalité de retard est explicitement administrée par le service achats, pas par le chef de projet : transmettre l'écart constaté à ce service respecte la répartition des responsabilités contractuelles. Appliquer directement la pénalité usurpe une autorité contractuelle qui n'appartient pas au chef de projet, même si l'écart est mesurable. Faire formaliser l'ajustement de calendrier par l'équipe technique traite un sujet d'exécution interne comme un préalable à la gestion contractuelle du retard, ce qui n'est pas nécessaire ici. Négocier soi-même une remise commerciale avec le fournisseur contourne le service achats, seul propriétaire désigné de ce levier contractuel.",
+    "en": "The late-delivery penalty clause is explicitly administered by procurement, not by the project manager: forwarding the observed gap to that department respects the assigned contractual ownership. Applying the penalty directly usurps a contractual authority that does not belong to the project manager, even though the gap is measurable. Having the technical team formalize its schedule adjustment treats an internal execution matter as a prerequisite to contractual handling of the delay, which is not necessary here. Negotiating a commercial discount directly with the vendor bypasses procurement, the designated owner of that contractual lever."
+   },
+   "decision_atom": "Décider qui doit traiter l'écart de délai constaté par rapport à une clause de pénalité contractuelle.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le contrat attribue explicitement l'application de la clause de pénalité au service achats, pas au chef de projet.",
+   "bascule": "Si le contrat attribuait l'application de la pénalité au chef de projet lui-même, agir directement deviendrait correct.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-0743",
+   "release": "qL2-PR5-20260923-0743-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-0743-1-03",
+   "enabler": "Evaluate vendor performance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet prépare l'évaluation trimestrielle d'un fournisseur de services logistiques. Un membre de l'équipe mentionne que ce fournisseur a une bonne réputation sur le marché. Le tableau de suivi contractuel indique par ailleurs que les indicateurs de délai et de qualité définis au contrat n'ont pas encore été consolidés pour le trimestre. Que doit faire le chef de projet avant de formuler son évaluation ?",
+    "en": "A project manager is preparing the quarterly evaluation of a logistics services vendor. A team member mentions that the vendor has a good reputation in the market. The contract tracking sheet also shows that the delivery and quality indicators defined in the contract have not yet been consolidated for the quarter. What should the project manager do before formulating the evaluation?"
+   },
+   "options": {
+    "fr": [
+     "Rédiger l'évaluation en s'appuyant sur la réputation du fournisseur, largement reconnue par les membres de l'équipe.",
+     "Faire consolider les indicateurs contractuels de délai et de qualité avant de rédiger toute évaluation formelle.",
+     "Soumettre l'évaluation au comité de gouvernance sans indicateurs consolidés, avec une note explicative sur ce manque.",
+     "Reporter l'évaluation trimestrielle au trimestre suivant, en attendant que les indicateurs soient disponibles."
+    ],
+    "en": [
+     "Draft the evaluation based on the vendor's reputation, which is widely recognized by team members.",
+     "Have the contractual delivery and quality indicators consolidated before drafting any formal evaluation.",
+     "Submit the evaluation to the governance committee without consolidated indicators, with an explanatory note on the gap.",
+     "Postpone the quarterly evaluation to the next quarter, waiting for the indicators to become available."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le contrat définit des indicateurs de délai et de qualité comme base de l'évaluation, et ces indicateurs ne sont pas encore consolidés : les faire consolider avant de rédiger l'évaluation garantit que le jugement repose sur une preuve contractuelle plutôt que sur une impression. S'appuyer sur la réputation du fournisseur, même largement partagée, remplace une preuve mesurable par une perception non contractuelle. Soumettre l'évaluation sans indicateurs, même avec une note explicative, transmet un jugement incomplet à la gouvernance plutôt que d'attendre la donnée manquante. Reporter l'évaluation entière au trimestre suivant retarde inutilement un exercice qui peut être complété dès que les indicateurs, déjà en cours de consolidation, seront disponibles.",
+    "en": "The contract defines delivery and quality indicators as the basis for evaluation, and those indicators are not yet consolidated: having them consolidated before drafting the evaluation ensures the judgment rests on contractual evidence rather than impression. Relying on the vendor's reputation, even if widely shared, replaces measurable evidence with a non-contractual perception. Submitting the evaluation without indicators, even with an explanatory note, passes an incomplete judgment to governance rather than waiting for the missing data. Postponing the entire quarterly evaluation to the next quarter needlessly delays an exercise that can be completed as soon as the indicators, already being consolidated, become available."
+   },
+   "decision_atom": "Décider sur quelle base fonder l'évaluation trimestrielle d'un fournisseur avant sa rédaction.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Les indicateurs contractuels de délai et de qualité ne sont pas encore consolidés pour le trimestre.",
+   "bascule": "Si les indicateurs avaient déjà été consolidés, rédiger directement l'évaluation deviendrait correct.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-0743",
+   "release": "qL2-PR5-20260923-0743-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-0743-1-04",
+   "enabler": "Participate in agreement negotiations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit participer à une négociation avec un fournisseur stratégique portant sur les conditions de renouvellement d'un contrat de service. La réunion de négociation est fixée dans trois jours. L'équipe interne n'a pas encore défini ses priorités de fond ni ses marges de manœuvre pour cette négociation. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager must take part in a negotiation with a strategic vendor about the renewal terms of a service contract. The negotiation meeting is set in three days. The internal team has not yet defined its substantive priorities or its room for maneuver for this negotiation. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Contacter le fournisseur pour proposer un report de la réunion de négociation à une date plus lointaine.",
+     "Se présenter à la réunion avec l'équipe et clarifier les priorités directement pendant l'échange avec le fournisseur.",
+     "Réunir l'équipe interne pour définir les priorités et les marges de manœuvre avant la réunion de négociation.",
+     "Envoyer au fournisseur, avant la réunion, une liste préliminaire des points à discuter côté client."
+    ],
+    "en": [
+     "Contact the vendor to propose postponing the negotiation meeting to a later date.",
+     "Attend the meeting with the team and clarify priorities directly during the exchange with the vendor.",
+     "Convene the internal team to define priorities and room for maneuver before the negotiation meeting.",
+     "Send the vendor, ahead of the meeting, a preliminary list of discussion points from the client side."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La négociation a lieu dans trois jours et l'équipe n'a pas encore défini ses priorités de fond ni ses marges de manœuvre : réunir l'équipe pour clarifier ces éléments avant la réunion garantit que la négociation se déroule sur une base préparée. Proposer un report au fournisseur traite un manque de préparation interne comme un problème externe à résoudre avec le fournisseur, alors que le délai de trois jours suffit à s'organiser. Clarifier les priorités pendant l'échange avec le fournisseur expose une désorganisation interne directement à la partie négociante, ce qui affaiblit la position du chef de projet. Envoyer une liste préliminaire de points sans avoir d'abord arrêté les priorités internes revient à formaliser une position externe avant que la position interne existe.",
+    "en": "The negotiation is in three days and the team has not yet defined its substantive priorities or room for maneuver: convening the team to clarify these before the meeting ensures the negotiation proceeds on a prepared basis. Proposing a postponement to the vendor treats an internal preparation gap as an external problem to resolve with the vendor, even though three days is enough time to organize. Clarifying priorities during the exchange with the vendor exposes internal disorganization directly to the negotiating party, weakening the project manager's position. Sending a preliminary list of discussion points without first settling internal priorities formalizes an external position before an internal one exists."
+   },
+   "decision_atom": "Décider quand définir les priorités internes de négociation par rapport à la tenue de la réunion avec le fournisseur.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La réunion a lieu dans trois jours et l'équipe n'a pas encore défini ses priorités ni ses marges de manœuvre.",
+   "bascule": "Si la réunion avait lieu dans une heure sans possibilité de préparation préalable, clarifier en direct deviendrait la seule option réaliste.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-0743",
+   "release": "qL2-PR5-20260923-0743-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

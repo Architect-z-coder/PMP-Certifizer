@@ -1,0 +1,347 @@
+{
+ "run_id": "20260922-1725",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PE7-20260922-1725-2-01",
+   "enabler": "Identify knowledge critical to the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un ingénieur senior qui a conçu l'architecture technique du projet part à la retraite dans six semaines. Il a produit une documentation complète des spécifications, mais aucun document ne retrace les raisons pour lesquelles trois options concurrentes ont été écartées lors de la conception initiale. Que doit faire la cheffe de projet en priorité ?",
+    "en": "A senior engineer who designed the project's technical architecture is retiring in six weeks. He has produced complete documentation of the specifications, but no document captures why three competing options were rejected during initial design. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander à l'ingénieur de réviser une dernière fois, avant son départ, les spécifications déjà rédigées et validées.",
+     "Planifier, après le départ de l'ingénieur, une formation générale sur l'architecture pour toute l'équipe technique.",
+     "Archiver dans le référentiel du programme les spécifications existantes afin de garantir leur accessibilité future.",
+     "Organiser des entretiens avec l'ingénieur pour capturer le raisonnement derrière les choix d'architecture non documentés."
+    ],
+    "en": [
+     "Ask the engineer, before he leaves, to perform one final review of the specifications already written.",
+     "Schedule, after the engineer's departure, general architecture training for the whole technical team.",
+     "Archive the existing specifications within the program repository to ensure future accessibility.",
+     "Arrange interviews with the engineer to capture the reasoning behind the undocumented architecture choices."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le savoir critique en jeu n'est pas la spécification écrite mais le raisonnement tacite derrière les choix rejetés, qui disparaît avec l'ingénieur. Organiser des entretiens pour capturer ce raisonnement cible exactement ce savoir à risque avant qu'il ne soit perdu. Réviser une dernière fois les spécifications déjà rédigées ne traite que ce qui est déjà écrit, pas le tacite manquant. Planifier une formation générale après le départ de l'ingénieur arrive trop tard : la source du savoir tacite aura disparu. Archiver les spécifications existantes préserve un document déjà complet mais laisse intact le vide sur les décisions non documentées.",
+    "en": "The critical knowledge at risk is not the written specification but the tacit reasoning behind the rejected options, which disappears with the engineer. Arranging interviews to capture this reasoning targets exactly the knowledge at risk before it is lost. Performing one final review of the specifications already written addresses only what is already documented, not the missing tacit reasoning. Scheduling general training after the engineer's departure comes too late: the source of the tacit knowledge will already be gone. Archiving the existing specifications preserves an already-complete document but leaves the gap on undocumented decisions untouched."
+   },
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PE7-20260922-1725-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260922-1725-2-02",
+   "enabler": "Gather knowledge.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "À la clôture d'une phase, deux membres de l'équipe donnent des versions contradictoires de la cause d'un retard important : l'un évoque un problème fournisseur, l'autre une sous-estimation initiale des tâches. Aucun document contemporain de la période ne permet de trancher. Que doit faire le chef de projet avant de consigner la leçon apprise ?",
+    "en": "At phase closure, two team members give contradictory accounts of the cause of a major delay: one points to a supplier issue, the other to an initial task underestimation. No document from that period allows the discrepancy to be resolved. What should the project manager do before recording the lesson learned?"
+   },
+   "options": {
+    "fr": [
+     "Recouper les deux témoignages avec le journal des risques et les échanges de correspondance de la période concernée.",
+     "Consigner les deux versions telles quelles dans le registre des leçons apprises et les transmettre au comité de clôture.",
+     "Retenir la version donnée par le membre le plus expérimenté et l'inscrire comme référence officielle du projet.",
+     "Transmettre le désaccord au sponsor et lui demander de trancher la version à retenir dans le rapport de clôture."
+    ],
+    "en": [
+     "Cross-check both accounts against the risk log and correspondence from the period in question.",
+     "Record both versions as given in the lessons learned register and forward them to the closure board.",
+     "Adopt the account given by the more experienced team member and log it as the official reference.",
+     "Forward the disagreement to the sponsor and ask him to decide which version to retain."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Deux témoignages contradictoires sans preuve tranchante exigent une vérification par des sources indépendantes avant toute consignation ; recouper avec le journal des risques et la correspondance permet d'établir un fait plutôt que de choisir entre deux opinions. Consigner les deux versions telles quelles transfère la confusion au futur lecteur au lieu de la résoudre. Retenir la version du membre le plus expérimenté fait de l'ancienneté une preuve, ce qu'elle n'est pas. Transmettre le désaccord au sponsor délègue une vérification factuelle à quelqu'un qui n'a pas plus accès aux faits que l'équipe elle-même.",
+    "en": "Two contradictory accounts without decisive evidence require verification against independent sources before anything is recorded; cross-checking with the risk log and correspondence establishes a fact rather than choosing between opinions. Recording both versions as given passes the confusion on to the future reader instead of resolving it. Adopting the account of the more experienced team member treats seniority as evidence, which it is not. Forwarding the disagreement to the sponsor delegates a factual verification to someone with no better access to the facts than the team itself."
+   },
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PE7-20260922-1725-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260922-1725-2-03",
+   "enabler": "Foster an environment for knowledge transfer.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Depuis trois mois, une communauté de pratique hebdomadaire réunit les chefs de projet du portefeuille pour partager des retours d'expérience. La participation a chuté de moitié parce que les réunions ont lieu juste après les comités de pilotage, un moment où les participants sont déjà épuisés selon les retours recueillis. Que doit faire l'animateur du portefeuille ?",
+    "en": "For three months, a weekly community of practice has brought together the portfolio's project managers to share lessons learned. Attendance has dropped by half because the meetings take place right after steering committees, a time when participants are already exhausted according to collected feedback. What should the portfolio facilitator do?"
+   },
+   "options": {
+    "fr": [
+     "Envoyer un rappel automatique la veille de chaque session et le relayer auprès des participants absents.",
+     "Déplacer les sessions à un créneau distinct des comités de pilotage, en s'appuyant sur les retours recueillis.",
+     "Réduire la fréquence des sessions à une fois par mois et alléger ainsi la charge perçue par les participants.",
+     "Rendre la participation obligatoire pour tous les chefs de projet du portefeuille, quelle que soit leur charge."
+    ],
+    "en": [
+     "Send an automatic reminder the day before each session and relay it to absent participants.",
+     "Move the sessions to a slot separate from the steering committees, based on the feedback collected.",
+     "Reduce the session frequency to once a month and thereby ease the perceived workload for participants.",
+     "Make attendance mandatory for every project manager in the portfolio, regardless of their workload."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le retour recueilli identifie une cause précise et corrigible : le moment choisi épuise les participants avant même que la session commence. Déplacer les sessions à un créneau distinct traite directement cette cause. Envoyer un rappel automatique suppose un problème de mémoire, alors que le retour parle de fatigue, pas d'oubli. Réduire la fréquence à une fois par mois affaiblit la dynamique de partage sans corriger le moment problématique. Rendre la participation obligatoire répond à la baisse d'assiduité par la contrainte plutôt que par le retrait de la cause identifiée.",
+    "en": "The feedback collected identifies a precise and fixable cause: the chosen timing exhausts participants before the session even starts. Moving the sessions to a separate slot directly addresses this cause. Sending an automatic reminder assumes a memory problem, while the feedback speaks of fatigue, not forgetting. Reducing the frequency to once a month weakens the sharing dynamic without fixing the problematic timing. Making attendance mandatory answers the drop in attendance with a constraint rather than by removing the identified cause."
+   },
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PE7-20260922-1725-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260922-1725-2-05",
+   "enabler": "Gather knowledge.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe termine un sprint marqué par un incident de production majeur, résolu en urgence sous forte pression. Le lendemain, le scrum master propose d'organiser immédiatement une rétrospective dédiée à cet incident. Deux membres clés impliqués dans la résolution signalent être encore sous le choc et peu disponibles mentalement. Que doit faire le scrum master ?",
+    "en": "A team finishes a sprint marked by a major production incident, resolved under intense pressure. The next day, the scrum master proposes holding an immediate retrospective dedicated to the incident. Two key members involved in the resolution report still being shaken and mentally unavailable. What should the scrum master do?"
+   },
+   "options": {
+    "fr": [
+     "Mener la rétrospective avec les membres disponibles et prévoir un complément avec les deux autres.",
+     "Confier au chef de projet la rédaction du compte rendu, en l'absence des deux membres clés impliqués.",
+     "Organiser une session courte centrée sur les faits techniques, en traitant à part le déroulement humain.",
+     "Reporter la rétrospective de quelques jours pour que les deux membres clés puissent y contribuer pleinement."
+    ],
+    "en": [
+     "Hold the retrospective with the available members and plan a follow-up with the other two.",
+     "Assign the incident report writing to the project manager, given the absence of the two key members.",
+     "Organize a short session centered on the technical facts, addressing the human sequence separately.",
+     "Postpone the retrospective by a few days so the two key members can contribute fully."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Les deux membres les mieux placés pour reconstituer l'incident signalent explicitement ne pas être disponibles mentalement : reporter de quelques jours permet de recueillir un savoir complet plutôt qu'un savoir partiel recueilli sous le choc. Mener la rétrospective avec les membres disponibles laisse de côté les deux témoins les plus informés au moment où leur mémoire est la plus fraîche. Confier la rédaction au chef de projet en leur absence produit un compte rendu sans les acteurs directs de la résolution. Organiser une session limitée aux faits techniques écarte le déroulement humain de l'incident, qui est souvent la source des leçons les plus utiles.",
+    "en": "The two members best placed to reconstruct the incident explicitly report being mentally unavailable: postponing by a few days allows complete knowledge to be gathered rather than partial knowledge collected under shock. Holding the retrospective with the available members leaves out the two most informed witnesses at the point when their memory is freshest. Assigning the report writing to the project manager in their absence produces an account without the direct actors of the resolution. Organizing a session limited to technical facts leaves out the human sequence of the incident, which is often the source of the most useful lessons."
+   },
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PE7-20260922-1725-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260922-1725-1-01",
+   "enabler": "Assess project needs, complexity, and magnitude.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet évalue un nouveau projet d'intégration de systèmes. Les exigences techniques sont bien documentées et stables, mais le projet implique cinq départements internes dont les priorités divergent ouvertement depuis le lancement. Que doit-il faire en priorité pour évaluer correctement la complexité du projet ?",
+    "en": "A project manager is assessing a new systems integration project. The technical requirements are well documented and stable, but the project involves five internal departments whose priorities have openly diverged since kickoff. What should he do first to correctly assess the project's complexity?"
+   },
+   "options": {
+    "fr": [
+     "Documenter les spécifications techniques détaillées et fixer un périmètre stable et figé dès le lancement même du projet.",
+     "Cartographier les relations et divergences entre les départements pour situer la principale source de complexité.",
+     "Constituer un registre des risques techniques couvrant en détail les interfaces entre les systèmes concernés ici.",
+     "Planifier une revue d'architecture avec les équipes techniques concernées et valider la faisabilité globale du projet."
+    ],
+    "en": [
+     "Document the detailed technical specifications thoroughly and lock in a stable scope from the project's very outset.",
+     "Map the relationships and divergences among the departments to locate the main source of complexity.",
+     "Build a technical risk register that also covers the interfaces between the systems involved here.",
+     "Schedule an architecture review with the relevant technical teams and validate overall project feasibility."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'énoncé précise que les exigences techniques sont stables et documentées, mais que les priorités divergent entre cinq départements depuis le lancement : la complexité dominante est ici organisationnelle, pas technique. Cartographier les relations et divergences entre départements permet d'évaluer la vraie source de complexité avant toute autre action. Documenter les spécifications techniques détaillées traite un aspect déjà stable et n'apporte rien face au problème signalé. Constituer un registre des risques techniques et planifier une revue d'architecture portent tous deux sur la dimension technique, alors que l'indice du scénario pointe vers la dimension humaine et organisationnelle du projet.",
+    "en": "The scenario states that technical requirements are stable and documented, but priorities have diverged among five departments since kickoff: the dominant complexity here is organizational, not technical. Mapping the relationships and divergences among departments allows the manager to assess the true source of complexity before any other action. Documenting the detailed technical specifications addresses an aspect that is already stable and does nothing to address the flagged problem. Building a technical risk register and scheduling an architecture review both focus on the technical dimension, while the scenario's clue points toward the human and organizational dimension of the project."
+   },
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PR1-20260922-1725-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260922-1725-1-02",
+   "enabler": "Recommend a project management development approach (i.e., predictive, adaptive/agile, or hybrid management).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une organisation lance un projet de conformité réglementaire dont les livrables et les échéances sont fixés par la loi et ne peuvent être modifiés. Une partie du travail consiste toutefois à concevoir une interface utilisateur dont les besoins évolueront selon les retours des utilisateurs finaux. Quelle approche le chef de projet doit-il recommander ?",
+    "en": "An organization is launching a regulatory compliance project whose deliverables and deadlines are fixed by law and cannot be changed. Part of the work, however, involves designing a user interface whose requirements will evolve based on end-user feedback. Which approach should the project manager recommend?"
+   },
+   "options": {
+    "fr": [
+     "Une approche prédictive complète, appliquée à l'ensemble du projet, afin de garantir le respect des échéances légales fixées.",
+     "Une approche adaptative complète, pour tous les livrables, afin de permettre l'ajustement continu selon les retours reçus.",
+     "Une approche hybride, avec un volet prédictif pour les livrables réglementaires et un volet adaptatif pour l'interface.",
+     "Une approche prédictive avec des jalons rapprochés, appliquée à l'ensemble des livrables, pour suivre le projet de près."
+    ],
+    "en": [
+     "A fully predictive approach, applied across the entire project, to guarantee compliance with the legal deadlines set.",
+     "A fully adaptive approach, applied to all deliverables, to allow continuous adjustment based on feedback received.",
+     "A hybrid approach, with a predictive track for the regulatory deliverables and an adaptive track for the interface.",
+     "A predictive approach with closely spaced milestones, applied to all deliverables, to closely track the project."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le scénario contient deux natures de travail distinctes : des livrables réglementaires fixes et non négociables, et une interface dont les besoins évolueront. Une approche hybride, combinant un volet prédictif pour le premier et un volet adaptatif pour le second, correspond exactement à cette réalité. Une approche prédictive complète traite l'interface comme si ses besoins étaient figés, ce qui contredit l'évolution attendue des retours utilisateurs. Une approche adaptative complète traite les livrables réglementaires comme négociables, ce qui contredit leur caractère fixé par la loi. Une approche prédictive avec jalons rapprochés reste entièrement prédictive et ne change rien à la gestion de l'incertitude sur l'interface.",
+    "en": "The scenario contains two distinct types of work: fixed, non-negotiable regulatory deliverables, and an interface whose requirements will evolve. A hybrid approach, combining a predictive track for the former and an adaptive track for the latter, matches this reality exactly. A fully predictive approach treats the interface as if its requirements were fixed, which contradicts the expected evolution based on user feedback. A fully adaptive approach treats the regulatory deliverables as negotiable, which contradicts their legally fixed nature. A predictive approach with closely spaced milestones remains entirely predictive and does nothing to change how uncertainty on the interface is managed."
+   },
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PR1-20260922-1725-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260922-1725-1-03",
+   "enabler": "Estimate work effort and resource requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit estimer l'effort nécessaire pour une tâche technique inédite dans l'organisation. Un seul ingénieur senior a déjà réalisé une tâche comparable, dans une entreprise précédente, avec une technologie légèrement différente. Comment doit-il procéder pour produire l'estimation la plus fiable ?",
+    "en": "A project manager needs to estimate the effort required for a technical task that is new to the organization. Only one senior engineer has previously performed a comparable task, at a prior company, using a slightly different technology. How should he proceed to produce the most reliable estimate?"
+   },
+   "options": {
+    "fr": [
+     "Appliquer directement la durée annoncée par l'ingénieur senior et l'adopter telle quelle comme estimation officielle.",
+     "Découper la tâche en sous-activités standard puis appliquer les ratios d'effort habituels de l'organisation.",
+     "Constituer une réserve pour imprévus à partir des dépassements observés sur les projets passés.",
+     "Recueillir l'estimation de l'ingénieur senior puis la faire valider par une estimation à dire d'experts avec l'équipe."
+    ],
+    "en": [
+     "Directly apply the duration stated by the senior engineer and adopt it as the task's official estimate.",
+     "Break the task into standard sub-activities and then apply the organization's usual effort ratios.",
+     "Build a contingency reserve from overruns observed on past similar projects.",
+     "Gather the senior engineer's estimate and then validate it through expert judgment with the team."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'énoncé précise que la tâche est inédite dans l'organisation, que l'expérience de l'ingénieur date d'une entreprise précédente et repose sur une technologie légèrement différente : son estimation est une donnée utile mais insuffisante seule. Recueillir cette estimation puis la valider par un dire d'experts élargi permet de corriger les écarts liés au contexte et à la technologie. Appliquer directement la durée annoncée traite une expérience partiellement transférable comme si elle était pleinement applicable. Découper la tâche selon des ratios standard ignore que la tâche est inédite et que ces ratios n'existent pas encore pour ce type de travail. Constituer une réserve fondée sur des dépassements passés répond à un risque général de dérive, mais ne construit pas l'estimation de base elle-même.",
+    "en": "The scenario states that the task is new to the organization, that the engineer's experience comes from a previous company, and relies on a slightly different technology: his estimate is useful data but insufficient on its own. Gathering this estimate and then validating it through broader expert judgment corrects for gaps linked to context and technology. Directly applying the stated duration treats partially transferable experience as if it were fully applicable. Breaking the task down using standard ratios ignores the fact that the task is new and that such ratios do not yet exist for this type of work. Building a contingency reserve based on past overruns addresses a general drift risk but does not construct the base estimate itself."
+   },
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PR1-20260922-1725-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260922-1725-1-05",
+   "enabler": "Collect and analyze data to make informed project decisions.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet observe que l'indicateur de performance des coûts se dégrade légèrement depuis deux semaines sur un projet de douze mois. Aucune autre donnée ne permet encore de distinguer une variation normale d'une tendance réelle. Que doit-il faire en priorité ?",
+    "en": "A project manager notices that the cost performance indicator has been slightly declining over the past two weeks on a twelve-month project. No other data yet allows him to distinguish a normal fluctuation from a real trend. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Poursuivre le suivi de l'indicateur sur quelques périodes supplémentaires afin de confirmer s'il s'agit d'une tendance.",
+     "Élaborer un plan d'action corrective détaillé pour restaurer immédiatement et pleinement la performance des coûts.",
+     "Réviser les seuils de tolérance de l'indicateur afin de refléter la légère baisse qui a déjà été constatée.",
+     "Convoquer une réunion de gouvernance pour statuer sur l'avenir du projet compte tenu de cette baisse observée."
+    ],
+    "en": [
+     "Continue tracking the indicator over a few additional periods to confirm whether it reflects a real trend.",
+     "Develop a detailed corrective action plan to immediately and fully restore the cost performance.",
+     "Revise the indicator's tolerance thresholds so as to reflect the slight decline already observed.",
+     "Convene a governance meeting to decide on the project's future in light of this observed decline."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'énoncé précise que la baisse ne dure que deux semaines sur un projet de douze mois et qu'aucune autre donnée ne permet de distinguer une variation normale d'une tendance réelle : agir maintenant reviendrait à décider sans preuve suffisante. Poursuivre le suivi sur quelques périodes supplémentaires permet d'obtenir cette preuve avant toute action. Élaborer un plan d'action corrective détaillé traite une variation encore incertaine comme un problème confirmé. Réviser les seuils de tolérance modifie la référence de mesure plutôt que d'éclaircir la situation réelle. Convoquer une réunion de gouvernance sur l'avenir du projet escalade une fluctuation mineure et récente à un niveau disproportionné par rapport aux données disponibles.",
+    "en": "The scenario states that the decline has lasted only two weeks on a twelve-month project and that no other data yet distinguishes a normal fluctuation from a real trend: acting now would mean deciding without sufficient evidence. Continuing to track the indicator over a few additional periods provides that evidence before any action is taken. Developing a detailed corrective action plan treats a still-uncertain variation as a confirmed problem. Revising the tolerance thresholds changes the measurement baseline rather than clarifying the actual situation. Convening a governance meeting on the project's future escalates a minor, recent fluctuation to a level disproportionate to the data available."
+   },
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PR1-20260922-1725-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260922-1725-2-01",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet termine la rédaction de l'énoncé du contenu avec l'équipe technique. Deux parties prenantes clés, mentionnées dans le registre comme co-décisionnaires du périmètre, n'ont pas encore vu le document. Le sponsor demande que le kickoff soit programmé cette semaine. Que doit-elle faire en priorité concernant le contenu ?",
+    "en": "A project manager finishes drafting the scope statement with the technical team. Two key stakeholders, listed in the register as scope co-decision-makers, have not yet seen the document. The sponsor asks that the kickoff be scheduled this week. What should she prioritize regarding scope?"
+   },
+   "options": {
+    "fr": [
+     "Diffuser l'énoncé du contenu à toute l'équipe pour lancer la planification des activités techniques.",
+     "Programmer le kickoff cette semaine, y présenter le contenu comme point d'ouverture de la réunion prévue.",
+     "Demander au sponsor de valider seul le contenu, en s'appuyant sur son autorité finale reconnue sur le budget.",
+     "Obtenir l'accord formel des deux co-décisionnaires du périmètre avant de figer l'énoncé du contenu."
+    ],
+    "en": [
+     "Distribute the scope statement to the whole team to start planning the technical activities.",
+     "Schedule the kickoff this week, presenting the scope statement as the opening item of that meeting.",
+     "Ask the sponsor to approve the scope alone, relying on his recognized final authority over budget.",
+     "Secure formal agreement from both scope co-decision-makers before finalizing the scope statement."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le registre désigne explicitement deux parties prenantes comme co-décisionnaires du périmètre : leur accord formel est donc une condition avant de figer l'énoncé du contenu, quel que soit le calendrier souhaité par le sponsor. Diffuser l'énoncé à l'équipe technique traite le contenu comme acquis alors qu'il n'a pas encore l'accord de ses décisionnaires désignés. Programmer le kickoff et y présenter le contenu inverse l'ordre : l'accord doit précéder la présentation officielle, pas la suivre. Demander au sponsor de valider seul confond autorité budgétaire et autorité sur le périmètre, alors que le registre attribue explicitement ce rôle à deux autres parties prenantes.",
+    "en": "The register explicitly names two stakeholders as scope co-decision-makers, so their formal agreement is a precondition for finalizing the scope statement, regardless of the sponsor's preferred timeline. Distributing the statement to the technical team treats scope as settled before it has agreement from its designated decision-makers. Scheduling the kickoff and presenting scope there reverses the order: agreement must precede formal presentation, not follow it. Asking the sponsor to approve alone confuses budget authority with scope authority, when the register explicitly assigns that role to two other stakeholders."
+   },
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PR2-20260922-1725-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260922-1725-2-02",
+   "enabler": "Break down scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet construit la structure de découpage du contenu (WBS) avec l'équipe. Un lot de travail proposé par un ingénieur regroupe trois livrables distincts, chacun assigné à une équipe différente et suivi séparément dans le contrat client. Que doit faire le chef de projet avec ce lot avant de poursuivre le découpage ?",
+    "en": "A project manager is building the work breakdown structure (WBS) with the team. One work package proposed by an engineer bundles three distinct deliverables, each assigned to a different team and tracked separately in the client contract. What should the project manager do with this package before continuing the breakdown?"
+   },
+   "options": {
+    "fr": [
+     "Scinder le lot en trois éléments distincts, alignés sur les équipes et le suivi contractuel séparé.",
+     "Conserver le lot proposé, ajouter une note décrivant la répartition, puis la transmettre aux trois équipes concernées.",
+     "Transmettre le lot groupé au bureau de projet, en lui laissant trancher la granularité, puis appliquer sa décision.",
+     "Valider le lot tel quel, en s'appuyant sur la connaissance technique de l'ingénieur, pour les trois livrables visés."
+    ],
+    "en": [
+     "Split the package into three distinct elements, aligned with the teams and the separate contractual tracking.",
+     "Keep the proposed package, add a note describing the split, and share it with the three involved teams.",
+     "Forward the bundled package to the PMO, let it decide on the granularity, then apply its decision to the WBS.",
+     "Approve the package as is, relying on the engineer's technical knowledge, for the three deliverables involved."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Chaque livrable a un propriétaire d'équipe distinct et un suivi contractuel séparé : regrouper les trois dans un seul lot empêche d'assigner clairement la responsabilité et de suivre l'avancement contractuel, ce qui va contre l'objectif même du découpage. Conserver le lot avec une note descriptive documente le problème sans le résoudre : le suivi séparé reste impossible tant que le lot n'est pas scindé. Transmettre au bureau de projet ajoute une escalade pour une décision que la structure contractuelle et organisationnelle rend déjà évidente. Valider tel quel confond expertise technique du contenu et pertinence de la granularité du WBS, qui dépend de l'affectation des équipes et du contrat, non du détail technique.",
+    "en": "Each deliverable has a distinct team owner and separate contractual tracking: bundling all three into one package prevents clear responsibility assignment and contractual progress tracking, defeating the purpose of the breakdown itself. Keeping the package with a descriptive note documents the problem without solving it: separate tracking remains impossible until the package is split. Forwarding to the PMO adds an escalation for a decision the contractual and organizational structure already makes clear. Approving as is confuses technical expertise about content with the appropriateness of WBS granularity, which depends on team assignment and contract terms, not technical detail."
+   },
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260922-1725",
+   "release": "qL2-PR2-20260922-1725-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

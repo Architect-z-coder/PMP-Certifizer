@@ -1,0 +1,159 @@
+{
+ "run_id": "20260923-0909",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR7-20260923-0909-1-01",
+   "enabler": "Manage cost of quality (CoQ) and sustainability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un test d'intégration détecte qu'un champ d'export de rapport affiche une date au mauvais format sur un composant secondaire, sans impact sur les calculs ni sur les livrables contractuels. Le chef de projet doit décider de la réponse à apporter avant la prochaine itération. Que doit-il faire ?",
+    "en": "An integration test finds that a report export field displays a date in the wrong format on a secondary component, with no impact on calculations or contractual deliverables. The project manager must decide on a response before the next iteration. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Consigner l'anomalie dans le backlog avec une priorité basse, pour correction lors d'une itération ultérieure.",
+     "Convoquer une revue qualité formelle avec les parties prenantes contractuelles, pour statuer sur l'anomalie et sa correction.",
+     "Suspendre la livraison de l'itération en cours, jusqu'à la correction complète et validée du champ d'export.",
+     "Mobiliser l'équipe d'assurance qualité pour auditer tous les champs d'export du système avant la livraison."
+    ],
+    "en": [
+     "Log the defect in the backlog at low priority, for correction in a later iteration.",
+     "Convene a formal quality review with contractual stakeholders, to rule on the defect and its resolution.",
+     "Suspend delivery of the current iteration, until the export field is fully and formally corrected.",
+     "Mobilize the quality assurance team to audit every export field in the system before delivery."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Consigner l'anomalie dans le backlog avec une priorité basse est la réponse proportionnée : le défaut n'affecte ni les calculs ni les livrables contractuels, donc le coût de la non-conformité reste faible et ne justifie pas une réponse lourde. Convoquer une revue qualité formelle avec les parties prenantes contractuelles mobilise une gouvernance disproportionnée pour un défaut mineur et sans enjeu contractuel. Suspendre la livraison de l'itération en cours impose un coût d'opportunité largement supérieur à celui de l'anomalie elle-même. Mobiliser l'équipe d'assurance qualité pour auditer tous les champs d'export engage des ressources d'investigation étendues alors que le périmètre du problème est déjà connu et limité.",
+    "en": "Logging the defect in the backlog at low priority is the proportionate response: the flaw affects neither calculations nor contractual deliverables, so the cost of nonconformance stays low and does not justify a heavy response. Convening a formal quality review with contractual stakeholders mobilizes disproportionate governance for a minor, non-contractual defect. Suspending delivery of the current iteration imposes an opportunity cost far greater than the defect itself. Mobilizing the quality assurance team to audit every export field commits broad investigative resources when the problem's scope is already known and limited."
+   },
+   "decision_atom": "Décider du niveau de réponse à un défaut mineur sans impact contractuel ni fonctionnel majeur.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le défaut n'affecte ni les calculs ni les livrables contractuels.",
+   "bascule": "Si le défaut affectait un livrable contractuel ou des calculs, l'audit complet deviendrait justifié.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260923-0909",
+   "release": "qL2-PR7-20260923-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260923-0909-1-02",
+   "enabler": "Plan quality processes and tools.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe projet s'apprête à démarrer la phase de développement d'un nouveau module logiciel. Les exigences fonctionnelles viennent d'être validées, mais aucun outil de suivi des tests ni aucun critère d'acceptation formel n'a encore été défini. Le chef de projet doit décider quand mettre en place les processus et outils qualité. Que doit-il faire ?",
+    "en": "A project team is about to start the development phase of a new software module. Functional requirements have just been validated, but no test-tracking tool or formal acceptance criteria have yet been defined. The project manager must decide when to put quality processes and tools in place. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Laisser l'équipe de développement choisir ses propres outils de test, au fil de l'avancement du module, sans cadrage préalable.",
+     "Définir les processus et outils qualité avant le démarrage du développement, en s'appuyant sur les exigences validées.",
+     "Attendre la première revue de sprint, pour évaluer alors les besoins réels en outillage qualité de l'équipe.",
+     "Reporter la définition des critères d'acceptation à la phase de tests d'intégration, plus tard dans le module."
+    ],
+    "en": [
+     "Let the development team choose its own testing tools, as the module progresses, without prior framing.",
+     "Define quality processes and tools before development starts, building on the validated requirements.",
+     "Wait for the first sprint review, to then assess the team's actual quality tooling needs.",
+     "Defer definition of acceptance criteria, to a later stage, in the module's integration testing phase."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Définir les processus et outils qualité avant le démarrage du développement est la bonne séquence : les exigences fonctionnelles sont validées, donc la base nécessaire à cette planification existe déjà, et différer reviendrait à développer sans référentiel de contrôle. Laisser l'équipe de développement choisir ses propres outils au fil de l'avancement fragmente le contrôle qualité et retarde la cohérence des critères. Attendre la première revue de sprint pour évaluer les besoins réels en outillage repousse une décision qui peut être prise dès maintenant, sur la base des exigences déjà connues. Reporter la définition des critères d'acceptation à la phase de tests d'intégration laisse l'équipe développer sans savoir ce qui sera vérifié.",
+    "en": "Defining quality processes and tools before development starts is the right sequence: functional requirements are validated, so the necessary basis for this planning already exists, and delaying it means developing without a control framework. Letting the development team choose its own tools as the module progresses fragments quality control and delays consistency of criteria. Waiting for the first sprint review to assess actual tooling needs postpones a decision that can already be made based on known requirements. Deferring acceptance criteria to the integration testing phase leaves the team developing without knowing what will be verified."
+   },
+   "decision_atom": "Décider du moment où définir les processus et outils qualité par rapport au démarrage du développement.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les exigences fonctionnelles viennent d'être validées, ce qui fournit la base nécessaire à la planification qualité.",
+   "bascule": "Si les exigences n'étaient pas encore stabilisées, attendre une clarification avant de planifier serait défendable.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260923-0909",
+   "release": "qL2-PR7-20260923-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260923-0909-1-03",
+   "enabler": "Help ensure regulatory compliance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet de dispositif médical doit répondre à une nouvelle exigence réglementaire portant sur la traçabilité des composants. Le chef de projet constate que l'équipe technique interprète l'exigence différemment du service des affaires réglementaires de l'organisation. Que doit-il faire ?",
+    "en": "A medical device project must meet a new regulatory requirement on component traceability. The project manager notices that the technical team interprets the requirement differently from the organization's regulatory affairs department. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Demander à l'équipe technique de documenter sa propre interprétation, pour accélérer l'implémentation du projet.",
+     "Organiser un atelier technique interne, pour trancher l'interprétation à appliquer au projet en cours.",
+     "Soumettre les deux interprétations au service des affaires réglementaires pour obtenir une position officielle.",
+     "Appliquer l'interprétation la plus stricte des deux, afin de limiter le risque de non-conformité réglementaire."
+    ],
+    "en": [
+     "Ask the technical team to document its own interpretation, to speed up implementation of the project.",
+     "Organize an internal technical workshop, to settle which interpretation the current project should apply.",
+     "Submit both interpretations to the regulatory affairs department to obtain an official position.",
+     "Apply the stricter of the two interpretations, to limit the risk of regulatory nonconformance."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Soumettre les deux interprétations au service des affaires réglementaires reconnaît que la conformité réglementaire relève de son autorité, et non de celle de l'équipe technique ou du chef de projet. Demander à l'équipe technique de documenter sa propre interprétation confie la décision réglementaire à un acteur qui n'en a pas la responsabilité formelle. Organiser un atelier technique interne pour trancher l'interprétation reproduit la même erreur de propriétaire en interne, sans faire intervenir l'expertise réglementaire compétente. Appliquer l'interprétation la plus stricte des deux évite de trancher la question de fond et peut imposer des contraintes non justifiées ou insuffisantes selon le texte réel.",
+    "en": "Submitting both interpretations to the regulatory affairs department recognizes that regulatory compliance falls under its authority, not the technical team's or the project manager's. Asking the technical team to document its own interpretation hands the regulatory decision to a party without formal responsibility for it. Organizing an internal technical workshop to settle the interpretation repeats the same ownership error internally, without involving the competent regulatory expertise. Applying the stricter of the two interpretations avoids resolving the underlying question and may impose constraints that are either unjustified or insufficient depending on the actual text."
+   },
+   "decision_atom": "Décider qui doit trancher une divergence d'interprétation sur une exigence réglementaire.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'équipe technique et le service des affaires réglementaires interprètent différemment la même exigence.",
+   "bascule": "Si aucun service réglementaire dédié n'existait dans l'organisation, un arbitrage technique interne documenté deviendrait la meilleure option disponible.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260923-0909",
+   "release": "qL2-PR7-20260923-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260923-0909-1-04",
+   "enabler": "Conduct ongoing quality reviews.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une revue qualité périodique, un membre de l'équipe signale verbalement que le taux de défauts sur un composant lui semble élevé, sans disposer de données précises. Le chef de projet doit décider de la suite à donner avant la prochaine revue. Que doit-il faire ?",
+    "en": "During a periodic quality review, a team member verbally reports that the defect rate on a component seems high to him, without precise data. The project manager must decide on next steps before the next review. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Informer le sponsor du risque qualité potentiel, afin qu'il en tienne compte dans ses prochains arbitrages.",
+     "Lancer immédiatement un plan d'actions correctives, sur le composant signalé comme problématique par l'équipe.",
+     "Réaffecter des ressources supplémentaires au composant pour anticiper une charge de correction future.",
+     "Demander la collecte de mesures de défauts sur le composant pour objectiver le signal avant d'agir."
+    ],
+    "en": [
+     "Inform the sponsor of the potential quality risk, so it can factor into his upcoming decisions.",
+     "Immediately launch a corrective action plan, on the component flagged as problematic by the team.",
+     "Reallocate additional resources to the component, to anticipate a future correction workload.",
+     "Request collection of defect measurements on the component to substantiate the signal before acting."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Demander la collecte de mesures de défauts avant d'agir reconnaît que le signalement est une impression verbale, non une donnée vérifiée, et que le seuil de preuve nécessaire à une décision qualité n'est pas encore atteint. Informer le sponsor du risque potentiel transmet une alerte non étayée comme si elle avait la valeur d'un constat établi. Lancer immédiatement un plan d'actions correctives traite une perception comme un fait avéré, sans validation préalable du taux de défauts réel. Réaffecter des ressources supplémentaires au composant engage un coût sur la base du même signal non vérifié.",
+    "en": "Requesting collection of defect measurements before acting recognizes that the report is a verbal impression, not verified data, and that the evidentiary threshold needed for a quality decision has not yet been met. Informing the sponsor of the potential risk conveys an unsubstantiated alert as though it carried the weight of an established finding. Immediately launching a corrective action plan treats a perception as an established fact, without prior validation of the actual defect rate. Reallocating additional resources to the component commits cost on the basis of the same unverified signal."
+   },
+   "decision_atom": "Décider d'agir sur un signal qualité verbal non chiffré ou d'exiger une donnée avant toute action.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le signalement est verbal, sans données précises disponibles.",
+   "bascule": "Si le membre de l'équipe avait présenté des données de défauts mesurées, lancer un plan d'actions correctives deviendrait justifié.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260923-0909",
+   "release": "qL2-PR7-20260923-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

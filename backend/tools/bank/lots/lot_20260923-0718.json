@@ -1,0 +1,279 @@
+{
+ "run_id": "20260923-0718",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR3-20260923-0718-1-01",
+   "enabler": "Identify value components with key stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet lance un atelier de cadrage pour un nouveau produit interne. Les parties prenantes citent des bénéfices très différents : réduction de coûts pour la finance, gain de temps pour les opérations, image de marque pour le marketing. Aucun de ces bénéfices n'a encore été formulé de façon vérifiable. Que doit-elle faire en priorité ?",
+    "en": "A project manager launches a chartering workshop for a new internal product. Stakeholders cite very different benefits: cost reduction for finance, time savings for operations, brand image for marketing. None of these benefits has yet been stated in a verifiable way. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Faire reformuler chaque bénéfice cité par les parties prenantes en un composant de valeur mesurable, avant de poursuivre le cadrage.",
+     "Regrouper les bénéfices cités sous un objectif unique porté par le sponsor, pour simplifier la communication du projet.",
+     "Prioriser dès l'atelier le bénéfice de la finance, puisque cette fonction contrôle le budget du projet.",
+     "Documenter les trois bénéfices cités et transmettre la liste au comité de gouvernance pour validation formelle."
+    ],
+    "en": [
+     "Have each benefit cited by stakeholders restated as a measurable value component before continuing the chartering work.",
+     "Group the cited benefits under a single objective owned by the sponsor, to simplify project communication.",
+     "Prioritize the finance benefit during the workshop itself, since that function controls the project budget.",
+     "Document the three cited benefits and forward the list to the governance board for formal validation."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les bénéfices cités sont encore des intentions générales, pas des composants de valeur exploitables : ils doivent être reformulés en éléments mesurables avant toute priorisation ou communication. Regrouper les bénéfices sous un objectif unique porté par le sponsor court-circuite le travail d'identification en écrasant les nuances entre parties prenantes. Prioriser le bénéfice de la finance dès l'atelier confond l'autorité budgétaire avec la valeur du contenu, alors que rien n'indique que ce bénéfice soit le plus significatif. Transmettre la liste telle quelle au comité de gouvernance fait porter à une instance externe un travail de clarification qui appartient à l'atelier lui-même, avant toute validation formelle.",
+    "en": "The cited benefits are still general intentions, not actionable value components: they must be restated as measurable elements before any prioritization or communication. Grouping the benefits under a single sponsor-owned objective short-circuits the identification work by flattening the nuances between stakeholders. Prioritizing the finance benefit during the workshop itself confuses budget authority with content value, when nothing indicates this benefit is the most significant one. Forwarding the list as-is to the governance board pushes onto an external body a clarification task that belongs to the workshop itself, before any formal validation."
+   },
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR3-20260923-0718-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-0718-1-02",
+   "enabler": "Prioritize work based on value and stakeholder feedback.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "En cours de sprint, une équipe reçoit un retour d'un utilisateur clé indiquant qu'une fonctionnalité prévue pour le sprint suivant apporterait plus de valeur immédiate que deux éléments actuellement en tête du backlog. Ce retour rejoint des retours similaires reçus la semaine précédente de deux autres utilisateurs clés. Que doit faire le chef de produit ?",
+    "en": "Mid-sprint, a team receives feedback from a key user indicating that a feature planned for the next sprint would deliver more immediate value than two items currently at the top of the backlog. This feedback echoes similar feedback received the previous week from two other key users. What should the product owner do?"
+   },
+   "options": {
+    "fr": [
+     "Attendre la fin du sprint en cours pour ne pas perturber l'engagement pris avec l'équipe sur le contenu déjà planifié.",
+     "Réévaluer l'ordre du backlog avec l'équipe, en tenant compte de ces retours convergents avant le prochain sprint.",
+     "Insérer immédiatement la fonctionnalité dans le sprint en cours, puisque trois utilisateurs clés l'ont demandée.",
+     "Demander au sponsor de trancher entre les deux éléments du backlog et la nouvelle fonctionnalité signalée."
+    ],
+    "en": [
+     "Wait until the current sprint ends, in order not to disrupt the commitment made with the team on the already planned content.",
+     "Re-evaluate the backlog order with the team, taking these convergent signals into account before the next sprint.",
+     "Immediately insert the feature into the current sprint, since three key users have requested it.",
+     "Ask the sponsor to decide between the two backlog items and the newly flagged feature."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Trois retours convergents de parties prenantes clés constituent un signal suffisant pour reconsidérer l'ordre du backlog, ce qui doit se faire avant le prochain sprint plutôt qu'en attendant passivement une échéance arbitraire. Attendre la fin du sprint traite l'engagement d'équipe comme plus important que la valeur signalée, alors que rien n'empêche de replanifier pour le sprint suivant. Insérer immédiatement la fonctionnalité dans le sprint en cours perturbe un engagement déjà pris sans qu'aucune urgence ne le justifie. Remonter la décision au sponsor traite comme un conflit de gouvernance ce qui est une reprioritisation ordinaire, relevant du chef de produit et de l'équipe.",
+    "en": "Three convergent signals from key stakeholders are enough to warrant reconsidering the backlog order, which should happen before the next sprint rather than passively waiting for an arbitrary deadline. Waiting until the sprint ends treats the team's existing commitment as more important than the signaled value, even though nothing prevents replanning for the next sprint. Immediately inserting the feature into the current sprint disrupts an existing commitment with no urgency to justify it. Escalating the decision to the sponsor treats an ordinary reprioritization as a governance conflict, when it belongs to the product owner and the team."
+   },
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR3-20260923-0718-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-0718-1-03",
+   "enabler": "Assess opportunities to deliver value incrementally.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet de refonte d'un portail client est planifié pour une livraison unique dans huit mois. À mi-parcours, l'équipe technique signale qu'un module d'authentification, achevé et testé, pourrait être mis en production dès maintenant sans dépendre du reste du portail. Le sponsor n'a pas exprimé de préférence sur le calendrier de livraison. Que doit faire le chef de projet ?",
+    "en": "A customer portal redesign project is planned for a single delivery in eight months. Midway through, the technical team reports that an authentication module, completed and tested, could go into production now without depending on the rest of the portal. The sponsor has not expressed a preference on the delivery schedule. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Conserver le calendrier de livraison unique initialement planifié, pour respecter la structure du projet approuvée en début de cycle.",
+     "Documenter le module comme un risque technique à surveiller jusqu'à la date de livraison finale prévue dans huit mois.",
+     "Évaluer avec le sponsor l'intérêt de livrer ce module dès maintenant, puisqu'il apporte une valeur indépendante et vérifiée.",
+     "Confier à l'équipe technique la décision de mise en production anticipée, puisqu'elle a validé la qualité du module."
+    ],
+    "en": [
+     "Keep the originally planned single delivery schedule, in order to respect the project structure approved at the start of the cycle.",
+     "Document the module as a technical risk to monitor until the final delivery date planned eight months out.",
+     "Assess with the sponsor whether to deliver this module now, since it provides independent and verified value.",
+     "Leave the decision on early deployment to the technical team, since it has validated the module's quality."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Un module achevé, testé et indépendant du reste du portail est une opportunité concrète de livraison incrémentale, et l'absence de préférence exprimée par le sponsor signifie qu'elle doit être évaluée avec lui plutôt que tranchée unilatéralement. Conserver le calendrier initial ignore une occasion réelle de valeur anticipée simplement parce que le plan d'origine ne la prévoyait pas. Traiter le module comme un risque à surveiller détourne un signal positif vers un cadre de gestion des menaces qui ne lui correspond pas. Laisser l'équipe technique décider de la mise en production confond une validation de qualité technique avec une décision de livraison, qui relève du chef de projet et du sponsor.",
+    "en": "A completed, tested module that is independent of the rest of the portal is a concrete incremental delivery opportunity, and the sponsor's lack of expressed preference means it should be assessed with the sponsor rather than decided unilaterally. Keeping the original schedule ignores a real opportunity for early value simply because the original plan did not anticipate it. Treating the module as a risk to monitor redirects a positive signal into a threat-management frame that does not fit it. Leaving the production decision to the technical team confuses technical quality validation with a delivery decision, which belongs to the project manager and the sponsor."
+   },
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR3-20260923-0718-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-0718-1-04",
+   "enabler": "Examine the business value throughout the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet approche de sa quatrième revue trimestrielle. Les indicateurs de coût et de délai sont au vert depuis le début. Le chef de projet remarque cependant que l'hypothèse de marché ayant justifié le projet, formulée il y a un an, n'a été réexaminée à aucune des revues précédentes. Que doit-il faire à cette revue ?",
+    "en": "A project is approaching its fourth quarterly review. Cost and schedule indicators have been green from the start. However, the project manager notices that the market assumption that justified the project, formulated a year ago, has not been re-examined at any previous review. What should he do at this review?"
+   },
+   "options": {
+    "fr": [
+     "Reporter l'examen de l'hypothèse de marché à la revue de clôture, pour ne pas interférer avec les indicateurs actuels.",
+     "Renforcer le suivi des coûts et des délais lors de cette revue, puisqu'ils constituent la preuve de performance la plus récente.",
+     "Demander au sponsor de confirmer par écrit que l'hypothèse de marché reste valable, sans rouvrir son analyse.",
+     "Réexaminer l'hypothèse de marché avec le sponsor lors de cette revue, en s'appuyant sur les données de marché disponibles."
+    ],
+    "en": [
+     "Defer the examination of the market assumption to the closing review, in order not to interfere with the current indicators.",
+     "Strengthen cost and schedule tracking at this review, since these constitute the most recent performance evidence.",
+     "Ask the sponsor to confirm in writing that the market assumption still holds, without reopening its analysis.",
+     "Re-examine the market assumption with the sponsor at this review, drawing on available market data."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Une hypothèse de marché vieille d'un an et jamais réexaminée doit être confrontée aux données disponibles précisément parce que les indicateurs de coût et de délai, aussi favorables soient-ils, ne renseignent en rien sur la validité de cette hypothèse. Reporter l'examen à la clôture laisse le projet avancer sans vérifier le fondement même de sa justification, alors que la revue trimestrielle est le moment prévu pour ce contrôle. Renforcer le suivi des coûts et des délais répond à une préoccupation différente de celle posée par l'hypothèse non vérifiée. Demander une confirmation écrite sans rouvrir l'analyse traite comme acquise une hypothèse qui n'a justement jamais été testée.",
+    "en": "A year-old market assumption that has never been re-examined must be checked against available data, precisely because favorable cost and schedule indicators say nothing about the assumption's validity. Deferring the examination to closing lets the project proceed without verifying the very foundation of its justification, when the quarterly review is the intended moment for that check. Strengthening cost and schedule tracking addresses a different concern than the one raised by the unverified assumption. Asking for written confirmation without reopening the analysis treats as settled an assumption that has, in fact, never been tested."
+   },
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR3-20260923-0718-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260923-0718-2-01",
+   "enabler": "Define and plan resources based on requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet planifie les besoins en ressources d'une nouvelle phase. Le document d'exigences techniques vient d'être approuvé hier, mais les estimations de charge par activité n'ont pas encore été produites par les responsables techniques. Le sponsor demande un plan de ressources cette semaine. Que doit-elle faire en priorité ?",
+    "en": "A project manager is planning resource needs for a new phase. The technical requirements document was approved yesterday, but the effort estimates per activity have not yet been produced by the technical leads. The sponsor is asking for a resource plan this week. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Transmettre au sponsor un plan de ressources basé sur des phases comparables antérieures.",
+     "Demander aux responsables techniques de produire les estimations de charge avant de finaliser le plan de ressources.",
+     "Convoquer une réunion de gouvernance pour faire valider auprès des parties prenantes un calendrier révisé de livraison du plan de ressources.",
+     "Affecter provisoirement les ressources disponibles aux activités jugées prioritaires par l'équipe projet, en attendant les estimations."
+    ],
+    "en": [
+     "Send the sponsor a resource plan based on comparable prior phases.",
+     "Ask the technical leads to produce the effort estimates before finalizing the resource plan.",
+     "Convene a governance meeting to get stakeholder approval for a revised delivery schedule for the plan.",
+     "Provisionally assign available resources to activities the project team considers priorities."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les exigences techniques viennent d'être approuvées et les estimations de charge par activité ne sont pas encore produites : demander aux responsables techniques de les produire avant de finaliser le plan de ressources garantit que la planification repose sur une base réelle plutôt qu'estimée. Transmettre un plan basé sur des phases comparables antérieures ignore que les exigences de cette phase viennent juste d'être approuvées et peuvent différer substantiellement des précédentes. Convoquer une réunion de gouvernance pour reporter l'échéance traite un symptôme de délai sans obtenir l'information manquante. Affecter provisoirement les ressources disponibles aux activités jugées prioritaires construit un plan sur des estimations absentes, ce qui expose à des révisions coûteuses une fois les charges connues.",
+    "en": "The technical requirements were just approved and per-activity effort estimates have not yet been produced: asking the technical leads to produce them before finalizing the resource plan ensures the plan rests on real rather than assumed data. Sending a plan based on comparable prior phases overlooks that this phase's requirements were only just approved and may differ substantially from earlier ones. Convening a governance meeting to push back the deadline addresses a scheduling symptom without obtaining the missing information. Provisionally assigning available resources to activities the project team considers priorities builds a plan on absent estimates, exposing it to costly revisions once effort is known."
+   },
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR4-20260923-0718-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260923-0718-2-02",
+   "enabler": "Define and plan resources based on requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "En planifiant les ressources d'un projet, un chef de projet constate que deux activités critiques nécessitent la même compétence rare de modélisation de données. Le registre des exigences précise que cette compétence n'existe qu'auprès d'un seul spécialiste dans l'organisation, déjà affecté à un autre programme à temps partiel. Que doit faire le chef de projet en priorité ?",
+    "en": "While planning project resources, a project manager notices that two critical activities both require the same rare data-modeling skill. The requirements register states that this skill exists with only one specialist in the organization, who is already assigned part-time to another program. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Recruter en externe, auprès d'un cabinet spécialisé, un consultant possédant la compétence de modélisation de données pour couvrir les deux activités.",
+     "Former un membre de l'équipe projet à la modélisation de données pendant toute la durée prévue des deux activités critiques concernées.",
+     "Évaluer avec le gestionnaire de portefeuille la disponibilité réelle du spécialiste avant de séquencer les deux activités.",
+     "Répartir les deux activités entre plusieurs membres juniors de l'équipe afin de limiter la dépendance à l'égard d'un seul expert rare."
+    ],
+    "en": [
+     "Hire an external consultant with the data-modeling skill, sourced through a specialized firm, to cover both activities.",
+     "Train a project team member in data modeling for the entire planned duration of the two critical activities.",
+     "Assess with the portfolio manager the specialist's actual availability before sequencing the two activities.",
+     "Split the two activities among several junior team members to limit dependency on this single rare expert."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le registre des exigences indique que la compétence n'existe que chez un seul spécialiste déjà engagé ailleurs à temps partiel : la priorité est de clarifier avec le gestionnaire de portefeuille sa disponibilité réelle avant de séquencer les deux activités critiques, car cette information conditionne toute décision de ressource. Recruter en externe engage un coût et un délai avant même de savoir si le spécialiste interne peut suffire partiellement. Former un membre de l'équipe pendant la durée des activités critiques ne produira pas la compétence à temps pour des activités déjà en cours de planification serrée. Répartir les activités entre membres juniors abandonne l'exigence de compétence rare énoncée dans le registre, ce qui expose le projet à un risque de qualité non maîtrisé.",
+    "en": "The requirements register states the skill exists with only one specialist already committed elsewhere part-time: the priority is to clarify with the portfolio manager that specialist's actual availability before sequencing the two critical activities, since this information drives any resourcing decision. Hiring an external consultant incurs cost and delay before even knowing whether the internal specialist could partially suffice. Training a team member for the duration of the critical activities will not produce the skill in time for activities already under tight scheduling. Splitting the activities among junior members abandons the rare-skill requirement stated in the register, exposing the project to unmanaged quality risk."
+   },
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR4-20260923-0718-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260923-0718-2-03",
+   "enabler": "Define and plan resources based on requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet établit le plan de ressources d'un projet de migration de systèmes. Le document d'exigences précise que les tests d'intégration devront être menés par une équipe qualifiée en cybersécurité, une exigence ajoutée tardivement après un audit de conformité. L'équipe qualité actuelle n'a pas cette qualification. Que doit-il faire en priorité ?",
+    "en": "A project manager is building the resource plan for a systems migration project. The requirements document states that integration testing must be performed by a team qualified in cybersecurity, a requirement added late after a compliance audit. The current quality team does not hold this qualification. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Informer le sponsor que le calendrier initial devra être révisé compte tenu de cette nouvelle exigence.",
+     "Documenter cette exigence comme un risque à surveiller lors des prochaines revues de projet.",
+     "Maintenir l'équipe qualité actuelle sur les tests, en s'appuyant sur son expérience générale des migrations.",
+     "Identifier et planifier une ressource qualifiée en cybersécurité pour mener les tests d'intégration requis."
+    ],
+    "en": [
+     "Inform the sponsor that the original schedule will need revision because of this new requirement.",
+     "Document this requirement as a risk to monitor during upcoming project reviews.",
+     "Keep the current quality team on testing, relying on its general experience with migrations.",
+     "Identify and plan a cybersecurity-qualified resource to conduct the required integration testing."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le document d'exigences impose explicitement une qualification en cybersécurité que l'équipe actuelle ne possède pas : la priorité est d'identifier et de planifier une ressource qui possède cette qualification pour mener les tests requis, car planifier les ressources selon les exigences est précisément l'objet de cette activité. Informer le sponsor d'une révision de calendrier anticipe une conséquence avant d'avoir cherché la ressource qui pourrait l'éviter. Documenter l'exigence comme un risque à surveiller traite une exigence contractuelle actée comme une incertitude future, alors qu'elle est déjà connue et certaine. Maintenir l'équipe actuelle sur la base de son expérience générale ignore la qualification spécifique exigée par le document d'exigences.",
+    "en": "The requirements document explicitly mandates a cybersecurity qualification that the current team lacks: the priority is to identify and plan a resource holding that qualification to conduct the required testing, since planning resources according to requirements is precisely the point of this activity. Informing the sponsor about a schedule revision anticipates a consequence before even seeking the resource that might avoid it. Documenting the requirement as a risk to monitor treats an established contractual requirement as a future uncertainty, when it is already known and certain. Keeping the current team based on its general experience overlooks the specific qualification mandated by the requirements document."
+   },
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR4-20260923-0718-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260923-0718-2-05",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend qu'un développeur clé partira en congé de trois semaines dans un mois, période qui coïncidera avec la phase de développement la plus intense selon le calendrier actuel. Le développeur a annoncé ce congé conformément au préavis contractuel requis par l'organisation. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager learns that a key developer will take three weeks of leave in one month, a period that will coincide with the most intense development phase under the current schedule. The developer announced this leave in accordance with the organization's required contractual notice period. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Évaluer avec l'équipe les options de réorganisation du calendrier ou de répartition des tâches du développeur.",
+     "Demander au développeur de reporter son congé annoncé jusqu'à la fin de la phase de développement la plus intense.",
+     "Escalader la situation au sponsor comme un risque majeur nécessitant une intervention immédiate de sa part.",
+     "Recruter en urgence un développeur intérimaire pour couvrir intégralement la période d'absence annoncée."
+    ],
+    "en": [
+     "Assess with the team options for reorganizing the schedule or redistributing the developer's tasks.",
+     "Ask the developer to postpone the announced leave until the end of the intense development phase.",
+     "Escalate the situation to the sponsor as a major risk requiring his immediate intervention.",
+     "Urgently hire a temporary developer to fully cover the announced absence period."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le développeur a respecté le préavis contractuel requis, ce qui rend son congé légitime et non négociable comme variable d'ajustement : la priorité est donc d'évaluer avec l'équipe les options de réorganisation du calendrier ou de répartition des tâches, une réponse proportionnée à un aléa connu un mois à l'avance. Demander au développeur de reporter son congé revient à contester un droit exercé dans les règles contractuelles. Escalader au sponsor comme un risque majeur est disproportionné pour une situation qu'une réorganisation d'équipe peut absorber. Recruter en urgence un intérimaire engage un coût et un délai d'intégration avant même d'avoir exploré les options internes de réorganisation.",
+    "en": "The developer complied with the required contractual notice period, making the leave legitimate and not a negotiable adjustment variable: the priority is therefore to assess with the team options for reorganizing the schedule or redistributing tasks, a response proportionate to a known contingency identified a month in advance. Asking the developer to postpone the leave amounts to contesting a right exercised within contractual rules. Escalating to the sponsor as a major risk is disproportionate for a situation that team reorganization can absorb. Urgently hiring a temporary developer incurs cost and onboarding delay before even exploring internal reorganization options."
+   },
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260923-0718",
+   "release": "qL2-PR4-20260923-0718-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

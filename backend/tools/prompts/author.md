@@ -1,6 +1,6 @@
-# PROMPT AUTEUR v4.0 — Certifizer, banque PMP
+# PROMPT AUTEUR v4.1 — Certifizer, banque PMP
 
-`prompt_version: 4.0` · remplace v3.4 · **prompt génératif uniquement**
+`prompt_version: 4.1` · remplace v4.0 · **prompt génératif uniquement**
 
 Ce prompt sert à **écrire des questions**. Il ne contient aucun seuil, aucun ratio, aucun rapport de validation, aucune empreinte. Ces choses existent, mais elles sont faites ailleurs : par du code pour les mesures, par une session d'audit indépendante pour le jugement.
 
@@ -78,6 +78,8 @@ generic_good_practice_not_best
 
 Une catégorie nouvelle exige d'être définie.
 
+**Un distracteur ne porte jamais sa propre réfutation.** Observé en production (v4.0, trois lots) : « continuer d'envoyer les rapports, *en présumant que ce silence traduit une satisfaction implicite* », « produire le rapport détaillé, *en considérant que la rigueur prime sur la préférence exprimée* ». Un candidat élimine ces options sans lire le scénario. Le distracteur énonce une action et un motif **légitime** ; c'est un fait de l'énoncé qui le rend faux — jamais une clause qui expose le raisonnement fautif. Interdits dans une option : « en présumant », « en supposant », « en considérant que X prime », « sans avoir… », « ne pas », « ignorer », et leurs équivalents anglais.
+
 ### La forme ne doit jamais désigner la réponse
 
 Trois audits successifs ont montré la même chose sous trois formes. La bonne réponse était reconnaissable parce qu'elle était : la plus longue, puis la mieux élevée, puis la plus complète. Chaque fois qu'un de ces traits a été corrigé, l'indice est réapparu ailleurs.
@@ -89,6 +91,47 @@ La cause n'est pas le trait. C'est de concevoir la bonne réponse comme « celle
 Aucune option ne doit être **la seule** à porter un trait de forme : la seule à nommer un coût, la seule à mentionner une partie prenante, la seule à comporter une condition, la seule à exprimer une réserve. Un trait présent dans une seule option est un indice.
 
 **Épreuve avant de livrer l'item** : lis les quatre options sans le scénario. Si tu peux désigner la bonne, refais-le.
+
+---
+
+## Exemple travaillé — une rivale de niveau 2
+
+Le défaut le plus fréquent en production sous v4.0 : la rivale la plus forte est réfutée par un fait qui n'existe que dans la rationale. Le candidat ne voit que l'énoncé ; si le fait n'y est pas, l'item a deux réponses.
+
+**Plan de décision**
+
+```text
+enabler          Understand reporting requirements.
+decision_atom    Décider si l'on modifie un rapport hérité avant d'avoir clarifié les attentes.
+indice_decisif   Le chef de projet n'a qu'un signal INDIRECT (une remarque en réunion), pas une demande formulée.
+valeurs_en_tension   Réactivité face à un signal du sponsor vs fiabilité de l'information avant d'agir.
+axe_de_decision  le seuil de preuve
+politique_correcte      Clarifier les attentes avec le sponsor avant de modifier le format.
+rivale_la_plus_forte    Ajouter dès maintenant une section sur les jalons contractuels.
+bascule          Si le sponsor avait DEMANDÉ ces jalons par écrit, ajouter la section deviendrait la bonne réponse.
+erreur_corrigee  Confondre une remarque entendue en réunion avec une exigence de reporting établie.
+```
+
+**Énoncé**
+
+> Un chef de projet rejoint un programme en cours et hérite d'un rapport d'avancement mensuel déjà établi. Avant d'envoyer le prochain rapport, il constate que le format actuel ne mentionne jamais les jalons contractuels que le sponsor a évoqués, en passant, lors de la réunion de lancement. Aucune demande de modification du rapport n'a été formulée. Que doit-il faire en priorité ?
+
+Le fait décisif est dans l'énoncé, deux fois : « en passant » et « aucune demande de modification n'a été formulée ». C'est cela — et rien dans la rationale — qui rend la rivale fausse.
+
+**Options**
+
+- A. Clarifier avec le sponsor quelles informations sont attendues dans le rapport avant d'en modifier le format.
+- B. Ajouter une section sur les jalons contractuels dans le prochain rapport, puisque le sponsor les a mentionnés.
+- C. Conserver le format actuel, validé par l'équipe précédente, et l'ajuster lors de la prochaine revue de gouvernance.
+- D. Demander au sponsor de confirmer par écrit que les jalons contractuels doivent figurer dans le rapport standard.
+
+- **B est la rivale forte.** Elle agit, pour un motif légitime. Elle est fausse parce que l'énoncé dit « en passant » et « aucune demande formulée ». Sans ces deux faits, B serait correcte. Un praticien pressé choisit B.
+- **C est raisonnable** (respect de l'existant, passage par la gouvernance) et fausse par le moment : elle diffère une clarification qui ne coûte rien.
+- **D est raisonnable** (traçabilité) et fausse par le propriétaire de l'action : c'est au chef de projet de clarifier le besoin, pas au sponsor de le justifier.
+
+Aucun distracteur ne dit « sans clarifier », « en présumant », « en ignorant ». Chacun décrit une action qu'un professionnel défendrait à voix haute.
+
+**Le test avant de livrer un item** — pour chaque distracteur, écris en une ligne : *« Ce distracteur serait correct si l'énoncé ne disait pas ___ . »* Si tu ne peux pas remplir le blanc avec une phrase de l'énoncé, l'item a deux réponses : ajoute le fait à l'énoncé ou change le distracteur.
 
 ---
 
@@ -140,7 +183,7 @@ FR et EN testent le même jugement à la même difficulté.
 
 Bannis dans le texte visible : « répétition espacée » / « spaced repetition ». Écrire plutôt sur la révision ciblée ou l'apprentissage adaptatif.
 
-**Rationale visible** : la meilleure décision, sa raison, et pourquoi chacune des trois autres échoue. En prose. Chaque phrase doit se rattacher à une option qui existe réellement.
+**Rationale visible** : la meilleure décision, sa raison, et pourquoi chacune des trois autres échoue. En prose. Chaque phrase doit se rattacher à une option qui existe réellement — désignée par son **contenu** (« transmettre au sponsor… »), jamais par son rang (« la deuxième option »), car la position des options est imposée par la commande.
 
 **Un distracteur se réfute par un fait du scénario, jamais par un fait introduit dans la rationale.** Si la rationale doit inventer une contrainte pour écarter une option, l'option n'est pas écartée : l'item a deux réponses.
 

@@ -1,0 +1,577 @@
+{
+ "run_id": "20260923-1607",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR3-20260923-1607-1-01",
+   "enabler": "Identify value components with key stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet anime un atelier pour identifier les composantes de valeur attendues d'un nouveau produit. Un architecte technique, très expérimenté mais qui n'a pas de rôle métier défini sur ce projet, propose une liste de composantes de valeur qu'il juge prioritaires et suggère de la valider directement avec l'équipe de développement. Que doit faire la cheffe de projet ?",
+    "en": "A project manager is running a workshop to identify the value components expected from a new product. A technical architect, highly experienced but without a defined business role on this project, proposes a list of value components he considers priority and suggests validating it directly with the development team. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Adopter la liste de l'architecte pour l'atelier, car son expérience technique garantit une lecture fiable de la valeur.",
+     "Inviter les parties prenantes détentrices du besoin métier à confirmer ou amender la liste avant toute validation.",
+     "Transmettre la liste au sponsor pour arbitrage, puisqu'un désaccord potentiel sur ce sujet relève de son niveau de décision.",
+     "Demander à l'équipe de développement d'évaluer la faisabilité de chaque composante avant toute discussion sur sa valeur."
+    ],
+    "en": [
+     "Adopt the architect's list for the workshop, since his technical experience guarantees a reliable reading.",
+     "Invite the stakeholders who hold the business need to confirm or amend the list before any validation.",
+     "Forward the list to the sponsor for arbitration, since a potential disagreement belongs at his decision level.",
+     "Ask the development team to assess the feasibility of each component before any discussion of its value."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'architecte n'a pas de rôle métier défini sur ce projet : ses préférences techniques ne remplacent pas la voix des parties prenantes qui portent réellement le besoin. Inviter les parties prenantes détentrices du besoin métier à confirmer ou amender la liste avant toute validation replace l'autorité de définir la valeur là où elle doit être. Adopter la liste de l'architecte pour l'atelier traite une opinion technique comme si elle avait l'autorité métier qu'elle n'a pas. Transmettre la liste au sponsor pour arbitrage escalade une question qui ne relève pas encore d'un désaccord confirmé entre parties prenantes légitimes : rien dans l'énoncé n'indique un conflit à ce niveau. Demander à l'équipe de développement d'évaluer la faisabilité de chaque composante avant de discuter de sa valeur inverse l'ordre logique, mais surtout confie un jugement de valeur à une équipe dont le rôle est l'exécution, pas la définition du besoin.",
+    "en": "The architect has no defined business role on this project: his technical preferences do not replace the voice of the stakeholders who actually own the need. Inviting the stakeholders who hold the business need to confirm or amend the list before any validation places the authority to define value where it belongs. Adopting the architect's list for the workshop treats a technical opinion as if it carried business authority it does not have. Forwarding the list to the sponsor for arbitration escalates a matter that is not yet a confirmed disagreement among legitimate stakeholders: nothing in the scenario indicates a conflict at that level. Asking the development team to assess the feasibility of each component before discussing its value reverses the logical order, but more importantly hands a value judgment to a team whose role is execution, not defining the need."
+   },
+   "decision_atom": "Décider à qui appartient la définition des composantes de valeur lorsqu'une voix technique sans rôle métier s'exprime en premier.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "L'architecte n'a pas de rôle métier défini sur ce projet.",
+   "bascule": "Si l'architecte avait un rôle métier explicite (ex. product owner désigné), sa liste pourrait être adoptée directement.",
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR3-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-1607-1-02",
+   "enabler": "Prioritize work based on value and stakeholder feedback.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une revue d'itération, un utilisateur clé signale qu'une fonctionnalité récemment livrée est peu intuitive et ralentit légèrement son travail quotidien, sans bloquer aucune tâche critique. Le backlog contient déjà des éléments jugés prioritaires par le comité de pilotage pour le prochain sprint. Que doit faire l'équipe produit ?",
+    "en": "During an iteration review, a key user reports that a recently delivered feature is not very intuitive and slightly slows down her daily work, without blocking any critical task. The backlog already contains items deemed priority by the steering committee for the next sprint. What should the product team do?"
+   },
+   "options": {
+    "fr": [
+     "Interrompre le sprint en cours, mobiliser l'équipe de développement et corriger immédiatement la fonctionnalité signalée par l'utilisatrice.",
+     "Mettre de côté le signalement pour ce cycle, laisser la priorité au comité de pilotage, et traiter ce retour isolé lors d'un prochain arbitrage.",
+     "Ajouter l'amélioration au backlog et la prioriser lors du prochain arbitrage, aux côtés des autres éléments.",
+     "Convoquer une réunion d'urgence avec le comité de pilotage, réévaluer les priorités du sprint et ajuster le planning en conséquence."
+    ],
+    "en": [
+     "Interrupt the current sprint, mobilize the development team, and immediately fix the feature reported by the user.",
+     "Set the report aside for this cycle, let the steering committee's priority prevail, and revisit this comment at a later arbitration.",
+     "Add the improvement to the backlog and prioritize it during the next arbitration, alongside the other items.",
+     "Call an emergency meeting with the steering committee, reassess the sprint priorities, and adjust the schedule accordingly."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le problème signalé est réel mais mineur : il ralentit un travail sans bloquer une tâche critique. Ajouter l'amélioration au backlog et la prioriser lors du prochain arbitrage, aux côtés des autres éléments traite le retour avec le sérieux qu'il mérite sans lui donner un poids disproportionné par rapport à des priorités déjà validées. Interrompre le sprint en cours pour corriger immédiatement la fonctionnalité réagit à un inconfort comme s'il s'agissait d'un blocage, ce que l'énoncé ne dit pas. Ignorer le signalement pour ce cycle traite à l'inverse un retour légitime comme s'il ne méritait aucune suite, alors qu'il doit au moins entrer dans le processus de priorisation. Convoquer une réunion d'urgence avec le comité de pilotage mobilise une instance de gouvernance pour un signal dont la portée ne justifie pas cette échelle de réponse.",
+    "en": "The reported issue is real but minor: it slows down work without blocking a critical task. Adding the improvement to the backlog and prioritizing it during the next arbitration, alongside the other items, treats the feedback with the seriousness it deserves without giving it disproportionate weight against already validated priorities. Interrupting the current sprint to immediately fix the feature responds to a discomfort as if it were a blocker, which the scenario does not state. Setting the report aside for this cycle instead treats legitimate feedback as if it deserved no follow-up at all, when it should at least enter the prioritization process. Calling an emergency meeting with the steering committee mobilizes a governance body for a signal whose scope does not justify that scale of response."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à donner à un retour utilisateur sur un défaut d'usage non bloquant.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le défaut ralentit un travail quotidien mais ne bloque aucune tâche critique.",
+   "bascule": "Si le ralentissement bloquait une tâche critique pour l'utilisatrice, une correction immédiate deviendrait justifiée.",
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR3-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-1607-1-03",
+   "enabler": "Assess opportunities to deliver value incrementally.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet doit livrer une plateforme complète en huit mois. À mi-parcours, l'équipe termine un module qui, seul, pourrait déjà être utilisé par une partie des utilisateurs finaux, même si l'intégration complète n'est prévue qu'à la fin du projet. Le comité de pilotage n'a pas encore statué sur des livraisons partielles. Que doit faire la cheffe de projet ?",
+    "en": "A project must deliver a complete platform in eight months. At the midpoint, the team finishes a module that, on its own, could already be used by some end users, even though full integration is only planned at the end of the project. The steering committee has not yet ruled on partial deliveries. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Conserver le module en interne jusqu'à l'intégration finale prévue en fin de projet, conformément au plan de livraison initial.",
+     "Demander à l'équipe de poursuivre le développement des modules restants, en maintenant son rythme de travail actuel jusqu'à la fin du projet.",
+     "Documenter le module comme terminé dans le rapport d'avancement transmis au comité, en attendant la clôture du projet.",
+     "Soumettre au comité de pilotage l'opportunité de livrer ce module dès maintenant à une partie des utilisateurs."
+    ],
+    "en": [
+     "Keep the module internal until the final integration planned at project end, in line with the original delivery plan.",
+     "Ask the team to continue developing the remaining modules, maintaining its current pace through project completion.",
+     "Document the module as complete in the progress report shared with the committee, pending the project's closure.",
+     "Submit to the steering committee the opportunity to deliver this module now to some users."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le module est utilisable dès maintenant par une partie des utilisateurs, et le comité de pilotage n'a pas encore statué sur des livraisons partielles : c'est précisément le moment d'examiner cette opportunité, avant que l'intégration finale ne la rende caduque. Soumettre au comité de pilotage l'opportunité de livrer ce module dès maintenant à une partie des utilisateurs porte la décision à l'instance qui peut l'autoriser, au bon moment. Conserver le module en interne jusqu'à l'intégration finale s'en tient au plan initial alors qu'une opportunité de valeur immédiate se présente. Demander à l'équipe de continuer le développement des modules restants sans interrompre son rythme actuel ignore cette fenêtre en la laissant passer sans examen. Documenter le module comme terminé dans le rapport d'avancement traite une opportunité de livraison anticipée comme une simple ligne de suivi, sans la faire remonter pour décision.",
+    "en": "The module is usable right now by some users, and the steering committee has not yet ruled on partial deliveries: this is exactly the moment to examine that opportunity, before final integration makes it moot. Submitting to the steering committee the opportunity to deliver this module now to some users brings the decision to the body that can authorize it, at the right moment. Keeping the module internal until final integration sticks to the original plan while an immediate value opportunity is present. Asking the team to continue developing the remaining modules without interrupting its current pace lets this window pass without examination. Documenting the module as complete in the progress report treats an early delivery opportunity as a mere tracking line, without escalating it for a decision."
+   },
+   "decision_atom": "Décider quand faire examiner une opportunité de livraison partielle de valeur avant l'échéance finale prévue.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le module est utilisable dès maintenant par une partie des utilisateurs, et le comité n'a pas encore statué sur des livraisons partielles.",
+   "bascule": "Si le module ne pouvait fonctionner qu'une fois intégré à l'ensemble de la plateforme, le conserver en interne serait la bonne réponse.",
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR3-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-1607-1-04",
+   "enabler": "Examine the business value throughout the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Six mois après le lancement d'un projet, le contexte de marché a changé : un concurrent a sorti un produit similaire à moindre coût. La cheffe de projet remarque que la justification de valeur initiale du projet, rédigée avant ce changement, n'a jamais été revue depuis l'approbation de la charte. Le projet suit par ailleurs son calendrier et son budget sans écart notable. Que doit-elle faire ?",
+    "en": "Six months after a project's launch, market conditions have changed: a competitor released a similar product at a lower cost. The project manager notices that the project's original value justification, written before this change, has never been reviewed since the charter was approved. The project is otherwise on schedule and on budget, with no notable variance. What should she do?"
+   },
+   "options": {
+    "fr": [
+     "Réexaminer la justification de valeur du projet à la lumière du changement de marché survenu.",
+     "Poursuivre le projet selon le plan actuel, en s'appuyant sur le respect du calendrier et du budget observé jusqu'ici.",
+     "Demander à l'équipe commerciale de produire une nouvelle étude de marché avant toute décision.",
+     "Réduire le périmètre du projet pour aligner ses coûts sur ceux proposés par le produit concurrent récemment lancé."
+    ],
+    "en": [
+     "Re-examine the project's value justification in light of the market change that occurred.",
+     "Continue the project on its current plan, relying on the schedule and budget adherence observed so far.",
+     "Ask the sales team to produce a new market study before any decision is made.",
+     "Reduce the project's scope to align its costs with those of the recently launched competing product."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Un changement de marché significatif est survenu et la justification de valeur n'a jamais été revue depuis l'approbation de la charte : c'est exactement ce que la cheffe de projet doit examiner, et c'est son rôle de le faire tout au long du projet. Réexaminer la justification de valeur du projet à la lumière du changement de marché survenu correspond à cette responsabilité. Poursuivre le projet sans modification confond le respect du calendrier et du budget avec la validité de la valeur métier, qui sont deux choses distinctes. Demander à l'équipe commerciale de produire une nouvelle étude de marché avant toute décision confie à une autre équipe un examen qui revient d'abord à la cheffe de projet, avant même de savoir si une étude complète est nécessaire. Réduire le périmètre du projet pour aligner ses coûts sur ceux du produit concurrent décide déjà d'une action corrective alors que la valeur du projet n'a même pas encore été réexaminée.",
+    "en": "A significant market change has occurred and the value justification has never been reviewed since the charter was approved: this is exactly what the project manager should examine, and doing so throughout the project is her role. Re-examining the project's value justification in light of the market change that occurred matches this responsibility. Continuing the project unchanged confuses staying on schedule and budget with the validity of the business value, which are two distinct things. Asking the sales team to produce a new market study before any decision is made hands off to another team an examination that first belongs to the project manager, before even knowing whether a full study is needed. Reducing the project's scope to align its costs with those of the competing product already decides on a corrective action before the project's value has even been re-examined."
+   },
+   "decision_atom": "Décider qui doit réexaminer la justification de valeur d'un projet après un changement de contexte externe significatif.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "La justification de valeur n'a jamais été revue depuis l'approbation de la charte, malgré un changement de marché significatif.",
+   "bascule": "Si l'ampleur du changement de marché exigeait une expertise commerciale approfondie non disponible en interne, solliciter une étude deviendrait pertinent, mais après le premier examen par la cheffe de projet.",
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR3-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR3-20260923-1607-1-05",
+   "enabler": "Verify a measurement system is in place to track benefits.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet approche de sa clôture. Le sponsor affirme en réunion que les bénéfices attendus seront « certainement au rendez-vous » d'après son ressenti sur le terrain. La cheffe de projet consulte le plan de gestion des bénéfices et constate qu'aucun indicateur ni aucune méthode de mesure n'y a été défini pour le bénéfice principal visé. Que doit-elle faire ?",
+    "en": "A project is approaching closure. The sponsor states in a meeting that the expected benefits will \"certainly materialize\" based on his impression from the field. The project manager checks the benefits management plan and finds that no indicator or measurement method has been defined for the main targeted benefit. What should she do?"
+   },
+   "options": {
+    "fr": [
+     "Accepter l'évaluation du sponsor comme suffisante, compte tenu de sa connaissance directe et récente du terrain.",
+     "Établir avec les parties prenantes concernées un indicateur mesurable pour ce bénéfice avant la clôture.",
+     "Reporter la clôture du projet jusqu'à ce que le bénéfice principal visé soit pleinement démontré et réalisé.",
+     "Consigner l'affirmation du sponsor dans le rapport de clôture comme preuve suffisante de valeur atteinte."
+    ],
+    "en": [
+     "Accept the sponsor's assessment as sufficient, given his direct and recent knowledge of the field.",
+     "Establish with the relevant stakeholders a measurable indicator for this benefit before closure.",
+     "Postpone the project's closure until the main targeted benefit is fully demonstrated and realized.",
+     "Record the sponsor's statement in the closure report as sufficient evidence of value achieved."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le plan de gestion des bénéfices ne définit aucun indicateur ni méthode de mesure pour le bénéfice principal : une impression, même venant du sponsor, ne remplace pas un système de mesure absent. Établir avec les parties prenantes concernées un indicateur mesurable pour ce bénéfice avant la clôture comble ce manque avant qu'il ne soit trop tard pour le faire. Accepter l'évaluation du sponsor comme suffisante traite un ressenti personnel comme une preuve mesurable, ce qu'il n'est pas. Reporter la clôture du projet jusqu'à ce que le bénéfice principal soit pleinement réalisé confond la mise en place d'un système de mesure avec l'atteinte du bénéfice lui-même, qui peut légitimement se poursuivre après la clôture. Consigner l'affirmation du sponsor dans le rapport de clôture comme preuve de valeur atteinte enregistre une opinion non vérifiée comme s'il s'agissait d'un résultat mesuré.",
+    "en": "The benefits management plan defines no indicator or measurement method for the main benefit: an impression, even from the sponsor, does not replace a missing measurement system. Establishing with the relevant stakeholders a measurable indicator for this benefit before closure fills that gap before it becomes too late to do so. Accepting the sponsor's assessment as sufficient treats a personal impression as measurable evidence, which it is not. Postponing the project's closure until the main benefit is fully realized confuses putting a measurement system in place with achieving the benefit itself, which can legitimately continue after closure. Recording the sponsor's statement in the closure report as evidence of value achieved logs an unverified opinion as if it were a measured result."
+   },
+   "decision_atom": "Décider quelle preuve est suffisante pour attester qu'un système de mesure des bénéfices est en place avant la clôture.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Aucun indicateur ni méthode de mesure n'a été défini dans le plan de gestion des bénéfices pour le bénéfice principal.",
+   "bascule": "Si le plan de gestion des bénéfices contenait déjà un indicateur validé confirmant l'impression du sponsor, son évaluation deviendrait une confirmation suffisante.",
+   "task_id": "PR3",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR3-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260923-1607-1-01",
+   "enabler": "Define and plan resources based on requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une chef de projet planifie les ressources d'une nouvelle phase. Un expert technique senior, disponible uniquement ce trimestre, pourrait être réservé à temps plein pour des activités qui ne démarrent que dans deux mois, le temps que les spécifications soient finalisées. Le réserver maintenant bloquerait sa disponibilité sur d'autres projets pendant huit semaines avant qu'il ne produise quoi que ce soit. Que doit-elle faire ?",
+    "en": "A project manager is planning resources for a new phase. A senior technical expert, available only this quarter, could be reserved full-time for activities that will not start for two months, until specifications are finalized. Reserving him now would block his availability on other projects for eight weeks before he produces anything. What should she do?"
+   },
+   "options": {
+    "fr": [
+     "Réserver l'expert à temps partiel décroissant sur les prochaines semaines, avec une clause révisable dès que les spécifications seront finalisées.",
+     "Réserver l'expert à temps plein dès maintenant sur le projet, en raison de la rareté de sa disponibilité ce trimestre.",
+     "Confirmer la disponibilité de l'expert sans réservation ferme, et fixer la réservation complète à la finalisation des spécifications.",
+     "Demander à l'expert de bloquer son calendrier personnel dès à présent sans engagement formel, en attendant la validation du plan de ressources."
+    ],
+    "en": [
+     "Reserve the expert part-time on a declining basis over the coming weeks, with a clause revisable once specifications are finalized.",
+     "Reserve the expert full-time right now on the project, due to the scarcity of his availability this quarter.",
+     "Confirm the expert's availability without a firm reservation, and set the full reservation once specifications are finalized.",
+     "Ask the expert to personally block his calendar starting now without formal commitment, pending validation of the resource plan."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les spécifications ne sont pas finalisées et les activités ne démarrent que dans deux mois : confirmer la disponibilité de l'expert sans réservation ferme, et fixer la réservation complète à la finalisation des spécifications, évite de bloquer huit semaines de sa capacité pour rien tout en sécurisant son concours au bon moment. Réserver l'expert à temps plein dès maintenant traite une ressource rare comme s'il fallait la capter immédiatement, alors que rien ne justifie encore un engagement complet. Réserver l'expert à temps partiel décroissant engage une portion de son temps avant que le travail à réaliser soit défini, ce qui immobilise inutilement une partie de sa capacité. Demander à l'expert de bloquer son calendrier personnel sans engagement formel reporte sur lui, à titre individuel, un arbitrage de planification qui relève du plan de ressources du projet.",
+    "en": "Specifications are not finalized and activities will not start for two months: confirming the expert's availability without a firm reservation, and setting the full reservation once specifications are finalized, avoids blocking eight weeks of his capacity for nothing while securing his involvement at the right time. Reserving the expert full-time right now treats a scarce resource as something to capture immediately, though nothing yet justifies a full commitment. Reserving the expert part-time on a declining basis commits a portion of his time before the work to be done is defined, needlessly tying up part of his capacity. Asking the expert to personally block his calendar without formal commitment shifts onto him, individually, a planning decision that belongs to the project's resource plan."
+   },
+   "decision_atom": "Décider si un expert rare doit être réservé à temps plein immédiatement ou seulement une fois les spécifications finalisées.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les activités ne démarrent que dans deux mois et les spécifications ne sont pas finalisées ; réserver maintenant bloque huit semaines de sa capacité sans production.",
+   "bascule": "Si les spécifications avaient déjà été finalisées et que le travail pouvait démarrer immédiatement, réserver à temps plein deviendrait juste.",
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR4-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260923-1607-1-04",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend que deux membres clés de son équipe, tous deux spécialistes d'une compétence rare, quitteront le projet dans six semaines pour rejoindre un autre programme, une décision déjà actée par la direction des ressources humaines. Leurs travaux actuels ne s'achèveront que dans dix semaines. Que doit-il faire en priorité ?",
+    "en": "A project manager learns that two key team members, both specialists in a rare skill, will leave the project in six weeks to join another program, a decision already finalized by human resources management. Their current work will not be completed for another ten weeks. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander à la direction des ressources humaines de reporter leur départ et de prolonger leur présence jusqu'à la fin des travaux en cours.",
+     "Engager dès maintenant la recherche et la préparation d'un transfert de compétences vers des remplaçants potentiels.",
+     "Attendre la date de départ effective des deux spécialistes, puis évaluer précisément l'ampleur du vide de compétences à combler.",
+     "Réattribuer immédiatement leurs tâches en cours à d'autres membres de l'équipe, quelle que soit leur compétence actuelle."
+    ],
+    "en": [
+     "Ask human resources management to postpone their departure, and extend their presence until the current work is completed.",
+     "Begin now the search for and preparation of a skills transfer to potential replacements.",
+     "Wait for the actual departure date, then precisely assess the extent of the skills gap to be filled.",
+     "Immediately reassign their current tasks to other team members, regardless of their current skill level."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le départ est déjà acté et laisse un écart de quatre semaines entre le départ des spécialistes et la fin de leurs travaux : engager dès maintenant la recherche et la préparation d'un transfert de compétences vers des remplaçants potentiels utilise le délai disponible pour combler l'écart avant qu'il ne devienne critique. Demander à la direction des ressources humaines de reporter leur départ revient sur une décision déjà actée par une autre instance, sans élément nouveau pour la justifier. Attendre la date de départ effective pour évaluer l'ampleur du vide de compétences laisse s'écouler les six semaines de préparation possible sans rien engager. Réattribuer immédiatement leurs tâches en cours à d'autres membres de l'équipe, quelle que soit leur compétence actuelle, agit avant même d'avoir identifié qui pourrait recevoir ce transfert de compétence rare.",
+    "en": "The departure is already finalized and leaves a four-week gap between the specialists' departure and the completion of their work: beginning now the search for and preparation of a skills transfer to potential replacements uses the available time to close the gap before it becomes critical. Asking human resources management to postpone their departure reverses a decision already finalized by another authority, with no new element to justify it. Waiting for the actual departure date to assess the extent of the skills gap lets the six weeks of possible preparation pass without engaging anything. Immediately reassigning their current tasks to other team members, regardless of their current skill level, acts before even identifying who could receive this rare skill transfer."
+   },
+   "decision_atom": "Décider quand engager la préparation d'un transfert de compétences face à un départ de ressources rares déjà acté.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le départ est déjà décidé par la RH et laisse un écart de quatre semaines entre le départ et la fin des travaux en cours.",
+   "bascule": "Si le départ n'était encore qu'une rumeur non confirmée par la RH, attendre une confirmation deviendrait justifié.",
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR4-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-1607-1-01",
+   "enabler": "Participate in agreement negotiations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une séance de négociation avec un fournisseur, celui-ci propose un ajustement du calendrier de paiement en échange d'une réduction du délai de livraison. Le chef de projet siège à la table mais le mandat de négociation, signé par le sponsor, limite explicitement son rôle à la collecte des positions pour validation ultérieure. Que doit-il faire face à cette proposition ?",
+    "en": "During a negotiation session with a supplier, the supplier proposes adjusting the payment schedule in exchange for a shorter delivery lead time. The project manager is at the table, but the negotiation mandate signed by the sponsor explicitly limits their role to gathering positions for later validation. What should the project manager do in response to this proposal?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la proposition sur-le-champ et engager le fournisseur sans consulter le sponsor.",
+     "Noter la proposition et la transmettre au sponsor pour validation avant tout engagement formel.",
+     "Contre-proposer un compromis intermédiaire et le formuler pour maintenir la dynamique de la séance.",
+     "Reporter la séance entière et solliciter du sponsor un mandat élargi pour la reprendre."
+    ],
+    "en": [
+     "Accept the proposal immediately and commit the project without consulting the sponsor.",
+     "Note the proposal and forward it to the sponsor for validation before any formal commitment.",
+     "Counter-propose an intermediate compromise and present it to maintain the session's momentum.",
+     "Postpone the entire session and request an expanded mandate from the sponsor to resume it."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le mandat signé par le sponsor limite explicitement le rôle du chef de projet à la collecte des positions : accepter la proposition sur-le-champ dépasse ce mandat, même si l'offre semble favorable. Contre-proposer un compromis engage également la position du projet au-delà de ce qui est autorisé. Reporter la séance entière est disproportionné : rien n'empêche de poursuivre la discussion et de recueillir d'autres éléments tant qu'aucun engagement n'est pris. Noter la proposition et la transmettre au sponsor respecte exactement les limites du mandat tout en faisant avancer la négociation.",
+    "en": "The mandate signed by the sponsor explicitly limits the project manager's role to gathering positions: accepting the proposal immediately exceeds that mandate, even if the offer appears favorable. Counter-proposing a compromise also commits the project's position beyond what is authorized. Postponing the entire session is disproportionate: nothing prevents continuing the discussion and gathering further input as long as no commitment is made. Noting the proposal and forwarding it to the sponsor respects exactly the boundaries of the mandate while still moving the negotiation forward."
+   },
+   "decision_atom": "Décider si le chef de projet peut engager le projet sur une proposition de négociation dépassant son mandat.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le mandat signé par le sponsor limite explicitement le rôle du chef de projet à la collecte des positions.",
+   "bascule": "Si le mandat autorisait explicitement le chef de projet à formuler des contre-propositions, cette option deviendrait correcte.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR5-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-1607-1-02",
+   "enabler": "Evaluate vendor performance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un fournisseur livre son lot mensuel avec deux jours de retard sur l'échéance contractuelle, sans impact sur le chemin critique et sans clause de pénalité associée à ce jalon intermédiaire. C'est la première occurrence de retard depuis le début du contrat. Comment le chef de projet doit-il réagir à cet écart ?",
+    "en": "A supplier delivers its monthly batch two days later than the contractual deadline, with no impact on the critical path and no penalty clause attached to this interim milestone. This is the first occurrence of delay since the contract began. How should the project manager respond to this deviation?"
+   },
+   "options": {
+    "fr": [
+     "Déclencher une clause de résiliation partielle et notifier le fournisseur de la gravité du retard.",
+     "Convoquer un comité de gouvernance contractuelle et lui demander de statuer sur une pénalité exceptionnelle.",
+     "Consigner l'écart dans le suivi de performance et poursuivre la surveillance des livraisons suivantes.",
+     "Exiger un plan de redressement formel et demander un audit complet des processus internes du fournisseur."
+    ],
+    "en": [
+     "Trigger a partial termination clause and notify the supplier of the seriousness of the delay.",
+     "Convene a contractual governance committee and ask it to rule on an exceptional penalty.",
+     "Log the deviation in the performance record and continue monitoring subsequent deliveries.",
+     "Demand a formal recovery plan and request a full audit of the supplier's internal processes."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le retard est mineur, sans impact sur le chemin critique, sans clause de pénalité applicable, et constitue un premier écart isolé : déclencher une clause de résiliation partielle est disproportionné par rapport à la gravité réelle de l'incident. Convoquer un comité de gouvernance pour une pénalité exceptionnelle mobilise une instance lourde pour un événement sans conséquence contractuelle. Exiger un plan de redressement et un audit complet traite un incident isolé comme une défaillance systémique non démontrée. Consigner l'écart et poursuivre la surveillance correspond exactement à l'ampleur de ce qui s'est produit.",
+    "en": "The delay is minor, has no impact on the critical path, carries no applicable penalty clause, and is an isolated first occurrence: triggering a partial termination clause is disproportionate to the actual severity of the incident. Convening a governance committee for an exceptional penalty mobilizes a heavy body for an event with no contractual consequence. Demanding a recovery plan and a full audit treats an isolated incident as an unproven systemic failure. Logging the deviation and continuing monitoring matches exactly the scale of what occurred."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à un retard mineur et isolé d'un fournisseur.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le retard est sans impact sur le chemin critique, sans clause de pénalité applicable, et constitue un premier écart isolé.",
+   "bascule": "Si ce retard était le troisième en un mois et touchait le chemin critique, convoquer un comité de gouvernance deviendrait justifié.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR5-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-1607-1-03",
+   "enabler": "Develop a delivery solution.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "L'équipe projet doit choisir entre développer un composant en interne ou l'acheter auprès d'un fournisseur externe. Une étude de faisabilité technique, dont les résultats détermineront le coût réel du développement interne, doit être livrée dans une semaine. Aucune contrainte de calendrier n'impose de trancher avant cette échéance. Que doit faire l'équipe concernant cette décision ?",
+    "en": "The project team must choose between developing a component in-house or purchasing it from an external supplier. A technical feasibility study, whose results will determine the actual cost of in-house development, is due in one week. No schedule constraint requires a decision before that deadline. What should the team do regarding this decision?"
+   },
+   "options": {
+    "fr": [
+     "Lancer immédiatement l'appel d'offres externe pour sécuriser les meilleurs délais de livraison.",
+     "Répartir le développement entre interne et externe pour couvrir les deux scénarios.",
+     "Solliciter un arbitrage du sponsor pour trancher dès aujourd'hui entre les deux options envisagées.",
+     "Attendre les résultats de l'étude de faisabilité avant d'arrêter le choix de la solution."
+    ],
+    "en": [
+     "Immediately launch the external tender to secure the best possible delivery timelines.",
+     "Split the development between the in-house and external tracks to cover both scenarios.",
+     "Request a sponsor arbitration to decide today between the two options under consideration.",
+     "Wait for the feasibility study results before finalizing the delivery solution choice."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Aucune contrainte de calendrier n'impose de trancher avant l'échéance de l'étude, et cette étude déterminera précisément le coût réel du développement interne : lancer l'appel d'offres externe dès maintenant prive l'équipe de l'information qui doit fonder le choix. Répartir le développement entre les deux voies engage des ressources inutiles sur un scénario qui sera probablement écarté. Solliciter un arbitrage du sponsor aujourd'hui revient à trancher sans l'élément déterminant, ce qui n'apporte rien de plus qu'une décision prématurée. Attendre les résultats de l'étude avant d'arrêter le choix respecte le moment où l'information nécessaire sera disponible.",
+    "en": "No schedule constraint requires a decision before the study's deadline, and that study will determine precisely the actual cost of in-house development: launching the external tender now deprives the team of the information that should shape the choice. Splitting development between both tracks commits resources needlessly to a scenario likely to be discarded. Requesting sponsor arbitration today amounts to deciding without the determining factor, adding nothing beyond a premature decision. Waiting for the feasibility study results before finalizing the choice respects the timing at which the necessary information becomes available."
+   },
+   "decision_atom": "Décider quand arrêter le choix entre développement interne et achat externe d'un composant.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Une étude de faisabilité qui déterminera le coût réel du développement interne est attendue sous une semaine, sans contrainte de calendrier imposant de trancher avant.",
+   "bascule": "Si un délai contractuel imposait de lancer l'appel d'offres avant les résultats de l'étude, cette option deviendrait correcte.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR5-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-1607-1-04",
+   "enabler": "Manage suppliers and contracts.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un sous-traitant livre un module qui ne respecte pas une spécification technique clairement définie dans le contrat. Le chef de projet constate l'écart lors d'une revue de livrable et dispose de l'autorité contractuelle nécessaire pour exiger une correction, selon les termes signés avec ce sous-traitant. Que doit faire le chef de projet à ce stade ?",
+    "en": "A subcontractor delivers a module that fails to meet a technical specification clearly defined in the contract. The project manager notices the deviation during a deliverable review and holds the contractual authority needed to require a correction, according to the terms signed with this subcontractor. What should the project manager do at this stage?"
+   },
+   "options": {
+    "fr": [
+     "Notifier formellement le sous-traitant de l'écart et exiger une correction conforme au contrat.",
+     "Transmettre le dossier au service juridique et lui demander d'ouvrir une procédure contractuelle.",
+     "Escalader la situation au sponsor du projet et lui demander de trancher sur la suite à donner.",
+     "Solliciter le comité de gouvernance du programme et attendre son avis avant toute communication."
+    ],
+    "en": [
+     "Formally notify the subcontractor of the deviation and require a correction compliant with the contract.",
+     "Forward the file to the legal department and ask it to open a contractual procedure.",
+     "Escalate the situation to the project sponsor and ask for a decision on next steps.",
+     "Request the program governance committee and await its input before any communication."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le chef de projet dispose déjà de l'autorité contractuelle nécessaire pour exiger une correction, selon les termes signés avec ce sous-traitant : transmettre le dossier au service juridique mobilise une instance non requise pour un écart que le contrat permet déjà de traiter directement. Escalader au sponsor délègue une décision que le chef de projet est habilité à prendre lui-même. Solliciter le comité de gouvernance avant toute communication introduit une étape supplémentaire non justifiée par la situation. Notifier formellement le sous-traitant et exiger la correction correspond exactement à l'autorité déjà détenue par le chef de projet.",
+    "en": "The project manager already holds the contractual authority needed to require a correction, according to the terms signed with this subcontractor: forwarding the file to the legal department mobilizes a body not required for a deviation the contract already allows to address directly. Escalating to the sponsor delegates a decision the project manager is empowered to make directly. Requesting the governance committee before any communication introduces an unjustified extra step. Formally notifying the subcontractor and requiring the correction matches exactly the authority already held by the project manager."
+   },
+   "decision_atom": "Décider qui doit agir face à un écart de spécification technique constaté chez un sous-traitant.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le chef de projet dispose déjà de l'autorité contractuelle nécessaire pour exiger la correction, selon les termes signés.",
+   "bascule": "Si le chef de projet ne disposait pas de cette autorité contractuelle spécifique, transmettre au service juridique deviendrait la bonne réponse.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR5-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR5-20260923-1607-1-05",
+   "enabler": "Verify objectives of the procurement agreement are met.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "À l'approche de la clôture d'un contrat, le fournisseur affirme verbalement que tous les objectifs de l'accord ont été atteints. Le contrat prévoit explicitement une liste de critères de performance mesurables devant être vérifiés avant acceptation finale, et aucun rapport correspondant à ces critères n'a encore été produit. Que doit faire le chef de projet avant de considérer les objectifs comme atteints ?",
+    "en": "As a contract nears closure, the supplier verbally states that all agreement objectives have been met. The contract explicitly specifies a list of measurable performance criteria to be verified before final acceptance, and no report addressing these criteria has yet been produced. What should the project manager do before considering the objectives met?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la déclaration du fournisseur et procéder à la clôture du contrat.",
+     "Exiger le rapport documentant les critères de performance mesurables prévus au contrat.",
+     "Organiser une réunion de courtoisie pour féliciter le fournisseur de son engagement affiché.",
+     "Informer le sponsor que le contrat peut être jugé conforme aux attentes exprimées."
+    ],
+    "en": [
+     "Accept the supplier's statement and proceed with the contract's closure.",
+     "Require the report documenting the measurable performance criteria specified in the contract.",
+     "Organize a courtesy meeting to congratulate the supplier on its stated commitment.",
+     "Inform the sponsor that the contract can be deemed compliant with the stated expectations."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le contrat prévoit explicitement une liste de critères mesurables à vérifier avant acceptation, et aucun rapport correspondant n'a encore été produit : accepter la déclaration verbale du fournisseur ne constitue pas la preuve exigée par les termes signés. Organiser une réunion de courtoisie ne fait pas avancer la vérification requise et détourne l'attention de l'étape contractuelle manquante. Informer le sponsor que le contrat est conforme revient à affirmer une conclusion sans disposer des données qui la fondent. Exiger le rapport documentant les critères mesurables est la seule action qui produit la preuve que le contrat requiert avant toute acceptation.",
+    "en": "The contract explicitly specifies a list of measurable criteria to be verified before acceptance, and no corresponding report has yet been produced: accepting the supplier's verbal statement does not constitute the proof required by the signed terms. Organizing a courtesy meeting does not advance the required verification and diverts attention from the missing contractual step. Informing the sponsor that the contract is compliant amounts to asserting a conclusion without the data to support it. Requiring the report documenting the measurable criteria is the only action that produces the proof the contract requires before any acceptance."
+   },
+   "decision_atom": "Décider quelle preuve est suffisante pour considérer que les objectifs d'un accord d'approvisionnement sont atteints.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le contrat prévoit explicitement une liste de critères mesurables à vérifier, et aucun rapport correspondant n'a encore été produit malgré une déclaration verbale du fournisseur.",
+   "bascule": "Si le contrat ne prévoyait aucun critère mesurable formel, une déclaration verbale du fournisseur pourrait suffire à la clôture.",
+   "task_id": "PR5",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR5-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260923-1607-1-01",
+   "enabler": "Manage cost of quality (CoQ) and sustainability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une revue de coûts, un chef de projet constate que les dépenses de prévention qualité dépassent le budget alloué de 8 %. L'analyse montre que ce dépassement provient d'une formation supplémentaire décidée par le responsable technique de l'équipe de développement, sans consultation du contrôleur de coûts affecté au projet. Le contrôleur de coûts n'a pas été informé de cette dépense avant son engagement. Que doit faire le chef de projet en priorité ?",
+    "en": "During a cost review, a project manager finds that quality prevention spending exceeds the allocated budget by 8%. The analysis shows this overrun stems from additional training decided by the development team's technical lead, without consulting the cost controller assigned to the project. The cost controller was not informed of this expense before it was committed. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander au responsable technique de justifier la formation directement auprès du sponsor, en sa qualité de décideur de la dépense engagée sans validation préalable.",
+     "Charger le contrôleur de coûts d'intégrer cette dépense dans le prochain rapport de suivi budgétaire, puisqu'il détient l'autorité sur ce processus.",
+     "Établir avec le contrôleur de coûts un point de contact clair pour que toute dépense de prévention future lui soit soumise avant engagement.",
+     "Confier au responsable technique la mise à jour du registre des coûts de qualité du projet, puisqu'il est à l'origine de la dépense engagée."
+    ],
+    "en": [
+     "Ask the technical lead to justify the training directly to the sponsor, as the one who committed the expense without prior validation.",
+     "Task the cost controller with including this expense in the next budget tracking report, since he holds authority over this process.",
+     "Establish with the cost controller a clear point of contact so that any future prevention spending is submitted to him before commitment.",
+     "Assign the technical lead to update the project's cost of quality register, since he is the one who initiated the expense."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'énoncé précise que le contrôleur de coûts n'a pas été informé avant l'engagement de la dépense : le problème n'est pas la dépense elle-même mais l'absence de circuit établi pour la faire remonter au bon rôle avant qu'elle ne soit engagée. Établir un point de contact clair avec le contrôleur de coûts corrige cette lacune de propriété pour l'avenir. Demander au responsable technique de se justifier auprès du sponsor déplace la décision vers une instance qui n'a pas la responsabilité du suivi des coûts de qualité au quotidien. Charger le contrôleur de coûts d'intégrer la dépense sans revoir le circuit traite le symptôme du rapport mais laisse la cause intacte : la prochaine dépense de prévention échappera au même contrôle. Confier au responsable technique la mise à jour du registre des coûts inverse les rôles : c'est le contrôleur de coûts, pas celui qui engage la dépense, qui doit en assurer le suivi.",
+    "en": "The scenario states that the cost controller was not informed before the expense was committed: the issue is not the expense itself but the absence of an established path for routing it to the right role before commitment. Establishing a clear point of contact with the cost controller fixes this ownership gap going forward. Asking the technical lead to justify the expense to the sponsor shifts the decision to a party that does not hold day-to-day responsibility for tracking cost of quality. Tasking the cost controller with including the expense in the report without fixing the process treats the symptom while leaving the cause untouched: the next prevention expense will bypass the same control. Assigning the technical lead to update the cost register reverses the roles: it is the cost controller, not the one who commits the expense, who should track it."
+   },
+   "decision_atom": "Décider comment corriger l'absence de circuit de validation d'une dépense de prévention qualité engagée sans consultation du rôle responsable du suivi des coûts.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le contrôleur de coûts n'a pas été informé AVANT l'engagement de la dépense — le manque n'est pas la dépense mais l'absence de circuit établi.",
+   "bascule": "Si le contrôleur de coûts avait déjà été informé et que seul le rapport restait à produire, l'intégrer au rapport suffirait.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR7-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260923-1607-1-03",
+   "enabler": "Plan quality processes and tools.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit planifier les processus et outils qualité d'un projet de développement logiciel. L'équipe technique a déjà commencé à coder deux composants selon ses propres pratiques habituelles, en attendant que les standards qualité du projet soient formalisés. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager must plan the quality processes and tools for a software development project. The technical team has already started coding two components using its own usual practices, while waiting for the project's quality standards to be formalized. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Formaliser sans délai les standards qualité applicables, puis vérifier leur application sur les deux composants déjà entamés.",
+     "Laisser les deux composants se terminer selon les pratiques habituelles de l'équipe, puis appliquer les standards aux prochains composants.",
+     "Demander à l'équipe de suspendre le développement des deux composants engagés, en attendant la validation formelle des standards par le sponsor.",
+     "Documenter les pratiques actuelles de l'équipe comme standards provisoires du projet, en attendant une revue qualité plus approfondie."
+    ],
+    "en": [
+     "Formalize the applicable quality standards without delay, then check their application on the two components already underway.",
+     "Let the two components finish using the team's usual practices, then apply the standards to the next components.",
+     "Ask the team to suspend development of the two committed components, pending formal validation of the standards by the sponsor.",
+     "Document the team's current practices as the project's provisional standards, pending a more thorough quality review."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'énoncé précise que le codage a déjà commencé sans standards qualité formalisés : plus ce retard se prolonge, plus il devient coûteux de corriger les composants déjà produits. Formaliser sans délai les standards puis vérifier leur application sur les deux composants entamés permet de rattraper l'écart avant qu'il ne s'accumule sur d'autres livrables. Laisser les deux composants se terminer sans standards reporte la correction à un moment où davantage de code non conforme aura été produit. Suspendre le développement en attendant une validation du sponsor introduit un délai et une autorité que la situation ne requiert pas : définir les standards qualité relève du chef de projet, pas d'une approbation formelle préalable. Documenter les pratiques actuelles comme standards provisoires évite de trancher et risque d'ancrer des habitudes non conformes aux exigences du projet.",
+    "en": "The scenario states that coding has already begun without formalized quality standards: the longer this gap persists, the costlier it becomes to fix the components already produced. Formalizing the standards without delay and then checking their application on the two components already underway closes the gap before it accumulates across more deliverables. Letting the two components finish without standards postpones the correction to a point where more non-compliant code will have been produced. Suspending development pending sponsor validation introduces a delay and an authority the situation does not call for: defining quality standards is the project manager's role, not something requiring prior formal approval. Documenting current practices as provisional standards avoids making a decision and risks locking in habits that do not meet the project's requirements."
+   },
+   "decision_atom": "Décider à quel moment formaliser les standards qualité par rapport à un développement déjà entamé sans eux.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le codage de deux composants a déjà commencé selon des pratiques habituelles, en attendant la formalisation des standards.",
+   "bascule": "Si les deux composants étaient sur le point d'être livrés et clos, les laisser se terminer ainsi deviendrait défendable.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR7-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260923-1607-1-01",
+   "enabler": "Execute a schedule management plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le plan de gestion de l'échéancier d'un projet précise que tout écart de moins de trois jours sur un chemin non critique est géré directement par l'équipe, sans remontée au comité de pilotage. Le chef de projet constate un retard de deux jours sur une activité non critique, déjà compensé par une marge disponible sur cette branche du réseau. Que doit-il faire en priorité ?",
+    "en": "A project's schedule management plan states that any variance of less than three days on a non-critical path is handled directly by the team, without escalation to the steering committee. The project manager notices a two-day delay on a non-critical activity, already absorbed by available float on that branch of the network. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Informer le comité de pilotage de l'écart dès sa détection, par souci de transparence envers les parties prenantes de gouvernance.",
+     "Demander au comité de pilotage de valider le maintien de l'activité sur son chemin actuel avant toute autre action.",
+     "Convoquer une réunion avec le propriétaire de l'activité pour reconstruire une estimation plus précise de la marge restante.",
+     "Faire suivre l'écart par l'équipe conformément au seuil défini, et documenter l'utilisation de la marge dans le journal de suivi."
+    ],
+    "en": [
+     "Inform the steering committee of the variance as soon as it is detected, out of concern for transparency with governance stakeholders.",
+     "Ask the steering committee to confirm that the activity should remain on its current path before taking any other action.",
+     "Convene a meeting with the activity owner to rebuild a more precise estimate of the remaining float.",
+     "Have the team track the variance per the defined threshold, and log the float usage in the tracking record."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le plan de gestion de l'échéancier fixe un seuil clair : un écart inférieur à trois jours sur une activité non critique reste du ressort de l'équipe. Le retard constaté est de deux jours, sous ce seuil, et la marge disponible l'absorbe déjà. Faire suivre l'écart par l'équipe et documenter l'usage de la marge respecte exactement ce que le plan prévoit : c'est l'exécution normale du plan, pas une négligence. Informer le comité de pilotage dès la détection traite comme exceptionnel un écart que le plan qualifie explicitement de routinier ; cela crée du bruit de gouvernance sur un sujet que le plan a précisément voulu garder au niveau de l'équipe. Demander au comité de valider le maintien de l'activité sur son chemin actuel revient à solliciter une instance qui n'a, selon le plan, aucun rôle à jouer tant que le seuil n'est pas dépassé. Convoquer une réunion pour reconstruire l'estimation de la marge ajoute une étape non requise : la marge disponible est déjà connue et suffisante, il n'y a pas d'incertitude à lever avant d'agir selon le plan.",
+    "en": "The schedule management plan sets a clear threshold: a variance of less than three days on a non-critical activity stays within the team's authority. The delay observed is two days, below that threshold, and the available float already absorbs it. Having the team track the variance and log the float usage does exactly what the plan calls for: it is normal execution of the plan, not a lapse. Informing the steering committee as soon as the variance is detected treats as exceptional something the plan explicitly defines as routine; it creates governance noise over a matter the plan deliberately kept at the team level. Asking the committee to confirm the activity should remain on its current path involves an authority that, per the plan, has no role to play until the threshold is exceeded. Convening a meeting to rebuild the float estimate adds an unnecessary step: the available float is already known and sufficient, so there is no uncertainty to resolve before acting according to the plan."
+   },
+   "decision_atom": "Décider si un écart d'échéancier doit être remonté au comité de pilotage ou géré au niveau de l'équipe.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le plan de gestion de l'échéancier fixe un seuil de tolérance de trois jours sur chemin non critique, et l'écart constaté (deux jours, absorbé par la marge) reste sous ce seuil.",
+   "bascule": "Si l'écart avait dépassé trois jours ou dépassé la marge disponible, informer le comité serait devenu la bonne action.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260923-1607",
+   "release": "qL2-PR8-20260923-1607-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

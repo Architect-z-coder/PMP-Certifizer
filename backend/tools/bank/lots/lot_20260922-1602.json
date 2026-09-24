@@ -1,0 +1,143 @@
+{
+ "run_id": "20260922-1602",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PE8-20260922-1602-2-01",
+   "enabler": "Understand reporting requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet rejoint un programme en cours et hérite d'un rapport d'avancement mensuel déjà établi. Avant d'envoyer le prochain rapport, il constate que le format actuel ne mentionne jamais les jalons contractuels que le sponsor a évoqués lors de la réunion de lancement. Que doit-il faire en priorité ?",
+    "en": "A project manager joins an ongoing program and inherits an established monthly status report. Before sending the next report, they notice the current format never mentions the contractual milestones the sponsor referenced during the kickoff meeting. What should they prioritize first?"
+   },
+   "options": {
+    "fr": [
+     "Clarifier avec le sponsor et les parties prenantes clés quelles informations sont réellement attendues dans le rapport avant de le modifier.",
+     "Ajouter sans tarder une nouvelle section traitant des jalons contractuels et l'insérer dans le prochain rapport à diffuser.",
+     "Conserver le format hérité en l'état actuel, du fait qu'il a déjà été validé par l'équipe précédente et ses destinataires.",
+     "Demander au sponsor de confirmer par écrit, formellement, que ces jalons ne sont pas requis dans le rapport standard."
+    ],
+    "en": [
+     "Clarify with the sponsor and key stakeholders what information is actually expected in the report before changing it.",
+     "Add without delay a new section covering contractual milestones and insert it into the next report to be sent.",
+     "Keep the inherited format in its current state, given that it was already validated by the prior team and recipients.",
+     "Ask the sponsor to confirm formally, in writing, that these milestones are not required in the standard report."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le chef de projet arrive dans un contexte existant et n'a qu'un indice indirect — un commentaire en réunion — sur les attentes réelles. Comprendre les exigences de reporting avant d'agir est la première étape : cela évite de deviner. Ajouter la section sur les jalons contractuels part d'une bonne intuition mais agit sur une supposition non vérifiée, ce qui peut introduire des informations non pertinentes ou incomplètes. Conserver le format hérité sans le questionner ignore un signal direct du sponsor et risque de perpétuer un rapport mal aligné. Demander une confirmation écrite inverse la charge de la preuve : ce n'est pas au sponsor de justifier une absence, c'est au chef de projet de clarifier le besoin.",
+    "en": "The project manager enters an existing context with only an indirect clue — a comment made in a meeting — about actual expectations. Understanding reporting requirements before acting is the necessary first step, since it avoids guessing. Adding the contractual milestones section reflects a reasonable instinct but acts on an unverified assumption, which risks introducing irrelevant or incomplete information. Keeping the inherited format unquestioned ignores a direct signal from the sponsor and risks perpetuating a misaligned report. Asking for written confirmation reverses the burden of proof: it is not the sponsor's job to justify an absence, it is the project manager's job to clarify the need."
+   },
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260922-1602",
+   "release": "qL2-PE8-20260922-1602-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260922-1602-2-02",
+   "enabler": "Create reports aligned with sponsors and stakeholder expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le sponsor d'un projet a explicitement demandé un tableau de bord synthétique avec trois indicateurs clés. L'équipe technique préfère produire un rapport détaillé de douze pages, jugé plus complet et plus rigoureux. Que doit faire le chef de projet pour le prochain cycle de reporting ?",
+    "en": "A project sponsor has explicitly requested a concise dashboard with three key indicators. The technical team prefers producing a detailed twelve-page report, which they consider more thorough and rigorous. What should the project manager do for the next reporting cycle?"
+   },
+   "options": {
+    "fr": [
+     "Produire le rapport détaillé de douze pages, en considérant que la rigueur technique prime sur la préférence de format exprimée.",
+     "Livrer le tableau de bord synthétique demandé par le sponsor, en y intégrant les trois indicateurs convenus.",
+     "Fusionner les deux formats dans un document unique combinant tableau de bord et rapport détaillé complet.",
+     "Soumettre le rapport détaillé cette fois-ci, puis évaluer plus tard si un format plus court conviendrait mieux."
+    ],
+    "en": [
+     "Produce the detailed twelve-page report, treating technical rigor as more important than the format preference expressed.",
+     "Deliver the concise dashboard requested by the sponsor, including the three agreed indicators.",
+     "Merge both formats into a single document combining the dashboard and the full detailed report.",
+     "Submit the detailed report this time, then evaluate later whether a shorter format would work better."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le sponsor a formulé une attente précise et le rôle du reporting est de s'aligner sur cette attente, pas sur la préférence de l'équipe technique. Produire le rapport détaillé privilégie la rigueur perçue par l'équipe au détriment de ce que le destinataire a demandé. Fusionner les deux formats semble conciliant mais alourdit le document et dilue la synthèse que le sponsor cherchait précisément à obtenir. Soumettre le rapport détaillé une fois de plus, en repoussant l'ajustement, ignore une demande déjà exprimée sans raison valable de la reporter.",
+    "en": "The sponsor expressed a specific expectation, and the purpose of reporting is to align with that expectation, not with the technical team's preference. Producing the detailed report favors the team's perceived rigor over what the recipient actually asked for. Merging both formats seems accommodating but bulks up the document and dilutes the synthesis the sponsor specifically wanted. Submitting the detailed report once more, postponing the adjustment, ignores an already expressed request without valid reason to delay it."
+   },
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260922-1602",
+   "release": "qL2-PE8-20260922-1602-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260922-1602-2-03",
+   "enabler": "Establish a feedback loop.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Après trois cycles de rapports d'avancement, le chef de projet remarque que les parties prenantes ne réagissent jamais aux rapports envoyés, ni par question ni par validation. Il ignore si les rapports sont lus, jugés inutiles, ou simplement acceptés sans commentaire. Que doit-il faire ?",
+    "en": "After three cycles of status reports, the project manager notices that stakeholders never react to the reports sent, either with questions or with sign-off. They do not know whether the reports are being read, considered unhelpful, or simply accepted without comment. What should they do?"
+   },
+   "options": {
+    "fr": [
+     "Continuer d'envoyer les rapports suivant le calendrier établi, en présumant que ce silence traduit une satisfaction implicite.",
+     "Réduire la fréquence des envois de rapports afin d'alléger la charge de travail, ces rapports ne suscitant aucun retour visible.",
+     "Solliciter activement un retour des parties prenantes sur l'utilité et la clarté des rapports envoyés.",
+     "Enrichir le contenu des rapports en y ajoutant davantage de détails techniques, dans le but de susciter plus de réactions."
+    ],
+    "en": [
+     "Continue sending the reports on the established schedule, presuming that this silence reflects implicit satisfaction.",
+     "Reduce the frequency of report distribution to lighten the workload, since these reports generate no visible feedback.",
+     "Actively request feedback from stakeholders on the usefulness and clarity of the reports sent.",
+     "Enrich the report content by adding more technical detail, with the aim of prompting more reactions."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'absence de réaction est une donnée ambiguë : elle peut signifier plusieurs choses opposées, et seule une sollicitation active permet de lever le doute. Continuer sans rien changer transforme une hypothèse non vérifiée — la satisfaction implicite — en fait acquis. Réduire la fréquence agit sur une supposition similaire, celle que le silence signale un désintérêt, alors qu'il pourrait signaler l'inverse. Enrichir le contenu technique suppose que le problème vient du format alors que la cause réelle n'a pas encore été identifiée ; cela risque même d'aggraver le désengagement si le problème est ailleurs.",
+    "en": "The lack of reaction is ambiguous data: it could mean several opposite things, and only actively requesting feedback can resolve the uncertainty. Continuing unchanged turns an unverified assumption — implicit satisfaction — into an accepted fact. Reducing frequency acts on a similar assumption, that silence signals disinterest, when it could signal the opposite. Enriching the technical content assumes the problem lies in the format when the actual cause has not yet been identified; this risks worsening disengagement if the problem lies elsewhere."
+   },
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260922-1602",
+   "release": "qL2-PE8-20260922-1602-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260922-1602-2-05",
+   "enabler": "Promote transparency and collaboration.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet découvre qu'un lot de travail accuse un retard significatif, sans impact immédiat sur la date de livraison finale grâce à la marge disponible. Le rapport d'avancement hebdomadaire est dû demain. Que doit-il inclure dans ce rapport concernant ce retard ?",
+    "en": "A project manager discovers that a work package is significantly behind schedule, with no immediate impact on the final delivery date thanks to available float. The weekly status report is due tomorrow. What should they include in that report regarding this delay?"
+   },
+   "options": {
+    "fr": [
+     "Signaler le retard du lot de travail et préciser qu'il n'a pas d'impact actuel sur la date de livraison finale.",
+     "Reporter au prochain rapport la mention de ce retard, une fois que des mesures correctives concrètes auront été instaurées.",
+     "Mentionner uniquement, de façon globale, que le projet progresse selon le calendrier prévu, sans détailler les lots concernés.",
+     "Alerter sans attendre le comité de gouvernance en dehors du rapport habituel, avant même que celui-ci soit publié."
+    ],
+    "en": [
+     "Report the work package delay and note that it currently has no impact on the final delivery date.",
+     "Postpone to the next report the mention of this delay, once concrete corrective measures have been put in place.",
+     "State only, in general terms, that the project is progressing on schedule, without detailing the affected packages.",
+     "Escalate right away to the governance committee outside the usual report, even before that report gets published."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La transparence exige de communiquer une information significative dès qu'elle est connue, même sans impact immédiat, pour que les parties prenantes gardent une vision fidèle de l'état du projet. Reporter la mention au prochain cycle fait dépendre la transparence de l'obtention préalable d'une solution, ce qui retarde une information déjà disponible. Ne mentionner que la progression globale masque un signal réel derrière une vue agrégée rassurante. Alerter immédiatement le comité de gouvernance en dehors du canal habituel est disproportionné pour un retard sans impact actuel sur la livraison finale, et court-circuite le processus de reporting établi.",
+    "en": "Transparency requires communicating significant information as soon as it is known, even without immediate impact, so stakeholders retain an accurate view of project status. Postponing the mention to the next cycle makes transparency depend on first having a solution, delaying information that is already available. Stating only overall progress hides a real signal behind a reassuring aggregate view. Immediately escalating to the governance committee outside the usual channel is disproportionate for a delay with no current impact on final delivery, and bypasses the established reporting process."
+   },
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260922-1602",
+   "release": "qL2-PE8-20260922-1602-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

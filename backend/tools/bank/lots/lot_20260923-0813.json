@@ -1,0 +1,197 @@
+{
+ "run_id": "20260923-0813",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR6-20260923-0813-2-01",
+   "enabler": "Manage financial reserves.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet constate qu'un risque identifié en réserve pour imprévus ne s'est pas matérialisé et que le lot de travaux associé est maintenant terminé sans incident. La réserve pour imprévus liée à ce risque n'a jamais été consommée. Le projet compte encore quatre mois d'exécution et deux risques majeurs restent actifs en registre. Que doit-il faire concernant cette portion de réserve ?",
+    "en": "A project manager notices that a risk covered by a contingency reserve did not materialize and the related work package is now complete without incident. The contingency reserve tied to that risk was never drawn upon. The project still has four months of execution remaining and two major risks remain active on the register. What should he do with this portion of the reserve?"
+   },
+   "options": {
+    "fr": [
+     "Libérer immédiatement cette portion de réserve vers le budget général du projet et considérer le risque comme définitivement clos.",
+     "Réaffecter cette portion de réserve vers la réserve de gestion et l'enregistrer comme un gain de performance acquis pour le projet.",
+     "Maintenir cette portion en réserve pour imprévus et la réévaluer avec le comité de gouvernance à la lumière des deux risques encore actifs.",
+     "Transférer cette portion de réserve au sponsor et l'affecter au financement d'une demande de changement en attente d'approbation."
+    ],
+    "en": [
+     "Release this portion of the reserve immediately into the general project budget and treat the risk as permanently closed.",
+     "Reallocate this portion of the reserve into the management reserve and record it as an earned performance gain for the project.",
+     "Keep this portion in the contingency reserve and reassess it with the governance body in light of the two remaining major risks.",
+     "Transfer this portion of the reserve to the sponsor and allocate it to fund a pending change request awaiting approval."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Deux risques majeurs restent actifs et quatre mois d'exécution restent à couvrir : libérer la portion de réserve maintenant est une décision irréversible prise avant que l'exposition résiduelle du projet ne soit réévaluée. Maintenir cette portion en réserve et la réexaminer avec la gouvernance préserve la capacité d'absorber un impact futur sans fermer une option qui pourrait s'avérer nécessaire. Libérer cette portion vers le budget général traite comme définitivement clos un risque alors que d'autres menaces subsistent, sans consultation de l'instance qui autorise ce type de reclassement. Réaffecter cette portion vers la réserve de gestion confond une réserve pour imprévus, dédiée aux risques identifiés, avec une réserve de gestion destinée aux imprévus non identifiés — un glissement de catégorie qui n'est pas anodin. Transférer cette portion au sponsor pour un changement non encore approuvé engage des fonds avant que la décision de gouvernance sur ce changement ne soit rendue, ce qui inverse l'ordre correct des étapes.",
+    "en": "Two major risks remain active and four months of execution remain to be covered: releasing this portion of the reserve now is an irreversible decision made before the project's residual exposure has been reassessed. Keeping this portion in reserve and reviewing it with governance preserves the ability to absorb a future impact without closing off an option that may still be needed. Releasing it into the general budget treats a risk as permanently closed while other threats remain, without consulting the body that authorizes this kind of reclassification. Reallocating it into the management reserve confuses a contingency reserve, tied to identified risks, with a management reserve intended for unidentified risks — a category shift that is not trivial. Transferring it to the sponsor for a not-yet-approved change commits funds before governance has ruled on that change, reversing the correct order of steps."
+   },
+   "decision_atom": "Décider si une portion de réserve pour imprévus liée à un risque non matérialisé doit être libérée maintenant ou conservée.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Deux risques majeurs restent actifs et quatre mois d'exécution restent à couvrir.",
+   "bascule": "Si tous les risques du registre étaient clos et qu'il ne restait aucune exécution, libérer la réserve deviendrait juste.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260923-0813",
+   "release": "qL2-PR6-20260923-0813-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260923-0813-2-02",
+   "enabler": "Monitor financial variations and work with the governance process.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet détecte un écart de coûts de 6 % sur un lot de travaux, un seuil qui, selon la charte de gouvernance financière du programme, déclenche une revue obligatoire par le comité de pilotage avant toute action corrective budgétaire. L'équipe technique propose une solution rapide qui resterait dans l'enveloppe globale du projet. Comment le chef de projet doit-il procéder ?",
+    "en": "A project manager detects a 6% cost variance on a work package, a threshold that, under the program's financial governance charter, triggers a mandatory review by the steering committee before any corrective budget action. The technical team proposes a quick fix that would stay within the project's overall envelope. How should the project manager proceed?"
+   },
+   "options": {
+    "fr": [
+     "Approuver la solution proposée par l'équipe technique et la mettre en œuvre sans délai dans le cadre budgétaire actuel.",
+     "Ajuster le budget du lot de travaux concerné et notifier le sponsor en s'appuyant sur son autorité de gestion courante des coûts.",
+     "Documenter l'écart dans le rapport financier mensuel et attendre la prochaine revue périodique pour en informer le comité de pilotage.",
+     "Soumettre l'écart et la solution proposée au comité de pilotage pour obtenir son autorisation avant toute action corrective."
+    ],
+    "en": [
+     "Approve the technical team's proposed fix and implement it promptly within the current budget framework.",
+     "Adjust the budget of the affected work package and notify the sponsor by relying on his routine cost management authority.",
+     "Document the variance in the monthly financial report and wait for the next periodic review to inform the steering committee.",
+     "Submit the variance and the proposed fix to the steering committee for authorization before taking any corrective action."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La charte de gouvernance fixe un seuil de 6 % qui déclenche une revue obligatoire par le comité de pilotage : ce seuil est franchi, et l'autorité de décision ne relève plus du chef de projet seul, quel que soit le mérite technique de la solution. Soumettre l'écart et la solution au comité respecte cette répartition de l'autorité. Approuver directement la solution technique, même si elle reste dans l'enveloppe globale, usurpe une décision réservée au comité par la charte elle-même. Ajuster le budget du lot en s'appuyant sur l'autorité de gestion courante ignore que ce type d'écart a explicitement été retiré du périmètre de cette autorité par la charte. Attendre la prochaine revue périodique pour informer le comité traite comme optionnel un délai que la charte rend obligatoire dès le franchissement du seuil, retardant une autorisation qui doit précéder l'action corrective.",
+    "en": "The governance charter sets a 6% threshold that triggers a mandatory steering committee review: that threshold has been crossed, and decision authority no longer rests with the project manager alone, regardless of the technical merit of the fix. Submitting the variance and the fix to the committee respects this allocation of authority. Directly approving the technical fix, even if it stays within the overall envelope, usurps a decision the charter itself reserves for the committee. Adjusting the work package budget through routine cost management authority overlooks that this type of variance has been explicitly removed from that authority's scope by the charter. Waiting for the next periodic review to inform the committee treats as optional a timeline the charter makes mandatory once the threshold is crossed, delaying an authorization that must precede corrective action."
+   },
+   "decision_atom": "Décider qui a l'autorité d'approuver une action corrective quand un seuil de gouvernance financière est franchi.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "La charte de gouvernance fixe un seuil de 6 % qui déclenche une revue obligatoire par le comité, et ce seuil est franchi.",
+   "bascule": "Si l'écart était de 3 % et sous le seuil défini par la charte, approuver directement deviendrait la bonne réponse.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260923-0813",
+   "release": "qL2-PR6-20260923-0813-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260923-0813-2-03",
+   "enabler": "Anticipate future finance challenges.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend qu'un fournisseur clé traverse des difficultés financières largement rapportées dans la presse spécialisée, sans qu'aucun retard de livraison ou facture impayée n'ait encore été observé sur le projet. Le contrat en cours représente 8 % du budget total et arrive à échéance dans dix mois. Quelle action est la plus appropriée à ce stade ?",
+    "en": "A project manager learns that a key supplier is experiencing financial difficulties widely reported in trade press, though no delivery delay or unpaid invoice has yet been observed on the project. The current contract represents 8% of the total budget and expires in ten months. What action is most appropriate at this stage?"
+   },
+   "options": {
+    "fr": [
+     "Évaluer l'exposition financière du projet à ce fournisseur et préparer des options d'approvisionnement alternatif à activer si des signes concrets apparaissent.",
+     "Résilier le contrat en cours avec ce fournisseur et lancer immédiatement un nouvel appel d'offres auprès d'autres fournisseurs qualifiés pour sécuriser l'approvisionnement.",
+     "Demander au sponsor d'autoriser une augmentation de la réserve pour imprévus et de la dédier spécifiquement à ce fournisseur en difficulté.",
+     "Informer le comité de pilotage que le projet est en situation de risque financier majeur et demander une escalade formelle immédiate."
+    ],
+    "en": [
+     "Assess the project's financial exposure to this supplier and prepare alternative sourcing options to activate if concrete signs appear.",
+     "Terminate the current contract with this supplier and immediately launch a new tender among other qualified suppliers to secure supply.",
+     "Ask the sponsor to authorize an increase to the contingency reserve and dedicate it specifically to this struggling supplier.",
+     "Inform the steering committee that the project is in a major financial risk situation and request immediate formal escalation."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Aucun retard ni facture impayée n'a été observé : le signal est une rumeur de presse, pas un fait constaté sur le projet, ce qui appelle une réponse proportionnée à une préoccupation émergente plutôt qu'à une crise confirmée. Évaluer l'exposition et préparer des options alternatives constitue une préparation mesurée qui ne mobilise pas de ressources avant que le risque ne se concrétise. Résilier le contrat traite une rumeur non confirmée comme une défaillance avérée, une réponse disproportionnée qui rompt une relation contractuelle sur la base d'un signal indirect. Demander une augmentation de réserve dédiée à ce fournisseur engage une ressource financière rare sur un risque encore hypothétique. Escalader formellement au comité comme un risque financier majeur qualifie de crise ce qui reste, à ce stade, une préoccupation à surveiller.",
+    "en": "No delay or unpaid invoice has been observed: the signal is a press rumor, not a fact confirmed on the project, which calls for a response proportionate to an emerging concern rather than a confirmed crisis. Assessing exposure and preparing alternative options is measured preparation that does not commit resources before the risk materializes. Terminating the contract treats an unconfirmed rumor as a proven failure, a disproportionate response that breaks a contractual relationship based on an indirect signal. Requesting a reserve increase dedicated to this supplier commits a scarce financial resource to a risk that remains hypothetical. Formally escalating to the committee as a major financial risk labels as a crisis what remains, at this stage, a concern to monitor."
+   },
+   "decision_atom": "Décider du niveau de réponse à un signal financier externe non confirmé sur un fournisseur.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Aucun retard de livraison ni facture impayée n'a été observé ; le signal est une rumeur de presse, pas un fait constaté sur le projet.",
+   "bascule": "Si une facture était restée impayée depuis 60 jours, résilier le contrat deviendrait une réponse proportionnée.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260923-0813",
+   "release": "qL2-PR6-20260923-0813-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260923-0813-2-04",
+   "enabler": "Plan spend tracking throughout the project life cycle.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet planifie la phase de clôture d'un projet dont les lots de travaux exécutifs sont désormais tous terminés. Le plan actuel de suivi des dépenses conserve la même fréquence hebdomadaire et le même niveau de granularité par lot de travaux que pendant la phase d'exécution. La phase de clôture ne comporte que des activités administratives et de transfert de connaissances. Que devrait faire le chef de projet concernant ce plan de suivi ?",
+    "en": "A project manager is planning the closure phase of a project whose execution work packages are now all complete. The current spend tracking plan retains the same weekly frequency and the same work-package-level granularity used during execution. The closure phase consists only of administrative and knowledge transfer activities. What should the project manager do regarding this tracking plan?"
+   },
+   "options": {
+    "fr": [
+     "Conserver la fréquence et la granularité actuelles jusqu'à la signature finale de clôture, pour préserver la traçabilité du cycle de vie.",
+     "Ajuster la fréquence et la granularité du suivi des dépenses pour refléter la nature administrative des activités restantes en clôture.",
+     "Transférer la responsabilité du suivi des dépenses au bureau de gestion de projets, qui appliquera son propre cadre pour la phase de clôture.",
+     "Suspendre tout suivi des dépenses jusqu'à la production du rapport financier final consolidant les écarts observés durant l'exécution."
+    ],
+    "en": [
+     "Keep the current frequency and granularity until the final closure sign-off, to preserve life cycle traceability.",
+     "Adjust the frequency and granularity of spend tracking to reflect the administrative nature of the remaining closure activities.",
+     "Transfer responsibility for spend tracking to the project management office, which will apply its own framework for the closure phase.",
+     "Suspend all spend tracking until the final financial report, consolidating the variances observed during execution, is produced."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les lots exécutifs sont terminés et seules des activités administratives et de transfert de connaissances subsistent : le rythme et la granularité conçus pour suivre des dépenses d'exécution complexes ne correspondent plus à la nature du travail restant. Ajuster la fréquence et la granularité aligne le plan de suivi sur le moment réel du projet. Conserver le rythme hebdomadaire détaillé jusqu'à la signature finale maintient un dispositif calibré pour une phase désormais close, au mauvais moment du cycle de vie. Transférer la responsabilité au bureau de gestion de projets ne résout pas le problème de calibrage : le cadre change de propriétaire sans que sa pertinence temporelle soit revue. Suspendre tout suivi jusqu'au rapport final abandonne la traçabilité des dépenses de clôture elles-mêmes, qui doivent être enregistrées au fur et à mesure pour alimenter ce rapport.",
+    "en": "The execution work packages are complete and only administrative and knowledge transfer activities remain: the cadence and granularity designed to track complex execution spending no longer match the nature of the remaining work. Adjusting frequency and granularity aligns the tracking plan with the project's actual point in time. Keeping the detailed weekly cadence until final sign-off maintains a mechanism calibrated for a phase that is now closed, at the wrong point in the life cycle. Transferring responsibility to the project management office does not solve the calibration problem: the framework changes owner without its timing relevance being reviewed. Suspending all tracking until the final report abandons traceability of the closure spending itself, which must be recorded as it occurs to feed that report."
+   },
+   "decision_atom": "Décider si le rythme et la granularité du suivi des dépenses doivent changer à l'entrée en phase de clôture.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les lots exécutifs sont tous terminés et seules des activités administratives et de transfert de connaissances subsistent.",
+   "bascule": "Si des lots d'exécution restaient encore ouverts en parallèle de la clôture, conserver le rythme actuel deviendrait justifié.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260923-0813",
+   "release": "qL2-PR6-20260923-0813-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260923-0813-2-05",
+   "enabler": "Quantify risk and contingency financial allocations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit quantifier la réserve pour imprévus d'un nouveau projet. Un risque technique majeur a été identifié, mais son impact financier dépend d'une expertise en ingénierie de sécurité que le chef de projet ne possède pas. L'expert désigné dans le registre des risques comme responsable de ce risque est disponible cette semaine. Comment le chef de projet doit-il procéder pour quantifier ce risque ?",
+    "en": "A project manager needs to quantify the contingency reserve for a new project. A major technical risk has been identified, but its financial impact depends on safety engineering expertise the project manager does not have. The expert designated in the risk register as owner of this risk is available this week. How should the project manager proceed to quantify this risk?"
+   },
+   "options": {
+    "fr": [
+     "Estimer lui-même l'impact financier du risque en s'appuyant sur des données historiques de projets similaires disponibles dans les archives.",
+     "Fixer un pourcentage forfaitaire standard appliqué à la valeur du lot de travaux concerné.",
+     "Solliciter le propriétaire désigné du risque pour obtenir son estimation d'impact avant de fixer le montant de la réserve.",
+     "Confier la quantification de ce risque au sponsor disposant de l'autorité budgétaire sur la réserve."
+    ],
+    "en": [
+     "Estimate the risk's financial impact himself, relying on historical data from similar projects available in the archives.",
+     "Set a standard flat percentage applied to the value of the affected work package.",
+     "Ask the risk's designated owner for his impact estimate before setting the reserve amount.",
+     "Assign quantification of this risk to the sponsor holding budget authority over the reserve."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le registre des risques désigne un propriétaire précis pour ce risque, et ce risque exige une expertise en ingénierie de sécurité que le chef de projet n'a pas : la quantification appartient à celui qui a la compétence et le mandat, pas à celui qui gère la réserve. Solliciter le propriétaire désigné respecte cette répartition. Estimer lui-même l'impact à partir de données historiques contourne l'expert nommé pour ce risque précis, en s'appuyant sur des données qui ne remplacent pas un jugement technique spécialisé. Fixer un pourcentage forfaitaire uniforme traite un risque technique majeur et spécifique comme n'importe quel autre risque du registre, sans consulter la personne qui pourrait en corriger l'estimation. Confier la quantification au sponsor déplace la tâche vers celui qui autorise le budget, non vers celui qui détient l'expertise nécessaire pour l'évaluer.",
+    "en": "The risk register designates a specific owner for this risk, and the risk requires safety engineering expertise the project manager does not have: quantification belongs to whoever holds the competence and mandate, not to whoever manages the reserve. Asking the designated owner respects this allocation. Estimating the impact himself from historical data bypasses the expert named for this specific risk, relying on data that does not substitute for specialized technical judgment. Setting a uniform flat percentage treats a major, specific technical risk like any other entry on the register, without consulting the person who could correct the estimate. Assigning quantification to the sponsor shifts the task to whoever authorizes the budget, not to whoever holds the expertise needed to assess it."
+   },
+   "decision_atom": "Décider qui doit produire l'estimation d'impact financier d'un risque technique nécessitant une expertise spécialisée.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le registre des risques désigne un propriétaire expert pour ce risque, et ce risque exige une expertise que le chef de projet n'a pas.",
+   "bascule": "Si aucun propriétaire n'était désigné pour ce risque et que les données historiques étaient la seule source disponible, l'estimation par le chef de projet deviendrait acceptable.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260923-0813",
+   "release": "qL2-PR6-20260923-0813-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

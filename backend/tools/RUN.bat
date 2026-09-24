@@ -3,7 +3,7 @@ cd /d "C:\Parcours de PMP-SMA\PMP\certifizer\PMP-Certifizer"
 set FAKE_AUTHOR=
 set AUTHOR_MODEL=claude-sonnet-5
 set AUDITOR_MODEL=claude-opus-5
-set MAX_ITEMS=10
+set MAX_ITEMS=15
 set MAX_BATCHES=6
 set MAX_USD=2
 if exist backend\tools\anthropic_key.txt goto a_ok

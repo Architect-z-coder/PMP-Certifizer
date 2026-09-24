@@ -13,7 +13,8 @@ Per batch:
   auditor call (prompts/auditor.md), one per lot, fresh context
                                               -> lot verdict GO/HOLD/REJET + PASS per item
   store PASS items: level 1-2 -> "approved", level 3 -> "pending_sme"
-A lot blocked mechanically or judged HOLD/REJET is discarded whole (renvoi auteur, jamais rapiéçage).
+A lot blocked mechanically or judged REJET is discarded whole. A HOLD lot keeps only the items the auditor
+marked PASS (KEEP_PASS_ON_HOLD=0 restores whole-lot drop). No item is ever patched (jamais rapiéçage).
 
 Models are routed by name: claude-* -> Anthropic (ANTHROPIC_API_KEY), gemini-* -> Google (GEMINI_API_KEY).
 Env: AUTHOR_MODEL (default claude-sonnet-5), AUDITOR_MODEL (default gemini-2.5-flash),
@@ -33,6 +34,7 @@ AUTHOR_MODEL = os.getenv("AUTHOR_MODEL", "claude-sonnet-5")
 AUDITOR_MODEL = os.getenv("AUDITOR_MODEL", "gemini-2.5-flash")
 MAX_ITEMS = int(os.getenv("MAX_ITEMS", "40"))
 MAX_USD = float(os.getenv("MAX_USD", "5.0"))
+KEEP_PASS_ON_HOLD = os.environ.get("KEEP_PASS_ON_HOLD", "1") != "0"   # HOLD lot: store PASS items, drop the flagged ones; REJET always drops whole
 MAX_BATCHES = int(os.getenv("MAX_BATCHES", "6"))
 BATCH = int(os.getenv("BATCH", "5"))
 PACE = float(os.getenv("PACE", "6"))
@@ -209,14 +211,34 @@ def is_dup(stem, stems, thr=0.85):
     return any(difflib.SequenceMatcher(None, s, e).ratio() > thr for e in stems)
 
 # ---------- author ----------
+AXES = ["le moment", "le propriétaire", "le seuil de preuve", "l'ordre des actions",
+        "l'escalade", "la réversibilité", "l'autorité", "la proportionnalité de la réponse"]
+
+def target_axes(release, n):
+    """Distinct decision axes per item in a lot: two items on different axes cannot test the same judgment."""
+    start = zlib.crc32(("axes-" + release).encode()) % len(AXES)
+    return [AXES[(start + i) % len(AXES)] for i in range(n)]
+
+def known_judgments(bank, task_id, limit=40):
+    """Decision atoms already stored for this task first, then the rest of the same domain (PE/PR/BE):
+    a judgment rewritten under another metric or another task is still a duplicate for the candidate."""
+    same = [it["decision_atom"] for it in bank if it.get("task_id") == task_id and it.get("decision_atom")]
+    dom = task_id[:2]
+    other = [it["decision_atom"] for it in bank
+             if it.get("task_id") != task_id and str(it.get("task_id", ""))[:2] == dom and it.get("decision_atom")]
+    return (same[-limit:] + other[-(limit - len(same[-limit:])):])[:limit] if len(same) < limit else same[-limit:]
+
 def target_positions(release, n):
     """Balanced answer positions, fixed before writing so rationales never go stale."""
     start = zlib.crc32(release.encode()) % 4
     return [(start + i) % 4 for i in range(n)]
 
-def commande(task, level, n, release):
-    pos = target_positions(release, n)
-    pos_lines = "\n".join(f"  {release}-{i+1:02d} : answer_index = {pos[i]}" for i in range(n))
+def commande(task, level, n, release, known=()):
+    pos = target_positions(release, n); axes = target_axes(release, n)
+    pos_lines = "\n".join(f"  {release}-{i+1:02d} : answer_index = {pos[i]} · axe_de_decision = {axes[i]}" for i in range(n))
+    known_block = ("\nJUGEMENTS DÉJÀ EN BANQUE dans ce domaine (ne les réécris pas sous un autre décor : changer la métrique — SPI pour CPI —, "
+                   "le livrable ou le nom de l'instance ne fait pas un nouveau jugement) :\n"
+                   + "\n".join(f"  - {k}" for k in known) + "\n") if known else ""
     return f"""COMMANDE DE LOT
 release : {release}
 tâche ECO : {task['id']} — {task['title']}
@@ -226,14 +248,18 @@ niveau (difficulty) : {level}
 nombre d'items : {n}
 ids : {release}-01 … {release}-{n:02d}
 
-POSITION IMPOSÉE de la bonne réponse (place-la à cet index, 0 = première option) :
+POSITION IMPOSÉE de la bonne réponse et AXE IMPOSÉ par item (0 = première option) :
 {pos_lines}
-
+Chaque item se joue sur l'axe indiqué et lui seul : les quatre options diffèrent par leur position sur cet axe. Cinq axes différents = cinq jugements différents. Recopie l'axe imposé dans `axe_de_decision` du plan.
+RATIONALE : écrite pour le candidat. Elle ne contient jamais le vocabulaire d'atelier (« rivale », « distracteur », « bonne réponse », « indice décisif », « bascule ») ; elle explique pourquoi chaque option est juste ou fausse par les faits de l'énoncé. Les deux énoncés (fr et en) se terminent par la même question.
+L'axe est un ANGLE DE LECTURE de l'enabler, pas un sujet : l'item teste toujours l'enabler assigné, et l'axe dit seulement sur quoi les options se départagent (qui, quand, avec quelle preuve, dans quel ordre…). Un item dont le jugement décisif glisse vers un autre enabler (autorité contractuelle, séquencement, gouvernance) est hors frontière et sera rejeté. Si l'axe imposé ne s'applique pas naturellement à l'enabler, prends un autre axe de la liste non utilisé dans ce lot et écris celui-là dans `axe_de_decision`.
+{known_block}
 RÈGLES DE CONTENU :
 - Dans la rationale, ne désigne JAMAIS une option par son rang (« la deuxième option », « the third ») : cite son contenu (« transmettre au sponsor sans documenter… »).
 - Un distracteur décrit une action positive et raisonnable. INTERDIT dans un distracteur : « ne pas », « sans », « ignorer », « skip », « without », « ignore », ou toute formulation qui avoue une omission. Le distracteur se trompe sur le moment, le propriétaire ou la preuve — pas en déclarant qu'il néglige quelque chose.
 - Dans au moins un item sur {n}, la bonne réponse consiste à DIFFÉRER ou ATTENDRE (le fait décisif du scénario rend l'attente juste). Dans les autres items, une option « attendre » n'apparaît que si elle est réellement défendable.
 - Les {n} items d'un même lot testent {n} jugements DIFFÉRENTS (règle, fait décisif, rivale) — pas la même règle sous deux décors.
+- Un distracteur ne porte JAMAIS sa propre réfutation. Interdit : « en présumant que… », « en considérant que X prime », « en supposant… », « assuming… », « treating X as more important », ou toute clause qui expose le raisonnement fautif. Le distracteur énonce une action et un motif légitime ; c'est UN FAIT DE L'ÉNONCÉ qui le rend faux, et ce fait doit être écrit dans l'énoncé.
 
 CONTRAINTES DE FORME (bloquantes — le lot est rejeté mécaniquement sinon) :
 - Dans CHAQUE langue, la bonne réponse ne doit PAS être la plus longue des quatre options.
@@ -269,7 +295,7 @@ def fake_author(task, level, n, release):
         opts = [f"Option {k} : {u(k)}{pad[(j - ai - 1) % 4]}" for j, k in enumerate("ABCD")]
         opte = [f"Option {k}: {u(k)}{pad[(j - ai - 1) % 4]}" for j, k in enumerate("ABCD")]
         items.append({"id": iid, "enabler": task["enablers"][0], "difficulty": level,
-                      "prompt": {"fr": f"Scénario {iid} : {u('S')} {u('T')} {u('U')}.", "en": f"Scenario {iid}: test."},
+                      "prompt": {"fr": f"Scénario {iid} : {u('S')} {u('T')} {u('U')}. Que faire ?", "en": f"Scenario {iid}: test. What next?"},
                       "options": {"fr": opts, "en": opte}, "answer_index": ai,
                       "rationale": {"fr": "Raison de test.", "en": "Test reason."}})
         plans.append({"id": iid, "eco_primary_task": task["id"], "enabler": task["enablers"][0],
@@ -277,12 +303,12 @@ def fake_author(task, level, n, release):
                       "bascule": "test", "erreur_corrigee": "test"})
     return items, plans
 
-def produce(task, level, n, author, release):
+def produce(task, level, n, author, release, known=()):
     raw = ""
     if FAKE:
         items, plans = fake_author(task, level, n, release)
     else:
-        raw = call(author, commande(task, level, n, release), 16000, AUTHOR_MODEL)
+        raw = call(author, commande(task, level, n, release, known), 16000, AUTHOR_MODEL)
         d = parse_json_or_repair(raw, "author") or {}
         if not d:
             (WORK / f"{release}-raw.txt").write_text(raw, encoding="utf-8")
@@ -299,6 +325,11 @@ def produce(task, level, n, author, release):
         ra = it.get("rationale", {})
         if isinstance(ra, dict) and any(ORDINAL.search(str(ra.get(lg, ""))) for lg in ("fr", "en")):
             log(f"  item {it.get('id')} dropped: rationale refers to options by rank"); continue
+        if isinstance(ra, dict) and any(LEAK.search(str(ra.get(lg, ""))) for lg in ("fr", "en")):
+            log(f"  item {it.get('id')} dropped: rationale uses authoring vocabulary (rivale, distracteur…)"); continue
+        pr = it.get("prompt", {})
+        if isinstance(pr, dict) and not all("?" in str(pr.get(lg, "")) for lg in ("fr", "en")):
+            log(f"  item {it.get('id')} dropped: a prompt has no question sentence (fr/en out of sync)"); continue
         e = snap_enabler(it.get("enabler", ""), task["enablers"])
         if e is None:
             log(f"  item {it.get('id')} dropped: enabler not in {task['id']} ({str(it.get('enabler',''))[:60]}…)"); continue
@@ -306,10 +337,20 @@ def produce(task, level, n, author, release):
         if it.get("id") in plan_by_id: plan_by_id[it["id"]]["enabler"] = e
         it = normalize_item(it)
         if valid_item(it):
+            k = key_matches_plan(it, plan_by_id.get(it["id"]))
+            if k is None:
+                log(f"  item {it['id']} dropped: key duplicated or not matching the plan's politique_correcte"); continue
+            if k != it["answer_index"]:
+                log(f"  item {it['id']}: answer_index {it['answer_index']} -> {k} (option matching the plan's politique_correcte)")
+                it["answer_index"] = k
             it["difficulty"] = level; good.append(it)
         else:
             log(f"  item {it.get('id')} dropped: incomplete structure ({why_invalid(it)})")
             dropped_struct = True
+    without_plan = [it["id"] for it in good if it["id"] not in plan_by_id]
+    if without_plan:
+        log(f"  {len(without_plan)} item(s) dropped: no decision plan ({', '.join(without_plan)})")
+        good = [it for it in good if it["id"] in plan_by_id]
     ids = {it["id"] for it in good}
     plans = [pl for pl in plans if pl.get("id") in ids]
     if dropped_struct and not FAKE:
@@ -321,6 +362,19 @@ def produce(task, level, n, author, release):
         if off: log(f"  {len(off)} item(s) not at the imposed answer position (kept as written; audit_lot will report the spread)")
         return good, plans
     return shuffle_positions(good), plans
+
+def key_matches_plan(it, plan):
+    """The option that restates the plan's politique_correcte must be the key. Returns the matching index,
+    the current answer_index when no plan/politique is available, or None when nothing matches at all."""
+    if not plan or not isinstance(plan.get("politique_correcte"), str): return it["answer_index"]
+    pol = plan["politique_correcte"].lower()
+    scores = [difflib.SequenceMatcher(None, pol, o.lower()).ratio() for o in it["options"]["fr"]]
+    best = max(range(4), key=lambda i: scores[i])
+    ranked = sorted(scores, reverse=True)
+    if ranked[0] < 0.45: return it["answer_index"]          # too different to judge (paraphrase) -> trust the author
+    if ranked[1] >= 0.60: return None                        # two options both restate the key -> the key is duplicated, drop
+    if ranked[0] - ranked[1] < 0.10: return it["answer_index"]  # no clear winner -> trust the author
+    return best
 
 def snap_enabler(text, canon, thr=0.72):
     """Map the enabler the author wrote to the canonical wording of the task (exact, then closest above threshold)."""
@@ -414,7 +468,9 @@ def densest_alone_ratio(items, lg):
         if c[ai] == max(c) and c.count(max(c)) == 1: hit += 1
     return hit / n
 
-NEG = re.compile(r"\bne pas\b|\bsans\b|\bignor|\bskip\b|\bwithout\b|\bnot\b|\bnever\b|\bjamais\b", re.I)
+NEG = re.compile(r"\bne pas\b|\bsans\b|\bignor|\bskip\b|\bwithout\b|\bnot\b|\bnever\b|\bjamais\b"
+                 r"|\ben pr[ée]sumant\b|\ben supposant\b|\ben consid[ée]rant que\b|\bpresuming\b|\bassuming\b|\btreating\b.{0,40}\bas more important\b", re.I)
+LEAK = re.compile(r"\b(rivale|distracteur|distractor|rival|bonne réponse|correct answer|politique correcte|indice décisif|bascule)\b", re.I)
 ORDINAL = re.compile(r"\b(la|the)\s+(deuxi[èe]me|troisi[èe]me|quatri[èe]me|second|third|fourth)\b|\b(premi[èe]re|first)\s+(option|réponse|answer)", re.I)
 
 def negation_tell_ratio(items, lg):
@@ -445,10 +501,47 @@ Règles strictes :
 - Conserve le sens, l'ordre et l'erreur de chaque distracteur ; n'ajoute rien qui rende un distracteur correct.
 - Pour chaque item on te donne `elements_cible` : le nombre d'éléments énumérés de la bonne réponse (segments séparés par des virgules, « et », « puis », « ; »). Chaque distracteur doit compter EXACTEMENT ce nombre d'éléments — ni plus, ni moins. Si un distracteur en a moins, découpe son action en segments de même nature (motif, moyen, destinataire) ; s'il en a plus, fusionne.
 - Longueur : chaque distracteur entre 5 % et 20 % plus long que la bonne réponse en caractères, dans chaque langue.
+- Chaque item porte des `consignes` par option : applique EXACTEMENT ce qu'elles disent (nombre d'éléments cible, fourchette de longueur) et ne touche pas aux options marquées « ne pas toucher ». Ne dépasse jamais la cible : un distracteur plus dense ou beaucoup plus long que la bonne réponse est un nouvel indice.
 - Aucune option ne doit être seule à porter une condition (si / if), un coût ou une réserve (toutefois / however).
 - INTERDIT d'ajouter à un distracteur une négation ou un aveu d'omission (« ne pas », « sans », « skip », « without », « ignorer »). Allonge par le contexte de l'action, jamais en disant ce que l'option ne fait pas. Si un distracteur en contient déjà, reformule-le positivement (« transmettre au sponsor et traiter l'omission comme un sujet de gouvernance »).
+- Allonge par du CONTENU (un complément qui précise l'action : quel document, quel interlocuteur, quel moment), jamais par du remplissage (« concernés ici », « prévue », « même », « respectifs », « en question », adverbes vides). Chaque mot ajouté doit pouvoir être défendu comme utile au sens.
 - Français en vouvoiement.
-Réponds UNIQUEMENT par {"items": [{"id": "...", "options": {"fr": [4 chaînes], "en": [4 chaînes]}}, ...]} — un objet par item reçu, même id, bonne réponse inchangée à sa position."""
+Réponds UNIQUEMENT par {"items": [{"id": "...", "options": {"fr": [4 chaînes], "en": [4 chaînes]}}, ...]} — un objet par item reçu, même id, bonne réponse inchangée à sa position.
+TOUJOURS les deux langues, "fr" ET "en", quatre chaînes chacune, pour chaque item — même si les consignes ne signalent qu'une langue (l'autre est alors recopiée telle quelle). Une réponse sans "en" est inutilisable."""
+
+def _lang_list(v, orig, ai):
+    """One language's options from a model reply -> list of 4 strings, or None."""
+    if isinstance(v, dict):                                   # {"0": "...", "1": ...} or {"A": ...}
+        def key(k):
+            s = str(k).strip().upper()
+            return int(s) if s.isdigit() else ("ABCD".index(s) if s in "ABCD" and len(s) == 1 else 99)
+        v = [v[k] for k in sorted(v, key=key)]
+    if not isinstance(v, list): return None
+    v = [x.get("text", x.get("fr", x.get("en", ""))) if isinstance(x, dict) else x for x in v]
+    if len(v) == 3 and orig is not None:                      # distractors only -> put the correct answer back
+        v = list(v); v.insert(ai, orig[ai])
+    if len(v) != 4 or not all(isinstance(x, str) and x.strip() for x in v): return None
+    return v
+
+def coerce_options(o, it):
+    """Accept the layouts a rebalance reply may use and return {"fr": [4], "en": [4]} or None."""
+    ai = it["answer_index"]; orig = it["options"]
+    if isinstance(o, list) and len(o) in (3, 4) and all(isinstance(x, dict) for x in o):   # N x {fr, en}
+        o = {"fr": [x.get("fr", "") for x in o], "en": [x.get("en", "") for x in o]}
+    if isinstance(o, dict) and not ("fr" in o or "en" in o):                                # {"A": {fr, en}, ...}
+        vals = [o[k] for k in sorted(o, key=lambda k: str(k))]
+        if vals and all(isinstance(x, dict) for x in vals):
+            o = {"fr": [x.get("fr", "") for x in vals], "en": [x.get("en", "") for x in vals]}
+    if not isinstance(o, dict): return None
+    out = {}; got = 0
+    for lg in ("fr", "en"):
+        v = _lang_list(o.get(lg), orig[lg], ai) if lg in o else None
+        if v is None:
+            if lg in o: return None                    # present but malformed -> unusable
+            v = list(orig[lg])                          # language missing -> keep the original for it
+        else: got += 1
+        out[lg] = v
+    return out if got else None
 
 def rebalance_lengths(items):
     """Form-only second pass, ONE call per batch: lengthen distractors where the correct answer is the longest."""
@@ -464,32 +557,53 @@ def rebalance_lengths(items):
         return False
     todo = [it for it in items if flagged(it)]
     if not todo: return items
+    def brief(it):
+        """Per-item, per-option instruction: what to change and in which direction — bounded, so passes don't overshoot."""
+        ai = it["answer_index"]; out = {}
+        for lg in ("fr", "en"):
+            o = it["options"][lg]; Lc = len(o[ai]); Ec = elements(o[ai])
+            notes = []
+            for i, x in enumerate(o):
+                if i == ai: continue
+                L, E = len(x), elements(x); n = []
+                if E < Ec: n.append(f"élements {E}→{Ec}")
+                elif E > Ec: n.append(f"éléments {E}→{Ec}")
+                if L <= Lc: n.append(f"longueur {L}→{int(Lc*1.08)}–{int(Lc*1.2)} car.")
+                elif L > Lc * 1.3: n.append(f"longueur {L}→{int(Lc*1.08)}–{int(Lc*1.2)} car.")
+                if NEG.search(x) and not NEG.search(o[ai]): n.append("retirer la négation/omission")
+                notes.append(f"option {i}: " + (", ".join(n) if n else "ne pas toucher"))
+            out[lg] = notes
+        return out
     user = json.dumps({"items": [{"id": it["id"], "prompt": it["prompt"], "options": it["options"],
                                   "answer_index": it["answer_index"],
-                                  "elements_cible": {lg: elements(it["options"][lg][it["answer_index"]]) for lg in ("fr", "en")}}
+                                  "elements_cible": {lg: elements(it["options"][lg][it["answer_index"]]) for lg in ("fr", "en")},
+                                  "consignes": brief(it)}
                                  for it in todo]}, ensure_ascii=False)
-    v = parse_json_or_repair(call(REBALANCE_SYS, user, 8000, AUTHOR_MODEL), "rebalance") or {}
+    raw = call(REBALANCE_SYS, user, 8000, AUTHOR_MODEL)
+    v = parse_json_or_repair(raw, "rebalance") or {}
     items_out = v.get("items") if isinstance(v, dict) else v
-    if isinstance(items_out, dict): items_out = list(items_out.values())
+    if isinstance(items_out, dict):                       # {"id": {...}} keyed by item id
+        items_out = [dict(x, id=x.get("id", k)) if isinstance(x, dict) else x for k, x in items_out.items()]
     fixed = {}
     for x in (items_out or []):
         if not isinstance(x, dict): continue
-        x = normalize_item(dict(x))
-        fixed[str(x.get("id", "")).strip()] = x.get("options", {})
+        fixed[str(x.get("id", "")).strip()] = x.get("options", x.get("distracteurs", x.get("distractors", {})))
+    unusable = False
     for it in todo:
-        o, ai = fixed.get(it["id"], {}), it["answer_index"]
-        try:
-            ok = (isinstance(o, dict) and len(o["fr"]) == 4 and len(o["en"]) == 4
-                  and all(isinstance(x, str) and x.strip() for x in o["fr"] + o["en"]))
-        except (KeyError, TypeError):
-            ok = False
-        if not ok:
-            why = "id missing from reply" if it["id"] not in fixed else f"options shape {type(o).__name__}"
-            log(f"  {it['id']}: rebalance reply unusable ({why}), kept original"); continue
-        new = {"fr": list(o["fr"]), "en": list(o["en"])}
+        ai = it["answer_index"]
+        o = fixed.get(it["id"])
+        new = coerce_options(o, it) if o is not None else None
+        if new is None:
+            if it["id"] not in fixed: why = "id missing from reply"
+            elif isinstance(o, dict): why = f"options shape dict keys={list(o)[:4]} inner={ {k: type(o[k]).__name__ + ('[%d]' % len(o[k]) if hasattr(o[k], '__len__') else '') for k in list(o)[:2]} }"
+            else: why = f"options shape {type(o).__name__}"
+            log(f"  {it['id']}: rebalance reply unusable ({why}), kept original"); unusable = True; continue
         for lg in ("fr", "en"):
             new[lg][ai] = it["options"][lg][ai]        # correct answer: always the original text, never the model's copy
         it["options"] = new
+    if unusable and raw:
+        p = WORK / f"{todo[0]['id'].rsplit('-', 1)[0]}-rebalance-raw.txt"
+        p.write_text(raw, encoding="utf-8"); log(f"  raw rebalance reply saved to work/{p.name}")
     return items
 
 # ---------- gates ----------
@@ -552,9 +666,12 @@ def main():
             release = f"qL{level}-{task['id']}-{run_id}-{tries[key]}"
             log(f"batch {release} x{n}  (spent ${spent:.2f})")
 
-            items, plans = produce(task, level, n, author, release)
+            items, plans = produce(task, level, n, author, release, known_judgments(bank + stored, task["id"]))
             n_prod += len(items)
             if not items: log("  author returned nothing"); continue
+            axes_used = [pl.get("axe_de_decision", "") for pl in plans]
+            if len(set(axes_used)) < len(axes_used):
+                log(f"  warning: repeated decision axis in lot ({[a for a in axes_used if axes_used.count(a) > 1][0]}) — auditor will judge the doublon")
             ok, desc = form_ok(items)
             log(f"  form before rebalance: {desc}")
             passes = 0
@@ -573,11 +690,18 @@ def main():
             z = mechanical_gate(in_dir, release, len(items))
             if not z: n_gate += len(items); continue
             verdict, passed = audit_lot_deep(WORK / release, plans, auditor, level)
-            if verdict != "GO": n_aud += len(items); continue
+            if verdict == "REJET" or (verdict != "GO" and not KEEP_PASS_ON_HOLD):
+                n_aud += len(items); continue
+            if verdict != "GO":
+                log(f"  lot on HOLD: keeping the {len(passed)} item(s) the auditor marked PASS, dropping the rest")
+            plan_of = {pl.get("id"): pl for pl in plans}
             for q in items:
                 if q["id"] not in passed: n_aud += 1; continue
                 s = stem_of(q)
                 if is_dup(s, stems): n_dup += 1; continue
+                pl = plan_of.get(q["id"], {})
+                q.update(decision_atom=pl.get("decision_atom", ""), axe_de_decision=pl.get("axe_de_decision", ""),
+                         indice_decisif=pl.get("indice_decisif", ""), bascule=pl.get("bascule", ""))
                 q.update(task_id=task["id"], level=level, run_id=run_id, release=release,
                          author_model=AUTHOR_MODEL, status="approved" if level < 3 else "pending_sme")
                 stored.append(q); stems.append(s)

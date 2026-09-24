@@ -1,0 +1,539 @@
+{
+ "run_id": "20260923-1014",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR8-20260923-1014-1-01",
+   "enabler": "Baseline a project schedule.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet a terminé l'estimation des tâches et le séquencement des activités. Le comité de pilotage n'a pas encore validé la charte actualisée ni le périmètre final, une réunion de validation est prévue dans trois jours. L'équipe demande de figer l'échéancier dès maintenant pour commencer le suivi d'avancement. Que doit faire le chef de projet ?",
+    "en": "A project manager has finished estimating tasks and sequencing activities. The steering committee has not yet approved the updated charter or final scope, and a validation meeting is scheduled in three days. The team asks to freeze the schedule now to start tracking progress. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Figer l'échéancier dès maintenant afin que l'équipe dispose immédiatement d'une base de suivi.",
+     "Publier deux échéanciers parallèles, l'un provisoire et l'un définitif, pour satisfaire l'équipe et le comité.",
+     "Demander au sponsor d'approuver l'échéancier par courriel avant la réunion prévue avec le comité.",
+     "Attendre la validation du périmètre par le comité avant de figer l'échéancier comme référence."
+    ],
+    "en": [
+     "Freeze the schedule now so the team immediately has a baseline for tracking.",
+     "Publish two parallel schedules, one provisional and one final, to satisfy both the team and the committee.",
+     "Ask the sponsor to approve the schedule by email before the meeting scheduled with the committee.",
+     "Wait for the committee to validate scope before baselining the schedule as the reference."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le périmètre final n'est pas encore validé et la réunion du comité a lieu dans trois jours seulement : figer l'échéancier maintenant reviendrait à établir une référence sur des données susceptibles de changer. Attendre la validation du périmètre avant de baseliner l'échéancier comme référence garantit que la base de comparaison future reste stable. Figer l'échéancier dès maintenant répond à la pression de l'équipe mais ignore que le périmètre peut encore bouger. Publier deux échéanciers parallèles crée une confusion sur quelle version fait foi et complique le suivi. Demander au sponsor une approbation par courriel contourne le comité de pilotage, qui est l'instance prévue pour cette validation dans trois jours.",
+    "en": "Final scope has not been validated and the committee meeting is only three days away: freezing the schedule now would establish a baseline on data that may still change. Waiting for the committee to validate scope before baselining the schedule as the reference ensures the future comparison point stays stable. Freezing the schedule now answers the team's pressure but ignores that scope may still shift. Publishing two parallel schedules creates confusion about which version is authoritative and complicates tracking. Asking the sponsor for email approval bypasses the steering committee, which is the body scheduled to handle this validation in three days."
+   },
+   "decision_atom": "Décider si l'échéancier doit être figé comme référence avant ou après validation du périmètre par le comité.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le périmètre final n'est pas encore validé et la réunion de validation a lieu dans trois jours seulement.",
+   "bascule": "Si le périmètre avait déjà été validé formellement par le comité, figer l'échéancier maintenant deviendrait correct.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR8-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260923-1014-1-02",
+   "enabler": "Coordinate with other projects and operations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le chef de projet A découvre que son échéancier partage une ressource technique critique avec le projet B, géré par un autre chef de projet. Les deux échéanciers ont été construits indépendamment et la ressource est prévue à temps plein sur les deux projets la même semaine. Que doit faire le chef de projet A ?",
+    "en": "Project manager A discovers that their schedule shares a critical technical resource with project B, managed by another project manager. Both schedules were built independently, and the resource is planned full-time on both projects the same week."
+   },
+   "options": {
+    "fr": [
+     "Contacter directement le chef de projet B pour résoudre ensemble le conflit de ressource avant d'ajuster son propre échéancier.",
+     "Réserver la ressource en priorité pour son propre projet, puisque son échéancier a été finalisé en premier.",
+     "Signaler le conflit au responsable hiérarchique de la ressource partagée pour qu'il tranche entre les deux projets.",
+     "Décaler unilatéralement ses propres activités d'une semaine pour éviter tout chevauchement avec le projet B."
+    ],
+    "en": [
+     "Contact project manager B directly to resolve the resource conflict together before adjusting their own schedule.",
+     "Reserve the resource as a priority for their own project, since their schedule was finalized first.",
+     "Report the conflict to the resource's line manager to decide between the two projects.",
+     "Unilaterally shift their own activities by one week to avoid any overlap with project B."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les deux échéanciers ont été construits indépendamment et concernent deux chefs de projet pairs : la coordination entre projets appartient d'abord à ceux qui pilotent ces projets, avant toute escalade. Contacter directement le chef de projet B pour résoudre ensemble le conflit place la décision chez les bons propriétaires. Réserver la ressource en priorité pour son propre projet ignore que le projet B a un besoin tout aussi légitime et impose une solution sans discussion. Signaler le conflit au responsable hiérarchique escalade une décision que les deux chefs de projet peuvent et doivent d'abord tenter de résoudre entre eux. Décaler unilatéralement ses propres activités règle le symptôme sans vérifier si ce décalage convient au projet B ni si une meilleure option existe.",
+    "en": "Both schedules were built independently and involve two peer project managers: coordination between projects belongs first to those managing them, before any escalation. Contacting project manager B directly to resolve the conflict together places the decision with the right owners. Reserving the resource as a priority for their own project ignores that project B has an equally legitimate need and imposes a solution without discussion. Reporting the conflict to the line manager escalates a decision that the two project managers can and should first try to resolve between themselves. Unilaterally shifting their own activities addresses the symptom without checking whether this shift works for project B or whether a better option exists."
+   },
+   "decision_atom": "Décider qui doit initier la résolution d'un conflit de ressource partagée entre deux projets pairs.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Les deux échéanciers ont été construits indépendamment par deux chefs de projet pairs, sans coordination préalable.",
+   "bascule": "Si une première tentative de coordination directe entre les deux chefs de projet avait déjà échoué, escalader au responsable hiérarchique deviendrait correct.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR8-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260923-1014-1-04",
+   "enabler": "Create a project schedule.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet construit l'échéancier d'un projet de construction. Il dispose déjà de la liste des activités et de leurs durées estimées, mais les dépendances entre activités n'ont pas encore été établies. Une partie prenante presse le chef de projet d'assigner immédiatement les ressources pour respecter un jalon annoncé. Que doit faire le chef de projet ?",
+    "en": "A project manager is building the schedule for a construction project. The activity list and duration estimates are already available, but dependencies between activities have not yet been established. A stakeholder is pressing the project manager to immediately assign resources to meet an announced milestone."
+   },
+   "options": {
+    "fr": [
+     "Assigner les ressources aux activités selon leur disponibilité actuelle pour répondre à la demande de la partie prenante.",
+     "Communiquer un jalon révisé à la partie prenante en attendant que l'échéancier complet soit disponible.",
+     "Établir les dépendances entre les activités avant d'assigner les ressources aux différentes tâches.",
+     "Découper les activités les plus longues en sous-tâches afin de faciliter une future analyse du chemin critique."
+    ],
+    "en": [
+     "Assign resources to activities based on their current availability to respond to the stakeholder's request.",
+     "Communicate a revised milestone to the stakeholder while the complete schedule is being finalized.",
+     "Establish dependencies between activities before assigning resources to the different tasks.",
+     "Break down the longest activities into subtasks to facilitate a future critical path analysis."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les dépendances entre activités ne sont pas encore établies, ce qui signifie que la séquence de travail reste inconnue à ce stade de la construction de l'échéancier. Établir les dépendances avant d'assigner les ressources respecte l'ordre logique nécessaire pour bâtir un échéancier fiable. Assigner les ressources selon leur disponibilité actuelle répond à la pression immédiate mais ignore que les activités n'ont pas encore de séquence définie. Communiquer un jalon révisé traite un symptôme de communication sans résoudre le manque de séquencement qui rend le jalon actuel incertain. Découper les activités en sous-tâches est une action utile en soi, mais elle n'a pas de sens tant que les dépendances entre les activités existantes ne sont pas définies.",
+    "en": "Dependencies between activities have not yet been established, meaning the work sequence remains unknown at this stage of building the schedule. Establishing dependencies before assigning resources respects the logical order needed to build a reliable schedule. Assigning resources based on current availability responds to immediate pressure but ignores that activities do not yet have a defined sequence. Communicating a revised milestone addresses a communication symptom without resolving the missing sequencing that makes the current milestone uncertain. Breaking activities into subtasks is a useful action in itself, but it makes no sense until dependencies between the existing activities are defined."
+   },
+   "decision_atom": "Décider si l'on peut assigner les ressources avant que les dépendances entre activités soient établies.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les dépendances entre activités n'ont pas encore été établies, alors que la liste d'activités et les durées le sont déjà.",
+   "bascule": "Si les dépendances entre activités avaient déjà été établies avant cette demande, assigner les ressources immédiatement deviendrait correct.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR8-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260923-1014-1-05",
+   "enabler": "Analyze schedule variation.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "En analysant les indicateurs d'avancement, un chef de projet constate que l'indice de performance des délais (SPI) est passé de 0,98 à 0,95 sur la dernière période, une baisse mineure et cohérente avec les fluctuations habituelles du projet. Aucune activité du chemin critique n'est concernée. Que doit faire le chef de projet ?",
+    "en": "While analyzing progress indicators, a project manager notices that the schedule performance index (SPI) dropped from 0.98 to 0.95 over the last period, a minor decrease consistent with the project's usual fluctuations. No critical path activity is affected."
+   },
+   "options": {
+    "fr": [
+     "Convoquer une réunion d'urgence avec le sponsor pour discuter des causes de cette baisse du SPI.",
+     "Réviser immédiatement l'échéancier de référence pour refléter la nouvelle valeur du SPI observée.",
+     "Réaffecter des ressources supplémentaires aux activités concernées afin de faire remonter le SPI.",
+     "Continuer à surveiller le SPI lors des prochaines périodes de mesure sans action corrective immédiate."
+    ],
+    "en": [
+     "Call an urgent meeting with the sponsor to discuss the causes of this SPI decrease.",
+     "Immediately revise the baseline schedule to reflect the newly observed SPI value.",
+     "Reallocate additional resources to the affected activities to bring the SPI back up.",
+     "Continue monitoring the SPI over the next measurement periods without immediate corrective action."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La baisse du SPI est mineure, cohérente avec les fluctuations habituelles du projet, et aucune activité du chemin critique n'est concernée : ces faits indiquent une variation normale plutôt qu'un signal d'alerte. Continuer à surveiller le SPI sans action corrective immédiate proportionne la réponse à l'ampleur réelle de l'écart observé. Convoquer une réunion d'urgence avec le sponsor escalade une variation mineure comme si elle menaçait le projet, ce que les faits ne soutiennent pas. Réviser immédiatement l'échéancier de référence traite une fluctuation normale comme un changement structurel justifiant un nouveau baseline. Réaffecter des ressources supplémentaires engage un coût pour corriger un écart qui n'affecte même pas le chemin critique.",
+    "en": "The SPI decrease is minor, consistent with the project's usual fluctuations, and no critical path activity is affected: these facts point to normal variation rather than a warning sign. Continuing to monitor the SPI without immediate corrective action matches the response to the actual scale of the observed deviation. Calling an urgent meeting with the sponsor escalates a minor variation as though it threatened the project, which the facts do not support. Immediately revising the baseline schedule treats a normal fluctuation as a structural change warranting a new baseline. Reallocating additional resources incurs a cost to correct a deviation that does not even affect the critical path."
+   },
+   "decision_atom": "Décider si une variation mineure du SPI justifie une action corrective immédiate ou une simple surveillance.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "La baisse du SPI est mineure, cohérente avec les fluctuations habituelles, et n'affecte aucune activité du chemin critique.",
+   "bascule": "Si la baisse du SPI avait touché une activité du chemin critique, convoquer une réunion avec le sponsor deviendrait correct.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR8-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260923-1014-1-01",
+   "enabler": "Assess current progress.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet reçoit des données brutes d'avancement de trois équipes en fin de semaine. Les formats diffèrent légèrement entre équipes et un chiffre semble incohérent avec la semaine précédente. Le rapport hebdomadaire au comité de pilotage est dû dans deux heures. Que doit-elle faire en priorité ?",
+    "en": "A project manager receives raw progress data from three teams at the end of the week. The formats differ slightly between teams, and one figure seems inconsistent with the previous week. The weekly steering committee report is due in two hours. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Vérifier la cohérence du chiffre suspect avec l'équipe concernée avant de consolider les données pour le rapport.",
+     "Consolider les données reçues dans le format standard attendu par le comité de pilotage pour le rapport hebdomadaire.",
+     "Transmettre au comité de pilotage les données brutes des trois équipes concernées par les écarts de format.",
+     "Reporter l'envoi du rapport au comité en attendant l'harmonisation des formats de saisie des trois équipes."
+    ],
+    "en": [
+     "Verify the suspect figure's consistency with the team concerned before consolidating the data for the report.",
+     "Consolidate the received data into the report's standard format expected by the steering committee this week.",
+     "Forward to the steering committee the three teams' raw data affected by the observed format discrepancies.",
+     "Delay sending the report to the steering committee while the three teams' data formats are harmonized."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Un chiffre incohérent détecté avant consolidation doit être clarifié à la source : c'est la condition pour que l'analyse d'avancement reflète la réalité plutôt qu'une erreur de saisie. Consolider immédiatement dans le format standard, puis signaler l'anomalie au comité, inverse l'ordre : le comité reçoit une donnée déjà agrégée sans savoir si elle est fiable. Transmettre les données brutes avec une note sur les écarts de format reporte le travail d'analyse sur le comité, ce qui n'est pas son rôle. Reporter l'envoi d'une semaine pénalise la visibilité du comité pour un problème d'harmonisation qui peut se résoudre en une vérification ciblée, sans retarder tout le cycle de reporting.",
+    "en": "An inconsistent figure spotted before consolidation must be clarified at the source: this is the condition for the progress assessment to reflect reality rather than a data entry error. Immediately consolidating into the standard format and flagging the anomaly afterward reverses the order: the committee receives already-aggregated data without knowing whether it is reliable. Forwarding raw data with a note on format discrepancies shifts the analysis work onto the committee, which is not its role. Delaying the report by a week penalizes the committee's visibility over a formatting issue that can be resolved with a targeted check, without postponing the whole reporting cycle."
+   },
+   "decision_atom": "Décider s'il faut vérifier un chiffre suspect avant de consolider les données d'avancement pour le rapport.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Un chiffre semble incohérent avec la semaine précédente, détecté AVANT consolidation, alors que le délai de rapport est court (deux heures).",
+   "bascule": "Si le chiffre suspect avait déjà été confirmé par l'équipe avant réception, consolider immédiatement serait la bonne réponse.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR9-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260923-1014-1-02",
+   "enabler": "Communicate project status.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors de la préparation du rapport mensuel, un chef de projet constate qu'un indicateur de coût dépasse le seuil d'alerte défini dans le plan de management, mais l'écart reste dans la marge de tolérance que le sponsor a lui-même approuvée en début de projet. Comment doit-il traiter cette information dans son rapport de statut ?",
+    "en": "While preparing the monthly report, a project manager notices that a cost indicator exceeds the alert threshold defined in the management plan, but the deviation remains within the tolerance margin the sponsor himself approved at project start. How should he handle this information in the status report?"
+   },
+   "options": {
+    "fr": [
+     "Omettre l'indicateur du rapport de statut destiné au comité, puisque l'écart reste couvert par la tolérance approuvée par le sponsor.",
+     "Mentionner l'indicateur dans le rapport avec son statut réel, sans déclencher d'escalade formelle vers la gouvernance.",
+     "Escalader sans délai l'écart constaté au comité de gouvernance, en demandant une décision sur la poursuite du projet.",
+     "Convoquer une réunion d'urgence avec le sponsor avant la finalisation du rapport de statut, pour statuer sur l'indicateur."
+    ],
+    "en": [
+     "Omit the indicator from the status report, since the deviation remains covered by the tolerance the sponsor approved.",
+     "Include the indicator in the report with its actual status, without triggering a formal escalation to governance.",
+     "Immediately escalate the deviation to the governance committee, requesting a decision on whether to continue the project.",
+     "Convene an emergency meeting with the sponsor before the status report is finalized, to rule on the indicator."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Un dépassement du seuil d'alerte reste une information à rapporter fidèlement, même s'il ne franchit pas la tolérance approuvée par le sponsor : le rapport de statut doit refléter la réalité de l'indicateur, mais la tolérance déjà validée signifie qu'aucune escalade formelle n'est justifiée à ce stade. Omettre l'indicateur du rapport prive le sponsor et les parties prenantes d'une visibilité à laquelle ils ont droit, même en l'absence de dépassement critique. Escalader immédiatement au comité de gouvernance traite comme critique un écart que le sponsor a explicitement anticipé et couvert par une marge de tolérance. Convoquer une réunion d'urgence avant de rapporter engage une réponse disproportionnée à un signal qui, par construction, ne sort pas du cadre accepté.",
+    "en": "Exceeding the alert threshold remains information that must be reported faithfully, even if it does not cross the tolerance the sponsor approved: the status report must reflect the indicator's actual state, but the already-validated tolerance means no formal escalation is warranted at this stage. Omitting the indicator from the report deprives the sponsor and stakeholders of visibility they are entitled to, even absent a critical breach. Immediately escalating to the governance committee treats as critical a deviation the sponsor explicitly anticipated and covered with a tolerance margin. Convening an emergency meeting before reporting mounts a disproportionate response to a signal that, by design, stays within the accepted boundary."
+   },
+   "decision_atom": "Décider comment rapporter un indicateur qui dépasse le seuil d'alerte mais reste dans la tolérance approuvée par le sponsor.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le sponsor a lui-même approuvé la marge de tolérance qui couvre cet écart, en début de projet.",
+   "bascule": "Si l'écart avait dépassé la marge de tolérance approuvée (et non seulement le seuil d'alerte), escalader au comité de gouvernance deviendrait la bonne réponse.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR9-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260923-1014-1-04",
+   "enabler": "Help ensure artifacts are created, reviewed, updated, and documented.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet remarque que le registre des risques n'a pas été mis à jour depuis six semaines, alors que la propriétaire désignée de cet artefact, la responsable qualité, est en charge de sa tenue selon le plan de management convenu. Que doit-il faire ?",
+    "en": "A project manager notices that the risk register has not been updated in six weeks, even though the artifact's designated owner, the quality manager, is responsible for maintaining it under the agreed management plan. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Mettre lui-même à jour le registre des risques du projet, en s'appuyant sur les informations dont il dispose actuellement.",
+     "Confier la mise à jour du registre à un membre disponible de l'équipe projet, pour combler le retard rapidement.",
+     "Signaler au comité de gouvernance le retard de mise à jour constaté, en proposant de réassigner la propriété de l'artefact.",
+     "Échanger avec la responsable qualité pour comprendre les obstacles à la mise à jour et convenir d'un plan de rattrapage."
+    ],
+    "en": [
+     "Update the project's risk register himself, relying on the information currently available to him.",
+     "Assign the register's update to an available member of the project team, to close the gap quickly.",
+     "Report to the governance committee the update delay observed, proposing to reassign ownership of the artifact.",
+     "Discuss with the quality manager to understand the obstacles to updating it and agree on a catch-up plan."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le registre des risques a une propriétaire désignée par le plan de management : la responsable qualité. Le rôle du chef de projet est de s'assurer que l'artefact est tenu à jour, ce qui passe d'abord par un échange direct avec elle pour comprendre le retard et convenir d'un plan de rattrapage, avant d'envisager toute autre mesure. Mettre lui-même à jour le registre usurpe une responsabilité qui n'est pas la sienne et prive l'artefact de l'expertise qualité qu'il est censé porter. Confier la tâche à un autre membre de l'équipe contourne la même propriété désignée sans en discuter avec la personne responsable. Signaler le retard au comité de gouvernance en proposant une réassignation escalade une situation qui n'a pas encore été clarifiée avec la personne concernée, alors qu'un simple échange peut suffire à la résoudre.",
+    "en": "The risk register has a designated owner under the management plan: the quality manager. The project manager's role is to help ensure the artifact stays updated, which starts with a direct conversation with her to understand the delay and agree on a catch-up plan, before considering any other measure. Updating the register himself usurps a responsibility that is not his and deprives the artifact of the quality expertise it is meant to carry. Assigning the task to another team member bypasses the same designated ownership without discussing it with the responsible person. Reporting the delay to the governance committee while proposing reassignment escalates a situation that has not yet been clarified with the person concerned, when a simple conversation may be enough to resolve it."
+   },
+   "decision_atom": "Décider qui doit agir face au retard de mise à jour d'un artefact dont la propriété est déjà assignée.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le plan de management désigne explicitement la responsable qualité comme propriétaire du registre des risques.",
+   "bascule": "Si un échange préalable avec la responsable qualité avait déjà eu lieu sans résultat, signaler au comité de gouvernance deviendrait la bonne réponse.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR9-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260923-1014-1-01",
+   "enabler": "Conclude activities to close the project or phase (e.g., final lessons learned, retrospectives, procurement, financials, resources).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet de construction touche à sa fin. Le contrat avec le fournisseur principal comporte une clause de garantie de deux ans après la réception finale, encore en vigueur. L'équipe a déjà libéré les ressources internes et documenté les leçons apprises. La cheffe de projet doit maintenant traiter le volet contractuel. Que doit-elle faire ?",
+    "en": "A construction project is nearing its end. The main supplier contract includes a two-year warranty clause after final acceptance, still in effect. The team has already released internal resources and documented lessons learned. The project manager must now address the contractual component. What should she do?"
+   },
+   "options": {
+    "fr": [
+     "Clôturer administrativement le contrat pour les livrables acceptés, tout en conservant une trace active des obligations de garantie encore dues par le fournisseur.",
+     "Clore intégralement le dossier fournisseur dès maintenant auprès du service achats, et considérer l'équipe interne comme déjà libérée de ses tâches restantes.",
+     "Demander au fournisseur de renoncer par écrit à la clause de garantie devant le service juridique, puis simplifier ainsi la clôture administrative complète du contrat.",
+     "Reporter toute clôture contractuelle jusqu'à l'expiration complète de la période de garantie prévue au contrat, en maintenant le dossier ouvert pendant ces deux ans."
+    ],
+    "en": [
+     "Administratively close the contract for the accepted deliverables, while keeping an active record of the warranty obligations still owed by the supplier.",
+     "Fully close the supplier file right now with the procurement department, and treat the internal team as already released from its remaining duties.",
+     "Ask the supplier to waive the warranty clause in writing before the legal department, then simplify the full administrative closure of the contract.",
+     "Postpone any contractual closure until the full two-year warranty period stated in the contract has expired, keeping the file open throughout that time."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La clause de garantie reste en vigueur pour deux ans : le contrat n'est pas totalement réversible tant que cette obligation subsiste, mais les livrables acceptés peuvent être clôturés administrativement. Clore intégralement le dossier fournisseur dès maintenant ignore que l'obligation de garantie continue d'engager les deux parties. Demander au fournisseur de renoncer par écrit à la clause de garantie modifie unilatéralement les termes contractuels au lieu de les administrer tels qu'ils existent. Reporter toute clôture contractuelle jusqu'à l'expiration complète de la période de garantie confond la clôture administrative des livrables avec la fin de toutes les obligations résiduelles, retardant sans raison des tâches qui peuvent être conclues maintenant.",
+    "en": "The warranty clause remains active for two years: the contract is not fully closeable while this obligation persists, but the accepted deliverables can be administratively closed. Fully closing the supplier file right now ignores that the warranty obligation continues to bind both parties. Asking the supplier to waive the warranty clause in writing unilaterally alters the contract terms instead of administering them as they stand. Postponing any contractual closure until the full two-year warranty period has expired confuses administrative closure of deliverables with the end of all residual obligations, needlessly delaying tasks that can be concluded now."
+   },
+   "decision_atom": "Décider comment traiter la clôture contractuelle quand une clause de garantie reste active après l'acceptation des livrables.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "La clause de garantie de deux ans est encore en vigueur au moment de la clôture.",
+   "bascule": "Si la garantie était déjà expirée, clore intégralement le dossier deviendrait la bonne réponse.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR10-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260923-1014-1-02",
+   "enabler": "Obtain project stakeholder approval of project completion.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet interne de refonte de processus arrive à son terme. Le manuel de gouvernance du programme précise que seul le comité de pilotage, et non un sponsor individuel, peut approuver la clôture d'un projet dépassant un certain seuil budgétaire. Ce projet dépasse ce seuil. Le sponsor principal, satisfait des résultats, propose de signer seul l'approbation de clôture. Que doit faire le chef de projet ?",
+    "en": "An internal process redesign project is coming to an end. The program governance manual states that only the steering committee, not an individual sponsor, can approve closure of a project exceeding a certain budget threshold. This project exceeds that threshold. The main sponsor, satisfied with the results, offers to sign the closure approval alone. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la signature du sponsor comme approbation suffisante, puisqu'il est le principal bénéficiaire des résultats livrés.",
+     "Soumettre la demande de clôture au comité de pilotage, conformément au seuil budgétaire prévu par le manuel de gouvernance.",
+     "Faire signer le sponsor sans attendre, puis transmettre cette signature au comité de pilotage à titre informatif dans la foulée.",
+     "Élargir l'approbation à l'ensemble des parties prenantes du registre du projet, bien au-delà du manuel de gouvernance en vigueur."
+    ],
+    "en": [
+     "Accept the sponsor's signature alone as sufficient approval for closure, since he is the main beneficiary of the delivered results.",
+     "Submit the closure request to the steering committee, in line with the budget threshold set by the governance manual.",
+     "Have the sponsor sign the closure right away, then forward that signature to the steering committee for information afterward.",
+     "Expand the closure approval to the entire stakeholder register of the project, well beyond the current governance manual."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le manuel de gouvernance désigne explicitement le comité de pilotage comme autorité d'approbation pour ce niveau de budget : c'est cette instance, et non le sponsor seul, qui détient le pouvoir requis. Accepter la signature du sponsor comme approbation suffisante contourne l'autorité désignée, même si le sponsor est satisfait et légitimement impliqué. Faire signer le sponsor immédiatement puis transmettre cette signature au comité de pilotage après coup traite l'instance de gouvernance comme une simple formalité a posteriori plutôt que comme l'autorité décisionnelle. Élargir l'approbation à l'ensemble des parties prenantes du registre dépasse le cadre défini par la gouvernance sans résoudre le problème d'autorité initial.",
+    "en": "The governance manual explicitly designates the steering committee as the approval authority for this budget level: it is this body, not the sponsor alone, that holds the required power. Accepting the sponsor's signature as sufficient approval bypasses the designated authority, even though the sponsor is satisfied and legitimately involved. Having the sponsor sign immediately and then forwarding that signature to the steering committee afterward treats the governance body as a mere after-the-fact formality rather than the decision-making authority. Expanding the approval to the entire stakeholder register goes beyond the scope defined by governance without resolving the initial authority problem."
+   },
+   "decision_atom": "Décider quelle instance doit approuver formellement la clôture d'un projet dépassant un seuil budgétaire donné.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le manuel de gouvernance réserve explicitement l'approbation à ce niveau au comité de pilotage, non au sponsor seul.",
+   "bascule": "Si le projet était sous le seuil budgétaire fixé, la signature du sponsor seul deviendrait suffisante.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR10-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260923-1014-1-03",
+   "enabler": "Validate readiness for transition (e.g., to operations team or next phase).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet de mise en place d'un nouveau système de facturation approche de sa transition vers l'équipe d'exploitation. Lors des tests finaux, deux anomalies mineures sont détectées : elles n'affectent qu'un rapport secondaire rarement consulté et disposent déjà d'un contournement documenté. L'équipe d'exploitation a été formée et confirme pouvoir gérer ces anomalies avec la procédure existante. Que doit décider le chef de projet concernant la transition ?",
+    "en": "A project to implement a new billing system is approaching transition to the operations team. During final testing, two minor defects are found: they affect only a rarely used secondary report and already have a documented workaround. The operations team has been trained and confirms it can manage these defects with the existing procedure. What should the project manager decide regarding the transition?"
+   },
+   "options": {
+    "fr": [
+     "Reporter la transition jusqu'à la correction complète des deux anomalies, malgré le contournement déjà validé par l'équipe.",
+     "Convoquer un comité de gestion des risques dédié, puis lui soumettre ces deux anomalies pour statuer avant toute transition prévue.",
+     "Procéder à la transition en consignant les deux anomalies et leur contournement dans la documentation transmise à l'exploitation.",
+     "Suspendre uniquement la partie du système liée au rapport secondaire, en transférant le reste des fonctionnalités à l'exploitation."
+    ],
+    "en": [
+     "Postpone the transition until both defects are fully fixed, despite the workaround already documented and validated by the team.",
+     "Convene a dedicated risk management committee, submit these two defects to it, then have it rule before any planned transition.",
+     "Proceed with the transition, recording both defects and their workaround in the documentation handed to operations.",
+     "Suspend only the part of the system related to the secondary report, transfer the rest of the functionality, and hand it to operations."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les anomalies sont mineures, limitées à un rapport peu utilisé, et disposent d'un contournement que l'équipe d'exploitation maîtrise déjà : la réponse proportionnée consiste à transmettre la transition avec cette information documentée. Reporter la transition jusqu'à la correction complète des deux anomalies traite un problème mineur avec la même rigueur qu'un blocage critique, retardant sans nécessité un transfert par ailleurs prêt. Convoquer un comité de gestion des risques dédié pour statuer sur ces deux anomalies mobilise une structure de gouvernance disproportionnée par rapport à l'ampleur réelle du problème. Suspendre uniquement la partie du système liée au rapport secondaire fragmente artificiellement la transition alors que l'équipe d'exploitation a confirmé pouvoir gérer l'ensemble avec la procédure existante.",
+    "en": "The defects are minor, limited to a rarely used report, and already have a workaround the operations team can already manage: the proportionate response is to proceed with the transition while documenting this information. Postponing the transition until both defects are fully fixed treats a minor issue with the same rigor as a critical blocker, needlessly delaying an otherwise ready transfer. Convening a dedicated risk management committee to rule on these two defects mobilizes a governance structure disproportionate to the actual scale of the problem. Suspending only the part of the system related to the secondary report artificially fragments the transition when the operations team has confirmed it can manage everything with the existing procedure."
+   },
+   "decision_atom": "Décider si des anomalies mineures avec contournement documenté justifient de retarder ou restreindre la transition vers l'exploitation.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Les anomalies sont mineures, limitées à un rapport secondaire rarement utilisé, avec un contournement documenté que l'exploitation maîtrise déjà.",
+   "bascule": "Si les anomalies affectaient une fonction critique sans contournement, reporter la transition deviendrait la bonne réponse.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR10-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20260923-1014-1-04",
+   "enabler": "Determine criteria to successfully close the project or phase.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet de développement logiciel entre dans sa phase finale. L'équipe s'apprête à commencer les tests d'acceptation, mais le chef de projet réalise que les critères précis de clôture de phase — au-delà des exigences fonctionnelles déjà validées — n'ont jamais été formalisés avec le client. Les tests sont prévus dans trois jours. Que doit faire le chef de projet ?",
+    "en": "A software development project is entering its final phase. The team is about to start acceptance testing, but the project manager realizes that the precise phase closure criteria — beyond the functional requirements already validated — have never been formalized with the client. Testing is scheduled to begin in three days. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Lancer les tests d'acceptation comme prévu avec l'équipe de développement dès la date fixée initialement au calendrier.",
+     "Attendre la fin des tests d'acceptation avant d'aborder toute question relative aux critères de clôture avec le client.",
+     "Confier à l'équipe de développement la définition des critères de clôture de phase sans en informer le client concerné.",
+     "Formaliser avec le client les critères de clôture de phase avant le début des tests d'acceptation prévus dans trois jours."
+    ],
+    "en": [
+     "Start acceptance testing as planned with the development team on the date originally set in the schedule.",
+     "Wait until acceptance testing is complete before raising any question about closure criteria with the client.",
+     "Assign the development team to define the phase closure criteria without informing the client involved.",
+     "Formalize the phase closure criteria with the client before acceptance testing begins in three days."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Les critères de clôture n'ont jamais été formalisés avec le client, et il reste trois jours avant le début des tests : c'est le moment approprié pour clarifier ces critères avant que les tests ne s'appuient sur une base incomplète. Lancer les tests d'acceptation comme prévu, en utilisant les exigences fonctionnelles déjà validées comme seuls critères de clôture, agit avant d'avoir confirmé que ces exigences couvrent effectivement tout ce que le client attend. Attendre la fin des tests d'acceptation pour évaluer quels critères de clôture semblent pertinents inverse l'ordre logique en fixant les critères après l'évaluation plutôt qu'avant. Confier à l'équipe de développement la définition des critères de clôture déplace une décision qui doit être négociée avec le client vers une équipe qui n'a pas autorité sur les attentes contractuelles.",
+    "en": "The closure criteria have never been formalized with the client, and three days remain before testing begins: this is the appropriate moment to clarify these criteria before testing proceeds on an incomplete basis. Starting acceptance testing as planned, using the already validated functional requirements as the sole closure criteria, acts before confirming that these requirements actually cover everything the client expects. Waiting until acceptance testing is complete to assess which closure criteria seem relevant reverses the logical order by setting criteria after evaluation rather than before. Assigning the development team to define the closure criteria shifts a decision that must be negotiated with the client to a team that has no authority over contractual expectations."
+   },
+   "decision_atom": "Décider à quel moment formaliser les critères de clôture de phase avec le client, avant ou après les tests d'acceptation.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les critères de clôture n'ont jamais été formalisés avec le client, et les tests débutent dans trois jours.",
+   "bascule": "Si les critères de clôture avaient déjà été formalisés et documentés avec le client, lancer les tests comme prévu deviendrait la bonne réponse.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR10-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260923-1014-2-02",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet présente l'énoncé de contenu final à trois parties prenantes clés pour signature. Deux d'entre elles signent sans commentaire. La troisième, responsable des opérations, formule une réserve verbale sur une exclusion de contenu mais accepte de signer quand même, en disant vouloir « ne pas bloquer le projet ». Que doit faire le chef de projet ?",
+    "en": "A project manager presents the final scope statement to three key stakeholders for sign-off. Two sign without comment. The third, the operations manager, voices a verbal reservation about a scope exclusion but agrees to sign anyway, saying they do not want to hold up the project. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la signature telle quelle et archiver l'énoncé de contenu comme pleinement approuvé par toutes les parties.",
+     "Documenter la réserve du responsable des opérations et la faire remonter au sponsor avant de clore l'approbation.",
+     "Retirer l'exclusion contestée de l'énoncé de contenu et en informer la partie prenante des opérations concernée.",
+     "Organiser un nouvel atelier de découpage du contenu et y inviter l'ensemble des parties prenantes clés du projet."
+    ],
+    "en": [
+     "Accept the signature as given and file the scope statement as fully approved by all parties.",
+     "Document the operations manager's reservation and escalate it to the sponsor before closing approval.",
+     "Remove the contested exclusion from the scope statement and notify the concerned operations stakeholder.",
+     "Organize a new scope decomposition workshop and invite all key project stakeholders to attend."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Documenter la réserve et la faire remonter au sponsor est juste : une signature accompagnée d'une objection non résolue n'est pas un accord réel, et l'ampleur du désaccord — une exclusion de contenu contestée par le responsable opérationnel — dépasse ce que le chef de projet peut trancher seul. Accepter la signature telle quelle ignore le signal donné et transforme un accord fragile en accord classé définitif. Retirer l'exclusion unilatéralement court-circuite les autres parties prenantes qui ont déjà validé le contenu tel quel. Organiser un nouvel atelier complet est disproportionné : une seule réserve ponctuelle ne justifie pas de rouvrir l'ensemble de la décomposition avec tous les participants.",
+    "en": "Documenting the reservation and escalating it to the sponsor is correct: a signature accompanied by an unresolved objection is not a genuine agreement, and the scope of the disagreement — a scope exclusion contested by the operations manager — exceeds what the project manager can resolve alone. Accepting the signature as given ignores the signal that was raised and turns a fragile agreement into a finalized one. Unilaterally removing the exclusion bypasses the other stakeholders who already validated the content as it stands. Organizing an entirely new workshop is disproportionate: a single specific reservation does not justify reopening the whole decomposition with every participant."
+   },
+   "decision_atom": "Décider comment traiter une signature accompagnée d'une réserve verbale non résolue.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "La partie prenante signe mais exprime explicitement une réserve sur une exclusion de contenu, en disant vouloir ne pas bloquer le projet.",
+   "bascule": "Si la partie prenante avait signé sans émettre aucune réserve, accepter la signature telle quelle deviendrait la bonne réponse.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR2-20260923-1014-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260923-1014-2-03",
+   "enabler": "Define scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "En rédigeant l'énoncé de contenu d'un projet de migration de données, une cheffe de projet hésite entre deux formulations pour une exigence technique encore floue côté client. Le client n'a pas encore tranché entre deux architectures possibles, et sa décision est attendue dans deux semaines, avant le début des travaux correspondants. Que doit-elle faire ?",
+    "en": "While drafting the scope statement for a data migration project, a project manager is torn between two wordings for a technical requirement that the client has not yet clarified. The client has not yet chosen between two possible architectures, and their decision is expected in two weeks, before the corresponding work begins. What should she do?"
+   },
+   "options": {
+    "fr": [
+     "Choisir dès maintenant l'architecture qui semble la plus probable et la fixer aussitôt dans l'énoncé de contenu du projet.",
+     "Solliciter une décision immédiate du client par un appel d'urgence et clore ainsi l'énoncé de contenu dès aujourd'hui.",
+     "Formuler l'exigence de façon conditionnelle dans l'énoncé de contenu, en la précisant dès la décision du client connue.",
+     "Confier l'arbitrage entre les deux architectures à l'équipe technique interne, ce qui permet de gagner du temps sur le calendrier."
+    ],
+    "en": [
+     "Pick the architecture that seems most likely right now and fix it immediately in the project's scope statement.",
+     "Request an immediate decision from the client through an urgent call, then close the scope statement today.",
+     "Word the requirement conditionally in the scope statement, refining it once the client's decision is known.",
+     "Hand the choice between the two architectures to the internal technical team, which saves time on the schedule."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Formuler l'exigence de façon conditionnelle est juste : le client dispose encore de deux semaines avant que les travaux concernés ne débutent, ce qui laisse le temps de préciser l'énoncé sans bloquer le projet ni figer prématurément un choix qui n'appartient pas à l'équipe projet. Choisir dès maintenant l'architecture la plus probable fixe dans le contenu une décision qui n'a pas encore été prise par son propriétaire légitime, au risque d'une reprise coûteuse. Solliciter une décision immédiate par un appel d'urgence est disproportionné puisque le délai de deux semaines n'est pas encore écoulé et rien n'indique une urgence réelle. Confier l'arbitrage à l'équipe technique interne déplace une décision qui revient au client vers une partie prenante qui n'a pas autorité pour la prendre.",
+    "en": "Wording the requirement conditionally is correct: the client still has two weeks before the corresponding work begins, which leaves time to refine the statement without blocking the project or prematurely locking in a choice that does not belong to the project team. Picking the most likely architecture now fixes in the scope a decision not yet made by its rightful owner, risking costly rework later. Requesting an immediate decision through an urgent call is disproportionate since the two-week window has not yet elapsed and nothing indicates real urgency. Handing the choice to the internal technical team shifts a decision that belongs to the client onto a stakeholder who has no authority to make it."
+   },
+   "decision_atom": "Décider comment formuler dans l'énoncé de contenu une exigence dont le client n'a pas encore tranché un aspect technique.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le client dispose encore de deux semaines avant le début des travaux concernés, donc le temps existe pour clarifier sans bloquer.",
+   "bascule": "Si le début des travaux concernés était imminent, sans marge avant la décision du client, solliciter une décision immédiate deviendrait justifié.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PR2-20260923-1014-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260923-1014-1-02",
+   "enabler": "Gather knowledge.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une rétrospective, un membre de l'équipe affirme oralement qu'une méthode de test alternative « a bien fonctionné » sur un projet précédent, sans pouvoir citer de résultats précis ni de document associé. Le chef de projet envisage d'inclure cette méthode dans la base de connaissances du projet actuel. Que doit-il faire en priorité ?",
+    "en": "During a retrospective, a team member states orally that an alternative testing method 'worked well' on a previous project, without being able to cite specific results or any associated document. The project manager is considering adding this method to the current project's knowledge base. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Ajouter la méthode à la base de connaissances du projet en la signalant comme retour d'expérience informel.",
+     "Organiser une session dédiée pour que le membre de l'équipe présente la méthode à l'ensemble de l'équipe.",
+     "Écarter la méthode alternative proposée lors de la rétrospective et poursuivre avec l'ensemble des pratiques déjà documentées dans le projet.",
+     "Demander au membre de l'équipe de retrouver les résultats ou le contexte précis du projet précédent."
+    ],
+    "en": [
+     "Add the method to the project's knowledge base, flagging it as an informal lesson learned from the team.",
+     "Organize a dedicated session so the team member can present the method's outcomes to the whole team.",
+     "Set the alternative method raised during the retrospective aside and continue with all the practices already documented in the project.",
+     "Ask the team member to retrieve the specific results or context from the previous project."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le fait décisif est que l'affirmation reste vague : « a bien fonctionné » sans résultats précis ni document associé. Avant d'intégrer une pratique à la base de connaissances, il faut vérifier qu'elle repose sur une preuve suffisante, donc demander au membre de l'équipe de retrouver les résultats ou le contexte précis est la priorité. Ajouter la méthode en la signalant comme informelle contourne cette vérification en espérant qu'un simple étiquetage suffise à compenser l'absence de preuve. Organiser une session de présentation mobilise du temps d'équipe autour d'une information qui n'a pas encore été validée. Écarter la méthode et poursuivre avec l'existant abandonne une piste potentiellement utile sans même avoir cherché à la corroborer.",
+    "en": "The decisive fact is that the claim remains vague — 'worked well' with no specific results or associated document. Before adding a practice to the knowledge base, its evidentiary basis must be checked, so asking the team member to retrieve the specific results or context is the priority. Adding the method while flagging it as informal bypasses this verification, hoping a simple label compensates for the missing evidence. Organizing a presentation session commits team time around information that has not yet been validated. Setting the method aside and continuing with existing practices discards a potentially useful lead without even attempting to corroborate it."
+   },
+   "decision_atom": "Décider s'il faut intégrer une affirmation orale non étayée à la base de connaissances ou d'abord vérifier son fondement.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le membre de l'équipe ne peut citer ni résultats précis ni document associé à l'appui de son affirmation.",
+   "bascule": "Si le membre de l'équipe avait pu citer des résultats chiffrés ou un rapport de projet précédent, ajouter la méthode en la signalant comme retour d'expérience deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260923-1014",
+   "release": "qL2-PE7-20260923-1014-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

@@ -1,0 +1,539 @@
+{
+ "run_id": "20260923-1027",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR9-20260923-1027-2-01",
+   "enabler": "Communicate project status.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet prépare le rapport de statut hebdomadaire. Un membre de l'équipe technique lui signale un risque de dérive sur un lot de travaux, mais ce risque n'a pas encore été validé par le responsable technique désigné pour ce lot. Que doit faire le chef de projet avant de diffuser le rapport ?",
+    "en": "A project manager is preparing the weekly status report. A technical team member flags a possible schedule slip on a work package, but this risk has not yet been validated by the technical lead assigned to that package. What should the project manager do before distributing the report?"
+   },
+   "options": {
+    "fr": [
+     "Diffuser le rapport en mentionnant le risque comme confirmé, pour alerter les parties prenantes au plus tôt.",
+     "Demander au responsable technique désigné de confirmer le risque avant de l'inclure dans le rapport diffusé.",
+     "Retirer toute mention du risque du rapport, en attendant qu'il soit soulevé lors de la prochaine réunion d'équipe.",
+     "Transmettre le signalement directement au sponsor, en dehors du rapport, pour accélérer la validation du risque."
+    ],
+    "en": [
+     "Distribute the report describing the risk as confirmed, to alert stakeholders as early as possible.",
+     "Ask the assigned technical lead to confirm the risk before including it in the distributed report.",
+     "Remove any mention of the risk from the report, waiting for it to be raised at the next team meeting.",
+     "Send the flag directly to the sponsor, outside the report, to speed up validation of the risk."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le responsable technique désigné est l'autorité légitime pour confirmer un risque sur son lot de travaux ; le chef de projet doit obtenir cette confirmation avant de le faire figurer dans un rapport officiel. Diffuser le rapport en présentant le risque comme confirmé outrepasse l'autorité de validation du responsable technique. Retirer toute mention du risque prive les parties prenantes d'une information pertinente en attendant une validation qui pourrait être obtenue plus vite. Transmettre le signalement au sponsor en dehors du rapport contourne le responsable technique désigné, qui est le bon niveau d'autorité pour cette confirmation.",
+    "en": "The assigned technical lead is the legitimate authority to confirm a risk on their work package; the project manager should obtain this confirmation before including it in an official report. Distributing the report describing the risk as confirmed bypasses the technical lead's validation authority. Removing any mention of the risk deprives stakeholders of relevant information while waiting for a validation that could be obtained faster. Sending the flag to the sponsor outside the report bypasses the assigned technical lead, who is the right level of authority for this confirmation."
+   },
+   "decision_atom": "Décider s'il faut inclure un risque non validé dans le rapport de statut diffusé.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le risque signalé n'a pas encore été validé par le responsable technique désigné pour ce lot de travaux.",
+   "bascule": "Si le responsable technique avait déjà confirmé le risque, l'inclure directement dans le rapport deviendrait correct.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR9-20260923-1027-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260923-1027-2-02",
+   "enabler": "Measure, analyze, and update project metrics.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "L'indice de performance des coûts d'un projet passe de 0,98 à 0,95 sur une seule période de mesure, sans qu'aucun changement de portée ou de ressources n'ait eu lieu. L'écart reste dans la marge de tolérance définie au plan de management. Que doit faire le chef de projet pour la mise à jour des métriques ?",
+    "en": "A project's cost performance index moves from 0.98 to 0.95 over a single measurement period, with no scope or resource changes. The variance remains within the tolerance defined in the management plan. What should the project manager do regarding the metrics update?"
+   },
+   "options": {
+    "fr": [
+     "Déclencher une revue formelle de gouvernance, en traitant la variation comme un dépassement de seuil critique.",
+     "Ajuster immédiatement le budget restant, en anticipant que la tendance se maintiendra sur les périodes suivantes.",
+     "Documenter la variation dans les métriques et surveiller son évolution lors des prochaines périodes de mesure.",
+     "Recalculer entièrement la ligne de base des coûts, en révisant les hypothèses initiales du plan de management."
+    ],
+    "en": [
+     "Trigger a formal governance review, treating the variance as a critical threshold breach.",
+     "Immediately adjust the remaining budget, anticipating that the trend will continue in future periods.",
+     "Document the variance in the metrics and monitor its evolution over the next measurement periods.",
+     "Fully recalculate the cost baseline, revising the original assumptions of the management plan."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Une variation restant dans la tolérance approuvée appelle une réponse proportionnée : documenter et surveiller, sans déclencher d'action lourde. Déclencher une revue de gouvernance traite une variation tolérée comme un dépassement critique, ce qui est disproportionné. Ajuster le budget restant présume une tendance à partir d'une seule période de mesure, sans preuve suffisante. Recalculer la ligne de base révise le plan de management pour un écart que ce même plan a explicitement prévu de tolérer.",
+    "en": "A variance remaining within approved tolerance calls for a proportionate response: document and monitor, without triggering heavy action. Triggering a governance review treats a tolerated variance as a critical breach, which is disproportionate. Adjusting the remaining budget presumes a trend from a single measurement period, without sufficient evidence. Recalculating the baseline revises the management plan for a variance that plan explicitly intended to tolerate."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à donner à une variation de métrique restant dans la tolérance approuvée.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'écart reste dans la marge de tolérance définie au plan de management, malgré une baisse visible sur une période.",
+   "bascule": "Si l'écart avait dépassé la tolérance approuvée, ajuster le budget ou déclencher une revue deviendrait justifié.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR9-20260923-1027-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260923-1027-2-05",
+   "enabler": "Continually assess the effectiveness of artifact management.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une revue trimestrielle, un chef de projet remarque qu'un artefact de suivi budgétaire est consulté beaucoup moins souvent que prévu par les parties prenantes, d'après les statistiques d'accès à l'outil partagé. Aucune plainte n'a été formulée sur son contenu ou son format. Que doit faire le chef de projet ?",
+    "en": "During a quarterly review, a project manager notices that a budget tracking artifact is accessed far less often than expected by stakeholders, according to the shared tool's access statistics. No complaints have been raised about its content or format. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Conserver l'artefact sous sa forme actuelle, en s'appuyant sur l'absence de plainte comme preuve suffisante d'efficacité.",
+     "Recueillir l'avis des parties prenantes concernées pour comprendre les raisons de cette faible consultation.",
+     "Réviser immédiatement le format de l'artefact, en supposant que sa présentation actuelle décourage la consultation.",
+     "Remplacer l'artefact par un nouveau format standard utilisé dans d'autres projets de l'organisation."
+    ],
+    "en": [
+     "Keep the artifact in its current form, relying on the absence of complaints as sufficient evidence of effectiveness.",
+     "Gather feedback from the relevant stakeholders to understand the reasons behind this low consultation rate.",
+     "Immediately revise the artifact's format, presuming its current presentation discourages consultation.",
+     "Replace the artifact with a new standard format used in other projects across the organization."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Une faible consultation mesurée par les statistiques d'accès est un signal, pas une explication : recueillir l'avis des parties prenantes fournit la preuve nécessaire avant d'agir sur l'artefact. Conserver l'artefact tel quel traite l'absence de plainte comme une preuve d'efficacité, alors que les statistiques d'accès indiquent déjà un problème. Réviser immédiatement le format anticipe une cause sans l'avoir vérifiée auprès des utilisateurs concernés. Remplacer l'artefact par un format utilisé ailleurs applique une solution générique avant même de comprendre la cause de la faible consultation.",
+    "en": "Low consultation as measured by access statistics is a signal, not an explanation: gathering stakeholder feedback provides the evidence needed before acting on the artifact. Keeping the artifact as is treats the absence of complaints as proof of effectiveness, even though the access statistics already indicate a problem. Immediately revising the format presumes a cause without verifying it with the actual users. Replacing the artifact with a format used elsewhere applies a generic solution before even understanding the cause of the low consultation."
+   },
+   "decision_atom": "Décider s'il faut agir sur le format d'un artefact avant d'avoir compris la cause de sa faible consultation.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Les statistiques d'accès indiquent une faible consultation, mais aucune plainte n'a été formulée sur le contenu ou le format.",
+   "bascule": "Si les parties prenantes avaient déjà signalé explicitement un problème de format, réviser directement l'artefact deviendrait justifié.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR9-20260923-1027-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260923-1027-1-01",
+   "enabler": "Understand reporting requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet reprend un rapport hebdomadaire hérité de son prédécesseur. Deux parties prenantes clés lui demandent d'ajouter chacune une nouvelle métrique dès la prochaine édition. Avant toute modification, elle veut s'assurer que le rapport final servira réellement les décisions des destinataires. Que doit-elle faire en premier ?",
+    "en": "A project manager inherits a weekly report from her predecessor. Two key stakeholders each ask her to add a new metric starting with the next edition. Before making any change, she wants the final report to actually support recipients' decisions. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Recenser auprès des destinataires les décisions que le rapport doit soutenir, puis concevoir le format en fonction de ces besoins.",
+     "Ajouter les deux métriques demandées dans la prochaine édition et informer les parties prenantes de leur intégration effective.",
+     "Conserver le format actuel de cette édition et reporter les métriques à la refonte annuelle du modèle de rapport prévue ensuite.",
+     "Demander à chaque partie prenante de justifier par écrit l'utilité de sa métrique et attendre cette réponse avant toute modification."
+    ],
+    "en": [
+     "Gather from recipients which decisions the report must support, then design the format around those needs.",
+     "Add both requested metrics in the next edition and notify the stakeholders once the integration is complete.",
+     "Keep the current format for this edition and schedule the metrics for the next annual template overhaul cycle.",
+     "Ask each stakeholder to justify in writing why their metric is needed and wait for that reply before any change."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Recenser les décisions à soutenir avant de concevoir le format est la bonne priorité : deux demandes ponctuelles ne suffisent pas à connaître les besoins réels de l'ensemble des destinataires, et le rapport hérité n'a jamais été validé sur ce point. Ajouter les deux métriques demandées revient à modifier le rapport sur la base de deux voix isolées, sans savoir si elles reflètent les besoins de décision des autres destinataires. Conserver le format actuel et attendre la refonte annuelle retarde inutilement une clarification qui ne coûte rien à mener maintenant. Demander une justification écrite à chaque partie prenante inverse la charge de la preuve : c'est à la cheffe de projet de clarifier les besoins de reporting, pas aux parties prenantes de argumenter pour être entendues.",
+    "en": "Gathering which decisions must be supported before designing the format is the right priority: two isolated requests are not enough to know the real needs of all recipients, and the inherited report was never validated on this point. Adding both requested metrics changes the report based on two isolated voices, without knowing whether they reflect the decision needs of other recipients. Keeping the current format and waiting for the annual overhaul needlessly delays a clarification that costs nothing to pursue now. Asking each stakeholder for written justification reverses the burden of proof: it is the project manager's role to clarify reporting needs, not the stakeholders' role to argue their way into being heard."
+   },
+   "decision_atom": "Décider s'il faut modifier immédiatement le rapport sur la base de deux demandes ponctuelles ou clarifier d'abord les besoins de décision de l'ensemble des destinataires.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les demandes viennent de seulement deux parties prenantes parmi l'ensemble des destinataires, et rien n'indique qu'elles reflètent les besoins collectifs.",
+   "bascule": "Si les deux parties prenantes représentaient l'ensemble des destinataires et que leur besoin était déjà documenté, ajouter les métriques deviendrait correct.",
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PE8-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260923-1027-1-02",
+   "enabler": "Support reporting and governance processes.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors de la préparation du comité de pilotage mensuel, un chef de projet remarque que l'indicateur de risque budgétaire affiché dans le tableau de bord standard ne correspond plus à la méthode de calcul approuvée par le comité de gouvernance il y a six mois. L'écart semble provenir d'une mise à jour de l'outil de reporting, sans lien avec un changement réel du projet. Que doit-il faire ?",
+    "en": "While preparing the monthly steering committee, a project manager notices that the budget risk indicator shown on the standard dashboard no longer matches the calculation method approved by the governance board six months ago. The discrepancy appears to stem from a reporting tool update, unrelated to any real project change. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Corriger silencieusement le calcul dans le tableau de bord avant le comité, pour présenter des chiffres conformes à la méthode approuvée.",
+     "Signaler l'écart de méthode au responsable de la gouvernance avant le comité, en attendant sa décision sur la marche à suivre.",
+     "Présenter les deux versions du chiffre côte à côte au comité et laisser les membres choisir celle qu'ils préfèrent retenir.",
+     "Retirer temporairement l'indicateur du tableau de bord et attendre que l'outil de reporting soit reconfiguré correctement."
+    ],
+    "en": [
+     "Silently correct the calculation in the dashboard before the meeting, to present figures matching the approved method.",
+     "Flag the methodology discrepancy to the governance lead before the meeting, pending a decision on next steps.",
+     "Present both versions of the figure side by side and let the members choose which one to rely on for decisions.",
+     "Temporarily remove the indicator from the dashboard and wait until the reporting tool is properly reconfigured."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Signaler l'écart au responsable de la gouvernance avant le comité respecte le fait que la méthode de calcul a été approuvée par cette instance : c'est à elle de décider si l'écart doit être corrigé, documenté ou accepté temporairement. Corriger silencieusement le calcul contourne cette autorité en modifiant unilatéralement un indicateur que le comité a validé, même si l'intention est bonne. Présenter les deux versions en comité reporte sur les membres une décision technique qui ne relève pas d'eux et risque de semer la confusion en séance. Retirer l'indicateur du tableau de bord prive le comité d'une information de suivi sans attendre son avis, alors que rien n'indique une urgence justifiant cette suppression.",
+    "en": "Flagging the discrepancy to the governance lead before the meeting respects the fact that the calculation method was approved by that body: it is their role to decide whether the discrepancy should be corrected, documented, or temporarily accepted. Silently correcting the calculation bypasses that authority by unilaterally changing an indicator the committee validated, even with good intentions. Presenting both versions at the meeting pushes a technical decision onto members who are not positioned to make it, and risks causing confusion during the session. Removing the indicator from the dashboard deprives the committee of a tracking metric without waiting for their input, when nothing suggests an urgency that would justify this removal."
+   },
+   "decision_atom": "Décider qui doit trancher un écart de méthode de calcul par rapport à une méthode approuvée par la gouvernance.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "La méthode de calcul actuelle a été explicitement approuvée par le comité de gouvernance six mois plus tôt.",
+   "bascule": "Si la méthode de calcul n'avait jamais été formellement approuvée par la gouvernance, corriger directement deviendrait défendable.",
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PE8-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260923-1027-1-03",
+   "enabler": "Define a communication strategy.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Au lancement d'un projet de six mois avec des parties prenantes réparties sur trois fuseaux horaires, un chef de projet doit fixer la fréquence des points d'avancement. L'équipe de direction souhaite une visibilité fréquente, mais le contexte du projet peut évoluer rapidement dans les premières semaines. Comment doit-il procéder ?",
+    "en": "At the launch of a six-month project with stakeholders spread across three time zones, a project manager must set the frequency of progress updates. Leadership wants frequent visibility, but the project context may shift quickly in the first few weeks. How should he proceed?"
+   },
+   "options": {
+    "fr": [
+     "Fixer une fréquence bihebdomadaire pour toute la durée du projet et garantir ainsi à la direction une visibilité constante sur l'avancement.",
+     "Consulter chaque partie prenante lors d'un entretien individuel de lancement, puis établir une fréquence personnalisée pour chacune d'elles.",
+     "Adopter une fréquence hebdomadaire pour les six premières semaines, avec révision explicite ensuite selon la stabilité observée.",
+     "Aligner la fréquence sur celle d'un projet comparable achevé récemment dans l'organisation, en s'appuyant ainsi sur une pratique éprouvée."
+    ],
+    "en": [
+     "Set a biweekly frequency for the entire project duration, thereby guaranteeing leadership constant visibility throughout delivery.",
+     "Consult each stakeholder individually at launch through a dedicated meeting, then establish a customized frequency tailored to each one.",
+     "Adopt a weekly frequency for the first six weeks, with an explicit review afterward based on observed stability.",
+     "Align the frequency with that of a comparable project completed recently within the organization, relying on this proven practice."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Adopter une fréquence hebdomadaire pour les premières semaines, avec révision explicite, reconnaît que le contexte peut évoluer rapidement en début de projet : la décision reste réversible et sera ajustée sur la base de faits observés. Fixer une fréquence bihebdomadaire pour toute la durée du projet verrouille un choix qui devra probablement être révisé, sans mécanisme prévu pour le faire. Consulter chaque partie prenante pour une fréquence personnalisée dès le lancement crée une complexité de gestion difficile à maintenir et retarde la mise en place d'un rythme de communication clair. Aligner la fréquence sur un projet comparable ignore les caractéristiques propres à ce projet, notamment l'instabilité attendue en début de cycle.",
+    "en": "Adopting a weekly frequency for the first weeks, with an explicit review, recognizes that the context may shift quickly early on: the decision stays reversible and will be adjusted based on observed facts. Setting a biweekly frequency for the entire project locks in a choice that will likely need revisiting, with no built-in mechanism to do so. Consulting each stakeholder individually for a customized frequency at launch creates management complexity that is hard to sustain and delays establishing a clear communication rhythm. Aligning the frequency with a comparable project disregards this project's own characteristics, particularly the instability expected early in its cycle."
+   },
+   "decision_atom": "Décider s'il faut fixer une fréquence de reporting définitive dès le lancement ou une fréquence provisoire révisable.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le contexte du projet peut évoluer rapidement dans les premières semaines, ce qui rend toute fréquence fixée trop tôt potentiellement obsolète.",
+   "bascule": "Si le contexte du projet était déjà stable et bien compris dès le lancement, fixer une fréquence définitive deviendrait raisonnable.",
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PE8-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20260923-1027-1-05",
+   "enabler": "Establish a feedback loop.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Après trois cycles de rétrospectives, un chef de projet remarque qu'un membre d'équipe formule systématiquement la même remarque mineure sur la longueur des réunions de suivi, sans que cela n'affecte les livrables ni la collaboration. Comment doit-il traiter ce retour ?",
+    "en": "After three retrospective cycles, a project manager notices that one team member consistently raises the same minor comment about the length of status meetings, without it affecting deliverables or collaboration. How should he handle this feedback?"
+   },
+   "options": {
+    "fr": [
+     "Ajuster la durée des réunions de suivi lors du prochain cycle et vérifier avec le membre concerné si cela répond à sa remarque.",
+     "Organiser une session dédiée avec toute l'équipe pour redéfinir en profondeur le format de l'ensemble des réunions du projet.",
+     "Transmettre la remarque au sponsor du projet et lui laisser trancher sur la structure des réunions de suivi à retenir.",
+     "Documenter la remarque comme point à examiner et la reporter à la revue de clôture prévue plusieurs mois plus tard."
+    ],
+    "en": [
+     "Adjust the length of status meetings in the next cycle and check with the team member whether this addresses the comment.",
+     "Organize a dedicated session with the whole team to thoroughly redesign the format of all project meetings.",
+     "Forward the comment to the project sponsor and let them decide on the structure to adopt going forward.",
+     "Document the comment as an item to review and defer it to the closing review held several months later."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Ajuster la durée des réunions et vérifier avec le membre concerné correspond à l'ampleur du signal : une remarque mineure et répétée, sans impact sur les livrables, appelle une réponse simple et rapide, bouclée avec la personne qui l'a soulevée. Organiser une session dédiée avec toute l'équipe pour redéfinir en profondeur le format des réunions mobilise des ressources disproportionnées par rapport à un point mineur. Transmettre la remarque au sponsor élève au niveau de la gouvernance un sujet opérationnel que le chef de projet peut régler directement. Documenter la remarque pour la revue de clôture retarde de plusieurs mois un ajustement simple, alors que rien n'empêche de le traiter dès le prochain cycle.",
+    "en": "Adjusting the meeting length and checking back with the team member matches the scale of the signal: a minor, recurring comment with no impact on deliverables calls for a simple, quick response, closed out with the person who raised it. Organizing a dedicated session with the whole team to thoroughly redesign meeting formats commits disproportionate resources to a minor point. Forwarding the comment to the sponsor escalates an operational matter to governance level when the project manager can resolve it directly. Documenting the comment for the closing review delays a simple adjustment by several months, when nothing prevents addressing it in the very next cycle."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à apporter à un retour mineur et récurrent sans impact sur les livrables.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "La remarque est mineure, répétée, et n'affecte ni les livrables ni la collaboration.",
+   "bascule": "Si la remarque portait sur un problème affectant les livrables ou la collaboration de toute l'équipe, une session dédiée approfondie deviendrait justifiée.",
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PE8-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260923-1027-1-01",
+   "enabler": "Determine critical information requirements (e.g., sustainability).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet prépare le plan de management intégré d'un projet d'infrastructure. Un membre de l'équipe mentionne, lors d'un point rapide, que le bailleur de fonds pourrait exiger un reporting sur l'empreinte carbone, sans qu'aucune clause contractuelle ni exigence écrite ne le confirme à ce stade. Que doit-elle faire en priorité concernant les exigences d'information critiques du projet ?",
+    "en": "A project manager is preparing the integrated management plan for an infrastructure project. A team member mentions, during a quick check-in, that the funder might require carbon footprint reporting, though no contractual clause or written requirement confirms this at this stage. What should she prioritize regarding the project's critical information requirements?"
+   },
+   "options": {
+    "fr": [
+     "Confirmer avec le bailleur de fonds la nature exacte des exigences d'information avant de les intégrer au plan.",
+     "Intégrer un indicateur d'empreinte carbone au plan de management intégré du projet d'infrastructure.",
+     "Conserver le plan actuel, déjà approuvé par le comité de pilotage du projet d'infrastructure.",
+     "Demander au bailleur de fonds de justifier par écrit pourquoi un tel indicateur serait nécessaire au projet."
+    ],
+    "en": [
+     "Confirm with the funder the exact nature of the information requirements before incorporating them into the plan.",
+     "Add a carbon footprint indicator to the integrated management plan of the infrastructure project.",
+     "Keep the current plan, already approved by the infrastructure project's steering committee.",
+     "Ask the funder to justify in writing why such an indicator would be necessary for the project."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Confirmer avec le bailleur de fonds la nature exacte des exigences est la bonne priorité : le scénario ne fournit qu'une mention informelle, sans clause ni exigence écrite, ce qui ne suffit pas pour figer une exigence critique dans le plan intégré. Intégrer un indicateur d'empreinte carbone est la rivale la plus forte : elle anticipe un besoin réel et plausible, mais elle transforme une rumeur d'équipe en exigence documentée sans vérification, ce que l'énoncé interdit explicitement en précisant qu'aucune clause ni exigence écrite ne le confirme. Conserver le plan actuel jusqu'à la revue trimestrielle est raisonnable pour ne pas bouleverser un document approuvé, mais elle diffère une clarification qui ne coûte rien et qui pourrait changer la structure même du plan. Demander au bailleur de justifier par écrit inverse la charge de la preuve : c'est à la cheffe de projet de clarifier ses propres besoins d'information, pas au bailleur de motiver une exigence qu'il n'a pas formellement posée.",
+    "en": "Confirming with the funder the exact nature of the requirements is the right priority: the scenario provides only an informal mention, with no clause or written requirement, which is insufficient to lock a critical requirement into the integrated plan. Adding a carbon footprint indicator is the strongest rival: it anticipates a real and plausible need, but it turns a team mention into a documented requirement without verification, which the scenario explicitly rules out by stating no clause or written requirement confirms it. Keeping the current plan until the quarterly review is reasonable to avoid disrupting an approved document, but it defers a clarification that costs nothing and could change the plan's very structure. Asking the funder to justify the requirement in writing reverses the burden of proof: it is the project manager's role to clarify her own information needs, not the funder's role to justify a requirement it has not formally raised."
+   },
+   "decision_atom": "Décider s'il faut intégrer une exigence de reporting durabilité au plan avant clarification formelle.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "La mention du bailleur de fonds est informelle (« lors d'un point rapide »), sans clause contractuelle ni exigence écrite.",
+   "bascule": "Si le bailleur avait formulé cette exigence par écrit ou via une clause contractuelle, l'intégrer directement deviendrait juste.",
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR1-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260923-1027-1-02",
+   "enabler": "Estimate work effort and resource requirements.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit produire les estimations d'effort pour un lot de travaux impliquant une technologie que l'équipe n'a jamais utilisée. Les spécifications techniques détaillées ne seront finalisées par l'architecte que dans deux semaines. Le sponsor demande une estimation dès maintenant pour alimenter le budget global. Que doit faire le chef de projet en premier ?",
+    "en": "A project manager must produce effort estimates for a work package involving a technology the team has never used. Detailed technical specifications will only be finalized by the architect in two weeks. The sponsor is requesting an estimate now to feed the overall budget. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Fournir au sponsor une estimation ferme basée sur des projets similaires, menés par d'autres équipes, dans l'organisation.",
+     "Attendre la finalisation des spécifications techniques par l'architecte, dans deux semaines, avant de communiquer un chiffre au sponsor.",
+     "Communiquer une fourchette d'estimation avec ses hypothèses et sa marge d'incertitude, à affiner une fois les spécifications connues.",
+     "Solliciter un budget provisoire, auprès du bureau de gestion de portefeuille, en attendant les spécifications finales de l'architecte."
+    ],
+    "en": [
+     "Provide the sponsor with a firm estimate, based on similar projects, run by other teams in the organization.",
+     "Wait for the architect to finalize the technical specifications, in two weeks, before communicating any figure to the sponsor.",
+     "Communicate a range estimate with its assumptions and margin of uncertainty, to be refined once specifications are known.",
+     "Request a provisional budget from the portfolio management office, pending the architect's final specifications."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Communiquer une fourchette avec hypothèses et marge d'incertitude respecte à la fois le besoin du sponsor et l'état réel de l'information disponible : c'est l'ordre correct, produire une estimation utile maintenant tout en la reliant explicitement à son raffinement futur. Fournir une estimation ferme basée sur des projets similaires est la rivale la plus forte : elle répond vite à la demande, mais elle présente comme certain un chiffre qui repose sur une technologie que l'équipe n'a jamais utilisée, inversant l'ordre entre estimation et validation technique. Attendre la finalisation des spécifications avant de communiquer quoi que ce soit retarde inutilement une information dont le sponsor a besoin dès maintenant pour le budget global, alors qu'une estimation encadrée est possible sans attendre. Solliciter un budget provisoire auprès du bureau de portefeuille déplace la décision vers une instance qui n'a pas la connaissance technique du lot de travaux, alors que l'estimation reste de la responsabilité du chef de projet à ce stade.",
+    "en": "Communicating a range with assumptions and a margin of uncertainty respects both the sponsor's need and the real state of available information: this is the correct order, producing a useful estimate now while explicitly linking it to future refinement. Providing a firm estimate based on similar projects is the strongest rival: it answers the request quickly, but it presents as certain a figure resting on a technology the team has never used, reversing the order between estimating and technical validation. Waiting for the specifications before communicating anything unnecessarily delays information the sponsor needs now for the overall budget, when a bounded estimate is possible without waiting. Requesting a provisional budget from the portfolio office shifts the decision to a body that lacks the technical knowledge of the work package, when estimating remains the project manager's responsibility at this stage."
+   },
+   "decision_atom": "Décider comment répondre à une demande d'estimation alors que les spécifications techniques ne sont pas finalisées.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La technologie est nouvelle pour l'équipe et les spécifications ne seront finalisées que dans deux semaines, alors que le besoin budgétaire est immédiat.",
+   "bascule": "Si l'équipe avait déjà une expérience équivalente documentée sur cette technologie, une estimation ferme deviendrait défendable.",
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR1-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20260923-1027-1-04",
+   "enabler": "Recommend a project management development approach (i.e., predictive, adaptive/agile, or hybrid management).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit recommander une approche de développement pour un projet dont les exigences réglementaires sont fixes et bien connues, mais dont la solution technique retenue reste à explorer avec le client à travers plusieurs itérations. Quelle recommandation reflète le mieux la situation ?",
+    "en": "A project manager must recommend a development approach for a project whose regulatory requirements are fixed and well known, but whose technical solution still needs to be explored with the client through several iterations. Which recommendation best reflects the situation?"
+   },
+   "options": {
+    "fr": [
+     "Recommander une approche hybride, avec un cadrage prédictif des exigences réglementaires et un développement itératif de la solution technique.",
+     "Recommander une approche prédictive intégrale pour les exigences réglementaires, en s'appuyant sur leur stabilité, tout au long du projet.",
+     "Recommander une approche agile intégrale pour la solution technique, en s'appuyant sur le besoin d'exploration itérative avec le client.",
+     "Recommander de reporter le choix d'approche, pour le cadrage réglementaire et la solution technique, jusqu'à la validation d'une première itération."
+    ],
+    "en": [
+     "Recommend a hybrid approach, with predictive scoping of the regulatory requirements and iterative development of the technical solution.",
+     "Recommend a fully predictive approach for the regulatory requirements, relying on their stability, throughout the project.",
+     "Recommend a fully agile approach for the technical solution, relying on the need for iterative exploration with the client.",
+     "Recommend deferring the choice of approach, for both the regulatory scope and the technical solution, until validation of a first iteration."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'approche hybride est la seule recommandation réversible face à une situation elle-même mixte : elle traite les exigences réglementaires fixes de façon prédictive et la solution technique incertaine de façon itérative, sans forcer l'ensemble du projet dans un seul moule. L'approche prédictive intégrale est la rivale la plus forte : elle capture correctement la stabilité des exigences réglementaires, mais elle applique ce même cadrage rigide à la solution technique, qui selon l'énoncé reste à explorer avec le client à travers plusieurs itérations. L'approche agile intégrale fait l'erreur inverse : elle capture bien le besoin d'itération sur la solution technique, mais elle traite aussi les exigences réglementaires comme si elles étaient sujettes à changement, alors qu'elles sont décrites comme fixes et bien connues. Reporter le choix d'approche jusqu'à la validation d'une première itération retarde une décision que les faits du scénario permettent déjà de prendre, sans gain d'information supplémentaire.",
+    "en": "The hybrid approach is the only recommendation reversible enough for a genuinely mixed situation: it treats the fixed regulatory requirements predictively and the uncertain technical solution iteratively, without forcing the whole project into a single mold. The fully predictive approach is the strongest rival: it correctly captures the stability of the regulatory requirements, but it applies that same rigid framing to the technical solution, which the scenario states still needs to be explored with the client through several iterations. The fully agile approach makes the opposite error: it correctly captures the need for iteration on the technical solution, but it also treats the regulatory requirements as if they were subject to change, when they are described as fixed and well known. Deferring the choice of approach until a first iteration is validated delays a decision the scenario's facts already allow, without gaining any additional information."
+   },
+   "decision_atom": "Décider quelle approche de développement recommander face à des exigences mixtes (fixes et incertaines).",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les exigences réglementaires sont fixes et bien connues, mais la solution technique reste à explorer par itérations avec le client.",
+   "bascule": "Si la solution technique était elle aussi bien connue et stable, l'approche prédictive intégrale deviendrait juste.",
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR1-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260923-1027-1-01",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet a préparé l'énoncé de contenu final. Le responsable des opérations, un utilisateur clé très impliqué mais qui ne figure pas parmi les approbateurs désignés dans la charte, demande à valider lui-même le document avant sa diffusion. Le sponsor, seul approbateur formel identifié à ce stade, n'a pas encore été sollicité. Que doit faire le chef de projet ?",
+    "en": "A project manager has prepared the final scope statement. The operations manager, a highly engaged key user who is not listed among the approvers designated in the charter, asks to personally approve the document before it is distributed. The sponsor, the only formal approver identified at this stage, has not yet been asked to review it. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Faire approuver le document par le responsable des opérations, puisqu'il connaît le mieux les besoins métier à satisfaire.",
+     "Soumettre le document au sponsor pour approbation formelle, tout en informant le responsable des opérations de sa contribution.",
+     "Faire signer le document par les deux, afin de renforcer l'adhésion générale au contenu défini.",
+     "Reporter toute approbation jusqu'à ce que la charte soit modifiée pour inclure formellement le responsable des opérations."
+    ],
+    "en": [
+     "Have the operations manager approve the document, since this person best understands the business needs to be met.",
+     "Submit the document to the sponsor for formal approval, while informing the operations manager of their contribution.",
+     "Have both individuals sign the document, in order to strengthen overall buy-in on the defined content.",
+     "Postpone any approval until the charter is amended to formally include the operations manager."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La charte désigne le sponsor comme approbateur formel du contenu ; c'est à lui que revient la décision, quel que soit l'engagement d'autres parties prenantes. Faire approuver le document par le responsable des opérations lui attribue une autorité qu'il n'a pas reçue. Faire signer les deux dilue la responsabilité d'approbation entre une personne mandatée et une personne qui ne l'est pas, ce qui ne clarifie rien sur l'autorité réelle. Reporter l'approbation en attendant une modification de la charte bloque inutilement l'avancement alors qu'un approbateur légitime est disponible dès maintenant.",
+    "en": "The charter designates the sponsor as the formal approver of the content; the decision belongs to that person regardless of how engaged other stakeholders are. Having the operations manager approve the document grants authority that was never assigned. Having both individuals sign dilutes approval responsibility between a mandated person and one who is not, which clarifies nothing about actual authority. Postponing approval until the charter is amended needlessly stalls progress when a legitimate approver is available right now."
+   },
+   "decision_atom": "Décider qui doit approuver formellement l'énoncé de contenu quand un contributeur engagé réclame ce rôle.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "La charte désigne le sponsor comme seul approbateur formel ; le responsable des opérations n'y figure pas.",
+   "bascule": "Si la charte avait désigné le responsable des opérations comme coapprobateur, le faire approuver deviendrait correct.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR2-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260923-1027-1-02",
+   "enabler": "Break down scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "En décomposant le contenu d'un projet de taille moyenne, un chef de projet constate qu'un des lots de travail issus de la structure de découpage représente encore trois semaines d'effort et regroupe des activités confiées à deux équipes différentes. Le reste de la structure est correctement découpé jusqu'au niveau des lots gérables. Que doit-il faire pour ce lot en particulier ?",
+    "en": "While breaking down the scope of a mid-sized project, a project manager notices that one work package from the breakdown structure still represents three weeks of effort and groups activities assigned to two different teams. The rest of the structure is properly decomposed down to manageable work packages. What should the project manager do with this particular work package?"
+   },
+   "options": {
+    "fr": [
+     "Signaler le lot au comité de gouvernance pour qu'il valide une exception au niveau de détail standard.",
+     "Conserver le lot tel quel, puisque les deux équipes ont l'habitude de collaborer sur des activités connexes.",
+     "Décomposer ce lot en sous-lots distincts, chacun assigné à une seule équipe responsable.",
+     "Décomposer l'ensemble de la structure de découpage à un niveau de détail plus fin, par souci de cohérence."
+    ],
+    "en": [
+     "Escalate the work package to the governance board to approve an exception to the standard level of detail.",
+     "Keep the work package as is, since the two teams are used to collaborating on related activities.",
+     "Break this work package down into distinct sub-packages, each assigned to a single responsible team.",
+     "Decompose the entire breakdown structure to a finer level of detail, for the sake of consistency."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Un lot de travail confié à deux équipes différentes viole le principe de responsabilité unique qui définit un lot gérable ; la réponse proportionnée est de décomposer ce lot précis, pas d'agir sur toute la structure. Conserver le lot tel quel ignore le critère de découpage déjà atteint ailleurs dans le projet. Escalader vers la gouvernance traite comme une exception de processus ce qui est une simple correction technique à la portée du chef de projet. Redécomposer l'ensemble de la structure applique une mesure globale à un problème localisé, alourdissant le travail sans bénéfice pour les lots déjà correctement définis.",
+    "en": "A work package assigned to two different teams violates the single-ownership principle that defines a manageable package; the proportionate response is to decompose that specific package, not to act on the entire structure. Keeping the package as is ignores the decomposition standard already met elsewhere in the project. Escalating to governance treats a straightforward technical correction within the project manager's authority as a process exception. Redecomposing the entire structure applies a global fix to a localized problem, adding unnecessary work to packages that are already properly defined."
+   },
+   "decision_atom": "Décider de l'ampleur de l'intervention corrective quand un seul lot de travail ne respecte pas le niveau de détail attendu.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Un seul lot sur l'ensemble de la structure regroupe deux équipes et un effort de trois semaines ; le reste de la structure est correctement découpé.",
+   "bascule": "Si plusieurs lots à travers la structure présentaient le même défaut, une revue globale de la structure deviendrait justifiée.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR2-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260923-1027-1-03",
+   "enabler": "Define scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet rédige l'énoncé de contenu d'un projet dont l'étude de faisabilité vient de commencer. Deux options technologiques concurrentes sont encore à l'étude et le choix définitif conditionnera plusieurs livrables. Le comité de pilotage souhaite néanmoins disposer rapidement d'une première version de l'énoncé de contenu pour lancer les discussions budgétaires. Comment le chef de projet doit-il traiter cette incertitude dans l'énoncé de contenu ?",
+    "en": "A project manager is drafting the scope statement for a project whose feasibility study has just begun. Two competing technology options are still under evaluation, and the final choice will affect several deliverables. The steering committee nonetheless wants an early version of the scope statement quickly to kick off budget discussions. How should the project manager handle this uncertainty in the scope statement?"
+   },
+   "options": {
+    "fr": [
+     "Choisir provisoirement l'option technologique jugée la plus probable, afin de fournir un énoncé complet dès à présent.",
+     "Diffuser l'énoncé de contenu une fois que le comité de pilotage aura validé le budget correspondant.",
+     "Confier la rédaction des livrables concernés à l'équipe technique, qui documentera l'option retenue en temps voulu.",
+     "Documenter dès à présent les livrables non affectés par le choix technologique et indiquer les autres comme dépendants d'une décision à venir."
+    ],
+    "en": [
+     "Provisionally select the technology option deemed most likely, in order to deliver a complete statement right away.",
+     "Release the scope statement once the steering committee has approved the corresponding budget.",
+     "Assign the drafting of the affected deliverables to the technical team, who will document the chosen option in due course.",
+     "Document now the deliverables unaffected by the technology choice and flag the others as pending an upcoming decision."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le moment approprié pour figer un livrable dans l'énoncé de contenu est celui où l'information nécessaire existe ; documenter ce qui est stable dès maintenant et signaler explicitement ce qui reste conditionné à une décision à venir donne au comité une base utilisable sans fausse certitude. Choisir provisoirement une option technologique fige prématurément un contenu qui n'est pas encore tranché. Attendre l'approbation du budget retarde inutilement la publication de tout l'énoncé, y compris les parties déjà stables. Confier la rédaction des livrables incertains à l'équipe technique déplace la responsabilité de l'énoncé de contenu, qui reste celle du chef de projet.",
+    "en": "The right moment to lock a deliverable into the scope statement is when the necessary information exists; documenting what is stable now while explicitly flagging what remains pending a future decision gives the committee a usable baseline without false certainty. Provisionally selecting a technology option prematurely locks in content that has not yet been decided. Waiting for budget approval needlessly delays publishing the entire statement, including the parts that are already stable. Assigning the drafting of the uncertain deliverables to the technical team shifts ownership of the scope statement away from the project manager, where it belongs."
+   },
+   "decision_atom": "Décider comment traiter dans l'énoncé de contenu un livrable dont un paramètre technique reste à trancher, sous pression de calendrier.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'étude de faisabilité vient de commencer et deux options technologiques concurrentes conditionnent plusieurs livrables, alors que le comité veut un énoncé rapidement.",
+   "bascule": "Si l'un des deux choix technologiques était nettement dominant et quasi certain, retenir provisoirement cette option deviendrait défendable.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR2-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20260923-1027-1-05",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Après une réunion de revue, un chef de projet reçoit un courriel du client indiquant simplement : « Content dans l'ensemble, on avance. » Aucun des livrables ou critères d'acceptation listés dans l'énoncé de contenu n'y est mentionné explicitement. Le chef de projet souhaite considérer le contenu comme formellement accepté afin de lancer la phase suivante. Que doit-il faire ?",
+    "en": "After a review meeting, a project manager receives an email from the client simply stating, \"Happy overall, let's move forward.\" None of the deliverables or acceptance criteria listed in the scope statement are explicitly mentioned. The project manager wants to treat the scope as formally accepted in order to launch the next phase. What should be done?"
+   },
+   "options": {
+    "fr": [
+     "Considérer le courriel comme une acceptation suffisante et lancer la phase suivante sans délai.",
+     "Demander au client de confirmer explicitement l'acceptation de chaque livrable et critère listés dans l'énoncé de contenu.",
+     "Transmettre l'énoncé de contenu au sponsor pour qu'il obtienne lui-même une confirmation plus précise du client.",
+     "Archiver le courriel comme preuve d'acceptation et solliciter une confirmation plus détaillée si un litige survient plus tard."
+    ],
+    "en": [
+     "Treat the email as sufficient acceptance and launch the next phase without delay.",
+     "Ask the client to explicitly confirm acceptance of each deliverable and criterion listed in the scope statement.",
+     "Forward the scope statement to the sponsor so that they personally obtain a more precise confirmation from the client.",
+     "File the email as proof of acceptance and seek a more detailed confirmation only if a dispute arises later."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Une formule générale de satisfaction ne constitue pas une preuve d'acceptation des livrables et critères spécifiques définis dans l'énoncé de contenu ; demander une confirmation explicite sur chaque élément établit le niveau de preuve requis avant de considérer le contenu comme accepté. Traiter le courriel comme suffisant fait avancer le projet sur la base d'un accord qui reste à démontrer. Transmettre la demande au sponsor déplace vers lui une clarification qui relève du rôle du chef de projet auprès du client. Attendre un litige pour exiger une confirmation détaillée inverse l'ordre logique : la preuve doit précéder l'avancement, pas le suivre en cas de problème.",
+    "en": "A general statement of satisfaction is not proof of acceptance for the specific deliverables and criteria defined in the scope statement; requesting explicit confirmation on each element establishes the level of proof required before treating the scope as accepted. Treating the email as sufficient advances the project on the basis of an agreement that still needs to be demonstrated. Forwarding the request to the sponsor shifts a clarification that belongs to the project manager's relationship with the client. Waiting for a dispute to demand detailed confirmation reverses the logical order: proof should precede progress, not follow it when a problem arises."
+   },
+   "decision_atom": "Décider si une formule générale de satisfaction du client constitue une preuve suffisante d'acceptation du contenu.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le courriel du client exprime une satisfaction générale sans mentionner aucun des livrables ou critères d'acceptation listés dans l'énoncé de contenu.",
+   "bascule": "Si le courriel du client avait cité nommément chaque livrable et critère de l'énoncé de contenu comme acceptés, il constituerait une preuve suffisante.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20260923-1027",
+   "release": "qL2-PR2-20260923-1027-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}

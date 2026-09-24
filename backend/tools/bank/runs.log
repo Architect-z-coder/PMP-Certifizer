@@ -9,3 +9,12 @@
 20260922-0902 | produced 20 | gate-dropped 10 | auditor-dropped 0 | duplicates 0 | stored 10 | est $0.69
 20260922-1039 | produced 10 | gate-dropped 0 | auditor-dropped 0 | duplicates 0 | stored 10 | est $0.47
 20260922-1054 | produced 10 | gate-dropped 5 | auditor-dropped 5 | duplicates 0 | stored 0 | est $0.74
+20260922-1602 | produced 15 | gate-dropped 5 | auditor-dropped 6 | duplicates 0 | stored 4 | est $1.33
+20260922-1725 | produced 19 | gate-dropped 0 | auditor-dropped 9 | duplicates 0 | stored 10 | est $1.81
+20260923-0718 | produced 24 | gate-dropped 0 | auditor-dropped 16 | duplicates 0 | stored 8 | est $2.17
+20260923-0743 | produced 25 | gate-dropped 10 | auditor-dropped 11 | duplicates 0 | stored 4 | est $1.69
+20260923-0813 | produced 25 | gate-dropped 0 | auditor-dropped 20 | duplicates 0 | stored 5 | est $2.13
+20260923-0909 | produced 24 | gate-dropped 0 | auditor-dropped 20 | duplicates 0 | stored 4 | est $2.04
+20260923-1014 | produced 22 | gate-dropped 1 | auditor-dropped 7 | duplicates 0 | stored 14 | est $2.10
+20260923-1027 | produced 25 | gate-dropped 0 | auditor-dropped 11 | duplicates 0 | stored 14 | est $2.24
+20260923-1607 | produced 18 | gate-dropped 0 | auditor-dropped 3 | duplicates 0 | stored 15 | est $1.86
