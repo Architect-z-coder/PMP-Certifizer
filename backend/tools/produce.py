@@ -506,8 +506,10 @@ Règles strictes :
 - INTERDIT d'ajouter à un distracteur une négation ou un aveu d'omission (« ne pas », « sans », « skip », « without », « ignorer »). Allonge par le contexte de l'action, jamais en disant ce que l'option ne fait pas. Si un distracteur en contient déjà, reformule-le positivement (« transmettre au sponsor et traiter l'omission comme un sujet de gouvernance »).
 - Allonge par du CONTENU (un complément qui précise l'action : quel document, quel interlocuteur, quel moment), jamais par du remplissage (« concernés ici », « prévue », « même », « respectifs », « en question », adverbes vides). Chaque mot ajouté doit pouvoir être défendu comme utile au sens.
 - Français en vouvoiement.
-Réponds UNIQUEMENT par {"items": [{"id": "...", "options": {"fr": [4 chaînes], "en": [4 chaînes]}}, ...]} — un objet par item reçu, même id, bonne réponse inchangée à sa position.
-TOUJOURS les deux langues, "fr" ET "en", quatre chaînes chacune, pour chaque item — même si les consignes ne signalent qu'une langue (l'autre est alors recopiée telle quelle). Une réponse sans "en" est inutilisable."""
+- RATIONALE : chaque item porte sa `rationale` (fr, en). Quand tu réécris un distracteur, mets à jour la phrase de la rationale qui le décrit pour qu'elle corresponde au nouveau texte (mêmes mots-clés que l'option). Ne touche ni au raisonnement, ni à la phrase sur la bonne réponse, ni à la longueur globale. Jamais de vocabulaire d'atelier (« rivale », « distracteur », « bonne réponse ») ni de renvoi par rang (« la troisième option »).
+Réponds UNIQUEMENT par {"items": [{"id": "...", "options": {"fr": [4 chaînes], "en": [4 chaînes]}, "rationale": {"fr": "...", "en": "..."}}, ...]} — un objet par item reçu, même id, bonne réponse inchangée à sa position.
+TOUJOURS les deux langues, "fr" ET "en", quatre chaînes chacune, pour chaque item. Une réponse sans "en" est inutilisable.
+- L'anglais est la TRADUCTION du français, option par option : ce que tu ajoutes ou retires dans une langue, tu l'ajoutes ou le retires dans l'autre. Jamais un complément présent dans une seule langue."""
 
 def _lang_list(v, orig, ai):
     """One language's options from a model reply -> list of 4 strings, or None."""
@@ -533,15 +535,12 @@ def coerce_options(o, it):
         if vals and all(isinstance(x, dict) for x in vals):
             o = {"fr": [x.get("fr", "") for x in vals], "en": [x.get("en", "") for x in vals]}
     if not isinstance(o, dict): return None
-    out = {}; got = 0
-    for lg in ("fr", "en"):
-        v = _lang_list(o.get(lg), orig[lg], ai) if lg in o else None
-        if v is None:
-            if lg in o: return None                    # present but malformed -> unusable
-            v = list(orig[lg])                          # language missing -> keep the original for it
-        else: got += 1
+    out = {}
+    for lg in ("fr", "en"):                             # both languages or nothing: a one-language rewrite desyncs fr/en
+        v = _lang_list(o.get(lg), orig[lg], ai)
+        if v is None: return None
         out[lg] = v
-    return out if got else None
+    return out
 
 def rebalance_lengths(items):
     """Form-only second pass, ONE call per batch: lengthen distractors where the correct answer is the longest."""
@@ -575,6 +574,7 @@ def rebalance_lengths(items):
             out[lg] = notes
         return out
     user = json.dumps({"items": [{"id": it["id"], "prompt": it["prompt"], "options": it["options"],
+                                  "rationale": it.get("rationale", {}),
                                   "answer_index": it["answer_index"],
                                   "elements_cible": {lg: elements(it["options"][lg][it["answer_index"]]) for lg in ("fr", "en")},
                                   "consignes": brief(it)}
@@ -584,10 +584,11 @@ def rebalance_lengths(items):
     items_out = v.get("items") if isinstance(v, dict) else v
     if isinstance(items_out, dict):                       # {"id": {...}} keyed by item id
         items_out = [dict(x, id=x.get("id", k)) if isinstance(x, dict) else x for k, x in items_out.items()]
-    fixed = {}
+    fixed = {}; fixed_ra = {}
     for x in (items_out or []):
         if not isinstance(x, dict): continue
         fixed[str(x.get("id", "")).strip()] = x.get("options", x.get("distracteurs", x.get("distractors", {})))
+        fixed_ra[str(x.get("id", "")).strip()] = x.get("rationale")
     unusable = False
     for it in todo:
         ai = it["answer_index"]
@@ -601,6 +602,14 @@ def rebalance_lengths(items):
         for lg in ("fr", "en"):
             new[lg][ai] = it["options"][lg][ai]        # correct answer: always the original text, never the model's copy
         it["options"] = new
+        ra = fixed_ra.get(it["id"]); old_ra = it.get("rationale", {})
+        if (isinstance(ra, dict) and isinstance(old_ra, dict)
+                and all(isinstance(ra.get(lg), str) and ra[lg].strip() for lg in ("fr", "en"))
+                and all(0.7 <= len(ra[lg]) / max(1, len(str(old_ra.get(lg, "")))) <= 1.5 for lg in ("fr", "en"))
+                and not any(LEAK.search(ra[lg]) or ORDINAL.search(ra[lg]) for lg in ("fr", "en"))):
+            it["rationale"] = {"fr": ra["fr"], "en": ra["en"]}   # re-synced with the rewritten distractors
+        else:
+            log(f"  {it['id']}: rationale not re-synced (reply missing or out of bounds), kept original")
     if unusable and raw:
         p = WORK / f"{todo[0]['id'].rsplit('-', 1)[0]}-rebalance-raw.txt"
         p.write_text(raw, encoding="utf-8"); log(f"  raw rebalance reply saved to work/{p.name}")

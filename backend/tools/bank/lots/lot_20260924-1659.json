@@ -115,7 +115,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PR10-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "doublon de qL2-PR2-20260923-1027-1-05 (courriel de satisfaction générale -> pas une acceptation formelle)"
   },
   {
    "id": "qL2-PR10-20260924-1659-1-04",
@@ -191,7 +192,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PR10-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "doublon de qL2-PR10-20260923-1014-1-03 (anomalie mineure contournée -> maintenir la transition)"
   },
   {
    "id": "qL2-PE1-20260924-1659-2-01",
@@ -247,10 +249,10 @@
      "Demander à ce membre de rédiger une note écrite, d'expliquer l'origine de sa reformulation et de la transmettre à l'équipe."
     ],
     "en": [
-     "Convene a dedicated realignment session on the vision and invite all key stakeholders.",
-     "Escalate the observed nuance to the sponsor and request a formal decision on the exact wording.",
+     "Convene a dedicated realignment session on the vision, invite the key stakeholders and document the conclusions.",
+     "Escalate the observed nuance to the sponsor, ask for a formal decision and circulate the chosen wording.",
      "Briefly restate the vision in the agreed terms right after the intervention, with no further action.",
-     "Ask this team member to write a note and explain the origin of their rephrasing."
+     "Ask this team member to write a note explaining the origin of their rephrasing and to share it with the team."
     ]
    },
    "answer_index": 2,
@@ -267,7 +269,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PE1-20260924-1659-2",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "approved",
+   "review_note": "corrigé à la relecture du 2026-09-25 (FR/EN ou distracteur)"
   },
   {
    "id": "qL2-PE1-20260924-1659-2-04",
@@ -457,7 +460,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PE2-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "trop facile : la clé répète le constat de l'énoncé"
   },
   {
    "id": "qL2-PE3-20260924-1659-1-01",
@@ -660,21 +664,21 @@
    "options": {
     "fr": [
      "Demander au chef de projet senior, qui a une expérience directe et récente avec cette responsable achats, son évaluation de son influence réelle.",
-     "Retenir le niveau d'influence indiqué par le collègue le plus catégorique, sur la base de son avis tranché, sans consulter d'autre source, afin de clore la matrice rapidement.",
+     "Retenir le niveau d'influence indiqué par le collègue qui a travaillé le plus souvent avec le service achats, puisque son avis repose sur une fréquentation régulière.",
      "Attribuer un niveau d'influence moyen à la responsable achats, à titre provisoire, en attendant que les avis des deux collègues finissent par converger.",
      "Inscrire les deux avis contradictoires dans la matrice, les dater précisément, et laisser le comité de pilotage choisir lequel des deux retenir."
     ],
     "en": [
      "Ask the senior project manager, who has direct and recent experience with this procurement lead, for his assessment of her real influence.",
-     "Adopt the influence level stated by the more assertive colleague, based on his firm opinion, without checking another source, in order to close the matrix quickly.",
+     "Adopt the influence level given by the colleague who has worked most often with the procurement department, since his view rests on regular contact.",
      "Assign a medium influence level to the procurement lead, as a temporary measure, while waiting for the two colleagues' views to eventually converge.",
      "Record both conflicting opinions in the matrix, with their exact dates, and let the steering committee choose which one of the two to keep."
     ]
    },
    "answer_index": 0,
    "rationale": {
-    "fr": "Le chef de projet senior a mené un projet similaire avec cette même responsable achats l'an dernier : il détient une expérience directe et récente qui permet de trancher entre deux avis rapportés de seconde main. Retenir l'avis du collègue le plus catégorique confond l'assurance dans le ton avec la fiabilité de l'information, sans lien avec une expérience vérifiable. Attribuer un niveau moyen en attendant une convergence évite la décision au lieu de la fonder sur une source disponible et pertinente. Faire trancher le comité de pilotage sur un désaccord d'analyse interne à l'équipe projet mobilise une instance de gouvernance pour une question que l'analyse des parties prenantes doit résoudre elle-même.",
-    "en": "The senior project manager ran a similar project with this same procurement lead last year: he holds direct, recent experience that can settle a disagreement between two second-hand opinions. Adopting the more assertive colleague's view confuses confidence in tone with reliability of information, with no link to verifiable experience. Assigning a medium level while waiting for convergence avoids the decision instead of grounding it in an available, relevant source. Having the steering committee settle an internal analysis disagreement escalates a question that stakeholder analysis should resolve on its own."
+    "fr": "Le chef de projet senior a mené un projet similaire avec cette même responsable achats l'an dernier : il détient une expérience directe et récente qui permet de trancher entre deux avis rapportés de seconde main. Retenir l'avis du collègue qui fréquente le plus le service achats s'appuie sur une connaissance du service, pas de cette responsable dans une décision de sourcing comparable : le chef de projet senior, lui, l'a vue décider. Attribuer un niveau moyen en attendant une convergence évite la décision au lieu de la fonder sur une source disponible et pertinente. Faire trancher le comité de pilotage sur un désaccord d'analyse interne à l'équipe projet mobilise une instance de gouvernance pour une question que l'analyse des parties prenantes doit résoudre elle-même.",
+    "en": "The senior project manager ran a similar project with this same procurement lead last year: he holds direct, recent experience that can settle a disagreement between two second-hand opinions. Adopting the view of the colleague who deals most with procurement relies on knowledge of the department, not of this lead in a comparable sourcing decision; the senior project manager has actually seen her decide. Assigning a medium level while waiting for convergence avoids the decision instead of grounding it in an available, relevant source. Having the steering committee settle an internal analysis disagreement escalates a question that stakeholder analysis should resolve on its own."
    },
    "decision_atom": "Décider quelle source consulter pour trancher un désaccord sur le niveau d'influence à attribuer à une partie prenante.",
    "axe_de_decision": "le propriétaire",
@@ -685,7 +689,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PE4-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "approved",
+   "review_note": "corrigé à la relecture du 2026-09-25 (FR/EN ou distracteur)"
   },
   {
    "id": "qL2-PE4-20260924-1659-1-04",
@@ -703,10 +708,10 @@
      "Demander le report de la réunion jusqu'à validation d'un format de présentation commun aux deux groupes."
     ],
     "en": [
-     "Send both groups, ahead of the meeting, the same detailed material she normally uses for the engineers with technical focus.",
+     "Send both groups, before the meeting, the detailed material normally used for the engineers.",
      "Prepare and deliver in sequence at the meeting a distinct technical presentation followed by a distinct financial one.",
      "Identify with a contact from each group the key indicators each expects, before building the material.",
-     "Ask the committee to postpone the meeting and hold a preliminary workshop until a shared presentation format has been validated."
+     "Ask for the meeting to be postponed until a presentation format common to both groups has been validated."
     ]
    },
    "answer_index": 2,
@@ -723,7 +728,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PE4-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "approved",
+   "review_note": "corrigé à la relecture du 2026-09-25 (FR/EN ou distracteur)"
   },
   {
    "id": "qL2-PE5-20260924-1659-1-01",
@@ -744,7 +750,7 @@
      "Identify and categorize stakeholders by influence and interest before the steering committee meeting.",
      "Attend the steering committee meeting to observe the dynamics, categorize stakeholders based on his impressions, then share that categorization with the team.",
      "Ask the sponsor, during the next quarterly review, to validate the stakeholder list established by the previous team for the steering committee.",
-     "Send a survey to all project contacts, gather their views on the upcoming decisions, then compile the results for the sponsor."
+     "Send a survey to all project contacts, gather their views on the upcoming decisions, then share them at the committee meeting."
     ]
    },
    "answer_index": 0,
@@ -761,7 +767,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PE5-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "approved",
+   "review_note": "corrigé à la relecture du 2026-09-25 (FR/EN ou distracteur)"
   },
   {
    "id": "qL2-PE5-20260924-1659-1-02",
@@ -837,7 +844,8 @@
    "run_id": "20260924-1659",
    "release": "qL2-PE5-20260924-1659-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "trop facile : la clé répète le constat de l'énoncé"
   }
  ]
 }
