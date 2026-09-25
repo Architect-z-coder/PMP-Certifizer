@@ -1,0 +1,615 @@
+{
+ "run_id": "20260925-0820",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PE6-20260925-0820-1-01",
+   "enabler": "Identify internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet démarre un projet dont le client externe a déjà signé un contrat détaillant les livrables. Avant de lancer la planification détaillée, elle apprend que le contrat a été négocié par l'équipe commerciale sans elle, et qu'aucun atelier avec les utilisateurs finaux du client n'a eu lieu. Que doit-elle faire en priorité ?",
+    "en": "A project manager starts a project for which the external customer has already signed a contract detailing deliverables. Before launching detailed planning, she learns the contract was negotiated by the sales team without her, and no workshop with the customer's end users has taken place. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser un échange avec les utilisateurs finaux du client pour recueillir leurs attentes avant de détailler la planification.",
+     "Détailler la planification à partir des livrables signés avec l'équipe commerciale.",
+     "Transmettre le contrat signé à l'équipe pour lancer la planification détaillée, en s'appuyant sur l'expertise commerciale engagée.",
+     "Demander à l'équipe commerciale de confirmer que les livrables signés couvrent bien les besoins des utilisateurs finaux du client."
+    ],
+    "en": [
+     "Arrange a discussion with the customer's end users to gather their expectations before detailing the plan.",
+     "Detail the plan based on the signed deliverables.",
+     "Forward the signed contract to the project team to launch the detailed planning phase, relying on the sales team's expertise already engaged.",
+     "Ask the sales team to confirm that the signed deliverables cover the end users' needs."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le contrat a été négocié par l'équipe commerciale, sans atelier avec les utilisateurs finaux : les attentes réelles de ceux qui utiliseront le livrable n'ont jamais été recueillies directement. Organiser cet échange avant de détailler la planification permet de fonder le travail sur les attentes véritables plutôt que sur une interprétation commerciale du besoin. Détailler la planification puis ajuster ensuite inverse l'ordre : le risque est de construire sur une base à corriger, ce que l'énoncé signale déjà comme fragile. Transmettre le contrat pour lancer directement la planification s'appuie sur une expertise commerciale qui, selon l'énoncé, n'a pas inclus les utilisateurs finaux — ce n'est donc pas une garantie suffisante. Demander à l'équipe commerciale de confirmer la couverture des besoins revient à interroger la même source qui n'a pas consulté les utilisateurs, sans apporter d'information nouvelle.",
+    "en": "The contract was negotiated by the sales team, with no workshop involving end users: the actual expectations of those who will use the deliverable were never gathered directly. Holding that discussion before detailing the plan grounds the work in real expectations rather than a sales interpretation of the need. Detailing the plan first and adjusting afterward reverses the order: the risk is building on a base the scenario already flags as fragile. Forwarding the contract to launch planning directly relies on sales expertise that, per the scenario, did not include end users — not a sufficient guarantee. Asking the sales team to confirm coverage of the needs questions the same source that never consulted end users, adding no new information."
+   },
+   "decision_atom": "Décider s'il faut planifier directement à partir d'un contrat négocié sans les utilisateurs finaux, ou recueillir d'abord leurs attentes.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le contrat a été négocié par l'équipe commerciale sans la cheffe de projet, et aucun atelier avec les utilisateurs finaux n'a eu lieu.",
+   "bascule": "Si le contrat avait résulté d'un atelier direct avec les utilisateurs finaux, planifier directement à partir du contrat deviendrait défendable.",
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE6-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260925-0820-1-02",
+   "enabler": "Align and maintain outcomes to internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "À mi-parcours d'un projet interne, le chef de projet constate que le livrable produit correspond aux exigences documentées, mais que le service utilisateur interne exprime une insatisfaction répétée sur un aspect fonctionnel non couvert par ces exigences. Il a déjà tenté d'ajuster ce point avec l'équipe technique sans résultat durable. Que doit-il faire en priorité ?",
+    "en": "Midway through an internal project, the project manager finds the deliverable matches the documented requirements, but the internal user department repeatedly expresses dissatisfaction about a functional aspect not covered by those requirements. He has already tried adjusting this with the technical team without lasting result. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Documenter l'aspect fonctionnel manquant dans le journal des risques du projet et poursuivre le déroulement du plan actuel.",
+     "Porter l'écart entre les exigences documentées et l'attente exprimée au sponsor pour décider d'une révision du périmètre.",
+     "Retourner vers l'équipe technique pour proposer une nouvelle tentative d'ajustement du point fonctionnel signalé par le service utilisateur.",
+     "Demander au service utilisateur de reformuler son insatisfaction et de l'intégrer directement en exigence technique précise."
+    ],
+    "en": [
+     "Log the missing functional aspect in the project's risk register and continue the current plan's execution as scheduled.",
+     "Bring the gap between documented requirements and the expressed expectation to the sponsor to decide on a scope revision.",
+     "Return to the technical team to propose another adjustment attempt on the functional point raised by the user department.",
+     "Ask the user department to rephrase its dissatisfaction and integrate it directly as a precise technical requirement for the team."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'écart porte sur un aspect non couvert par les exigences documentées, et une tentative d'ajustement avec l'équipe technique a déjà échoué à produire un résultat durable : rester au niveau technique répète une démarche déjà infructueuse. Porter l'écart au sponsor permet de faire trancher une question qui dépasse l'exécution technique — celle de réviser ou non le périmètre pour couvrir l'attente exprimée. Documenter dans le journal des risques sans autre action laisse l'insatisfaction se répéter sans traiter sa cause. Retenter un ajustement avec l'équipe technique répète une démarche que l'énoncé dit déjà sans résultat durable. Demander au service utilisateur de traduire lui-même son insatisfaction en exigence technique déplace sur lui une responsabilité d'analyse qui revient à l'équipe projet.",
+    "en": "The gap concerns an aspect not covered by documented requirements, and an adjustment attempt with the technical team already failed to produce a lasting result: staying at the technical level repeats an approach that has already failed. Bringing the gap to the sponsor allows a decision that goes beyond technical execution — whether to revise scope to cover the expressed expectation. Logging it in the risk register without further action lets the dissatisfaction persist without addressing its cause. Retrying an adjustment with the technical team repeats an approach the scenario already states did not produce lasting results. Asking the user department to translate its own dissatisfaction into a technical requirement shifts an analysis responsibility that belongs to the project team."
+   },
+   "decision_atom": "Décider s'il faut retenter un ajustement technique ou escalader au sponsor un écart non couvert par les exigences documentées.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Une tentative d'ajustement avec l'équipe technique a déjà été faite sans résultat durable.",
+   "bascule": "Si aucune tentative d'ajustement n'avait encore été faite, retenter avec l'équipe technique deviendrait la bonne première étape.",
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE6-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260925-0820-1-03",
+   "enabler": "Align and maintain outcomes to internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un client externe demande, lors d'un point d'avancement, l'ajout d'une fonctionnalité non prévue dans les exigences validées. Le chef de projet estime que cette demande est faisable, mais le client n'a pas encore confirmé si elle est réellement prioritaire par rapport aux échéances déjà engagées. Que doit-il faire en priorité ?",
+    "en": "During a status meeting, an external customer requests adding a feature not included in the validated requirements. The project manager believes this request is feasible, but the customer has not yet confirmed whether it is truly a priority relative to the already committed deadlines. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Intégrer la fonctionnalité au prochain sprint sur la base de la faisabilité technique confirmée par l'équipe du projet dès la réunion.",
+     "Informer le client que la fonctionnalité sera ajoutée une fois les échéances actuelles du projet respectées par l'équipe du projet.",
+     "Demander au client de confirmer la priorité de cette fonctionnalité par rapport aux échéances engagées avant tout engagement de délai.",
+     "Transmettre la demande au comité de gouvernance du projet pour qu'il tranche la priorité entre le client et l'équipe engagée."
+    ],
+    "en": [
+     "Add the feature to the next sprint based on the technical feasibility already confirmed by the project team during the meeting.",
+     "Tell the customer the feature will be added once the current project deadlines have been met by the assigned team.",
+     "Ask the customer to confirm the priority of this feature relative to the committed deadlines before making any timing commitment.",
+     "Forward the request to the project governance committee to decide the priority between the customer and the engaged team."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le client n'a pas encore confirmé si la fonctionnalité est réellement prioritaire par rapport aux échéances déjà engagées : demander cette confirmation avant tout engagement garde la décision ouverte et évite de fixer un calendrier sur une priorité non établie. Intégrer la fonctionnalité au prochain sprint traite la faisabilité technique comme suffisante, alors que la question posée par l'énoncé porte sur la priorité, pas sur la capacité à réaliser. Annoncer un ajout après les échéances actuelles fixe déjà un engagement de séquence sans attendre la confirmation du client. Transmettre au comité de gouvernance escalade une clarification que le chef de projet peut obtenir directement du client, sans qu'un arbitrage formel soit encore nécessaire.",
+    "en": "The customer has not yet confirmed whether the feature is truly a priority relative to the committed deadlines: asking for that confirmation before any commitment keeps the decision open and avoids fixing a schedule on an unestablished priority. Adding the feature to the next sprint treats technical feasibility as sufficient, while the scenario's open question concerns priority, not capability. Announcing addition after current deadlines already locks in a sequencing commitment without waiting for the customer's confirmation. Forwarding to the governance committee escalates a clarification the project manager can obtain directly from the customer, with no formal arbitration yet needed."
+   },
+   "decision_atom": "Décider si l'on peut s'engager sur un calendrier avant que le client ait confirmé la priorité réelle de sa demande.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le client n'a pas encore confirmé si la fonctionnalité est réellement prioritaire par rapport aux échéances engagées.",
+   "bascule": "Si le client avait déjà confirmé que la fonctionnalité était prioritaire, annoncer un calendrier deviendrait défendable.",
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE6-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20260925-0820-1-05",
+   "enabler": "Monitor internal and external customer satisfaction/expectations and respond as needed.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un client externe mentionne, dans un courriel de suivi routinier, qu'un rapport reçu la semaine précédente contenait une coquille dans un intitulé de section, sans que cela ait affecté sa compréhension ni entraîné de conséquence sur le projet. Que doit faire le chef de projet en priorité ?",
+    "en": "In a routine follow-up email, an external customer mentions that a report received the previous week contained a typo in a section heading, with no effect on his understanding or any consequence for the project. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Remercier le client pour le signalement et corriger la coquille dans le prochain rapport.",
+     "Organiser une réunion avec l'équipe de reporting et revoir le processus de relecture des rapports transmis.",
+     "Demander au client de préciser l'impact de la coquille et d'indiquer sa compréhension du rapport avant correction.",
+     "Escalader le signalement au sponsor et le présenter comme un indicateur de qualité insuffisante du reporting."
+    ],
+    "en": [
+     "Thank the customer for flagging it and correct the typo in the next report.",
+     "Hold a meeting with the reporting team and review the proofreading process for submitted reports.",
+     "Ask the customer to clarify the typo's impact and confirm his understanding of the report before any correction.",
+     "Escalate the item to the sponsor and present it as an indicator of insufficient reporting quality."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le client indique lui-même que la coquille n'a affecté ni sa compréhension ni le projet : il s'agit d'un signal mineur et isolé, appelant une réponse simple et proportionnée. Remercier le client et corriger la coquille traite le signal à son niveau réel, sans le sous-traiter ni le grossir. Organiser une réunion sur le processus de relecture traite un incident isolé comme un problème systémique, alors que l'énoncé ne rapporte qu'une occurrence sans conséquence. Demander au client de préciser l'impact interroge une conséquence que le courriel a déjà écartée. Escalader au sponsor donne à un signalement mineur et sans effet le poids d'un problème de qualité, ce que les faits de l'énoncé ne soutiennent pas.",
+    "en": "The customer himself states the typo affected neither his understanding nor the project: this is a minor, isolated signal calling for a simple, proportionate response. Thanking the customer and fixing the typo addresses the signal at its actual level, without underplaying or inflating it. Holding a meeting on the proofreading process treats an isolated incident as a systemic problem, though the scenario reports only one occurrence with no consequence. Asking the customer to clarify the impact questions a consequence the email has already ruled out. Escalating to the sponsor gives a minor, effect-free item the weight of a quality problem, which the scenario's facts do not support."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à apporter à un signalement mineur sans conséquence sur le projet.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le client indique lui-même que la coquille n'a affecté ni sa compréhension ni le projet.",
+   "bascule": "Si le client avait signalé plusieurs erreurs récurrentes affectant sa compréhension, revoir le processus de relecture deviendrait justifié.",
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE6-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260925-0820-1-01",
+   "enabler": "Identify knowledge critical to the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet reprend un projet d'intégration logicielle à mi-parcours. L'ingénieur principal, seul détenteur des raisons des choix d'architecture initiaux, annonce son départ dans six semaines pour un autre poste. Aucun document ne retrace les alternatives écartées ni les raisons de ces choix. La transition de ses tâches courantes vers un collègue est déjà planifiée pour les deux prochaines semaines. Que doit-elle faire en priorité ?",
+    "en": "A project manager takes over a software integration project mid-stream. The lead engineer, the only person who knows the reasoning behind the original architecture choices, announces he is leaving in six weeks for another role. No document records the discarded alternatives or the reasons for these choices. Handover of his routine tasks to a colleague is already scheduled for the next two weeks. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander à l'ingénieur de documenter les raisons des choix d'architecture, une fois la transition de ses tâches courantes achevée.",
+     "Confier au collègue le soin de reconstituer les raisons des choix d'architecture à partir du code existant.",
+     "Attendre le bilan de fin de projet pour consigner les raisons des choix d'architecture, avec le reste des enseignements tirés destinés aux prochaines équipes.",
+     "Planifier dès maintenant avec l'ingénieur des sessions dédiées à la restitution des raisons des choix d'architecture, avant son départ."
+    ],
+    "en": [
+     "Ask the engineer to document the reasoning behind the architecture choices once the handover of his routine tasks is complete.",
+     "Have the colleague taking over routine tasks reconstruct the reasoning behind the architecture choices from the existing code.",
+     "Wait for the end-of-project review meeting to record the reasoning behind the architecture choices along with lessons learned.",
+     "Schedule dedicated sessions with the engineer now to capture the reasoning behind the architecture choices before he leaves."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'ingénieur part dans six semaines et il est le seul détenteur des raisons des choix d'architecture : ce savoir critique disparaît avec lui si personne ne le capture avant son départ. Planifier dès maintenant des sessions dédiées avec lui traite ce risque tant qu'il est encore présent et disponible. Attendre la fin de la transition de ses tâches courantes repousse la capture sans raison, alors que les six semaines sont déjà comptées et qu'aucune urgence ne justifie ce report. Confier la reconstitution au collègue à partir du code revient à approximer un savoir qui existe déjà, complet, dans la tête de la personne qui part — et le code ne dit jamais pourquoi les alternatives ont été écartées. Attendre le bilan de fin de projet garantit que ce savoir sera définitivement perdu, puisque l'ingénieur ne sera plus là pour le restituer.",
+    "en": "The engineer is leaving in six weeks and he alone holds the reasoning behind the architecture choices: this critical knowledge disappears with him unless someone captures it before he leaves. Scheduling dedicated sessions with him now addresses this risk while he is still present and available. Waiting until the handover of his routine tasks is finished delays capture without reason, when the six weeks are already limited and nothing justifies the postponement. Having the colleague reconstruct the reasoning from the code means approximating knowledge that already exists, complete, in the head of the person who is leaving — and code never explains why alternatives were discarded. Waiting for the end-of-project review guarantees this knowledge will be permanently lost, since the engineer will no longer be there to provide it."
+   },
+   "decision_atom": "Décider quand capturer le savoir tacite d'un expert qui part, par rapport au calendrier de transition déjà planifié.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'ingénieur part dans six semaines et une transition de ses tâches courantes est déjà planifiée pour les deux prochaines semaines, mais aucune session n'est prévue pour capturer les raisons des choix d'architecture.",
+   "bascule": "Si l'ingénieur restait disponible plusieurs mois après son départ officiel pour du support à distance, différer la capture après la transition deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE7-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260925-0820-1-02",
+   "enabler": "Gather knowledge.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une rétrospective, une équipe évoque une méthode de dépannage efficace utilisée sur un module critique, mais personne ne se souvient précisément de qui l'a mise au point ni de tous ses détails. Le membre qui l'a probablement développée est absent ce jour-là. Un participant propose de rédiger tout de suite une fiche à partir des souvenirs partagés en réunion. Que doit faire le chef de projet ?",
+    "en": "During a retrospective, a team recalls an effective troubleshooting method used on a critical module, but no one precisely remembers who developed it or all its details. The member who likely developed it is absent that day. A participant suggests writing up a knowledge sheet right away from the memories shared in the meeting. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Solliciter le membre absent, probable auteur de la méthode, pour confirmer et compléter les détails avant de rédiger la fiche.",
+     "Rédiger la fiche de connaissance à partir des souvenirs partagés en réunion, puis la transmettre à l'équipe présente, qui connaît bien le module.",
+     "Demander au participant volontaire de rédiger seul la fiche, de la relire avec un pair, puis de la diffuser à l'ensemble de l'équipe.",
+     "Consigner la méthode dans le registre des risques du projet, comme solution de contournement à surveiller, avec un point de suivi lors du prochain comité."
+    ],
+    "en": [
+     "Ask the absent member, the likely author of the method, to confirm and complete the details before writing the sheet.",
+     "Write the sheet from the memories shared in the meeting, then distribute it to the team, since the present team knows the module well.",
+     "Ask the volunteering participant to write the sheet alone, review it with a peer, then distribute it directly to the whole team.",
+     "Record the method in the project's risk register, as a workaround to be monitored, with a follow-up point at the next steering committee."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La méthode a probablement été développée par une personne précise, absente de la réunion, et le reste de l'équipe n'en garde qu'un souvenir imprécis. Solliciter cette personne avant de rédiger la fiche revient à consulter le propriétaire réel du savoir plutôt que de s'appuyer sur des souvenirs approximatifs de tiers. Rédiger la fiche à partir des souvenirs partagés en réunion fige des détails incertains alors que la source fiable est identifiable et joignable. Confier la rédaction au seul participant volontaire ne corrige pas le problème : il n'a pas plus de certitude sur les détails que le reste du groupe, et diffuser une fiche incomplète risque de propager des inexactitudes. Consigner la méthode dans le registre des risques la traite comme une menace à surveiller, alors qu'il s'agit d'un savoir opérationnel à capturer correctement, pas d'un risque.",
+    "en": "The method was likely developed by a specific person who is absent, and the rest of the team only has an imprecise recollection of it. Asking that person before writing the sheet means consulting the actual owner of the knowledge rather than relying on others' approximate memories. Writing the sheet from the memories shared in the meeting locks in uncertain details when a reliable source is identifiable and reachable. Having the lone volunteering participant write it does not fix the problem: he has no more certainty about the details than the rest of the group, and distributing an incomplete sheet risks spreading inaccuracies. Recording the method in the risk register treats it as a threat to monitor, when it is operational knowledge to be captured properly, not a risk."
+   },
+   "decision_atom": "Décider qui consulter pour documenter une méthode dont l'auteur probable est absent, plutôt que de s'appuyer sur les souvenirs du groupe présent.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le probable auteur de la méthode est absent, et personne dans la salle ne se souvient précisément des détails.",
+   "bascule": "Si l'équipe présente avait collectivement construit la méthode et pouvait en restituer les détails avec précision, rédiger à partir de leurs souvenirs deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE7-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260925-0820-1-03",
+   "enabler": "Gather knowledge.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet collecte les enseignements d'une phase clôturée. Un membre de l'équipe affirme en couloir qu'une certaine configuration serveur a « réglé tous les problèmes de performance », sans pouvoir citer de mesure ni de test associé. Aucun rapport de performance ne mentionne cette configuration. Que doit faire le chef de projet avant d'intégrer cette information à la base de connaissances du projet ?",
+    "en": "A project manager is gathering lessons learned from a closed phase. A team member casually states that a certain server configuration \"fixed all the performance problems,\" without being able to cite any measurement or related test. No performance report mentions this configuration. What should the project manager do before adding this information to the project's knowledge base?"
+   },
+   "options": {
+    "fr": [
+     "Ajouter l'affirmation à la base de connaissances en la présentant comme une bonne pratique éprouvée, applicable aux projets similaires à venir.",
+     "Demander au membre de l'équipe des éléments concrets — mesures, tests ou tickets — étayant l'effet affirmé de la configuration.",
+     "Retirer le sujet de la collecte des enseignements, puisqu'aucun rapport de performance officiel ne mentionne cette configuration.",
+     "Diffuser l'affirmation à titre indicatif auprès des autres équipes du portefeuille, à charge pour elles de vérifier son bien-fondé."
+    ],
+    "en": [
+     "Add the statement to the knowledge base, presenting it as a proven good practice, a reusable recommendation for similar projects.",
+     "Ask the team member for concrete evidence — measurements, tests, or tickets — supporting the claimed effect of the configuration.",
+     "Drop the topic from the lessons-learned collection, since no official performance report, review, or test mentions this configuration.",
+     "Circulate the statement informally to other teams, on an indicative basis, leaving it to them to verify its validity."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'affirmation n'est étayée par aucune mesure, aucun test et aucun rapport officiel : c'est une impression orale, pas un savoir vérifié. Demander des éléments concrets permet de vérifier le fondement de l'affirmation avant de lui donner une place dans la base de connaissances, sans pour autant l'écarter d'emblée. L'ajouter directement comme bonne pratique éprouvée fait passer une impression non vérifiée pour un savoir validé, ce qui risque d'induire d'autres équipes en erreur. Retirer le sujet purement et simplement fait l'inverse : un effet réel a pu se produire, et l'absence de rapport officiel ne prouve rien en soi, elle signale seulement qu'il faut vérifier. Diffuser l'affirmation à titre indicatif à d'autres équipes revient à leur transférer la charge de vérification que le chef de projet doit assumer avant toute diffusion.",
+    "en": "The claim is backed by no measurement, no test, and no official report: it is a verbal impression, not verified knowledge. Asking for concrete evidence allows the claim's foundation to be checked before giving it a place in the knowledge base, without dismissing it outright. Adding it directly as a proven good practice presents an unverified impression as validated knowledge, risking misleading other teams. Dropping the topic outright does the opposite: a real effect may have occurred, and the absence of an official report proves nothing by itself — it only signals that verification is needed. Circulating the claim informally to other teams shifts the verification burden onto them, when the project manager should carry it before any distribution."
+   },
+   "decision_atom": "Décider s'il faut vérifier une affirmation orale non étayée avant de l'intégrer à la base de connaissances, ou agir directement dessus (l'intégrer ou la rejeter).",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Aucune mesure, aucun test, aucun rapport de performance ne corrobore l'affirmation faite en couloir.",
+   "bascule": "Si le membre de l'équipe pouvait immédiatement produire des tickets ou des graphiques de performance à l'appui, intégrer directement l'affirmation deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE7-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260925-0820-1-04",
+   "enabler": "Foster an environment for knowledge transfer.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une chef de projet souhaite instaurer des sessions régulières de partage de connaissances entre deux équipes qui ont peu collaboré jusqu'ici. Elle a déjà identifié les thèmes prioritaires à couvrir et réservé un créneau récurrent dans les agendas. Avant d'annoncer publiquement le calendrier des sessions à l'ensemble des deux équipes, que doit-elle faire ?",
+    "en": "A project manager wants to set up regular knowledge-sharing sessions between two teams that have collaborated little so far. She has already identified the priority topics to cover and booked a recurring slot in their calendars. Before publicly announcing the session schedule to both teams, what should she do?"
+   },
+   "options": {
+    "fr": [
+     "Publier immédiatement le calendrier des sessions auprès des deux équipes, pour donner de la visibilité et enclencher rapidement la dynamique de partage.",
+     "Demander à chaque manager d'équipe de désigner d'autorité les participants qui assisteront aux sessions, en amont de toute concertation.",
+     "Consulter les deux équipes sur le format et le rythme souhaités, afin que le calendrier reflète leurs contraintes réelles.",
+     "Recueillir les résultats de la première session auprès des participants, puis ajuster le calendrier en fonction de la participation observée."
+    ],
+    "en": [
+     "Publish the session schedule immediately to both teams, to create visibility and quickly kick off the sharing dynamic.",
+     "Ask each team manager to designate, by authority, which participants will attend the sessions, ahead of any consultation.",
+     "Consult both teams on the desired format and pace, so the schedule reflects their actual constraints.",
+     "Collect the results of the first session from participants, then adjust the schedule based on the observed attendance."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les deux équipes ont peu collaboré jusqu'ici : un calendrier imposé sans les consulter risque de ne pas correspondre à leurs contraintes réelles et de compromettre l'adhésion dès le départ. Consulter les deux équipes sur le format et le rythme avant d'annoncer le calendrier permet de construire un dispositif que les deux groupes s'approprient, ce qui favorise un partage de connaissances durable. Publier immédiatement le calendrier privilégie la rapidité sur l'adhésion, alors que rien n'urge et que le risque de rejet est réel entre équipes peu habituées à collaborer. Faire désigner les participants d'autorité par les managers contourne les deux équipes elles-mêmes et traite le partage de connaissances comme une contrainte hiérarchique plutôt qu'un engagement volontaire. Attendre les résultats de la première session pour ajuster ensuite revient à lancer le dispositif sans préparation, alors que la consultation préalable est encore possible et peu coûteuse.",
+    "en": "The two teams have collaborated little so far: an imposed schedule without consulting them risks not matching their actual constraints and undermining buy-in from the start. Consulting both teams on format and pace before announcing the schedule allows building something both groups can own, which supports lasting knowledge sharing. Publishing the schedule immediately favors speed over buy-in, when nothing is urgent and the risk of rejection is real between teams unaccustomed to collaborating. Having participants designated by authority from managers bypasses the teams themselves and treats knowledge sharing as a hierarchical obligation rather than a voluntary commitment. Waiting for the first session's results before adjusting means launching the effort unprepared, when prior consultation is still possible and low-cost."
+   },
+   "decision_atom": "Décider s'il faut annoncer un calendrier déjà préparé ou consulter d'abord les équipes concernées sur ses modalités.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les deux équipes ont peu collaboré jusqu'ici, ce qui rend leur adhésion moins acquise qu'entre équipes habituées à travailler ensemble.",
+   "bascule": "Si les deux équipes avaient déjà une habitude établie de collaboration et un format de partage éprouvé entre elles, publier directement le calendrier deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE7-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE7-20260925-0820-1-05",
+   "enabler": "Foster an environment for knowledge transfer.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet remarque que, lors des sessions de partage de connaissances, les membres juniors de l'équipe posent rarement des questions, alors que les seniors dominent systématiquement les échanges. Aucun incident ni plainte n'a été signalé, mais ce déséquilibre se répète depuis trois sessions consécutives. Que doit faire le chef de projet ?",
+    "en": "A project manager notices that during knowledge-sharing sessions, junior team members rarely ask questions, while senior members consistently dominate the discussions. No incident or complaint has been reported, but this imbalance has repeated for three consecutive sessions. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Laisser le format des sessions inchangé, en l'absence de plainte formulée par les membres juniors jusqu'à présent, lors du dernier point d'équipe.",
+     "Signaler ce déséquilibre au sponsor du projet, lors du prochain point d'avancement, comme un frein potentiel au transfert de connaissances.",
+     "Remplacer les sessions collectives, dès la prochaine séance, par des échanges individuels obligatoires entre chaque junior et un senior désigné.",
+     "Ajuster le format des sessions pour réserver un temps dédié aux questions des membres juniors avant les échanges ouverts."
+    ],
+    "en": [
+     "Leave the session format unchanged, in the absence of a complaint raised by junior members during the last team review.",
+     "Report this imbalance to the project sponsor during the next progress meeting, as a potential barrier to knowledge transfer.",
+     "Replace the group sessions with mandatory one-on-one exchanges between each junior member and an assigned senior colleague.",
+     "Adjust the session format to reserve dedicated time for junior members' questions before the open discussion."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le déséquilibre se répète depuis trois sessions et reste sous le contrôle direct du chef de projet, qui anime le dispositif : il s'agit d'un problème de format, pas d'un enjeu qui dépasse son niveau de décision. Ajuster le format pour réserver un temps dédié aux juniors avant les échanges ouverts traite la cause à la source, à l'échelle où le problème se pose. Ne rien changer confond l'absence de plainte formelle avec l'absence de problème, alors que la répétition sur trois sessions constitue déjà un signal. Signaler ce déséquilibre au sponsor fait remonter à un niveau hiérarchique supérieur un ajustement d'animation que le chef de projet peut résoudre lui-même, sans justification pour ce report de responsabilité. Remplacer les sessions collectives par des échanges individuels obligatoires est disproportionné : cela supprime le bénéfice du partage collectif alors qu'un ajustement plus ciblé du format suffit à corriger le déséquilibre observé.",
+    "en": "The imbalance has repeated for three sessions and remains under the project manager's direct control, since she facilitates the sessions: this is a format issue, not a matter beyond her decision level. Adjusting the format to reserve dedicated time for juniors before the open discussion addresses the cause at the level where the problem occurs. Leaving things unchanged confuses the absence of a formal complaint with the absence of a problem, when the three-session repetition is already a signal. Reporting the imbalance to the sponsor escalates a facilitation adjustment that the project manager can resolve herself, with no justification for handing off this responsibility. Replacing group sessions with mandatory one-on-one exchanges is disproportionate: it removes the benefit of collective sharing when a more targeted format adjustment is enough to correct the observed imbalance."
+   },
+   "decision_atom": "Décider si un déséquilibre récurrent de participation doit être corrigé directement par le chef de projet ou escaladé au sponsor.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le déséquilibre se répète depuis trois sessions consécutives et porte sur le format des sessions, que le chef de projet anime et contrôle directement.",
+   "bascule": "Si le déséquilibre provenait d'une décision organisationnelle hors du contrôle du chef de projet (ex. politique RH imposant la hiérarchie des interventions), escalader au sponsor deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PE7-20260925-0820-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260925-0820-2-02",
+   "enabler": "Manage financial reserves.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un risque identifié pour lequel une provision de contingence avait été allouée ne s'est finalement pas matérialisé et sa fenêtre d'occurrence est close. L'équipe propose de transférer ce montant vers la réserve de management pour couvrir des imprévus futurs non spécifiques. Le plan de management des coûts précise que seul le comité de gouvernance financière peut requalifier des fonds entre les deux catégories de réserve. Que doit faire le chef de projet ?",
+    "en": "A previously identified risk for which a contingency provision had been allocated did not materialize, and its occurrence window has closed. The team proposes moving that amount into the management reserve to cover future unspecified needs. The cost management plan states that only the financial governance committee can reclassify funds between the two reserve categories. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Transférer directement le montant vers la réserve de management, en considérant que le risque associé n'existe plus désormais.",
+     "Laisser le montant dans la réserve de contingence, en attendant qu'un nouveau risque comparable soit identifié par l'équipe.",
+     "Demander à l'équipe de justifier par écrit la requalification, puis transmettre cette justification au comité concerné.",
+     "Soumettre la requalification au comité de gouvernance financière, seul habilité à statuer sur ce transfert."
+    ],
+    "en": [
+     "Transfer the amount directly into the management reserve, on the basis that the associated risk no longer exists at this stage.",
+     "Leave the amount in the contingency reserve, waiting until a comparable new risk is identified by the team later on.",
+     "Ask the team to justify the reclassification in writing, then pass that justification along to the relevant committee.",
+     "Submit the reclassification to the financial governance committee, the only body authorized to decide on this transfer."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le plan de management des coûts est explicite : la requalification entre catégories de réserve relève du comité de gouvernance financière, pas de l'équipe projet ni du chef de projet seul. Transférer directement le montant contourne cette autorité désignée, même si le raisonnement de l'équipe sur le risque clos est correct sur le fond. Laisser le montant inutilisé dans la réserve de contingence ne respecte pas non plus le processus : rien n'indique qu'il faille attendre un nouveau risque avant de statuer sur des fonds déjà libérés. Demander une justification écrite à l'équipe ajoute une étape utile mais ne remplace pas la décision d'autorité que le plan attribue explicitement au comité. Soumettre la requalification au comité respecte la répartition des rôles définie par le plan, quel que soit le bien-fondé de la demande.",
+    "en": "The cost management plan is explicit: reclassifying funds between reserve categories is the financial governance committee's role, not the project team's or the project manager's alone. Transferring the amount directly bypasses that designated authority, even though the team's reasoning about the closed risk is sound on its merits. Leaving the amount idle in the contingency reserve also fails to follow the process: nothing indicates that a new risk must appear before already-freed funds can be addressed. Asking the team for written justification adds a useful step but does not replace the authority decision the plan explicitly assigns to the committee. Submitting the reclassification to the committee respects the role split defined by the plan, regardless of how sound the request is."
+   },
+   "decision_atom": "Décider qui a l'autorité de requalifier des fonds entre réserve de contingence et réserve de management.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le plan de management des coûts attribue explicitement cette requalification au comité de gouvernance financière.",
+   "bascule": "Si le plan de management des coûts déléguait cette décision au chef de projet, le transfert direct deviendrait correct.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR6-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260925-0820-2-03",
+   "enabler": "Anticipate future finance challenges.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet international dépend d'achats en devise étrangère prévus dans huit mois. Les prévisions économiques indiquent une possible variation du taux de change, mais les analystes restent divisés sur son ampleur et sa direction. Le montant concerné représente une part modeste du budget total. Que doit faire le chef de projet dès maintenant ?",
+    "en": "An international project depends on foreign-currency purchases planned for eight months from now. Economic forecasts point to a possible exchange-rate shift, but analysts remain divided on its size and direction. The amount involved represents a modest share of the total budget. What should the project manager do now?"
+   },
+   "options": {
+    "fr": [
+     "Documenter le risque de change dans le registre et prévoir un point de suivi avant l'échéance des achats.",
+     "Négocier immédiatement une couverture de change complète et l'appliquer pour éliminer toute exposition au taux futur.",
+     "Renégocier le calendrier des achats et les avancer avant toute variation possible du taux de change.",
+     "Demander au sponsor d'approuver une augmentation de budget et de couvrir ainsi le pire scénario de change envisagé."
+    ],
+    "en": [
+     "Log the currency risk in the register and schedule a review point before the purchase deadline.",
+     "Negotiate a full currency hedge immediately and apply it to eliminate any exposure to the future exchange rate.",
+     "Renegotiate the purchase schedule to move it earlier, ahead of any possible exchange-rate shift.",
+     "Ask the sponsor to approve a budget increase and thereby cover the worst-case currency scenario considered."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les faits limitent la réponse raisonnable : l'échéance est à huit mois, les analystes sont divisés sur l'ampleur et la direction du mouvement, et le montant concerné ne pèse que modestement sur le budget. Négocier une couverture complète immédiatement engage des ressources contre une incertitude que même les experts ne savent pas trancher, pour un enjeu limité. Avancer le calendrier des achats pour éviter la variation ignore que la direction du mouvement est inconnue — cela pourrait aussi bien aggraver l'exposition. Demander une augmentation de budget pour le pire scénario mobilise le sponsor sur une hypothèse non confirmée, alors que l'enjeu financier reste modeste. Consigner le risque et prévoir un point de suivi avant l'échéance proportionne la réponse à ce qui est réellement su aujourd'hui, tout en laissant le temps aux prévisions de se préciser.",
+    "en": "The facts limit what a reasonable response looks like: the deadline is eight months out, analysts are divided on both size and direction of the shift, and the amount involved carries only modest weight in the budget. Negotiating a full hedge immediately commits resources against an uncertainty that even experts cannot resolve, for a limited stake. Moving the purchase schedule earlier to avoid the shift ignores that the direction of the movement is unknown — it could just as easily worsen the exposure. Asking for a budget increase to cover the worst case draws the sponsor into an unconfirmed assumption, when the financial stake remains modest. Logging the risk and scheduling a review point before the deadline matches the response to what is actually known today, while leaving time for forecasts to sharpen."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à donner à un risque de change futur incertain et de faible impact budgétaire.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Les analystes sont divisés sur l'ampleur ET la direction du mouvement, et le montant concerné est modeste.",
+   "bascule": "Si les analystes s'accordaient sur une direction claire et un montant significatif, une couverture immédiate deviendrait justifiée.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR6-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20260925-0820-2-04",
+   "enabler": "Plan spend tracking throughout the project life cycle.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Au lancement d'un projet, l'estimation des coûts n'existe encore qu'à un niveau agrégé par phase ; l'échéancier détaillé par lot de travail sera produit dans les semaines suivantes. Le sponsor souhaite pouvoir suivre les dépenses dès le démarrage des premières activités. Comment le chef de projet doit-il planifier le suivi des dépenses ?",
+    "en": "At project kickoff, cost estimates exist only at an aggregated per-phase level; the detailed work-package schedule will be produced in the following weeks. The sponsor wants to be able to track spending as soon as the first activities begin. How should the project manager plan spend tracking?"
+   },
+   "options": {
+    "fr": [
+     "Attendre la finalisation de l'échéancier détaillé, puis mettre en place à ce moment tout mécanisme de suivi des dépenses.",
+     "Mettre en place un suivi agrégé par phase dès maintenant, puis l'affiner au niveau du lot de travail une fois l'échéancier détaillé disponible.",
+     "Demander au sponsor de patienter jusqu'à la fin de la première phase, puis lui transmettre un premier état des dépenses.",
+     "Construire immédiatement un suivi au niveau du lot de travail et anticiper ainsi la structure de l'échéancier à venir."
+    ],
+    "en": [
+     "Wait for the detailed schedule to be finalized, then set up at that point any spend tracking mechanism.",
+     "Set up phase-level aggregated tracking now, then refine it to the work-package level once the detailed schedule is available.",
+     "Ask the sponsor to wait until the end of the first phase, then provide an initial spend status at that time.",
+     "Immediately build work-package-level tracking and thereby anticipate the structure of the upcoming schedule."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le sponsor veut un suivi dès le démarrage des activités, et seule l'estimation par phase est disponible à ce stade. Attendre l'échéancier détaillé avant de suivre quoi que ce soit prive le sponsor de visibilité pendant plusieurs semaines, alors qu'un niveau d'agrégation utilisable existe déjà. Construire un suivi par lot de travail en anticipant une structure qui n'est pas encore arrêtée risque de produire un cadre à refaire dès que l'échéancier détaillé sera publié. Faire patienter le sponsor jusqu'à la fin de la première phase revient à ignorer sa demande explicite de suivi dès le démarrage. Mettre en place un suivi agrégé dès maintenant, puis l'affiner quand l'échéancier détaillé existera, correspond au niveau d'information disponible à chaque moment et répond à la demande du sponsor sans attendre inutilement.",
+    "en": "The sponsor wants tracking as soon as activities start, and only the phase-level estimate is available at this point. Waiting for the detailed schedule before tracking anything leaves the sponsor without visibility for several weeks, even though a usable level of aggregation already exists. Building work-package tracking by anticipating a structure that is not yet finalized risks producing a framework that must be redone once the detailed schedule is published. Making the sponsor wait until the end of the first phase disregards their explicit request for tracking from the start. Setting up aggregated tracking now, then refining it once the detailed schedule exists, matches the information available at each point in time and meets the sponsor's request without needless delay."
+   },
+   "decision_atom": "Décider à quel niveau de détail mettre en place le suivi des dépenses au lancement, alors que seule l'estimation par phase existe.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le sponsor veut un suivi dès le démarrage des activités, mais seul le niveau agrégé par phase est disponible à ce stade.",
+   "bascule": "Si l'échéancier détaillé était déjà disponible au lancement, construire directement le suivi par lot de travail deviendrait correct.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR6-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260925-0820-2-02",
+   "enabler": "Coordinate with other projects and operations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux projets d'un même programme partagent une même équipe d'ingénieurs réseau. Le chef du projet A constate que l'équipe partagée a été mobilisée sur le projet B pendant deux semaines, retardant une activité critique de son propre échéancier. Les deux chefs de projet ont le même niveau hiérarchique et aucun accord de priorité formel n'existe entre les deux projets. Que doit faire le chef du projet A en priorité ?",
+    "en": "Two projects within the same program share the same network engineering team. The project A manager notices that the shared team was assigned to project B for two weeks, delaying a critical activity in his own schedule. Both project managers hold the same hierarchical level, and no formal priority agreement exists between the two projects. What should the project A manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Réaffecter directement l'équipe partagée aux activités de son propre échéancier, puis rattraper le retard sur l'activité critique.",
+     "Porter le conflit de priorité au responsable de programme, faute d'accord formel entre les deux projets.",
+     "Documenter le retard dans son rapport de statut, puis maintenir le suivi habituel de l'avancement de l'échéancier.",
+     "Demander au chef du projet B de justifier par écrit la mobilisation de l'équipe partagée, puis évaluer sa réponse."
+    ],
+    "en": [
+     "Directly reassign the shared team to his own schedule's activities, then work to recover the delay on the critical activity.",
+     "Escalate the priority conflict to the program manager, given the absence of a formal agreement between the two projects.",
+     "Document the delay in his status report, then continue the routine monitoring of the schedule's progress.",
+     "Ask the project B manager to justify in writing the reassignment of the shared team, then evaluate his response."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les deux chefs de projet ont le même niveau hiérarchique et aucun accord de priorité formel n'existe entre les deux projets : ni l'un ni l'autre n'a l'autorité pour trancher seul lequel des deux échéanciers doit primer. Porter le conflit au responsable de programme est la seule option qui confie la décision à un niveau ayant l'autorité de l'arbitrer. Réaffecter directement l'équipe reviendrait à imposer unilatéralement sa priorité sur un pair de même niveau, sans mandat pour le faire. Documenter le retard sans agir laisse un conflit de priorité non résolu se prolonger alors qu'une activité critique est déjà retardée. Demander une justification écrite au chef du projet B ne règle rien : même justifiée, la mobilisation reste un conflit de priorité que ni l'un ni l'autre ne peut arbitrer seul.",
+    "en": "Both project managers hold the same hierarchical level, and no formal priority agreement exists between the two projects: neither one has the authority to decide alone which schedule should take precedence. Escalating the conflict to the program manager is the only option that places the decision at a level with the authority to arbitrate it. Directly reassigning the team would mean unilaterally imposing his own priority on a peer of equal standing, without a mandate to do so. Documenting the delay without acting lets an unresolved priority conflict continue while a critical activity is already delayed. Asking the project B manager for a written justification resolves nothing: even if justified, the reassignment remains a priority conflict that neither manager can arbitrate alone."
+   },
+   "decision_atom": "Décider qui doit trancher un conflit de priorité sur une ressource partagée entre deux projets pairs sans accord formel.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Les deux chefs de projet sont de même niveau hiérarchique et aucun accord de priorité formel n'existe entre les deux projets.",
+   "bascule": "Si un accord de priorité formel existait déjà entre les deux projets, réaffecter selon cet accord deviendrait la bonne réponse sans escalade.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR8-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260925-0820-2-03",
+   "enabler": "Baseline a project schedule.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet a fait valider par le comité de pilotage l'échéancier final d'un projet et s'apprête à le figer comme référence. Un membre de l'équipe signale qu'un fournisseur externe pourrait proposer, dans les prochains jours, une méthode alternative susceptible de raccourcir une activité non critique de l'échéancier. Aucune proposition écrite n'a encore été reçue. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager has had the final project schedule approved by the steering committee and is about to baseline it. A team member reports that an external supplier might, within the next few days, propose an alternative method that could shorten a non-critical activity in the schedule. No written proposal has yet been received. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Reporter la mise en référence de l'échéancier final, puis attendre la réception de la proposition du fournisseur externe.",
+     "Retirer dès maintenant l'activité concernée de l'échéancier validé, puis attendre la proposition du fournisseur externe.",
+     "Figer l'échéancier validé comme référence et traiter une éventuelle proposition ultérieure par le processus de changement.",
+     "Demander au comité de pilotage de revalider l'échéancier final, une fois la proposition du fournisseur externe reçue."
+    ],
+    "en": [
+     "Delay baselining the final schedule, then wait until the supplier's proposal is received.",
+     "Remove the affected activity from the approved schedule now, then wait for the supplier's proposal.",
+     "Baseline the approved schedule as is and handle any future proposal through the change process.",
+     "Ask the steering committee to revalidate the schedule, then wait until the supplier's proposal is received."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Aucune proposition écrite n'a encore été reçue : il n'existe encore rien de concret à évaluer, seulement une possibilité future sur une activité non critique. Figer l'échéancier déjà validé par le comité, tout en réservant un éventuel changement futur au processus prévu à cet effet, respecte la réversibilité propre à une baseline : elle peut toujours être modifiée par un changement formel si la proposition se concrétise. Reporter la mise en référence fait dépendre une décision déjà validée d'un événement incertain et non daté. Retirer l'activité par anticipation modifie l'échéancier sur la base d'une hypothèse, sans qu'aucune proposition n'existe encore. Redemander une validation du comité avant même de savoir si une proposition arrivera consomme une ressource de gouvernance pour un scénario hypothétique.",
+    "en": "No written proposal has yet been received: there is nothing concrete to evaluate yet, only a future possibility affecting a non-critical activity. Baselining the schedule already approved by the committee, while reserving any future change for the process designed for that purpose, respects the reversibility inherent to a baseline: it can always be modified through a formal change if the proposal materializes. Delaying the baseline makes an already-approved decision dependent on an uncertain, undated event. Removing the activity preemptively changes the schedule based on a hypothesis, when no proposal yet exists. Asking the committee to revalidate before even knowing whether a proposal will arrive consumes governance resources on a hypothetical scenario."
+   },
+   "decision_atom": "Décider si l'on retarde la mise en référence d'un échéancier validé à cause d'une possibilité future non confirmée.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Aucune proposition écrite n'a encore été reçue du fournisseur — il ne s'agit que d'une possibilité évoquée, sur une activité non critique.",
+   "bascule": "Si la proposition écrite du fournisseur avait déjà été reçue et évaluée, reporter la baseline pour l'intégrer deviendrait défendable.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR8-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260925-0820-2-04",
+   "enabler": "Analyze schedule variation.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une analyse d'écart d'échéancier révèle qu'une activité technique clé accuse un retard significatif. Le membre de l'équipe responsable de cette activité identifie une cause probable et propose une solution technique. Le chef de projet dispose aussi des données de suivi confirmant l'ampleur de l'écart. Qui doit décider de la réponse à apporter à cet écart ?",
+    "en": "A schedule variance analysis reveals that a key technical activity is running significantly behind. The team member responsible for that activity identifies a probable cause and proposes a technical solution. The project manager also has the tracking data confirming the extent of the variance. Who should decide on the response to this variance?"
+   },
+   "options": {
+    "fr": [
+     "Le membre de l'équipe responsable de l'activité, puisqu'il connaît le mieux la cause technique de cet écart et la solution à appliquer.",
+     "Le sponsor du projet, puisque l'écart concerne une activité technique clé, jugée prioritaire, du projet.",
+     "Le comité de pilotage, puisque tout écart significatif sur le chemin critique relève de sa gouvernance et de son suivi.",
+     "Le chef de projet, en s'appuyant sur l'analyse technique du membre de l'équipe et sur les données de suivi."
+    ],
+    "en": [
+     "The team member, since he best understands the technical cause of the variance and the solution to apply.",
+     "The project sponsor, since the variance affects a key technical activity, deemed a priority, of the project.",
+     "The steering committee, since any significant variance on the critical path falls under its governance and oversight.",
+     "The project manager, drawing on the team member's technical analysis and on the tracking data."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le chef de projet dispose à la fois de l'analyse technique fournie par le membre de l'équipe et des données de suivi confirmant l'ampleur de l'écart : il est le seul acteur qui réunit ces deux éléments et dont le rôle inclut la décision sur la réponse à donner aux écarts d'échéancier. Laisser le membre de l'équipe décider seul confond une expertise technique locale avec l'autorité de décider de la réponse globale au projet. Remonter au sponsor un écart qui n'a pas encore été évalué par le chef de projet saute un niveau de décision qui appartient normalement à ce dernier. Remonter systématiquement au comité de pilotage traite comme relevant de la gouvernance un écart qui n'a pas encore été qualifié ni chiffré au niveau du projet.",
+    "en": "The project manager holds both the technical analysis provided by the team member and the tracking data confirming the extent of the variance: he is the only one who combines these two elements and whose role includes deciding on the response to schedule variances. Letting the team member decide alone confuses local technical expertise with the authority to decide the project's overall response. Escalating to the sponsor a variance that the project manager has not yet assessed skips a decision level that normally belongs to him. Escalating systematically to the steering committee treats as a governance matter a variance that has not yet been qualified or quantified at the project level."
+   },
+   "decision_atom": "Décider qui a l'autorité de décider de la réponse à un écart d'échéancier quand plusieurs acteurs détiennent une partie de l'information.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le chef de projet réunit à la fois l'analyse technique du membre de l'équipe et les données de suivi confirmant l'ampleur de l'écart.",
+   "bascule": "Si l'écart dépassait un seuil de gouvernance formel prévu au plan, faire trancher le comité de pilotage deviendrait la bonne réponse.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR8-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20260925-0820-2-05",
+   "enabler": "Execute a schedule management plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le plan de gestion de l'échéancier d'un projet prévoit une revue mensuelle de l'avancement et une escalade uniquement en cas d'écart dépassant 10 % sur le chemin critique. Le suivi du mois montre un écart de 3 % sur une activité du chemin critique, entièrement absorbé par la marge disponible sur cette activité. Que doit faire le chef de projet en priorité ?",
+    "en": "A project's schedule management plan calls for a monthly progress review and escalation only when variance on the critical path exceeds 10 percent. This month's tracking shows a 3 percent variance on a critical path activity, fully absorbed by the float available on that activity. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Consigner l'écart dans le suivi mensuel et poursuivre l'exécution selon le plan de gestion de l'échéancier.",
+     "Escalader l'écart au comité de pilotage pour information, puis documenter cette précaution sur le chemin critique.",
+     "Lancer une analyse de cause immédiate sur l'activité concernée, puis avancer la prochaine revue prévue.",
+     "Réviser à la baisse le seuil d'escalade du plan, puis capturer les écarts inférieurs à 10 % sur le chemin."
+    ],
+    "en": [
+     "Record the variance in the monthly tracking and continue execution per the schedule management plan.",
+     "Escalate the variance to the steering committee for awareness, as a precaution given the critical path.",
+     "Launch an immediate root-cause analysis on the affected activity ahead of the next scheduled review.",
+     "Lower the plan's escalation threshold to capture variances below 10 percent."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le plan de gestion de l'échéancier fixe explicitement le seuil d'escalade à 10 % sur le chemin critique, et l'écart constaté n'est que de 3 %, entièrement absorbé par la marge disponible : la règle prévue par le plan couvre exactement cette situation et n'exige aucune action au-delà du suivi habituel. Escalader ce niveau d'écart au comité de pilotage traite comme exceptionnel un écart que le plan qualifie lui-même de tolérable. Lancer une analyse de cause immédiate mobilise une ressource d'investigation pour un écart déjà absorbé sans conséquence sur le chemin critique. Réviser le seuil d'escalade à la baisse modifie une règle de gouvernance établie sur la base d'un seul écart mineur, sans qu'aucun élément de l'énoncé ne justifie ce changement.",
+    "en": "The schedule management plan explicitly sets the escalation threshold at 10 percent on the critical path, and the observed variance is only 3 percent, fully absorbed by available float: the rule set out in the plan covers exactly this situation and requires no action beyond routine tracking. Escalating this level of variance to the steering committee treats as exceptional a variance the plan itself defines as tolerable. Launching an immediate root-cause analysis commits investigative resources to a variance that is already absorbed and has no consequence on the critical path. Lowering the escalation threshold changes an established governance rule on the basis of a single minor variance, with nothing in the scenario justifying that change."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à un écart d'échéancier situé sous le seuil d'escalade défini par le plan de gestion.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'écart de 3 % est inférieur au seuil de 10 % fixé par le plan et entièrement absorbé par la marge disponible.",
+   "bascule": "Si l'écart avait dépassé 10 % ou dépassé la marge disponible, escalader au comité de pilotage deviendrait la bonne réponse.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20260925-0820",
+   "release": "qL2-PR8-20260925-0820-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
