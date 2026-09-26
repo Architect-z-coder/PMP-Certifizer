@@ -1,0 +1,539 @@
+{
+ "run_id": "20260926-0806",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-BE1-20260926-0806-1-03",
+   "enabler": "Outline governance escalation paths and thresholds.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet reprend un projet en cours et découvre que le plan de gouvernance ne précise aucun seuil de dépassement budgétaire déclenchant une escalade vers le comité de pilotage. Le projet approche justement d'une variation de coûts significative. Que doit-il faire en priorité ?",
+    "en": "A project manager takes over an ongoing project and discovers that the governance plan specifies no cost overrun threshold that would trigger escalation to the steering committee. The project is currently approaching a significant cost variance. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Définir avec le sponsor un seuil clair de variation budgétaire déclenchant l'escalade, avant que la variation ne s'aggrave.",
+     "Escalader immédiatement la variation actuelle au comité de pilotage, en l'absence de tout seuil formel défini pour ce projet.",
+     "Continuer à suivre les coûts de près et attendre la prochaine revue de gouvernance planifiée pour en discuter avec le comité.",
+     "Demander au contrôleur financier de fixer un seuil budgétaire standard pour ce type de dépassement, applicable à tous les projets du portefeuille."
+    ],
+    "en": [
+     "Define a clear cost variance threshold for escalation with the sponsor, before the variance worsens.",
+     "Immediately escalate the current variance to the steering committee, given the absence of a formal threshold for this project.",
+     "Keep closely tracking costs and wait for the next scheduled governance review to raise it with the committee.",
+     "Ask the financial controller to set a standard budget threshold for this type of overrun, applicable to all projects in the portfolio."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'absence de seuil d'escalade est le problème structurel à traiter avant même que la variation actuelle ne soit jugée. Escalader immédiatement la variation actuelle, en l'absence de tout seuil formel défini pour ce projet, traite un symptôme sans corriger l'absence de règle, et expose à escalader chaque futur écart au hasard. Continuer à suivre les coûts et attendre la prochaine revue planifiée pour en discuter avec le comité laisse la variation progresser sans cadre de décision pendant tout ce temps. Demander au contrôleur financier de fixer un seuil standard pour ce type de dépassement, applicable à tous les projets du portefeuille, déplace la décision vers une instance qui n'a pas autorité sur la gouvernance de ce projet précis. Définir le seuil avec le sponsor, avant que la situation ne s'aggrave, met en place la règle manquante au moment où elle est encore utile pour piloter la variation en cours.",
+    "en": "The missing escalation threshold is the structural problem to address before even judging the current variance. Immediately escalating the current variance, given the absence of a formal threshold for this project, treats a symptom without fixing the missing rule, and risks escalating every future deviation ad hoc. Keeping close cost tracking and waiting for the next scheduled review to raise it with the committee lets the variance grow unchecked for that entire period. Asking the financial controller to set a standard threshold for this type of overrun, applicable to all projects in the portfolio, shifts the decision to a body without authority over this specific project's governance. Defining the threshold with the sponsor before the situation worsens puts the missing rule in place while it can still guide the current variance."
+   },
+   "decision_atom": "Décider quoi faire en priorité quand un seuil d'escalade budgétaire est absent alors qu'une variation significative approche.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Aucun seuil d'escalade budgétaire n'existe dans le plan de gouvernance, et une variation significative est imminente.",
+   "bascule": "Si la variation avait déjà atteint un niveau critique et incontrôlable, escalader immédiatement deviendrait la priorité.",
+   "task_id": "BE1",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE1-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE1-20260926-0806-1-04",
+   "enabler": "Outline governance escalation paths and thresholds.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le plan de gouvernance prévoit qu'un retard de plus de deux semaines sur un jalon critique doit être escaladé au comité de pilotage. Un jalon vient d'accuser un retard de trois jours, que l'équipe pense pouvoir résorber avant la prochaine étape. Que doit faire le chef de projet ?",
+    "en": "The governance plan states that any delay of more than two weeks on a critical milestone must be escalated to the steering committee. A milestone has just slipped by three days, which the team believes it can recover before the next stage. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Escalader le retard au comité de pilotage dès maintenant, par précaution, pour l'informer avant même que l'équipe ne propose un plan.",
+     "Documenter le retard et le plan de résorption, et n'escalader que si le seuil de deux semaines est atteint.",
+     "Ajouter ce retard à la liste des risques du projet, en signalant plus tard au comité de pilotage cette évolution comme un sujet de gouvernance.",
+     "Demander au comité de pilotage de réduire le seuil d'escalade à trois jours pour ce type de jalon, puis d'en informer l'équipe projet en réunion."
+    ],
+    "en": [
+     "Escalate the delay to the steering committee right away, as a precaution, to inform it before the team even proposes a plan.",
+     "Document the delay and the recovery plan, and escalate only if the two-week threshold is reached.",
+     "Add this delay to the project risk list, later flagging this development to the steering committee as a governance matter.",
+     "Ask the steering committee to lower the escalation threshold to three days for this type of milestone, then inform the project team at the next meeting."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le plan de gouvernance fixe explicitement le seuil d'escalade à deux semaines pour ce type de jalon, et le retard actuel n'est que de trois jours avec un plan de résorption crédible. Escalader dès maintenant par précaution, avant même que l'équipe ne propose un plan, contourne le seuil convenu et habitue le comité à traiter des écarts mineurs comme des urgences. Ajouter le retard aux risques en signalant plus tard au comité de pilotage cette évolution comme un sujet de gouvernance laisse une trace, mais reste incomplet puisque le suivi et le seuil déjà fixés ne sont pas mentionnés. Demander au comité de revoir le seuil à la baisse pour ce jalon précis, puis d'en informer l'équipe en réunion, répond à un incident isolé par un changement de règle générale, ce qui n'est pas proportionné. Documenter le retard et son plan de résorption, en respectant le seuil existant, applique la règle de gouvernance telle qu'elle a été définie.",
+    "en": "The governance plan explicitly sets the escalation threshold at two weeks for this type of milestone, and the current delay is only three days with a credible recovery plan. Escalating right away as a precaution, before the team even proposes a plan, bypasses the agreed threshold and trains the committee to treat minor deviations as emergencies. Adding the delay to the risk list while later flagging this development to the steering committee as a governance matter leaves a record but is incomplete, since the already-defined threshold and monitoring go unmentioned. Asking the committee to lower the threshold for this specific milestone and then inform the team at the next meeting responds to an isolated incident with a general rule change, which is disproportionate. Documenting the delay and its recovery plan while respecting the existing threshold applies the governance rule as it was defined."
+   },
+   "decision_atom": "Décider s'il faut escalader un retard mineur alors qu'un seuil d'escalade explicite existe déjà.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le plan de gouvernance fixe le seuil d'escalade à deux semaines ; le retard actuel n'est que de trois jours avec un plan de résorption crédible.",
+   "bascule": "Si l'équipe n'avait aucun plan crédible de résorption et que le retard menaçait de s'accélérer, escalader immédiatement deviendrait justifié.",
+   "task_id": "BE1",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE1-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE2-20260926-0806-1-01",
+   "enabler": "Determine the necessary approach and action(s) to address compliance needs.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet d'infrastructure doit se conformer à une nouvelle norme de sécurité sur site. Deux options techniques permettent d'y répondre : l'une consiste à installer un dispositif de contrôle d'accès temporaire, facilement retiré si la norme est révisée avant la certification finale ; l'autre consiste à couler une dalle en béton intégrant les capteurs de sécurité, une fois posée elle ne peut plus être modifiée sans démolition. Le texte réglementaire est encore en consultation publique et pourrait changer dans les prochaines semaines. Que doit décider le chef de projet ?",
+    "en": "An infrastructure project must comply with a new on-site safety standard. Two technical options can satisfy it: one involves installing a temporary access-control device that can easily be removed if the standard is revised before final certification; the other involves pouring a concrete slab embedding the safety sensors, which once set cannot be modified without demolition. The regulatory text is still under public consultation and could change in the coming weeks. What should the project manager decide?"
+   },
+   "options": {
+    "fr": [
+     "Couler la dalle en béton dès maintenant, pour démontrer sans délai un engagement fort envers la conformité et rassurer les autorités locales.",
+     "Couler la dalle en béton avec les capteurs intégrés, car cette solution offre une durabilité supérieure pour l'ensemble de la durée de vie de l'ouvrage.",
+     "Installer le dispositif temporaire, en attendant la publication du texte définitif avant d'engager la solution permanente.",
+     "Installer le dispositif temporaire, puis lancer immédiatement la commande du béton pour tenir le calendrier initial arrêté par le chantier."
+    ],
+    "en": [
+     "Pour the concrete slab right away, to demonstrate without delay a strong commitment to compliance and reassure the local authorities.",
+     "Pour the concrete slab with embedded sensors, since this solution offers superior durability for the entire lifespan of the structure.",
+     "Install the temporary device, while waiting for the final text to be published before committing to the permanent solution.",
+     "Install the temporary device, then immediately order the concrete to keep to the original schedule set for the construction site."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le texte réglementaire est encore en consultation publique et peut changer avant la certification finale : engager une solution qui ne peut plus être modifiée sans démolition expose le projet à devoir défaire un ouvrage coulé si la norme évolue. Installer le dispositif temporaire, en attendant la publication du texte définitif, préserve la capacité d'ajuster la réponse de conformité sans coût de destruction. Couler la dalle dès maintenant pour démontrer un engagement fort et rassurer les autorités locales ignore que cet engagement pourrait devoir être défait à grands frais si le texte change. Couler la dalle en avançant sa durabilité supérieure ne traite pas le vrai risque, qui est l'instabilité du texte applicable, pas la qualité du matériau. Installer le dispositif temporaire puis commander aussitôt le béton pour tenir le calendrier initial revient à annuler l'avantage du choix temporaire en engageant quand même la solution irréversible avant que le texte soit stabilisé.",
+    "en": "The regulatory text is still under public consultation and could change before final certification: committing to a solution that cannot be modified without demolition exposes the project to having to tear down a poured structure if the standard evolves. Installing the temporary device, while waiting for the final text to be published, preserves the ability to adjust the compliance response without demolition costs. Pouring the slab right away to demonstrate a strong commitment and reassure the local authorities ignores that this commitment might have to be undone at great expense if the text changes. Pouring the slab while citing its superior durability does not address the real risk, which is the instability of the applicable text, not the quality of the material. Installing the temporary device and then immediately ordering the concrete to keep to the original schedule cancels out the benefit of the temporary choice by committing to the irreversible solution anyway before the text is finalized."
+   },
+   "decision_atom": "Choisir entre une solution de conformité réversible et une solution irréversible alors que le texte réglementaire applicable est encore instable.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le texte réglementaire est encore en consultation publique et pourrait changer avant la certification finale.",
+   "bascule": "Si le texte réglementaire avait déjà été publié et figé, couler la dalle deviendrait la bonne réponse.",
+   "task_id": "BE2",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE2-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE2-20260926-0806-1-02",
+   "enabler": "Confirm project compliance requirements (e.g., security, health and safety, sustainability, regulatory compliance).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet pharmaceutique reçoit d'un membre de l'équipe qualité une liste des exigences de conformité applicables au nouvel essai clinique. Le membre de l'équipe qualité n'a pas le mandat officiel de valider les exigences réglementaires pour ce type d'essai ; seul le responsable des affaires réglementaires, actuellement en congé, détient ce mandat selon la charte du projet. Le chef de projet doit lancer la phase de recrutement des patients la semaine prochaine. Que doit-il faire ?",
+    "en": "A pharmaceutical project manager receives from a quality team member a list of compliance requirements applicable to the new clinical trial. The quality team member does not hold the official mandate to validate regulatory requirements for this type of trial; only the regulatory affairs lead, currently on leave, holds that mandate under the project charter. The project manager must launch the patient recruitment phase next week. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Adopter la liste transmise par l'équipe qualité, valider les exigences ainsi communiquées et lancer le recrutement des patients selon le calendrier prévu.",
+     "Demander à un autre membre de l'équipe qualité de contre-vérifier la liste transmise, obtenir son accord et lancer le recrutement sur cette base.",
+     "Reporter le lancement du recrutement des patients jusqu'au retour du responsable des affaires réglementaires, en laissant le calendrier dériver.",
+     "Solliciter une confirmation formelle du responsable des affaires réglementaires, même à distance, avant de lancer le recrutement."
+    ],
+    "en": [
+     "Adopt the list provided by the quality team, validate the requirements it conveys, and launch patient recruitment according to the planned schedule.",
+     "Ask another quality team member to cross-check the provided list, obtain their sign-off, and launch recruitment on that basis.",
+     "Postpone the launch of patient recruitment until the regulatory affairs lead returns, letting the schedule slip in the meantime.",
+     "Seek formal confirmation from the regulatory affairs lead, even remotely, before launching recruitment."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La charte du projet réserve la validation des exigences réglementaires au responsable des affaires réglementaires ; le membre de l'équipe qualité, même compétent, n'a pas ce mandat pour ce type d'essai. Solliciter une confirmation formelle du responsable des affaires réglementaires, même à distance, respecte cette répartition d'autorité tout en permettant de tenir le calendrier. Adopter la liste transmise par l'équipe qualité, valider les exigences ainsi communiquées et lancer le recrutement traite une source non mandatée comme si elle avait l'autorité de validation. Demander à un autre membre de l'équipe qualité de contre-vérifier et obtenir son accord ne change rien au problème : aucun membre de cette équipe ne détient le mandat requis, quel que soit leur nombre. Reporter le lancement du recrutement en laissant le calendrier dériver ignore qu'une confirmation à distance était possible.",
+    "en": "The project charter reserves validation of regulatory requirements to the regulatory affairs lead; the quality team member, however competent, does not hold that mandate for this type of trial. Seeking formal confirmation from the regulatory affairs lead, even remotely, respects this allocation of authority while still allowing the schedule to be kept. Adopting the list provided by the quality team, validating the requirements it conveys, and launching recruitment treats an unmandated source as if it had validation authority. Asking another quality team member to cross-check and obtain their sign-off does not resolve the issue: no member of that team holds the required mandate, regardless of how many review it. Postponing the launch of recruitment and letting the schedule slip ignores that a remote confirmation was available."
+   },
+   "decision_atom": "Décider si l'on peut confirmer des exigences de conformité à partir d'une source qui n'a pas le mandat officiel de les valider.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "La charte du projet réserve la validation des exigences réglementaires au responsable des affaires réglementaires, absent, et non à l'équipe qualité.",
+   "bascule": "Si la charte du projet donnait mandat à l'équipe qualité pour valider ces exigences, la contre-vérification par un collègue deviendrait suffisante.",
+   "task_id": "BE2",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE2-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE2-20260926-0806-1-05",
+   "enabler": "Use methods to support compliance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe projet utilise une liste de contrôle de conformité pour vérifier le respect des normes de sécurité électrique avant la mise en service d'une installation. Lors de la dernière vérification, l'ingénieur électricien affecté à la mise en service a coché lui-même chaque ligne de la liste, sans qu'aucune autre personne n'intervienne dans le contrôle. La procédure du projet prévoit qu'un contrôle de conformité soit revu par une personne distincte de celle ayant réalisé les travaux. Que doit décider le chef de projet ?",
+    "en": "A project team uses a compliance checklist to verify adherence to electrical safety standards before commissioning an installation. During the last verification, the electrical engineer assigned to commissioning checked off every line on the checklist himself, with no other person involved in the review. The project procedure requires that a compliance check be reviewed by someone other than the person who performed the work. What should the project manager decide?"
+   },
+   "options": {
+    "fr": [
+     "Faire revoir la liste de contrôle déjà remplie par une personne distincte de l'ingénieur électricien, avant la mise en service.",
+     "Demander à l'ingénieur électricien de refaire lui-même la liste de contrôle, en portant cette fois une attention renforcée à chaque ligne.",
+     "Archiver la liste de contrôle telle quelle, en s'appuyant sur la compétence technique reconnue de l'ingénieur électricien sur ce sujet.",
+     "Ajouter une case de signature supplémentaire sur la liste de contrôle pour les mises en service à venir, en conservant celle-ci telle quelle."
+    ],
+    "en": [
+     "Have the already completed checklist reviewed by someone other than the electrical engineer, before commissioning.",
+     "Ask the electrical engineer to redo the checklist himself, paying stronger attention this time to each line.",
+     "File the checklist as is, relying on the electrical engineer's recognized technical competence on this subject.",
+     "Add an extra signature box to the checklist for upcoming commissionings, while keeping this one unchanged."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La procédure du projet exige qu'un contrôle de conformité soit revu par une personne distincte de celle ayant réalisé les travaux, et cette séparation n'a pas eu lieu : l'ingénieur électricien a coché seul chaque ligne. Faire revoir la liste déjà remplie par une personne distincte rétablit cette séparation prévue par la procédure sans repartir de zéro. Demander à l'ingénieur électricien de refaire lui-même la liste en portant une attention renforcée ne change rien au problème, puisque c'est l'absence d'une personne distincte, et non la qualité de l'attention portée, qui est en cause. Archiver la liste telle quelle en s'appuyant sur la compétence technique reconnue de l'ingénieur confond compétence individuelle et respect de la procédure de contrôle croisé. Ajouter une case de signature pour les mises en service à venir, en conservant celle-ci telle quelle, traite la procédure à venir sans corriger le contrôle déjà réalisé pour l'installation actuelle.",
+    "en": "The project procedure requires that a compliance check be reviewed by someone other than the person who performed the work, and this separation did not occur: the electrical engineer checked off every line alone. Having the already completed checklist reviewed by someone else restores this separation required by the procedure without starting over. Asking the electrical engineer to redo the checklist himself with stronger attention does not resolve the issue, since it is the absence of a distinct reviewer, not the quality of attention paid, that is at stake. Filing the checklist as is by relying on the engineer's recognized technical competence confuses individual competence with adherence to the cross-check procedure. Adding a signature box for upcoming commissionings while keeping this one unchanged addresses the procedure going forward without correcting the check already performed for the current installation."
+   },
+   "decision_atom": "Décider comment corriger un contrôle de conformité réalisé en violation de la procédure de séparation des rôles.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "La procédure exige qu'un contrôle soit revu par une personne distincte de celle ayant réalisé les travaux, et l'ingénieur électricien a coché seul toute la liste.",
+   "bascule": "Si la procédure du projet n'exigeait pas de séparation entre exécutant et vérificateur, archiver la liste telle quelle deviendrait acceptable.",
+   "task_id": "BE2",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE2-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE3-20260926-0806-1-03",
+   "enabler": "Implement approved changes to the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un changement affectant la conception d'un composant est approuvé par le CCB. Sa mise en œuvre nécessite l'arrêt temporaire d'un environnement de test partagé avec deux autres équipes, qui l'utilisent activement cette semaine pour une campagne de validation déjà planifiée. Quand le chef de projet doit-il déclencher l'implémentation ?",
+    "en": "A change affecting a component's design is approved by the CCB. Implementing it requires temporarily halting a shared test environment currently used by two other teams this week for an already scheduled validation campaign. When should the project manager trigger the implementation?"
+   },
+   "options": {
+    "fr": [
+     "Immédiatement après l'approbation du CCB, pour éviter tout retard dans le calendrier du changement.",
+     "Dès que le membre de l'équipe technique responsable du composant est disponible, pour superviser la mise en œuvre planifiée.",
+     "Après avoir consulté les journaux d'incidents des deux autres équipes sur l'environnement partagé et leur avoir répondu.",
+     "Une fois la campagne de validation des deux autres équipes terminée, ou un créneau alternatif négocié avec elles."
+    ],
+    "en": [
+     "Immediately after CCB approval, to avoid any delay in the change's schedule.",
+     "As soon as the technical team member responsible for the component is available, to oversee the planned implementation.",
+     "After reviewing the incident logs of the two other teams on the shared environment and responding to them.",
+     "Once the two other teams' validation campaign is complete, or an alternative slot negotiated with them."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'implémentation exige l'arrêt d'un environnement que deux autres équipes utilisent activement cette semaine pour une campagne déjà planifiée. Déclencher l'implémentation immédiatement après l'approbation du CCB, pour éviter tout retard dans le calendrier, traite l'autorisation du changement comme si elle réglait aussi la disponibilité des ressources partagées, ce qu'elle ne fait pas. Attendre la disponibilité du responsable technique du composant, pour superviser la mise en œuvre planifiée, répond à une contrainte de ressource interne, mais laisse intacte l'interférence avec la campagne des deux autres équipes. Consulter les journaux d'incidents et répondre aux deux équipes fournit une information utile sur l'état de l'environnement, mais ne règle pas le conflit d'usage avec une activité en cours. Attendre la fin de la campagne de validation, ou négocier un créneau alternatif avec les deux équipes, est la seule option qui tient compte du fait que l'environnement est activement utilisé par des tiers cette semaine.",
+    "en": "Implementation requires halting an environment that two other teams are actively using this week for an already scheduled campaign. Triggering implementation immediately after CCB approval, to avoid any delay in the schedule, treats the change's authorization as if it also settled the availability of shared resources, which it does not. Waiting for the component's technical lead to be available, to oversee the planned implementation, addresses an internal resourcing constraint but leaves the interference with the other two teams' campaign untouched. Reviewing the incident logs and responding to the two teams provides useful information about the environment's state but does not resolve the conflict over its current use. Waiting for the validation campaign to finish, or negotiating an alternative slot with the two teams, is the only option that accounts for the fact that the environment is actively in use by others this week."
+   },
+   "decision_atom": "Décider du moment où déclencher l'implémentation d'un changement approuvé qui nécessite l'arrêt d'une ressource partagée.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'environnement de test à arrêter est activement utilisé cette semaine par deux autres équipes pour une campagne déjà planifiée.",
+   "bascule": "Si l'environnement partagé était libre ou si les deux équipes n'avaient aucune activité planifiée cette semaine, l'implémentation immédiate deviendrait correcte.",
+   "task_id": "BE3",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE3-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE4-20260926-0806-1-01",
+   "enabler": "Evaluate the impact of impediments.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe de développement est bloquée par une défaillance intermittente d'un composant partagé. Deux options de contournement existent : une bascule vers un service de secours facilement réversible, ou une réécriture immédiate du module concerné, difficile à annuler une fois lancée. L'équipe n'a pas encore identifié la cause racine de la défaillance. Que doit-elle faire en priorité ?",
+    "en": "A development team is blocked by an intermittent failure in a shared component. Two workaround options exist: switching to an easily reversible backup service, or immediately rewriting the affected module, which would be hard to undo once started. The team has not yet identified the root cause of the failure. What should it do first?"
+   },
+   "options": {
+    "fr": [
+     "Lancer dès maintenant la réécriture du module en la présentant comme le règlement durable du problème.",
+     "Convoquer une réunion avec les parties prenantes techniques pour valider laquelle des deux options est préférable.",
+     "Basculer vers le service de secours réversible pendant que la cause racine est encore recherchée.",
+     "Documenter les deux options dans le registre des risques en renvoyant le choix à la prochaine rétrospective."
+    ],
+    "en": [
+     "Start the module rewrite now, presenting it as the durable resolution of the problem.",
+     "Convene a meeting with technical stakeholders to validate which of the two options is preferable.",
+     "Switch to the reversible backup service while the root cause is still being investigated.",
+     "Log both options in the risk register, deferring the choice to the next retrospective."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La cause racine de la défaillance n'est pas encore connue : engager une réécriture difficile à annuler expose l'équipe à devoir défaire un travail lourd si la cause réelle se révèle différente de ce qui est supposé. Basculer vers le service de secours réversible maintient l'équipe productive sans fermer d'options pendant que l'investigation se poursuit. Lancer dès maintenant la réécriture en la présentant comme la solution durable traite un impact encore incertain comme s'il justifiait déjà un changement irréversible. Convoquer une réunion de validation retarde une action immédiatement disponible pour un blocage qui affecte déjà le travail en cours. Documenter dans le registre en renvoyant le choix à la rétrospective traite un blocage actif comme une décision qui peut patienter, alors que l'équipe est bloquée dès maintenant.",
+    "en": "The root cause of the failure is not yet known: starting a hard-to-undo rewrite risks committing the team to heavy work that may need to be reversed if the real cause turns out to differ from what is assumed. Switching to the reversible backup service keeps the team productive without closing off options while investigation continues. Starting the rewrite now and presenting it as the durable fix treats a still-uncertain impact as if it already justified an irreversible change. Convening a validation meeting delays an immediately available action for a blocker that is already affecting ongoing work. Logging the options and deferring the choice to the retrospective treats an active blocker as a decision that can wait, when the team is blocked right now."
+   },
+   "decision_atom": "Décider quelle option de contournement engager pendant que la cause racine d'un impediment technique reste inconnue.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "La cause racine de la défaillance n'est pas encore identifiée.",
+   "bascule": "Si la cause racine était déjà confirmée et clairement liée au module, lancer la réécriture deviendrait défendable.",
+   "task_id": "BE4",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE4-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE4-20260926-0806-1-04",
+   "enabler": "Reassess continually to help ensure impediments, obstacles, and blockers for the team are being addressed.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un obstacle récurrent lié à la lenteur d'un pipeline d'intégration a été traité par un ajustement de configuration il y a deux jours. Le cycle de mesure habituel dure cinq jours ouvrés avant de confirmer si un ajustement de ce type tient dans la durée. Les deux premiers jours montrent une amélioration. Que devrait faire l'équipe ?",
+    "en": "A recurring impediment related to a slow integration pipeline was addressed with a configuration adjustment two days ago. The usual measurement cycle takes five business days to confirm whether an adjustment of this kind holds over time. The first two days show improvement. What should the team do?"
+   },
+   "options": {
+    "fr": [
+     "Déclarer dès maintenant l'obstacle résolu et le retirer de la liste des obstacles actifs suivis.",
+     "Poursuivre le suivi jusqu'à la fin du cycle de mesure avant de statuer sur la résolution.",
+     "Communiquer au sponsor que l'obstacle est levé, sur la seule base des deux premiers jours observés.",
+     "Réduire dès maintenant la fréquence des mesures restantes, l'amélioration initiale étant jugée encourageante."
+    ],
+    "en": [
+     "Declare the impediment resolved right now and remove it from the tracked active impediment list.",
+     "Keep monitoring until the end of the measurement cycle before ruling on resolution.",
+     "Tell the sponsor the impediment is cleared, based solely on the first two observed days.",
+     "Reduce the frequency of the remaining measurements right away, since the initial improvement is judged encouraging."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le cycle de mesure habituel n'est pas terminé : deux jours d'amélioration ne suffisent pas à distinguer un effet durable d'une fluctuation passagère, d'où l'intérêt de poursuivre le suivi jusqu'au terme prévu avant de conclure. Déclarer dès maintenant l'obstacle résolu et le retirer du suivi anticipe une confirmation qui n'est pas encore acquise. Informer le sponsor que l'obstacle est levé sur la seule base des deux premiers jours communique une certitude que les données actuelles ne permettent pas encore d'établir. Réduire dès maintenant la fréquence des mesures restantes affaiblit la capacité à détecter un retour du problème avant même que le cycle prévu soit achevé.",
+    "en": "The usual measurement cycle is not yet complete: two days of improvement are not enough to distinguish a lasting effect from a temporary fluctuation, which is why monitoring should continue until the planned end point before concluding. Declaring the impediment resolved right now and removing it from tracking anticipates a confirmation that is not yet established. Telling the sponsor the impediment is cleared based solely on the first two observed days communicates a certainty that current data does not yet support. Reducing the frequency of remaining measurements right away weakens the ability to detect a recurrence before the planned cycle is even finished."
+   },
+   "decision_atom": "Décider si un signe précoce d'amélioration suffit à déclarer un obstacle résolu avant la fin du cycle de mesure prévu.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Seuls deux jours sur un cycle de mesure de cinq jours se sont écoulés.",
+   "bascule": "Si le cycle de mesure prévu était déjà achevé avec un résultat stable, communiquer la résolution deviendrait correct.",
+   "task_id": "BE4",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE4-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE5-20260926-0806-1-01",
+   "enabler": "Communicate the status of a risk impact on the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un risque coté élevé sur le registre s'est matérialisé et retarde un livrable critique. Le chef de projet a rassemblé les faits et rédigé un point de situation clair. Le sponsor est en congé cette semaine et n'a délégué aucune autorité de décision à un remplaçant. Que doit faire le chef de projet en priorité ?",
+    "en": "A risk rated high on the register has materialized and is delaying a critical deliverable. The project manager has gathered the facts and drafted a clear status update. The sponsor is on leave this week and has delegated no decision authority to a substitute. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Envoyer le point de situation à toute l'équipe projet pour recueillir des avis avant de le transmettre plus haut.",
+     "Transmettre le point de situation au comité de gouvernance habilité à agir en l'absence du sponsor.",
+     "Conserver le point de situation jusqu'au retour de congé du sponsor, pour le lui présenter à ce moment-là.",
+     "Demander au sponsor de valider le point de situation par un message envoyé pendant son congé, dès réception."
+    ],
+    "en": [
+     "Send the status update to the whole project team to gather input before escalating it further.",
+     "Forward the status update to the governance body authorized to act in the sponsor's absence.",
+     "Hold the status update until the sponsor's return from leave, to present it to them at that time.",
+     "Ask the sponsor to validate the status update via a message sent during their leave, upon receipt."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le risque est déjà matérialisé et touche un livrable critique : l'information doit atteindre une instance capable d'agir maintenant. Le sponsor étant absent et sans délégué désigné, transmettre le point de situation au comité de gouvernance habilité à agir en son absence est la seule voie qui respecte à la fois l'urgence et l'autorité réelle de décision. Envoyer le point à toute l'équipe projet ne fait que recueillir des avis, sans mandat pour décider d'une réponse. Conserver le point jusqu'au retour de congé du sponsor, pour le lui présenter à ce moment-là, laisse le risque progresser sans réponse pendant toute son absence, alors qu'un livrable critique est déjà touché. Solliciter une validation du sponsor par un message envoyé pendant son congé, dès réception, revient à s'appuyer sur une personne qui n'a, par construction, pas d'autorité opérationnelle cette semaine-là.",
+    "en": "The risk has already materialized and is affecting a critical deliverable: the information needs to reach a body able to act now. With the sponsor away and no substitute designated, forwarding the status update to the governance body authorized to act in the sponsor's absence is the only path that respects both the urgency and the real decision authority. Sending the update to the whole project team only gathers input, without a mandate to decide on a response. Holding the status update until the sponsor's return from leave, to present it to them at that time, leaves the risk unaddressed for the entire absence, while a critical deliverable is already affected. Asking the sponsor to validate the status update via a message sent during their leave, upon receipt, relies on someone who, by design, holds no operational authority that week."
+   },
+   "decision_atom": "Décider à qui transmettre un point de situation sur un risque matérialisé quand le destinataire habituel est indisponible.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le sponsor est en congé et n'a délégué aucune autorité de décision.",
+   "bascule": "Si le retour du sponsor était imminent et l'impact non urgent, attendre son retour deviendrait défendable.",
+   "task_id": "BE5",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE5-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE5-20260926-0806-1-03",
+   "enabler": "Monitor and control risks.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un risque lié à un fournisseur clé est surveillé mensuellement selon le plan de management des risques. Trois semaines après la dernière revue, le chef de projet reçoit une information non confirmée selon laquelle le fournisseur traverserait des difficultés financières. La prochaine revue planifiée a lieu dans une semaine. Que doit faire le chef de projet en priorité ?",
+    "en": "A risk tied to a key supplier is monitored monthly per the risk management plan. Three weeks after the last review, the project manager receives unconfirmed information suggesting the supplier may be facing financial difficulties. The next scheduled review is in one week. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Mettre à jour dès maintenant le registre des risques avec un plan de réponse renforcé pour ce fournisseur, en concertation avec l'équipe achats.",
+     "Informer le sponsor du changement de probabilité du risque, par courriel, avant toute vérification de l'information reçue.",
+     "Reporter l'examen de ce risque au fournisseur à la revue mensuelle planifiée dans une semaine, comme prévu au plan.",
+     "Engager sans attendre une vérification ciblée de la situation financière du fournisseur avant la prochaine revue."
+    ],
+    "en": [
+     "Update the risk register now with a strengthened response plan for this supplier, in coordination with the procurement team.",
+     "Inform the sponsor by email of the changed risk probability, before verifying the information received.",
+     "Defer review of this supplier risk to the monthly review scheduled in one week, as planned.",
+     "Launch a targeted verification of the supplier's financial situation now, ahead of the next scheduled review."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'information reçue est non confirmée et touche un risque déjà identifié comme clé : la surveillance continue exige de vérifier un signal de cette nature dès qu'il apparaît, sans attendre le cycle mensuel prévu pour les cas où rien de nouveau n'est survenu. Engager sans attendre une vérification ciblée de la situation financière du fournisseur avant la prochaine revue est l'action qui correspond au moment réel de l'alerte. Mettre à jour le registre avec un plan de réponse renforcé, en concertation avec l'équipe achats, agit sur la base d'une information encore non confirmée, avant même de savoir si le risque a changé. Informer le sponsor par courriel avant toute vérification propage un signal non vérifié à un niveau de décision qui s'attend à des données consolidées. Reporter l'examen de ce risque fournisseur à la revue planifiée dans une semaine traite un signal important comme s'il pouvait attendre le cycle normal, alors que rien ne le justifie ici.",
+    "en": "The information received is unconfirmed and concerns a risk already identified as key: continuous monitoring requires verifying a signal of this nature as soon as it appears, rather than waiting for the monthly cycle intended for periods with no new developments. Launching a targeted verification of the supplier's financial situation now, ahead of the next scheduled review, matches the actual timing of the alert. Updating the register with a strengthened response plan, in coordination with the procurement team, acts on information that is still unconfirmed, before even knowing whether the risk has changed. Informing the sponsor by email before any verification spreads an unverified signal to a decision level that expects consolidated data. Deferring review of this supplier risk to the review scheduled in one week treats an important signal as though it could wait for the normal cycle, though nothing here supports that."
+   },
+   "decision_atom": "Décider s'il faut vérifier un signal non confirmé avant la prochaine revue planifiée de surveillance des risques.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'information reçue est non confirmée et concerne un risque déjà identifié comme clé, trois semaines après la dernière revue.",
+   "bascule": "Si l'information était arrivée la veille de la revue planifiée et concernait un risque mineur, différer l'examen deviendrait acceptable.",
+   "task_id": "BE5",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE5-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE5-20260926-0806-1-05",
+   "enabler": "Analyze risks.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un risque lié à la disponibilité d'une compétence rare est en cours d'analyse. Un membre senior de l'équipe affirme en réunion que le risque est faible, sans donnée à l'appui, en s'appuyant sur son expérience de projets antérieurs. Aucune analyse quantitative n'a encore été menée pour ce risque spécifique. Que doit faire le chef de projet en priorité ?",
+    "en": "A risk tied to the availability of a rare skill is under analysis. A senior team member states in a meeting that the risk is low, without supporting data, based on experience from prior projects. No quantitative analysis has yet been performed for this specific risk. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Retenir l'évaluation faible communiquée par le membre senior compte tenu de son expérience reconnue.",
+     "Conduire une analyse structurée du risque en s'appuyant sur des données propres au contexte actuel.",
+     "Demander à un autre membre senior de confirmer indépendamment cette évaluation, sans données nouvelles à l'appui.",
+     "Inscrire l'évaluation faible au registre en la marquant comme fondée sur un jugement d'expert."
+    ],
+    "en": [
+     "Accept the low rating given by the senior team member given their recognized experience.",
+     "Conduct a structured analysis of the risk using data specific to the current context.",
+     "Ask another senior team member to independently confirm this rating, with no new supporting data.",
+     "Enter the low rating in the register, flagging it as based on expert judgment."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'évaluation communiquée s'appuie sur l'expérience générale de projets antérieurs et non sur des données propres à ce risque précis, alors qu'aucune analyse quantitative n'a encore été menée. Conduire une analyse structurée du risque en s'appuyant sur des données propres au contexte actuel apporte le niveau de preuve que la situation exige avant de fixer une évaluation. Retenir l'évaluation faible telle quelle transforme une opinion d'expérience en conclusion d'analyse sans qu'aucune donnée spécifique n'ait été examinée. Demander à un autre membre senior de confirmer indépendamment cette évaluation, sans données nouvelles à l'appui, ne fait que multiplier des jugements de même nature. Inscrire l'évaluation en la marquant comme jugement d'expert documente la source de l'opinion mais ne comble pas l'absence d'analyse que le risque spécifique requiert.",
+    "en": "The rating given rests on general experience from prior projects rather than on data specific to this particular risk, while no quantitative analysis has yet been performed. Conducting a structured analysis of the risk using data specific to the current context supplies the level of evidence the situation calls for before settling on a rating. Accepting the low rating as given turns an experience-based opinion into an analytical conclusion without any specific data having been examined. Asking another senior team member to independently confirm this rating, with no new supporting data, only multiplies judgments of the same kind. Entering the rating while flagging it as expert judgment documents the source of the opinion but does not fill the gap in analysis that this specific risk requires."
+   },
+   "decision_atom": "Décider si une évaluation de risque basée sur l'expérience suffit en l'absence d'analyse spécifique au contexte actuel.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Aucune analyse quantitative n'a encore été menée pour ce risque spécifique ; l'évaluation s'appuie seulement sur l'expérience de projets antérieurs.",
+   "bascule": "Si une analyse quantitative équivalente avait déjà été menée sur un risque très similaire dans le même contexte, s'appuyer sur ce jugement documenté deviendrait acceptable.",
+   "task_id": "BE5",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE5-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE6-20260926-0806-1-01",
+   "enabler": "Utilize lessons learned.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet clôture une phase et souhaite consigner un enseignement selon lequel « les fournisseurs régionaux livrent systématiquement en retard ». Cette impression provient d'une seule conversation informelle avec un membre de l'équipe, sans données de livraison associées. Que doit-il faire en priorité avant d'inscrire cet enseignement au registre ?",
+    "en": "A project manager is closing a phase and wants to log a lesson stating that \"regional vendors consistently deliver late.\" This impression comes from a single informal conversation with a team member, with no delivery data attached. What should he prioritize before entering this lesson into the register?"
+   },
+   "options": {
+    "fr": [
+     "Inscrire l'enseignement tel quel dans le registre en citant comme source le membre de l'équipe ayant fait l'observation informelle.",
+     "Rassembler les dates de livraison réelles des fournisseurs régionaux sur la phase écoulée avant de formuler l'enseignement.",
+     "Transmettre l'observation au bureau de gestion de projet afin qu'il statue sur la validité de cet enseignement avant la clôture.",
+     "Reporter à la phase suivante la consignation de tout enseignement relatif aux fournisseurs, le temps que davantage de livraisons soient observées."
+    ],
+    "en": [
+     "Enter the lesson as stated into the register, citing as source the team member who made the informal observation.",
+     "Gather the actual delivery dates of regional vendors over the completed phase before formulating the lesson.",
+     "Forward the observation to the project management office so it can rule on the lesson's validity before closure.",
+     "Postpone to the next phase the logging of any vendor-related lesson, until more deliveries have been observed."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'énoncé précise que l'affirmation repose sur une seule conversation informelle, sans données de livraison. Avant d'inscrire un enseignement destiné à guider de futures décisions d'approvisionnement, il faut vérifier qu'il reflète un constat vérifiable plutôt qu'une impression isolée : rassembler les dates de livraison réelles répond directement à ce manque. Inscrire l'observation telle quelle en citant comme source le membre de l'équipe transforme une anecdote non vérifiée en enseignement officiel, ce que l'absence de données ne permet pas de garantir. Transmettre au bureau de gestion de projet déplace la responsabilité de vérification vers une autre instance alors que le chef de projet dispose lui-même des moyens de consulter les données de livraison. Reporter à la phase suivante la consignation de tout enseignement fournisseur retarde inutilement un enseignement qui pourrait être établi immédiatement une fois les données rassemblées, alors que rien n'empêche cette vérification avant la clôture.",
+    "en": "The scenario states that the claim rests on a single informal conversation, with no delivery data behind it. Before logging a lesson meant to guide future procurement decisions, it must be confirmed as a verifiable finding rather than an isolated impression — gathering the actual delivery dates directly addresses that gap. Entering the observation as stated, citing as source the team member who made the observation, turns an unverified anecdote into an official lesson, which the lack of data cannot support. Forwarding it to the project management office shifts the verification work to another party when the project manager already has access to the delivery records. Postponing to the next phase the logging of any vendor-related lesson needlessly delays a lesson that could be established right away once the data is gathered, since nothing prevents this check before closure."
+   },
+   "decision_atom": "Décider quoi faire avant d'inscrire au registre un enseignement fondé sur une seule conversation informelle sans données à l'appui.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'affirmation provient d'une seule conversation informelle, sans données de livraison associées.",
+   "bascule": "Si l'énoncé précisait que des données de livraison documentées confirment déjà le retard systématique, inscrire l'enseignement tel quel deviendrait correct.",
+   "task_id": "BE6",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE6-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE6-20260926-0806-1-03",
+   "enabler": "Update organizational process assets (OPAs).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet constate qu'un modèle de charte de projet, utilisé dans toute l'organisation, omet une clause désormais requise par une nouvelle politique de gouvernance interne. Il n'a pas l'autorité pour modifier lui-même ce modèle partagé. Que doit-il faire en priorité ?",
+    "en": "A project manager notices that a project charter template, used organization-wide, omits a clause now required by a new internal governance policy. He does not have the authority to modify this shared template himself. What should he prioritize?"
+   },
+   "options": {
+    "fr": [
+     "Ajouter la clause manquante dans sa propre copie du modèle et continuer de l'utiliser ainsi pour ses projets en cours.",
+     "Diffuser un rappel informel aux autres chefs de projet afin que chacun ajoute la clause manquante de son côté.",
+     "Documenter l'écart constaté dans le rapport de clôture de son projet actuel, pour référence lors d'une future mise à jour.",
+     "Signaler l'écart au responsable des actifs organisationnels afin qu'il évalue une mise à jour du modèle partagé."
+    ],
+    "en": [
+     "Add the missing clause to his own copy of the template and keep using it that way for his ongoing projects.",
+     "Send an informal reminder to other project managers so each one adds the missing clause on their own.",
+     "Document the observed gap in his current project's closure report for reference at a future update.",
+     "Report the gap to the owner of organizational assets so they can evaluate updating the shared template."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'énoncé précise que le modèle est partagé à l'échelle de l'organisation et que le chef de projet n'a pas l'autorité de le modifier lui-même : la correction dépasse donc son périmètre de décision et doit être portée à l'instance qui détient cette autorité. Signaler l'écart au responsable des actifs organisationnels place la décision entre les mains de la bonne autorité, qui pourra juger de la mise à jour et de sa diffusion à tous les projets concernés. Modifier sa propre copie et continuer de l'utiliser ainsi corrige le problème pour lui seul, sans jamais toucher le modèle partagé que d'autres continueront d'utiliser tel quel. Diffuser un rappel informel afin que chacun ajoute la clause de son côté contourne l'instance responsable du modèle en s'appuyant sur des corrections individuelles et non coordonnées. Documenter l'écart constaté dans le rapport de clôture retarde le signalement jusqu'à la fin du projet, alors que d'autres projets utilisant le même modèle entre-temps resteraient exposés à la même omission.",
+    "en": "The scenario states that the template is shared across the organization and that the project manager does not have the authority to modify it himself: the fix is therefore beyond his decision scope and must be escalated to the body that holds that authority. Reporting the gap to the owner of organizational assets places the decision with the appropriate authority, who can judge whether to update the template and roll it out to all affected projects. Adding the missing clause to his own copy and keeping using it that way fixes the issue only for himself, never touching the shared template that others will keep using as is. Sending an informal reminder so each project manager adds the missing clause on their own bypasses the body responsible for the template by relying on uncoordinated individual fixes. Documenting the observed gap in the closure report delays the escalation until the project ends, leaving other projects using the same template exposed to the same omission in the meantime."
+   },
+   "decision_atom": "Décider comment traiter un écart identifié dans un modèle organisationnel partagé que le chef de projet n'a pas l'autorité de modifier.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le chef de projet n'a pas l'autorité de modifier lui-même le modèle partagé.",
+   "bascule": "Si aucun autre projet n'utilisait ce modèle avant la prochaine mise à jour prévue, documenter l'écart pour référence future deviendrait suffisant.",
+   "task_id": "BE6",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE6-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE6-20260926-0806-1-05",
+   "enabler": "Help ensure continuous improvement processes are updated.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un membre de l'équipe propose une modification du processus de revue des risques utilisé par plusieurs équipes de l'organisation, suite à un succès observé sur son propre projet. Le chef de projet trouve la proposition prometteuse, mais ce processus est piloté par un comité d'amélioration continue distinct de son équipe. Que doit-il faire en priorité ?",
+    "en": "A team member proposes a change to the risk review process used by several teams across the organization, following a success observed on his own project. The project manager finds the proposal promising, but this process is owned by a continuous improvement committee separate from his team. What should he prioritize?"
+   },
+   "options": {
+    "fr": [
+     "Présenter la proposition au comité d'amélioration continue afin qu'il évalue son adoption à l'échelle des équipes concernées.",
+     "Approuver la modification pour son propre projet, avant d'inviter les autres équipes intéressées à l'essayer à leur tour.",
+     "Demander au membre de l'équipe de tester d'abord la modification sur un second projet interne avant toute présentation au comité.",
+     "Intégrer directement la modification dans le processus partagé de revue des risques, en s'appuyant sur le succès déjà observé."
+    ],
+    "en": [
+     "Present the proposal to the continuous improvement committee so it can evaluate adoption across the affected teams.",
+     "Approve the change for his own project, before inviting other interested teams to try it in turn.",
+     "Ask the team member to first test the change on a second internal project before any presentation to the committee.",
+     "Directly integrate the change into the shared risk review process, relying on the success already observed."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'énoncé précise que le processus concerné est piloté par un comité d'amélioration continue distinct de l'équipe du chef de projet : la décision d'adopter ou non une modification à l'échelle de plusieurs équipes appartient à ce comité, pas au chef de projet lui-même. Présenter la proposition au comité place la décision entre les mains de l'instance qui a autorité sur ce processus partagé. Approuver la modification pour son propre projet avant d'inviter les autres équipes intéressées à l'essayer revient à agir comme si l'autorité sur le processus partagé lui appartenait, alors que l'énoncé indique le contraire. Demander un second test sur un projet interne avant toute présentation au comité retarde la remontée sans que rien n'indique que ce comité exige une telle preuve supplémentaire avant d'examiner la proposition. Intégrer directement la modification dans le processus partagé de revue des risques contourne entièrement le comité qui en a la charge.",
+    "en": "The scenario states that the process in question is owned by a continuous improvement committee separate from the project manager's team: the decision to adopt a change across several teams belongs to that committee, not to the project manager himself. Presenting the proposal to the committee places the decision with the body that has authority over this shared process. Approving the change for his own project before inviting other interested teams to try it in turn acts as though authority over the shared process belonged to him, when the scenario indicates otherwise. Asking for a second test on an internal project before any presentation to the committee delays escalation with no indication that the committee requires such further proof before reviewing the proposal. Directly integrating the change into the shared risk review process entirely bypasses the committee responsible for it."
+   },
+   "decision_atom": "Décider qui doit statuer sur une proposition de modification d'un processus partagé piloté par un comité distinct.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le processus visé est piloté par un comité d'amélioration continue distinct de l'équipe du chef de projet.",
+   "bascule": "Si le chef de projet siégeait lui-même au comité avec mandat pour approuver des changements de processus partagés, approuver la modification pour son propre projet avant diffusion deviendrait défendable.",
+   "task_id": "BE6",
+   "level": 2,
+   "run_id": "20260926-0806",
+   "release": "qL2-BE6-20260926-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
