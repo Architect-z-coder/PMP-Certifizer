@@ -1,0 +1,311 @@
+{
+ "run_id": "20260927-0843",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-BE7-20260927-0843-1-02",
+   "enabler": "Evaluate the impact of organizational change on the project and determine required actions.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une réorganisation interne fusionne deux directions dont dépendent des membres clés de l'équipe projet. Le chef de projet évalue l'impact sur son calendrier et identifie un risque de retard de deux semaines sur un lot de travaux non critique. Le plan de management des risques du projet indique que les retards inférieurs à un mois sur des lots non critiques sont traités par le chef de projet sans remontée. Que doit-il faire en priorité ?",
+    "en": "An internal reorganization merges two departments on which key project team members depend. The project manager assesses the impact on the schedule and identifies a risk of a two-week delay on a non-critical work package. The project's risk management plan states that delays under one month on non-critical work packages are handled by the project manager without escalation. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Transmettre immédiatement le risque identifié au comité de pilotage pour obtenir de sa part une décision officielle sur la suite à donner.",
+     "Ajuster le plan de management du lot concerné en s'appuyant sur son autorité définie pour ce type de retard.",
+     "Suspendre le lot de travaux non critique jusqu'à ce que la fusion des deux directions soit officiellement finalisée par l'organisation.",
+     "Consulter les responsables des deux nouvelles directions pour recueillir leur avis préalable avant toute action sur le calendrier."
+    ],
+    "en": [
+     "Immediately escalate the identified risk to the steering committee to obtain from it an official decision on how to proceed.",
+     "Adjust the management plan for the affected work package using his defined authority for this type of delay.",
+     "Suspend the non-critical work package until the merger of the two departments is officially finalized by the organization.",
+     "Consult the leads of both new departments to gather their prior input before taking any action on the schedule."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le plan de management des risques attribue explicitement au chef de projet l'autorité de traiter, sans remontée, les retards inférieurs à un mois sur des lots non critiques — et le risque identifié est de deux semaines sur un tel lot. Ajuster le plan du lot concerné en s'appuyant sur cette autorité correspond exactement à ce que le document prévoit. Transmettre le risque identifié au comité de pilotage pour obtenir de sa part une décision officielle revient à escalader une décision que le chef de projet est mandaté à prendre lui-même, ce qui contredit le seuil déjà fixé. Suspendre le lot de travaux jusqu'à la finalisation officielle de la fusion par l'organisation introduit une interruption que rien dans l'énoncé ne justifie, alors qu'un retard de deux semaines reste gérable dans le cadre existant. Consulter les responsables des deux nouvelles directions pour recueillir leur avis préalable avant d'agir retarde une décision que le plan de management des risques autorise déjà à prendre directement.",
+    "en": "The risk management plan explicitly gives the project manager authority to handle, without escalation, delays under one month on non-critical work packages — and the identified risk is a two-week delay on such a package. Adjusting the management plan for that package using this authority matches exactly what the document provides for. Immediately escalating the identified risk to the steering committee to obtain from it an official decision raises a decision the project manager is already mandated to make himself, contradicting the threshold already set. Suspending the work package until the merger is officially finalized by the organization introduces a stoppage that nothing in the scenario justifies, since a two-week delay remains manageable within the existing framework. Consulting the leads of both new departments to gather their prior input before acting delays a decision the risk management plan already authorizes him to make directly."
+   },
+   "decision_atom": "Décider si un retard de deux semaines sur un lot non critique, causé par une réorganisation, doit être escaladé ou traité directement.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le plan de management des risques attribue explicitement au chef de projet l'autorité de traiter sans remontée les retards inférieurs à un mois sur les lots non critiques.",
+   "bascule": "Si le retard estimé dépassait un mois, ou si le lot était critique, escalader au comité de pilotage deviendrait la bonne action.",
+   "task_id": "BE7",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-BE7-20260927-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE7-20260927-0843-1-03",
+   "enabler": "Evaluate the impact of organizational change on the project and determine required actions.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Suite à l'annonce d'une nouvelle politique de sécurité des données, l'équipe projet doit adapter son processus de partage de fichiers avec un prestataire externe. Deux options techniques sont disponibles : migrer vers une plateforme d'échange chiffrée gérée par l'organisation, ou activer une extension temporaire sur l'outil actuel qui peut être désactivée en un clic si la politique est révisée. La politique vient d'être publiée et son application définitive dépend d'un audit de conformité prévu dans six semaines. Que doit faire le chef de projet en priorité ?",
+    "en": "Following the announcement of a new data security policy, the project team must adapt its file-sharing process with an external vendor. Two technical options are available: migrating to an encrypted exchange platform managed by the organization, or enabling a temporary extension on the current tool that can be disabled with one click if the policy is revised. The policy has just been published and its final application depends on a compliance audit scheduled in six weeks. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Former immédiatement le prestataire externe aux exigences détaillées de la nouvelle politique de sécurité des données.",
+     "Documenter la nouvelle politique dans le registre des risques du projet en vue d'un suivi ultérieur par l'équipe.",
+     "Activer l'extension temporaire réversible en attendant les conclusions de l'audit de conformité.",
+     "Migrer sans délai le processus de partage vers la plateforme chiffrée gérée par l'organisation."
+    ],
+    "en": [
+     "Immediately train the external vendor on the detailed requirements of the new data security policy.",
+     "Document the new policy in the project's risk register for later follow-up by the team.",
+     "Enable the reversible temporary extension while awaiting the compliance audit's conclusions.",
+     "Migrate the file-sharing process without delay to the organization's managed encrypted platform."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'énoncé précise que la politique vient d'être publiée et que son application définitive dépend d'un audit prévu dans six semaines : la situation n'est pas encore stabilisée. Activer l'extension réversible permet de répondre à l'exigence immédiate tout en gardant la possibilité d'ajuster le dispositif selon les conclusions de l'audit. Former le prestataire aux exigences détaillées de la politique porte sur un contenu qui n'est pas encore confirmé dans son application définitive. Documenter la politique dans le registre des risques en vue d'un suivi ultérieur n'apporte aucune réponse au besoin opérationnel immédiat de partage de fichiers. Migrer sans délai vers la plateforme chiffrée engage une solution durable alors que l'énoncé indique explicitement que la politique peut encore évoluer après l'audit.",
+    "en": "The scenario specifies that the policy has just been published and its final application depends on an audit scheduled in six weeks: the situation is not yet settled. Enabling the reversible extension addresses the immediate requirement while preserving the ability to adjust the approach based on the audit's conclusions. Training the vendor on the detailed requirements of the policy concerns content that is not yet confirmed in its final form. Documenting the policy in the risk register for later follow-up by the team provides no answer to the immediate operational need for file sharing. Migrating without delay to the encrypted platform commits to a lasting solution even though the scenario explicitly states the policy may still change after the audit."
+   },
+   "decision_atom": "Décider entre une solution réversible temporaire et une migration définitive pour répondre à une politique organisationnelle pas encore stabilisée.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "La politique vient d'être publiée et son application définitive dépend d'un audit de conformité prévu dans six semaines.",
+   "bascule": "Si l'audit de conformité avait déjà eu lieu et confirmé la politique dans sa forme actuelle, migrer vers la plateforme chiffrée deviendrait la bonne action.",
+   "task_id": "BE7",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-BE7-20260927-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20260927-0843-1-04",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit réaffecter deux ressources techniques entre trois lots de travail suite à un changement de priorité validé par le sponsor. Les capacités disponibles pour chaque lot ne sont pas encore actualisées depuis le dernier rapport d'avancement, vieux de trois semaines. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager must reallocate two technical resources across three work packages following a priority change approved by the sponsor. Available capacity for each work package has not been updated since the last progress report, three weeks old. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Annoncer la réaffectation aux trois responsables de lot pour anticiper leur organisation.",
+     "Répartir les deux ressources selon la nouvelle priorité approuvée par le sponsor.",
+     "Actualiser les données de capacité disponible sur les trois lots avant de répartir les ressources.",
+     "Consulter les deux ressources concernées sur leur préférence entre les trois lots de travail."
+    ],
+    "en": [
+     "Announce the reallocation to the three work package leads so they can plan ahead.",
+     "Distribute the two resources according to the new priority approved by the sponsor.",
+     "Update available capacity data across the three work packages before distributing the resources.",
+     "Consult the two resources involved on their preference among the three work packages."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les données de capacité disponible datent de trois semaines et n'ont pas été actualisées depuis, alors que la réaffectation porte justement sur la disponibilité de ressources entre lots. Actualiser ces données avant de répartir les ressources évite de fonder une décision sur une photographie périmée de la charge. Annoncer la réaffectation aux responsables de lot communique une décision qui n'a pas encore de base chiffrée à jour. Répartir les ressources selon la priorité approuvée applique un critère valide mais sans vérifier au préalable si les capacités ont changé depuis trois semaines. Consulter les deux ressources sur leurs préférences introduit un critère qui n'a pas sa place avant que les données de charge réelle soient connues.",
+    "en": "Available capacity data is three weeks old and has not been refreshed, even though the reallocation itself concerns resource availability across work packages. Updating this data before distributing resources avoids basing a decision on an outdated snapshot of workload. Announcing the reallocation to work package leads communicates a decision that has no current numerical basis yet. Distributing resources according to the approved priority applies a valid criterion but without first checking whether capacity has changed in three weeks. Consulting the two resources on their preferences introduces a criterion that has no place before actual workload data is known."
+   },
+   "decision_atom": "Décider s'il faut répartir des ressources selon une priorité nouvellement approuvée ou d'abord actualiser les données de capacité disponible.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les données de capacité disponible sur les trois lots datent de trois semaines et n'ont pas été actualisées depuis.",
+   "bascule": "Si les données de capacité avaient été actualisées la veille, répartir directement selon la priorité approuvée deviendrait la bonne réponse.",
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-PR4-20260927-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260927-0843-2-01",
+   "enabler": "Help ensure regulatory compliance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet découvre qu'un lot de travail utilise un matériau qui respecte la norme technique du contrat, mais qui pourrait ne pas satisfaire une nouvelle exigence environnementale régionale encore en cours de transposition. L'équipe qualité interne n'a pas mandat sur les affaires réglementaires. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager discovers that a work package uses a material that meets the contractual technical standard, but that may not satisfy a new regional environmental requirement still being transposed into law. The internal quality team has no mandate over regulatory affairs. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander à l'équipe qualité interne de statuer sur la conformité du matériau à la nouvelle exigence environnementale régionale en cours de transposition.",
+     "Saisir le responsable conformité réglementaire de l'organisation pour obtenir une interprétation applicable de l'exigence.",
+     "Réunir le comité de pilotage du projet pour trancher collectivement sur le maintien du matériau actuel dans le lot de travail.",
+     "Informer le fournisseur du matériau que sa conformité environnementale est désormais mise en question par le chef de projet."
+    ],
+    "en": [
+     "Ask the internal quality team to rule on the material's compliance with the new regional environmental requirement still being transposed.",
+     "Escalate to the organization's regulatory compliance officer to obtain an applicable interpretation of the requirement.",
+     "Convene the project's steering committee to jointly decide on retaining the current material in the work package.",
+     "Notify the material supplier that its environmental compliance is now being questioned by the project manager."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le chef de projet doit saisir le responsable conformité réglementaire, car l'énoncé précise que l'équipe qualité interne n'a pas mandat sur les affaires réglementaires : ce n'est pas une question de méthode qualité mais d'interprétation juridique d'une exigence en cours de transposition. Demander à l'équipe qualité interne de statuer revient à faire trancher une question réglementaire par une instance qui n'en a pas l'autorité, ce qui ne produit aucune interprétation opposable. Réunir le comité de pilotage escalade une question technique avant même d'avoir obtenu l'avis de l'instance compétente, ce qui inverse l'ordre utile des démarches. Informer le fournisseur d'une mise en question non confirmée expose l'organisation avant même de savoir si l'exigence s'applique réellement au projet.",
+    "en": "The project manager should escalate to the regulatory compliance officer, since the scenario states that the internal quality team has no mandate over regulatory affairs: this is not a quality-method question but a legal interpretation of a requirement still being transposed. Asking the internal quality team to rule on it means having a body without authority decide a regulatory matter, producing no enforceable interpretation. Convening the steering committee escalates a technical question before even obtaining the competent body's opinion, reversing the useful order of steps. Notifying the supplier of an unconfirmed concern exposes the organization before even knowing whether the requirement actually applies to the project."
+   },
+   "decision_atom": "Décider qui doit être saisi pour interpréter l'applicabilité d'une exigence réglementaire encore en transposition.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "L'équipe qualité interne n'a pas mandat sur les affaires réglementaires.",
+   "bascule": "Si l'équipe qualité interne avait mandat sur les affaires réglementaires, la faire statuer deviendrait correct.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-PR7-20260927-0843-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20260927-0843-2-04",
+   "enabler": "Conduct ongoing quality reviews.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une revue qualité périodique, un membre de l'équipe de développement identifie un écart mineur de conformité sur un composant, sans lien direct avec son propre lot de travail. Le plan de management de la qualité assigne la responsabilité des revues qualité au responsable qualité désigné du projet. Que doit faire le membre de l'équipe en priorité ?",
+    "en": "During a periodic quality review, a development team member identifies a minor conformance gap on a component unrelated to their own work package. The quality management plan assigns responsibility for quality reviews to the project's designated quality lead. What should the team member do first?"
+   },
+   "options": {
+    "fr": [
+     "Signaler l'écart constaté au responsable qualité désigné pour qu'il évalue la suite à donner.",
+     "Corriger directement le composant concerné et attendre la prochaine revue qualité planifiée.",
+     "Consigner l'écart dans son propre rapport d'avancement de lot de travail sans le transmettre plus loin.",
+     "Informer le sponsor du projet de l'écart constaté et lui laisser juger de la suite à donner."
+    ],
+    "en": [
+     "Report the observed gap to the designated quality lead so they can assess the appropriate next step.",
+     "Directly correct the affected component and wait for the next scheduled quality review.",
+     "Log the gap in their own work package progress report without forwarding it further.",
+     "Inform the project sponsor of the observed gap and let them judge the next step to take."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Signaler l'écart au responsable qualité désigné est la bonne action, car l'énoncé précise que le plan de management de la qualité attribue la responsabilité des revues qualité à ce rôle, et que le composant concerné n'appartient pas au lot de travail du membre de l'équipe. Corriger directement le composant et attendre la prochaine revue qualité planifiée fait agir une personne en dehors de son périmètre assigné, sans passer par l'instance responsable de juger la conformité. Consigner l'écart dans son propre rapport d'avancement sans le transmettre plus loin documente l'observation sans la transmettre à qui a autorité pour agir, retardant tout traitement utile. Informer le sponsor et lui laisser juger de la suite à donner court-circuite le rôle explicitement désigné par le plan qualité pour ce type de constat.",
+    "en": "Reporting the gap to the designated quality lead is the right action, since the scenario states that the quality management plan assigns responsibility for quality reviews to that role, and the component in question is not part of the team member's own work package. Directly correcting the component and waiting for the next scheduled quality review has someone act outside their assigned scope, bypassing the body responsible for judging conformance. Logging the gap in their own progress report without forwarding it further records the observation without passing it to whoever has the authority to act, delaying any useful response. Informing the sponsor and letting them judge the next step bypasses the role explicitly designated by the quality plan for this type of finding."
+   },
+   "decision_atom": "Décider qui doit agir face à un écart de conformité mineur constaté hors du périmètre de son propre lot de travail.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le plan de management de la qualité assigne la responsabilité des revues qualité au responsable qualité désigné.",
+   "bascule": "Si le composant appartenait au lot de travail du membre de l'équipe, le corriger directement deviendrait approprié.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-PR7-20260927-0843-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260927-0843-1-02",
+   "enabler": "Communicate project status.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le même jour, un chef de projet doit à la fois finaliser la mise à jour du registre des risques (dont la révision est en retard de deux jours) et envoyer le rapport de statut hebdomadaire au comité de pilotage, qui s'appuie normalement sur ce registre. Dans quel ordre doit-il agir ?",
+    "en": "On the same day, a project manager must both finalize the update to the risk register (whose revision is two days overdue) and send the weekly status report to the steering committee, which normally relies on that register. In what order should he proceed?"
+   },
+   "options": {
+    "fr": [
+     "Envoyer le rapport de statut à l'heure prévue, puis finaliser le registre des risques dans la foulée.",
+     "Demander au comité de pilotage de reporter la lecture du rapport jusqu'à la mise à jour du registre.",
+     "Finaliser la mise à jour du registre des risques, puis envoyer le rapport de statut qui s'appuie dessus.",
+     "Envoyer le rapport de statut avec une note indiquant que le registre des risques sera mis à jour plus tard."
+    ],
+    "en": [
+     "Send the status report on schedule, then finalize the risk register update right after.",
+     "Ask the steering committee to delay reading the report until the register is updated.",
+     "Finalize the risk register update, then send the status report that relies on it.",
+     "Send the status report with a note stating the risk register will be updated later."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le rapport de statut s'appuie normalement sur le registre des risques, et ce registre a une révision en retard : envoyer le rapport avant de le mettre à jour revient à diffuser un statut fondé sur une donnée obsolète. Finaliser la mise à jour du registre des risques puis envoyer le rapport garantit que l'information transmise reflète l'état réel du projet. Envoyer le rapport à l'heure prévue puis mettre à jour le registre inverse cet ordre et livre un rapport incomplet. Demander au comité de reporter sa lecture ajoute un délai de gouvernance inutile alors que la mise à jour peut être terminée le jour même. Envoyer le rapport avec une note annonçant une mise à jour future revient à publier une information qu'on sait incomplète plutôt que de la compléter d'abord.",
+    "en": "The status report normally relies on the risk register, and that register's revision is overdue: sending the report before updating it means circulating a status based on stale data. Finalizing the risk register update, then sending the status report ensures the information shared reflects the project's actual state. Sending the report on schedule and updating the register afterward reverses this order and delivers an incomplete report. Asking the committee to delay its reading adds unnecessary governance delay when the update can be finished the same day. Sending the report with a note announcing a future update means publishing information already known to be incomplete instead of completing it first."
+   },
+   "decision_atom": "Décider dans quel ordre finaliser un artefact de référence et diffuser le rapport de statut qui s'appuie dessus.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le registre des risques, dont le rapport dépend normalement, a une révision en retard de deux jours.",
+   "bascule": "Si le rapport de statut ne dépendait pas du registre des risques pour son contenu, l'envoyer d'abord serait sans conséquence.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-PR9-20260927-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260927-0843-1-03",
+   "enabler": "Help ensure accessibility of artifacts.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un membre de l'équipe signale qu'il ne parvient plus à accéder au référentiel documentaire partagé depuis deux jours, ce qui l'empêche de consulter le plan de gestion des exigences. Le problème semble limité à ses propres droits d'accès, sans autre signalement similaire dans l'équipe. Que doit faire le chef de projet ?",
+    "en": "A team member reports that he has been unable to access the shared document repository for two days, preventing him from consulting the requirements management plan. The issue appears limited to his own access rights, with no similar reports from anyone else on the team. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Escalader immédiatement le problème au comité de pilotage comme un risque d'accessibilité des artefacts.",
+     "Demander à l'équipe entière de vérifier ses propres droits d'accès avant d'agir davantage.",
+     "Restaurer une copie du plan de gestion des exigences sur un espace de partage temporaire distinct.",
+     "Contacter l'administrateur du référentiel pour corriger les droits d'accès de ce membre en particulier."
+    ],
+    "en": [
+     "Immediately escalate the issue to the steering committee as an artifact accessibility risk.",
+     "Ask the entire team to check their own access rights before taking further action.",
+     "Restore a copy of the requirements management plan on a separate temporary shared space.",
+     "Contact the repository administrator to correct this member's specific access rights."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le problème est décrit comme limité aux droits d'accès d'un seul membre, sans autre signalement dans l'équipe : c'est un incident d'accès individuel, pas une défaillance générale du référentiel. Contacter l'administrateur du référentiel pour corriger les droits d'accès de ce membre traite la cause précise à l'échelon qui peut la résoudre. Escalader au comité de pilotage transforme un incident local en sujet de gouvernance alors que rien n'indique un problème systémique. Demander à toute l'équipe de vérifier ses droits mobilise des personnes non concernées par un problème isolé. Restaurer une copie sur un espace temporaire contourne le symptôme sans corriger l'accès au référentiel lui-même.",
+    "en": "The issue is described as limited to one member's access rights, with no other reports from the team: this is an individual access incident, not a general repository failure. Contacting the repository administrator to correct this member's access rights addresses the precise cause at the level that can resolve it. Escalating to the steering committee turns a local incident into a governance matter when nothing indicates a systemic problem. Asking the entire team to check their access rights involves people unaffected by an isolated issue. Restoring a copy on a temporary space works around the symptom without fixing access to the repository itself."
+   },
+   "decision_atom": "Décider à quel niveau traiter un problème d'accès à un artefact partagé signalé par une seule personne.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le problème semble limité aux droits d'accès d'un seul membre, sans autre signalement similaire.",
+   "bascule": "Si plusieurs membres de l'équipe avaient signalé le même problème d'accès, une escalade au comité de pilotage serait justifiée.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-PR9-20260927-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR9-20260927-0843-1-04",
+   "enabler": "Continually assess the effectiveness of artifact management.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un membre de l'équipe propose d'adopter dès la semaine prochaine un nouvel outil de gestion des artefacts, jugé plus rapide que celui en place, sur l'ensemble des lots de travail du projet. Aucun essai n'a encore été mené et l'outil actuel reste fonctionnel. Que doit faire le chef de projet ?",
+    "en": "A team member proposes adopting a new artifact management tool next week, considered faster than the current one, across all work packages of the project. No trial has yet been conducted, and the current tool remains functional. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Piloter le nouvel outil sur un seul lot de travail avant d'envisager une adoption plus large.",
+     "Adopter le nouvel outil sur l'ensemble des lots de travail dès la semaine prochaine comme proposé.",
+     "Maintenir l'outil actuel jusqu'à la prochaine revue de phase, sans examiner la proposition entre-temps.",
+     "Demander au comité de pilotage d'arbitrer entre les deux outils avant toute décision d'adoption."
+    ],
+    "en": [
+     "Pilot the new tool on a single work package before considering wider adoption.",
+     "Adopt the new tool across all work packages next week as proposed.",
+     "Keep the current tool until the next phase review, without examining the proposal in the meantime.",
+     "Ask the steering committee to decide between the two tools before any adoption decision."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'outil actuel reste fonctionnel et aucun essai du nouvel outil n'a encore été mené : adopter un changement non testé sur l'ensemble des lots de travail expose le projet à un risque réversible seulement au prix d'une perturbation généralisée. Piloter le nouvel outil sur un seul lot de travail permet d'évaluer son efficacité avant d'engager tout le projet, en limitant l'impact si l'essai échoue. Adopter l'outil sur tous les lots dès la semaine prochaine engage l'ensemble du projet sans validation préalable. Maintenir l'outil actuel jusqu'à la prochaine revue de phase, sans examiner la proposition entre-temps, retarde une évaluation qui pourrait se faire dès maintenant à petite échelle. Demander au comité de pilotage d'arbitrer soumet à la gouvernance une décision opérationnelle qui peut être testée directement par l'équipe.",
+    "en": "The current tool remains functional and no trial of the new tool has been conducted: adopting an untested change across all work packages exposes the project to a risk reversible only at the cost of widespread disruption. Piloting the new tool on a single work package allows its effectiveness to be assessed before committing the whole project, limiting the impact if the trial fails. Adopting the tool across all work packages next week commits the entire project without prior validation. Keeping the current tool until the next phase review, without examining the proposal in the meantime, delays an assessment that could be done now at small scale. Asking the steering committee to decide submits an operational decision to governance when it can be tested directly by the team."
+   },
+   "decision_atom": "Décider s'il faut adopter immédiatement un nouvel outil de gestion des artefacts sur tout le projet ou le tester d'abord.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Aucun essai du nouvel outil n'a encore été mené et l'outil actuel reste fonctionnel.",
+   "bascule": "Si l'outil avait déjà été testé avec succès sur un lot pilote, l'adopter plus largement dès maintenant serait raisonnable.",
+   "task_id": "PR9",
+   "level": 2,
+   "run_id": "20260927-0843",
+   "release": "qL2-PR9-20260927-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
