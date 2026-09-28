@@ -1,0 +1,311 @@
+{
+ "run_id": "20260928-0907",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-BE8-20260928-0907-1-01",
+   "enabler": "Survey changes to the external business environment (e.g., regulations, technology, geopolitical, market).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une chef de projet lit dans un bulletin sectoriel qu'un nouveau standard technique pourrait affecter le module de paiement de son produit. Le bulletin ne précise ni de date d'entrée en vigueur ni de porteur métier identifié côté organisation. Le sujet touche à la fois les finances, la conformité et l'architecture technique. Que doit-elle faire en priorité ?",
+    "en": "A project manager reads in a sector bulletin that a new technical standard could affect her product's payment module. The bulletin specifies neither an effective date nor an identified business owner within the organization. The topic touches finance, compliance, and technical architecture at once. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Modifier directement le backlog du produit pour anticiper une mise en conformité avec le nouveau standard technique annoncé.",
+     "Demander au sponsor de trancher seul sur la pertinence du standard pour le produit livré, sans consulter les autres domaines.",
+     "Identifier avec les parties prenantes concernées qui doit évaluer la pertinence du standard pour le produit.",
+     "Transmettre le bulletin sectoriel à l'équipe technique pour qu'elle l'intègre à sa prochaine revue d'architecture prévue."
+    ],
+    "en": [
+     "Directly update the product backlog to anticipate compliance with the newly announced technical standard.",
+     "Ask the sponsor to decide alone on the standard's relevance for the delivered product, without consulting other domains.",
+     "Identify with the relevant stakeholders who should assess the standard's relevance to the product.",
+     "Forward the bulletin to the technical team so it can review it during its next scheduled architecture session."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le sujet touche à la fois les finances, la conformité et l'architecture technique, et le bulletin ne désigne aucun porteur métier identifié : la première tâche est de déterminer qui, parmi ces domaines, a la responsabilité d'évaluer l'impact réel du standard avant toute action. Modifier directement le backlog du produit anticipe une mise en conformité dont la pertinence n'est pas encore établie. Demander au sponsor de trancher seul, sans consulter les autres domaines, confie une décision multi-domaines à une seule personne alors que le sujet dépasse son périmètre habituel. Transmettre le bulletin sectoriel à la seule équipe technique traite un sujet transverse comme s'il relevait d'un seul domaine, alors que la conformité et les finances sont aussi concernées.",
+    "en": "The topic touches finance, compliance, and technical architecture at once, and the bulletin names no identified business owner: the first task is to determine who, among these domains, is responsible for assessing the standard's real impact before any action. Directly updating the product backlog anticipates compliance whose relevance is not yet established. Asking the sponsor to decide alone, without consulting other domains, hands a multi-domain decision to a single person even though the topic exceeds his usual scope. Forwarding the bulletin only to the technical team treats a cross-cutting topic as if it belonged to a single domain, when compliance and finance are also involved."
+   },
+   "decision_atom": "Décider de la première action à mener quand un signal externe touche plusieurs domaines sans porteur identifié.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le bulletin ne précise ni date d'entrée en vigueur ni porteur métier, et le sujet croise trois domaines distincts (finance, conformité, architecture).",
+   "bascule": "Si le bulletin avait clairement établi que le sujet relevait exclusivement de l'architecture technique, transmettre à l'équipe technique deviendrait suffisant.",
+   "task_id": "BE8",
+   "level": 2,
+   "run_id": "20260928-0907",
+   "release": "qL2-BE8-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE3-20260928-0907-2-04",
+   "enabler": "Update project documentation to reflect changes.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Après l'implémentation d'un changement approuvé, le chef de projet constate que la mise à jour du registre des exigences a été effectuée correctement, mais que le document de référence partagé avec un autre programme, mentionnant une exigence désormais obsolète, n'a pas été mis à jour. Ce document est sous la responsabilité d'un comité de gouvernance inter-programmes distinct de son projet. Que doit faire le chef de projet ?",
+    "en": "After implementing an approved change, the project manager notices that the requirements register was updated correctly, but the reference document shared with another program, which mentions a now-obsolete requirement, was not updated. This document is owned by a separate cross-program governance board, distinct from his project. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Modifier directement le document de référence partagé et informer ensuite le comité inter-programmes pour aligner l'exigence obsolète avec le changement approuvé.",
+     "Signaler l'écart au comité de gouvernance inter-programmes responsable du document, pour qu'il engage la mise à jour.",
+     "Attendre la prochaine revue périodique du programme partagé et y intégrer l'écart, en le classant parmi d'autres points à traiter.",
+     "Demander à un membre de son équipe de contacter directement l'équipe de l'autre programme, en traitant ce sujet en dehors du comité désigné."
+    ],
+    "en": [
+     "Directly modify the shared reference document and then inform the cross-program board to align the obsolete requirement with the approved change.",
+     "Report the discrepancy to the cross-program governance board that owns the document, so it can initiate the update.",
+     "Wait for the shared program's next periodic review and raise the discrepancy there, grouping it among other items to address.",
+     "Ask a team member to contact the other program's team directly, handling the matter outside the designated board."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le document de référence est sous la responsabilité d'un comité de gouvernance distinct : le chef de projet doit signaler l'écart à ce comité pour qu'il engage lui-même la correction, plutôt que d'agir dans un périmètre qui n'est pas le sien. Modifier directement le document et n'informer qu'ensuite le comité inter-programmes ignore que l'autorité de mise à jour lui appartient dès le départ, et non au chef de projet. Attendre la prochaine revue périodique pour y intégrer l'écart parmi d'autres points retarde le signalement d'une exigence obsolète alors que rien n'indique qu'un délai est acceptable, et laisse l'autre programme travailler sur une base incorrecte plus longtemps que nécessaire. Faire contacter l'autre équipe directement par un membre de l'équipe, en traitant le sujet en dehors du comité désigné, contourne l'instance responsable du document.",
+    "en": "The reference document belongs to a separate governance board: the project manager should report the discrepancy to that board so it can initiate the correction itself, rather than acting outside his own scope of authority. Directly modifying the document and only informing the cross-program board afterward ignores that update authority rests with that board from the start, not the project manager. Waiting for the next periodic review to raise the discrepancy among other items delays flagging an obsolete requirement even though nothing suggests a delay is acceptable, leaving the other program working from incorrect information longer than necessary. Having a team member contact the other team directly, handling the matter outside the designated board, bypasses the governance body responsible for the document."
+   },
+   "decision_atom": "Décider qui doit corriger un document de référence partagé devenu obsolète après un changement, quand ce document appartient à une autre gouvernance.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le document est explicitement sous la responsabilité d'un comité de gouvernance inter-programmes distinct du projet du chef de projet.",
+   "bascule": "Si le chef de projet avait explicitement reçu délégation d'écriture sur ce document partagé, le corriger directement deviendrait juste.",
+   "task_id": "BE3",
+   "level": 2,
+   "run_id": "20260928-0907",
+   "release": "qL2-BE3-20260928-0907-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE1-20260928-0907-1-01",
+   "enabler": "Break down situations to identify the root cause of a misunderstanding of the vision.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Lors d'une réunion d'équipe, un chef de projet remarque que deux membres présentent des priorités contradictoires pour le prochain trimestre, chacun affirmant suivre la vision du projet telle qu'il l'a comprise en lançant le projet. Aucun des deux ne semble se rendre compte de la contradiction avec l'autre. Que doit faire le chef de projet en priorité ?",
+    "en": "During a team meeting, a project manager notices that two members are presenting contradictory priorities for the next quarter, each claiming to follow the project vision as they understood it at project launch. Neither seems aware of the contradiction with the other. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser une discussion avec les deux membres pour comparer leurs interprétations et identifier où la compréhension diverge.",
+     "Rappeler par écrit à toute l'équipe la formulation officielle de la vision et la diffuser sur le canal habituel du projet.",
+     "Demander à chaque membre de justifier sa priorité devant l'équipe et de comparer son raisonnement avec celui de l'autre.",
+     "Transmettre au sponsor les deux versions divergentes et lui demander de trancher laquelle correspond à la vision initiale."
+    ],
+    "en": [
+     "Organize a discussion with both members to compare their interpretations and identify where the understanding diverges.",
+     "Remind the whole team in writing of the official vision statement and distribute it through the project's usual channel.",
+     "Ask each member to justify their priority in front of the team and compare their reasoning against the other's.",
+     "Forward both diverging versions to the sponsor and ask them to decide which one matches the original vision."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le désaccord porte sur deux interprétations personnelles de la vision, pas sur un différend nécessitant une décision d'affaires du sponsor : escalader une question que le chef de projet peut clarifier lui-même par le dialogue court-circuite son propre rôle et retarde la résolution. Comparer les deux interprétations avec les membres concernés permet de localiser précisément où la compréhension a divergé, ce qui est le point de départ nécessaire avant toute clarification. Rappeler la formulation officielle par écrit et la diffuser sur le canal habituel ne résout rien si les deux membres pensent déjà s'y conformer chacun à sa manière. Demander une justification publique et une comparaison des raisonnements en pleine réunion risque de figer les positions au lieu de faire émerger la source du malentendu.",
+    "en": "The disagreement concerns two personal interpretations of the vision, not a dispute requiring a business decision from the sponsor: escalating a question the project manager can clarify directly through dialogue bypasses their own role and delays resolution. Comparing both interpretations with the members involved allows the point where understanding diverged to be pinpointed, which is the necessary starting point before any clarification. Restating the official wording in writing and distributing it through the usual channel resolves nothing if both members already believe they are following it, each in their own way. Asking for public justification and a comparison of reasoning during the meeting risks hardening positions instead of surfacing the source of the misunderstanding."
+   },
+   "decision_atom": "Décider de la première action face à deux interprétations divergentes de la vision exprimées par deux membres de l'équipe.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Aucun des deux membres n'a conscience de la contradiction avec l'autre ; le désaccord est une question d'interprétation personnelle, pas un différend d'affaires nécessitant un arbitrage du sponsor.",
+   "bascule": "Si la divergence portait sur une décision d'affaires que seul le sponsor peut trancher (par exemple un arbitrage de priorité stratégique), escalader deviendrait la bonne réponse.",
+   "task_id": "PE1",
+   "level": 1,
+   "run_id": "20260928-0907",
+   "release": "qL1-PE1-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE1-20260928-0907-1-02",
+   "enabler": "Promote the shared vision.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet anime des points d'équipe hebdomadaires où la vision du projet est rappelée en introduction. Après six semaines, un membre de l'équipe lui indique en aparté que, selon lui, « plusieurs collègues n'y croient plus vraiment ». Aucun retard, aucune décision contraire à la vision et aucun autre signalement n'ont été observés jusqu'ici. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager runs weekly team meetings that open with a reminder of the project vision. After six weeks, a team member tells him privately that, in the member's view, \"several colleagues don't really believe in it anymore.\" No delays, no decisions contrary to the vision, and no other reports have been observed so far. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Refondre le format des points hebdomadaires pour rendre le rappel de la vision plus engageant pour l'ensemble de l'équipe et des parties prenantes.",
+     "Transmettre l'observation au sponsor du projet comme un signal d'alerte sur l'adhésion durable de l'équipe à la vision.",
+     "Réunir l'équipe au complet pour rediscuter ouvertement, dès la prochaine séance, du bien-fondé de la vision actuelle du projet.",
+     "Échanger individuellement avec quelques membres de l'équipe pour vérifier si cette perception est partagée au-delà d'une personne."
+    ],
+    "en": [
+     "Redesign the format of the weekly meetings to make the vision reminder more engaging for the whole team and its stakeholders.",
+     "Pass the observation to the project sponsor as a lasting warning sign about the team's buy-in to the vision.",
+     "Bring the whole team together at the next session to openly revisit whether the current project vision still holds.",
+     "Talk individually with a few team members to check whether this perception is shared beyond one person."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'observation vient d'une seule personne, formulée en aparté et au conditionnel (« selon lui »), sans qu'aucun retard, aucune décision contraire à la vision ni aucun autre signalement ne vienne l'étayer : avant d'agir sur l'équipe entière, il faut vérifier si cette perception dépasse une personne. Refondre le format des points hebdomadaires pour l'ensemble de l'équipe et des parties prenantes traite un problème de forme alors que rien n'indique que le rappel de la vision soit en cause. Transmettre l'observation au sponsor comme un signal d'alerte durable fait remonter une rumeur non vérifiée comme s'il s'agissait d'un fait établi. Réunir toute l'équipe dès la prochaine séance pour rediscuter la vision expose le projet à une remise en question publique sur la base d'un seul témoignage non confirmé, ce qui risque de créer le doute que l'observation initiale ne faisait que suggérer.",
+    "en": "The observation comes from a single person, shared privately and hedged (\"in the member's view\"), with no delays, no decisions contrary to the vision, and no other reports to support it: before acting on the whole team, it must be checked whether this perception extends beyond one person. Redesigning the weekly meeting format for the whole team and its stakeholders addresses a format issue when nothing indicates the vision reminder itself is the problem. Passing the observation to the sponsor as a lasting warning sign escalates an unverified rumor as if it were an established fact. Bringing the whole team together at the next session to revisit the vision exposes the project to a public challenge based on a single unconfirmed account, risking creating the very doubt the original observation only suggested."
+   },
+   "decision_atom": "Décider s'il faut agir sur l'équipe entière à partir d'un signal rapporté par une seule personne, ou vérifier d'abord son étendue.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'observation vient d'une seule personne, en aparté, au conditionnel, sans aucun autre signe (retard, décision contraire) pour l'étayer.",
+   "bascule": "Si deux ou trois membres avaient indépendamment rapporté la même chose, escalader au sponsor deviendrait défendable.",
+   "task_id": "PE1",
+   "level": 3,
+   "run_id": "20260928-0907",
+   "release": "qL3-PE1-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE1-20260928-0907-1-03",
+   "enabler": "Keep the vision current.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Six mois après le lancement d'un projet, un changement réglementaire majeur modifie une contrainte centrale sur laquelle la vision initiale avait été construite. Le chef de projet dispose d'une analyse d'impact préliminaire, mais pas encore d'une évaluation complète des conséquences sur le calendrier et le budget. Deux équipes continuent de travailler activement selon l'ancienne vision. Que doit faire le chef de projet en priorité ?",
+    "en": "Six months after project launch, a major regulatory change alters a core constraint on which the original vision was built. The project manager has a preliminary impact analysis but not yet a full assessment of schedule and budget consequences. Two teams are still actively working according to the old vision. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Informer les deux équipes que la vision doit être révisée et leur indiquer de suspendre les décisions structurantes en attendant la mise à jour.",
+     "Attendre l'évaluation complète des conséquences sur le calendrier et le budget avant de communiquer quoi que ce soit aux deux équipes concernées.",
+     "Réviser sans délai le document de vision avec les nouvelles contraintes réglementaires et le diffuser aux deux équipes, en prévoyant un ajustement ultérieur.",
+     "Demander aux deux équipes de poursuivre leurs travaux en cours pendant toute la durée de l'analyse d'impact complète, afin de préserver le rythme du calendrier."
+    ],
+    "en": [
+     "Inform the two teams that the vision must be revised and tell them to hold off on structural decisions until the update is ready.",
+     "Wait for the full schedule and budget impact assessment before communicating anything to the two teams involved.",
+     "Revise the vision document without delay with the new regulatory constraints and distribute it to the two teams, planning a later adjustment.",
+     "Ask the two teams to keep working on their current tasks for the full duration of the impact analysis, in order to preserve the schedule pace."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'analyse préliminaire suffit à établir que la contrainte centrale de la vision a changé, alors que deux équipes continuent de décider sur la base de l'ancienne version : il faut les avertir et limiter les décisions structurantes maintenant, avant même que l'évaluation complète soit terminée. Attendre l'évaluation complète pour communiquer aux deux équipes concernées laisse celles-ci prendre des décisions fondées sur une contrainte déjà obsolète, ce qui peut créer un travail à défaire. Réviser sans délai le document de vision avec les nouvelles contraintes, même en prévoyant un ajustement ultérieur, va plus vite que ce que permet l'information disponible : sans l'évaluation complète des conséquences sur le calendrier et le budget, la nouvelle version risque d'être incomplète ou inexacte. Demander aux équipes de poursuivre pendant toute la durée de l'analyse pour préserver le rythme du calendrier ignore que la contrainte sur laquelle elles travaillent a déjà changé, indépendamment du temps que prendra l'évaluation complète.",
+    "en": "The preliminary analysis is already enough to establish that the vision's core constraint has changed, while two teams keep deciding based on the old version: they need to be warned and structural decisions held now, even before the full assessment is finished. Waiting for the full assessment before communicating anything to the two teams involved lets them keep making decisions based on an already-obsolete constraint, risking rework. Revising the vision document without delay with the new constraints, even while planning a later adjustment, moves faster than the available information supports: without the full schedule and budget impact assessment, the new version risks being incomplete or inaccurate. Asking the teams to keep working for the full duration of the analysis to preserve the schedule pace ignores that the constraint they are working under has already changed, regardless of how long the full assessment takes."
+   },
+   "decision_atom": "Décider quelle action mener en premier quand une contrainte centrale de la vision a changé mais que l'évaluation complète des conséquences n'est pas terminée.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "L'analyse préliminaire suffit à établir que la contrainte a changé ; deux équipes continuent de décider sur l'ancienne vision pendant que l'évaluation complète est en cours.",
+   "bascule": "Si l'évaluation complète des conséquences était déjà disponible, réviser immédiatement le document deviendrait la bonne action.",
+   "task_id": "PE1",
+   "level": 3,
+   "run_id": "20260928-0907",
+   "release": "qL3-PE1-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE1-20260928-0907-1-05",
+   "enabler": "Help ensure a shared vision with key stakeholders.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors d'un atelier de coconstruction de la vision, deux parties prenantes clés expriment des attentes incompatibles sur la priorité du projet : l'une veut mettre l'accent sur la réduction des coûts, l'autre sur l'expansion rapide du marché. Le chef de projet doit clore l'atelier avec une formulation de vision que les deux parties accepteront de porter publiquement, sans pouvoir consulter le sponsor avant la fin de la séance. Que doit-il faire en priorité ?",
+    "en": "During a vision co-creation workshop, two key stakeholders express incompatible expectations about the project's priority: one wants to emphasize cost reduction, the other rapid market expansion. The project manager must close the workshop with a vision statement both parties will publicly support, without being able to consult the sponsor before the session ends. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Clore l'atelier avec la formulation portée par la partie prenante dont l'influence sur le projet est jugée la plus déterminante.",
+     "Reporter la clôture de l'atelier à une date ultérieure, le temps d'obtenir l'arbitrage du sponsor sur la priorité réelle du projet.",
+     "Faire formuler ensemble par les deux parties prenantes une version provisoire de la vision, à confirmer avec le sponsor après l'atelier.",
+     "Faire adopter aux deux parties prenantes une formulation volontairement large, puis la présenter comme la position officielle du projet."
+    ],
+    "en": [
+     "Close the workshop with the wording favored by whichever stakeholder is judged to hold the most decisive influence.",
+     "Postpone closing the workshop to a later date, until the sponsor's ruling on the project's real priority can be obtained.",
+     "Have the two stakeholders jointly draft a provisional vision wording, to be confirmed with the sponsor after the workshop.",
+     "Have the two stakeholders adopt deliberately broad wording, then present it as the project's official position."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le chef de projet doit clore l'atelier sans pouvoir consulter le sponsor avant la fin de la séance : une version provisoire coconstruite par les deux parties prenantes, explicitement soumise à confirmation ultérieure, permet de sortir de l'atelier avec un texte que les deux acceptent de porter, tout en gardant la porte ouverte à un ajustement une fois l'arbitrage obtenu. Retenir la formulation de la partie prenante jugée la plus déterminante règle le désaccord par le rapport de force plutôt que par un accord réel, ce qui expose à ce que l'autre partie cesse de porter publiquement la vision. Reporter la clôture de l'atelier pour attendre l'arbitrage du sponsor laisse la séance se terminer sans aucune version commune, alors que les deux parties sont présentes et disponibles pour en coconstruire une, même provisoire. Faire adopter une formulation volontairement vague puis la présenter comme position officielle évite la tension immédiate mais ne fixe aucune priorité réelle, ce qui reporte le désaccord au moment où il faudra effectivement choisir entre réduction des coûts et expansion du marché.",
+    "en": "The project manager must close the workshop without being able to consult the sponsor before the session ends: a provisional wording jointly drafted by the two stakeholders, explicitly subject to later confirmation, allows the workshop to end with a statement both are willing to publicly support, while leaving room for adjustment once the ruling is obtained. Going with the wording favored by the stakeholder judged most decisive settles the disagreement through leverage rather than genuine agreement, risking that the other party stops publicly supporting the vision. Postponing the closing of the workshop to await the sponsor's ruling lets the session end with no shared wording at all, even though both parties are present and available to draft one together, even a provisional one. Having the two stakeholders adopt deliberately vague wording and then present it as the official position avoids the immediate tension but sets no real priority, simply deferring the disagreement to the moment a real choice between cost reduction and market expansion must be made."
+   },
+   "decision_atom": "Décider comment clore un atelier de vision quand deux parties prenantes sont en désaccord et que le sponsor n'est pas joignable avant la fin de la séance.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le sponsor n'est pas consultable avant la fin de l'atelier, et les deux parties prenantes sont présentes et disponibles pour coconstruire une version, même provisoire.",
+   "bascule": "Si aucune des deux parties prenantes n'était disponible pour coconstruire une version provisoire, reporter la clôture deviendrait la bonne action.",
+   "task_id": "PE1",
+   "level": 3,
+   "run_id": "20260928-0907",
+   "release": "qL3-PE1-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE2-20260928-0907-1-01",
+   "enabler": "Manage and rectify ground rule violations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Lors d'un atelier de conception, un membre de l'équipe coupe systématiquement la parole aux autres depuis le début de la séance. Un autre membre lève les yeux au ciel mais continue de participer. La séance doit produire une décision de conception avant la fin de la journée. Que doit faire le chef de projet en priorité ?",
+    "en": "During a design workshop, a team member has been repeatedly interrupting others since the session began. Another member rolls their eyes but keeps participating. The session must produce a design decision by end of day. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Attendre la pause prévue à l'ordre du jour, puis aborder ce point en privé avec la personne concernée.",
+     "Suspendre l'atelier immédiatement, puis rappeler l'ensemble des règles de fonctionnement à tout le groupe.",
+     "Demander au sponsor d'arbitrer la répartition du temps de parole, puis valider ce partage avant la fin de la journée.",
+     "Nommer l'écart au groupe dès qu'il se reproduit, puis proposer un tour de parole structuré pour la suite."
+    ],
+    "en": [
+     "Wait for the scheduled break on the agenda, then raise the issue privately with the person involved.",
+     "Pause the workshop immediately, then remind the entire group of all ground rules.",
+     "Ask the sponsor to arbitrate the allocation of speaking time, then validate this arrangement before the end of the day.",
+     "Name the pattern to the group as soon as it recurs, then propose a structured turn-taking approach for the rest of the session."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'interruption s'est répétée depuis le début de la séance et un membre montre déjà un signe d'agacement silencieux : attendre la pause laisse le comportement se poursuivre et risque de compromettre la décision attendue en fin de journée. Nommer l'écart dès qu'il se reproduit, avec une solution concrète pour la suite, corrige le problème sans arrêter le travail. Suspendre l'atelier, puis rappeler toutes les règles est disproportionné pour un seul comportement identifié et fait perdre un temps que la séance n'a pas. Demander au sponsor d'arbitrer, puis valider ce partage sort la décision des mains de l'équipe alors que rien n'empêche le chef de projet de trancher lui-même une question d'animation. Attendre la pause prévue, puis aborder le sujet en privé retarde une correction alors que le comportement est déjà avéré et répété.",
+    "en": "The interruptions have recurred since the session began, and one member already shows silent frustration: waiting for the break lets the behavior continue and risks the decision due by end of day. Naming the pattern as soon as it recurs, with a concrete fix for the rest of the session, addresses the issue without halting the work. Pausing the workshop, then reminding everyone of all ground rules is disproportionate for a single identified behavior and wastes time the session doesn't have. Asking the sponsor to arbitrate, then validating this arrangement removes a facilitation decision from the team when nothing prevents the project manager from resolving it directly. Waiting for the scheduled break, then raising the issue privately delays a correction when the behavior is already established and repeated."
+   },
+   "decision_atom": "Décider quand intervenir face à un écart répété et déjà signalé silencieusement par un pair, en pleine séance de production.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le comportement dure depuis le début de la séance et un membre a déjà montré un signe d'agacement silencieux (lever les yeux au ciel).",
+   "bascule": "Si le comportement venait de commencer et qu'aucun signe de gêne n'était visible chez les autres, attendre la pause serait la bonne réponse.",
+   "task_id": "PE2",
+   "level": 1,
+   "run_id": "20260928-0907",
+   "release": "qL1-PE2-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE2-20260928-0907-1-03",
+   "enabler": "Analyze the context for the conflict.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un membre de l'équipe affirme en réunion que le conflit récent avec un fournisseur vient d'un malentendu contractuel. Il n'a montré aucun document à l'appui et personne d'autre dans la salle ne peut confirmer cette version. Le chef de projet doit préparer un plan de résolution. Que doit-il faire en priorité ?",
+    "en": "A team member states in a meeting that the recent conflict with a supplier stems from a contractual misunderstanding. No supporting document has been shown, and no one else in the room can confirm this version. The project manager must prepare a resolution plan. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Convoquer immédiatement le fournisseur pour négocier sur la base du malentendu contractuel rapporté en réunion.",
+     "Consulter le contrat et les échanges écrits avec le fournisseur pour vérifier ce qui a réellement motivé le désaccord.",
+     "Documenter le malentendu contractuel comme cause retenue, puis l'inscrire dans le registre des risques du projet.",
+     "Demander au sponsor de confirmer si le malentendu contractuel rapporté par le membre est exact."
+    ],
+    "en": [
+     "Immediately convene the supplier to negotiate based on the contractual misunderstanding reported in the meeting.",
+     "Review the contract and written exchanges with the supplier to verify what actually caused the disagreement.",
+     "Document the contractual misunderstanding as the confirmed cause, then enter it into the project's risk register.",
+     "Ask the sponsor to confirm whether the contractual misunderstanding reported by the team member is accurate."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'affirmation n'est appuyée par aucun document et aucune autre personne présente ne peut la confirmer : c'est un récit, pas encore un fait établi. Consulter le contrat et les échanges écrits permet de vérifier la cause réelle avant d'agir dessus. Convoquer immédiatement le fournisseur pour négocier sur cette seule base engage une démarche formelle sur un fondement non vérifié. Documenter cette version comme cause retenue, puis l'inscrire dans le registre des risques la fait entrer dans la base de connaissances du projet sans qu'elle ait été confirmée. Demander au sponsor de confirmer si le malentendu rapporté est exact reporte sur un tiers une vérification que le chef de projet peut faire lui-même à partir des documents disponibles.",
+    "en": "The claim is unsupported by any document and no one else present can confirm it: it is an account, not yet an established fact. Reviewing the contract and written exchanges verifies the actual cause before acting on it. Immediately convening the supplier to negotiate on this basis alone commits to a formal step built on unverified grounds. Documenting this version as the confirmed cause, then entering it into the risk register enters it into the project's knowledge base before it has been confirmed. Asking the sponsor to confirm whether the reported misunderstanding is accurate hands off a verification the project manager can perform directly from available documents."
+   },
+   "decision_atom": "Décider s'il faut agir sur une explication de conflit rapportée oralement ou vérifier d'abord son fondement documentaire.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Aucun document n'est montré à l'appui et personne d'autre dans la salle ne peut confirmer la version rapportée.",
+   "bascule": "Si le membre de l'équipe avait présenté l'échange écrit avec le fournisseur confirmant le malentendu, documenter la cause deviendrait justifié.",
+   "task_id": "PE2",
+   "level": 1,
+   "run_id": "20260928-0907",
+   "release": "qL1-PE2-20260928-0907-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
