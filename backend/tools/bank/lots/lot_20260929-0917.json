@@ -1,0 +1,159 @@
+{
+ "run_id": "20260929-0917",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-BE8-20260929-0917-1-02",
+   "enabler": "Assess and prioritize the impact on project scope/backlog based on changes in the external business environment.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une nouvelle réglementation sur la protection des données, confirmée par le service juridique de l'entreprise, entre en vigueur dans trois mois. Elle affecte deux fonctionnalités du backlog déjà en cours de développement. Le chef de projet dispose de la confirmation juridique mais n'a pas encore mesuré l'ampleur des changements requis sur chaque fonctionnalité. Que doit-il faire en priorité ?",
+    "en": "A new data protection regulation, confirmed by the company's legal department, takes effect in three months. It affects two backlog features already under development. The project manager has legal confirmation but has not yet measured the extent of changes required for each feature. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Informer le product owner que le backlog devra être réordonné à cause de la nouvelle réglementation.",
+     "Suspendre le développement des deux fonctionnalités concernées jusqu'à nouvel ordre.",
+     "Évaluer l'ampleur de l'impact sur chaque fonctionnalité avant de proposer une repriorisation du backlog.",
+     "Planifier une revue de gouvernance pour faire approuver un changement de portée sur les deux fonctionnalités."
+    ],
+    "en": [
+     "Inform the product owner that the backlog will need to be reordered because of the new regulation.",
+     "Suspend development of the two affected features until further notice.",
+     "Assess the extent of impact on each feature before proposing a backlog reprioritization.",
+     "Schedule a governance review to get approval for a scope change on the two features."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La confirmation juridique établit que le changement est réel, mais l'ampleur de l'impact sur chaque fonctionnalité reste à mesurer. Informer le product owner d'une réordonnancement à venir, suspendre le développement, ou solliciter une revue de gouvernance sont toutes des actions qui présument déjà l'ampleur du changement nécessaire, alors que cette ampleur n'a pas été évaluée. Évaluer l'impact sur chaque fonctionnalité est l'étape qui précède logiquement toute décision de reprioritisation, de suspension ou d'escalade : sans cette évaluation, ces actions reposent sur une estimation absente.",
+    "en": "Legal confirmation establishes that the change is real, but the extent of impact on each feature still needs to be measured. Informing the product owner of an upcoming reorder, suspending development, or requesting a governance review all presume an impact magnitude that has not yet been assessed. Assessing the impact on each feature is the step that logically precedes any decision to reprioritize, suspend, or escalate: without it, those actions rest on an estimate that does not exist yet."
+   },
+   "decision_atom": "Décider de la première action quand un changement externe confirmé touche le backlog mais que l'ampleur de l'impact n'est pas encore mesurée.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La confirmation juridique existe, mais l'ampleur de l'impact sur chaque fonctionnalité n'a pas encore été évaluée.",
+   "bascule": "Si l'ampleur de l'impact avait déjà été mesurée et jugée bloquante, suspendre le développement deviendrait la bonne réponse.",
+   "task_id": "BE8",
+   "level": 2,
+   "run_id": "20260929-0917",
+   "release": "qL2-BE8-20260929-0917-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE8-20260929-0917-1-05",
+   "enabler": "Survey changes to the external business environment (e.g., regulations, technology, geopolitical, market).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend qu'une instabilité géopolitique dans un pays fournisseur pourrait perturber la chaîne d'approvisionnement de son projet. Le comité de gestion des risques de l'organisation, distinct de l'équipe projet, est chargé d'évaluer ce type de signal externe et de décider des actions à l'échelle de l'organisation. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager learns that geopolitical instability in a supplier country could disrupt the project's supply chain. The organization's risk management committee, separate from the project team, is responsible for assessing this type of external signal and deciding on organization-wide actions. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Décider seul de diversifier les fournisseurs du projet auprès d'autres pays, pour réduire l'exposition au risque identifié.",
+     "Transmettre le signal au comité de gestion des risques, avec une évaluation de l'impact potentiel sur le projet.",
+     "Convoquer une réunion avec les fournisseurs actuels du projet, pour évaluer leur exposition à l'instabilité géopolitique.",
+     "Ajouter le risque au registre du projet, en le classant selon sa gravité, et surveiller son évolution lors des points d'avancement réguliers."
+    ],
+    "en": [
+     "Independently decide to diversify the project's suppliers across other countries, to reduce exposure to the identified risk.",
+     "Forward the signal to the risk management committee, along with an assessment of potential impact on the project.",
+     "Convene a meeting with the project's current suppliers, to assess their exposure to the geopolitical instability.",
+     "Add the risk to the project register, classifying it by severity, and monitor its evolution during regular status meetings."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le comité de gestion des risques a le mandat organisationnel pour ce type de signal externe, ce que le chef de projet n'a pas. Décider seul de diversifier les fournisseurs auprès d'autres pays pour réduire l'exposition dépasse son autorité sur un sujet qui relève d'une instance dédiée. Convoquer une réunion avec les fournisseurs actuels du projet pour évaluer leur exposition engage une démarche externe avant que l'instance compétente n'ait statué. Ajouter le risque au registre en le classant selon sa gravité et le surveiller localement traite au niveau du projet un signal dont la portée organisationnelle appelle une transmission à l'instance mandatée. Transmettre le signal au comité, avec une évaluation de l'impact, respecte la répartition des responsabilités tout en apportant l'information nécessaire à sa décision.",
+    "en": "The risk management committee holds the organizational mandate for this type of external signal, which the project manager does not have. Independently deciding to diversify suppliers across other countries to reduce exposure exceeds their authority on a matter that belongs to a dedicated body. Convening a meeting with the project's current suppliers to assess their exposure initiates external action before the competent body has ruled. Adding the risk to the register, classifying it by severity, and monitoring it locally treats at the project level a signal whose organizational scope calls for escalation to the mandated body. Forwarding the signal to the committee, with an impact assessment, respects the division of responsibilities while providing the information needed for its decision."
+   },
+   "decision_atom": "Décider qui doit traiter un signal géopolitique externe quand une instance dédiée existe déjà pour ce type de décision.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le comité de gestion des risques de l'organisation, distinct de l'équipe projet, est mandaté pour évaluer ce type de signal externe.",
+   "bascule": "Si aucun comité de gestion des risques n'existait au niveau organisationnel, décider seul de diversifier les fournisseurs deviendrait défendable.",
+   "task_id": "BE8",
+   "level": 2,
+   "run_id": "20260929-0917",
+   "release": "qL2-BE8-20260929-0917-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE3-20260929-0917-2-03",
+   "enabler": "Represent the voice of the team.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Lors d'une revue de statut, un chef de projet entend un membre de l'équipe mentionner brièvement que le nouvel outil de suivi ralentit un peu son travail quotidien, sans que cela n'affecte pour l'instant les délais ni les livrables. Que doit faire le chef de projet à ce stade ?",
+    "en": "During a status review, a project manager hears a team member briefly mention that the new tracking tool slows down their daily work a little, though it is not currently affecting deadlines or deliverables. What should the project manager do at this stage?"
+   },
+   "options": {
+    "fr": [
+     "Remplacer l'outil de suivi actuel par un autre outil, pour éliminer ce ralentissement signalé par ce membre.",
+     "Demander à l'équipe de conserver l'outil actuel et de poursuivre son utilisation habituelle pour le moment.",
+     "Documenter ce retour dans le registre des risques du projet, en prévision d'un impact futur possible sur les délais.",
+     "Recueillir l'avis du reste de l'équipe sur l'outil avant de décider si une remontée est utile."
+    ],
+    "en": [
+     "Replace the current tracking tool with another one, to eliminate the slowdown reported by this member.",
+     "Ask the team to keep the current tool and continue their usual way of working for the time being.",
+     "Log this feedback in the project risk register, anticipating a possible future impact on deadlines.",
+     "Gather the rest of the team's views on the tool before deciding whether escalation is useful."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le signal vient d'une seule personne et ne touche pour l'instant ni les délais ni les livrables : avant de porter ce retour plus loin, il est utile de savoir s'il est partagé par le reste de l'équipe. Recueillir l'avis des autres membres permet de proportionner la suite à l'ampleur réelle du problème. Remplacer l'outil pour éliminer ce ralentissement signalé par ce membre réagit sans savoir si le problème est général. Demander à l'équipe de conserver l'outil et de poursuivre son utilisation habituelle écarte le retour sans chercher à en évaluer la portée. Documenter ce retour dans le registre des risques en prévision d'un impact futur sur les délais traite une remarque isolée et sans impact actuel comme un risque à part entière, ce que la situation ne justifie pas encore.",
+    "en": "The signal comes from a single person and currently affects neither deadlines nor deliverables: before taking this further, it helps to know whether others share the same experience. Gathering the rest of the team's views allows the response to match the real scope of the issue. Replacing the tool to eliminate the slowdown reported by this member reacts without knowing if the issue is widespread. Asking the team to keep the current tool and continue their usual way of working dismisses the feedback without assessing its scope. Logging it in the risk register while anticipating a possible future impact on deadlines treats an isolated remark with no current impact as a full-fledged risk, which the situation does not yet warrant."
+   },
+   "decision_atom": "Décider s'il faut agir ou remonter un signal individuel sans impact actuel, ou vérifier d'abord s'il est partagé par l'équipe.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le retour vient d'une seule personne et n'affecte ni les délais ni les livrables pour l'instant.",
+   "bascule": "Si plusieurs membres avaient déjà signalé le même ralentissement, documenter le risque deviendrait justifié.",
+   "task_id": "PE3",
+   "level": 1,
+   "run_id": "20260929-0917",
+   "release": "qL1-PE3-20260929-0917-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE3-20260929-0917-2-04",
+   "enabler": "Determine an appropriate leadership style.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet reprend une équipe expérimentée qui a l'habitude de s'auto-organiser sur la répartition quotidienne des tâches, avec de bons résultats constants. Comment doit-il aborder son style d'encadrement au démarrage de sa prise de fonction ?",
+    "en": "A project manager takes over an experienced team accustomed to self-organizing daily task allocation, with consistently good results. How should this project manager approach their leadership style when starting in the role?"
+   },
+   "options": {
+    "fr": [
+     "Observer le fonctionnement actuel de l'équipe et maintenir une approche facilitatrice sur la répartition quotidienne.",
+     "Reprendre personnellement la répartition quotidienne des tâches et l'annoncer à l'équipe, pour asseoir sa présence dès l'arrivée.",
+     "Introduire un point de validation quotidien où chaque répartition de tâches lui est soumise pour accord avant exécution.",
+     "Définir un nouveau processus de répartition des tâches et l'imposer à l'équipe, aligné sur ses méthodes de gestion habituelles."
+    ],
+    "en": [
+     "Observe the team's current way of working and maintain a facilitative approach to daily task allocation.",
+     "Personally take over daily task allocation and announce it to the team, to establish presence right from arrival.",
+     "Introduce a daily approval checkpoint where every task allocation is submitted for sign-off before execution.",
+     "Define a new task allocation process and impose it on the team, aligned with familiar personal management methods."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'équipe s'auto-organise déjà avec de bons résultats constants : observer ce fonctionnement et maintenir une approche facilitatrice respecte une pratique qui fonctionne, tout en laissant le chef de projet apprendre le contexte avant d'intervenir. Reprendre personnellement la répartition des tâches et l'annoncer à l'équipe dès l'arrivée retire à l'équipe une autonomie qui produit de bons résultats, sans qu'un problème le justifie. Introduire un point de validation quotidien où chaque répartition lui est soumise pour accord ajoute un contrôle sur un processus qui n'a montré aucun signe de dysfonctionnement. Définir un nouveau processus et l'imposer à l'équipe, aligné sur des méthodes personnelles, impose un changement non justifié par les besoins de cette équipe précise.",
+    "en": "The team already self-organizes with consistently good results: observing this way of working and maintaining a facilitative approach respects a practice that functions well, while letting the project manager learn the context before intervening. Personally taking over task allocation and announcing it to the team right from arrival removes an autonomy that produces good results, without any problem justifying it. Introducing a daily approval checkpoint where every allocation is submitted for sign-off adds oversight to a process that has shown no sign of dysfunction. Defining a new process and imposing it on the team, aligned with familiar personal methods, imposes a change not justified by this particular team's needs."
+   },
+   "decision_atom": "Décider du degré d'intervention à adopter face à une équipe autonome qui obtient déjà de bons résultats.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "L'équipe s'auto-organise déjà avec des résultats constamment bons.",
+   "bascule": "Si l'équipe avait récemment produit des répartitions qui ont causé des problèmes, un point de validation deviendrait justifié.",
+   "task_id": "PE3",
+   "level": 1,
+   "run_id": "20260929-0917",
+   "release": "qL1-PE3-20260929-0917-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
