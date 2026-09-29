@@ -14,7 +14,7 @@
    "options": {
     "fr": [
      "Organiser un échange avec les utilisateurs finaux du client pour recueillir leurs attentes avant de détailler la planification.",
-     "Détailler la planification à partir des livrables signés avec l'équipe commerciale.",
+     "Détailler la planification à partir des livrables signés dans le contrat.",
      "Transmettre le contrat signé à l'équipe pour lancer la planification détaillée, en s'appuyant sur l'expertise commerciale engagée.",
      "Demander à l'équipe commerciale de confirmer que les livrables signés couvrent bien les besoins des utilisateurs finaux du client."
     ],
@@ -27,8 +27,8 @@
    },
    "answer_index": 0,
    "rationale": {
-    "fr": "Le contrat a été négocié par l'équipe commerciale, sans atelier avec les utilisateurs finaux : les attentes réelles de ceux qui utiliseront le livrable n'ont jamais été recueillies directement. Organiser cet échange avant de détailler la planification permet de fonder le travail sur les attentes véritables plutôt que sur une interprétation commerciale du besoin. Détailler la planification puis ajuster ensuite inverse l'ordre : le risque est de construire sur une base à corriger, ce que l'énoncé signale déjà comme fragile. Transmettre le contrat pour lancer directement la planification s'appuie sur une expertise commerciale qui, selon l'énoncé, n'a pas inclus les utilisateurs finaux — ce n'est donc pas une garantie suffisante. Demander à l'équipe commerciale de confirmer la couverture des besoins revient à interroger la même source qui n'a pas consulté les utilisateurs, sans apporter d'information nouvelle.",
-    "en": "The contract was negotiated by the sales team, with no workshop involving end users: the actual expectations of those who will use the deliverable were never gathered directly. Holding that discussion before detailing the plan grounds the work in real expectations rather than a sales interpretation of the need. Detailing the plan first and adjusting afterward reverses the order: the risk is building on a base the scenario already flags as fragile. Forwarding the contract to launch planning directly relies on sales expertise that, per the scenario, did not include end users — not a sufficient guarantee. Asking the sales team to confirm coverage of the needs questions the same source that never consulted end users, adding no new information."
+    "fr": "Le contrat a été négocié par l'équipe commerciale, sans atelier avec les utilisateurs finaux : les attentes réelles de ceux qui utiliseront le livrable n'ont jamais été recueillies directement. Organiser cet échange avant de détailler la planification permet de fonder le travail sur les attentes véritables plutôt que sur une interprétation commerciale du besoin. Détailler la planification à partir des seuls livrables signés revient à construire sur une base que l'énoncé signale déjà comme fragile. Transmettre le contrat pour lancer directement la planification s'appuie sur une expertise commerciale qui, selon l'énoncé, n'a pas inclus les utilisateurs finaux — ce n'est donc pas une garantie suffisante. Demander à l'équipe commerciale de confirmer la couverture des besoins revient à interroger la même source qui n'a pas consulté les utilisateurs, sans apporter d'information nouvelle.",
+    "en": "The contract was negotiated by the sales team, with no workshop involving end users: the actual expectations of those who will use the deliverable were never gathered directly. Holding that discussion before detailing the plan grounds the work in real expectations rather than a sales interpretation of the need. Detailing the plan from the signed deliverables alone means building on a base the scenario already flags as fragile. Forwarding the contract to launch planning directly relies on sales expertise that, per the scenario, did not include end users — not a sufficient guarantee. Asking the sales team to confirm coverage of the needs questions the same source that never consulted end users, adding no new information."
    },
    "decision_atom": "Décider s'il faut planifier directement à partir d'un contrat négocié sans les utilisateurs finaux, ou recueillir d'abord leurs attentes.",
    "axe_de_decision": "l'ordre des actions",
@@ -39,7 +39,8 @@
    "run_id": "20260925-0820",
    "release": "qL2-PE6-20260925-0820-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "approved",
+   "review_note": "corrigé à la relecture du 2026-09-25 (option FR alignée, rationale resynchronisée)"
   },
   {
    "id": "qL2-PE6-20260925-0820-1-02",
@@ -153,7 +154,8 @@
    "run_id": "20260925-0820",
    "release": "qL2-PE6-20260925-0820-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "trop facile : écart mineur sans conséquence, seule option légère"
   },
   {
    "id": "qL2-PE7-20260925-0820-1-01",
@@ -267,7 +269,8 @@
    "run_id": "20260925-0820",
    "release": "qL2-PE7-20260925-0820-1",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "doublon de qL2-PE7-20260923-1014-1-02 (affirmation orale non étayée -> demander les preuves)"
   },
   {
    "id": "qL2-PE7-20260925-0820-1-04",
@@ -381,7 +384,8 @@
    "run_id": "20260925-0820",
    "release": "qL2-PR6-20260925-0820-2",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "trop facile : l'énoncé dit que seul le comité peut décider"
   },
   {
    "id": "qL2-PR6-20260925-0820-2-03",
@@ -495,7 +499,8 @@
    "run_id": "20260925-0820",
    "release": "qL2-PR8-20260925-0820-2",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "incohérence avec qL2-PR8-20260923-1014-1-02 (pairs en conflit de ressource : se parler d'abord, pas escalader)"
   },
   {
    "id": "qL2-PR8-20260925-0820-2-03",
@@ -609,7 +614,8 @@
    "run_id": "20260925-0820",
    "release": "qL2-PR8-20260925-0820-2",
    "author_model": "claude-sonnet-5",
-   "status": "approved"
+   "status": "rejected",
+   "review_note": "trop facile + doublon de qL2-PR8-20260923-1014-1-05 (écart mineur sous seuil -> surveiller)"
   }
  ]
 }

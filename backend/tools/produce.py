@@ -222,6 +222,7 @@ def target_axes(release, n):
 def known_judgments(bank, task_id, limit=40):
     """Decision atoms already stored for this task first, then the rest of the same domain (PE/PR/BE):
     a judgment rewritten under another metric or another task is still a duplicate for the candidate."""
+    bank = [it for it in bank if it.get("status") != "rejected"]
     same = [it["decision_atom"] for it in bank if it.get("task_id") == task_id and it.get("decision_atom")]
     dom = task_id[:2]
     other = [it["decision_atom"] for it in bank
@@ -632,7 +633,19 @@ def mechanical_gate(in_dir, release, n):
          run([str(HERE / "probe_lot.py"), str(z), "--forme"], cwd=WORK)
     return z if ok else None
 
-def audit_lot_deep(pkg_dir, plans, auditor, level):
+def bank_digest(bank, task_id, limit=60):
+    """Stored judgments of the same domain, compact, so the auditor can catch cross-lot repeats and contradictions."""
+    dom = task_id[:2]
+    rows = [it for it in bank if str(it.get("task_id", ""))[:2] == dom and it.get("status") in ("approved", "pending_sme")]
+    rows.sort(key=lambda it: it.get("task_id") != task_id)          # same task first
+    out = []
+    for it in rows[:limit]:
+        try: key = it["options"]["fr"][it["answer_index"]]
+        except Exception: key = ""
+        out.append({"id": it.get("id"), "task": it.get("task_id"), "jugement": it.get("decision_atom", ""), "cle": key})
+    return out
+
+def audit_lot_deep(pkg_dir, plans, auditor, level, banque=()):
     """One auditor call per lot with the whole package (as prompt-audit.md expects). Returns (verdict, set of PASS ids)."""
     if FAKE: return "GO", {p["id"] for p in plans}
     pkg = {}
@@ -644,7 +657,10 @@ def audit_lot_deep(pkg_dir, plans, auditor, level):
                    "un item de niveau 2 n'a pas à porter de renoncement. Juge-le comme un item d'application (niveau 2)."
                    if level < 3 else "Applique le contrôle « NIVEAU 3 NON MÉRITÉ » à chaque item.")
                 + "\n\nPAQUET :\n")
-    raw = call(auditor, contexte + json.dumps(pkg, ensure_ascii=False), 8000, AUDITOR_MODEL)
+    banque_txt = ("\n\nBANQUE DÉJÀ STOCKÉE (même domaine) — pour les contrôles 4 et 8 : un item du lot qui rejoue un de ces jugements "
+                  "est un `doublon` ; un item qui donne la réponse opposée à l'un d'eux dans une situation équivalente est une `incoherence_banque`. "
+                  "Cite l'id de la banque dans `fait_decisif`.\n" + json.dumps(list(banque), ensure_ascii=False)) if banque else ""
+    raw = call(auditor, contexte + json.dumps(pkg, ensure_ascii=False) + banque_txt, 8000, AUDITOR_MODEL)
     v = parse_json_or_repair(raw, "auditor") or {}
     (WORK / f"{pkg_dir.name}-audit.json").write_text(raw, encoding="utf-8")
     verdict = str(v.get("verdict", "REJET")).upper()
@@ -698,7 +714,7 @@ def main():
 
             z = mechanical_gate(in_dir, release, len(items))
             if not z: n_gate += len(items); continue
-            verdict, passed = audit_lot_deep(WORK / release, plans, auditor, level)
+            verdict, passed = audit_lot_deep(WORK / release, plans, auditor, level, bank_digest(bank + stored, task["id"]))
             if verdict == "REJET" or (verdict != "GO" and not KEEP_PASS_ON_HOLD):
                 n_aud += len(items); continue
             if verdict != "GO":
