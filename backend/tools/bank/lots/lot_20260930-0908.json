@@ -1,0 +1,311 @@
+{
+ "run_id": "20260930-0908",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PE3-20260930-0908-1-01",
+   "enabler": "Empower the team.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une équipe autonome propose de remplacer son outil de suivi des tâches par un nouvel outil, changement qui migrerait l'historique complet des tickets vers une structure de données incompatible avec l'ancienne. L'équipe est compétente et le changement resterait interne à son fonctionnement quotidien, sans toucher aux livrables externes. Le chef de projet doit décider de son degré d'implication. Que doit-il faire ?",
+    "en": "An autonomous team proposes replacing its task-tracking tool with a new one, a change that would migrate the full ticket history into a data structure incompatible with the old one. The team is competent and the change would remain internal to its daily workflow, with no effect on external deliverables. The project leader must decide how involved to be. What should the leader do?"
+   },
+   "options": {
+    "fr": [
+     "Laisser l'équipe procéder après avoir conservé une exportation complète de l'historique préalable à la migration.",
+     "Laisser l'équipe choisir librement son nouvel outil de suivi des tâches.",
+     "Demander à l'équipe de tester la migration sur un sous-ensemble de tickets réversible avant de basculer l'historique complet.",
+     "Transmettre la décision au sponsor du programme concerné par ce changement d'outil."
+    ],
+    "en": [
+     "Let the team proceed after keeping a full export of the ticket history taken prior to the migration.",
+     "Let the team choose its new task-tracking tool freely.",
+     "Ask the team to test the migration on a reversible subset of tickets before converting the full history.",
+     "Pass the decision to the sponsor governing the program affected by this tool change."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'énoncé précise que la migration convertirait l'historique complet vers une structure incompatible avec l'ancienne : une fois faite, elle n'est plus annulable. Le rôle du chef de projet n'est pas de retirer l'autonomie de l'équipe sur un choix d'outil interne, mais de s'assurer qu'une action irréversible est d'abord vérifiée à petite échelle. Demander un test sur un sous-ensemble réversible respecte l'autonomie de l'équipe tout en traitant le seul risque réel : perdre l'accès à l'historique si la conversion échoue. Laisser l'équipe procéder après une exportation traite un symptôme (avoir une copie) mais pas la cause (l'irréversibilité de la conversion elle-même) : une exportation ne garantit pas que l'historique reste exploitable si la structure cible s'avère inadaptée. Laisser l'équipe choisir librement son nouvel outil ignore que la compétence de l'équipe ne supprime pas le caractère irréversible de l'opération. Remonter au sponsor du programme traite comme une question de gouvernance de programme ce qui est un choix d'outil interne à l'équipe, sans lien avec les livrables externes.",
+    "en": "The scenario states that the migration would convert the full history into a structure incompatible with the old one: once done, it cannot be undone. The project leader's role is not to strip the team's autonomy over an internal tool choice, but to ensure an irreversible action is first checked at small scale. Asking for a test on a reversible subset respects the team's autonomy while addressing the one real risk: losing access to the history if the conversion fails. Letting the team proceed after taking an export treats a symptom (having a copy) rather than the cause (the irreversibility of the conversion itself): an export does not guarantee the history stays usable if the target structure proves unsuitable. Letting the team freely choose its new tool ignores that competence does not remove the irreversible nature of the operation. Escalating to the program sponsor treats an internal tool choice, unrelated to external deliverables, as a matter of program governance."
+   },
+   "decision_atom": "Décider du degré d'implication du chef de projet face à une équipe autonome voulant migrer son historique de suivi vers un outil incompatible.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "La migration convertirait l'historique complet vers une structure incompatible avec l'ancienne : l'opération n'est pas annulable une fois faite.",
+   "bascule": "Si la conversion de l'outil restait annulable ou l'ancien outil consultable en parallèle indéfiniment, laisser l'équipe procéder sans test préalable deviendrait suffisant.",
+   "task_id": "PE3",
+   "level": 3,
+   "run_id": "20260930-0908",
+   "release": "qL3-PE3-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE3-20260930-0908-1-05",
+   "enabler": "Represent the voice of the team.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors d'une revue de portefeuille, un directeur de programme annonce publiquement une date de livraison plus rapprochée que celle sur laquelle l'équipe s'est engagée, sans en avoir discuté au préalable avec le chef de projet ni avec l'équipe. Le chef de projet est présent dans la salle au moment de l'annonce. Que doit-il faire en priorité ?",
+    "en": "During a portfolio review, a program director publicly announces a delivery date earlier than the one the team committed to, without having discussed it beforehand with the project leader or the team. The project leader is present in the room when the announcement is made. What should the project leader do first?"
+   },
+   "options": {
+    "fr": [
+     "Corriger publiquement la date annoncée sur-le-champ, pour éviter que les parties prenantes présentes ne retiennent une information erronée.",
+     "Laisser passer l'annonce dans l'immédiat, en prévoyant de vérifier après la réunion si l'équipe a remarqué l'écart.",
+     "Demander un point en aparté avec le directeur de programme à l'issue de la réunion, pour clarifier l'engagement réel de l'équipe.",
+     "Envoyer un courriel à l'ensemble des parties prenantes après la réunion, pour rétablir la date d'engagement réelle et informer le directeur de programme."
+    ],
+    "en": [
+     "Correct the announced date publicly on the spot, to prevent stakeholders present from retaining incorrect information.",
+     "Let the announcement pass in the moment, planning to check after the meeting whether the team noticed the gap.",
+     "Request a side conversation with the program director right after the meeting, to clarify the team's actual commitment.",
+     "Send an email to all stakeholders after the meeting, restating the actual committed date and informing the program director."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'énoncé précise que l'écart vient d'une annonce faite sans consultation préalable du chef de projet ni de l'équipe : la question à régler est d'abord de rétablir, avec la personne qui a fait l'annonce, quel est l'engagement réel avant de communiquer plus largement. C'est au chef de projet, porte-parole de l'équipe, de porter cette clarification directement auprès du directeur de programme plutôt que de laisser le malentendu se propager ou d'agir sans lui. Corriger publiquement sur-le-champ place le chef de projet en opposition frontale avec le directeur devant les parties prenantes, sur un sujet qui n'a pas encore été clarifié entre eux. Laisser passer l'annonce dans l'immédiat, en prévoyant seulement une vérification après coup, revient à ne rien faire pendant qu'une date erronée circule déjà parmi les parties prenantes présentes. Envoyer un courriel correctif à l'ensemble des parties prenantes court-circuite le directeur de programme en corrigeant publiquement son annonce sans être d'abord passé par lui.",
+    "en": "The scenario states that the gap comes from an announcement made without prior consultation of the project leader or the team: the first issue to resolve is establishing, with the person who made the announcement, what the actual commitment is before communicating more broadly. As the team's spokesperson, it is the project leader's role to raise this directly with the program director rather than letting the misunderstanding spread or acting without involving them. Correcting the date publicly on the spot puts the leader in direct opposition to the director in front of stakeholders, on a matter not yet clarified between them. Letting the announcement pass in the moment, only planning a later check, means doing nothing while an incorrect date is already circulating among the stakeholders present. Sending a corrective email to all stakeholders bypasses the program director by publicly correcting their announcement without first going through them."
+   },
+   "decision_atom": "Décider comment réagir à l'annonce publique par un directeur de programme d'une date non validée par l'équipe.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'annonce a été faite sans consultation préalable du chef de projet ni de l'équipe, par une personne extérieure à l'équipe.",
+   "bascule": "Si le directeur de programme n'était plus joignable avant qu'une décision s'appuyant sur cette date soit prise, corriger publiquement sur-le-champ deviendrait nécessaire.",
+   "task_id": "PE3",
+   "level": 3,
+   "run_id": "20260930-0908",
+   "release": "qL3-PE3-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE4-20260930-0908-1-01",
+   "enabler": "Identify stakeholders.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet démarre un projet de migration de systèmes. Il dispose déjà de la charte du projet et de l'organigramme des départements impliqués. Il doit produire le registre des parties prenantes. Que doit-il faire en premier ?",
+    "en": "A project manager is starting a systems migration project. She already has the project charter and the org chart of the involved departments. She must produce the stakeholder register. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Recenser les parties prenantes à partir de la charte et de l'organigramme, puis compléter la liste par des entretiens ciblés.",
+     "Organiser un atelier de catégorisation en pouvoir/intérêt, avant la liste initiale, avec les responsables de département.",
+     "Diffuser un sondage large, à tous les employés du département, pour identifier les personnes concernées par la migration.",
+     "Planifier des entretiens individuels, avec chaque responsable de département, avant de consulter les documents existants."
+    ],
+    "en": [
+     "Compile an initial list of stakeholders from the charter and org chart, then complete it through targeted interviews.",
+     "Run a power/interest categorization workshop, before the initial list, with the relevant department heads.",
+     "Distribute a broad survey, to all department employees, to identify people affected by the migration.",
+     "Schedule individual interviews, with each department head, before consulting the existing documents."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La charte et l'organigramme sont déjà disponibles : ce sont les sources documentaires les plus rapides et les plus fiables pour amorcer le recensement, avant d'affiner par des entretiens ciblés. Organiser un atelier de catégorisation en pouvoir/intérêt, avant la liste initiale, avec les responsables de département revient à classer des parties prenantes qu'on n'a pas encore identifiées. Diffuser un sondage large, à tous les employés du département, produit un volume de réponses difficile à exploiter alors que l'organigramme cible déjà les départements concernés. Planifier des entretiens individuels, avec chaque responsable de département, avant de consulter les documents existants revient à ignorer une source immédiate et fiable pour privilégier une démarche plus lente.",
+    "en": "The charter and org chart are already available: they are the fastest, most reliable documentary sources to start the identification before refining it through targeted interviews. Running a power/interest categorization workshop, before the initial list, with the relevant department heads means sorting stakeholders that have not yet been identified. Distributing a broad survey, to all department employees, produces a volume of responses that is hard to process when the org chart already points to the relevant departments. Scheduling individual interviews, with each department head, before consulting the existing documents means bypassing an immediate, reliable source in favor of a slower approach."
+   },
+   "decision_atom": "Décider par où commencer le recensement des parties prenantes quand des documents fiables sont déjà disponibles.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La charte du projet et l'organigramme sont déjà en main.",
+   "bascule": "Si la charte et l'organigramme n'existaient pas encore, commencer par les entretiens deviendrait juste.",
+   "task_id": "PE4",
+   "level": 1,
+   "run_id": "20260930-0908",
+   "release": "qL1-PE4-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20260930-0908-1-01",
+   "enabler": "Execute the stakeholder engagement plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet doit organiser un atelier de coordination avec un fournisseur clé. Le plan d'engagement prévoit cet atelier après la clôture des tests d'intégration, encore en cours cette semaine. Le fournisseur propose d'avancer la rencontre dès demain pour, selon lui, gagner du temps. Que doit faire la cheffe de projet ?",
+    "en": "A project manager must organize a coordination workshop with a key supplier. The engagement plan schedules this workshop after the integration tests close, which are still running this week. The supplier proposes moving the meeting to tomorrow to, in their view, save time. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la proposition du fournisseur et avancer l'atelier au lendemain pour profiter de sa disponibilité immédiate.",
+     "Annuler l'atelier prévu et le remplacer par des échanges informels par courriel jusqu'à la fin des tests.",
+     "Demander au sponsor de trancher la question du calendrier de l'atelier avant de répondre au fournisseur.",
+     "Maintenir l'atelier après la clôture des tests d'intégration, pour disposer de résultats exploitables avec le fournisseur."
+    ],
+    "en": [
+     "Accept the supplier's proposal and move the workshop to tomorrow to take advantage of their immediate availability.",
+     "Cancel the planned workshop and replace it with informal email exchanges until the tests are complete.",
+     "Ask the sponsor to decide on the workshop's timing before responding to the supplier.",
+     "Keep the workshop scheduled after the integration tests close, to have usable results available with the supplier."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Les tests d'intégration ne sont pas terminés cette semaine : avancer l'atelier priverait la rencontre des résultats qu'elle est censée exploiter. Maintenir l'atelier après la clôture des tests garantit que les échanges avec le fournisseur portent sur des données réelles, conformément à ce que prévoyait le plan d'engagement. Avancer l'atelier au lendemain semble réactif mais transforme la rencontre en discussion sans matière concrète à examiner. Remplacer l'atelier par des échanges informels abandonne un mode d'engagement structuré prévu au plan sans qu'aucune raison ne le justifie. Solliciter le sponsor pour un simple ajustement de calendrier d'exécution du plan d'engagement fait remonter une décision qui relève de la gestion courante de ce plan.",
+    "en": "The integration tests are not finished this week: moving the workshop earlier would strip the meeting of the results it is meant to use. Keeping the workshop after the tests close ensures the discussion with the supplier is grounded in real data, consistent with the engagement plan. Moving it to tomorrow looks responsive but turns the meeting into a discussion without concrete material to examine. Replacing the workshop with informal exchanges abandons a structured engagement mode set out in the plan without any reason to do so. Asking the sponsor to decide on a simple scheduling adjustment within the engagement plan escalates a decision that belongs to routine plan execution."
+   },
+   "decision_atom": "Décider s'il faut avancer un atelier prévu au plan d'engagement à la demande du fournisseur, avant la fin des tests d'intégration.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les tests d'intégration sont encore en cours cette semaine ; l'atelier avancé se tiendrait sans résultats exploitables.",
+   "bascule": "Si les tests d'intégration étaient déjà clôturés, avancer l'atelier deviendrait une option raisonnable.",
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20260930-0908",
+   "release": "qL2-PE4-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE4-20260930-0908-1-01",
+   "enabler": "Optimize alignment among stakeholder needs, expectations, and project objectives.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Sur un programme multi-fournisseurs, un directeur de compte chez un fournisseur clé demande à la cheffe de projet de prioriser une fonctionnalité non prévue au backlog validé, en échange d'un geste commercial sur un autre lot. La cheffe de projet n'a pas mandat contractuel pour réordonner le backlog validé par le comité de pilotage, mais le fournisseur insiste pour une réponse avant la fin de la semaine. Que doit-elle faire en priorité ?",
+    "en": "On a multi-vendor program, an account director at a key supplier asks the project manager to prioritize a feature not included in the approved backlog, in exchange for a commercial concession on another lot. The project manager has no contractual mandate to reorder the backlog approved by the steering committee, but the supplier insists on an answer by the end of the week. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Accepter d'intégrer la fonctionnalité dans le prochain sprint, sans consulter le comité de pilotage, pour préserver la relation commerciale avec ce fournisseur stratégique.",
+     "Soumettre la demande au comité de pilotage, seul organe habilité à modifier le backlog validé, avant toute réponse au fournisseur.",
+     "Refuser fermement la demande, clore le sujet sans consultation du comité, et informer le fournisseur que le backlog validé ne peut plus évoluer d'ici la fin du programme.",
+     "Négocier directement avec le fournisseur un compromis intermédiaire sur le périmètre, en traitant l'information du comité de pilotage comme une étape ultérieure."
+    ],
+    "en": [
+     "Agree to include the feature in the next sprint, without consulting the steering committee, to preserve the relationship with this strategic supplier.",
+     "Submit the request to the steering committee, the only body authorized to change the approved backlog, before answering the supplier.",
+     "Firmly refuse the request, close the matter without consulting the committee, and tell the supplier the approved backlog cannot change again before the program ends.",
+     "Negotiate directly with the supplier an intermediate scope compromise, treating the notification to the steering committee as a later step."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le backlog a été validé par le comité de pilotage : la cheffe de projet n'a pas l'autorité pour le modifier seule, quelle que soit la pression commerciale. Soumettre la demande au comité avant de répondre respecte cette autorité tout en traitant sérieusement la demande. Accepter d'intégrer la fonctionnalité sans consulter le comité outrepasse une décision qui ne lui appartient pas. Refuser fermement et clore le sujet sans consultation tranche à sa place une question qui relève du comité, dans un sens comme dans l'autre. Négocier un compromis directement avec le fournisseur, en reportant l'information du comité à plus tard, contourne l'instance de gouvernance sans la consulter au moment voulu.",
+    "en": "The backlog was approved by the steering committee: the project manager has no authority to change it alone, whatever the commercial pressure. Submitting the request to the committee before responding respects that authority while still taking the request seriously. Agreeing to include the feature without consulting the committee oversteps a decision that is not hers to make. Firmly refusing and closing the matter without consulting the committee decides the matter in her own right, in either direction, when it belongs to the committee. Negotiating a compromise directly with the supplier, treating the notification to the committee as a later step, bypasses the governance body without consulting it at the right time."
+   },
+   "decision_atom": "Décider comment répondre à une demande de reprioritisation du backlog venant d'un fournisseur, sous pression de délai.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "La cheffe de projet n'a pas mandat contractuel pour modifier seule un backlog validé par le comité de pilotage.",
+   "bascule": "Si la cheffe de projet disposait d'un mandat délégué explicite pour arbitrer le périmètre dans certaines limites, négocier directement deviendrait défendable.",
+   "task_id": "PE4",
+   "level": 3,
+   "run_id": "20260930-0908",
+   "release": "qL3-PE4-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE4-20260930-0908-1-02",
+   "enabler": "Build trust and influence stakeholders to accomplish project objectives.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un architecte senior, très respecté de l'équipe, exprime en réunion publique un désaccord sur un choix de conception déjà tranché en comité technique. Il ne remet pas en cause la décision elle-même, mais regrette que son alternative n'ait pas été davantage discutée avant le vote. C'est la première fois qu'il exprime ce type de frustration depuis le début du projet. Comment le chef de projet doit-il réagir ?",
+    "en": "A senior architect, highly respected by the team, expresses disagreement in a public meeting about a design choice already settled by the technical committee. He does not challenge the decision itself, but regrets that his alternative was not discussed more before the vote. This is the first time he has expressed this kind of frustration since the project began. How should the project manager respond?"
+   },
+   "options": {
+    "fr": [
+     "Convoquer une revue formelle du processus de décision technique, associant le comité et l'architecte, pour vérifier que toutes les alternatives sont bien examinées.",
+     "Rouvrir le choix de conception en comité technique, avec une nouvelle séance dédiée, pour permettre à l'architecte de présenter à nouveau son alternative.",
+     "Le remercier publiquement pour sa contribution et proposer un échange bref en tête-à-tête sur la façon dont les alternatives sont discutées.",
+     "Escalader la remarque au sponsor, lors du prochain comité de direction, comme un signal de tension durable entre l'architecte et le comité technique."
+    ],
+    "en": [
+     "Call a formal review of the technical decision process, involving the committee and the architect, to verify that all alternatives are properly examined.",
+     "Reopen the design choice in the technical committee, with a new dedicated session, to let the architect present his alternative again.",
+     "Thank him publicly for his input and offer a brief one-on-one conversation about how alternatives are discussed.",
+     "Escalate the remark to the sponsor, at the next leadership committee, as a sign of lasting tension between the architect and the technical committee."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Il s'agit d'une première frustration isolée sur une manière de faire, sans remise en cause de la décision ni impact sur les livrables : reconnaître la contribution puis clarifier en aparté préserve la relation sans surdimensionner la réponse. Convoquer une revue formelle du processus, associant le comité et l'architecte, traite un incident isolé comme un défaut structurel généralisé. Rouvrir le choix de conception lors d'une nouvelle séance dédiée rétablit un débat déjà tranché, ce que l'architecte n'a pas demandé. Escalader au sponsor lors du prochain comité de direction transforme une remarque ponctuelle en signal de tension durable, alors qu'aucun élément de l'énoncé ne l'indique.",
+    "en": "This is a first, isolated frustration about a way of working, without challenging the decision or affecting deliverables: acknowledging the contribution and clarifying privately preserves the relationship without overreacting. Calling a formal review of the process, involving the committee and the architect, treats an isolated incident as a generalized structural flaw. Reopening the design choice in a new dedicated session reinstates a debate already settled, which the architect did not ask for. Escalating to the sponsor at the next leadership committee turns a one-off remark into a sign of lasting tension, though nothing in the scenario indicates that."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à une frustration exprimée publiquement, une première fois, sur un processus de décision déjà clos.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "C'est la première fois que l'architecte exprime ce type de frustration, et il ne conteste pas la décision elle-même.",
+   "bascule": "Si l'architecte avait explicitement demandé la réouverture du débat, ou si plusieurs membres exprimaient la même frustration, rouvrir le choix deviendrait défendable.",
+   "task_id": "PE4",
+   "level": 3,
+   "run_id": "20260930-0908",
+   "release": "qL3-PE4-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE5-20260930-0908-1-02",
+   "enabler": "Identify stakeholder expectations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet apprend, par un message transféré, qu'un responsable métier s'attend à recevoir des mises à jour hebdomadaires sur l'avancement, alors qu'aucune fréquence n'a été convenue avec lui directement. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager learns, through a forwarded message, that a business manager expects to receive weekly progress updates, even though no frequency has been agreed upon with him directly. What should the project manager prioritize?"
+   },
+   "options": {
+    "fr": [
+     "Échanger directement avec le responsable métier pour clarifier ses attentes réelles en matière de reporting.",
+     "Mettre en place immédiatement des mises à jour hebdomadaires demandées pour ce responsable métier.",
+     "Transmettre le message reçu à l'équipe projet, pour qu'elle ajuste sa cadence de production des livrables.",
+     "Ajouter directement le responsable métier à la liste de diffusion existante du rapport mensuel du projet."
+    ],
+    "en": [
+     "Engage directly with the business manager to clarify his actual reporting expectations.",
+     "Immediately set up the requested weekly updates for this business manager, without delay.",
+     "Forward the received message to the project team, so it adjusts its pace of producing deliverables.",
+     "Directly add the business manager to the existing distribution list for the monthly project report."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'attente rapportée provient d'un message transféré, pas d'un échange direct avec le responsable métier concerné : c'est au chef de projet de vérifier cette attente à la source avant d'agir. Mettre en place immédiatement des mises à jour hebdomadaires demandées traite comme confirmée une information de seconde main qui pourrait être imprécise ou dépassée. Transmettre le message reçu à l'équipe projet fait porter à d'autres une clarification qui relève du rôle du chef de projet vis-à-vis des parties prenantes. Ajouter directement le responsable métier à la diffusion mensuelle existante répond à une fréquence qui n'a jamais été confirmée avec lui.",
+    "en": "The reported expectation comes from a forwarded message, not a direct exchange with the business manager concerned: the project manager should verify this expectation at the source before acting. Immediately setting up the requested weekly updates, without delay, treats secondhand information as confirmed, when it could be imprecise or outdated. Forwarding the received message to the project team shifts to others a clarification that is the project manager's responsibility toward stakeholders. Directly adding the business manager to the existing monthly distribution addresses a frequency that was never confirmed with him."
+   },
+   "decision_atom": "Décider si l'on agit sur une attente rapportée indirectement ou si on la vérifie d'abord à la source.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'attente provient d'un message transféré, pas d'un échange direct avec le responsable concerné.",
+   "bascule": "Si le responsable métier avait formulé cette attente directement au chef de projet, agir immédiatement deviendrait défendable.",
+   "task_id": "PE5",
+   "level": 1,
+   "run_id": "20260930-0908",
+   "release": "qL1-PE5-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE5-20260930-0908-1-04",
+   "enabler": "Facilitate discussions to align expectations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet organise un atelier pour aligner les attentes de deux départements sur la définition du succès du projet. Il constate que les deux équipes n'ont jamais formulé explicitement leurs critères de succès respectifs avant la séance. Comment doit-il structurer l'atelier ?",
+    "en": "A project manager organizes a workshop to align the expectations of two departments on the definition of project success. He notices that neither team has ever explicitly stated its own success criteria before the session. How should he structure the workshop?"
+   },
+   "options": {
+    "fr": [
+     "Commencer par proposer aux deux départements une définition commune du succès rédigée à l'avance par le chef de projet.",
+     "Commencer par comparer directement entre elles les priorités exprimées par les deux départements.",
+     "Commencer par demander à chaque département d'exprimer ses propres critères de succès avant toute comparaison.",
+     "Commencer par présenter aux deux départements réunis les contraintes du calendrier prévu pour le projet."
+    ],
+    "en": [
+     "Start by proposing to both departments a common definition of success drafted in advance by the project manager.",
+     "Start by directly comparing against each other the priorities expressed by the two departments.",
+     "Start by asking each department to state its own success criteria before any comparison.",
+     "Start by presenting to both departments together the schedule constraints planned for the project."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Puisque ni l'un ni l'autre département n'a formulé ses critères de succès avant la séance, l'atelier doit d'abord faire émerger ces critères individuellement, avant toute mise en regard. Proposer aux deux départements une définition rédigée à l'avance par le chef de projet remplace l'expression des deux départements par une formulation externe, sans être passé par leur propre articulation. Comparer directement entre elles les priorités exprimées suppose que chacune a déjà été énoncée clairement, ce qui n'est pas le cas ici. Présenter aux deux départements réunis les contraintes du calendrier prévu oriente la discussion vers une contrainte externe avant même que les attentes de fond aient été exprimées.",
+    "en": "Since neither department has stated its success criteria before the session, the workshop should first surface these criteria individually, before any comparison. Proposing to both departments a definition drafted in advance by the project manager replaces the two departments' own expression with an external formulation, without having let them articulate it themselves. Directly comparing against each other the priorities expressed assumes each has already been clearly stated, which is not the case here. Presenting to both departments together the schedule constraints planned for the project steers the discussion toward an external constraint before the underlying expectations have even been expressed."
+   },
+   "decision_atom": "Décider par quelle étape commencer un atelier d'alignement quand les critères de succès n'ont jamais été formulés.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Aucun des deux départements n'a formulé ses critères de succès avant la séance.",
+   "bascule": "Si chaque département avait déjà formulé ses critères de succès par écrit avant la séance, comparer directement deviendrait la bonne première étape.",
+   "task_id": "PE5",
+   "level": 1,
+   "run_id": "20260930-0908",
+   "release": "qL1-PE5-20260930-0908-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
