@@ -1,0 +1,197 @@
+{
+ "run_id": "20261001-0936",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PE2-20261001-0936-2-03",
+   "enabler": "Implement an agreed-on resolution strategy.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "En réunion, deux responsables d'équipe acceptent un compromis mettant fin à leur désaccord sur le partage d'un environnement de test commun : chacun disposera de créneaux dédiés selon un calendrier à établir. La réunion se termine sur cet accord verbal. Que doit faire le chef de projet en priorité avant la fin de la journée ?",
+    "en": "In a meeting, two team leads agree to a compromise ending their disagreement over sharing a common test environment: each will get dedicated time slots according to a schedule to be set up. The meeting ends on this verbal agreement. What should the project manager do first before the end of the day?"
+   },
+   "options": {
+    "fr": [
+     "Documenter les termes précis du compromis accepté et les faire valider par les deux responsables avant toute diffusion.",
+     "Communiquer l'accord verbal à l'ensemble des équipes concernées et leur demander d'organiser leur travail selon le compromis annoncé en réunion.",
+     "Mettre en place immédiatement le calendrier de créneaux dans l'outil de réservation, puis inviter les deux responsables à le consulter.",
+     "Informer le sponsor que le désaccord entre les deux responsables d'équipe a été résolu en réunion et consigner cette résolution au dossier du projet."
+    ],
+    "en": [
+     "Document the precise terms of the agreed compromise and have both leads validate them before any distribution.",
+     "Communicate the verbal agreement to all affected teams and ask them to organize their work according to the compromise announced in the meeting.",
+     "Immediately set up the slot schedule in the test environment's booking tool, then invite both leads to review it.",
+     "Inform the sponsor that the disagreement between the two team leads was resolved in the meeting and log this resolution in the project record."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'accord conclu en réunion reste verbal et porte sur un principe général (« des créneaux dédiés ») sans détail encore fixé sur le calendrier. Documenter les termes précis et les faire valider par les deux responsables transforme cet accord de principe en engagement clair avant qu'il ne produise le moindre effet — c'est la première étape logique d'une mise en œuvre fiable. Communiquer l'accord verbal aux équipes et leur demander d'organiser leur travail en conséquence risque de diffuser une version imprécise que les deux responsables n'ont pas encore confirmée dans le détail. Mettre en place le calendrier dans l'outil de réservation puis inviter les responsables à le consulter exécute une mise en œuvre technique avant même que les modalités exactes de l'accord soient arrêtées par écrit. Informer le sponsor de la résolution et consigner celle-ci au dossier est prématuré tant que l'accord lui-même n'est pas stabilisé sous une forme vérifiable.",
+    "en": "The agreement reached in the meeting remains verbal and covers only a general principle (\"dedicated slots\") without the schedule details yet fixed. Documenting the precise terms and having both leads validate them turns this agreement in principle into a clear commitment before it produces any effect — the logical first step toward reliable implementation. Communicating the verbal agreement to the teams and asking them to organize their work accordingly risks spreading an imprecise version that the two leads have not yet confirmed in detail. Setting up the schedule in the booking tool and then inviting the leads to review it executes a technical implementation before the exact terms of the agreement are even fixed in writing. Informing the sponsor of the resolution and logging it in the project record is premature while the agreement itself is not yet stabilized in a verifiable form."
+   },
+   "decision_atom": "Décider par quelle étape commencer la mise en œuvre d'un accord de principe encore verbal et imprécis.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "L'accord porte sur un principe général (créneaux dédiés) sans calendrier encore fixé, et n'existe que sous forme verbale à l'issue de la réunion.",
+   "bascule": "Si les modalités précises du calendrier avaient déjà été actées et écrites pendant la réunion, communiquer directement aux équipes deviendrait l'étape correcte.",
+   "task_id": "PE2",
+   "level": 3,
+   "run_id": "20261001-0936",
+   "release": "qL3-PE2-20261001-0936-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-PE5-20261001-0936-1-01",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet a classé un directeur régional comme partie prenante à « faible influence, fort intérêt » sur la base de l'organigramme et de son rôle consultatif défini au chartre. Un directeur d'un autre département, qui n'est pas sponsor du projet mais supervise plusieurs parties prenantes concernées, lui demande de reclasser ce directeur régional en « forte influence » en invoquant son propre jugement sur les dynamiques internes. Que doit faire la cheffe de projet en priorité ?",
+    "en": "A project manager has classified a regional director as a 'low influence, high interest' stakeholder, based on the org chart and the advisory role defined in the charter. A director from another department, who is not the project sponsor but oversees several stakeholders involved, asks her to reclassify this regional director as 'high influence,' citing his own judgment of internal dynamics. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Reclasser le directeur régional en forte influence sur la base de la vue élargie des dynamiques internes du directeur d'un autre département.",
+     "Vérifier avec le sponsor du projet si de nouveaux éléments justifient une révision de la classification avant de la modifier.",
+     "Rappeler au directeur d'un autre département que la classification a été établie à partir du chartre et de l'organigramme du projet.",
+     "Demander au directeur régional lui-même de confirmer son niveau d'influence perçu sur les décisions du projet."
+    ],
+    "en": [
+     "Reclassify the regional director as high influence based on the broader view of internal dynamics held by the director from another department.",
+     "Check with the project sponsor whether new elements justify revising the classification before changing it.",
+     "Remind the director from another department that the classification was based on the project charter and org chart.",
+     "Ask the regional director himself to confirm his perceived level of influence on project decisions."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le directeur qui demande le reclassement n'est pas sponsor du projet et ne dispose d'aucune autorité formelle sur la gouvernance des parties prenantes : son jugement personnel, même informé, ne suffit pas à modifier une classification établie sur des critères documentés. Reclasser directement sur cette seule base reviendrait à accepter une autorité que ce directeur n'a pas sur le projet. Rappeler simplement la base documentée de la classification sans aucun échange ignore qu'un signal nouveau, même informel, mérite d'être examiné avant d'être écarté. Demander au directeur régional de s'auto-évaluer introduit un biais évident et ne règle pas la question de qui doit arbitrer. La bonne démarche consiste à porter la question à l'instance qui a l'autorité sur la gouvernance des parties prenantes du projet, c'est-à-dire le sponsor, avant toute modification.",
+    "en": "The director requesting the reclassification is not the project sponsor and holds no formal authority over stakeholder governance: his personal judgment, however informed, is not enough to change a classification based on documented criteria. Reclassifying directly on this basis alone would mean granting him an authority he does not have over the project. Simply reminding him of the documented basis for the classification without any discussion ignores that a new signal, even an informal one, deserves examination before being dismissed. Asking the regional director to self-assess introduces an obvious bias and does not resolve who should decide. The right approach is to bring the question to the body with authority over project stakeholder governance, namely the sponsor, before making any change."
+   },
+   "decision_atom": "Décider qui a l'autorité de modifier une classification de partie prenante contestée par un responsable extérieur au projet.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le directeur qui demande le reclassement n'est pas sponsor du projet ni n'a d'autorité formelle sur sa gouvernance des parties prenantes.",
+   "bascule": "Si ce directeur était le sponsor du projet ou disposait d'une délégation formelle sur cette gouvernance, reclasser directement deviendrait défendable.",
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20261001-0936",
+   "release": "qL2-PE5-20261001-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE5-20261001-0936-1-05",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet entend dire, par un collègue qui tient l'information d'une conversation de couloir, qu'un directeur financier s'opposerait fermement au projet. Aucun échange direct n'a eu lieu entre le chef de projet et ce directeur, et aucune trace écrite ne confirme cette opposition. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager hears from a colleague, who got the information from a hallway conversation, that a finance director strongly opposes the project. No direct exchange has taken place between the project manager and this director, and no written record confirms this opposition. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Classer immédiatement le directeur financier comme opposant actif dans la matrice des parties prenantes du projet.",
+     "Rencontrer directement le directeur financier pour clarifier sa position réelle avant toute reclassification.",
+     "Alerter le sponsor du projet d'une opposition active constatée au niveau de la direction financière.",
+     "Préparer un plan d'atténuation des risques liés à une opposition supposée de la direction financière."
+    ],
+    "en": [
+     "Immediately classify the finance director as an active opponent in the project's stakeholder matrix.",
+     "Meet directly with the finance director to clarify his actual position before any reclassification.",
+     "Alert the project sponsor to active opposition reportedly arising within the finance department.",
+     "Prepare a risk mitigation plan for suspected opposition from the finance department."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'information provient d'une conversation de couloir rapportée indirectement, sans aucun échange direct ni trace écrite : ce niveau de preuve est insuffisant pour reclassifier formellement le directeur financier comme opposant actif dans la matrice des parties prenantes. Alerter le sponsor d'une opposition active constatée revient à traiter une rumeur non vérifiée comme un fait établi, ce qui risque de propager une information erronée. Préparer un plan d'atténuation des risques sur cette base suppose un problème qui n'est pas encore confirmé. La démarche appropriée consiste à vérifier directement auprès de la personne concernée quelle est sa position réelle avant d'agir sur la classification ou d'escalader quoi que ce soit.",
+    "en": "The information comes from a hallway conversation relayed secondhand, with no direct exchange or written record: this level of evidence is insufficient to formally reclassify the finance director as an active opponent in the stakeholder matrix. Alerting the sponsor to active opposition reportedly observed treats an unverified rumor as an established fact, risking the spread of inaccurate information. Preparing a risk mitigation plan on this basis assumes a problem that is not yet confirmed. The appropriate approach is to verify directly with the person concerned what his actual position is before acting on the classification or escalating anything."
+   },
+   "decision_atom": "Décider s'il faut agir sur une opposition rapportée indirectement ou vérifier d'abord son fondement à la source.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'information provient d'une conversation de couloir rapportée par un tiers, sans échange direct ni trace écrite.",
+   "bascule": "Si le directeur avait formellement exprimé son opposition par écrit ou en réunion officielle, alerter le sponsor deviendrait justifié.",
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20261001-0936",
+   "release": "qL2-PE5-20261001-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE5-20261001-0936-1-01",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet a catégorisé les parties prenantes en début de projet. Trois mois plus tard, une réorganisation interne change le rattachement hiérarchique d'un responsable métier jusque-là classé comme partie prenante à faible influence ; ce changement n'a encore produit aucune décision ni aucun arbitrage sur le projet. Le chef de projet prépare par ailleurs la prochaine revue de gouvernance, prévue dans trois semaines. Que doit-il faire en priorité ?",
+    "en": "A project manager categorized stakeholders at project start. Three months later, an internal reorganization changes the reporting line of a business manager previously classified as low-influence; this change has not yet produced any decision or trade-off affecting the project. The project manager is also preparing the next governance review, scheduled in three weeks. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Attendre la revue de gouvernance pour présenter une mise à jour complète de la catégorisation, puis la communiquer à l'ensemble des parties prenantes.",
+     "Transmettre immédiatement au sponsor une demande de reclassement formel, afin que la décision soit actée avant la tenue de la revue de gouvernance.",
+     "Maintenir la classification actuelle du responsable métier et attendre qu'il exerce concrètement une influence sur une décision du projet.",
+     "Revoir dès maintenant l'influence probable du responsable métier compte tenu de son nouveau rattachement, sans attendre la revue prévue."
+    ],
+    "en": [
+     "Wait for the governance review to present a complete categorization update, then communicate it to all stakeholders at the same session.",
+     "Immediately send the sponsor a formal reclassification request, along with supporting rationale, so the decision is recorded before the review.",
+     "Keep the business manager's current classification and wait until he actually exercises influence over a project decision.",
+     "Reassess the business manager's likely influence now, given the new reporting line, without waiting for the scheduled review."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le changement de rattachement hiérarchique modifie potentiellement le niveau d'influence du responsable métier avant même qu'une décision concrète ne le révèle : la catégorisation sert à anticiper, pas seulement à constater. Revoir l'évaluation dès maintenant permet d'ajuster l'engagement si nécessaire, sans attendre un signal plus tardif. Attendre la revue de gouvernance pour présenter une mise à jour complète retarde sans raison un ajustement qui ne coûte rien à faire maintenant. Transmettre une demande de reclassement formel au sponsor avant même d'avoir réévalué la situation inverse l'ordre du travail : c'est au chef de projet d'abord d'estimer l'influence probable. Maintenir la classification et attendre une preuve par une décision concrète revient à attendre un signal que la réorganisation rend déjà prévisible.",
+    "en": "The change in reporting line potentially alters the business manager's influence level before any concrete decision reveals it: categorization is meant to anticipate, not merely observe. Reassessing now allows engagement to be adjusted if needed, without waiting for a later signal. Waiting for the governance review to present a complete update at the same session needlessly delays an adjustment that costs nothing to make now. Sending the sponsor a formal reclassification request with supporting rationale before reassessing the situation reverses the proper order of work: the project manager should first estimate the likely influence. Keeping the classification and waiting until proven by a concrete decision means waiting for a signal that the reorganization already makes foreseeable."
+   },
+   "decision_atom": "Décider quand réévaluer la catégorisation d'une partie prenante suite à un changement de contexte organisationnel, avant toute manifestation concrète d'influence.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le changement de rattachement hiérarchique n'a encore produit aucune décision ni arbitrage concret sur le projet.",
+   "bascule": "Si le responsable métier avait déjà bloqué ou modifié une décision du projet, attendre une preuve concrète cesserait d'être défendable : la rivale resterait une politique de constat valide dans un contexte sans changement organisationnel identifié.",
+   "task_id": "PE5",
+   "level": 3,
+   "run_id": "20261001-0936",
+   "release": "qL3-PE5-20261001-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE5-20261001-0936-1-05",
+   "enabler": "Organize and act on mentoring opportunities.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet mentor accompagne un chef de projet junior depuis deux mois sur un programme interne. Le junior lui confie que son manager de ligne lui a explicitement demandé de réduire le temps consacré aux séances de mentorat pour se concentrer sur le reporting hebdomadaire, alors que le programme de mentorat a été formellement approuvé par la direction des projets en début d'année. Le mentor a une séance prévue dans deux jours. Que doit-il faire en priorité ?",
+    "en": "A mentor project manager has been coaching a junior project manager for two months on an internal program. The junior confides that their line manager explicitly asked them to reduce time spent on mentoring sessions to focus on weekly reporting, even though the mentoring program was formally approved by the project management office at the start of the year. The mentor has a session scheduled in two days. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Maintenir la séance prévue dans deux jours en l'état, pour préserver la dynamique de mentorat déjà établie avec le junior durant ces deux mois.",
+     "Réduire de lui-même la fréquence des séances de mentorat prévues, pour s'aligner sur la demande formulée récemment par le manager de ligne.",
+     "Proposer au junior de documenter par écrit l'instruction reçue de son manager, puis conserver cette trace comme point de départ des échanges.",
+     "Porter la contradiction entre l'instruction du manager de ligne et le programme approuvé à l'attention de la direction des projets."
+    ],
+    "en": [
+     "Keep the session scheduled in two days unchanged, to preserve the mentoring momentum already built with the junior over these two months.",
+     "Reduce the frequency of the planned mentoring sessions on their own initiative, to align with the request recently made by the line manager.",
+     "Ask the junior to put the line manager's instruction in writing, then keep that record as a starting point for further discussions.",
+     "Bring the contradiction between the line manager's instruction and the approved program to the attention of the project management office."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'instruction du manager de ligne contredit directement un programme formellement approuvé par la direction des projets : ce conflit dépasse ce que le mentor ou le junior peuvent arbitrer entre eux, et seule l'instance qui a approuvé le programme peut trancher la priorité. Maintenir la séance en l'état pour préserver la dynamique déjà établie laisse la contradiction non résolue et expose le junior à un conflit de loyauté persistant. Réduire de lui-même la fréquence des séances prévues revient à céder à une instruction qui contredit une décision de niveau supérieur, sans que le mentor ait l'autorité de le faire. Demander une trace écrite de l'instruction comme point de départ des échanges ne fait que documenter le désaccord sans le porter à l'instance capable de le résoudre.",
+    "en": "The line manager's instruction directly contradicts a program formally approved by the project management office: this conflict goes beyond what the mentor or junior can resolve between themselves, and only the body that approved the program can settle the priority. Keeping the session unchanged to preserve the momentum already built leaves the contradiction unresolved and exposes the junior to an ongoing conflict of loyalty. Reducing the planned session frequency on their own initiative means yielding to an instruction that contradicts a higher-level decision, without the mentor having the authority to do so. Asking for a written record as a starting point for further discussions only documents the disagreement without bringing it to the body able to resolve it."
+   },
+   "decision_atom": "Décider s'il faut arbitrer localement ou escalader un conflit entre l'instruction d'un manager de ligne et un programme de mentorat formellement approuvé.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le programme de mentorat a été formellement approuvé par la direction des projets, ce qui place le conflit au-dessus du niveau du mentor et du junior.",
+   "bascule": "Si le programme de mentorat n'avait jamais été formellement approuvé par une instance supérieure, mais relevait d'un simple accord informel entre pairs, ajuster localement la fréquence des séances deviendrait une politique défendable.",
+   "task_id": "PE5",
+   "level": 3,
+   "run_id": "20261001-0936",
+   "release": "qL3-PE5-20261001-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  }
+ ]
+}
