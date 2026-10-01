@@ -3,6 +3,7 @@ import { C, ECO_DOMAINS, ECO_TASKS } from "../pmp.js";
 import ConnectedCarousel from "../ConnectedCarousel.jsx";
 import LinearCarousel from "../LinearCarousel.jsx";
 import CoverflowCarousel from "../CoverflowCarousel.jsx";
+import { PHOTOS } from "./photos.js";
 import { ArtCase, ArtCockpit, ArtCompass, ArtDomains, ArtLang, ArtLoop, ArtPath, ArtPortrait, ArtSite } from "./carouselArt.jsx";
 
 /*
@@ -16,6 +17,9 @@ import { ArtCase, ArtCockpit, ArtCompass, ArtDomains, ArtLang, ArtLoop, ArtPath,
 
 const SG = "'Space Grotesk', sans-serif";
 const MONO = "'IBM Plex Mono', monospace";
+const Photo = ({ src, alt }) => <img src={src} alt={alt} draggable="false" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />;
+// photo when available, drawn SVG otherwise
+const visual = (key, Art, alt) => (PHOTOS[key] ? <Photo src={PHOTOS[key]} alt={alt} /> : <Art />);
 const dom = (id) => ECO_DOMAINS.find((d) => d.id === id);
 
 function useWidth() {
@@ -31,12 +35,12 @@ const Sample = ({ dark }) => (
 /* ───────────────────────── 1 · Connected: the learner journey ───────────────────────── */
 
 const JOURNEY = [
-  { id: "j1", label: "Diagnostic", step: "Étape 1", stat: "26", statLabel: "tâches ECO 2026 situées", title: "Un premier diagnostic, tâche par tâche", body: "Une trentaine de questions situent chacune des 26 tâches de l'ECO 2026. Vous voyez d'emblée où vous êtes solide et où vous ne l'êtes pas encore.", domain: null, Art: ArtCompass },
-  { id: "j2", label: "Priorités", step: "Étape 2", stat: "3", statLabel: "tâches à consolider d'abord", title: "Commencer par ce qui pèse le plus", body: "Gérer les risques, gérer les finances du projet et planifier l'échéancier ressortent sous 50 %. Ce sont elles qui ouvrent vos prochaines séances.", domain: "biz", Art: ArtDomains },
-  { id: "j3", label: "Échéancier", step: "Étape 3", stat: "5", statLabel: "activités sur le chemin critique", title: "Lire un réseau comme à l'examen", body: "Vous tracez le chemin critique d'un réseau PERT, calculez les marges et voyez ce qu'un retard sur l'activité D change à la date de fin.", domain: "process", Art: ArtPath },
-  { id: "j4", label: "Apprentissage adaptatif", step: "Étape 4", stat: "×3", statLabel: "retours d'une erreur, jusqu'à maîtrise", title: "Apprentissage adaptatif de vos erreurs", body: "Une question manquée revient sous un autre angle, à un autre moment, jusqu'à ce que la bonne réponse tienne. Rien n'est répété pour rien.", domain: "process", Art: ArtLoop },
-  { id: "j5", label: "Relier à mon projet", step: "Étape 5", stat: "1", statLabel: "projet réel comme fil conducteur", title: "Relier chaque notion à votre chantier", body: "Vous décrivez votre projet en quelques lignes ; les cas d'examen s'y rattachent : vos parties prenantes, vos contraintes, vos arbitrages.", domain: "people", Art: ArtSite },
-  { id: "j6", label: "Portrait honnête", step: "Étape 6", stat: "54 %", statLabel: "préparation estimée, jamais gonflée", title: "Savoir quand vous êtes prêt", body: "Le portrait ne s'arrondit jamais vers le haut. Tant qu'une tâche reste fragile, il vous le dit, et vous dit laquelle travailler.", domain: null, Art: ArtPortrait },
+  { id: "j1", photo: "cas", alt: "Professionnelle analysant un scénario", label: "Diagnostic", step: "Étape 1", stat: "26", statLabel: "tâches ECO 2026 situées", title: "Un premier diagnostic, tâche par tâche", body: "Une trentaine de questions situent chacune des 26 tâches de l'ECO 2026. Vous voyez d'emblée où vous êtes solide et où vous ne l'êtes pas encore.", domain: null, Art: ArtCompass },
+  { id: "j2", photo: "equipe", alt: "Équipe projet autour d'une feuille de route", label: "Priorités", step: "Étape 2", stat: "3", statLabel: "tâches à consolider d'abord", title: "Commencer par ce qui pèse le plus", body: "Gérer les risques, gérer les finances du projet et planifier l'échéancier ressortent sous 50 %. Ce sont elles qui ouvrent vos prochaines séances.", domain: "biz", Art: ArtDomains },
+  { id: "j3", photo: "chemin", alt: "Ingénieure traçant un réseau au tableau", label: "Échéancier", step: "Étape 3", stat: "5", statLabel: "activités sur le chemin critique", title: "Lire un réseau comme à l'examen", body: "Vous tracez le chemin critique d'un réseau PERT, calculez les marges et voyez ce qu'un retard sur l'activité D change à la date de fin.", domain: "process", Art: ArtPath },
+  { id: "j4", photo: "etude", alt: "Apprenant qui révise à son bureau", label: "Apprentissage adaptatif", step: "Étape 4", stat: "×3", statLabel: "retours d'une erreur, jusqu'à maîtrise", title: "Apprentissage adaptatif de vos erreurs", body: "Une question manquée revient sous un autre angle, à un autre moment, jusqu'à ce que la bonne réponse tienne. Rien n'est répété pour rien.", domain: "process", Art: ArtLoop },
+  { id: "j5", photo: "chantier", alt: "Ingénieure sur un chantier, tablette en main", label: "Relier à mon projet", step: "Étape 5", stat: "1", statLabel: "projet réel comme fil conducteur", title: "Relier chaque notion à votre chantier", body: "Vous décrivez votre projet en quelques lignes ; les cas d'examen s'y rattachent : vos parties prenantes, vos contraintes, vos arbitrages.", domain: "people", Art: ArtSite },
+  { id: "j6", photo: "portrait", alt: "Chef de projet près d'une fenêtre", label: "Portrait honnête", step: "Étape 6", stat: "54 %", statLabel: "préparation estimée, jamais gonflée", title: "Savoir quand vous êtes prêt", body: "Le portrait ne s'arrondit jamais vers le haut. Tant qu'une tâche reste fragile, il vous le dit, et vous dit laquelle travailler.", domain: null, Art: ArtPortrait },
 ];
 
 function JourneyPanel({ s }) {
@@ -77,14 +81,14 @@ const Detail = ({ text, points }) => (
 );
 
 const FEATURES = [
-  { id: "f1", category: "Plan d'examen", title: "Parcours ECO 2026", art: <ArtDomains />, detail: <Detail text="Tout le parcours suit le plan de l'examen : trois domaines pondérés 33 / 41 / 26 et leurs 26 tâches." points={["Personnes 33 %, Processus 41 %, Environnement d'affaires 26 %", "Chaque question est rattachée à une tâche précise", "Environ 60 % d'agile et d'hybride, tissé partout"]} /> },
-  { id: "f2", category: "Échéancier", title: "Chemin critique", art: <ArtPath />, detail: <Detail text="Des réseaux PERT à lire, à compléter et à faire glisser, comme dans les questions situationnelles." points={["Marges totales et libres calculées pas à pas", "Effet d'un retard sur la date de fin", "Compression : accélération ou chevauchement"]} /> },
-  { id: "f3", category: "Méthode", title: "Apprentissage adaptatif de vos erreurs", art: <ArtLoop />, detail: <Detail text="Ce que vous manquez revient, reformulé, jusqu'à ce que la bonne réponse tienne dans la durée." points={["Une erreur revient sous un autre angle", "Les tâches solides cèdent la place aux fragiles", "Vous voyez pourquoi chaque question vous est proposée"]} /> },
-  { id: "f4", category: "Mise en situation", title: "Relier à mon projet", art: <ArtSite />, detail: <Detail text="Vous décrivez votre projet réel ; les cas d'examen s'appuient sur vos parties prenantes et vos contraintes." points={["Quelques lignes suffisent pour démarrer", "Vos exemples restent privés", "Les notions abstraites prennent un visage concret"]} /> },
-  { id: "f5", category: "Entraînement", title: "Cas d'examen situationnels", art: <ArtCase />, detail: <Detail text="Des scénarios à plusieurs bonnes réponses apparentes, où il faut choisir la meilleure, comme le jour de l'examen." points={["Explication de chaque option, pas seulement de la bonne", "Repère vers la tâche ECO concernée", "Séances courtes, d'environ 15 minutes"]} /> },
-  { id: "f6", category: "Formateurs", title: "Cockpit de cohorte", art: <ArtCockpit />, detail: <Detail text="Le formateur voit sa cohorte d'un coup d'œil, tâche par tâche, sans noms de clients ni données superflues." points={["Cohortes codées, par exemple PMP-2026-A", "Tâches fragiles communes à la cohorte", "Séances ciblées à proposer au groupe"]} /> },
-  { id: "f7", category: "Préparation", title: "Portrait honnête", art: <ArtPortrait />, detail: <Detail text="Votre préparation est estimée sans arrondi flatteur : on vous dit où vous en êtes, et ce qui manque." points={["Jamais gonflé pour rassurer", "Une tâche fragile reste visible tant qu'elle l'est", "La prochaine étape est toujours nommée"]} /> },
-  { id: "f8", category: "Langues", title: "Bilingue FR / EN", art: <ArtLang />, detail: <Detail text="Chaque question, explication et écran existe en français et en anglais ; vous passez de l'un à l'autre à tout moment." points={["Vocabulaire PMI en anglais à côté du français", "Utile si vous passez l'examen en anglais", "Même progression dans les deux langues"]} /> },
+  { id: "f1", category: "Plan d'examen", title: "Parcours ECO 2026", art: visual("equipe", ArtDomains, "Équipe projet autour d'une feuille de route"), detail: <Detail text="Tout le parcours suit le plan de l'examen : trois domaines pondérés 33 / 41 / 26 et leurs 26 tâches." points={["Personnes 33 %, Processus 41 %, Environnement d'affaires 26 %", "Chaque question est rattachée à une tâche précise", "Environ 60 % d'agile et d'hybride, tissé partout"]} /> },
+  { id: "f2", category: "Échéancier", title: "Chemin critique", art: visual("chemin", ArtPath, "Ingénieure traçant un réseau au tableau"), detail: <Detail text="Des réseaux PERT à lire, à compléter et à faire glisser, comme dans les questions situationnelles." points={["Marges totales et libres calculées pas à pas", "Effet d'un retard sur la date de fin", "Compression : accélération ou chevauchement"]} /> },
+  { id: "f3", category: "Méthode", title: "Apprentissage adaptatif de vos erreurs", art: visual("etude", ArtLoop, "Apprenant qui révise à son bureau"), detail: <Detail text="Ce que vous manquez revient, reformulé, jusqu'à ce que la bonne réponse tienne dans la durée." points={["Une erreur revient sous un autre angle", "Les tâches solides cèdent la place aux fragiles", "Vous voyez pourquoi chaque question vous est proposée"]} /> },
+  { id: "f4", category: "Mise en situation", title: "Relier à mon projet", art: visual("chantier", ArtSite, "Ingénieure sur un chantier"), detail: <Detail text="Vous décrivez votre projet réel ; les cas d'examen s'appuient sur vos parties prenantes et vos contraintes." points={["Quelques lignes suffisent pour démarrer", "Vos exemples restent privés", "Les notions abstraites prennent un visage concret"]} /> },
+  { id: "f5", category: "Entraînement", title: "Cas d'examen situationnels", art: visual("cas", ArtCase, "Professionnelle analysant un scénario"), detail: <Detail text="Des scénarios à plusieurs bonnes réponses apparentes, où il faut choisir la meilleure, comme le jour de l'examen." points={["Explication de chaque option, pas seulement de la bonne", "Repère vers la tâche ECO concernée", "Séances courtes, d'environ 15 minutes"]} /> },
+  { id: "f6", category: "Formateurs", title: "Cockpit de cohorte", art: visual("cohorte", ArtCockpit, "Formateur devant une cohorte"), detail: <Detail text="Le formateur voit sa cohorte d'un coup d'œil, tâche par tâche, sans noms de clients ni données superflues." points={["Cohortes codées, par exemple PMP-2026-A", "Tâches fragiles communes à la cohorte", "Séances ciblées à proposer au groupe"]} /> },
+  { id: "f7", category: "Préparation", title: "Portrait honnête", art: visual("portrait", ArtPortrait, "Chef de projet près d'une fenêtre"), detail: <Detail text="Votre préparation est estimée sans arrondi flatteur : on vous dit où vous en êtes, et ce qui manque." points={["Jamais gonflé pour rassurer", "Une tâche fragile reste visible tant qu'elle l'est", "La prochaine étape est toujours nommée"]} /> },
+  { id: "f8", category: "Langues", title: "Bilingue FR / EN", art: visual("bilingue", ArtLang, "Deux collègues en discussion"), detail: <Detail text="Chaque question, explication et écran existe en français et en anglais ; vous passez de l'un à l'autre à tout moment." points={["Vocabulaire PMI en anglais à côté du français", "Utile si vous passez l'examen en anglais", "Même progression dans les deux langues"]} /> },
 ];
 
 /* ───────────────────────── 3 · Coverflow: the 26 ECO tasks ───────────────────────── */
@@ -156,7 +160,7 @@ export default function AdvancedCarouselsPreview() {
 
   useEffect(() => { if (!note) return; const t = setTimeout(() => setNote(""), 3200); return () => clearTimeout(t); }, [note]);
 
-  const journeyItems = JOURNEY.map((s) => ({ id: s.id, label: s.label, art: <s.Art />, content: <JourneyPanel s={s} /> }));
+  const journeyItems = JOURNEY.map((s) => ({ id: s.id, label: s.label, art: visual(s.photo, s.Art, s.alt), content: <JourneyPanel s={s} /> }));
   const pad = narrow ? 16 : 28;
 
   return (
