@@ -1,6 +1,7 @@
 // Every screen in scope, with its lab states. Hash tokens are plain words (artifact-safe).
 export const ROUTES = [
   { hash: 'lab', label: 'Laboratoire', group: 'lab', states: [] },
+  { hash: 'sources', label: 'Sources 21st', group: 'lab', states: [] },
   // Accès
   { hash: 'accueil', label: 'Accueil', group: 'acces', states: ['Nom', 'Code de classe', 'Retrouver (email)', 'Email envoyé', 'Accès formateur'] },
   { hash: 'invitation', label: 'Invitation', group: 'acces', states: ['Vérification', 'Valide — profil présent', 'Valide — nouveau', 'Lien utilisé', 'Lien révoqué', 'Places épuisées'] },

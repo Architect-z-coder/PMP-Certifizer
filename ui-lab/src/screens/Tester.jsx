@@ -1,56 +1,53 @@
 import React, { useState } from 'react'
-import { Check, X, Flag, ArrowRight, AlertTriangle, HelpCircle } from 'lucide-react'
-import { QUESTION, TASKS, DOMAINS, MASTERY } from '../data.js'
-import { Callout, Skeleton, Empty, Seg, pct, Meter } from '../ui.jsx'
+import { ArrowRight, HelpCircle, BookOpen, Compass } from 'lucide-react'
+import { QUESTION, TASKS, MASTERY, DOMAINS } from '../data.js'
+import { QuestionTool } from '@/components/21st/question-tool'
+import { SegmentedControl } from '@/components/21st/segmented-control'
+import { TreeView, TreeSection, TreeItem } from '@/components/21st/branching-tree-nav'
+import CircularProgress from '@/components/21st/circular-progress'
+import { toQuestion, Grading, LETTERS } from './Seance.jsx'
+import { Button, Card, CardContent, CardHeader, CardTitle, CardDescription, PageHead, LightBadge, EmptyState, ErrorAlert, LoadingCard, pct } from './_shared.jsx'
 
 export default function Tester({ state }) {
-  const [picked, setPicked] = useState(null)
   const [focus, setFocus] = useState('BE4')
+  const [dom, setDom] = useState('business')
+  const [picked, setPicked] = useState(null)
   const task = TASKS.find(t => t.id === focus) || TASKS[21]
   const graded = state === 'Corrigée' || state === 'Signalée'
   const m = MASTERY.find(x => x.id === task.id)
   return (
     <div className="page">
-      <div className="page-head"><div><div className="label">Me tester</div><h1>Pratique libre.</h1></div></div>
+      <PageHead kicker="Me tester" title="Pratique libre." />
       <div className="grid-main">
-        <div className="stack">
-          {state === 'Chargement' && <div className="card stack-sm" aria-busy="true"><Skeleton h={18} w="40%" /><Skeleton h={28} /><Skeleton h={28} w="90%" /><Skeleton h={56} /><Skeleton h={56} /><Skeleton h={56} /></div>}
-          {state === 'Erreur' && <Callout kind="warm" icon={AlertTriangle}>Connexion impossible. Le serveur se réveille peut-être ; réessayez dans quelques secondes. <button type="button" className="btn btn-sm btn-secondary" style={{ marginLeft: 8 }}>Réessayer</button></Callout>}
-          {state === 'Aucune question' && <Empty icon={HelpCircle} title="Pas encore de question pour cette tâche" action={<a href="#expliquer" className="btn btn-secondary">L’étudier en mode Expliquer</a>}>La banque auditée ne couvre pas encore « {task.fr} ». Les modes Expliquer et Cas d’examen la traitent déjà.</Empty>}
-          {(state === 'Question' || graded) && (
-            <article className="card card-lg stack">
-              <div className="row small subtle"><span className="label">{task.id} · {task.fr}</span><span>·</span><span>Niveau 2 · scénario</span></div>
-              <h2 style={{ fontSize: 'var(--t-xl)', lineHeight: 1.35, textWrap: 'pretty' }}>{QUESTION.prompt}</h2>
-              <div role={graded ? undefined : 'radiogroup'} aria-label="Réponses" className="stack-sm">
-                {QUESTION.options.map((o, i) => {
-                  const chosen = graded ? 0 : picked
-                  const result = graded ? (i === QUESTION.answer ? 'correct' : i === chosen ? 'wrong' : undefined) : undefined
-                  return <button type="button" key={i} role={graded ? undefined : 'radio'} aria-checked={graded ? undefined : picked === i} className="choice" data-result={result} disabled={graded} onClick={() => setPicked(i)} aria-label={graded ? `${['A','B','C','D'][i]}. ${o}${result === 'correct' ? ' (bonne réponse)' : result === 'wrong' ? ' (votre réponse, incorrecte)' : ''}` : undefined}><span className="choice-key" aria-hidden="true">{result === 'correct' ? <Check size={14} /> : result === 'wrong' ? <X size={14} /> : ['A','B','C','D'][i]}</span><span>{o}</span></button>
-                })}
-              </div>
-              {graded && <div className="card card-quiet" aria-live="polite"><strong className="tier-1">Pas cette fois.</strong><p style={{ marginTop: 8 }}>{QUESTION.rationale}</p></div>}
-              <div className="row between">
-                {graded ? <button type="button" className="btn btn-ghost btn-sm" aria-pressed={state === 'Signalée'} disabled={state === 'Signalée'}>{state === 'Signalée' ? <><Check size={14} aria-hidden="true" /> Signalée, merci</> : <><Flag size={14} aria-hidden="true" /> Signaler cette question</>}</button> : <span />}
-                {graded ? <button type="button" className="btn btn-primary">Question suivante <ArrowRight size={18} aria-hidden="true" /></button> : <button type="button" className="btn btn-primary" disabled={picked === null}>Valider</button>}
-              </div>
-            </article>
-          )}
+        <div className="flex flex-col gap-4">
+          {state === 'Chargement' && <LoadingCard lines={5} />}
+          {state === 'Erreur' && <ErrorAlert title="Connexion impossible" onRetry={() => {}}>Le serveur se réveille peut-être ; réessayez dans quelques secondes.</ErrorAlert>}
+          {state === 'Aucune question' && <EmptyState className="max-w-none" icons={[HelpCircle, BookOpen, Compass]} title="Pas encore de question pour cette tâche" description={`La banque auditée ne couvre pas encore « ${task.fr} ». Vous pouvez l’étudier en mode Expliquer.`} action={{ label: 'L’étudier en mode Expliquer', onClick: () => { location.hash = 'expliquer' } }} />}
+          {(state === 'Question' || graded) && <>
+            <QuestionTool key={state} questions={[toQuestion(QUESTION, task)]} submitLabel="Valider" allowSkip={false} onSubmitAnswer={(a) => setPicked(LETTERS.indexOf(a.selectedIds?.[0]))} output={graded ? { answer: { kind: 'single', selectedIds: ['A'] } } : undefined} className="bg-card" />
+            {graded && <Grading right={false} chosen={0} onFlag={() => {}} flagged={state === 'Signalée'} />}
+            {graded && <div className="flex justify-end"><Button>Question suivante <ArrowRight className="ml-2 size-4" aria-hidden="true" /></Button></div>}
+          </>}
         </div>
-        <aside className="stack" aria-label="Sujet">
-          <div className="card">
-            <div className="label">Sujet</div>
-            <label htmlFor="focus-dom" className="sr-only">Domaine</label>
-            <select id="focus-dom" className="select" style={{ marginTop: 8 }} value={task.domain} onChange={() => {}}>{DOMAINS.map(d => <option key={d.id} value={d.id}>{d.fr} · {Math.round(d.weight * 100)} %</option>)}</select>
-            <ul className="list" style={{ marginTop: 8 }}>
-              {TASKS.filter(t => t.domain === task.domain).map(t => { const mm = MASTERY.find(x => x.id === t.id); return <li key={t.id} style={{ padding: '6px 0' }}><button type="button" className="btn btn-ghost btn-sm" aria-pressed={t.id === task.id} onClick={() => setFocus(t.id)} style={{ justifyContent: 'start', flex: 1, textAlign: 'left', whiteSpace: 'normal', minHeight: 36 }}>{t.fr}</button><span className={`small num tier-${{untested:0,fragile:1,progress:2,solid:3}[mm.light]}`}>{mm.attempts ? pct(mm.score) : '—'}</span></li> })}
-            </ul>
-          </div>
-          <div className="card card-quiet">
-            <div className="label">Cette tâche</div>
-            <div className="display num" style={{ fontSize: 'var(--t-2xl)', marginTop: 6 }}>{m.attempts ? pct(m.score) : 'Jamais pratiquée'}</div>
-            <Meter value={m.score} tier={{untested:0,fragile:1,progress:2,solid:3}[m.light]} />
-            <p className="small subtle" style={{ marginTop: 8 }}>Les questions servies suivent votre niveau : fondations sous 50 %, consolidation sous 75 %, niveau examen au-delà.</p>
-          </div>
+        <aside className="flex flex-col gap-4" aria-label="Sujet">
+          <Card>
+            <CardHeader><CardTitle className="text-base">Sujet</CardTitle></CardHeader>
+            <CardContent className="flex flex-col gap-3">
+              <SegmentedControl label="Domaine" options={DOMAINS.map(d => ({ value: d.id, label: `${d.short} · ${Math.round(d.weight * 100)} %` }))} value={dom} onValueChange={setDom} />
+              <TreeView selectedId={focus} onSelect={setFocus}>
+                <TreeSection title={DOMAINS.find(d => d.id === dom).fr} defaultExpanded>
+                  {TASKS.filter(t => t.domain === dom).map(t => { const mm = MASTERY.find(x => x.id === t.id); return <TreeItem key={t.id} id={t.id} label={`${t.id} · ${t.fr}`} badge={mm.attempts ? pct(mm.score) : '—'} /> })}
+                </TreeSection>
+              </TreeView>
+            </CardContent>
+          </Card>
+          <Card className="bg-muted/40">
+            <CardHeader><CardTitle className="text-base">Cette tâche</CardTitle><CardDescription>{task.id} · {task.fr}</CardDescription></CardHeader>
+            <CardContent className="flex items-center gap-4">
+              <CircularProgress value={Math.round(m.score * 100)} size={72} strokeWidth={7} showLabel renderLabel={(v) => m.attempts ? `${v} %` : '—'} className="stroke-muted" progressClassName={['stroke-tier-0', 'stroke-tier-1', 'stroke-tier-2', 'stroke-tier-3'][{ untested: 0, fragile: 1, progress: 2, solid: 3 }[m.light]]} labelClassName="text-sm font-medium" />
+              <div className="flex flex-col gap-2"><LightBadge light={m.light} /><p className="text-sm text-muted-foreground">Les questions servies suivent votre niveau : fondations sous 50 %, consolidation sous 75 %, niveau examen au-delà.</p></div>
+            </CardContent>
+          </Card>
         </aside>
       </div>
     </div>
