@@ -1,0 +1,159 @@
+{
+ "run_id": "20261002-0909",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL1-PE6-20261002-0909-1-03",
+   "enabler": "Align and maintain outcomes to internal and external customer expectations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un changement d'exigence réglementaire externe oblige à revoir une fonctionnalité déjà livrée au client. L'équipe technique a identifié une solution plausible mais n'a pas encore vérifié qu'elle satisfait les attentes initiales du client sur cette fonctionnalité. Que doit faire le chef de projet en premier ?",
+    "en": "An external regulatory change requires revisiting a feature already delivered to the client. The technical team has identified a plausible solution but has not yet verified it meets the client's original expectations for this feature. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Vérifier auprès du client que la solution envisagée reste conforme à ses attentes initiales sur cette fonctionnalité.",
+     "Déployer la solution technique identifiée afin de répondre rapidement à la nouvelle exigence réglementaire externe.",
+     "Documenter le changement réglementaire dans le registre des risques avant toute action technique de l'équipe.",
+     "Informer le sponsor du changement réglementaire afin qu'il valide la priorité de cette correction au livrable."
+    ],
+    "en": [
+     "Verify with the client that the proposed solution still meets his original expectations for this feature.",
+     "Deploy the identified technical solution in order to respond quickly to the new external regulatory requirement.",
+     "Document the regulatory change in the risk register before any technical action by the team.",
+     "Inform the sponsor of the regulatory change so he can validate the priority of this fix to the deliverable."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Vérifier auprès du client que la solution reste conforme à ses attentes initiales est la bonne première étape : l'équipe a une solution plausible pour répondre à l'exigence réglementaire, mais rien ne confirme encore qu'elle préserve ce que le client attendait de cette fonctionnalité. Déployer la solution technique afin de répondre rapidement à l'exigence réglementaire risque de résoudre la contrainte tout en introduisant un nouvel écart d'attentes, non détecté avant livraison. Documenter le changement dans le registre des risques avant toute action technique est une action secondaire qui ne traite pas l'urgence de maintenir l'alignement avec le client sur cette fonctionnalité précise. Informer le sponsor afin qu'il valide la priorité de la correction déplace une décision qui concerne directement les attentes du client vers une personne qui n'en est pas le propriétaire.",
+    "en": "Verifying with the client that the solution still meets his original expectations is the right first step: the team has a plausible fix for the regulatory requirement, but nothing yet confirms it preserves what the client expected from this feature. Deploying the technical solution in order to respond quickly to the regulatory requirement risks resolving the constraint while introducing a new expectation gap, undetected before delivery. Documenting the change in the risk register before any technical action is a secondary step that does not address the urgency of maintaining alignment with the client on this specific feature. Informing the sponsor so he can validate the priority of the fix shifts a decision about client expectations to someone who does not own it."
+   },
+   "decision_atom": "Décider s'il faut déployer une solution technique avant de vérifier son alignement avec les attentes initiales du client.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La solution technique répond à l'exigence réglementaire mais n'a pas été vérifiée contre les attentes initiales du client sur cette fonctionnalité.",
+   "bascule": "Si le délai réglementaire était si court qu'aucune vérification préalable n'était matériellement possible, déployer directement deviendrait défendable.",
+   "task_id": "PE6",
+   "level": 1,
+   "run_id": "20261002-0909",
+   "release": "qL1-PE6-20261002-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE6-20261002-0909-1-05",
+   "enabler": "Monitor internal and external customer satisfaction/expectations and respond as needed.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pour répondre à une légère baisse de satisfaction signalée par un client externe, un chef de projet envisage deux options : ajouter une réunion de suivi hebdomadaire avec ce client, ou renégocier les critères d'acceptation du contrat en cours. Le client n'a demandé ni l'une ni l'autre. Que doit-il faire en premier ?",
+    "en": "To address a slight satisfaction drop reported by an external customer, a project manager is considering two options: adding a weekly check-in meeting with this customer, or renegotiating the acceptance criteria of the current contract. The customer requested neither. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Renégocier directement les critères d'acceptation du contrat en cours pour répondre à la baisse constatée.",
+     "Combiner la réunion hebdomadaire et la renégociation contractuelle pour traiter le signal sous tous les angles.",
+     "Proposer au client une réunion de suivi hebdomadaire, ajustable selon l'évolution de sa satisfaction.",
+     "Soumettre les deux options au sponsor pour qu'il tranche laquelle engager avec le client, puis en informer ce dernier."
+    ],
+    "en": [
+     "Directly renegotiate the current contract's acceptance criteria to address the observed drop in satisfaction.",
+     "Combine the weekly meeting and the contractual renegotiation to address the signal from every angle.",
+     "Propose a weekly check-in meeting to the customer, adjustable depending on how his satisfaction evolves.",
+     "Submit both options to the sponsor so he can decide which one to pursue, then inform the customer of the choice."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Proposer une réunion de suivi hebdomadaire ajustable est la réponse proportionnée : elle reste réversible et peut être resserrée ou arrêtée selon l'évolution de la satisfaction, pour un signal encore léger et non demandé par le client. Renégocier directement les critères d'acceptation du contrat en cours engage une modification contractuelle difficile à défaire pour répondre à une baisse mineure, ce qui est disproportionné à ce stade. Combiner les deux options cumule une action réversible et une action structurelle alors que rien ne justifie encore d'aller jusqu'à la renégociation. Soumettre les deux options au sponsor pour qu'il tranche, puis en informer le client, retarde une réponse de premier niveau que le chef de projet peut engager directement avec lui.",
+    "en": "Proposing an adjustable weekly check-in meeting is the proportionate response: it remains reversible and can be tightened or stopped depending on how satisfaction evolves, for a signal that is still slight and was not requested by the customer. Directly renegotiating the current contract's acceptance criteria commits to a contractual change that is hard to undo in response to a minor drop, which is disproportionate at this stage. Combining both options stacks a reversible action with a structural one when nothing yet justifies going as far as renegotiation. Submitting both options to the sponsor so he can decide, then informing the customer of the choice, delays a first-level response that the project manager can initiate directly with him."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à apporter à une légère baisse de satisfaction non demandée par le client.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "La baisse est légère et le client n'a demandé ni réunion supplémentaire ni renégociation contractuelle.",
+   "bascule": "Si la baisse de satisfaction s'accompagnait d'une non-conformité documentée aux critères d'acceptation, renégocier le contrat deviendrait proportionné.",
+   "task_id": "PE6",
+   "level": 1,
+   "run_id": "20261002-0909",
+   "release": "qL1-PE6-20261002-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE6-20261002-0909-1-01",
+   "enabler": "Monitor internal and external customer satisfaction/expectations and respond as needed.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un client externe signale, lors d'une revue mensuelle, que les temps de réponse du support ne respectent plus le niveau de service inscrit au contrat depuis trois semaines. L'équipe interne a déjà noté une légère hausse des délais mais les attribuait à une charge ponctuelle. Que doit faire la cheffe de projet en priorité ?",
+    "en": "During a monthly review, an external client reports that support response times have not met the contractually defined service level for three weeks. The internal team had already noticed a slight increase in delays but attributed it to temporary workload. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Mettre en place un suivi quotidien des délais de réponse du support, puis en rediscuter avec le client lors de la prochaine revue mensuelle.",
+     "Proposer au client un geste commercial immédiat sur sa prochaine facture et compenser ainsi l'écart constaté sur les trois dernières semaines de service.",
+     "Demander à l'équipe support de prioriser les tickets du client dans l'outil de suivi, puis résorber le retard observé sur une période de deux semaines.",
+     "Documenter l'écart au regard du niveau de service contractuel et le transmettre au sponsor pour decision sur la réponse à apporter."
+    ],
+    "en": [
+     "Set up daily tracking of the support team's response times, then revisit the topic with the client at the next monthly review meeting.",
+     "Offer the client an immediate commercial gesture on their next invoice, thereby compensating for the gap observed over the last three weeks.",
+     "Ask the support team to prioritize this client's tickets in the tracking tool, then close the observed gap over a two-week recovery period.",
+     "Document the gap against the contractual service level and escalate it to the sponsor for a decision on the response."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'écart touche un niveau de service inscrit au contrat et dure depuis trois semaines : ce n'est plus une variation opérationnelle que la cheffe de projet peut absorber seule, c'est un engagement contractuel non tenu. Documenter l'écart et le transmettre au sponsor permet une décision sur la réponse à apporter (négociation, plan de rattrapage, compensation) au niveau où l'engagement a été pris. Mettre en place un suivi quotidien des délais de réponse du support puis en rediscuter à la prochaine revue mensuelle traite le symptôme sans reconnaître que le contrat est déjà rompu depuis trois semaines. Proposer un geste commercial sur sa prochaine facture et compenser ainsi l'écart engage l'organisation sur un terrain contractuel sans mandat ni validation préalable. Prioriser les tickets du client dans l'outil de suivi puis résorber le retard sur deux semaines peut réduire le retard mais ne traite pas le fait que l'engagement contractuel a déjà été rompu et doit être géré comme tel.",
+    "en": "The gap concerns a contractually defined service level and has lasted three weeks: this is no longer an operational variation the project manager can absorb alone, it is an unmet contractual commitment. Documenting the gap and escalating it to the sponsor allows a decision on the response (renegotiation, recovery plan, compensation) to be made at the level where the commitment was made. Setting up daily tracking of the support team's response times and then revisiting it at the next monthly review treats the symptom without acknowledging the contract has already been breached for three weeks. Offering a commercial gesture on the client's next invoice and thereby compensating for the gap commits the organization on contractual ground without prior mandate or validation. Prioritizing the client's tickets in the tracking tool and then closing the gap over two weeks may reduce the backlog but does not address the fact that the contractual commitment has already been breached and must be managed as such."
+   },
+   "decision_atom": "Décider si un écart de satisfaction touchant un engagement contractuel doit être géré localement ou remonté formellement.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'écart concerne un niveau de service inscrit au contrat et dure depuis trois semaines, pas une fluctuation ponctuelle non engageante.",
+   "bascule": "Si l'écart ne touchait pas une clause contractuelle mais une préférence informelle, prioriser les tickets suffirait et deviendrait correct.",
+   "task_id": "PE6",
+   "level": 3,
+   "run_id": "20261002-0909",
+   "release": "qL3-PE6-20261002-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE6-20261002-0909-1-02",
+   "enabler": "Identify internal and external customer expectations.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une cheffe de projet souhaite remplacer les entretiens individuels, jugés lents, par un questionnaire structuré pour recueillir les attentes des utilisateurs internes sur un futur module. Aucun questionnaire de ce type n'a jamais été utilisé dans l'organisation pour ce genre de recueil. Comment doit-elle procéder ?",
+    "en": "A project manager wants to replace individual interviews, seen as slow, with a structured questionnaire to gather internal users' expectations for an upcoming module. No such questionnaire has ever been used in the organization for this kind of elicitation. How should she proceed?"
+   },
+   "options": {
+    "fr": [
+     "Tester le questionnaire auprès d'un petit groupe d'utilisateurs et comparer les résultats aux entretiens avant de l'étendre à tous.",
+     "Déployer directement le questionnaire à l'ensemble des utilisateurs internes du module, et récupérer ainsi le temps perdu par les entretiens.",
+     "Remplacer définitivement les entretiens par le questionnaire pour ce module, en s'appuyant sur son usage courant observé dans d'autres organisations.",
+     "Faire valider le contenu du questionnaire par le sponsor du projet, puis l'envoyer à l'ensemble des utilisateurs internes concernés par le module."
+    ],
+    "en": [
+     "Pilot the questionnaire with a small group of users and compare results to interviews before extending it to everyone.",
+     "Deploy the questionnaire directly to all internal users of the module, and thereby recover the time lost through the interviews.",
+     "Permanently replace interviews with the questionnaire for this module, relying on its common use observed in other organizations.",
+     "Have the questionnaire content validated by the project sponsor, then send it to all internal users involved in the module."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Aucun questionnaire de ce type n'a jamais été utilisé dans l'organisation pour ce recueil : sa capacité à capter des attentes aussi fidèlement que les entretiens est inconnue. Le tester sur un petit groupe et comparer les résultats aux entretiens permet de vérifier son efficacité avant un engagement général, tout en gardant la possibilité de revenir aux entretiens si l'écart est trop important. Le déployer directement à l'ensemble des utilisateurs internes du module et récupérer ainsi le temps perdu expose l'ensemble du recueil à un outil non éprouvé pour ce contexte. Le substituer définitivement aux entretiens pour ce module en s'appuyant sur un usage observé ailleurs ignore que le contexte interne n'a jamais été testé. Faire valider son contenu par le sponsor du projet puis l'envoyer à tous les utilisateurs porte sur la forme du questionnaire, pas sur sa capacité réelle à restituer les attentes des utilisateurs, ce que seul un test comparatif peut établir.",
+    "en": "No such questionnaire has ever been used in the organization for this kind of elicitation: its ability to capture expectations as reliably as interviews is unknown. Piloting it with a small group and comparing results to interviews allows its effectiveness to be checked before a broader commitment, while preserving the option to revert to interviews if the gap is too large. Deploying it directly to all internal users of the module and thereby recovering the lost time exposes the entire elicitation effort to an untested tool. Permanently substituting it for interviews for this module by relying on use observed elsewhere ignores that the internal context has never been tested. Having its content validated by the project sponsor and then sending it to all users addresses the questionnaire's form, not its actual ability to capture expectations, which only a comparative test can establish."
+   },
+   "decision_atom": "Décider s'il faut généraliser immédiatement un nouvel outil de recueil des attentes ou le tester d'abord en comparaison avec la méthode existante.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Aucun questionnaire de ce type n'a jamais été utilisé dans l'organisation pour ce genre de recueil : son efficacité réelle est inconnue.",
+   "bascule": "Si l'organisation avait déjà validé ce type de questionnaire sur un recueil comparable, le déploiement direct deviendrait défendable.",
+   "task_id": "PE6",
+   "level": 3,
+   "run_id": "20261002-0909",
+   "release": "qL3-PE6-20261002-0909-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  }
+ ]
+}
