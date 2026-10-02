@@ -42,7 +42,7 @@
    Fraunces (human, soft serif) for titles, Inter for UI, JetBrains Mono
    for data labels. Radius 12, shadows almost absent, hairlines instead.
 */
-:root, :root[data-direction="observatoire"] {
+:root, :root[data-direction="observatoire"], [data-direction="observatoire"] {
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -79,7 +79,7 @@
    Editorial workbook. Ivory paper, deep ink, terracotta accent,
    Source Serif display, rounded 16. Warmer, more literary.
 */
-:root[data-direction="atelier"] {
+:root[data-direction="atelier"], [data-direction="atelier"] {
   --font-display: "Source Serif 4", Georgia, serif;
   --font-body: "Source Sans 3", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -112,7 +112,7 @@
    Blueprint / worksite. Cool white with faint grid, cobalt lines,
    Space Grotesk display, square-ish radius 6. Engineering precision.
 */
-:root[data-direction="chantier"] {
+:root[data-direction="chantier"], [data-direction="chantier"] {
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
@@ -144,7 +144,7 @@
    Growth. Soft sage and clay, rounded 20, Lora display, DM Sans body.
    The most "alive" and warm; the mind map reads as a living plant.
 */
-:root[data-direction="jardin"] {
+:root[data-direction="jardin"], [data-direction="jardin"] {
   --font-display: "Lora", Georgia, serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
