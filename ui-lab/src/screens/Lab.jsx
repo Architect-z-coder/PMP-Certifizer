@@ -45,6 +45,11 @@ export default function Lab({ direction, setDirection }) {
           <StatsCard title="axe · 1366 et 390 px" value="0" icon={<ShieldCheck className="size-4 text-muted-foreground" aria-hidden="true" />} change="constat" changeType="positive" changeNote="wcag 2.2 AA + bonnes pratiques" />
         </div>
 
+        <Card className="border-primary/40 bg-accent-soft/40">
+          <CardHeader><CardDescription className="label">Direction retenue · phase 3</CardDescription><CardTitle className="text-2xl">Le Chantier, construit</CardTitle><CardDescription>La page d’entrée racontée au défilement (GSAP ScrollTrigger + Lenis, films et photos du media pack) et cinq écrans de travail : Aujourd’hui, Parcours, S’entraîner, Mon projet, Portrait. Application séparée, servie par le même serveur de développement.</CardDescription></CardHeader>
+          <CardContent><Button asChild><a href="./chantier.html">Ouvrir le Chantier <ArrowRight className="ml-2 size-4" aria-hidden="true" /></a></Button></CardContent>
+        </Card>
+
         <section aria-labelledby="dirs">
           <h2 id="dirs" className="mb-4">Les quatre directions</h2>
           <div className="px-12"><Carousel opts={{ align: 'start' }} className="w-full">
