@@ -1,0 +1,182 @@
+/* ---------------------------------------------------------------
+   Certifizer UI Lab — design tokens
+   Four directions share one component system; a direction is a
+   token set applied via data-direction on <html>.
+   Winner (fully built): "observatoire". Others: token-level previews.
+   --------------------------------------------------------------- */
+:root {
+  /* spacing scale (spacious: density 2/10) */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+  --gutter: 16px;
+  --content-max: 1120px;
+  --nav-w: 248px;
+
+  /* type scale */
+  --t-xs: 0.75rem; --t-sm: 0.875rem; --t-md: 1rem; --t-lg: 1.125rem;
+  --t-xl: 1.375rem; --t-2xl: 1.75rem; --t-3xl: 2.25rem; --t-4xl: 3rem;
+  --lh-tight: 1.15; --lh-snug: 1.3; --lh-body: 1.55;
+
+  /* motion */
+  --dur-fast: 150ms; --dur-base: 240ms; --dur-slow: 420ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std: cubic-bezier(0.2, 0, 0, 1);
+
+  /* readiness tiers — semantic, never decorative. Set per direction. */
+  --tier-0: #6B707A;   /* données insuffisantes */
+  --tier-1: #B7410E;   /* fragile */
+  --tier-2: #8F6A00;   /* en progression */
+  --tier-3: #1F7A4D;   /* solide */
+  --tier-4: #0F5132;   /* prêt */
+
+  /* ECO domains (categorical, 3 only) */
+  --dom-people: #2F5BEA;
+  --dom-process: #1F7A4D;
+  --dom-be: #8F6A00;
+
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+/* ===== Direction 1 — L'Observatoire (winner) =====================
+   A quiet instrument. Warm-light paper, ink text, one cobalt accent.
+   Fraunces (human, soft serif) for titles, Inter for UI, JetBrains Mono
+   for data labels. Radius 12, shadows almost absent, hairlines instead.
+*/
+:root, :root[data-direction="observatoire"], [data-direction="observatoire"] {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --display-weight: 400;
+  --display-opsz: 72;
+
+  --bg: #F7F6F2;
+  --surface: #FFFFFF;
+  --surface-2: #F1EFE9;
+  --ink: #1B1F2A;
+  --ink-2: #4B5160;
+  --ink-3: #5B6271;
+  --line: #E4E1D8;
+  --line-strong: #CFCBBF;
+
+  --accent: #2F5BEA;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E8EEFF;
+  --accent-soft-ink: #1F3FB0;
+
+  --warm: #F3E8D6;
+  --warm-ink: #7A4B12;
+
+  --danger: #B42318;
+  --danger-soft: #FBE9E7;
+
+  --radius-sm: 8px; --radius: 12px; --radius-lg: 20px; --radius-pill: 999px;
+  --shadow-sm: 0 1px 0 rgba(27,31,42,0.04);
+  --shadow-md: 0 8px 24px -12px rgba(27,31,42,0.18);
+  --photo-filter: saturate(0.85) contrast(1.02);
+}
+
+/* ===== Direction 2 — L'Atelier =====================================
+   Editorial workbook. Ivory paper, deep ink, terracotta accent,
+   Source Serif display, rounded 16. Warmer, more literary.
+*/
+:root[data-direction="atelier"], [data-direction="atelier"] {
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --display-weight: 500;
+  --bg: #FBF7EF;
+  --surface: #FFFDF9;
+  --surface-2: #F4ECDD;
+  --ink: #241F1A;
+  --ink-2: #5A5047;
+  --ink-3: #6B6156;
+  --line: #E9DFCB;
+  --line-strong: #D6C8AC;
+  --accent: #B5542A;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #F8E6DB;
+  --accent-soft-ink: #8A3A17;
+  --warm: #F1E6CF;
+  --warm-ink: #6E4A14;
+  --danger: #A8281C;
+  --danger-soft: #F9E6E2;
+  --radius-sm: 10px; --radius: 16px; --radius-lg: 24px;
+  --shadow-sm: 0 1px 0 rgba(36,31,26,0.05);
+  --shadow-md: 0 10px 28px -14px rgba(36,31,26,0.22);
+  --tier-1: #A8281C; --tier-2: #8C5F0C; --tier-3: #3E7A48; --tier-4: #22552E;
+  --dom-people: #B5542A; --dom-process: #3E7A48; --dom-be: #7A5CB5;
+  --photo-filter: sepia(0.18) saturate(0.9);
+}
+
+/* ===== Direction 3 — Le Chantier ===================================
+   Blueprint / worksite. Cool white with faint grid, cobalt lines,
+   Space Grotesk display, square-ish radius 6. Engineering precision.
+*/
+:root[data-direction="chantier"], [data-direction="chantier"] {
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --display-weight: 500;
+  --bg: #F4F7FB;
+  --surface: #FFFFFF;
+  --surface-2: #EAF0F8;
+  --ink: #0F1E3A;
+  --ink-2: #3D4D6B;
+  --ink-3: #566481;
+  --line: #D6DFEC;
+  --line-strong: #B6C4D9;
+  --accent: #1746C8;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E3EAFB;
+  --accent-soft-ink: #12358F;
+  --warm: #FFF1DB;
+  --warm-ink: #7A4B12;
+  --danger: #B42318;
+  --danger-soft: #FBE9E7;
+  --radius-sm: 4px; --radius: 6px; --radius-lg: 10px;
+  --shadow-sm: none;
+  --shadow-md: 0 6px 20px -12px rgba(15,30,58,0.25);
+  --dom-people: #1746C8; --dom-process: #0E7C66; --dom-be: #9A530C;
+  --photo-filter: grayscale(0.25) contrast(1.05);
+}
+
+/* ===== Direction 4 — Le Jardin =====================================
+   Growth. Soft sage and clay, rounded 20, Lora display, DM Sans body.
+   The most "alive" and warm; the mind map reads as a living plant.
+*/
+:root[data-direction="jardin"], [data-direction="jardin"] {
+  --font-display: "Lora", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --display-weight: 500;
+  --bg: #F6F8F3;
+  --surface: #FFFFFF;
+  --surface-2: #EBF0E6;
+  --ink: #1E2A22;
+  --ink-2: #4A5A4F;
+  --ink-3: #5E6E63;
+  --line: #DCE5D8;
+  --line-strong: #BFCDB9;
+  --accent: #2E7D5B;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #DFF0E6;
+  --accent-soft-ink: #1E5A40;
+  --warm: #F6E7DA;
+  --warm-ink: #7A4B12;
+  --danger: #B42318;
+  --danger-soft: #FBE9E7;
+  --radius-sm: 12px; --radius: 20px; --radius-lg: 28px;
+  --shadow-sm: 0 1px 0 rgba(30,42,34,0.04);
+  --shadow-md: 0 12px 32px -16px rgba(30,42,34,0.2);
+  --tier-3: #2E7D5B; --tier-4: #1E5A40;
+  --dom-people: #A9502D; --dom-process: #2E7D5B; --dom-be: #6B5BB5;
+  --photo-filter: saturate(0.95);
+}
+
+/* Reduced motion: system preference OR explicit toggle */
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+}
+:root[data-reduced-motion="true"] {
+  --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms;
+}
