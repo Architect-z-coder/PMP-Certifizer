@@ -1,0 +1,387 @@
+{
+ "run_id": "20261003-0843",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL1-PE7-20261003-0843-1-01",
+   "enabler": "Gather knowledge.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Une équipe teste une nouvelle méthode d'estimation depuis deux semaines. Les paramètres sont encore ajustés chaque jour selon les retours. Le chef de projet veut capturer cette connaissance avant qu'elle ne se perde. Que doit-il faire en priorité ?",
+    "en": "A team has been piloting a new estimation method for two weeks. The parameters are still adjusted daily based on feedback. The project manager wants to capture this knowledge before it is lost. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Publier la méthode dans le référentiel officiel du projet, puis la désigner comme pratique standard à suivre.",
+     "Demander à un analyste externe de formaliser la méthode, puis de la consigner dans un document de référence.",
+     "Noter la méthode dans un espace de travail partagé, modifiable au fil des ajustements.",
+     "Organiser une formation pour diffuser la méthode, puis la proposer aux autres équipes du programme."
+    ],
+    "en": [
+     "Publish the method in the project's official repository as a standard practice to follow.",
+     "Ask an external analyst to formalize the method and then compile it into a reference document.",
+     "Note the method in a shared workspace that can be updated as adjustments continue.",
+     "Organize a training session and then use it to spread the method to other teams in the program."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les paramètres de la méthode changent encore chaque jour selon les retours de l'équipe : la fixer maintenant dans un référentiel officiel ou l'enseigner à d'autres figerait une pratique qui n'est pas stabilisée. La noter dans un espace partagé et modifiable permet de conserver la connaissance sans la rendre définitive avant qu'elle ne le soit réellement. Publier la méthode dans le référentiel officiel puis la désigner comme standard suppose à tort qu'elle est déjà aboutie. Faire appel à un analyste externe pour la formaliser puis la consigner dans un document ajoute une étape de rigidité prématurée. Organiser une formation puis la proposer à d'autres équipes diffuserait une pratique encore instable.",
+    "en": "The method's parameters are still changing daily based on the team's feedback: fixing it now in an official repository or teaching it to others would lock in a practice that is not yet stable. Noting it in a shared, editable workspace preserves the knowledge without making it final before it truly is. Publishing the method in the official repository as a standard wrongly assumes it is already mature. Bringing in an external analyst to formalize it and then compile it into a document adds a premature layer of rigidity. Organizing a training session and then using it to spread the practice to other teams would spread a still-unstable practice."
+   },
+   "decision_atom": "Décider s'il faut fixer une connaissance émergente dans un format définitif ou la consigner de façon provisoire tant qu'elle évolue.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les paramètres de la méthode sont encore ajustés chaque jour selon les retours.",
+   "bascule": "Si la méthode était stabilisée depuis plusieurs semaines sans changement, la publier comme standard deviendrait juste.",
+   "task_id": "PE7",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PE7-20261003-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE7-20261003-0843-1-02",
+   "enabler": "Foster an environment for knowledge transfer.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Deux membres d'une équipe testent depuis un mois une pratique volontaire de revue de code croisée, sans validation formelle du sponsor ni de l'équipe élargie. Le chef de projet constate que cela améliore la qualité. Que doit-il faire en priorité ?",
+    "en": "Two team members have spent a month piloting a voluntary cross code-review practice, without formal validation from the sponsor or the wider team. The project manager observes that it improves quality. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Prolonger discrètement l'essai avec les deux mêmes membres, puis en parler plus tard au reste de l'équipe.",
+     "Documenter les résultats dans un rapport technique, puis le transmettre à l'équipe qualité pour archivage.",
+     "Demander aux deux membres d'arrêter leur essai, puis attendre une évaluation formelle avant toute reprise.",
+     "Présenter les résultats à l'équipe et au sponsor pour décider ensemble d'une adoption plus large."
+    ],
+    "en": [
+     "Quietly extend the trial with the same two members, then tell the rest of the team about it later.",
+     "Document the results in a technical report, then forward it to the quality team for archiving.",
+     "Ask the two members to pause their trial, then wait for a formal evaluation before any resumption.",
+     "Present the results to the team and the sponsor so they can jointly decide on wider adoption."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La pratique n'a été ni validée par le sponsor ni discutée avec l'équipe élargie : décider seul de l'étendre, de la documenter pour une autre équipe, ou de l'arrêter reviendrait à trancher une question qui ne relève pas du chef de projet seul. Présenter les résultats à l'équipe et au sponsor place la décision d'adoption entre les mains de ceux qui doivent réellement la prendre. Prolonger l'essai puis en parler plus tard au reste de l'équipe retarde une décision collective déjà mûre. Documenter pour l'équipe qualité puis le transmettre pour archivage contourne les personnes concernées par l'adoption. Demander l'arrêt puis attendre une évaluation formelle freine une pratique qui donne déjà de bons résultats, sans raison de le faire.",
+    "en": "The practice was validated neither by the sponsor nor discussed with the wider team: deciding alone to extend it, document it for another team, or stop it would mean settling a question that is not the project manager's alone to decide. Presenting the results to the team and the sponsor puts the adoption decision in the hands of those who should actually make it. Quietly extending the trial and telling the rest of the team later delays a collective decision that is already ripe. Documenting it and forwarding it to the quality team for archiving bypasses the people actually affected by adoption. Asking to pause it and waiting for a formal evaluation holds back a practice that is already showing good results, without reason to do so."
+   },
+   "decision_atom": "Décider qui a l'autorité de faire adopter plus largement une pratique de partage encore non validée.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "La pratique est volontaire et testée par seulement deux membres, sans validation du sponsor ni de l'équipe élargie.",
+   "bascule": "Si le sponsor avait déjà mandaté le chef de projet pour piloter cette expérimentation, prolonger l'essai seul deviendrait acceptable.",
+   "task_id": "PE7",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PE7-20261003-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE7-20261003-0843-2-02",
+   "enabler": "Gather knowledge.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet doit rassembler les connaissances nécessaires à la reprise d'un module laissé par une équipe précédente. Deux sources existent : une documentation technique datée de dix-huit mois, et un développeur encore présent qui a participé à certains choix mais pas à tous. Aucun périmètre précis des connaissances réellement nécessaires à la reprise n'a encore été établi. Par quelle étape le chef de projet doit-il commencer ?",
+    "en": "A project manager must gather the knowledge needed to take over a module left by a previous team. Two sources exist: technical documentation dated eighteen months ago, and a developer still present who was involved in some but not all of the relevant decisions. No precise scope of the knowledge actually needed for the handover has yet been established. Which step should the project manager start with?"
+   },
+   "options": {
+    "fr": [
+     "Organiser une série d'entretiens approfondis avec le développeur présent, sur les choix passés du module, pour reconstituer l'ensemble des choix techniques.",
+     "Réviser entièrement, avec l'équipe actuelle, la documentation existante datée de dix-huit mois, avant toute autre action, pour disposer d'une base commune à jour.",
+     "Définir avec l'équipe de reprise les éléments précis dont elle a besoin pour opérer le module, avant de consulter une source plutôt qu'une autre.",
+     "Comparer systématiquement chaque partie de la documentation existante avec les souvenirs du développeur, pour en vérifier l'exactitude."
+    ],
+    "en": [
+     "Organize a series of in-depth interviews with the present developer, on the module's past decisions, to reconstruct the full set of technical decisions.",
+     "Fully revise, with the current team, the existing documentation dated eighteen months ago, before any other action, to establish an up-to-date common baseline.",
+     "Define with the incoming team the precise elements it needs to operate the module, before consulting one source rather than another.",
+     "Systematically compare every part of the existing documentation against the developer's recollections, to verify its accuracy."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Aucun périmètre des connaissances réellement nécessaires n'a été établi : commencer par interroger une source, quelle qu'elle soit, revient à collecter sans savoir ce qui compte pour la reprise. Définir d'abord avec l'équipe de reprise ce dont elle a besoin oriente ensuite efficacement le choix entre documentation et entretiens. Organiser des entretiens approfondis avec le développeur, sur les choix passés du module, avant d'avoir ce périmètre risque de solliciter un temps rare sur des aspects qui ne seront pas utiles à l'équipe de reprise. Réviser entièrement, avec l'équipe actuelle, une documentation datée de dix-huit mois avant de savoir ce qui est utile engage un effort disproportionné si seule une partie du module doit être reprise. Comparer systématiquement chaque partie de la documentation avec les souvenirs du développeur est un travail de vérification exhaustif qui n'a de sens qu'une fois le périmètre réel de la reprise connu.",
+    "en": "No scope of the knowledge actually needed has been established: starting by questioning any one source means collecting without knowing what matters for the handover. Defining first, with the incoming team, what it actually needs then efficiently guides the choice between documentation and interviews. Organizing in-depth interviews with the developer, on the module's past decisions, before having that scope risks spending scarce time on aspects that will not be useful to the incoming team. Fully revising, with the current team, documentation that is eighteen months old before knowing what is useful commits a disproportionate effort if only part of the module needs to be taken over. Systematically comparing every part of the documentation against the developer's recollections is an exhaustive verification task that only makes sense once the real scope of the handover is known."
+   },
+   "decision_atom": "Décider par quelle étape commencer la collecte de connaissances quand deux sources existent mais qu'aucun périmètre n'est défini.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Aucun périmètre des connaissances réellement nécessaires à la reprise n'a été établi.",
+   "bascule": "Si le périmètre des connaissances nécessaires à la reprise avait déjà été défini, commencer par les entretiens avec le développeur deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 3,
+   "run_id": "20261003-0843",
+   "release": "qL3-PE7-20261003-0843-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE8-20261003-0843-2-02",
+   "enabler": "Create reports aligned with sponsors and stakeholder expectations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet prépare le premier rapport d'avancement destiné à un nouveau sponsor. Le modèle de rapport utilisé sur le projet précédent est disponible et semble adapté. Le sponsor n'a pas encore précisé quels indicateurs il souhaite suivre. Que doit faire le chef de projet en premier ?",
+    "en": "A project manager is preparing the first progress report for a new sponsor. The template used on the previous project is available and looks suitable. The sponsor has not yet specified which indicators he wants to track. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Diffuser dès ce rapport le modèle existant, afin de respecter le calendrier de reporting déjà communiqué.",
+     "Ajouter au modèle existant une section d'indicateurs génériques couvrant les attentes habituelles des sponsors.",
+     "Demander au sponsor quels indicateurs comptent pour lui avant de choisir le format du premier rapport.",
+     "Soumettre le modèle existant à l'équipe projet afin de recueillir son avis sur les indicateurs à retenir."
+    ],
+    "en": [
+     "Distribute for this report the existing template, in order to keep the already communicated reporting schedule.",
+     "Add a section of generic indicators to the existing template, covering typical sponsor expectations.",
+     "Ask the sponsor which indicators matter to him before choosing the format of the first report.",
+     "Submit the existing template to the project team in order to gather their input on which indicators to retain."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le sponsor est nouveau et n'a pas précisé ses attentes : la première action utile est de les recueillir directement auprès de lui, avant de fixer un format. Diffuser dès ce rapport le modèle existant respecte le calendrier mais fige un format sans savoir s'il convient à ce sponsor précis. Ajouter des indicateurs génériques suppose connaître les attentes habituelles des sponsors en général, alors que c'est l'attente de celui-ci qui doit guider le choix. Soumettre le modèle existant à l'équipe projet porte la question au mauvais interlocuteur : ce sont les attentes du sponsor, pas les préférences de l'équipe, qui doivent orienter le contenu du rapport.",
+    "en": "The sponsor is new and has not stated his expectations: the useful first step is to gather them directly from him before fixing a format. Distributing for this report the existing template keeps the schedule but locks in a format without knowing if it fits this particular sponsor. Adding generic indicators assumes knowledge of typical sponsor expectations in general, when it is this sponsor's actual expectation that should guide the choice. Submitting the existing template to the project team directs the question to the wrong party: it is the sponsor's expectations, not the team's preferences, that should shape the report's content."
+   },
+   "decision_atom": "Décider s'il faut réutiliser un modèle existant ou clarifier d'abord les attentes d'un nouveau sponsor.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le sponsor est nouveau et n'a pas encore précisé quels indicateurs il souhaite suivre.",
+   "bascule": "Si le sponsor avait déjà validé le modèle existant lors de son arrivée, le diffuser directement deviendrait la bonne réponse.",
+   "task_id": "PE8",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PE8-20261003-0843-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE8-20261003-0843-2-04",
+   "enabler": "Establish a feedback loop.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Après trois cycles de rapports, un chef de projet envisage de remplacer le format texte actuel par un tableau de bord interactif testé sur un autre projet. Les parties prenantes n'ont pas encore vu ce nouveau format. Que doit-il faire en priorité ?",
+    "en": "After three reporting cycles, a project manager is considering replacing the current text format with an interactive dashboard tested on another project. Stakeholders have not yet seen this new format. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Présenter le tableau de bord à titre d'essai lors du prochain cycle, en conservant le rapport texte en parallèle.",
+     "Remplacer définitivement le format texte par le tableau de bord et appliquer ce changement dès le prochain cycle de reporting.",
+     "Adopter le tableau de bord pour certaines parties prenantes seulement, celles ayant déjà utilisé un format similaire.",
+     "Conserver le format texte en l'état et attendre que le tableau de bord soit validé par la gouvernance du portefeuille."
+    ],
+    "en": [
+     "Present the dashboard on a trial basis at the next cycle, keeping the text report running in parallel.",
+     "Permanently replace the text format with the dashboard and apply this change starting from the next reporting cycle.",
+     "Adopt the dashboard for some stakeholders only, those who have already used a similar format before.",
+     "Keep the text format as is and wait until the dashboard is validated by portfolio governance."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le nouveau format n'a pas encore été vu par les parties prenantes : l'essayer en parallèle du format existant permet de recueillir leur réaction sans rien leur retirer, et de revenir en arrière facilement si le format ne convient pas. Remplacer définitivement le format texte et appliquer ce changement dès le prochain cycle engage toutes les parties prenantes sur un changement non testé, sans possibilité simple de revenir en arrière si l'essai échoue. Adopter le tableau de bord pour certaines parties prenantes seulement crée deux expériences de reporting différentes sans raison liée au contenu du rapport. Conserver le format texte en l'état et attendre une validation de la gouvernance du portefeuille pour un essai limité à ce projet ajoute une étape qui retarde une vérification qui peut se faire directement avec les parties prenantes concernées.",
+    "en": "The new format has not yet been seen by stakeholders: trialing it alongside the existing format allows gathering their reaction without taking anything away, and makes it easy to revert if the format does not work. Permanently replacing the text format and applying this change starting next cycle commits all stakeholders to an untested change, with no easy way back if the trial fails. Adopting the dashboard for some stakeholders only creates two different reporting experiences for reasons unrelated to the report's content. Keeping the text format as is and waiting for portfolio governance validation for a trial limited to this project adds a step that delays a check that can be done directly with the stakeholders involved."
+   },
+   "decision_atom": "Décider comment introduire un nouveau format de reporting non encore vu par les parties prenantes.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les parties prenantes n'ont pas encore vu le nouveau format ; aucun retour n'a encore été recueilli.",
+   "bascule": "Si le tableau de bord avait déjà été testé avec succès auprès de ces mêmes parties prenantes, le remplacement définitif deviendrait la bonne réponse.",
+   "task_id": "PE8",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PE8-20261003-0843-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE8-20261003-0843-2-05",
+   "enabler": "Promote transparency and collaboration.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Lors d'une revue de projet, un membre de l'équipe technique signale en aparté à la cheffe de projet un retard sur une tâche critique, en lui demandant de ne pas en parler publiquement pour l'instant. La tâche affecte la date de livraison communiquée aux parties prenantes. Que doit faire la cheffe de projet en priorité ?",
+    "en": "During a project review, a technical team member privately tells the project manager about a delay on a critical task, asking her not to mention it publicly for now. The task affects the delivery date communicated to stakeholders. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Expliquer au membre de l'équipe que ce retard doit être communiqué aux parties prenantes concernées par la date affectée.",
+     "Accéder à la demande du membre de l'équipe et laisser l'annonce du retard se faire au rythme qu'il choisira lui-même.",
+     "Informer les parties prenantes du retard par un message direct, puis aborder ce point avec le membre de l'équipe lors d'un échange ultérieur.",
+     "Transmettre le retard au sponsor et lui confier le choix de la communication à adresser aux parties prenantes."
+    ],
+    "en": [
+     "Explain to the team member that this delay must be communicated to the stakeholders affected by the date.",
+     "Accede to the team member's request and let the delay announcement happen at a pace he chooses himself.",
+     "Inform stakeholders of the delay through a direct message, then raise this point with the team member in a later exchange.",
+     "Forward the delay to the sponsor and hand him the choice of communication to send to stakeholders."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La cheffe de projet reste responsable de la transparence du reporting : un retard affectant une date communiquée doit être signalé aux parties prenantes concernées, quelle que soit la préférence exprimée par le membre de l'équipe. Accéder à la demande du membre de l'équipe et laisser l'annonce se faire à son propre rythme fait dépendre une communication due aux parties prenantes de la décision d'une personne qui n'a pas cette responsabilité. Informer les parties prenantes par un message direct puis aborder le sujet avec le membre de l'équipe lors d'un échange ultérieur l'écarte d'un sujet qui le concerne directement, alors qu'il peut être associé à la communication. Transmettre le retard au sponsor et lui confier le choix de la communication déplace vers lui une responsabilité de reporting qui revient à la cheffe de projet sur son propre périmètre.",
+    "en": "The project manager remains responsible for reporting transparency: a delay affecting a communicated date must be reported to the affected stakeholders, regardless of the team member's preference. Acceding to the team member's request and letting the announcement happen at his own pace makes communication owed to stakeholders dependent on the decision of someone who does not hold that responsibility. Informing stakeholders through a direct message and then raising this point with the team member in a later exchange leaves him out of a matter that directly concerns him, when he could be involved in the communication. Forwarding the delay to the sponsor and handing him the choice of communication shifts to him a reporting responsibility that belongs to the project manager within her own scope."
+   },
+   "decision_atom": "Décider qui porte la responsabilité de communiquer un retard affectant une date déjà annoncée aux parties prenantes.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "La tâche en retard affecte une date de livraison déjà communiquée aux parties prenantes.",
+   "bascule": "Si la tâche n'affectait aucune date communiquée aux parties prenantes, attendre l'annonce du membre de l'équipe deviendrait défendable.",
+   "task_id": "PE8",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PE8-20261003-0843-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE8-20261003-0843-1-01",
+   "enabler": "Understand reporting requirements.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une cheffe de projet met en place le tableau de bord mensuel d'un programme qui démarre tout juste. Le sponsor principal a exprimé des attentes générales, mais deux divisions partenaires n'ont pas encore précisé quels indicateurs elles suivront une fois leurs propres jalons définis, dans environ six semaines. Un outil de reporting avancé est disponible : il produit des tableaux très soignés, mais chaque ajout de métrique demande une reconfiguration lourde par l'équipe technique. Un second outil, plus simple, permet d'ajouter ou retirer des indicateurs en quelques minutes, au prix d'une présentation moins aboutie. Que doit-elle privilégier pour ce premier tableau de bord ?",
+    "en": "A project manager is setting up the monthly dashboard for a program that has just started. The main sponsor has expressed general expectations, but two partner divisions have not yet specified which indicators they will track once their own milestones are defined, in about six weeks. An advanced reporting tool is available: it produces very polished tables, but every added metric requires heavy reconfiguration by the technical team. A simpler tool lets indicators be added or removed within minutes, at the cost of a less refined presentation. What should she prioritize for this first dashboard?"
+   },
+   "options": {
+    "fr": [
+     "Adopter l'outil simple et modifiable, quitte à revoir la présentation une fois les indicateurs des deux divisions connus.",
+     "Adopter l'outil avancé dès maintenant pour le programme, car le sponsor principal a déjà exprimé ses attentes générales sur le contenu du tableau.",
+     "Adopter l'outil avancé et demander à l'équipe technique de préparer, pour les deux divisions, plusieurs versions anticipées des reconfigurations possibles.",
+     "Adopter l'outil simple, puis migrer vers l'outil avancé dès que le sponsor principal validera une première version du tableau de bord mensuel."
+    ],
+    "en": [
+     "Adopt the simple, adjustable tool, accepting that the presentation may be revisited once both divisions' indicators are known.",
+     "Adopt the advanced tool now for this dashboard, since the main sponsor has already expressed general expectations about its content.",
+     "Adopt the advanced tool and ask the technical team to prepare, for both divisions, several anticipated versions of the likely reconfigurations.",
+     "Adopt the simple tool, then migrate to the advanced tool as soon as the main sponsor approves a first version of the monthly dashboard."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Deux divisions n'auront leurs indicateurs définitifs que dans six semaines : tant que ces besoins ne sont pas stabilisés, choisir un outil facile à modifier évite de payer un coût de reconfiguration à chaque ajustement. Adopter l'outil avancé dès maintenant pour le programme s'appuie sur les attentes du sponsor principal, mais ignore que deux autres parties prenantes n'ont pas encore formulé les leurs : le tableau devra de toute façon être remanié. Préparer, pour les deux divisions, plusieurs versions anticipées des reconfigurations mobilise du temps d'équipe technique sur des hypothèses qui ne sont pas encore confirmées. Migrer vers l'outil avancé dès la validation du sponsor principal ignore que les deux divisions partenaires n'auront pas encore stabilisé leurs propres indicateurs à ce moment-là, ce qui imposerait une nouvelle reconfiguration lourde presque aussitôt.",
+    "en": "Two divisions will only finalize their indicators in six weeks: while these needs remain unsettled, choosing an easily adjustable tool avoids paying a reconfiguration cost with every change. Adopting the advanced tool now for this dashboard relies on the main sponsor's expectations, but overlooks that two other stakeholders have not yet stated theirs: the dashboard would need reworking regardless. Preparing, for both divisions, several anticipated reconfiguration versions spends technical team time on assumptions that are not yet confirmed. Migrating to the advanced tool as soon as the main sponsor approves overlooks that the partner divisions will not yet have settled their own indicators at that point, forcing another heavy reconfiguration almost immediately."
+   },
+   "decision_atom": "Décider quel outil de reporting adopter quand les besoins de deux parties prenantes ne sont pas encore stabilisés.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Deux divisions partenaires n'auront leurs indicateurs définitifs que dans six semaines.",
+   "bascule": "Si les trois parties prenantes avaient déjà toutes confirmé leurs indicateurs définitifs, l'outil avancé deviendrait le bon choix.",
+   "task_id": "PE8",
+   "level": 3,
+   "run_id": "20261003-0843",
+   "release": "qL3-PE8-20261003-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE8-20261003-0843-1-04",
+   "enabler": "Promote transparency and collaboration.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet apprend d'un acheteur, en aparté, qu'un fournisseur clé pourrait avoir des difficultés financières ; l'information n'est confirmée par aucune source officielle et pourrait s'avérer infondée. L'équipe élargie travaille actuellement sur des plans qui supposent la continuité de ce fournisseur jusqu'à la fin du trimestre. Que doit faire le chef de projet dans l'immédiat ?",
+    "en": "A project manager learns from a buyer, informally, that a key supplier may be facing financial difficulties; the information is confirmed by no official source and could turn out to be unfounded. The wider team is currently working on plans that assume this supplier's continuity through the end of the quarter. What should the project manager do right away?"
+   },
+   "options": {
+    "fr": [
+     "Informer immédiatement l'équipe élargie du risque fournisseur, en présentant les plans actuels comme compromis par cette rumeur non confirmée.",
+     "Vérifier l'information auprès de sources fiables avant de décider ce qui doit être partagé avec l'équipe élargie.",
+     "Alerter uniquement le sponsor par message privé sur ce fournisseur, en lui laissant le soin de juger si l'équipe doit être informée.",
+     "Ajouter une ligne générale sur les risques fournisseurs dans le prochain rapport mensuel, en traitant ce cas précis comme un sujet à suivre ultérieurement."
+    ],
+    "en": [
+     "Immediately inform the wider team of the supplier risk, presenting current plans as compromised by this unconfirmed rumor.",
+     "Verify the information with reliable sources before deciding what should be shared with the wider team.",
+     "Alert only the sponsor through a private message about this supplier, leaving it to him to judge whether the team should be informed.",
+     "Add a general line about supplier risks in the next monthly report, treating this specific case as a matter to revisit later."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'information vient d'un aparté non confirmé et pourrait être infondée : la vérifier avant de la diffuser évite de perturber le travail de l'équipe élargie sur la base d'une rumeur, tout en gardant la question ouverte si elle se confirme. Informer immédiatement l'équipe élargie du risque fournisseur présente une rumeur non vérifiée comme un fait établi et pourrait compromettre inutilement la confiance dans les plans en cours. Alerter seulement le sponsor en privé sur ce fournisseur retire à l'équipe élargie une information qui, si elle se confirme, la concerne directement, sans accélérer la vérification du fait lui-même. Attendre le rapport mensuel pour une mention générale, en traitant ce cas comme un sujet à suivre ultérieurement, retarde toute action utile si l'information s'avère fondée.",
+    "en": "The information comes from an unconfirmed aside and could be unfounded: verifying it before sharing avoids disrupting the wider team's work based on a rumor, while keeping the matter open if it is confirmed. Immediately informing the wider team of the supplier risk presents an unverified rumor as established fact and could needlessly undermine confidence in current plans. Alerting only the sponsor privately about this supplier withholds from the wider team information that, if confirmed, directly concerns them, without speeding up verification of the fact itself. Waiting for the monthly report to add a general mention, treating this case as a matter to revisit later, delays any useful action if the information turns out to be true."
+   },
+   "decision_atom": "Décider quand partager avec l'équipe élargie une information non confirmée sur un risque fournisseur.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'information vient d'un aparté non officiel et pourrait être infondée.",
+   "bascule": "Si l'information avait été confirmée par une source officielle (ex. un rapport financier public du fournisseur), informer immédiatement l'équipe élargie deviendrait la bonne action.",
+   "task_id": "PE8",
+   "level": 3,
+   "run_id": "20261003-0843",
+   "release": "qL3-PE8-20261003-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR1-20261003-0843-1-02",
+   "enabler": "Determine critical information requirements (e.g., sustainability).",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pendant le cadrage d'un projet de construction, un membre de l'équipe mentionne avoir entendu dire qu'une future norme environnementale pourrait s'appliquer au secteur, sans pouvoir citer de texte ni de date. Rien n'a été publié par l'autorité compétente. Comment le chef de projet doit-il traiter cette information pour les exigences du projet ?",
+    "en": "During scoping of a construction project, a team member mentions having heard that a future environmental standard might apply to the sector, without citing any text or date. Nothing has been published by the relevant authority. How should the project manager treat this information for the project's requirements?"
+   },
+   "options": {
+    "fr": [
+     "Intégrer dès maintenant la norme évoquée comme exigence ferme dans le référentiel du projet.",
+     "Écarter définitivement le sujet des exigences, faute de confirmation officielle de l'autorité compétente.",
+     "Demander à l'équipe de concevoir, dès à présent, une variante du livrable conforme à la norme évoquée.",
+     "Vérifier auprès de l'autorité compétente si un texte est en préparation avant toute décision."
+    ],
+    "en": [
+     "Integrate the mentioned standard now as a firm requirement in the project's baseline.",
+     "Permanently dismiss the topic from the requirements, absent official confirmation from the relevant authority.",
+     "Ask the team to design, right away, a variant of the deliverable compliant with the mentioned standard.",
+     "Check with the relevant authority whether a text is in preparation before any decision."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Une mention informelle, sans texte ni date, n'est pas une exigence : c'est un signal à vérifier. S'adresser à l'autorité compétente permet de savoir si un texte est réellement en préparation avant d'engager le projet dans un sens ou dans un autre. Intégrer la norme comme exigence ferme traite une rumeur comme une obligation confirmée. Écarter définitivement le sujet des exigences ferme la porte à une vérification simple et peu coûteuse. Faire concevoir dès à présent une variante conforme engage du travail sur la base d'un texte qui n'existe peut-être pas, avant même d'avoir cherché à le confirmer.",
+    "en": "An informal mention without text or date is not a requirement: it is a signal to verify. Contacting the relevant authority reveals whether a text is genuinely in preparation before the project commits in either direction. Integrating the standard as a firm requirement treats hearsay as confirmed obligation. Permanently dismissing the topic from the requirements closes the door on a simple, low-cost verification. Asking the team to design right away a compliant variant commits work based on text that may not exist before any attempt to confirm it."
+   },
+   "decision_atom": "Décider comment traiter une rumeur de norme environnementale non confirmée dans les exigences du projet.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le membre d'équipe ne peut citer ni texte ni date ; rien n'a été publié par l'autorité compétente.",
+   "bascule": "Si un projet de texte officiel avait déjà été publié pour consultation, l'intégrer comme exigence deviendrait défendable.",
+   "task_id": "PR1",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PR1-20261003-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR1-20261003-0843-1-04",
+   "enabler": "Assess consolidated project plans for dependencies, gaps, and continued business value.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "En consolidant les plans de deux lots de travail, un membre de l'équipe repère qu'un livrable du lot B dépend d'une donnée du lot A sans que cette dépendance soit documentée nulle part. Aucun impact sur le calendrier n'est encore constaté. Comment ce gap doit-il être traité en priorité ?",
+    "en": "While consolidating the plans of two work packages, a team member notices that a deliverable in package B depends on data from package A, a dependency documented nowhere. No schedule impact has been observed yet. How should this gap be handled first?"
+   },
+   "options": {
+    "fr": [
+     "Soumettre immédiatement le gap au comité de pilotage comme un risque calendaire majeur, avant toute vérification locale.",
+     "Documenter la dépendance dans les plans consolidés et vérifier son effet avec les deux responsables de lot.",
+     "Attendre qu'un retard se matérialise sur le calendrier avant de signaler quoi que ce soit au-delà de l'équipe.",
+     "Transférer la responsabilité du suivi de cette dépendance entièrement au responsable du lot A, sans associer le lot B."
+    ],
+    "en": [
+     "Immediately escalate the gap to the steering committee as a major schedule risk, before any local verification.",
+     "Document the dependency in the consolidated plans and check its effect with both package owners.",
+     "Wait for an actual delay to materialize on the schedule before reporting anything beyond the team.",
+     "Transfer full responsibility for tracking this dependency to the owner of package A, without involving package B."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Une dépendance non documentée, sans impact calendaire constaté, appelle d'abord une clarification au niveau où le gap a été trouvé : la documenter et vérifier son effet avec les deux responsables de lot concernés. Escalader immédiatement au comité de pilotage avant toute vérification locale traite comme un risque majeur confirmé ce qui n'est pour l'instant qu'un gap de documentation. Attendre qu'un retard se matérialise sur le calendrier laisse grandir un problème que l'on peut cadrer maintenant à faible coût. Transférer la responsabilité au seul lot A sans associer le lot B ignore que ce dernier est tout autant concerné par la dépendance.",
+    "en": "An undocumented dependency with no observed schedule impact first requires clarification at the level where the gap was found: document it and verify its effect with both work package owners. Escalating immediately to the steering committee before any local verification treats as a confirmed major risk what is currently only a documentation gap. Waiting for a delay to materialize on the schedule allows a problem to grow that can be contained now at low cost. Assigning responsibility to package A alone without involving package B overlooks that the latter is equally affected by the dependency."
+   },
+   "decision_atom": "Décider à quel niveau traiter un gap de dépendance non documenté entre deux lots de travail.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Aucun impact sur le calendrier n'est encore constaté ; le gap est une absence de documentation, pas un retard avéré.",
+   "bascule": "Si un retard calendaire était déjà constaté et attribuable à cette dépendance, l'escalade au comité deviendrait justifiée.",
+   "task_id": "PR1",
+   "level": 1,
+   "run_id": "20261003-0843",
+   "release": "qL1-PR1-20261003-0843-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
