@@ -1,0 +1,311 @@
+{
+ "run_id": "20261004-0858",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR1-20261004-0858-1-01",
+   "enabler": "Assess project needs, complexity, and magnitude.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet évalue la complexité d'un nouveau projet d'intégration logicielle. Le projet implique trois équipes internes déjà habituées à collaborer, une technologie éprouvée, et un seul sponsor clairement identifié. Un membre de l'équipe propose de constituer un comité de gouvernance multi-niveaux avec revues hebdomadaires obligatoires, similaire à celui utilisé sur un programme stratégique de l'entreprise l'année précédente. Que doit faire le chef de projet ?",
+    "en": "A project manager is assessing the complexity of a new software integration project. The project involves three internal teams already used to collaborating, proven technology, and a single clearly identified sponsor. A team member proposes setting up a multi-level governance committee with mandatory weekly reviews, similar to the one used on a strategic enterprise program the previous year. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Dimensionner la structure de gouvernance selon le niveau de complexité réel observé, soit un point de suivi léger entre les trois équipes.",
+     "Adopter le comité multi-niveaux proposé pour les revues hebdomadaires, puisqu'il a démontré son efficacité sur le programme stratégique de référence.",
+     "Soumettre au sponsor les deux options de gouvernance et le comité multi-niveaux, pour qu'il tranche selon ses préférences personnelles de suivi.",
+     "Mettre en place le comité multi-niveaux et ses revues hebdomadaires pour les deux premiers mois, puis l'alléger si aucun problème ne survient."
+    ],
+    "en": [
+     "Size the governance structure to the actual complexity observed, meaning a light checkpoint between the three teams.",
+     "Adopt the proposed multi-level committee with its weekly reviews, since it proved effective on the reference strategic program.",
+     "Submit both governance options and the multi-level committee to the sponsor, so he can decide based on his personal tracking preferences.",
+     "Set up the multi-level committee with its weekly reviews for the first two months, then scale it down if no issues arise."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les faits de l'énoncé — trois équipes rodées à collaborer, technologie éprouvée, sponsor unique — signalent une faible complexité. La réponse de gouvernance doit être proportionnée à ce niveau réel, donc un suivi léger entre les trois équipes. Adopter le comité multi-niveaux pour les revues hebdomadaires reproduit une structure pensée pour un programme stratégique dont les caractéristiques (ampleur, nombre de parties prenantes, enjeux) ne sont pas celles de ce projet : la réponse serait disproportionnée au regard des faits donnés. Soumettre le choix au sponsor avec le comité multi-niveaux pour qu'il décide selon ses préférences personnelles déplace la décision sur un critère qui n'a rien à voir avec la complexité réelle du projet. Démarrer lourd avec ce comité et ses revues hebdomadaires puis alléger engage des ressources de gouvernance avant même d'avoir établi que le besoin existe, ce qui inverse l'ordre logique : on dimensionne d'abord, on ajuste ensuite si les faits changent.",
+    "en": "The facts in the scenario — three teams already used to working together, proven technology, a single sponsor — point to low complexity. The governance response should match this actual level, meaning a light checkpoint between the three teams. Adopting the multi-level committee with its weekly reviews reuses a structure designed for a strategic program whose characteristics (scale, number of stakeholders, stakes) do not match this project: the response would be disproportionate to the stated facts. Letting the sponsor choose between the options along with the multi-level committee based on personal tracking preferences shifts the decision to a criterion unrelated to the project's actual complexity. Starting heavy with this committee and its weekly reviews, then scaling down later, commits governance resources before establishing that the need exists, reversing the logical order: size first, adjust only if the facts change."
+   },
+   "decision_atom": "Décider du niveau de structure de gouvernance à dimensionner pour un projet de complexité réelle faible.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Trois équipes déjà habituées à collaborer, technologie éprouvée, sponsor unique clairement identifié.",
+   "bascule": "Si le projet impliquait de nombreuses équipes externes non coordonnées et des enjeux stratégiques comparables au programme de référence, le comité multi-niveaux deviendrait justifié.",
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20261004-0858",
+   "release": "qL2-PR1-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR1-20261004-0858-1-03",
+   "enabler": "Create an integrated project management plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet consolide le plan de management intégré pour un projet de migration de données. L'architecte technique, qui ne détient pas de rôle de gestion sur ce projet, soumet directement au comité de pilotage une version du plan de gestion des risques qu'il a rédigée seul, estimant qu'elle est plus précise techniquement. Le chef de projet découvre cette soumission après coup. Que doit-il faire ?",
+    "en": "A project manager is consolidating the integrated management plan for a data migration project. The technical architect, who holds no management role on this project, submits directly to the steering committee a version of the risk management plan he wrote on his own, believing it to be more technically precise. The project manager discovers this submission after the fact. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Adopter la version de l'architecte telle que soumise au comité de pilotage, puisqu'elle apporte une précision technique utile à ses membres.",
+     "Demander au comité de pilotage de choisir entre les deux versions, celle de l'architecte et celle du chef de projet, lors de sa prochaine séance planifiée.",
+     "Reprendre la propriété de l'intégration du plan de gestion des risques et évaluer la contribution de l'architecte avant toute diffusion ultérieure.",
+     "Diffuser les deux versions séparément aux parties prenantes et au comité de pilotage, en les laissant juger elles-mêmes de la version la plus adaptée."
+    ],
+    "en": [
+     "Adopt the architect's version as submitted to the steering committee, since it brings useful technical precision to its members.",
+     "Ask the steering committee to choose between the two versions, the architect's and the project manager's, at its next scheduled session.",
+     "Reclaim ownership of integrating the risk management plan and assess the architect's contribution before any further distribution.",
+     "Distribute both versions separately to stakeholders and to the steering committee, letting them judge for themselves which version fits best."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'énoncé précise que l'architecte ne détient pas de rôle de gestion sur ce projet et qu'il a soumis sa version directement, sans passer par le chef de projet. L'intégration des plans subsidiaires, dont celui des risques, relève du rôle du chef de projet : c'est à lui de reprendre la propriété de ce document, d'évaluer ce que la contribution technique de l'architecte apporte, et de décider ensuite de ce qui est diffusé. Adopter la version de l'architecte telle que soumise au comité avalise un contournement du processus d'intégration sans vérifier sa cohérence avec le reste du plan. Demander au comité de trancher entre la version de l'architecte et celle du chef de projet reporte sur une instance de gouvernance une décision qui appartient à la gestion courante du projet. Diffuser les deux versions séparément aux parties prenantes et au comité abandonne la responsabilité d'intégration et laisse les destinataires résoudre eux-mêmes une incohérence que le chef de projet est justement chargé de prévenir.",
+    "en": "The scenario states that the architect holds no management role on this project and submitted his version directly, bypassing the project manager. Integrating subsidiary plans, including the risk plan, falls under the project manager's role: he must reclaim ownership of this document, assess what the architect's technical contribution adds, and then decide what gets distributed. Adopting the architect's version as submitted to the committee endorses a bypass of the integration process without checking its consistency with the rest of the plan. Asking the committee to choose between the architect's version and the project manager's pushes onto a governance body a decision that belongs to routine project management. Distributing both versions separately to stakeholders and to the committee abandons the integration responsibility and leaves the recipients to resolve on their own an inconsistency the project manager is specifically tasked with preventing."
+   },
+   "decision_atom": "Décider qui doit intégrer un plan subsidiaire soumis directement à la gouvernance par un contributeur sans rôle de gestion.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'architecte, sans rôle de gestion sur le projet, a soumis sa version directement au comité, sans passer par le chef de projet.",
+   "bascule": "Si l'architecte avait un rôle de gestion formellement délégué sur ce plan, adopter sa version directement deviendrait plus défendable.",
+   "task_id": "PR1",
+   "level": 2,
+   "run_id": "20261004-0858",
+   "release": "qL2-PR1-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR1-20261004-0858-1-03",
+   "enabler": "Create an integrated project management plan.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "En assemblant le plan de management intégré, un chef de projet constate que le plan subsidiaire de gestion des approvisionnements fixe une date de livraison fournisseur postérieure au jalon correspondant dans l'échéancier général déjà rédigé. Les deux documents ont été produits par des équipes différentes sans se consulter. Que doit faire le chef de projet avant de poursuivre l'intégration ?",
+    "en": "While assembling the integrated management plan, a project manager finds that the procurement management subsidiary plan sets a supplier delivery date later than the corresponding milestone in the already-drafted master schedule. The two documents were produced by different teams without consulting each other. What should the project manager do before continuing the integration?"
+   },
+   "options": {
+    "fr": [
+     "Réunir les deux équipes pour résoudre l'incohérence de dates avant d'intégrer les deux documents au plan consolidé.",
+     "Intégrer les deux documents tels quels en signalant l'écart de date constaté dans une annexe jointe au plan consolidé.",
+     "Conserver la date de l'échéancier général rédigé en premier et demander au responsable achats de s'y aligner sans délai.",
+     "Conserver la date plus récente du plan d'approvisionnement et ajuster l'échéancier général en conséquence sur ce point."
+    ],
+    "en": [
+     "Bring the two teams together to resolve the date inconsistency before integrating both documents into the consolidated plan.",
+     "Integrate both documents as they are while flagging the observed date gap in an appendix attached to the consolidated plan.",
+     "Keep the master schedule date drafted first and ask the procurement lead to align with it without delay.",
+     "Keep the more recent procurement plan date and adjust the master schedule accordingly on that point."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'incohérence touche une date engageante dans deux documents produits sans concertation : avant d'intégrer l'un ou l'autre, elle doit être résolue conjointement par les deux équipes, qui détiennent chacune une partie des contraintes réelles. Intégrer les deux documents tels quels en signalant l'écart constaté en annexe transmet une incohérence connue dans le plan de référence au lieu de la résoudre. Conserver la date de l'échéancier général rédigé en premier et demander un alignement sans délai ignore que l'ordre de rédaction ne dit rien de la faisabilité réelle du jalon fournisseur. Conserver la date plus récente du plan d'approvisionnement applique le même raisonnement inversé, sans que rien n'indique laquelle des deux contraintes est la plus fiable.",
+    "en": "The inconsistency involves a binding date across two documents produced without coordination: before integrating either one, it must be resolved jointly by the two teams, each holding part of the real constraints. Integrating both documents as they are while flagging the observed gap in an appendix carries a known inconsistency into the baseline plan instead of resolving it. Keeping the master schedule date drafted first and asking for alignment without delay ignores that drafting order says nothing about the actual feasibility of the supplier milestone. Keeping the more recent procurement plan date applies the same reversed reasoning, with nothing indicating which constraint is actually more reliable."
+   },
+   "decision_atom": "Décider comment traiter une incohérence de date entre deux documents avant de les intégrer au plan consolidé.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les deux documents ont été rédigés par des équipes différentes sans concertation, et rien n'indique laquelle des deux dates est la plus fiable.",
+   "bascule": "Si l'écart était mineur et sans impact sur un jalon engageant, le signaler en annexe sans le résoudre immédiatement deviendrait défendable.",
+   "task_id": "PR1",
+   "level": 3,
+   "run_id": "20261004-0858",
+   "release": "qL3-PR1-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR1-20261004-0858-1-04",
+   "enabler": "Maintain the integrated project management plan.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "En maintenant le plan intégré, un chef de projet détecte qu'une dépendance externe — la livraison d'un composant par une entité hors du projet, non sous son autorité — accuse un retard de deux semaines, ce qui repousserait un jalon interne majeur. L'équipe interne peut absorber ce retard sans impact sur le reste du plan si elle réorganise son propre séquencement. Que doit faire le chef de projet ?",
+    "en": "While maintaining the integrated plan, a project manager finds that an external dependency — delivery of a component by an entity outside the project, not under his authority — is running two weeks late, which would push back a major internal milestone. The internal team can absorb this delay without affecting the rest of the plan by resequencing its own work. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Escalader immédiatement le retard au comité de pilotage, en demandant une intervention sur l'entité externe concernée, sans attendre de confirmation supplémentaire.",
+     "Ajuster le séquencement interne pour absorber le retard et mettre à jour le plan, sans escalader à ce stade.",
+     "Notifier l'entité externe d'une pénalité contractuelle pour le retard constaté, avant toute autre action corrective, et informer le sponsor de cette démarche.",
+     "Laisser le retard hors du plan intégré, jusqu'à ce qu'il affecte effectivement le jalon interne visé, et surveiller son évolution entre-temps."
+    ],
+    "en": [
+     "Immediately escalate the delay to the steering committee, requesting intervention on the external entity involved, without waiting for further confirmation.",
+     "Resequence internal work to absorb the delay and update the plan, without escalating at this stage.",
+     "Notify the external entity of a contractual penalty for the observed delay, before any other corrective action, and inform the sponsor of this step.",
+     "Leave the delay out of the integrated plan, until it actually affects the targeted internal milestone, while monitoring its progress in the meantime."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le retard peut être absorbé par un réajustement interne sans toucher au reste du plan ni affecter le jalon : il relève d'une mise à jour courante du plan intégré, pas d'une remontée au comité de pilotage. Escalader immédiatement et demander une intervention sur l'entité externe concernée sans attendre de confirmation supplémentaire traite comme un enjeu de gouvernance un retard que l'équipe est en mesure de résorber elle-même. Notifier une pénalité contractuelle avant toute autre action corrective et en informer le sponsor engage une démarche formelle à l'encontre d'un tiers sur la base d'un retard que le projet absorbe sans dommage, ce que rien dans l'énoncé ne justifie à ce stade. Laisser le retard hors du plan jusqu'à ce qu'il affecte le jalon visé, en surveillant son évolution entre-temps, laisse le document de référence désynchronisé de la réalité, même si l'impact final reste nul.",
+    "en": "The delay can be absorbed by an internal resequencing without touching the rest of the plan or affecting the milestone: it calls for a routine update to the integrated plan, not an escalation to the steering committee. Immediately escalating and requesting intervention on the external entity involved without waiting for further confirmation treats as a governance matter a delay the team can resolve on its own. Notifying a contractual penalty before any other corrective action and informing the sponsor of this step initiates a formal action against a third party over a delay the project absorbs without harm, which nothing in the scenario justifies at this stage. Leaving the delay out of the plan until it affects the targeted milestone, while monitoring its progress in the meantime, leaves the baseline document out of sync with reality, even though the final impact is nil."
+   },
+   "decision_atom": "Décider s'il faut escalader un retard de dépendance externe que l'équipe interne peut absorber elle-même.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'équipe interne peut absorber le retard sans impact sur le reste du plan par un simple réajustement de séquencement.",
+   "bascule": "Si l'absorption interne du retard menaçait d'autres jalons ou dépassait la marge disponible, escalader deviendrait la bonne réponse.",
+   "task_id": "PR1",
+   "level": 3,
+   "run_id": "20261004-0858",
+   "release": "qL3-PR1-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR2-20261004-0858-1-03",
+   "enabler": "Break down scope.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet découpe le contenu du projet en lots de travail. Un membre de l'équipe affirme en réunion que le lot « intégration des données » est suffisamment détaillé pour être estimé, sans montrer de livrable écrit. Que doit faire le chef de projet avant d'accepter ce niveau de détail ?",
+    "en": "A project manager is breaking down the project scope into work packages. A team member states in a meeting that the \"data integration\" package is detailed enough to be estimated, without showing any written deliverable. What should the project manager do before accepting this level of detail?"
+   },
+   "options": {
+    "fr": [
+     "Planifier la suite des travaux sur ce lot en se fiant à l'expérience du membre de l'équipe.",
+     "Demander à voir la décomposition écrite du lot avant de valider son niveau de détail.",
+     "Faire valider le lot par le sponsor, qui tranchera sur le niveau de détail suffisant.",
+     "Diviser le lot en sous-tâches plus petites pour sécuriser l'estimation à venir."
+    ],
+    "en": [
+     "Plan the next steps for this package based on the team member's experience.",
+     "Ask to see the package's written breakdown before validating its level of detail.",
+     "Have the sponsor validate the package, since he will decide on the sufficient level of detail.",
+     "Split the package into smaller sub-tasks to secure the upcoming estimate."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Une affirmation orale ne constitue pas une preuve du niveau de détail d'un lot de travail : demander la décomposition écrite permet de vérifier objectivement si le lot est prêt à être estimé. Planifier sur la seule base de l'expérience du membre de l'équipe accepte une affirmation non vérifiée. Faire valider par le sponsor déplace la décision vers une personne qui n'a pas à juger du niveau de détail technique d'un lot. Diviser immédiatement le lot est une action prématurée : rien n'indique encore qu'il soit insuffisamment détaillé, seulement que la preuve manque.",
+    "en": "A verbal statement is not proof of a work package's level of detail: asking for the written breakdown allows an objective check of whether the package is ready for estimation. Planning based solely on the team member's experience accepts an unverified claim. Having the sponsor validate it shifts the decision to someone who should not judge a package's technical level of detail. Splitting the package immediately is premature: nothing yet shows it is insufficiently detailed, only that proof is missing."
+   },
+   "decision_atom": "Décider si une affirmation orale suffit à valider le niveau de détail d'un lot de travail.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le membre de l'équipe affirme le niveau de détail sans montrer de livrable écrit.",
+   "bascule": "Si une décomposition écrite avait déjà été présentée en réunion, se fier à l'affirmation orale deviendrait superflu et la planification directe serait défendable.",
+   "task_id": "PR2",
+   "level": 1,
+   "run_id": "20261004-0858",
+   "release": "qL1-PR2-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR2-20261004-0858-1-05",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Deux parties prenantes clés expriment des attentes contradictoires sur un même livrable pendant la revue de l'énoncé de contenu. Le chef de projet a tenté une clarification directe avec chacune séparément, sans résultat : les deux maintiennent leur position. Que doit-il faire ?",
+    "en": "Two key stakeholders express contradictory expectations about the same deliverable during the scope statement review. The project manager has already tried clarifying directly with each one separately, without success: both maintain their position. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Choisir l'attente la plus proche des exigences initiales du projet et l'intégrer à l'énoncé de contenu.",
+     "Organiser une nouvelle réunion séparée avec chaque partie prenante pour tenter une autre clarification.",
+     "Inscrire les deux attentes contradictoires dans l'énoncé de contenu et laisser l'équipe les concilier.",
+     "Transmettre le désaccord au sponsor pour qu'il tranche entre les deux attentes exprimées."
+    ],
+    "en": [
+     "Choose the expectation closest to the project's initial requirements and include it in the scope statement.",
+     "Organize another separate meeting with each stakeholder to attempt further clarification.",
+     "Enter both contradictory expectations into the scope statement and let the team reconcile them.",
+     "Escalate the disagreement to the sponsor so he can decide between the two expressed expectations."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La clarification directe a déjà été tentée séparément avec chaque partie prenante et n'a rien résolu : le désaccord dépasse ce que le chef de projet peut arbitrer seul avec les moyens déjà essayés. Transmettre le désaccord au sponsor place la décision entre les mains de l'autorité capable de trancher sur le contenu. Choisir une attente plutôt que l'autre revient à arbitrer sans mandat pour le faire. Répéter une nouvelle réunion séparée reprend une démarche déjà essayée sans succès. Inscrire les deux attentes contradictoires dans l'énoncé transfère le désaccord non résolu vers l'équipe d'exécution, qui n'a pas à le régler.",
+    "en": "Direct clarification has already been tried separately with each stakeholder and resolved nothing: the disagreement exceeds what the project manager can settle alone with the means already attempted. Escalating to the sponsor places the decision with the authority able to rule on scope. Picking one expectation over the other amounts to arbitrating without the mandate to do so. Repeating another separate meeting repeats an approach already tried without success. Entering both contradictory expectations into the statement transfers the unresolved disagreement to the execution team, who should not have to settle it."
+   },
+   "decision_atom": "Décider si un désaccord persistant entre deux parties prenantes doit être remonté au sponsor.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "La clarification directe a déjà été tentée séparément avec chaque partie prenante, sans résultat.",
+   "bascule": "Si la clarification directe n'avait pas encore été tentée, organiser une réunion séparée deviendrait la bonne réponse.",
+   "task_id": "PR2",
+   "level": 1,
+   "run_id": "20261004-0858",
+   "release": "qL1-PR2-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR3-20261004-0858-1-01",
+   "enabler": "Identify value components with key stakeholders.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet démarre une initiative dont le contenu technique est déjà esquissé par l'équipe d'ingénierie. Avant de lancer la conception détaillée, il doit décider comment organiser les prochaines semaines. Les parties prenantes clés n'ont pas encore été consultées sur ce qu'elles considèrent comme les composantes de valeur du produit. Que doit-il faire en premier ?",
+    "en": "A project manager starts an initiative whose technical scope has already been sketched by the engineering team. Before launching detailed design, he must decide how to organize the coming weeks. Key stakeholders have not yet been consulted on what they consider the product's value components. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser avec les parties prenantes clés un atelier pour identifier les composantes de valeur avant d'approfondir la conception.",
+     "Laisser l'équipe d'ingénierie poursuivre la conception détaillée jusqu'à la revue suivante où les avis seront recueillis.",
+     "Documenter les composantes de valeur telles qu'il les perçoit et les faire valider ensuite par les parties prenantes concernées.",
+     "Avancer la conception détaillée en parallèle des entretiens avec les parties prenantes selon le calendrier déjà fixé."
+    ],
+    "en": [
+     "Organize a workshop with key stakeholders to identify value components before deepening the design.",
+     "Let the engineering team continue detailed design until the next review where input will be gathered.",
+     "Document the value components as he perceives them and have stakeholders validate them at that point.",
+     "Advance detailed design in parallel with stakeholder interviews according to the schedule already set."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le contenu technique est esquissé mais les composantes de valeur n'ont pas été définies avec les parties prenantes clés : organiser l'atelier avant d'approfondir la conception évite de construire sur des hypothèses non partagées. Laisser l'ingénierie poursuivre jusqu'à la revue suivante où les avis seront recueillis inverse l'ordre utile : la conception risque de s'éloigner de ce que les parties prenantes valorisent. Documenter sa propre perception et la faire valider ensuite place le chef de projet en position d'auteur de la valeur, alors que l'identification doit se faire avec les parties prenantes, pas être proposée à leur approbation. Avancer la conception selon le calendrier déjà fixé ne retire rien au risque : les décisions de conception se prennent avant que la valeur attendue soit clarifiée.",
+    "en": "The technical scope is sketched but the value components have not been defined with key stakeholders: holding the workshop before deepening the design avoids building on unshared assumptions. Letting engineering continue until the next review where input will be gathered reverses the useful order: design risks drifting from what stakeholders actually value. Documenting his own perception and having stakeholders validate it at that point puts the project manager in the position of authoring the value, when identification should happen with stakeholders, not be proposed for their approval. Advancing design according to the schedule already set does not remove the risk: design decisions get made before the expected value is clarified."
+   },
+   "decision_atom": "Décider s'il faut identifier les composantes de valeur avec les parties prenantes avant ou après d'approfondir la conception technique déjà esquissée.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La conception technique est déjà esquissée par l'ingénierie, mais les parties prenantes clés n'ont pas encore été consultées sur les composantes de valeur.",
+   "bascule": "Si les composantes de valeur avaient déjà été validées avec les parties prenantes lors d'un atelier antérieur, laisser l'ingénierie avancer deviendrait défendable.",
+   "task_id": "PR3",
+   "level": 1,
+   "run_id": "20261004-0858",
+   "release": "qL1-PR3-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR3-20261004-0858-1-02",
+   "enabler": "Prioritize work based on value and stakeholder feedback.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Deux parties prenantes opérationnelles, de niveau hiérarchique comparable, demandent chacune que leur fonctionnalité passe en priorité dans le prochain incrément. Le projet dispose de critères de priorisation par la valeur déjà approuvés par le comité de pilotage. Les deux fonctionnalités peuvent être évaluées sans ambiguïté selon ces critères. Que doit faire le chef de projet ?",
+    "en": "Two operational stakeholders, of comparable seniority, each request that their feature be prioritized in the next increment. The project has value-based prioritization criteria already approved by the steering committee. Both features can be evaluated unambiguously against these criteria. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Transmettre le désaccord au comité de pilotage pour qu'il tranche entre les deux demandes.",
+     "Appliquer les critères de priorisation déjà approuvés pour classer les deux fonctionnalités selon leur valeur.",
+     "Reporter les deux fonctionnalités au prochain incrément dans l'attente d'un accord entre elles.",
+     "Diviser l'incrément pour livrer une partie de chaque fonctionnalité demandée."
+    ],
+    "en": [
+     "Forward the disagreement to the steering committee to decide between the two requests.",
+     "Apply the already-approved prioritization criteria to rank both features by value.",
+     "Defer both features to the next increment pending an agreement between them.",
+     "Split the increment to deliver part of each requested feature."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Des critères de priorisation par la valeur existent déjà et les deux fonctionnalités peuvent y être évaluées sans ambiguïté : les appliquer règle le désaccord au niveau où il se pose, sans escalade inutile. Transmettre le cas au comité de pilotage fait remonter une décision que les critères approuvés permettent déjà de prendre. Reporter les deux fonctionnalités dans l'attente d'un accord entre elles pénalise la valeur livrée alors qu'un mécanisme de décision existe déjà. Diviser l'incrément pour livrer une partie de chaque fonctionnalité demandée ignore que les critères doivent produire un ordre, pas un compromis qui dilue la priorisation elle-même.",
+    "en": "Value-based prioritization criteria already exist and both features can be evaluated against them without ambiguity: applying them resolves the disagreement at the level where it arises, without unnecessary escalation. Forwarding the case to the steering committee raises a decision that the approved criteria can already settle. Deferring both features pending an agreement between them penalizes delivered value when a decision mechanism already exists. Splitting the increment to deliver part of each requested feature ignores that the criteria should produce a ranking, not a compromise that dilutes the prioritization itself."
+   },
+   "decision_atom": "Décider si un conflit de priorité entre deux parties prenantes de niveau comparable doit être tranché avec les critères existants ou escaladé.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Des critères de priorisation par la valeur sont déjà approuvés par le comité de pilotage et permettent d'évaluer sans ambiguïté les deux demandes.",
+   "bascule": "Si les critères existants ne permettaient pas de différencier les deux fonctionnalités de façon non ambiguë, escalader deviendrait justifié.",
+   "task_id": "PR3",
+   "level": 1,
+   "run_id": "20261004-0858",
+   "release": "qL1-PR3-20261004-0858-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
