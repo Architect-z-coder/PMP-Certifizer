@@ -1,0 +1,159 @@
+{
+ "run_id": "20261005-0948",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PR3-20261005-0948-1-01",
+   "enabler": "Assess opportunities to deliver value incrementally.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une équipe produit a terminé un module d'analyse qui pourrait être livré dès maintenant à un sous-ensemble de clients, apportant une valeur mesurable immédiate. Deux options de mise en œuvre sont disponibles : la première fige le schéma de données sur un format propriétaire difficile à faire évoluer ensuite, la seconde atteint la même valeur perçue par les clients via une interface découplée, modifiable sans impact sur les livraisons futures. Le calendrier ne favorise aucune des deux options. Que doit décider la cheffe de projet ?",
+    "en": "A product team has completed an analytics module that could be delivered now to a subset of clients, providing immediate measurable value. Two implementation options are available: the first locks the data schema into a proprietary format that would be difficult to change later, the second achieves the same perceived client value through a decoupled interface that can be modified without affecting future releases. The schedule does not favor either option. What should the project lead decide?"
+   },
+   "options": {
+    "fr": [
+     "Livrer immédiatement via le schéma propriétaire, afin de capter la valeur perçue par les clients sans délai supplémentaire.",
+     "Reporter toute livraison jusqu'à la version finale, afin de garantir une architecture de données unique.",
+     "Livrer immédiatement via l'interface découplée, qui apporte la même valeur sans figer les choix techniques futurs.",
+     "Livrer via le schéma propriétaire, après un vote du comité technique, pour valider le choix d'architecture retenu et sa mise en œuvre."
+    ],
+    "en": [
+     "Deliver now using the proprietary schema, in order to capture client-perceived value without any further delay.",
+     "Postpone all delivery until the final release, in order to guarantee a single stable data architecture.",
+     "Deliver now using the decoupled interface, which brings the same value without locking in future technical choices.",
+     "Deliver using the proprietary schema, after a technical committee vote, to validate the chosen architecture and its implementation."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les deux options techniques atteignent la même valeur perçue par les clients ; le choix ne porte donc pas sur la valeur mais sur ce que l'on engage pour l'obtenir. Livrer via l'interface découplée capte cette valeur dès maintenant tout en laissant les choix futurs ouverts, puisque rien n'y est figé. Livrer via le schéma propriétaire capte la même valeur mais verrouille un format difficile à faire évoluer, ce qui pèsera sur les livraisons suivantes sans bénéfice supplémentaire. Faire valider ce même choix propriétaire par un comité technique ne change rien au problème : le vote légitime la décision mais ne défait pas son caractère difficilement réversible. Reporter toute livraison jusqu'à la version finale renonce à une valeur immédiate déjà disponible, alors qu'une voie équivalente et réversible existe sans ce coût.",
+    "en": "Both technical options achieve the same client-perceived value, so the choice is not about value but about what is being locked in to get it. Delivering through the decoupled interface captures that value now while keeping future choices open, since nothing is fixed. Delivering through the proprietary schema captures the same value but locks in a format that will be hard to change later, burdening future releases with no added benefit. Having a technical committee validate that same proprietary choice does not solve the problem: the vote legitimizes the decision but does not undo its hard-to-reverse nature. Postponing all incremental delivery until the final release gives up value that is already available now, when an equivalent and reversible path exists without that cost."
+   },
+   "decision_atom": "Décider quelle option de livraison incrémentale choisir quand deux voies atteignent la même valeur mais diffèrent par leur réversibilité technique.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Une des deux options verrouille un format propriétaire difficile à faire évoluer ensuite, alors que l'autre atteint la même valeur sans rien figer.",
+   "bascule": "Si les deux options avaient le même degré de réversibilité, livrer immédiatement via le schéma propriétaire deviendrait équivalent voire préférable s'il était plus rapide.",
+   "task_id": "PR3",
+   "level": 3,
+   "run_id": "20261005-0948",
+   "release": "qL3-PR3-20261005-0948-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR4-20261005-0948-1-01",
+   "enabler": "Define and plan resources based on requirements.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet reçoit la liste des livrables d'un nouveau projet. Avant d'avoir décomposé ces livrables en activités, un membre de son équipe lui suggère de contacter immédiatement les responsables de service pour réserver les ressources humaines pressenties. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager receives the list of deliverables for a new project. Before breaking these deliverables down into activities, a team member suggests contacting resource managers right away to reserve the anticipated staff. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Décomposer les livrables en activités afin d'estimer les besoins en ressources avant de solliciter les responsables de service.",
+     "Contacter sans attendre les responsables de service concernés, pour sécuriser les profils pressentis et profiter de leur disponibilité actuelle.",
+     "Demander à l'équipe de proposer, dès cette semaine, une liste de profils souhaités en s'appuyant sur des projets similaires déjà réalisés.",
+     "Informer dès maintenant le sponsor que les besoins en ressources seront communiqués après la réservation des profils jugés clés."
+    ],
+    "en": [
+     "Break the deliverables into activities to estimate resource needs before approaching resource managers.",
+     "Contact resource managers without delay to secure the anticipated profiles and take advantage of their current availability.",
+     "Ask the team, this week, to propose a list of desired profiles drawing on similar projects already completed.",
+     "Inform the sponsor right away that resource needs will be communicated once the key profiles have been reserved."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les livrables n'ont pas encore été décomposés en activités : les besoins réels en ressources ne sont donc pas encore connus. Décomposer les livrables permet d'identifier quelles compétences et quelles quantités sont réellement nécessaires avant toute démarche auprès des responsables de service. Contacter sans attendre les responsables de service concernés revient à réserver des profils sur la base d'une estimation intuitive, sans que le besoin soit établi : la disponibilité immédiate des profils ne justifie pas de sauter cette étape. Demander à l'équipe une liste fondée sur des projets similaires ne remplace pas une analyse des livrables propres à ce projet, qui peuvent différer sensiblement. Informer le sponsor d'une réservation à venir suppose que les besoins sont déjà clarifiés, ce qui n'est pas encore le cas.",
+    "en": "The deliverables have not yet been broken down into activities, so the actual resource needs are not yet known. Breaking them down first identifies which skills and quantities are truly required before approaching resource managers. Contacting resource managers without delay would mean reserving profiles based on an intuitive estimate rather than an established need; their immediate availability does not justify skipping this step. Asking the team for a list based on similar past projects does not replace an analysis of this project's specific deliverables, which may differ significantly. Telling the sponsor that a reservation is coming assumes the needs are already clarified, which is not yet the case."
+   },
+   "decision_atom": "Décider s'il faut décomposer les livrables en activités avant de solliciter les responsables de service pour réserver des profils.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les livrables n'ont pas encore été décomposés en activités : le besoin réel en ressources n'est pas établi.",
+   "bascule": "Si les livrables avaient déjà été décomposés en activités avec des besoins estimés, contacter les responsables de service serait la bonne première action.",
+   "task_id": "PR4",
+   "level": 1,
+   "run_id": "20261005-0948",
+   "release": "qL1-PR4-20261005-0948-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20261005-0948-1-02",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Sur un projet, un analyste financier partagé entre deux initiatives signale au chef de projet qu'il ne pourra consacrer que la moitié du temps prévu cette semaine, son autre engagement ayant pris du retard. Le chef de projet constate que cela affecte un jalon de reporting. Que doit-il faire en priorité ?",
+    "en": "On a project, a financial analyst shared between two initiatives tells the project manager he can only dedicate half the planned time this week, as his other commitment has fallen behind. The project manager notes this affects a reporting milestone. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Échanger avec le responsable fonctionnel de l'analyste pour convenir d'une répartition de temps ajustée.",
+     "Décaler unilatéralement le jalon de reporting pour absorber la réduction de disponibilité annoncée cette semaine.",
+     "Demander à l'analyste de prioriser lui-même son temps entre les deux initiatives selon son jugement personnel.",
+     "Solliciter un remplaçant temporaire auprès des ressources humaines pour combler l'écart de charge constaté."
+    ],
+    "en": [
+     "Discuss with the analyst's functional manager to agree on an adjusted time allocation.",
+     "Unilaterally push back the reporting milestone to absorb the announced reduction in availability this week.",
+     "Ask the analyst to prioritize his own time between the two initiatives based on his personal judgment.",
+     "Request a temporary replacement from human resources to cover the identified workload gap."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'analyste est partagé entre deux initiatives : sa disponibilité relève de l'arbitrage de son responsable fonctionnel, qui a la vue d'ensemble sur les deux engagements. Échanger avec lui pour convenir d'une répartition ajustée respecte ce rôle. Décaler unilatéralement le jalon pour absorber la réduction de disponibilité annoncée cette semaine traite le symptôme sans négocier la cause de la contention. Demander à l'analyste de prioriser lui-même son temps selon son jugement personnel le place en position d'arbitrer entre deux chefs de projet, ce qui dépasse son autorité. Solliciter un remplaçant temporaire auprès des ressources humaines pour combler l'écart constaté est prématuré tant que l'option d'un ajustement de répartition avec le responsable n'a pas été explorée.",
+    "en": "The analyst is shared between two initiatives: his availability is a matter for his functional manager to arbitrate, since that manager has visibility over both commitments. Discussing with him to agree on an adjusted allocation respects this role. Unilaterally pushing back the milestone to absorb the announced reduction in availability this week treats the symptom without negotiating the root cause of the contention. Asking the analyst to prioritize his own time based on his personal judgment puts him in the position of arbitrating between two project managers, which exceeds his authority. Requesting a temporary replacement from human resources to cover the identified gap is premature before exploring an allocation adjustment with the manager."
+   },
+   "decision_atom": "Décider qui doit arbitrer la réduction de disponibilité d'une ressource partagée entre deux initiatives.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'analyste est partagé entre deux initiatives et son indisponibilité partielle vient d'un autre engagement, pas d'un choix du chef de projet.",
+   "bascule": "Si l'analyste n'était affecté qu'à ce seul projet, lui demander de gérer son temps deviendrait acceptable.",
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20261005-0948",
+   "release": "qL2-PR4-20261005-0948-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR4-20261005-0948-1-03",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet prépare la phase de test qui nécessitera trois testeurs supplémentaires le mois prochain. Le responsable du pool de testeurs a mentionné oralement en couloir que l'équipe serait disponible à cette date. Le chef de projet doit finaliser son plan de montée en charge. Que doit-il faire ?",
+    "en": "A project manager is preparing the test phase, which will require three additional testers next month. The tester pool manager mentioned in a hallway conversation that the team would be available by then. The project manager needs to finalize the ramp-up plan. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Finaliser le plan de montée en charge en intégrant les trois testeurs supplémentaires comme une ressource acquise.",
+     "Obtenir une confirmation formelle de disponibilité du responsable du pool avant de finaliser le plan.",
+     "Prévoir un plan de secours avec des ressources externes dans l'hypothèse d'une indisponibilité des testeurs.",
+     "Réduire la portée des tests prévus pour limiter la dépendance envers ces trois testeurs supplémentaires."
+    ],
+    "en": [
+     "Finalize the ramp-up plan, treating the three additional testers as a resource already secured for the phase.",
+     "Obtain formal confirmation of availability from the pool manager before finalizing the plan.",
+     "Prepare a fallback plan with external resources under the assumption of tester unavailability for the phase.",
+     "Reduce the planned test scope and coverage to limit dependency on these three additional testers for the phase."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La disponibilité annoncée repose sur une remarque orale en couloir, pas sur un engagement formalisé. Obtenir une confirmation formelle avant de finaliser le plan sécurise la planification sur une base vérifiable. Finaliser le plan en intégrant les trois testeurs supplémentaires comme une ressource acquise repose sur une preuve insuffisante pour un engagement de ressources critique. Prévoir un plan de secours avec des ressources externes dans l'hypothèse d'une indisponibilité des testeurs est prématuré : il engage une démarche de ressources alternatives avant même de vérifier si la ressource initiale est réellement indisponible. Réduire la portée des tests prévus pour limiter la dépendance envers ces trois testeurs supplémentaires sacrifie la couverture de test pour contourner une incertitude qui peut être levée par une simple confirmation.",
+    "en": "The announced availability rests on an informal hallway remark, not a formalized commitment. Obtaining formal confirmation before finalizing the plan secures the planning on a verifiable basis. Finalizing the plan while treating the three additional testers as a resource already secured for the phase relies on insufficient evidence for a critical resource commitment. Preparing a fallback plan with external resources under the assumption of tester unavailability for the phase is premature: it starts sourcing alternative resources before even verifying whether the original resource is truly unavailable. Reducing the planned test scope and coverage to limit dependency on these three additional testers for the phase sacrifices test coverage to work around an uncertainty that a simple confirmation could resolve."
+   },
+   "decision_atom": "Décider si une remarque orale informelle suffit à fonder un plan de montée en charge de ressources.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "La disponibilité annoncée vient d'une remarque orale en couloir, sans aucune confirmation formelle.",
+   "bascule": "Si le responsable du pool avait confirmé la disponibilité par écrit, finaliser le plan directement deviendrait correct.",
+   "task_id": "PR4",
+   "level": 2,
+   "run_id": "20261005-0948",
+   "release": "qL2-PR4-20261005-0948-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
