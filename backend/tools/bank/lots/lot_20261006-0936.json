@@ -1,0 +1,121 @@
+{
+ "run_id": "20261006-0936",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PR4-20261006-0936-1-01",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet constate que deux initiatives internes se disputent le même architecte cloud pour le mois à venir. Le PMO a publié une matrice de priorisation des projets approuvée par le comité exécutif il y a deux semaines, classant clairement son projet au-dessus de l'autre. Le responsable de l'autre projet refuse de libérer l'architecte, invoquant une urgence client qu'il n'a pas documentée. Que doit faire le chef de projet ?",
+    "en": "A project manager finds that two internal initiatives are competing for the same cloud architect for the coming month. The PMO published a project prioritization matrix approved by the executive committee two weeks ago, clearly ranking her project above the other. The other project manager refuses to release the architect, citing a client urgency he has not documented. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Convoquer une réunion entre les deux équipes pour négocier un partage du temps de l'architecte au prorata des échéances respectives.",
+     "Invoquer la matrice de priorisation approuvée par le comité exécutif pour obtenir l'affectation de l'architecte à son projet.",
+     "Escalader le différend au sponsor exécutif en lui demandant de rendre un nouvel arbitrage entre les deux projets.",
+     "Accepter de différer d'un mois ses propres livrables pour laisser l'autre projet utiliser l'architecte en premier."
+    ],
+    "en": [
+     "Convene a meeting between the two teams to negotiate a time-share of the architect prorated to each project's deadlines.",
+     "Invoke the executive-approved prioritization matrix to secure the architect's assignment to her project.",
+     "Escalate the dispute to the executive sponsor, asking him to issue a fresh ruling between the two projects.",
+     "Agree to defer by a month her own deliverables, letting the other project use the architect first."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La matrice de priorisation a déjà été approuvée par le comité exécutif : c'est l'instance qui détient l'autorité pour arbitrer entre projets, et elle l'a déjà fait. Invoquer cette décision existante pour obtenir l'architecte est donc l'action correcte : elle s'appuie sur une autorité déjà exercée, sans en solliciter une nouvelle. Négocier un partage au prorata ignore qu'un arbitrage a déjà eu lieu et traite la priorisation comme négociable alors qu'elle ne l'est plus. Escalader au sponsor exécutif en lui demandant de rendre un nouvel arbitrage entre les deux projets revient à remettre en cause une décision déjà rendue par l'instance supérieure, ce qui dilue l'autorité du comité exécutif au lieu de s'appuyer dessus. Différer d'un mois ses propres livrables cède la ressource à un projet pourtant classé en dessous du sien par la décision officielle, ce qui contredit directement l'arbitrage déjà établi.",
+    "en": "The prioritization matrix has already been approved by the executive committee: that is the body with the authority to arbitrate between projects, and it has already done so. Invoking this existing decision to secure the architect is therefore the correct action: it relies on authority already exercised, without seeking a new one. Negotiating a prorated time-share ignores that an arbitration has already taken place and treats prioritization as negotiable when it no longer is. Escalating to the executive sponsor, asking him to issue a fresh ruling between the two projects, amounts to reopening a decision already rendered by the higher body, diluting the committee's authority instead of relying on it. Deferring by a month her own deliverables cedes the resource to a project officially ranked below hers, directly contradicting the established arbitration."
+   },
+   "decision_atom": "Décider comment obtenir une ressource partagée disputée entre deux projets quand une décision de priorisation existe déjà.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Une matrice de priorisation a déjà été approuvée par le comité exécutif il y a deux semaines, classant le projet du chef de projet au-dessus de l'autre.",
+   "bascule": "Si aucune priorisation officielle n'avait été rendue par le comité exécutif, négocier un partage serait la bonne réponse.",
+   "task_id": "PR4",
+   "level": 3,
+   "run_id": "20261006-0936",
+   "release": "qL3-PR4-20261006-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR4-20261006-0936-1-04",
+   "enabler": "Manage and optimize resource needs and availability.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un analyste métier affecté à un projet signale au chef de projet qu'il se sent sous-utilisé depuis deux semaines, l'équipe de développement n'ayant pas encore terminé la phase qui précède son intervention. Il propose de son propre chef d'accepter une mission temporaire sur un autre projet pour combler ce temps. Que doit faire le chef de projet ?",
+    "en": "A business analyst assigned to a project tells the project manager that he has felt underutilized for two weeks, since the development team has not yet finished the phase preceding his involvement. On his own initiative, he proposes accepting a temporary assignment on another project to fill the time. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Évaluer lui-même l'impact de cette disponibilité sur le plan de ressources avant d'autoriser ou non l'affectation temporaire.",
+     "Autoriser l'affectation temporaire proposée, l'analyste étant le mieux placé pour juger de sa charge de travail actuelle.",
+     "Demander à l'analyste de négocier directement les conditions de retour avec l'autre chef de projet concerné par la mission.",
+     "Informer le sponsor de la sous-utilisation constatée, et attendre ses instructions avant toute décision d'affectation."
+    ],
+    "en": [
+     "Personally assess the impact of this availability on the resource plan before approving or declining the temporary assignment.",
+     "Approve the proposed temporary assignment, the analyst being best placed to judge his current workload himself.",
+     "Ask the analyst to negotiate directly the return conditions with the other project manager involved in the assignment.",
+     "Inform the sponsor of the observed underutilization, and wait for his instructions before any assignment decision."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La gestion de la disponibilité et des besoins en ressources relève du chef de projet, pas de l'individu affecté ni du sponsor : c'est à lui d'évaluer si ce temps libéré peut être utilisé ailleurs sans compromettre la reprise de l'analyste au moment où le développement sera prêt. Autoriser l'affectation, l'analyste étant le mieux placé pour juger de sa charge de travail actuelle, délègue à l'individu une décision de planification des ressources qui engage l'ensemble du projet, pas seulement son propre emploi du temps. Demander à l'analyste de négocier directement son retour avec l'autre chef de projet concerné place la coordination inter-projets entre les mains d'un contributeur individuel, alors que c'est une responsabilité de gestion de projet. Informer le sponsor de la sous-utilisation constatée, et attendre ses instructions avant toute décision escalade une décision opérationnelle de disponibilité des ressources à un niveau qui n'a pas à s'en saisir.",
+    "en": "Managing resource needs and availability is the project manager's responsibility, not the assigned individual's or the sponsor's: it is up to her to assess whether this freed-up time can be used elsewhere without compromising the analyst's return when development is ready. Approving the assignment, the analyst being best placed to judge his current workload himself, delegates a resource-planning decision affecting the whole project to the individual, rather than just his own schedule. Asking the analyst to negotiate directly his return with the other project manager involved places inter-project coordination in the hands of an individual contributor, when it is a project management responsibility. Informing the sponsor of the observed underutilization, and waiting for his instructions before any decision escalates an operational resource-availability decision to a level that has no reason to take it up."
+   },
+   "decision_atom": "Décider qui doit évaluer et autoriser une affectation temporaire d'une ressource sous-utilisée sur un autre projet.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "C'est l'analyste lui-même, et non le chef de projet, qui propose l'affectation temporaire de son propre chef.",
+   "bascule": "Si l'analyste n'avait aucune dépendance future avec le projet (fin définitive de sa mission), le laisser juger lui-même deviendrait acceptable.",
+   "task_id": "PR4",
+   "level": 3,
+   "run_id": "20261006-0936",
+   "release": "qL3-PR4-20261006-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR5-20261006-0936-1-04",
+   "enabler": "Plan and manage the procurement strategy.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un projet nécessite l'achat externe d'un service spécialisé disponible chez plusieurs fournisseurs potentiels. L'équipe projet a identifié les besoins fonctionnels, mais n'a pas encore défini les critères d'évaluation des offres ni le type de contrat envisagé. Un membre de l'équipe propose de lancer immédiatement l'appel d'offres. Que doit faire le chef de projet en priorité ?",
+    "en": "A project requires externally purchasing a specialized service available from several potential vendors. The project team has identified the functional needs but has not yet defined the evaluation criteria for proposals or the intended contract type. A team member proposes launching the request for proposals immediately. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Autoriser le lancement immédiat de l'appel d'offres, en traitant les critères d'évaluation comme un point à clarifier en cours de processus.",
+     "Demander aux fournisseurs pressentis une estimation informelle, puis engager ensuite la définition des critères d'évaluation.",
+     "Définir les critères d'évaluation des offres et le type de contrat avant de lancer l'appel d'offres.",
+     "Solliciter le sponsor pour qu'il valide directement un fournisseur, sur la base des relations antérieures entretenues avec lui."
+    ],
+    "en": [
+     "Authorize the immediate launch of the request for proposals, treating the evaluation criteria as a matter to clarify during the process.",
+     "Ask prospective vendors for an informal estimate, then proceed afterward to defining the evaluation criteria.",
+     "Define the proposal evaluation criteria and the contract type before launching the request for proposals.",
+     "Ask the sponsor to directly approve a vendor, based on the prior working relationships maintained with them."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les critères d'évaluation et le type de contrat ne sont pas encore définis : lancer l'appel d'offres maintenant reviendrait à comparer des propositions sans base commune pour les juger. Définir d'abord ces critères et le type de contrat donne à l'appel d'offres une structure permettant une comparaison équitable. Autoriser le lancement immédiat en reportant les critères à plus tard saute cette étape et expose à des offres incomparables entre elles. Demander une estimation informelle avant de définir les critères inverse l'ordre utile et ne clarifie rien sur la méthode d'évaluation. Solliciter le sponsor pour une validation directe contourne le processus de sélection fondé sur des critères, au profit d'une relation antérieure.",
+    "en": "The evaluation criteria and contract type are not yet defined: launching the request for proposals now would mean comparing proposals without a common basis to judge them. Defining these criteria and the contract type first gives the request for proposals a structure that allows fair comparison. Authorizing the immediate launch while deferring the criteria skips this step and risks incomparable proposals. Asking for an informal estimate before defining the criteria reverses the useful order and clarifies nothing about the evaluation method. Asking the sponsor for direct approval bypasses the criteria-based selection process in favor of a prior relationship."
+   },
+   "decision_atom": "Décider s'il faut lancer l'appel d'offres immédiatement ou définir d'abord les critères d'évaluation et le type de contrat.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les critères d'évaluation des offres et le type de contrat envisagé ne sont pas encore définis au moment où le lancement est proposé.",
+   "bascule": "Si les critères d'évaluation et le type de contrat avaient déjà été définis lors d'une étape antérieure du projet, lancer l'appel d'offres immédiatement serait la bonne séquence.",
+   "task_id": "PR5",
+   "level": 1,
+   "run_id": "20261006-0936",
+   "release": "qL1-PR5-20261006-0936-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
