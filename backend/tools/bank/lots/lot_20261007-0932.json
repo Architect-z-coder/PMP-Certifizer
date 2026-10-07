@@ -1,0 +1,83 @@
+{
+ "run_id": "20261007-0932",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL1-PR6-20261007-0932-2-01",
+   "enabler": "Monitor financial variations and work with the governance process.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Une chef de projet observe que le coût réel cumulé dépasse le budget prévu de 4 %, un écart inférieur au seuil de tolérance défini dans le plan de gestion des coûts. L'équipe applique déjà une mesure corrective mineure et prévoit de résorber l'écart au prochain cycle de suivi. Que doit faire la chef de projet concernant ce signal ?",
+    "en": "A project manager observes that cumulative actual cost exceeds the budget by 4%, a variance below the tolerance threshold defined in the cost management plan. The team is already applying a minor corrective measure and expects to close the gap by the next tracking cycle. What should the project manager do regarding this signal?"
+   },
+   "options": {
+    "fr": [
+     "Consigner l'écart et la mesure corrective dans le registre de suivi, et vérifier sa résorption au prochain cycle.",
+     "Transmettre immédiatement l'écart au comité de pilotage, documenter le contexte, et obtenir une décision formelle sur la marche à suivre.",
+     "Demander au sponsor d'approuver un ajustement de la réserve de contingence, de valider le montant, pour couvrir ce dépassement.",
+     "Convoquer une revue de gouvernance exceptionnelle, réunir les parties prenantes, afin de documenter formellement le dépassement constaté."
+    ],
+    "en": [
+     "Log the variance and the corrective measure in the tracking register, and verify closure at the next cycle.",
+     "Immediately forward the variance to the steering committee, document the context, to obtain a formal decision on next steps.",
+     "Ask the sponsor to approve a contingency reserve adjustment, validate the amount, to cover this overrun.",
+     "Convene an exceptional governance review, gather the stakeholders, to formally document the observed overrun."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'écart constaté (4 %) reste sous le seuil de tolérance fixé par le plan de gestion des coûts, et une mesure corrective est déjà engagée avec une résorption attendue au prochain cycle. Consigner l'écart et vérifier sa résorption respecte le niveau de gouvernance proportionné à un écart tolérable géré par l'équipe. Transmettre au comité de pilotage, documenter le contexte et obtenir une décision formelle mobilise une instance de décision pour un écart que le plan autorise justement l'équipe à absorber sans escalade. Demander un ajustement de la réserve de contingence et faire valider le montant traite comme définitif un écart que la mesure corrective en cours doit encore résorber. Convoquer une revue de gouvernance exceptionnelle et réunir les parties prenantes engage une instance formelle pour un écart que le mécanisme de tolérance existant est précisément conçu pour gérer sans elle.",
+    "en": "The observed variance (4%) remains below the tolerance threshold set by the cost management plan, and a corrective measure is already underway with expected closure by the next cycle. Logging the variance and verifying closure matches the governance level proportionate to a tolerable variance the team is meant to absorb. Forwarding it to the steering committee, documenting the context, and obtaining a formal decision engages a decision body for a variance the plan specifically authorizes the team to handle without escalation. Asking for a contingency reserve adjustment and having the amount validated treats as settled a variance the ongoing corrective measure is still expected to close. Convening an exceptional governance review and gathering the stakeholders engages a formal body for a variance the existing tolerance mechanism is precisely designed to handle without it."
+   },
+   "decision_atom": "Décider du niveau de gouvernance à engager face à un écart de coût sous le seuil de tolérance, déjà en cours de correction.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'écart (4 %) est inférieur au seuil de tolérance défini dans le plan, et une mesure corrective est déjà appliquée avec résorption attendue au prochain cycle.",
+   "bascule": "Si l'écart avait dépassé le seuil de tolérance défini dans le plan, transmettre au comité de pilotage deviendrait la bonne réponse.",
+   "task_id": "PR6",
+   "level": 1,
+   "run_id": "20261007-0932",
+   "release": "qL1-PR6-20261007-0932-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR6-20261007-0932-2-03",
+   "enabler": "Plan financial reporting.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "En planifiant la structure des rapports financiers d'un projet, une chef de projet constate que le sponsor souhaite un niveau de détail par poste de dépense, alors que le comité d'investissement, destinataire du même rapport consolidé, ne requiert qu'une vue synthétique par phase. Qui doit arbitrer le niveau de détail retenu pour ce rapport ?",
+    "en": "While planning the financial reporting structure for a project, a project manager notes that the sponsor wants expense-line-level detail, while the investment committee, recipient of the same consolidated report, only requires a summary view by phase. Who should decide the level of detail used for this report?"
+   },
+   "options": {
+    "fr": [
+     "Le contrôleur financier du projet, en vertu de sa responsabilité technique sur les rapports, tranche le format retenu.",
+     "La chef de projet, qui consulte les deux destinataires puis propose un format satisfaisant les deux besoins.",
+     "Le comité d'investissement, puisqu'il siège à un niveau hiérarchique supérieur à celui du sponsor, impose le format.",
+     "L'équipe projet, qui adopte le format déjà utilisé sur le projet précédent comparable, sans autre consultation."
+    ],
+    "en": [
+     "The project's financial controller, by virtue of technical ownership of reporting, settles the format used.",
+     "The project manager, who consults both recipients and then proposes a format meeting both needs.",
+     "The investment committee, since it sits at a hierarchical level above the sponsor, imposes the format.",
+     "The project team, which adopts the format already used on the previous comparable project, without further input."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les deux destinataires expriment des besoins de reporting différents mais également légitimes sur un même rapport consolidé : c'est à la chef de projet, propriétaire de la planification du reporting financier, de concilier ces attentes en consultant les deux parties plutôt que de trancher unilatéralement en faveur de l'une. Confier au contrôleur financier la décision de trancher le format déplace vers un rôle d'exécution technique un arbitrage qui porte sur les besoins d'information de deux parties prenantes de gouvernance. Faire imposer le format par le comité d'investissement sur le seul critère du niveau hiérarchique ignore que le sponsor a aussi un besoin de pilotage légitime sur ce même rapport. Reprendre le format d'un projet précédent comparable sans autre consultation ignore que les besoins exprimés ici, par ces deux destinataires précis, diffèrent de ceux du précédent projet.",
+    "en": "Both recipients express different but equally legitimate reporting needs on the same consolidated report: it is the project manager, owner of financial reporting planning, who should reconcile these expectations by consulting both parties rather than unilaterally favoring one. Having the financial controller settle the format shifts to a technical execution role an arbitration that concerns the information needs of two governance stakeholders. Having the investment committee impose the format on hierarchy alone ignores that the sponsor also has a legitimate steering need on this same report. Reusing the format from a previous comparable project without further input ignores that the needs expressed here, by these two specific recipients, differ from those of the earlier project."
+   },
+   "decision_atom": "Décider qui arbitre le niveau de détail d'un rapport financier consolidé quand deux destinataires expriment des besoins différents.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Les deux destinataires (sponsor et comité d'investissement) ont des besoins de détail différents mais également légitimes sur le même rapport.",
+   "bascule": "Si un seul destinataire existait pour ce rapport, faire primer son besoin deviendrait directement la bonne réponse.",
+   "task_id": "PR6",
+   "level": 1,
+   "run_id": "20261007-0932",
+   "release": "qL1-PR6-20261007-0932-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
