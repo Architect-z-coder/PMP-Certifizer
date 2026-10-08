@@ -1,0 +1,122 @@
+{
+ "run_id": "20261008-0943",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR6-20261008-0943-1-02",
+   "enabler": "Anticipate future finance challenges.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend qu'un fournisseur clé doit renégocier ses tarifs dans six mois, à l'expiration de son contrat actuel, selon une clause contractuelle connue depuis la signature. Le projet doit encore durer neuf mois. Que doit-il faire en priorité dès maintenant ?",
+    "en": "A project manager learns that a key supplier must renegotiate its rates in six months, when its current contract expires, per a clause known since signing. The project still has nine months to run. What should he do first, right now?"
+   },
+   "options": {
+    "fr": [
+     "Demander au fournisseur de geler ses tarifs actuels jusqu'à la fin du projet, en invoquant auprès de lui la relation commerciale de long terme établie.",
+     "Inscrire ce risque financier connu dans les prévisions budgétaires du projet, avec une fourchette d'impact estimée pour la période restante.",
+     "Attendre l'ouverture des négociations contractuelles par le fournisseur, puis évaluer à ce moment l'impact possible sur le budget du projet.",
+     "Informer le sponsor que le budget du projet sera probablement dépassé dans six mois, en traitant l'ampleur chiffrée comme un sujet à préciser ensuite."
+    ],
+    "en": [
+     "Ask the supplier to freeze current rates until project completion, citing to them the established long-term business relationship.",
+     "Record this known financial risk in the project's budget forecasts, with an estimated impact range for the remaining period.",
+     "Wait for the supplier to open contract renegotiations, then assess at that point any possible impact on the project budget.",
+     "Inform the sponsor that the project budget will likely be exceeded in six months, treating the quantified magnitude as a point to clarify later."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'échéance de renégociation est connue depuis la signature du contrat et tombe avant la fin du projet : l'inscrire dès maintenant dans les prévisions budgétaires, avec une fourchette d'impact, transforme une incertitude prévisible en élément géré. Demander un gel tarifaire en invoquant la relation commerciale ignore que la clause de renégociation est contractuelle et ne dépend pas de cette relation. Attendre l'ouverture des négociations avant d'évaluer l'impact retarde une anticipation alors que l'échéance et son existence sont déjà connues aujourd'hui — rien n'empêche de commencer la prévision maintenant. Informer le sponsor d'un dépassement probable en renvoyant l'ampleur chiffrée à plus tard transmet une alerte sans l'élément qui permettrait d'agir.",
+    "en": "The renegotiation date has been known since contract signing and falls before project completion: recording it now in budget forecasts, with an impact range, turns a foreseeable uncertainty into a managed element. Asking for a rate freeze while citing the business relationship ignores that the renegotiation clause is contractual and does not depend on that relationship. Waiting for negotiations to open before assessing impact delays anticipation even though the date and its existence are already known today — nothing prevents starting the forecast now. Telling the sponsor about a likely overrun while deferring the quantified magnitude to later passes along an alert without the element needed to act."
+   },
+   "decision_atom": "Décider du moment auquel intégrer un risque financier contractuel connu dans les prévisions budgétaires.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'échéance de renégociation tarifaire est connue depuis la signature du contrat et tombe avant la fin du projet.",
+   "bascule": "Si la clause de renégociation n'avait pas encore été déclenchée ni sa date connue, attendre l'ouverture des négociations serait défendable.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20261008-0943",
+   "release": "qL2-PR6-20261008-0943-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR6-20261008-0943-1-04",
+   "enabler": "Analyze project financial needs.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Au démarrage de la planification financière, un membre de l'équipe affirme oralement en réunion que le projet nécessitera un budget de contingence plus élevé que la normale, sans fournir de donnée à l'appui. Aucune analyse des besoins financiers du projet n'a encore été réalisée. Que doit faire le chef de projet en priorité ?",
+    "en": "At the start of financial planning, a team member states in a meeting that the project will need a higher-than-normal contingency budget, without supporting data. No analysis of the project's financial needs has been done yet. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Relayer l'affirmation au sponsor comme un signal à surveiller pour la suite de la planification budgétaire du projet.",
+     "Intégrer dès maintenant une marge de contingence supérieure à la normale dans le budget prévisionnel global du projet.",
+     "Demander au membre de l'équipe de justifier publiquement son affirmation devant le reste de l'équipe projet réunie.",
+     "Conduire l'analyse des besoins financiers du projet pour établir si une contingence supérieure à la normale est justifiée."
+    ],
+    "en": [
+     "Pass the statement along to the sponsor as a signal to watch during the rest of the project's budget planning.",
+     "Build a higher-than-normal contingency margin into the overall project budget forecast right away.",
+     "Ask the team member to justify the statement publicly in front of the assembled rest of the project team.",
+     "Conduct the project's financial needs analysis to establish whether a higher contingency is warranted."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'affirmation est orale, non appuyée par des données, et aucune analyse des besoins financiers n'a encore été menée : conduire cette analyse établit si la contingence supérieure est réellement justifiée avant toute décision budgétaire. Relayer l'affirmation au sponsor transmet un signal non vérifié comme s'il constituait déjà une information exploitable pour la planification. Intégrer dès maintenant une marge supérieure traite une déclaration non étayée comme une donnée suffisante pour modifier le budget prévisionnel global. Demander une justification publique au membre de l'équipe déplace la charge de la preuve sur un individu alors que c'est l'analyse elle-même, et non une mise en cause orale, qui doit établir le besoin.",
+    "en": "The statement is verbal, unsupported by data, and no financial needs analysis has been done yet: conducting that analysis establishes whether the higher contingency is actually warranted before any budget decision. Passing the statement to the sponsor treats an unverified signal as if it were already usable information for planning. Building in a higher margin right away treats an unsupported claim as sufficient grounds to change the overall budget forecast. Asking the team member to justify the claim publicly shifts the burden of proof onto an individual, when it is the analysis itself, not a public challenge, that should establish the need."
+   },
+   "decision_atom": "Décider si une affirmation orale non étayée suffit à fonder une décision sur les besoins financiers du projet.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'affirmation est orale, sans donnée à l'appui, et aucune analyse des besoins financiers n'a encore été menée.",
+   "bascule": "Si l'affirmation avait été appuyée par une estimation chiffrée ou une analyse préalable, intégrer la marge directement serait défendable.",
+   "task_id": "PR6",
+   "level": 2,
+   "run_id": "20261008-0943",
+   "release": "qL2-PR6-20261008-0943-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR6-20261008-0943-1-05",
+   "enabler": "Quantify risk and contingency financial allocations.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "En quantifiant la réserve pour imprévus d'un projet, le chef de projet doit choisir entre deux méthodes pour un risque technique majeur : une estimation agrégée rapide basée sur l'expérience de projets similaires, ou une analyse quantitative détaillée nécessitant une semaine de travail d'un expert, non encore engagée. Le projet est encore en phase de planification et aucune date limite ne contraint cette estimation. Quelle approche choisir ?",
+    "en": "While quantifying a project's contingency reserve, the project manager must choose between two methods for a major technical risk: a quick aggregate estimate based on experience from similar projects, or a detailed quantitative analysis requiring a week of work from an expert not yet engaged. The project is still in planning and no deadline constrains this estimate. Which approach should be chosen?"
+   },
+   "options": {
+    "fr": [
+     "Retenir l'estimation agrégée rapide pour le risque technique majeur, car elle suffit à documenter une réserve provisoire en phase de planification.",
+     "Engager l'expert pour l'analyse quantitative détaillée du risque majeur, et suspendre la planification du projet jusqu'à son résultat.",
+     "Engager l'expert pour l'analyse quantitative détaillée, dont le résultat remplacera l'estimation agrégée avant la mise en référence du budget.",
+     "Retenir l'estimation agrégée rapide comme choix définitif, pour préserver le calendrier de mise en référence du budget."
+    ],
+    "en": [
+     "Use the quick aggregate estimate for the major technical risk, since it is sufficient to document a provisional reserve during planning.",
+     "Engage the expert for the detailed quantitative analysis of the major risk, and suspend the project's planning until the result is available.",
+     "Engage the expert for the detailed quantitative analysis, whose result will replace the aggregate estimate before the budget is baselined.",
+     "Use the quick aggregate estimate as the final choice, to preserve the budget baselining schedule."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Pour un risque technique majeur et en l'absence de contrainte de délai, affiner la quantification avant la mise en référence du budget reste possible sans compromettre l'avancement : engager l'expert maintenant, en prévoyant que son résultat remplace l'estimation agrégée avant cette mise en référence, permet de revenir sur une estimation provisoire avant qu'elle ne devienne définitive. Retenir l'estimation agrégée rapide pour le risque technique majeur reste raisonnable à court terme, mais devient insuffisant pour un risque majeur si rien ne prévoit son remplacement avant la mise en référence. Suspendre la planification du projet pendant une semaine bloque des travaux qui n'ont pas besoin d'attendre ce résultat spécifique. Retenir l'estimation agrégée comme choix définitif renonce à affiner une estimation majeure alors qu'aucune échéance ne l'impose, ce qui expose le budget de référence à une imprécision évitable.",
+    "en": "For a major technical risk and with no deadline pressure, refining the quantification before the budget is baselined remains possible without compromising progress: engaging the expert now, with the plan that the result will replace the aggregate estimate before baselining, allows a provisional estimate to be revisited before it becomes final. Using the quick aggregate estimate for the major technical risk remains reasonable in the short term, but becomes insufficient for a major risk if nothing provides for its replacement before baselining. Suspending the project's planning for a week blocks work that does not need to wait for this specific result. Using the aggregate estimate as the final choice gives up refining a major estimate when no deadline requires it, exposing the baseline budget to avoidable imprecision."
+   },
+   "plans_ref": "see plans array",
+   "decision_atom": "Décider s'il faut engager une analyse quantitative détaillée pour un risque technique majeur alors qu'une estimation agrégée rapide est disponible.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le projet est encore en phase de planification et aucune date limite ne contraint l'estimation.",
+   "bascule": "Si une date limite imminente empêchait d'attendre le résultat de l'expert, retenir l'estimation agrégée comme base de la mise en référence deviendrait la bonne réponse.",
+   "task_id": "PR6",
+   "level": 3,
+   "run_id": "20261008-0943",
+   "release": "qL3-PR6-20261008-0943-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  }
+ ]
+}
