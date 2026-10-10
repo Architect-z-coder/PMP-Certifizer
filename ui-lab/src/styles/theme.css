@@ -1,0 +1,133 @@
+/* Tailwind v4 + shadcn variable names mapped onto the Certifizer tokens (tokens.css).
+   21st.dev components read `bg-background`, `text-muted-foreground`, `var(--border)`… :
+   every one of those names resolves here to an Observatoire token. */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root,
+[data-direction] {
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--accent);
+  --primary-foreground: var(--accent-ink);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-2);
+  --accent-surface: var(--surface-2);
+  --destructive: var(--danger);
+  --destructive-foreground: #ffffff;
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--accent);
+  --success: var(--tier-3);
+  --tier-0-ink: #4F545D;
+  --tier-1-ink: #96350B;
+  --tier-2-ink: #6B4F00;
+  --tier-3-ink: #176240;
+  --tier-4-ink: #0F5132;
+  --dom-people-ink: #1F3FB0;
+  --dom-process-ink: #176240;
+  --dom-be-ink: #6B4F00;
+  --brand: var(--accent);
+  --brand-foreground: var(--accent-ink);
+  --chart-1: var(--dom-people);
+  --chart-2: var(--dom-process);
+  --chart-3: var(--dom-be);
+  --chart-4: var(--tier-2);
+  --chart-5: var(--tier-1);
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  /* wensity primitives (sidebar, drawer) */
+  --primitive-radius-item: var(--radius-sm);
+  --primitive-radius-surface: var(--radius-lg);
+  --primitive-radius-control-sm: var(--radius-sm);
+  --primitive-surface-elevated: var(--surface);
+  --primitive-text-secondary: var(--ink-2);
+  --primitive-surface-hover: var(--surface-2);
+  --primitive-surface-selected: var(--accent-soft);
+  --primitive-ring: var(--accent);
+  --primitive-chart-1: var(--dom-people);
+  /* bjork (sonner toast) */
+  --bjork-field: var(--surface);
+  --bjork-text: var(--ink);
+  --bjork-text-strong: var(--ink);
+  --bjork-text-muted: var(--ink-2);
+  --bjork-border: var(--line-strong);
+  --bjork-shadow-surface: 0 12px 32px -16px rgba(27, 31, 42, 0.35);
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent-surface);
+  --color-accent-foreground: var(--foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-tier-0: var(--tier-0);
+  --color-tier-1: var(--tier-1);
+  --color-tier-2: var(--tier-2);
+  --color-tier-3: var(--tier-3);
+  --color-tier-4: var(--tier-4);
+  --color-tier-0-ink: var(--tier-0-ink);
+  --color-tier-1-ink: var(--tier-1-ink);
+  --color-tier-2-ink: var(--tier-2-ink);
+  --color-tier-3-ink: var(--tier-3-ink);
+  --color-tier-4-ink: var(--tier-4-ink);
+  --color-dom-people-ink: var(--dom-people-ink);
+  --color-dom-process-ink: var(--dom-process-ink);
+  --color-dom-be-ink: var(--dom-be-ink);
+  --color-dom-people: var(--dom-people);
+  --color-dom-process: var(--dom-process);
+  --color-dom-be: var(--dom-be);
+  --color-warm: var(--warm);
+  --color-warm-ink: var(--warm-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-ink: var(--accent-soft-ink);
+  --color-danger-soft: var(--danger-soft);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-lg);
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; font-family: var(--font-body); }
+  /* grid/flex children never force a column wider than the viewport (phone) */
+  .grid > *, .flex > * { min-width: 0; }
+}

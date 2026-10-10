@@ -1,0 +1,66 @@
+/* Lab chrome + page layout. Components come from 21st.dev (src/components/21st); this file
+   only carries the typography base, the app grid, the premium blur and the lab control bar. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { font-size: var(--t-md); line-height: var(--lh-body); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+h1, h2, .display {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-variation-settings: "opsz" var(--display-opsz, 72), "SOFT" 60;
+  letter-spacing: -0.01em;
+  line-height: var(--lh-tight);
+  text-wrap: balance;
+}
+h1 { font-size: var(--t-3xl); }
+h2 { font-size: var(--t-2xl); }
+h3 { font-size: var(--t-lg); line-height: var(--lh-snug); font-weight: 600; letter-spacing: -0.01em; }
+.lead { font-size: var(--t-lg); color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
+.label { font-family: var(--font-mono); font-size: var(--t-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); }
+.num { font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.skip-link { position: absolute; left: var(--s-4); top: -60px; background: var(--ink); color: var(--surface); padding: var(--s-2) var(--s-4); border-radius: var(--radius-sm); z-index: 100; }
+.skip-link:focus { top: var(--s-4); }
+
+/* App grid: 21st Sidebar on the left (desktop), content on the right */
+.app { min-height: 100dvh; display: flex; align-items: stretch; }
+.app > [data-sidebar] { position: sticky; top: 0; height: 100dvh; flex: none; }
+.main { min-width: 0; flex: 1; }
+.page { max-width: var(--content-max); margin: 0 auto; padding: var(--s-7) var(--s-6) var(--s-9); }
+.page-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--s-4); margin-bottom: var(--s-6); }
+.page-head h1 { max-width: 24ch; }
+.grid-main { display: grid; grid-template-columns: minmax(0, 1fr) var(--aside-w, 320px); gap: var(--s-6); align-items: start; }
+.grid-main[data-left] { grid-template-columns: var(--aside-w, 320px) minmax(0, 1fr); }
+.grid-main > * { min-width: 0; }
+.section { margin-top: var(--s-7); }
+.section > h2 { margin-bottom: var(--s-4); }
+.topbar { display: none; }
+@media (max-width: 1023px) {
+  .app > [data-sidebar] { display: none; }
+  .topbar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); padding: var(--s-3) var(--gutter); background: color-mix(in srgb, var(--surface) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .grid-main, .grid-main[data-left] { grid-template-columns: minmax(0, 1fr); }
+  .page { padding: var(--s-6) var(--gutter) calc(var(--s-9) + 64px); }
+}
+@media (max-width: 639px) {
+  :root { --t-3xl: 1.9rem; --t-2xl: 1.5rem; --t-4xl: 2.4rem; }
+  .page { padding: var(--s-5) var(--gutter) calc(var(--s-9) + 64px); }
+}
+
+/* Premium preview: real content, softly veiled (never a blank lock screen) */
+.premium { position: relative; }
+.premium > .premium-body { filter: blur(3px); pointer-events: none; user-select: none; }
+.premium > .premium-tag { position: absolute; top: var(--s-3); right: var(--s-3); z-index: 1; }
+
+/* Lab control bar (not part of the product) */
+.lab-bar { position: fixed; right: var(--s-4); bottom: calc(var(--s-4) + 64px); z-index: 60; display: flex; flex-direction: column; gap: var(--s-2); align-items: end; }
+@media (min-width: 1024px) { .lab-bar { bottom: var(--s-4); } }
+.lab-panel { background: var(--ink); color: var(--surface); border-radius: var(--radius); padding: var(--s-3) var(--s-4); display: flex; flex-direction: column; gap: var(--s-3); font-size: var(--t-sm); box-shadow: 0 12px 32px -16px rgba(0,0,0,0.5); min-width: 260px; max-width: calc(100vw - 2 * var(--s-4)); }
+.lab-panel .label { color: rgba(255,255,255,0.78); }
+.lab-panel select { min-height: 36px; width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: inherit; border-radius: var(--radius-sm); padding: 0 var(--s-2); }
+.lab-panel select option, .lab-panel select optgroup { color: #000; }
+.lab-toggle { background: var(--ink); color: var(--surface); border-radius: 999px; min-height: 44px; padding: 0 var(--s-4); display: inline-flex; align-items: center; gap: var(--s-2); font-weight: 500; box-shadow: 0 12px 32px -16px rgba(0,0,0,0.5); }
+.lab-toggle:focus-visible { outline-color: var(--surface); }
+
+/* Reduced motion: the toggle mirrors the OS preference for 21st components that read the media query only */
+:root[data-reduced-motion="true"] *, :root[data-reduced-motion="true"] *::before, :root[data-reduced-motion="true"] *::after {
+  animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important;
+}
