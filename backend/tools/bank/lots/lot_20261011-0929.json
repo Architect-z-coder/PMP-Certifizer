@@ -1,0 +1,349 @@
+{
+ "run_id": "20261011-0929",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PR2-20261011-0929-1-02",
+   "enabler": "Break down scope.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "En construisant la structure de découpage des travaux d'un projet d'installation industrielle, l'équipe hésite entre deux approches pour un lot de travail majeur : le décomposer dès maintenant en sous-lots détaillés et attribués à des équipes spécifiques, ou le laisser à un niveau agrégé jusqu'à ce que les études d'ingénierie, prévues dans six semaines, précisent les interfaces techniques entre composants. Une décomposition détaillée maintenant impliquerait de réaffecter des équipes déjà engagées sur d'autres lots si les interfaces changent. Que doit faire l'équipe projet ?",
+    "en": "While building the work breakdown structure for an industrial installation project, the team is weighing two approaches for a major work package: break it down now into detailed sub-packages assigned to specific teams, or keep it at an aggregated level until the engineering studies, due in six weeks, clarify the technical interfaces between components. A detailed breakdown now would mean reassigning teams already committed to other packages if the interfaces change. What should the project team do?"
+   },
+   "options": {
+    "fr": [
+     "Conserver ce lot à un niveau agrégé jusqu'à ce que les études d'ingénierie précisent les interfaces techniques entre composants.",
+     "Décomposer immédiatement le lot en sous-lots détaillés attribués aux équipes concernées, afin de leur permettre de lancer sans délai leur planification détaillée.",
+     "Décomposer le lot selon l'hypothèse d'interfaces jugée la plus probable par l'équipe d'ingénierie.",
+     "Répartir le lot en deux niveaux de détail distincts, l'un provisoire pour le pilotage, l'autre définitif après les études d'ingénierie."
+    ],
+    "en": [
+     "Keep this package at an aggregated level until the engineering studies clarify the technical interfaces between components.",
+     "Break the package down into detailed sub-packages assigned to the relevant teams right away, so those teams can begin their detailed planning without delay.",
+     "Break the package down based on the interface assumption judged most likely by the engineering team.",
+     "Split the package into two distinct levels of detail, one provisional for tracking and one final after the engineering studies."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Décomposer immédiatement en sous-lots détaillés engage des équipes sur des affectations précises alors que les interfaces techniques ne sont pas connues : si elles changent dans six semaines, il faudra réaffecter des équipes déjà mobilisées ailleurs, ce que l'énoncé identifie explicitement comme un coût. Décomposer selon l'hypothèse jugée la plus probable par l'équipe d'ingénierie expose au même risque, avec en plus l'illusion d'une base stable alors qu'elle reste à confirmer. Créer deux niveaux de détail parallèles ajoute de la complexité de suivi sans supprimer le problème : le niveau provisoire devra de toute façon être refait. Conserver le lot à un niveau agrégé jusqu'aux études d'ingénierie évite un découpage qui devrait être défait, sans bloquer la progression du reste du projet, et correspond à une information encore insuffisante pour figer une décomposition difficile à annuler.",
+    "en": "Breaking the package down into detailed sub-packages immediately commits teams to specific assignments before the technical interfaces are known: if they change in six weeks, teams already mobilized elsewhere would need to be reassigned, a cost the scenario explicitly identifies. Breaking it down based on the interface assumption judged most likely by the engineering team carries the same risk, with the added illusion of a stable basis that is still unconfirmed. Creating two parallel levels of detail adds tracking complexity without removing the problem: the provisional level would need to be redone anyway. Keeping the package at an aggregated level until the engineering studies avoids a breakdown that would have to be undone, without blocking progress on the rest of the project, matching information that is still insufficient to lock in a hard-to-reverse breakdown."
+   },
+   "decision_atom": "Décider s'il faut décomposer un lot de travail majeur en sous-lots détaillés avant que les interfaces techniques ne soient connues.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Une décomposition détaillée maintenant impliquerait de réaffecter des équipes déjà engagées sur d'autres lots si les interfaces changent dans six semaines.",
+   "bascule": "Si les interfaces techniques étaient déjà connues et stables, décomposer immédiatement deviendrait la bonne réponse.",
+   "task_id": "PR2",
+   "level": 3,
+   "run_id": "20261011-0929",
+   "release": "qL3-PR2-20261011-0929-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR2-20261011-0929-1-04",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Après la diffusion de l'énoncé de contenu validé, un responsable opérationnel signale qu'il a compris différemment l'une des exclusions de périmètre : il pensait qu'une fonctionnalité secondaire restait incluse, alors que le document l'exclut clairement. Aucune autre partie prenante n'a signalé de malentendu similaire, et le document n'est pas ambigu sur ce point. Comment le chef de projet doit-il traiter ce signalement ?",
+    "en": "After the validated scope statement has been distributed, an operational manager reports that he understood one of the scope exclusions differently: he believed a secondary feature remained included, while the document clearly excludes it. No other stakeholder has reported a similar misunderstanding, and the document is not ambiguous on this point. How should the project manager handle this report?"
+   },
+   "options": {
+    "fr": [
+     "Relancer une procédure complète d'approbation du périmètre auprès de l'ensemble des parties prenantes du projet et consigner le résultat dans le registre.",
+     "Modifier l'énoncé de contenu validé pour réintégrer la fonctionnalité secondaire, afin de prévenir tout désaccord futur avec ce responsable opérationnel.",
+     "Clarifier individuellement l'exclusion avec ce responsable en s'appuyant sur le texte déjà validé, sans rouvrir l'ensemble du document.",
+     "Informer le sponsor du malentendu signalé par ce responsable sur l'exclusion et attendre ses instructions avant de formuler une réponse."
+    ],
+    "en": [
+     "Relaunch a full scope approval process with the entire group of project stakeholders and log the outcome in the register.",
+     "Amend the validated scope statement to reinstate the secondary feature, to prevent any future disagreement with this operational manager.",
+     "Clarify the exclusion individually with this manager based on the already validated text, without reopening the whole document.",
+     "Inform the sponsor of the misunderstanding this manager reported about the exclusion and wait for his instructions before responding."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Relancer une procédure complète d'approbation auprès de l'ensemble des parties prenantes, en consignant le résultat dans le registre, traite comme un problème de document ce qui est un malentendu isolé chez une seule personne : le texte n'étant pas ambigu et personne d'autre n'ayant signalé de confusion, une reprise générale est disproportionnée par rapport au signal reçu. Modifier l'énoncé de contenu validé pour réintégrer la fonctionnalité secondaire, afin de prévenir tout désaccord futur avec ce responsable, va plus loin encore, en changeant un périmètre déjà validé sur la base d'une seule incompréhension individuelle. Informer le sponsor du malentendu signalé par ce responsable sur l'exclusion et attendre ses instructions fait remonter un cas qui ne dépasse pas le rôle du chef de projet : clarifier une exclusion déjà écrite ne requiert pas un arbitrage de niveau supérieur. Clarifier individuellement l'exclusion avec ce responsable, en s'appuyant sur le texte validé, correspond à l'ampleur réelle du problème signalé : une incompréhension locale, pas une faille dans le document.",
+    "en": "Relaunching a full approval process with the entire group of project stakeholders, and logging the outcome in the register, treats an isolated misunderstanding by one person as a document problem: since the text is not ambiguous and no one else has reported confusion, a general rerun is disproportionate to the signal received. Amending the validated scope statement to reinstate the secondary feature, to prevent any future disagreement with this operational manager, goes even further, changing an already validated scope based on a single individual's misreading. Informing the sponsor of the misunderstanding this manager reported about the exclusion and waiting for instructions escalates a case that does not exceed the project manager's role: clarifying an exclusion that is already written down does not require a higher-level ruling. Clarifying the exclusion individually with this manager, based on the validated text, matches the actual scale of the reported problem: a local misunderstanding, not a flaw in the document."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à donner à un malentendu de périmètre signalé par une seule partie prenante sur un document non ambigu.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Aucune autre partie prenante n'a signalé de malentendu similaire et le document n'est pas ambigu sur ce point.",
+   "bascule": "Si plusieurs parties prenantes avaient signalé la même confusion, relancer une procédure d'approbation plus large deviendrait justifié.",
+   "task_id": "PR2",
+   "level": 3,
+   "run_id": "20261011-0929",
+   "release": "qL3-PR2-20261011-0929-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR5-20261011-0929-1-03",
+   "enabler": "Participate in agreement negotiations.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Pendant une séance de négociation avec un fournisseur, une question technique pointue sur la faisabilité d'une interface surgit et dépasse la connaissance du chef de projet présent à la table. L'architecte technique de l'équipe n'est pas présent mais est joignable. Le fournisseur attend une réponse pour poursuivre la discussion. Que doit faire le chef de projet ?",
+    "en": "During a negotiation session with a supplier, a pointed technical question about interface feasibility comes up that exceeds the knowledge of the project manager at the table. The team's technical architect is not present but is reachable. The supplier is waiting for an answer to continue the discussion. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Donner une réponse provisoire fondée sur sa propre compréhension du sujet pour ne pas interrompre le rythme de la négociation.",
+     "Proposer de clore la séance et de la reprogrammer entièrement une fois que l'architecte aura pu préparer une position technique.",
+     "Suspendre brièvement l'échange sur ce point et solliciter l'architecte technique avant de donner une position engageante au fournisseur.",
+     "Inviter le fournisseur à soumettre sa question par écrit afin que l'équipe technique y réponde dans un document séparé."
+    ],
+    "en": [
+     "Give a tentative answer based on personal understanding of the topic to avoid interrupting the negotiation's momentum.",
+     "Propose to end the session and reschedule it entirely once the architect can prepare a technical position.",
+     "Briefly pause discussion on that point and consult the technical architect before giving the supplier a committing position.",
+     "Invite the supplier to submit the question in writing so the technical team can answer it in a separate document."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La question dépasse la compétence du chef de projet et l'architecte, bien qu'absent de la salle, reste joignable : faire une pause ciblée pour le consulter place la réponse technique entre les mains de la bonne personne sans sacrifier le reste de la séance. Répondre soi-même sur un sujet qui dépasse sa propre compétence risque d'engager l'équipe sur une position que l'architecte pourrait devoir contredire. Clore et reprogrammer toute la séance traite un point précis comme s'il bloquait l'ensemble de la négociation, alors que l'architecte est joignable sur-le-champ. Demander une soumission écrite différée abandonne l'avantage d'une réponse immédiate alors que l'expertise nécessaire est disponible dans l'instant.",
+    "en": "The question exceeds the project manager's expertise, and the architect, though absent from the room, remains reachable: pausing briefly to consult that person puts the technical answer in the right hands without sacrificing the rest of the session. Answering personally on a topic beyond one's own expertise risks committing the team to a position the architect might later have to contradict. Ending and rescheduling the entire session treats one specific point as if it blocked the whole negotiation, when the architect is reachable right away. Asking for a delayed written submission forfeits the advantage of an immediate answer when the needed expertise is available on the spot."
+   },
+   "decision_atom": "Décider qui doit répondre à une question technique pointue surgissant pendant la négociation, alors que l'expert compétent est absent mais joignable.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'architecte technique n'est pas présent à la table mais reste joignable immédiatement.",
+   "bascule": "Si l'architecte était totalement injoignable pendant toute la durée de la séance, répondre soi-même de façon prudente et réversible deviendrait plus défendable.",
+   "task_id": "PR5",
+   "level": 3,
+   "run_id": "20261011-0929",
+   "release": "qL3-PR5-20261011-0929-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR5-20261011-0929-1-05",
+   "enabler": "Develop a delivery solution.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une équipe projet doit choisir entre plusieurs solutions de marché pour répondre à un besoin métier. Un membre de l'équipe propose de commencer à comparer les offres de trois éditeurs logiciels repérés, avant que les exigences fonctionnelles détaillées n'aient été formalisées avec les utilisateurs concernés. Le chef de projet doit décider de l'ordre à suivre. Que doit-il faire ?",
+    "en": "A project team must choose among several market solutions to address a business need. A team member proposes starting to compare the offerings of three software vendors already identified, before detailed functional requirements have been formalized with the relevant users. The project manager must decide on the order to follow. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Faire formaliser les exigences fonctionnelles détaillées avec les utilisateurs avant de comparer les offres des éditeurs identifiés.",
+     "Comparer d'abord les trois offres repérées pour cadrer les exigences fonctionnelles autour des fonctionnalités réellement disponibles sur le marché.",
+     "Organiser en parallèle la formalisation des exigences et la comparaison des offres pour accélérer la prise de décision globale.",
+     "Demander aux trois éditeurs de présenter leurs produits aux utilisateurs afin de faire émerger les exigences au fil des démonstrations."
+    ],
+    "en": [
+     "Have detailed functional requirements formalized with users before comparing the offerings of the identified vendors.",
+     "Compare the three identified offerings first to frame functional requirements around what the market actually provides.",
+     "Run requirements formalization and offer comparison in parallel to speed up the overall decision.",
+     "Ask the three vendors to present their products to users so that requirements emerge over the course of the demonstrations."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les exigences fonctionnelles détaillées n'ont pas encore été formalisées avec les utilisateurs : les formaliser d'abord donne à l'équipe un référentiel propre pour juger les offres, plutôt que de laisser le marché dicter ce que le besoin devient. Comparer d'abord les trois offres repérées inverse cet ordre et risque de façonner le besoin sur ce que ces éditeurs précis proposent plutôt que sur ce qu'exige réellement le métier. Mener les deux activités en parallèle fait courir le risque d'évaluer des offres contre des exigences encore mouvantes, ce qui fragilise la comparaison. Faire émerger les exigences au fil de démonstrations commerciales confie la définition du besoin aux éditeurs eux-mêmes, qui ont un intérêt direct dans le résultat.",
+    "en": "Detailed functional requirements have not yet been formalized with users: formalizing them first gives the team its own reference point for judging offerings, rather than letting the market dictate what the need becomes. Comparing the three identified offerings first reverses this order and risks shaping the need around what these particular vendors happen to offer rather than what the business actually requires. Running both activities in parallel risks evaluating offerings against requirements that are still shifting, which weakens the comparison. Letting requirements emerge over the course of vendor demonstrations hands the definition of the need to the vendors themselves, who have a direct stake in the outcome."
+   },
+   "decision_atom": "Décider de l'ordre entre formaliser les exigences fonctionnelles et comparer des offres de marché déjà repérées.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les exigences fonctionnelles détaillées n'ont pas encore été formalisées avec les utilisateurs, alors que trois offres sont déjà identifiées.",
+   "bascule": "Si les exigences fonctionnelles de haut niveau étaient déjà figées et stables, une comparaison précoce des offres pour affiner les détails deviendrait défendable.",
+   "task_id": "PR5",
+   "level": 3,
+   "run_id": "20261011-0929",
+   "release": "qL3-PR5-20261011-0929-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR7-20261011-0929-1-02",
+   "enabler": "Plan quality processes and tools.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un sous-traitant propose d'utiliser son propre outil de contrôle statistique, différent de celui prévu dans le plan de management de la qualité du projet. L'analyste qualité de l'équipe juge l'outil techniquement équivalent. Qui doit approuver ce changement avant que le sous-traitant ne l'utilise ?",
+    "en": "A subcontractor proposes using its own statistical control tool, different from the one specified in the project's quality management plan. The team's quality analyst considers the tool technically equivalent. Who should approve this change before the subcontractor uses it?"
+   },
+   "options": {
+    "fr": [
+     "L'analyste qualité, puisqu'il a déjà confirmé l'équivalence technique de l'outil proposé.",
+     "Le sous-traitant lui-même, qui connaît le mieux les capacités de son propre outil.",
+     "L'équipe de développement, qui recevra les données produites par cet outil.",
+     "Le chef de projet, responsable de l'approbation des changements au plan de management de la qualité."
+    ],
+    "en": [
+     "The quality analyst, since they have already confirmed the proposed tool's technical equivalence.",
+     "The subcontractor itself, who best understands the capabilities of its own tool.",
+     "The development team, who will receive the data produced by this tool.",
+     "The project manager, who is responsible for approving changes to the quality management plan."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'outil proposé diffère de celui inscrit au plan de management de la qualité ; en changer est une modification du plan, et l'approbation de ce type de changement relève du chef de projet. L'analyste qualité a seulement établi l'équivalence technique, ce qui est une entrée utile à la décision, pas la décision elle-même. Le sous-traitant est à l'origine de la proposition : il ne peut pas valider son propre changement. L'équipe de développement utilisera les données produites mais n'a pas autorité sur le plan qualité.",
+    "en": "The proposed tool differs from the one specified in the quality management plan; changing it is a modification to that plan, and approving such a change falls to the project manager. The quality analyst has only established technical equivalence, which feeds the decision but is not the decision itself. The subcontractor originated the proposal and cannot approve its own change. The development team will use the resulting data but has no authority over the quality plan."
+   },
+   "decision_atom": "Décider qui a l'autorité d'approuver le remplacement d'un outil qualité prévu au plan par un outil équivalent proposé par un sous-traitant.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "L'outil proposé diffère de celui inscrit au plan de management de la qualité : son adoption constitue un changement à ce plan.",
+   "bascule": "Si l'analyste qualité détenait explicitement une délégation d'approbation des changements au plan, son approbation directe deviendrait correcte.",
+   "task_id": "PR7",
+   "level": 1,
+   "run_id": "20261011-0929",
+   "release": "qL1-PR7-20261011-0929-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR7-20261011-0929-1-04",
+   "enabler": "Conduct ongoing quality reviews.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Une équipe termine 40 % d'un livrable complexe composé de plusieurs modules interdépendants. Le plan de management de la qualité prévoit une revue qualité à l'achèvement complet du livrable. Un module critique est déjà figé et ne sera plus modifié d'ici la fin. Que doit faire le chef de projet ?",
+    "en": "A team completes 40% of a complex deliverable made up of several interdependent modules. The quality management plan schedules a quality review once the deliverable is fully complete. One critical module is already frozen and will not change before the end. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Attendre l'achèvement complet du livrable avant de mener la revue qualité, comme prévu au plan.",
+     "Mener une revue qualité ciblée sur le module figé dès maintenant, sans attendre le reste du livrable.",
+     "Demander à l'équipe de figer les modules restants plus tôt pour aligner le calendrier sur la revue unique.",
+     "Reporter la revue qualité du livrable jusqu'à la clôture du projet, pour limiter le nombre d'interruptions."
+    ],
+    "en": [
+     "Wait until the deliverable is fully complete before conducting the quality review, as planned.",
+     "Conduct a targeted quality review of the frozen module now, without waiting for the rest of the deliverable.",
+     "Ask the team to freeze the remaining modules earlier to align the schedule with a single review.",
+     "Postpone the deliverable's quality review until project closure, to limit the number of interruptions."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le module critique est déjà figé et ne changera plus : le réviser maintenant permet de détecter un défaut pendant qu'il est encore simple à corriger, sans dépendre de l'achèvement des autres modules. Attendre la fin complète du livrable, comme le prévoit le plan dans son principe général, retarde inutilement la détection sur une partie déjà stable. Forcer un figement anticipé des modules restants pour aligner le calendrier sur une revue unique bouscule le travail en cours sans raison liée à la qualité. Reporter la revue jusqu'à la clôture du projet laisse un défaut potentiel non détecté pendant toute la durée restante.",
+    "en": "The critical module is already frozen and will not change: reviewing it now allows a defect to be caught while it is still easy to fix, without waiting on the other modules. Waiting for the deliverable's full completion, as the plan generally intends, needlessly delays detection on a part that is already stable. Forcing an early freeze of the remaining modules to align the schedule with a single review disrupts ongoing work for no quality-related reason. Postponing the review until project closure leaves a potential defect undetected for the rest of the project's duration."
+   },
+   "decision_atom": "Décider à quel moment réviser un module critique déjà figé par rapport à l'achèvement complet du livrable qui le contient.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le module critique est déjà figé et ne sera plus modifié, indépendamment de l'avancement des autres modules du livrable.",
+   "bascule": "Si le module critique restait sujet à modification jusqu'à la fin, attendre l'achèvement complet deviendrait la politique correcte.",
+   "task_id": "PR7",
+   "level": 1,
+   "run_id": "20261011-0929",
+   "release": "qL1-PR7-20261011-0929-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR7-20261011-0929-2-05",
+   "enabler": "Implement continuous improvement.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Après plusieurs itérations, un membre de l'équipe qualité propose, de sa propre initiative, un nouveau processus d'amélioration continue impliquant de modifier le rythme des revues qualité pour l'ensemble du projet. Il commence à le diffuser aux autres équipes comme s'il était déjà adopté, sans que le chef de projet ni le comité de pilotage qualité ne l'aient validé. Le chef de projet doit décider de la réponse à donner. Que doit-il faire en priorité ?",
+    "en": "After several iterations, a quality team member proposes, on his own initiative, a new continuous improvement process that would change the quality review cadence for the entire project. He starts circulating it to other teams as if already adopted, without the project manager or the quality steering committee having approved it. The project manager must decide how to respond. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Laisser le nouveau rythme de revue se propager aux autres équipes, car l'initiative vient d'un membre expérimenté de l'équipe qualité.",
+     "Clarifier auprès de l'équipe que le nouveau rythme n'est pas encore validé et soumettre la proposition au comité de pilotage qualité.",
+     "Demander au membre de l'équipe qualité de retirer sa proposition, puis de soumettre toute future initiative à validation préalable.",
+     "Adopter immédiatement le nouveau rythme sur tout le projet, la proposition paraissant techniquement pertinente à première vue."
+    ],
+    "en": [
+     "Let the new review cadence propagate to the other teams, as the initiative comes from an experienced quality team member.",
+     "Clarify to the team that the new cadence is not yet approved and submit the proposal to the quality steering committee.",
+     "Ask the quality team member to withdraw his proposal, then submit any future initiative for prior approval.",
+     "Immediately adopt the new cadence across the whole project, as the proposal appears technically sound at first glance."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le nouveau rythme de revue touche l'ensemble du projet et a été diffusé comme déjà adopté, sans passer par le comité de pilotage qualité qui a l'autorité de valider un tel changement. Clarifier que le rythme n'est pas encore validé et soumettre la proposition au comité remet la décision entre les mains de l'instance compétente, tout en laissant l'idée vivre. Laisser le rythme se propager aux autres équipes, au motif que l'initiative vient d'un membre expérimenté, traite l'expérience de son auteur comme suffisante pour valider un changement qui engage tout le projet, alors que cette autorité appartient au comité. Demander au membre de retirer sa proposition puis de soumettre toute future initiative à validation traite une initiative mal diffusée comme si elle devait être encadrée a priori, alors que le problème est la validation manquante, non l'idée elle-même. Adopter immédiatement le rythme sur tout le projet, au motif qu'il paraît techniquement pertinent à première vue, court-circuite l'instance qui doit se prononcer sur un changement de cette ampleur.",
+    "en": "The new review cadence affects the entire project and was circulated as already adopted, bypassing the quality steering committee that has the authority to approve such a change. Clarifying that the cadence is not yet approved and submitting the proposal to the committee puts the decision back in the hands of the competent body while letting the idea live on. Letting the cadence propagate to the other teams, on the grounds that the initiative comes from an experienced team member, treats the proposer's experience as sufficient to validate a project-wide change, when that authority belongs to the committee. Asking the team member to withdraw his proposal and then submit future initiatives for prior approval treats a poorly circulated idea as something to be pre-controlled, when the real issue is the missing approval, not the idea itself. Immediately adopting the cadence across the whole project, on the grounds that it appears technically sound at first glance, bypasses the body that must rule on a change of this scale."
+   },
+   "decision_atom": "Décider qui a l'autorité de valider un changement de processus d'amélioration continue diffusé comme déjà adopté.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le changement touche l'ensemble du projet et a été diffusé sans validation du comité de pilotage qualité.",
+   "bascule": "Si le comité de pilotage qualité avait délégué par avance l'autorité de décision au membre qualité, laisser propager deviendrait défendable.",
+   "task_id": "PR7",
+   "level": 3,
+   "run_id": "20261011-0929",
+   "release": "qL3-PR7-20261011-0929-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR8-20261011-0929-2-01",
+   "enabler": "Estimate project tasks (milestones, dependencies, story points).",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pour estimer la durée d'une activité technique nouvelle, un chef de projet reçoit deux chiffres : un développeur senior cite un délai « environ deux semaines » de mémoire, sans détail, tandis qu'une recherche dans les données historiques de l'organisation révèle trois projets comparables documentés avec leurs durées réelles. Aucun de ces trois projets ne présente de différence notable avec l'activité actuelle. Que doit-il faire pour fixer l'estimation ?",
+    "en": "To estimate the duration of a new technical activity, a project manager receives two figures: a senior developer cites roughly two weeks from memory, with no detail, while a search of the organization's historical data reveals three comparable documented projects with actual durations. None of these three projects differs notably from the current activity. What should he do to set the estimate?"
+   },
+   "options": {
+    "fr": [
+     "Retenir le chiffre oral du développeur senior et ajouter une marge standard de 10 % pour couvrir l'incertitude de son estimation.",
+     "Fonder l'estimation sur les durées réelles des trois projets comparables documentés, et vérifier leur similitude avec l'activité actuelle.",
+     "Faire la moyenne entre le chiffre oral du développeur et les durées historiques, pour combiner expertise terrain et données passées.",
+     "Demander au développeur de reformuler son estimation par écrit, et l'utiliser telle quelle comme référence pour la planification du projet."
+    ],
+    "en": [
+     "Keep the senior developer's verbal figure and add a standard 10% buffer to cover the uncertainty of his estimate.",
+     "Base the estimate on the actual durations of the three documented comparable projects, and verify their similarity to the current activity.",
+     "Average the developer's verbal figure with the historical durations, to combine field expertise and past data.",
+     "Ask the developer to put his estimate in writing, and use it as is as the reference for the project's planning."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les données historiques documentées de trois projets comparables, sans différence notable avec l'activité actuelle, constituent une base de preuve bien plus solide qu'un chiffre oral donné de mémoire. Retenir le chiffre oral du développeur avec une marge ne corrige pas l'absence de documentation sous-jacente : la marge habille une estimation non vérifiable, elle ne la rend pas fiable. Faire la moyenne entre les deux sources dilue une donnée solide avec une donnée faible, ce qui affaiblit l'estimation plutôt que de la renforcer. Faire reformuler l'estimation du développeur par écrit et l'utiliser telle quelle change sa forme, pas sa nature : une estimation non étayée reste non étayée même rédigée. Le chef de projet doit s'appuyer sur les durées réelles des projets comparables, en confirmant leur pertinence.",
+    "en": "The documented historical data from three comparable projects, with no notable difference from the current activity, forms a far stronger evidence base than a figure given verbally from memory. Keeping the developer's verbal figure with a buffer does not fix the lack of underlying documentation: the buffer dresses up an unverifiable estimate without making it reliable. Averaging the two sources dilutes solid data with weak data, weakening the estimate rather than strengthening it. Having the developer put his estimate in writing and using it as is changes its form, not its nature: an unsubstantiated estimate remains unsubstantiated even once written down. The project manager should rely on the actual durations of the comparable projects, after confirming their relevance."
+   },
+   "decision_atom": "Décider sur quelle source fonder l'estimation de durée d'une activité : un chiffre oral non étayé ou des données historiques documentées.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Trois projets comparables documentés existent dans les données historiques, sans différence notable avec l'activité actuelle.",
+   "bascule": "Si aucune donnée historique comparable n'existait, le jugement d'expert du développeur deviendrait la meilleure source disponible.",
+   "task_id": "PR8",
+   "level": 1,
+   "run_id": "20261011-0929",
+   "release": "qL1-PR8-20261011-0929-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR8-20261011-0929-2-05",
+   "enabler": "Utilize benchmarks and historical data.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pour affiner les estimations de durée d'un nouveau projet, un membre de l'équipe propose d'utiliser un ensemble de données de référence publié par une association professionnelle externe, portant sur des projets d'un secteur voisin mais différent du contexte organisationnel habituel. Aucune directive interne n'existe sur l'usage de données externes dans les estimations. Que doit faire le chef de projet avant d'intégrer ces données au processus d'estimation ?",
+    "en": "To refine duration estimates for a new project, a team member proposes using a benchmark dataset published by an external professional association, covering projects from a related but different sector than the organization's usual context. No internal guidance exists on the use of external data in estimates. What should the project manager do before incorporating this data into the estimating process?"
+   },
+   "options": {
+    "fr": [
+     "Intégrer directement les données externes dans les estimations, et considérer qu'aucune directive interne n'interdit leur usage.",
+     "Soumettre l'usage de ce référentiel externe au bureau de gestion de projet, qui détient l'autorité sur les standards d'estimation.",
+     "Demander à chaque membre de l'équipe de valider individuellement la pertinence du référentiel pour sa propre partie du travail assignée.",
+     "Comparer les données externes aux données historiques internes existantes, et trancher seul en fonction des écarts observés."
+    ],
+    "en": [
+     "Incorporate the external data directly into the estimates, and consider that no internal guideline prohibits its use.",
+     "Submit the use of this external benchmark to the project management office, which holds authority over estimating standards.",
+     "Ask each team member to individually validate the benchmark's relevance for their own assigned part of the work.",
+     "Compare the external data to the existing internal historical data, and decide alone based on the differences observed."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'absence de directive interne ne signifie pas que la décision appartient au chef de projet seul : l'usage d'un référentiel externe touchant un secteur différent du contexte habituel est une question de standard d'estimation, qui relève du bureau de gestion de projet lorsque celui-ci existe. Intégrer directement les données externes en considérant l'absence d'interdiction traite comme réglé un point qui n'a simplement pas encore été tranché par l'instance compétente. Demander à chaque membre de valider individuellement le référentiel fragmente une décision qui doit être cohérente pour l'ensemble du projet. Comparer les données puis trancher seul place le chef de projet dans un rôle d'arbitrage de standard qui ne lui revient pas lorsqu'une instance dédiée existe pour cela. Le chef de projet doit soumettre la question au bureau de gestion de projet.",
+    "en": "The absence of internal guidance does not mean the decision belongs to the project manager alone: using an external benchmark from a sector different from the organization's usual context is a question of estimating standards, which falls to the project management office where one exists. Incorporating the external data directly on the basis that nothing prohibits it treats as settled a point that simply has not yet been decided by the competent body. Asking each member to individually validate the benchmark fragments a decision that needs to be consistent across the whole project. Comparing the data and then deciding alone places the project manager in a standard-setting role that is not theirs to take when a dedicated body exists for that purpose. The project manager should submit the question to the project management office."
+   },
+   "decision_atom": "Décider qui a l'autorité de valider l'usage d'un référentiel externe de données dans le processus d'estimation.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Aucune directive interne n'existe, mais un bureau de gestion de projet détient l'autorité sur les standards d'estimation.",
+   "bascule": "Si aucun bureau de gestion de projet n'existait dans l'organisation, trancher seul après comparaison deviendrait la décision appropriée.",
+   "task_id": "PR8",
+   "level": 1,
+   "run_id": "20261011-0929",
+   "release": "qL1-PR8-20261011-0929-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
