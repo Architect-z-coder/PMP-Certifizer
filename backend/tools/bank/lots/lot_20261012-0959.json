@@ -1,0 +1,197 @@
+{
+ "run_id": "20261012-0959",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PR8-20261012-0959-1-01",
+   "enabler": "Coordinate with other projects and operations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une chef de projet construit l'échéancier d'un nouveau système de facturation. Une activité clé dépend de la mise à jour d'un référentiel de données maintenu par l'équipe des opérations courantes, hors de tout portefeuille de projets, selon un cycle de maintenance trimestriel fixe. Que doit-elle faire pour intégrer cette dépendance à son échéancier ?",
+    "en": "A project manager is building the schedule for a new billing system. A key activity depends on an update to a data repository maintained by the ongoing operations team, outside any project portfolio, following a fixed quarterly maintenance cycle. What should she do to incorporate this dependency into her schedule?"
+   },
+   "options": {
+    "fr": [
+     "Contacter le responsable des opérations courantes pour aligner la date de l'activité sur le prochain cycle de maintenance confirmé.",
+     "Solliciter le PMO du portefeuille de projets.",
+     "Inscrire une date provisoire dans l'échéancier et la faire valider par le comité de pilotage lors de la prochaine revue.",
+     "Proposer au sponsor du projet qu'une mise à jour anticipée du référentiel soit financée en dehors du cycle habituel, sur validation budgétaire préalable."
+    ],
+    "en": [
+     "Contact the operations manager to align the activity date with the next confirmed maintenance cycle.",
+     "Ask the project portfolio PMO to arbitrate.",
+     "Enter a provisional date in the schedule and have it approved by the steering committee at the next review.",
+     "Propose to the project sponsor that an early update to the repository be funded outside the usual cycle, pending prior budget approval."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le référentiel est maintenu par les opérations courantes, pas par un autre projet : il n'existe aucun portefeuille de projets à arbitrer, donc solliciter le PMO de portefeuille ne mène à personne de compétent. Contacter directement le responsable des opérations courantes est la bonne démarche, car c'est lui qui détient le cycle de maintenance et peut confirmer une date réaliste à inscrire dans l'échéancier. Inscrire une date provisoire sans ce contact revient à bâtir l'échéancier sur une hypothèse non vérifiée. Proposer une mise à jour anticipée hors cycle, sous réserve d'une validation budgétaire préalable, ignore que le cycle trimestriel est décrit comme fixe : rien dans l'énoncé n'indique qu'une exception soit envisageable ou négociable à ce stade.",
+    "en": "The repository is maintained by ongoing operations, not by another project: there is no project portfolio to arbitrate, so asking the portfolio PMO leads nowhere useful. Contacting the operations manager directly is the right move, since he holds the maintenance cycle and can confirm a realistic date to enter into the schedule. Entering a provisional date without that contact means building the schedule on an unverified assumption. Proposing an early update outside the cycle, pending prior budget approval, overlooks that the quarterly cycle is described as fixed: nothing in the scenario suggests an exception is available or negotiable at this stage."
+   },
+   "decision_atom": "Décider à qui s'adresser pour intégrer dans l'échéancier une dépendance envers une opération courante hors portefeuille projet.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le référentiel est maintenu par les opérations courantes, hors de tout portefeuille de projets, selon un cycle fixe.",
+   "bascule": "Si le référentiel était maintenu par un autre projet du portefeuille, solliciter le PMO de portefeuille deviendrait pertinent.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20261012-0959",
+   "release": "qL2-PR8-20261012-0959-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR8-20261012-0959-2-04",
+   "enabler": "Estimate project tasks (milestones, dependencies, story points).",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une équipe agile a estimé un lot de fonctionnalités à 40 story points lors du cadrage initial. Après la première des trois itérations prévues pour ce lot, l'équipe constate que les deux premières fonctionnalités ont consommé deux fois plus de points que prévu, pour une raison technique désormais comprise et documentée. Les fonctionnalités restantes du lot n'ont pas encore été découpées en détail. Que doit faire l'équipe ?",
+    "en": "An agile team estimated a feature batch at 40 story points during initial scoping. After the first of three planned iterations for this batch, the team finds that the first two features consumed twice the expected points, for a technical reason now understood and documented. The remaining features in the batch have not yet been broken down in detail. What should the team do?"
+   },
+   "options": {
+    "fr": [
+     "Maintenir l'estimation initiale de 40 points jusqu'à la fin des trois itérations prévues, pour préserver la comparabilité des vélocités d'équipe.",
+     "Réviser l'estimation des fonctionnalités restantes à la lumière de la cause technique identifiée, avant de les découper en détail.",
+     "Réestimer rétroactivement les deux fonctionnalités déjà livrées et aligner sur cette base l'historique de vélocité de l'équipe.",
+     "Transmettre l'écart constaté au sponsor et le laisser décider d'un ajustement du budget du lot."
+    ],
+    "en": [
+     "Keep the original 40-point estimate until the end of the three planned iterations, to preserve team velocity comparability.",
+     "Revise the estimate for the remaining features in light of the identified technical cause, before detailed breakdown.",
+     "Retroactively re-estimate the two already delivered features and align the team's velocity history on that basis.",
+     "Forward the observed variance to the sponsor and let them decide on a budget adjustment for the batch."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La cause de l'écart est désormais connue et documentée, et les fonctionnalités restantes n'ont pas encore été découpées : c'est le moment naturel pour intégrer cette connaissance avant que l'estimation ne se figue sur un découpage encore à faire. Réviser l'estimation des fonctionnalités restantes avant leur découpage détaillé permet d'appliquer la leçon là où elle peut encore changer la planification. Maintenir l'estimation initiale jusqu'à la fin des trois itérations prévues ignore une information disponible dès maintenant, au prix d'une planification faussée sur deux itérations entières. Réestimer rétroactivement le travail déjà livré et aligner l'historique de vélocité sur cette base n'a pas d'utilité opérationnelle : les points consommés sont déjà un fait accompli, seule la suite peut encore être ajustée. Transmettre l'écart au sponsor et le laisser décider d'un ajustement budgétaire déplace vers la gouvernance un ajustement qui relève de la pratique d'estimation de l'équipe elle-même.",
+    "en": "The cause of the variance is now known and documented, and the remaining features have not yet been broken down: this is the natural point to incorporate that knowledge before estimates are locked onto a breakdown still to be done. Revising the estimate for the remaining features before detailed breakdown applies the lesson where it can still change planning. Keeping the original estimate until the end of the three planned iterations ignores information available right now, at the cost of a skewed plan for two entire iterations. Retroactively re-estimating already delivered work and aligning the team's velocity history on that basis serves no operational purpose: the points consumed are already a settled fact, only what comes next can still be adjusted. Forwarding the variance to the sponsor and letting them decide on a budget adjustment shifts to governance an adjustment that belongs to the team's own estimating practice."
+   },
+   "decision_atom": "Décider à quel moment réviser l'estimation des tâches restantes après la découverte d'une cause technique d'écart documentée.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "La cause est désormais comprise et documentée, et les fonctionnalités restantes n'ont pas encore été découpées en détail.",
+   "bascule": "Si les fonctionnalités restantes avaient déjà été découpées et planifiées en détail, réviser maintenant reviendrait trop tard pour être utile à ce découpage.",
+   "task_id": "PR8",
+   "level": 3,
+   "run_id": "20261012-0959",
+   "release": "qL3-PR8-20261012-0959-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR9-20261012-0959-1-02",
+   "enabler": "Assess current progress.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "En point d'avancement hebdomadaire, un développeur annonce oralement que son module est « quasiment terminé » et qu'il peut être compté comme achevé dans le calcul global d'avancement. Aucun test n'a encore été exécuté sur ce module et aucun livrable n'a été déposé dans l'espace partagé. Que doit faire le chef de projet pour évaluer l'avancement réel du projet ?",
+    "en": "At the weekly progress meeting, a developer verbally announces that his module is \"almost done\" and can be counted as complete in the overall progress calculation. No tests have been run on this module yet, and no deliverable has been uploaded to the shared workspace. What should the project manager do to assess the project's actual progress?"
+   },
+   "options": {
+    "fr": [
+     "Compter le module comme achevé dans l'indicateur global, puisque le développeur connaît bien son propre travail.",
+     "Réduire légèrement le pourcentage annoncé pour tenir compte d'une marge d'incertitude raisonnable sur l'estimation.",
+     "Demander au développeur de reformuler son estimation lors du prochain point pour confirmer son niveau de confiance.",
+     "Vérifier l'exécution des tests et la présence du livrable avant d'intégrer ce module à l'avancement rapporté."
+    ],
+    "en": [
+     "Count the module as complete in the overall metric, since the developer knows his own work best.",
+     "Slightly lower the announced percentage to account for a reasonable margin of uncertainty in the estimate.",
+     "Ask the developer to restate his estimate at the next meeting to confirm his level of confidence.",
+     "Verify the test execution and the presence of the deliverable before including this module in reported progress."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'énoncé précise qu'aucun test n'a été exécuté et qu'aucun livrable n'a été déposé : une déclaration orale ne constitue pas une preuve vérifiable d'achèvement, et c'est cette vérification concrète qui doit fonder l'avancement rapporté. Compter le module comme achevé sur la seule parole du développeur, même compétent, revient à bâtir l'indicateur sur une perception et non sur un état constatable. Réduire arbitrairement le pourcentage annoncé ne corrige rien : cela remplace une estimation non vérifiée par une autre estimation tout aussi non vérifiée. Attendre une reformulation orale au prochain point ne change pas la nature du problème, puisque la confirmation resterait, elle aussi, déclarative.",
+    "en": "The scenario states that no tests have been run and no deliverable has been uploaded: a verbal statement is not verifiable proof of completion, and it is this concrete check that should ground the reported progress. Counting the module as complete based solely on the developer's word, however competent, means building the metric on a perception rather than an observable state. Arbitrarily lowering the announced percentage fixes nothing: it replaces one unverified estimate with another equally unverified one. Waiting for a restated verbal estimate at the next meeting does not change the nature of the problem, since the confirmation would itself remain purely declarative."
+   },
+   "decision_atom": "Décider si une déclaration orale d'avancement suffit à fonder l'indicateur global de progression.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Aucun test exécuté et aucun livrable déposé dans l'espace partagé.",
+   "bascule": "Si les tests avaient déjà été exécutés et le livrable déposé, compter le module comme achevé deviendrait correct.",
+   "task_id": "PR9",
+   "level": 1,
+   "run_id": "20261012-0959",
+   "release": "qL1-PR9-20261012-0959-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR9-20261012-0959-1-03",
+   "enabler": "Identify and tailor needed artifacts.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un chef de projet reprend un modèle standard de liste d'artefacts issu d'un projet précédent, beaucoup plus réglementé que le projet actuel. Avant de commencer à produire les documents, il remarque que plusieurs artefacts prévus dans ce modèle ne correspondent à aucune exigence du contexte présent. Que doit-il faire en premier ?",
+    "en": "A project manager reuses a standard artifact list template from a previous project, which was far more regulated than the current one. Before starting to produce the documents, he notices that several artifacts planned in this template do not correspond to any requirement of the current context. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Adapter la liste d'artefacts au contexte actuel avant d'engager la production de l'un d'entre eux.",
+     "Produire l'ensemble des artefacts prévus dans le modèle, puis retirer ceux jugés inutiles après coup.",
+     "Confier à chaque responsable d'artefact le soin de juger individuellement s'il produit le sien ou non.",
+     "Commencer par les artefacts les plus simples à produire, en reportant la décision sur les autres."
+    ],
+    "en": [
+     "Tailor the artifact list to the current context before starting production of any of them.",
+     "Produce all the artifacts planned in the template, then remove the unnecessary ones afterward.",
+     "Leave it to each artifact owner to individually judge whether to produce theirs or not.",
+     "Start with the simplest artifacts to produce, deferring the decision on the others."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'écart constaté entre le modèle hérité et les besoins du projet actuel doit être traité avant toute production, pour que le temps de l'équipe ne soit pas consacré à des documents sans valeur pour ce contexte. Produire d'abord tous les artefacts puis en supprimer certains après coup gaspille l'effort déjà investi dans ceux qui n'étaient pas nécessaires. Laisser chaque responsable juger seul de la pertinence de son propre artefact introduit des incohérences, puisque la liste globale doit rester adaptée au projet dans son ensemble, pas artefact par artefact. Commencer par les plus simples sans statuer sur les autres ne résout pas l'inadéquation identifiée, elle la reporte simplement.",
+    "en": "The gap noticed between the inherited template and the needs of the current project should be addressed before any production begins, so that the team's time is not spent on documents with no value in this context. Producing all the artifacts first and removing some afterward wastes effort already invested in ones that were not needed. Leaving each owner to individually judge the relevance of their own artifact introduces inconsistency, since the overall list needs to stay tailored to the project as a whole, not artifact by artifact. Starting with the simplest ones without deciding on the rest does not resolve the mismatch identified, it simply postpones it."
+   },
+   "decision_atom": "Décider s'il faut adapter la liste d'artefacts au contexte avant ou après avoir commencé leur production.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le modèle hérité vient d'un projet beaucoup plus réglementé et contient des artefacts sans exigence correspondante ici.",
+   "bascule": "Si le contexte actuel était aussi réglementé que le projet précédent, produire directement selon le modèle deviendrait correct.",
+   "task_id": "PR9",
+   "level": 1,
+   "run_id": "20261012-0959",
+   "release": "qL1-PR9-20261012-0959-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR10-20261012-0959-1-04",
+   "enabler": "Conclude activities to close the project or phase (e.g., final lessons learned, retrospectives, procurement, financials, resources).",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un projet interne de courte durée, mobilisant trois personnes pendant six semaines, se termine. Le chef de projet doit organiser le retour d'expérience de clôture. Quelle approche est la plus appropriée ?",
+    "en": "A short internal project involving three people over six weeks is ending. The project manager must organize the closing lessons-learned session. Which approach is most appropriate?"
+   },
+   "options": {
+    "fr": [
+     "Organiser une session courte avec l'équipe restreinte pour recueillir les enseignements utiles aux prochains projets similaires.",
+     "Organiser un atelier multi-sessions avec l'ensemble des parties prenantes du portefeuille pour couvrir tous les angles possibles.",
+     "Commander une étude externe indépendante pour analyser en profondeur chaque décision prise durant le projet.",
+     "Reporter le retour d'expérience à la prochaine revue de portefeuille afin de le traiter avec plusieurs projets similaires."
+    ],
+    "en": [
+     "Hold a short session with the small team to capture lessons useful for similar future projects.",
+     "Organize a multi-session workshop with all portfolio stakeholders to cover every possible angle.",
+     "Commission an independent external study to deeply analyze every decision made during the project.",
+     "Defer the lessons-learned session to the next portfolio review to handle it alongside similar projects."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Pour un projet interne de trois personnes sur six semaines, une session courte avec l'équipe restreinte suffit à recueillir les enseignements utiles, et c'est l'effort proportionné à l'ampleur réelle du projet. Organiser un atelier multi-sessions avec l'ensemble des parties prenantes du portefeuille mobilise des ressources sans commune mesure avec un projet de cette taille. Commander une étude externe indépendante est hors de proportion pour une initiative aussi restreinte. Reporter le retour d'expérience à la prochaine revue de portefeuille retarde sans raison la capture d'enseignements qui peuvent être recueillis immédiatement et à faible coût.",
+    "en": "For an internal three-person, six-week project, a short session with the small team is enough to capture useful lessons, and it matches the effort to the project's actual scale. Organizing a multi-session workshop with all portfolio stakeholders commits resources far out of proportion to a project this size. Commissioning an independent external study is excessive for such a limited initiative. Deferring the lessons-learned session to the next portfolio review needlessly delays capturing insights that can be gathered immediately at low cost."
+   },
+   "decision_atom": "Décider de l'ampleur à donner au retour d'expérience de clôture compte tenu de la taille réelle du projet.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le projet mobilise trois personnes pendant six semaines seulement.",
+   "bascule": "Si le projet avait mobilisé des dizaines de personnes sur plusieurs mois, un atelier élargi deviendrait proportionné.",
+   "task_id": "PR10",
+   "level": 1,
+   "run_id": "20261012-0959",
+   "release": "qL1-PR10-20261012-0959-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
