@@ -1,0 +1,463 @@
+{
+ "run_id": "20261013-0952",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PR9-20261013-0952-1-01",
+   "enabler": "Help ensure artifacts are created, reviewed, updated, and documented.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet prépare la clôture d'une phase. Le registre des leçons apprises n'a pas été mis à jour depuis six semaines, et deux membres de l'équipe partent sur un autre projet dans trois jours. La revue de phase, qui valide formellement le passage à la suivante, est planifiée demain matin. Que doit-il faire en priorité ?",
+    "en": "A project manager is preparing to close a phase. The lessons learned register has not been updated in six weeks, and two team members are moving to another project in three days. The phase review, which formally approves the move to the next phase, is scheduled for tomorrow morning. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Recueillir les contributions des deux membres partants au registre avant la revue de phase, puisqu'ils ne seront plus disponibles après leur départ.",
+     "Mener la revue de phase comme prévu demain, puis solliciter les deux membres partants pour compléter le registre avant leur départ effectif dans trois jours.",
+     "Reporter la revue de phase de quelques jours, le temps que le registre des leçons apprises reflète les contributions de toute l'équipe encore présente aujourd'hui.",
+     "Demander au sponsor d'approuver la revue de phase sur la base du registre actuel, et confier à l'équipe restante la finalisation du document durant la phase suivante."
+    ],
+    "en": [
+     "Collect input from the two departing members for the register before the phase review, since they will be unavailable afterward.",
+     "Hold the phase review as scheduled tomorrow, then ask the two departing members to complete the register before they actually leave in three days.",
+     "Postpone the phase review by a few days until the register reflects input from the whole team still present today.",
+     "Ask the sponsor to approve the phase review based on the register as it currently stands, and assign the remaining team to finish the document during the next phase."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les deux membres partent dans trois jours et seront indisponibles ensuite : leur contribution au registre doit être captée avant qu'ils ne quittent l'équipe, donc avant la revue de phase prévue demain. Mener la revue puis solliciter les partants après coup suppose qu'ils seront encore joignables et disposés à y revenir, ce que le délai de trois jours ne garantit pas une fois la revue passée et leur attention tournée vers le nouveau projet. Reporter la revue retarde une décision de gouvernance pour un ajustement qui peut se faire en une journée sans toucher au calendrier. Demander au sponsor d'approuver sur la base du registre actuel revient à acter la clôture sur une information volontairement incomplète, alors que les contributeurs clés sont encore disponibles aujourd'hui.",
+    "en": "The two members leave in three days and will be unavailable afterward, so their input must be captured before they leave the team — meaning before tomorrow's review. Holding the review first and asking them afterward assumes they will still be reachable and willing to return to the register, which the three-day window does not guarantee once their attention shifts to the new project. Postponing the review delays a governance decision for an adjustment that fits within a single day without touching the schedule. Asking the sponsor to approve based on the register as it currently stands means closing the phase on deliberately incomplete information while the key contributors are still available today."
+   },
+   "decision_atom": "Décider quand capter les contributions de membres partants à un artefact avant une revue de clôture de phase.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les deux membres partent dans trois jours et seront indisponibles après leur départ ; la revue a lieu demain.",
+   "bascule": "Si les deux membres restaient disponibles et joignables plusieurs semaines après leur transfert, reporter la collecte après la revue deviendrait acceptable.",
+   "task_id": "PR9",
+   "level": 3,
+   "run_id": "20261013-0952",
+   "release": "qL3-PR9-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR9-20261013-0952-1-03",
+   "enabler": "Identify and tailor needed artifacts.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet reprend un programme et constate que la liste d'artefacts hérités inclut un plan de gestion des risques détaillé, hebdomadaire, conçu pour un contexte à forte incertitude réglementaire que le projet actuel n'a pas. L'équipe trouve l'artefact lourd mais continue de le produire chaque semaine. Que doit-il faire ?",
+    "en": "A project manager takes over a program and finds that the inherited artifact list includes a detailed, weekly risk management plan designed for a high regulatory-uncertainty context the current project does not have. The team finds the artifact burdensome but keeps producing it weekly. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Supprimer définitivement le plan de gestion des risques détaillé, et le remplacer par un suivi informel oral tenu chaque semaine en réunion d'équipe.",
+     "Maintenir le rythme hebdomadaire actuel jusqu'à la fin du projet, l'équipe ayant déjà pris l'habitude de ce format, et ce depuis plusieurs mois consécutifs.",
+     "Réduire la fréquence et le niveau de détail du plan, en documentant la justification du changement par rapport au contexte actuel.",
+     "Demander au comité de gouvernance du programme de statuer sur l'allègement de cet artefact, avant toute modification de son contenu ou de sa fréquence."
+    ],
+    "en": [
+     "Permanently remove the detailed risk management plan, and replace it with informal verbal tracking held weekly during team meetings.",
+     "Keep the current weekly cadence until the project ends, since the team has already grown accustomed to this format, and has been so for several consecutive months.",
+     "Reduce the frequency and level of detail of the plan, documenting the rationale for the change relative to the current context.",
+     "Ask the program governance committee to rule on easing this artifact, before making any change to its content or its frequency."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le contexte actuel ne présente pas l'incertitude réglementaire élevée pour laquelle l'artefact a été conçu : son adaptation est justifiée, mais elle doit rester réversible et documentée, pas supprimée purement et simplement. Réduire la fréquence et le détail en expliquant pourquoi préserve la trace du risque — l'artefact pourra être renforcé si le contexte change — tout en allégeant la charge actuelle de l'équipe. Supprimer le plan et le remplacer par un suivi oral tenu chaque semaine en réunion efface toute trace écrite du suivi des risques, ce qui est difficile à reconstituer si un enjeu réglementaire resurgit plus tard. Maintenir le rythme actuel sans questionnement, sous prétexte d'une habitude déjà ancienne installée depuis plusieurs mois consécutifs, laisse perdurer un effort disproportionné par rapport au risque réel du projet. Remonter la décision à la gouvernance du programme pour un ajustement de ce niveau, avant toute modification de contenu ou de fréquence, qui relève du tailoring courant du chef de projet, retarde sans nécessité une adaptation que rien n'empêche de faire et de documenter directement.",
+    "en": "The current context lacks the high regulatory uncertainty the artifact was designed for, so adapting it is justified — but the adaptation should stay reversible and documented, not simply deleted. Reducing frequency and detail while explaining why preserves a record of risk tracking — the artifact can be strengthened again if the context changes — while easing the team's current burden. Removing the plan and replacing it with verbal tracking held weekly during team meetings erases any written trail of risk monitoring, which is hard to reconstruct if a regulatory issue resurfaces later. Keeping the current pace unquestioned, on the grounds of a long-standing habit established over several consecutive months, lets a disproportionate effort persist relative to the project's actual risk. Escalating a change of this scope to program governance, before making any change to content or frequency, when it falls within the project manager's routine tailoring authority, needlessly delays an adjustment that can be made and documented directly."
+   },
+   "decision_atom": "Décider comment adapter un artefact hérité devenu disproportionné par rapport au contexte actuel du projet.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le contexte réglementaire à forte incertitude qui justifiait le niveau de détail hebdomadaire n'existe plus dans le projet actuel.",
+   "bascule": "Si le contexte réglementaire à forte incertitude était susceptible de resurgir à court terme, maintenir l'artefact dans sa forme actuelle serait plus défendable que l'alléger.",
+   "task_id": "PR9",
+   "level": 3,
+   "run_id": "20261013-0952",
+   "release": "qL3-PR9-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-PR10-20261013-0952-1-02",
+   "enabler": "Validate readiness for transition (e.g., to operations team or next phase).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors de la revue de transition, l'équipe d'exploitation signale qu'elle n'a pas encore reçu la documentation de dépannage pour deux composants du système, documentation prévue dans le plan de transition initial. Le reste des critères de transition est satisfait. Que doit faire le chef de projet ?",
+    "en": "During the transition review, the operations team reports that it has not yet received troubleshooting documentation for two system components, as called for in the original transition plan. The rest of the transition criteria are met. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Procéder à la transition comme prévu, puisque la majorité des critères de transition sont déjà satisfaits et que l'écart documentaire est jugé mineur.",
+     "Inviter le sponsor à trancher immédiatement si la transition doit être retardée, compte tenu du retard documentaire signalé pour les deux composants.",
+     "Demander à l'équipe d'exploitation de rédiger elle-même une documentation provisoire pour les deux composants manquants avant la finalisation.",
+     "Fixer avec l'équipe d'exploitation une date courte de livraison de la documentation manquante avant de finaliser la transition."
+    ],
+    "en": [
+     "Proceed with the transition as planned, since most of the transition criteria are already met and the documentation gap is deemed minor.",
+     "Ask the sponsor to decide immediately whether the transition should be delayed, given the reported documentation gap for the two components.",
+     "Have the operations team draft provisional documentation themselves for the two missing components before finalization.",
+     "Agree with the operations team on a short delivery date for the missing documentation before finalizing the transition."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La documentation de dépannage manquante porte sur deux composants précis et était un engagement explicite du plan de transition : c'est un écart circonscrit, pas une alerte générale. Fixer avec l'équipe d'exploitation une date courte de livraison de la documentation manquante avant de finaliser la transition règle le manque à la source, avec l'équipe qui en a besoin, sans mobiliser un niveau de décision supérieur à celui que l'écart justifie. Procéder à la transition comme prévu, puisque la majorité des critères de transition sont déjà satisfaits et que l'écart documentaire est jugé mineur traite un engagement explicite du plan comme négociable simplement parce qu'il est minoritaire. Inviter le sponsor à trancher immédiatement si la transition doit être retardée, compte tenu du retard documentaire signalé pour les deux composants fait remonter à un niveau hiérarchique supérieur un écart que l'équipe projet et l'équipe d'exploitation peuvent résoudre entre elles. Demander à l'équipe d'exploitation de rédiger elle-même une documentation provisoire pour les deux composants manquants avant la finalisation transfère à l'équipe destinataire la responsabilité d'un livrable qui incombait à l'équipe projet.",
+    "en": "The missing troubleshooting documentation concerns two specific components and was an explicit commitment in the transition plan: this is a contained gap, not a general alarm. Agreeing with the operations team on a short delivery date for the missing documentation before finalizing the transition closes the gap at its source, with the team that needs it, without invoking a decision level higher than the gap warrants. Proceeding with the transition as planned, since most of the transition criteria are already met and the documentation gap is deemed minor treats an explicit plan commitment as negotiable simply because it is a minority of the items. Asking the sponsor to decide immediately whether the transition should be delayed, given the reported documentation gap for the two components escalates to a higher governance level a gap that the project team and operations team can resolve between themselves. Having the operations team draft provisional documentation themselves for the two missing components before finalization shifts onto the receiving team a deliverable that was the project team's responsibility."
+   },
+   "decision_atom": "Décider à quel niveau traiter un écart circonscrit de documentation de transition : résolution locale ou escalade hiérarchique.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'écart porte sur deux composants précis, déjà prévus au plan, et le reste des critères est satisfait.",
+   "bascule": "Si l'écart portait sur une portion substantielle des composants ou remettait en cause la sécurité du système, escalader au sponsor deviendrait justifié.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-PR10-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR10-20261013-0952-1-03",
+   "enabler": "Determine criteria to successfully close the project or phase.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit définir les critères de clôture d'une phase de prototypage. Deux options s'offrent à lui pour le critère d'acceptation technique : exiger que le prototype passe des tests de charge complets, ou se limiter à une démonstration fonctionnelle devant le client. Les tests de charge nécessitent de configurer un environnement dédié qui ne pourra pas être réutilisé facilement si les critères doivent être ajustés plus tard, tandis que la démonstration fonctionnelle peut être répétée ou approfondie sans coût significatif selon les retours reçus. Quel critère le chef de projet doit-il retenir à ce stade ?",
+    "en": "A project manager must define the closure criteria for a prototyping phase. Two options are available for the technical acceptance criterion: requiring the prototype to pass full load testing, or limiting acceptance to a functional demonstration in front of the client. Load testing requires setting up a dedicated environment that cannot easily be repurposed if the criteria need adjustment later, whereas the functional demonstration can be repeated or expanded at little cost based on feedback received. Which criterion should the project manager adopt at this stage?"
+   },
+   "options": {
+    "fr": [
+     "Retenir la démonstration fonctionnelle comme critère de clôture, et prévoir les tests de charge pour une phase ultérieure si le produit le justifie.",
+     "Retenir les tests de charge complets comme critère de clôture, afin de garantir dès cette phase la robustesse du prototype sous contrainte réelle et sous charge soutenue.",
+     "Retenir les deux critères en parallèle pour cette phase, en laissant au client le soin de décider lequel prévaudra au moment de la revue de phase.",
+     "Retenir les tests de charge complets comme critère de clôture, puis renoncer à l'environnement dédié si le client préfère la démonstration finale."
+    ],
+    "en": [
+     "Adopt the functional demonstration as the closure criterion, and plan for load testing in a later phase if the product warrants it.",
+     "Adopt full load testing as the closure criterion, to confirm the prototype's robustness under real-world and sustained stress at this stage.",
+     "Adopt both criteria in parallel for this phase, leaving it to the client to decide which one prevails at the phase review.",
+     "Adopt full load testing as the closure criterion, then abandon the dedicated environment if the client prefers the final demonstration."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'environnement de tests de charge ne pourra pas être réutilisé si les critères doivent être ajustés plus tard, alors que la démonstration fonctionnelle reste modifiable sans coût significatif : à ce stade de prototypage, retenir le critère réversible préserve la capacité d'ajuster les critères de clôture sans perte. Retenir la démonstration fonctionnelle comme critère de clôture, et prévoir les tests de charge pour une phase ultérieure si le produit le justifie choisit cette voie réversible et reporte l'engagement coûteux au moment où il sera réellement justifié. Retenir les tests de charge complets comme critère de clôture, afin de garantir dès cette phase la robustesse du prototype sous contrainte réelle et sous charge soutenue engage un investissement non réutilisable avant que le besoin n'en soit établi. Retenir les deux critères en parallèle pour cette phase, en laissant au client le soin de décider lequel prévaudra au moment de la revue de phase engage quand même l'environnement dédié en parallèle, sans éviter le coût irréversible, tout en reportant une décision qui revient au chef de projet. Retenir les tests de charge complets comme critère de clôture, puis renoncer à l'environnement dédié si le client préfère la démonstration finale engage d'abord la dépense non réutilisable avant même de savoir si elle sera nécessaire.",
+    "en": "The load-testing environment cannot be repurposed if the criteria need adjustment later, while the functional demonstration remains adjustable at little cost: at this prototyping stage, adopting the reversible criterion preserves the ability to adjust closure criteria without loss. Adopting the functional demonstration as the closure criterion, and planning for load testing in a later phase if the product warrants it takes this reversible path and defers the costly commitment until it is actually warranted. Adopting full load testing as the closure criterion, to confirm the prototype's robustness under real-world and sustained stress at this stage commits to a non-reusable investment before the need for it has been established. Adopting both criteria in parallel for this phase, leaving it to the client to decide which one prevails at the phase review still commits the dedicated environment in parallel, without avoiding the irreversible cost, while deferring a decision that belongs to the project manager. Adopting full load testing as the closure criterion, then abandoning the dedicated environment if the client prefers the final demonstration spends the non-reusable cost before even knowing whether it will be needed."
+   },
+   "decision_atom": "Décider quel critère d'acceptation technique retenir pour la clôture de phase quand deux options diffèrent par leur réversibilité.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "L'environnement de tests de charge ne sera pas réutilisable si les critères doivent être ajustés, contrairement à la démonstration fonctionnelle.",
+   "bascule": "Si l'environnement de tests de charge pouvait être reconfiguré sans coût significatif, le retenir dès cette phase deviendrait la politique correcte.",
+   "task_id": "PR10",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-PR10-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR10-20261013-0952-1-01",
+   "enabler": "Conclude activities to close the project or phase (e.g., final lessons learned, retrospectives, procurement, financials, resources).",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un projet entre en clôture. Le chef de projet doit archiver les dossiers de projet et solder une facture finale d'un fournisseur, actuellement bloquée en attente de validation contractuelle d'une pénalité de retard contestée par les deux parties. L'équipe financière demande de clore le dossier fournisseur cette semaine pour respecter le calendrier comptable de fin d'exercice. Que doit faire le chef de projet en priorité ?",
+    "en": "A project is entering closure. The project manager must archive the project records and settle a final invoice from a supplier, currently on hold pending contractual validation of a late-delivery penalty disputed by both parties. The finance team is requesting that the supplier file be closed this week to meet the year-end accounting calendar. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Archiver l'ensemble des dossiers de projet dès maintenant et régulariser la facture fournisseur séparément une fois la pénalité tranchée.",
+     "Clore le dossier fournisseur cette semaine en appliquant la pénalité proposée par l'équipe financière, afin de respecter le calendrier comptable.",
+     "Résoudre la contestation sur la pénalité avec le fournisseur avant de solder la facture et de finaliser l'archivage financier du projet.",
+     "Transmettre le dossier fournisseur au service achats pour qu'il tranche la pénalité contestée, et poursuivre en parallèle l'archivage complet du projet."
+    ],
+    "en": [
+     "Archive the entire project file right now, and settle the supplier invoice separately once the disputed penalty has been resolved.",
+     "Close the supplier file this week by applying the penalty proposed by the finance team, in order to meet the year-end accounting calendar.",
+     "Resolve the dispute over the penalty with the supplier before settling the invoice and finalizing the project's financial archiving.",
+     "Forward the supplier file to the procurement department so it can rule on the disputed penalty, and continue the project archiving in parallel."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La pénalité est contestée par les deux parties : elle n'est pas encore un fait établi, seulement un différend non résolu. Solder la facture ou l'archiver sans trancher ce différend reviendrait à clore financièrement un point encore ouvert, ce qui expose le projet à une réouverture ultérieure du dossier. Résoudre la contestation avec le fournisseur avant de solder la facture et de finaliser l'archivage respecte l'ordre correct : on ne clôture financièrement que ce qui est stabilisé. Archiver l'ensemble des dossiers dès maintenant en séparant la facture laisse un dossier financier incomplet circuler comme s'il était clos. Appliquer la pénalité proposée par l'équipe financière pour respecter le calendrier comptable règle le problème par la vitesse plutôt que par l'accord, ce que la contestation déclarée interdit. Transmettre le dossier au service achats pour qu'il tranche la pénalité contestée tout en poursuivant en parallèle l'archivage complet traite la question financière comme accessoire à l'archivage, alors qu'elle doit être réglée avant que celui-ci ne soit considéré comme terminé.",
+    "en": "The penalty is disputed by both parties: it is not yet an established fact, only an unresolved disagreement. Settling the invoice or archiving the file without resolving this disagreement would close a financial matter that is still open, exposing the project to having the file reopened later. Resolving the dispute with the supplier before settling the invoice and finalizing the financial archiving follows the correct order: only what is settled should be financially closed. Archiving the entire file right now and settling the invoice separately leaves an incomplete financial file circulating as if it were closed. Applying the penalty proposed by the finance team to meet the year-end accounting calendar solves the problem through speed rather than agreement, which the declared dispute does not allow. Forwarding the file to procurement so it can rule on the disputed penalty while continuing the project archiving in parallel treats the financial matter as secondary to archiving, when it must be settled before archiving can be considered complete."
+   },
+   "decision_atom": "Décider si l'on clôture le dossier fournisseur et l'archivage avant ou après la résolution d'un différend sur une pénalité contestée.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "La pénalité est contestée par les deux parties, ce n'est pas un fait établi mais un différend non résolu.",
+   "bascule": "Si la pénalité n'était pas contestée mais simplement en attente de signature administrative, archiver puis régulariser deviendrait défendable.",
+   "task_id": "PR10",
+   "level": 3,
+   "run_id": "20261013-0952",
+   "release": "qL3-PR10-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-BE1-20261013-0952-1-02",
+   "enabler": "Describe and establish the structure, rules, procedures, reporting, ethics, and policies through the use of organizational process assets (OPAs).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit choisir une procédure de gestion des demandes de changement pour un nouveau projet. L'organisation dispose d'un modèle standard de procédure de changement, mais celui-ci n'a jamais été testé sur un projet de cette taille et l'équipe peut encore ajuster le choix avant le lancement officiel. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager must choose a change request procedure for a new project. The organization has a standard change procedure template, but it has never been tested on a project of this size, and the team can still adjust the choice before the official kickoff. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Adopter le modèle standard en version pilote pour ce projet, en prévoyant de l'ajuster lors de la première revue de performance.",
+     "Concevoir une procédure de changement entièrement nouvelle, spécifique à ce projet, avant même d'examiner le modèle existant.",
+     "Demander au bureau de gestion de projets de valider formellement le modèle standard comme obligatoire pour tous les projets futurs.",
+     "Suspendre le lancement du projet jusqu'à ce qu'une étude comparative des procédures de changement d'autres organisations soit menée."
+    ],
+    "en": [
+     "Adopt the standard template as a pilot version for this project, planning to adjust it at the first performance review.",
+     "Design an entirely new change procedure specific to this project, without first examining the existing template.",
+     "Ask the project management office to formally certify the standard template as mandatory for all future projects.",
+     "Delay the project launch until a comparative study of change procedures from other organizations has been conducted."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le modèle n'a jamais été éprouvé sur un projet de cette taille, mais le lancement officiel n'a pas encore eu lieu, ce qui laisse une marge réelle pour ajuster la procédure. Adopter le modèle en version pilote, avec un ajustement prévu à la première revue de performance, exploite cet actif organisationnel existant tout en gardant la possibilité de le corriger avant qu'il ne soit figé. Concevoir une procédure entièrement nouvelle sans examiner le modèle existant ignore un actif organisationnel disponible et déjà partiellement pertinent. Demander une validation formelle et obligatoire pour tous les projets futurs fige prématurément un modèle non encore testé, avant même d'avoir vérifié s'il convient à ce projet précis. Suspendre le lancement pour mener une étude comparative externe retarde le projet pour une démarche dont la procédure interne, ajustable en cours de route, ne nécessite pas.",
+    "en": "The template has never been tested on a project of this size, but the official kickoff has not yet happened, leaving real room to adjust the procedure. Adopting the template as a pilot version, with an adjustment planned at the first performance review, uses this existing organizational asset while keeping the ability to correct it before it becomes fixed. Designing an entirely new procedure without examining the existing template ignores an available organizational asset that is already partially relevant. Requesting formal, mandatory certification for all future projects prematurely locks in a template that has not yet been tested, before even confirming it fits this specific project. Delaying the launch for an external comparative study postpones the project for a step the adjustable internal procedure does not require."
+   },
+   "decision_atom": "Décider s'il faut adopter un actif organisationnel existant non éprouvé en version ajustable, ou le contourner avant même de l'avoir essayé.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le modèle standard n'a jamais été testé sur cette taille de projet, mais le lancement officiel n'a pas encore eu lieu, laissant une fenêtre réelle d'ajustement.",
+   "bascule": "Si le lancement officiel avait déjà eu lieu et la procédure était figée contractuellement, construire une procédure sur mesure deviendrait plus défendable.",
+   "task_id": "BE1",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE1-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE1-20261013-0952-1-05",
+   "enabler": "Define success metrics.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet entame la phase de planification d'un nouveau projet. Les objectifs stratégiques du commanditaire ont été communiqués en termes généraux, mais aucune métrique de succès mesurable n'a encore été formalisée, et l'atelier de cadrage avec les parties prenantes clés n'est prévu que la semaine prochaine. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager is beginning the planning phase of a new project. The sponsor's strategic objectives have been communicated in general terms, but no measurable success metrics have yet been formalized, and the scoping workshop with key stakeholders is not scheduled until next week. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Rédiger dès maintenant une première version des métriques de succès et la diffuser à l'équipe projet pour alignement immédiat.",
+     "Estimer les métriques de succès à partir de projets comparables menés précédemment dans l'organisation.",
+     "Demander au sponsor de valider par écrit, avant l'atelier, une liste provisoire de métriques proposée par le chef de projet.",
+     "Attendre l'atelier de cadrage prévu la semaine prochaine pour définir les métriques de succès avec les parties prenantes clés."
+    ],
+    "en": [
+     "Draft a first version of the success metrics now and circulate it to the project team for immediate alignment.",
+     "Estimate the success metrics based on comparable projects previously conducted within the organization.",
+     "Ask the sponsor to approve in writing, before the workshop, a provisional list of metrics proposed by the project manager.",
+     "Wait for the scoping workshop scheduled next week to define the success metrics with the key stakeholders."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Les objectifs n'ont été communiqués qu'en termes généraux et l'atelier réunissant les parties prenantes clés aura lieu dans une semaine seulement ; définir des métriques mesurables avant cet atelier reviendrait à les construire sans les apports nécessaires. Attendre l'atelier pour définir les métriques avec les parties prenantes clés permet de les fonder sur une clarification réelle des objectifs plutôt que sur des suppositions. Rédiger dès maintenant une première version et la diffuser à l'équipe fige des métriques avant que les informations nécessaires à leur définition aient été réunies. Estimer les métriques à partir de projets comparables substitue une analogie externe à la clarification spécifique que l'atelier est justement conçu pour apporter. Demander au sponsor de valider par écrit une liste provisoire avant l'atelier revient à obtenir une approbation formelle sur des métriques encore insuffisamment établies.",
+    "en": "The objectives have only been communicated in general terms, and the workshop bringing together key stakeholders is still a week away; defining measurable metrics before that workshop would mean building them without the necessary input. Waiting for the workshop to define the metrics with key stakeholders allows them to be grounded in actual clarification of objectives rather than assumptions. Drafting a first version now and circulating it to the team locks in metrics before the information needed to define them has been gathered. Estimating the metrics from comparable projects substitutes an external analogy for the specific clarification the workshop is precisely designed to provide. Asking the sponsor to approve a provisional list in writing before the workshop amounts to obtaining formal approval on metrics that are not yet sufficiently established."
+   },
+   "decision_atom": "Décider s'il faut définir des métriques de succès mesurables avant ou après l'atelier de cadrage réunissant les parties prenantes clés.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les objectifs n'ont été communiqués qu'en termes généraux et l'atelier de cadrage avec les parties prenantes clés aura lieu dans une semaine seulement.",
+   "bascule": "Si les objectifs stratégiques avaient déjà été formalisés en détail avant l'atelier, rédiger une première version des métriques dès maintenant deviendrait défendable.",
+   "task_id": "BE1",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE1-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE3-20261013-0952-1-02",
+   "enabler": "Communicate the status of proposed changes.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une demande de changement proposée par un fournisseur attend depuis dix jours la décision du comité de contrôle des changements, alors que le processus défini prévoit un délai de cinq jours ouvrés pour une réponse. Le fournisseur relance le chef de projet pour connaître le statut. Le comité ne s'est pas encore réuni et aucune date de réunion n'est fixée. Que doit faire le chef de projet en priorité ?",
+    "en": "A change request proposed by a vendor has been awaiting a decision from the change control board for ten days, while the defined process specifies a five-business-day turnaround for a response. The vendor follows up with the project manager to ask about the status. The board has not yet met, and no meeting date has been set. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Informer le fournisseur que la décision suit son cours normal auprès du comité, et que le résultat lui sera communiqué après la prochaine réunion.",
+     "Signaler au sponsor que le délai de traitement défini pour cette demande est dépassé et demander la programmation d'une décision.",
+     "Convoquer lui-même une réunion du comité de contrôle des changements, et statuer directement sur la demande à cette occasion.",
+     "Informer le fournisseur que sa demande sera traitée en priorité, et que ce traitement interviendra lors de la prochaine itération du projet."
+    ],
+    "en": [
+     "Tell the vendor that the decision is proceeding normally with the board, and that the outcome will be communicated after its next meeting.",
+     "Flag to the sponsor that the defined turnaround time for this request has been exceeded and request that a decision be scheduled.",
+     "Convene a change control board meeting himself, and rule directly on the request on that occasion.",
+     "Tell the vendor that the request will be handled as a priority, and that this handling will occur during the project's next iteration."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le délai défini pour une décision du comité est dépassé de cinq jours, et aucune réunion n'est planifiée : le statut communicable au fournisseur n'existe tout simplement pas encore tant que le processus interne n'a pas progressé. Signaler ce dépassement au sponsor permet de faire avancer la décision par la voie appropriée avant de communiquer quoi que ce soit au fournisseur. Rassurer le fournisseur sur un cours « normal » du processus auprès du comité et promettre une communication après la prochaine réunion masque un dépassement réel du délai prévu. Convoquer lui-même le comité et statuer directement à cette occasion outrepasse le rôle du chef de projet, qui n'a pas autorité pour statuer à la place de cette instance. Promettre un traitement prioritaire et faire coïncider ce traitement avec la prochaine itération invente un engagement qui n'a pas été décidé par le comité compétent.",
+    "en": "The defined turnaround time for a board decision has already been exceeded by five days, and no meeting is scheduled: there is simply no status yet to communicate to the vendor until the internal process moves forward. Flagging this overrun to the sponsor allows the decision to progress through the appropriate channel before anything is communicated to the vendor. Reassuring the vendor that the process is proceeding normally with the board and promising an update after the next meeting conceals a real overrun of the defined timeframe. Convening the board himself and ruling directly on that occasion oversteps the project manager's role, who has no authority to rule in place of that body. Promising priority handling and tying that handling to the next iteration invents a commitment that the appropriate board has not actually made."
+   },
+   "decision_atom": "Décider quoi faire en priorité quand le délai de décision défini pour une demande de changement est dépassé et qu'aucun statut réel n'existe à communiquer.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le délai de cinq jours ouvrés défini par le processus est dépassé de cinq jours, et aucune réunion du comité n'est planifiée.",
+   "bascule": "Si une réunion du comité était déjà planifiée dans le délai prévu, informer le fournisseur du cours normal du processus deviendrait acceptable.",
+   "task_id": "BE3",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE3-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE4-20261013-0952-1-02",
+   "enabler": "Prioritize and highlight impediments.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux équipes partagent une bibliothèque de composants et signalent, le même jour, un blocage sur cette bibliothèque qui freine leur avancement. Chaque scrum master a remonté le problème dans son propre tableau de suivi, sans coordination entre eux. Que doit faire le facilitateur en priorité ?",
+    "en": "Two teams share a component library and, on the same day, report a blockage in that library slowing their progress. Each scrum master logged the issue on their own tracking board, without coordinating with the other. What should the facilitator do first?"
+   },
+   "options": {
+    "fr": [
+     "Consolider les deux signalements en un seul impediment partagé, visible pour les deux équipes.",
+     "Demander à l'équipe la plus avancée de prioriser son propre signalement et de reporter celui de l'autre équipe.",
+     "Transmettre les deux signalements séparément au gestionnaire de la bibliothèque, chacun selon son origine.",
+     "Attendre que les deux scrum masters se réunissent et s'accordent sur une formulation commune du blocage."
+    ],
+    "en": [
+     "Consolidate both reports into a single shared impediment, visible to both teams.",
+     "Ask the more advanced team to prioritize its own report and defer the other team's.",
+     "Forward both reports separately to the library's owner, each according to its origin.",
+     "Wait for the two scrum masters to meet and agree on a common description of the blockage."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le blocage est unique et partagé : le traiter comme deux signalements distincts, ou laisser chaque scrum master agir isolément, dilue la visibilité sur un même obstacle. Consolider les deux signalements en un impediment unique donne au bon porteur une vue complète avant toute action. Prioriser le signalement d'une équipe et reporter celui de l'autre n'a pas de fondement puisque le blocage est commun. Transmettre les deux signalements séparément au gestionnaire de la bibliothèque recrée la fragmentation que le facilitateur doit justement éviter. Attendre que les deux scrum masters se réunissent et s'accordent retarde la visibilité sans nécessité, puisque la consolidation peut se faire immédiatement.",
+    "en": "The blockage is single and shared: treating it as two separate reports, or letting each scrum master act in isolation, dilutes visibility on one obstacle. Consolidating both reports into a single impediment gives the right owner a complete view before any action. Prioritizing one team's report and deferring the other's has no basis since the blockage is common. Forwarding both reports separately to the library owner recreates the fragmentation the facilitator should avoid. Waiting for the two scrum masters to meet and agree delays visibility without necessity, since consolidation can happen immediately."
+   },
+   "decision_atom": "Décider comment traiter deux signalements distincts du même blocage partagé remontés séparément par deux équipes.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Les deux équipes ont signalé le même blocage le même jour, dans des tableaux de suivi séparés, sans coordination entre les scrum masters.",
+   "bascule": "Si les deux équipes décrivaient en réalité deux blocages distincts dans la même bibliothèque, traiter les signalements séparément deviendrait la bonne réponse.",
+   "task_id": "BE4",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE4-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE4-20261013-0952-1-05",
+   "enabler": "Collaborate with relevant stakeholders on an approach to resolve the issues.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un risque lié à la dépendance envers un fournisseur unique de composants était surveillé depuis un mois. Le fournisseur annonce aujourd'hui, par écrit, l'arrêt définitif de la production de ce composant. Le chef de projet dispose du nom du responsable achats habituellement propriétaire de ce type de dépendance. Que doit-il faire en priorité ?",
+    "en": "A risk tied to reliance on a single component supplier had been monitored for a month. The supplier announces today, in writing, that production of this component is permanently discontinued. The project manager has the name of the procurement lead who normally owns this type of dependency. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Rechercher seul un fournisseur alternatif avant d'impliquer les autres parties prenantes clés dans la décision finale.",
+     "Mettre à jour le registre des risques en reclassant l'entrée comme résolue grâce à cette annonce du fournisseur.",
+     "Transmettre l'annonce écrite au comité de direction du programme pour qu'il tranche sur la suite à donner.",
+     "Solliciter le responsable achats propriétaire de cette dépendance pour convenir ensemble d'une approche de résolution."
+    ],
+    "en": [
+     "Search alone for an alternative supplier before involving the other key stakeholders in the final decision.",
+     "Update the risk register by reclassifying the entry as resolved based on this supplier announcement.",
+     "Forward the written announcement to the program steering committee to decide on next steps.",
+     "Reach out to the procurement lead who owns this dependency to agree together on an approach to resolve it."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'annonce écrite du fournisseur transforme un risque surveillé en un problème avéré, et un propriétaire désigné pour ce type de dépendance existe déjà. Rechercher seul un fournisseur alternatif avant d'impliquer les autres parties prenantes clés court-circuite ce propriétaire naturel avant même d'avoir échangé avec lui. Reclasser l'entrée comme résolue grâce à cette annonce du fournisseur est une erreur de qualification : l'arrêt de production transforme le risque en problème à traiter, non en risque clos. Transmettre l'annonce écrite au comité de direction escalade une décision que le propriétaire désigné n'a pas encore eu l'occasion de traiter. Solliciter le responsable achats pour convenir ensemble d'une approche engage la collaboration avec la bonne partie prenante avant toute autre action.",
+    "en": "The supplier's written announcement turns a monitored risk into a confirmed issue, and a designated owner for this type of dependency already exists. Searching alone for an alternative supplier before involving the other key stakeholders bypasses this natural owner before even discussing it with them. Reclassifying the entry as resolved based on this supplier announcement is a miscategorization: the production stop turns the risk into an issue to address, not a closed risk. Forwarding the written announcement to the steering committee escalates a decision the designated owner has not yet had a chance to address. Reaching out to the procurement lead to agree on an approach together engages collaboration with the right stakeholder before any other action."
+   },
+   "decision_atom": "Décider de la première action quand un risque surveillé se matérialise en problème avéré, alors qu'un propriétaire désigné existe pour ce type de dépendance.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le fournisseur annonce par écrit l'arrêt définitif de production, et le chef de projet connaît déjà le responsable achats propriétaire de cette dépendance.",
+   "bascule": "Si aucun propriétaire désigné n'existait pour ce type de dépendance, transmettre directement au comité de direction deviendrait la bonne réponse.",
+   "task_id": "BE4",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE4-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE7-20261013-0952-1-01",
+   "enabler": "Evaluate the impact of organizational change on the project and determine required actions.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet apprend qu'une restructuration du département finance, annoncée par courriel interne la veille, modifie le circuit d'approbation des factures fournisseurs utilisé par son projet. L'impact exact sur le calendrier des paiements n'est pas encore documenté par aucune équipe. Que doit-il faire en priorité ?",
+    "en": "A project manager learns that a finance department restructuring, announced by internal email the day before, changes the vendor invoice approval chain used by the project. The exact impact on payment timing has not yet been documented by any team. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Documenter lui-même une estimation provisoire de l'impact sur le calendrier des paiements et la diffuser aux fournisseurs concernés.",
+     "Ajuster le calendrier de paiement des fournisseurs pour anticiper un éventuel retard d'approbation, avant toute confirmation du nouveau circuit.",
+     "Demander au sponsor de trancher immédiatement sur le circuit d'approbation à utiliser pour les prochaines factures, puis diffuser sa décision à l'équipe finance.",
+     "Contacter le responsable finance désigné pour clarifier le nouveau circuit et ses délais avant d'ajuster le calendrier du projet."
+    ],
+    "en": [
+     "Draft a provisional estimate of the impact on the payment timeline himself and share it with the relevant vendors.",
+     "Adjust the vendor payment schedule to anticipate a possible approval delay, before any confirmation of the new chain.",
+     "Ask the sponsor to decide immediately which approval chain should be used for upcoming invoices, then share that decision with the finance team.",
+     "Contact the designated finance lead to clarify the new chain and its timelines before adjusting the project schedule."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le circuit d'approbation vient de changer et aucune équipe n'a encore documenté son effet réel sur les délais : la seule action qui repose sur une preuve fiable est de clarifier directement auprès du responsable finance désigné avant de modifier quoi que ce soit côté projet. Rédiger une estimation provisoire et la diffuser aux fournisseurs revient à communiquer une information non vérifiée comme si elle était établie. Ajuster le calendrier de paiement par anticipation traite un changement non confirmé comme s'il l'était déjà, ce qui risque de créer un nouveau décalage inutile. Solliciter le sponsor pour trancher sur un circuit d'approbation et diffuser sa décision à l'équipe finance revient à faire remonter à un niveau de gouvernance une question opérationnelle qui relève du département finance, pas du sponsor projet.",
+    "en": "The approval chain has just changed and no team has documented its real effect on timelines yet: the only action resting on reliable evidence is to clarify directly with the designated finance lead before changing anything on the project side. Drafting a provisional estimate and sharing it with vendors means communicating unverified information as if it were established. Adjusting the payment schedule preemptively treats an unconfirmed change as already settled, risking a new, unnecessary delay. Asking the sponsor to decide on an approval chain and then sharing that decision with the finance team escalates an operational finance question to a governance level that isn't responsible for it."
+   },
+   "decision_atom": "Décider s'il faut agir sur le calendrier projet avant d'avoir clarifié un changement organisationnel annoncé mais non documenté.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'impact du changement n'est documenté par aucune équipe ; le changement a été annoncé la veille.",
+   "bascule": "Si aucun responsable finance n'était identifiable et que le sponsor était le seul point de contact disponible, l'escalade au sponsor deviendrait justifiée.",
+   "task_id": "BE7",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE7-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE7-20261013-0952-1-03",
+   "enabler": "Assess organizational culture.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet, nouvellement arrivé dans une organisation à forte culture consensuelle, remarque que ses décisions rapides en réunion sont systématiquement suivies de discussions informelles en aparté où les vrais désaccords apparaissent. Il souhaite mieux comprendre ce fonctionnement avant d'ajuster son style d'animation. Vers qui doit-il se tourner en premier ?",
+    "en": "A project manager, newly arrived in an organization with a strong consensus-driven culture, notices that his quick decisions in meetings are consistently followed by informal side discussions where the real disagreements surface. He wants to better understand this dynamic before adjusting his facilitation style. Who should he turn to first?"
+   },
+   "options": {
+    "fr": [
+     "Son sponsor, pour obtenir une directive formelle sur le style d'animation à adopter lors des prochaines réunions de gouvernance.",
+     "Des membres expérimentés de l'équipe ayant une longue ancienneté dans l'organisation, pour comprendre les normes informelles de prise de décision.",
+     "Le département des ressources humaines, pour obtenir le document officiel décrivant la culture d'entreprise à l'ensemble des nouveaux arrivants.",
+     "L'ensemble des parties prenantes du projet, lors d'un atelier formel dédié spécifiquement à la culture organisationnelle."
+    ],
+    "en": [
+     "His sponsor, to obtain a formal directive on which facilitation style to adopt at upcoming governance meetings.",
+     "Experienced team members with long tenure in the organization, to understand the informal norms of decision-making.",
+     "The human resources department, to obtain the official document describing the corporate culture for all new arrivals.",
+     "The project's full stakeholder group, in a formal workshop dedicated specifically to organizational culture."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le comportement observé — des désaccords qui n'émergent qu'en aparté — relève de normes informelles que seuls des membres expérimentés, ayant une longue pratique de l'organisation, peuvent expliquer avec justesse. Le sponsor a l'autorité pour fixer une directive formelle de gouvernance mais n'a pas nécessairement une connaissance fine des dynamiques informelles d'équipe. Les ressources humaines produisent une description officielle de la culture destinée aux nouveaux arrivants, qui ne reflète pas toujours les pratiques réelles vécues au quotidien par les équipes. Un atelier formel dédié spécifiquement à la culture organisationnelle avec l'ensemble des parties prenantes risque de reproduire exactement le phénomène observé : un cadre officiel où les vrais désaccords ne s'expriment pas.",
+    "en": "The observed behavior — disagreements that only surface in side conversations — reflects informal norms that only experienced members with a long history in the organization can accurately explain. The sponsor has authority to set a formal governance directive but not necessarily a fine-grained understanding of informal team dynamics. Human resources produce an official description of the culture intended for new arrivals, which does not always reflect the practices actually lived day to day by teams. A formal workshop dedicated specifically to organizational culture with the full stakeholder group risks reproducing the very phenomenon observed: an official setting where real disagreements still go unspoken."
+   },
+   "decision_atom": "Décider à qui s'adresser en premier pour comprendre une norme de décision informelle non documentée.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Les vrais désaccords n'émergent qu'en aparté informel, jamais dans le cadre formel des réunions.",
+   "bascule": "Si le sponsor avait lui-même une longue ancienneté et une connaissance fine des dynamiques d'équipe informelles, le consulter en premier deviendrait défendable.",
+   "task_id": "BE7",
+   "level": 2,
+   "run_id": "20261013-0952",
+   "release": "qL2-BE7-20261013-0952-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
