@@ -1,0 +1,311 @@
+{
+ "run_id": "20261014-0811",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-PE1-20261014-0811-1-01",
+   "enabler": "Help ensure a shared vision with key stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet anime un atelier de cadrage avec trois départements qui rejoignent un programme en cours de route. Le sponsor a formulé la vision il y a six mois, lors du lancement initial, à un groupe de parties prenantes différent. Les nouveaux arrivants n'ont jamais assisté à une présentation de cette vision et commencent déjà à proposer des livrables basés sur leur propre compréhension du besoin. Que doit-elle faire en priorité ?",
+    "en": "A project manager facilitates a framing workshop with three departments joining an ongoing program midway through. The sponsor articulated the vision six months ago, at the initial kickoff, to a different group of stakeholders. The newcomers have never attended a presentation of this vision and are already proposing deliverables based on their own understanding of the need. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser une présentation de la vision aux nouveaux départements avant qu'ils ne poursuivent la conception de leurs livrables.",
+     "Laisser les départements affiner leurs propositions jusqu'à la prochaine revue trimestrielle, moment finalement choisi pour comparer leurs résultats à la vision initiale.",
+     "Demander à chaque département de rédiger sa propre interprétation écrite de la vision transmise lors du lancement initial du programme.",
+     "Planifier une restitution conjointe avec le sponsor, une fois les premières propositions finalisées par les trois départements concernés."
+    ],
+    "en": [
+     "Organize a presentation of the vision to the new departments before they continue designing their deliverables.",
+     "Let the departments refine their proposals until the next quarterly review, the point ultimately chosen for comparing their results against the initial vision.",
+     "Ask each department to draft its own written interpretation of the vision shared at the program's initial kickoff.",
+     "Schedule a joint debrief with the sponsor, once the initial proposals have been finalized by the three departments concerned."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Les nouveaux départements n'ont jamais reçu la vision et avancent déjà sur des livrables : organiser une présentation avant qu'ils ne poursuivent est la seule option qui agit avant que le travail ne s'enracine dans une mauvaise direction. Laisser les départements affiner leurs propositions jusqu'à la revue trimestrielle revient à attendre un cycle entier pendant lequel le travail divergent se poursuit. Demander à chaque département de rédiger sa propre interprétation écrite multiplie les versions au lieu de les aligner sur une source commune. Planifier une restitution conjointe une fois les propositions finalisées attend que l'écart se soit matérialisé en livrables concrets, ce qui coûte plus cher à corriger que d'aligner en amont.",
+    "en": "The new departments never received the vision and are already working on deliverables: organizing a presentation before they continue is the only option that acts before the work takes root in the wrong direction. Letting the departments refine their proposals until the quarterly review means waiting a full cycle while divergent work continues. Asking each department to draft its own written interpretation multiplies versions instead of aligning them to one common source. Scheduling a joint debrief once proposals are finalized waits until the gap has materialized into concrete deliverables, which costs more to correct than aligning upfront."
+   },
+   "decision_atom": "Décider à quel moment exposer la vision à des parties prenantes nouvellement intégrées qui travaillent déjà sans l'avoir reçue.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les nouveaux départements produisent déjà des propositions de livrables sans jamais avoir reçu la vision.",
+   "bascule": "Si les propositions des départements étaient encore à l'état d'ébauche informelle sans risque d'ancrage, attendre la revue serait acceptable.",
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20261014-0811",
+   "release": "qL2-PE1-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE1-20261014-0811-1-03",
+   "enabler": "Keep the vision current.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une conversation informelle, un collègue mentionne au chef de projet qu'un changement de stratégie au niveau du portefeuille pourrait affecter la priorité du projet. Aucun document officiel n'a encore circulé et le collègue précise qu'il tient cette information d'une discussion de couloir. Que doit faire le chef de projet ?",
+    "en": "During an informal conversation, a colleague mentions to the project manager that a portfolio-level strategy change might affect the project's priority. No official document has circulated yet, and the colleague specifies that he heard this from a hallway conversation. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Mettre à jour la vision du projet, dès cette discussion informelle, pour refléter le changement de priorité.",
+     "Vérifier auprès du comité de gouvernance du portefeuille si un changement de stratégie est effectivement engagé.",
+     "Informer l'équipe projet qu'une révision de la vision est probablement à venir prochainement.",
+     "Suspendre les activités liées à la priorité actuelle en attendant une clarification officielle du comité."
+    ],
+    "en": [
+     "Update the project vision, right after this informal conversation, to reflect the priority change.",
+     "Check with the portfolio governance committee whether a strategy change is actually underway.",
+     "Inform the project team that a revision of the vision is probably coming soon.",
+     "Suspend activities tied to the current priority while waiting for official clarification from the committee."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'information vient d'une discussion de couloir, sans confirmation officielle : vérifier auprès du comité de gouvernance du portefeuille établit si le changement est réel avant d'agir dessus. Mettre à jour la vision dès cette discussion informelle ferait reposer une décision structurante sur une rumeur. Informer l'équipe qu'une révision est probablement à venir répand une incertitude non vérifiée qui pourrait s'avérer infondée. Suspendre les activités liées à la priorité actuelle en attendant une clarification officielle du comité réagit comme si le changement était confirmé, alors qu'aucune source fiable ne l'établit encore.",
+    "en": "The information comes from a hallway conversation, with no official confirmation: checking with the portfolio governance committee establishes whether the change is real before acting on it. Updating the vision right after this informal conversation would base a structural decision on a rumor. Telling the team that a revision is probably coming spreads unverified uncertainty that might turn out to be unfounded. Suspending activities tied to the current priority while waiting for official clarification from the committee reacts as if the change were confirmed, when no reliable source establishes that yet."
+   },
+   "decision_atom": "Décider s'il faut agir sur une information de changement stratégique reçue de façon non officielle, ou la vérifier d'abord.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le collègue précise lui-même que l'information vient d'une discussion de couloir, sans document officiel.",
+   "bascule": "Si l'information provenait d'une communication officielle du portefeuille, mettre à jour la vision deviendrait la bonne réponse.",
+   "task_id": "PE1",
+   "level": 2,
+   "run_id": "20261014-0811",
+   "release": "qL2-PE1-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20261014-0811-1-04",
+   "enabler": "Identify conflict sources.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'une réunion d'équipe, un développeur hausse le ton face à un testeur, l'accusant de retarder systématiquement les livraisons. C'est la première fois qu'un tel échange survient entre eux, et aucun autre membre de l'équipe ne rapporte de tension similaire. Le chef de projet, présent dans la salle, doit réagir. Quelle est la réponse la plus appropriée ?",
+    "en": "During a team meeting, a developer raises his voice at a tester, accusing him of systematically delaying deliveries. This is the first time such an exchange occurs between them, and no other team member reports a similar tension. The project manager, present in the room, must respond. What is the most appropriate response?"
+   },
+   "options": {
+    "fr": [
+     "Mettre fin à la réunion, convoquer une médiation formelle, puis faire appel à un facilitateur externe pour les deux personnes.",
+     "Laisser passer l'incident pendant la réunion, puis observer dans les jours suivants si la tension se reproduit entre eux.",
+     "Interrompre brièvement l'échange, reprendre la réunion, puis échanger en privé avec les deux personnes après coup.",
+     "Réorganiser immédiatement les équipes, puis séparer durablement le développeur et le testeur sur des lots distincts."
+    ],
+    "en": [
+     "End the meeting, convene a formal mediation, then bring in an external facilitator for both people.",
+     "Let the incident pass during the meeting, then watch over the following days whether the tension recurs between them.",
+     "Briefly interrupt the exchange, resume the meeting, then speak privately with both people afterward.",
+     "Immediately reorganize the teams, then durably separate the developer and the tester onto distinct work packages."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'incident est isolé, inédit entre ces deux personnes et non corroboré par le reste de l'équipe : la réponse proportionnée consiste à désamorcer l'instant présent sans arrêter le travail collectif, puis à clarifier en privé l'origine réelle de la tension. Mettre fin à la réunion et convoquer une médiation formelle avec un facilitateur externe mobilise un dispositif lourd pour un épisode encore isolé. Laisser passer l'incident pendant la réunion, puis se contenter d'observer les jours suivants, abandonne la salle à une tension non traitée devant tout le groupe. Réorganiser durablement les équipes, en séparant les deux personnes, traite un échange ponctuel comme une incompatibilité structurelle déjà établie, ce que rien dans la situation ne confirme encore.",
+    "en": "The incident is isolated, unprecedented between these two people, and not corroborated by the rest of the team: the proportionate response is to defuse the immediate moment without halting the group's work, then clarify the real source of tension privately. Ending the meeting and convening a formal mediation with an external facilitator deploys a heavy mechanism for what is still an isolated episode. Letting the incident pass during the meeting, then merely watching over the following days, leaves the room with unaddressed tension in front of the whole group. Durably reorganizing the teams by separating the two people treats a single exchange as an already-established structural incompatibility, which nothing in the situation yet confirms."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse immédiate à un accrochage verbal isolé entre deux membres de l'équipe en réunion.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'épisode est le premier du genre entre ces deux personnes et aucun autre membre ne rapporte de tension similaire.",
+   "bascule": "Si plusieurs membres de l'équipe avaient déjà signalé des tensions récurrentes entre ces deux personnes, la médiation formelle deviendrait la bonne réponse.",
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20261014-0811",
+   "release": "qL2-PE2-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE2-20261014-0811-1-05",
+   "enabler": "Communicate conflict management principles with the team and external stakeholders.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un consultant externe, rattaché à un cabinet partenaire, conteste ouvertement devant l'équipe la manière dont le chef de projet a tranché un désaccord entre deux membres internes, estimant que la procédure suivie n'était pas équitable. Le consultant n'est pas partie au conflit initial et n'a pas participé à sa résolution. Que doit faire le chef de projet ?",
+    "en": "An external consultant, affiliated with a partner firm, openly challenges in front of the team the way the project manager resolved a disagreement between two internal members, arguing the process followed was not fair. The consultant was not party to the original conflict and did not take part in resolving it. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Demander au cabinet partenaire de rappeler à son consultant les limites de son rôle, le sens de la décision interne, l'équité du processus suivi, et le respect attendu envers l'équipe.",
+     "Expliquer au consultant, en aparté, les principes de résolution de conflit appliqués et le contexte propre à la situation.",
+     "Inviter le consultant à exposer publiquement ses objections, préciser les motifs de son désaccord, détailler la décision contestée, et recueillir la réaction de l'équipe lors de la prochaine réunion complète.",
+     "Modifier la décision prise, revoir la répartition convenue, informer les deux membres concernés, et tenir compte du jugement d'équité exprimé publiquement par le consultant."
+    ],
+    "en": [
+     "Ask the partner firm to remind its consultant of the limits of his role, the rationale for the internal decision, the fairness of the process followed, and the respect expected toward the team.",
+     "Explain to the consultant, privately, the conflict resolution principles applied and the specifics of the situation.",
+     "Invite the consultant to publicly raise his objections, state the grounds for his disagreement, detail the contested decision, and gather the team's reaction at the next full meeting.",
+     "Revise the decision made, review the agreed division of tasks, inform the two members concerned, and take into account the fairness concern raised publicly by the consultant."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La décision contestée relève de l'autorité du chef de projet sur un conflit interne à son équipe, et le consultant externe n'était ni partie prenante ni associé à sa résolution : la réponse appropriée consiste à lui expliquer directement, en privé, les principes appliqués, sans engager de procédure formelle ni rouvrir une décision qui ne relève pas de sa compétence. Solliciter le cabinet partenaire pour rappeler les limites du rôle du consultant, le sens de la décision, l'équité du processus et le respect dû à l'équipe transforme une question de compréhension en procédure disciplinaire externe, disproportionnée pour une objection exprimée une seule fois. Inviter le consultant à exposer publiquement ses objections, préciser ses motifs, détailler la décision et recueillir la réaction de l'équipe donne à une personne extérieure au conflit une tribune sur une décision qui ne la concerne pas directement. Modifier la décision, revoir la répartition et informer les deux membres concernés reviendrait à céder l'autorité de résolution à quelqu'un qui n'a pas qualité pour en juger, sur la seule base d'une objection publique.",
+    "en": "The contested decision falls within the project manager's authority over a conflict internal to the team, and the external consultant was neither a party to it nor involved in resolving it: the appropriate response is to explain the principles applied directly and privately, without triggering a formal process or reopening a decision that is not his to judge. Asking the partner firm to remind the consultant of the limits of his role, the rationale for the decision, the fairness of the process, and the respect owed to the team turns a matter of understanding into an external disciplinary matter, disproportionate for a single objection. Inviting the consultant to publicly raise his objections, state his grounds, detail the decision, and gather the team's reaction gives someone outside the conflict a platform on a decision that does not directly concern him. Revising the decision, reviewing the agreed division of tasks, and informing the two members concerned would mean ceding resolution authority to someone not qualified to judge it, based solely on a public objection."
+   },
+   "decision_atom": "Décider qui a l'autorité de réviser ou de justifier une décision de résolution de conflit interne contestée publiquement par une partie prenante externe non impliquée.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le consultant externe n'était ni partie au conflit initial ni associé à sa résolution.",
+   "bascule": "Si le consultant avait été partie prenante directe du conflit initial, son objection publique justifierait de réexaminer la décision.",
+   "task_id": "PE2",
+   "level": 3,
+   "run_id": "20261014-0811",
+   "release": "qL3-PE2-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE4-20261014-0811-1-04",
+   "enabler": "Optimize alignment among stakeholder needs, expectations, and project objectives.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un membre de l'équipe rapporte au chef de projet qu'un client clé « semble vouloir » que le prochain incrément privilégie la rapidité de livraison plutôt que l'étendue des fonctionnalités, d'après une conversation informelle tenue en marge d'une autre réunion. Le client n'a transmis aucune demande écrite ni formelle en ce sens. Que doit faire le chef de projet ?",
+    "en": "A team member tells the project manager that a key client 'seems to want' the next increment to favor delivery speed over feature scope, based on an informal conversation held on the sidelines of another meeting. The client has sent no written or formal request to that effect. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Répartir les tâches de l'équipe selon une priorité de rapidité, afin d'anticiper l'attente supposée du client.",
+     "Informer l'équipe élargie d'un changement probable de priorité, pour qu'elle commence à s'y préparer.",
+     "Documenter la préférence rapportée comme une attente confirmée dans le registre des exigences du projet.",
+     "Vérifier directement auprès du client quelle priorité il souhaite réellement, avant d'ajuster les objectifs du prochain incrément."
+    ],
+    "en": [
+     "Reallocate the team's tasks toward a speed priority, to anticipate the client's assumed expectation.",
+     "Inform the wider team of a likely priority shift, so that it can begin preparing for it.",
+     "Document the reported preference as a confirmed expectation in the project's requirements register.",
+     "Check directly with the client what priority he truly wants, before adjusting the next increment's objectives."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le signal rapporté provient d'une conversation informelle tenue en marge d'une réunion, sans demande écrite ni formelle : il doit être vérifié à la source avant d'orienter quoi que ce soit. Répartir déjà les tâches selon une priorité de rapidité agit sur une attente non confirmée, au risque de désaligner les objectifs sur une mauvaise interprétation. Informer l'équipe élargie d'un changement probable propage la même incertitude à un public plus large, avant toute confirmation. Documenter la préférence comme une attente confirmée dans le registre des exigences fige dans un document officiel une information qui n'a reçu aucune validation du client.",
+    "en": "The reported signal comes from an informal conversation on the sidelines of a meeting, with no written or formal request: it must be checked at the source before anything is reoriented. Reallocating tasks toward a speed priority already acts on an unconfirmed expectation, risking misalignment based on a misreading. Informing the wider team of a likely shift spreads the same uncertainty to a broader audience before any confirmation exists. Documenting the preference as a confirmed expectation in the requirements register locks into an official document information that the client has never validated."
+   },
+   "decision_atom": "Décider s'il faut agir sur une préférence client rapportée indirectement ou la vérifier d'abord à la source.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le signal provient d'une conversation informelle en marge d'une réunion, sans demande écrite ni formelle du client.",
+   "bascule": "Si le client avait transmis une demande écrite formelle en ce sens, documenter l'attente directement deviendrait justifié.",
+   "task_id": "PE4",
+   "level": 1,
+   "run_id": "20261014-0811",
+   "release": "qL1-PE4-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20261014-0811-1-03",
+   "enabler": "Analyze stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le registre des parties prenantes classe un responsable d'exploitation comme ayant une influence faible sur le projet. Un directeur d'une autre division, qui ne siège dans aucune instance du projet, estime en réunion informelle que cette classification sous-estime l'influence réelle de ce responsable et demande qu'elle soit relevée. Qui doit valider un éventuel changement de classification ?",
+    "en": "The stakeholder register classifies an operations manager as having low influence on the project. A director from another division, who does not sit on any project governance body, believes in an informal meeting that this classification underestimates the manager's real influence and asks for it to be raised. Who should validate any change to this classification?"
+   },
+   "options": {
+    "fr": [
+     "Le directeur d'une autre division, puisqu'il a identifié le premier l'écart de classification et qu'il en a informé l'équipe projet.",
+     "La cheffe de projet, en s'appuyant sur une analyse actualisée avec les parties prenantes concernées par le registre.",
+     "Le responsable d'exploitation lui-même, en indiquant le niveau d'influence qu'il estime représenter auprès de la gouvernance.",
+     "Le comité de gouvernance du programme, saisi directement et chargé de statuer en l'absence d'analyse préalable du registre."
+    ],
+    "en": [
+     "The director from another division, since he first identified the classification gap and reported it to the project team.",
+     "The project manager, based on an updated analysis with the stakeholders tied to the register.",
+     "The operations manager himself, by stating to governance the influence level he considers he holds.",
+     "The program governance committee, engaged directly and tasked to rule in the absence of prior analysis of the register."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le directeur qui soulève la question ne siège dans aucune instance du projet : son observation est un signal à examiner, pas une autorité de validation. C'est la cheffe de projet qui tient le registre des parties prenantes et qui doit réévaluer la classification avec les parties concernées avant tout changement. Laisser le directeur d'une autre division, qui a signalé l'écart à l'équipe projet, trancher directement donne autorité sur le registre à quelqu'un qui n'a pas de rôle de gouvernance dans le projet. Laisser le responsable d'exploitation s'auto-évaluer auprès de la gouvernance introduit un biais puisqu'il juge sa propre influence plutôt que des critères analysés. Saisir le comité de gouvernance et le charger de statuer en l'absence d'analyse préalable mobilise une instance supérieure pour une vérification qui peut se faire au niveau de la cheffe de projet.",
+    "en": "The director raising the issue sits on no project governance body: his observation is a signal to examine, not an authority to validate. It is the project manager who maintains the stakeholder register and must reassess the classification with the relevant parties before any change. Letting the director from another division, who reported the gap to the project team, decide directly grants register authority to someone with no governance role in the project. Letting the operations manager self-assess before governance introduces bias, since he would be judging his own influence rather than analyzed criteria. Engaging the governance committee and tasking it to rule in the absence of prior analysis mobilizes a higher body for a check that can be done at the project manager's level."
+   },
+   "decision_atom": "Décider qui a l'autorité de valider un changement de classification d'influence contesté par une personne extérieure à la gouvernance du projet.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le directeur qui conteste la classification ne siège dans aucune instance du projet.",
+   "bascule": "Si le directeur siégeait dans une instance de gouvernance du projet avec autorité sur le registre, il pourrait légitimement trancher.",
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20261014-0811",
+   "release": "qL2-PE4-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20261014-0811-1-04",
+   "enabler": "Optimize alignment among stakeholder needs, expectations, and project objectives.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux services utilisateurs attendent des fonctionnalités légèrement différentes pour le même module livré dans un mois. L'écart concerne uniquement l'ordre d'affichage de certaines options secondaires et n'affecte aucune exigence contractuelle ni aucun objectif du projet. Que doit faire la cheffe de projet en priorité ?",
+    "en": "Two user departments expect slightly different behavior from the same module, due to be delivered in a month. The difference concerns only the display order of certain secondary options and affects no contractual requirement or project objective. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser un atelier de co-conception formel réunissant les deux services et redéfinir avec eux l'ensemble du module.",
+     "Escalader l'écart au comité de pilotage et obtenir son arbitrage avant la poursuite du développement.",
+     "Proposer aux deux services un compromis simple sur l'ordre d'affichage et confirmer son acceptation par courriel.",
+     "Suspendre la livraison du module et attendre qu'un consensus complet soit trouvé entre les deux services."
+    ],
+    "en": [
+     "Organize a formal co-design workshop with both departments and redesign the entire module together with them.",
+     "Escalate the gap to the steering committee and obtain its arbitration before development continues.",
+     "Propose a simple compromise on the display order to both departments and confirm acceptance by email.",
+     "Suspend delivery of the module and wait until full consensus is reached between the two departments."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'écart ne porte que sur l'ordre d'affichage d'options secondaires et n'affecte ni exigence contractuelle ni objectif du projet : un compromis simple, confirmé par écrit, règle le désaccord à la mesure de son enjeu réel. Organiser un atelier de co-conception formel et redéfinir avec les deux services l'ensemble du module mobilise des ressources disproportionnées pour un point mineur. Escalader au comité de pilotage et obtenir son arbitrage sollicite une instance de gouvernance pour un désaccord que la cheffe de projet peut résoudre directement. Suspendre la livraison et attendre un consensus complet fait dépendre un module entier d'un accord total sur un détail d'affichage, ce qui retarde le projet sans justification proportionnée à l'enjeu.",
+    "en": "The gap concerns only the display order of secondary options and affects no contractual requirement or project objective: a simple compromise, confirmed in writing, resolves the disagreement at a scale matching its actual stakes. Organizing a formal co-design workshop and redesigning the whole module together with both departments commits disproportionate resources to a minor point. Escalating to the steering committee and obtaining its arbitration calls on a governance body for a disagreement the project manager can resolve directly. Suspending delivery and waiting for full consensus makes an entire module depend on full agreement over a display detail, delaying the project without justification proportionate to the stakes."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à apporter à un désaccord mineur entre deux services sur un détail d'affichage.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'écart ne touche ni exigence contractuelle ni objectif du projet, seulement l'ordre d'affichage d'options secondaires.",
+   "bascule": "Si l'écart touchait une exigence contractuelle ou un objectif du projet, un atelier formel ou une escalade deviendrait proportionné.",
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20261014-0811",
+   "release": "qL2-PE4-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE4-20261014-0811-1-05",
+   "enabler": "Analyze and tailor communication to stakeholder needs.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une partie prenante va prendre dans deux semaines un nouveau rôle de sponsor adjoint sur le projet, en remplacement d'une personne qui quitte l'organisation. La passation officielle n'est pas encore finalisée et la nouvelle personne n'a pas encore reçu de délégation formelle. Elle demande déjà à recevoir les communications adaptées à un sponsor adjoint. Que doit faire la cheffe de projet en priorité ?",
+    "en": "A stakeholder will take on a new deputy sponsor role on the project in two weeks, replacing someone leaving the organization. The official handover is not yet finalized and the incoming person has not yet received formal delegation. She is already asking to receive communications tailored to a deputy sponsor. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Ajouter immédiatement la future sponsor adjointe à toutes les listes de diffusion réservées à ce rôle et à ses communications associées.",
+     "Refuser toute communication adaptée et reporter tout échange tant que la date de prise de fonction n'est pas atteinte.",
+     "Demander à la personne sortante de continuer à recevoir seule les communications et d'en assurer le suivi jusqu'à son départ.",
+     "Partager dès maintenant un résumé du contexte du projet, en réservant les communications propres au rôle à la délégation formelle."
+    ],
+    "en": [
+     "Immediately add the incoming deputy sponsor to all distribution lists reserved for that role and its associated communications.",
+     "Refuse any tailored communication and postpone any exchange until the effective start date is reached.",
+     "Ask the outgoing person to keep receiving communications alone and to handle the follow-up until her departure.",
+     "Share now a summary of the project context, reserving role-specific communications for the formal delegation."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "La délégation formelle n'est pas encore accordée, mais la prise de fonction est proche et prévisible : partager dès maintenant un résumé du contexte prépare la transition sans donner accès à des communications propres à un rôle qu'elle n'occupe pas encore officiellement. Ajouter immédiatement la future sponsor adjointe aux listes réservées au rôle et à ses communications associées lui donne un accès qui devrait attendre la délégation formelle. Refuser toute communication adaptée et reporter tout échange jusqu'à la date exacte retarde inutilement une mise à niveau qui pourrait commencer sans attendre l'ultime jour. Demander à la personne sortante de continuer seule et d'en assurer le suivi ignore l'occasion de préparer la transition alors que le changement de rôle est déjà connu et proche.",
+    "en": "Formal delegation has not yet been granted, but the transition is close and foreseeable: sharing a context summary now prepares the handover without granting access to communications specific to a role she does not yet officially hold. Immediately adding the incoming deputy sponsor to role-reserved lists and their associated communications grants access that should wait for formal delegation. Refusing any tailored communication and postponing any exchange until the exact date unnecessarily delays an onboarding that could begin before the final day. Asking the outgoing person to continue alone and handle the follow-up misses the opportunity to prepare the transition when the role change is already known and imminent."
+   },
+   "decision_atom": "Décider à quel moment commencer à adapter les communications à une personne dont le changement de rôle est prévu mais pas encore formalisé.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "La délégation formelle n'est pas encore accordée, mais la prise de fonction est prévue dans deux semaines et connue.",
+   "bascule": "Si la délégation formelle avait déjà été accordée, ajouter la personne aux listes réservées au rôle deviendrait justifié.",
+   "task_id": "PE4",
+   "level": 2,
+   "run_id": "20261014-0811",
+   "release": "qL2-PE4-20261014-0811-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
