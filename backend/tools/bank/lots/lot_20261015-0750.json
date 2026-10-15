@@ -1,0 +1,425 @@
+{
+ "run_id": "20261015-0750",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL1-PE1-20261015-0750-1-02",
+   "enabler": "Promote the shared vision.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pour la prochaine réunion trimestrielle des parties prenantes, le chef de projet souhaite présenter une version simplifiée de l'énoncé de vision, plus facile à retenir que la formulation officielle actuelle. Il n'a pas encore recueilli de retour sur cette nouvelle formulation. Que doit-il faire en priorité ?",
+    "en": "For the upcoming quarterly stakeholder meeting, the project manager wants to present a simplified version of the vision statement, easier to remember than the current official wording. He has not yet collected feedback on this new wording. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Présenter la formulation simplifiée comme un essai pour cette réunion, en précisant qu'elle sera ajustée selon les retours reçus.",
+     "Publier la formulation simplifiée dans tous les documents de référence du projet et l'imposer aux équipes dès cette réunion.",
+     "Remplacer définitivement l'énoncé officiel de vision par la formulation simplifiée et l'annoncer avant la réunion.",
+     "Diffuser la formulation simplifiée aux équipes élargies en l'annonçant comme la nouvelle référence officielle du projet."
+    ],
+    "en": [
+     "Present the simplified wording as a trial for this meeting, stating it will be adjusted based on feedback received.",
+     "Publish the simplified wording in all project reference documents and impose it on the teams starting at this meeting.",
+     "Permanently replace the official vision statement with the simplified wording and announce it before the meeting.",
+     "Distribute the simplified wording to the wider teams, announcing it as the project's new official reference."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Aucun retour n'a encore été recueilli sur cette nouvelle formulation : l'introduire comme un essai réversible, ajustable selon l'accueil des parties prenantes, permet de tester son utilité sans l'imposer. Publier la formulation simplifiée dans tous les documents de référence et l'imposer aux équipes dès cette réunion l'ancre dans des supports difficiles à corriger si elle s'avère mal comprise. Remplacer définitivement l'énoncé officiel par la formulation simplifiée et l'annoncer avant même d'avoir un retour revient à figer un choix non testé. Diffuser la formulation aux équipes élargies en l'annonçant comme la nouvelle référence officielle produit le même effet d'irréversibilité, à une échelle plus large encore.",
+    "en": "No feedback has been collected yet on this new wording: introducing it as a reversible trial, adjustable based on stakeholder reception, allows testing its usefulness without imposing it. Publishing the simplified wording in all reference documents and imposing it on the teams starting at this meeting embeds it in materials that are hard to correct if it turns out to be poorly understood. Permanently replacing the official statement with the simplified wording and announcing it before even getting feedback locks in an untested choice. Distributing the wording to the wider teams while announcing it as the new official reference produces the same irreversibility, on an even larger scale."
+   },
+   "decision_atom": "Décider comment introduire une reformulation de la vision non encore testée auprès des parties prenantes.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Aucun retour n'a encore été recueilli sur la nouvelle formulation.",
+   "bascule": "Si la formulation avait déjà été testée et validée par un groupe représentatif, la publier largement deviendrait justifié.",
+   "task_id": "PE1",
+   "level": 1,
+   "run_id": "20261015-0750",
+   "release": "qL1-PE1-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE1-20261015-0750-1-04",
+   "enabler": "Break down situations to identify the root cause of a misunderstanding of the vision.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un nouvel arrivant dans l'équipe interprète un objectif secondaire de la vision d'une manière différente du reste de l'équipe, lors d'une discussion informelle. Aucun autre membre de l'équipe n'a exprimé la même confusion. Que doit faire le chef de projet en priorité ?",
+    "en": "A new team member interprets a secondary objective of the vision differently from the rest of the team, during an informal discussion. No other team member has expressed the same confusion. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser un atelier de réalignement complet sur la vision pour toute l'équipe dès la semaine suivante.",
+     "Transmettre la confusion observée au sponsor en lui demandant de reformuler la vision pour plus de clarté.",
+     "Clarifier individuellement avec le nouvel arrivant le point précis de la vision qui a été mal compris.",
+     "Documenter l'incident observé dans le registre des risques du projet comme un écart de compréhension à surveiller."
+    ],
+    "en": [
+     "Organize a full vision realignment workshop for the entire team starting the following week.",
+     "Forward the observed confusion to the sponsor and ask him to reword the vision for more clarity.",
+     "Clarify individually with the new team member the specific point of the vision that was misunderstood.",
+     "Log the observed incident in the project risk register as a comprehension gap requiring monitoring."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "La confusion vient d'une seule personne récemment arrivée, sur un point secondaire, et aucun autre membre ne la partage : rien n'indique un problème d'ampleur dans l'équipe. Clarifier individuellement avec le nouvel arrivant le point précis mal compris répond à la situation réelle, sans la dramatiser. Organiser un atelier de réalignement complet pour toute l'équipe traite un cas isolé comme s'il était généralisé. Transmettre la confusion observée au sponsor en lui demandant de reformuler la vision fait remonter un malentendu individuel vers une révision qui ne se justifie pas encore. Documenter l'incident observé dans le registre des risques traite une question de compréhension ponctuelle comme une menace à suivre formellement, ce que rien dans la situation ne justifie.",
+    "en": "The confusion comes from a single recently arrived person, concerns a secondary point, and no one else shares it: nothing indicates a wider problem across the team. Clarifying individually with the new team member the specific point that was misunderstood matches the actual situation without overstating it. Organizing a full realignment workshop for the entire team treats an isolated case as if it were widespread. Forwarding the observed confusion to the sponsor and asking him to reword the vision escalates an individual misunderstanding toward a revision that is not yet warranted. Logging the observed incident in the risk register treats a one-off comprehension issue as a threat requiring formal monitoring, which nothing in the situation supports."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à une incompréhension isolée de la vision chez un nouvel arrivant.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Un seul membre, nouvellement arrivé, exprime la confusion ; aucun autre membre ne la partage.",
+   "bascule": "Si plusieurs membres de l'équipe exprimaient la même confusion, un atelier collectif deviendrait justifié.",
+   "task_id": "PE1",
+   "level": 1,
+   "run_id": "20261015-0750",
+   "release": "qL1-PE1-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE1-20261015-0750-1-05",
+   "enabler": "Keep the vision current.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Le chef de projet apprend qu'une réorganisation interne du sponsor est prévue dans deux mois, ce qui pourrait modifier les priorités portées par la vision du projet. Pour l'instant, aucune décision officielle n'a été prise et les priorités actuelles restent valides. Que doit faire le chef de projet en priorité ?",
+    "en": "The project manager learns that an internal reorganization at the sponsor's side is planned in two months, which could change the priorities carried by the project vision. For now, no official decision has been made and current priorities remain valid. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Réviser dès maintenant l'énoncé de vision pour anticiper les priorités probables après la réorganisation annoncée.",
+     "Informer dès à présent l'équipe élargie que la vision du projet va changer en raison de la réorganisation annoncée.",
+     "Suspendre dès maintenant les activités liées aux priorités actuelles, en attendant que la réorganisation soit confirmée.",
+     "Continuer selon la vision actuelle tout en surveillant l'avancement de la réorganisation annoncée."
+    ],
+    "en": [
+     "Revise the vision statement now to anticipate the likely priorities after the announced reorganization.",
+     "Inform the wider team now that the project vision will change because of the announced reorganization.",
+     "Suspend activities tied to current priorities now, while waiting for the reorganization to be confirmed.",
+     "Continue according to the current vision while monitoring progress of the announced reorganization."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Aucune décision officielle n'a encore été prise et les priorités actuelles restent valides : rien ne justifie d'agir avant qu'un changement concret ne survienne. Continuer selon la vision actuelle tout en surveillant l'avancement de la réorganisation permet de rester prêt sans agir prématurément. Réviser dès maintenant l'énoncé de vision pour anticiper les priorités probables anticipe des priorités qui ne sont pas encore arrêtées. Informer dès à présent l'équipe élargie que la vision va changer annonce comme certain un changement qui n'est encore qu'une possibilité. Suspendre dès maintenant les activités liées aux priorités actuelles revient à payer le coût d'un changement qui n'a pas eu lieu.",
+    "en": "No official decision has been made yet and current priorities remain valid: nothing justifies acting before a concrete change occurs. Continuing according to the current vision while monitoring the reorganization's progress keeps the team ready without acting prematurely. Revising the vision statement now to anticipate likely priorities anticipates priorities that have not yet been settled. Informing the wider team now that the vision will change announces as certain something that is still only a possibility. Suspending activities tied to current priorities now means paying the cost of a change that has not happened."
+   },
+   "decision_atom": "Décider s'il faut réviser la vision en anticipation d'un changement organisationnel pas encore confirmé.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Aucune décision officielle de réorganisation n'a été prise ; les priorités actuelles restent valides.",
+   "bascule": "Si la réorganisation et ses nouvelles priorités étaient déjà officiellement actées, réviser la vision dès maintenant deviendrait juste.",
+   "task_id": "PE1",
+   "level": 1,
+   "run_id": "20261015-0750",
+   "release": "qL1-PE1-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20261015-0750-1-01",
+   "enabler": "Monitor internal and external customer satisfaction/expectations and respond as needed.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet reçoit, via un membre de son équipe, l'écho d'un commentaire que le client aurait fait à un tiers, selon lequel le projet « commence à prendre du retard sur ses priorités ». Le client n'a transmis aucune communication directe à ce sujet, et aucun indicateur de suivi ne signale d'écart. Que doit faire le chef de projet en priorité ?",
+    "en": "A project manager learns, through a team member, of a comment the client reportedly made to a third party, suggesting the project is \"starting to fall behind on its priorities.\" The client has sent no direct communication on the matter, and no tracking indicator shows a deviation. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Organiser un point direct avec le client pour confirmer l'information à la source.",
+     "Ajuster le plan de communication pour renforcer, auprès du client concerné, la fréquence des points d'avancement sur le projet.",
+     "Demander au membre de l'équipe de documenter précisément le contexte dans lequel le commentaire a été rapporté.",
+     "Transmettre immédiatement l'information au sponsor en signalant un risque de satisfaction client à surveiller."
+    ],
+    "en": [
+     "Set up a direct conversation with the client to confirm the information at the source.",
+     "Adjust the communication plan to increase the frequency of progress updates, and extend this change to the client in question.",
+     "Ask the team member to document the context, and record precisely how the comment was reported to them.",
+     "Immediately forward the information to the sponsor, flagging a client satisfaction risk to monitor."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le commentaire rapporté par un tiers n'est ni confirmé ni directement communiqué par le client, et aucun indicateur ne corrobore un écart réel. Organiser un point direct avec le client est la seule action qui vérifie le fait à la source avant d'engager quoi que ce soit : c'est la bonne priorité. Ajuster le plan de communication en renforçant la fréquence des points avec le client revient à modifier un processus établi sur la base d'une rumeur non vérifiée, ce qui est prématuré. Documenter le contexte du commentaire et la façon dont il a été rapporté traite le problème comme une question de traçabilité interne alors que le sujet est la perception du client, pas la fiabilité du témoin. Transmettre au sponsor fait remonter formellement un signal qui n'a pas encore été confirmé, ce qui escalade un problème qui n'existe peut-être pas.",
+    "en": "The comment relayed by a third party is neither confirmed nor communicated directly by the client, and no indicator supports a real deviation. Setting up a direct conversation with the client is the only action that verifies the fact at the source before committing to anything, making it the right priority. Adjusting the communication plan by increasing update frequency and extending it to the client in question changes an established process based on an unverified rumor, which is premature. Documenting the context and precisely how the comment was reported treats this as an internal traceability issue when the real subject is the client's perception, not the witness's reliability. Forwarding the information to the sponsor formally escalates a signal that has not yet been confirmed, raising an issue that may not exist."
+   },
+   "decision_atom": "Décider s'il faut escalader ou documenter un commentaire client rapporté indirectement, ou vérifier d'abord son origine.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le commentaire provient d'un tiers rapporté par un membre d'équipe, pas d'une communication directe du client, et aucun indicateur ne confirme un écart.",
+   "bascule": "Si le client avait exprimé ce mécontentement directement au chef de projet, escalader au sponsor deviendrait une réponse défendable.",
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20261015-0750",
+   "release": "qL2-PE6-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE6-20261015-0750-1-03",
+   "enabler": "Identify internal and external customer expectations.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit documenter les attentes d'un client externe pour un livrable clé. Un responsable commercial, qui n'est pas partie prenante désignée du projet, propose de rédiger lui-même la liste des attentes à partir de ses échanges passés avec ce client. Que doit faire le chef de projet ?",
+    "en": "A project manager needs to document an external client's expectations for a key deliverable. A sales manager, who is not a designated stakeholder of the project, offers to draft the list of expectations himself based on his past exchanges with the client. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la proposition du responsable commercial et intégrer directement, sans vérification supplémentaire, sa liste dans la documentation du projet.",
+     "Organiser avec le client un échange direct pour confirmer et documenter ses attentes, en s'appuyant sur les informations du responsable commercial.",
+     "Demander au sponsor du projet de valider, en premier lieu, la liste des attentes proposée par le responsable commercial lui-même.",
+     "Inviter le responsable commercial à rejoindre officiellement la gouvernance du projet, avant même de recueillir les attentes du client."
+    ],
+    "en": [
+     "Accept the sales manager's proposal and incorporate his list directly into the project documentation, without further verification.",
+     "Arrange a direct exchange with the client to confirm and document their expectations, drawing on the sales manager's input.",
+     "Ask the project sponsor to first approve the list of expectations proposed by the sales manager himself.",
+     "Invite the sales manager to formally join the project governance, even before gathering the client's own expectations."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le responsable commercial n'est pas partie prenante désignée du projet et ses échanges passés avec le client ne remplacent pas une attente formellement établie pour ce projet précis. L'autorité de documenter les attentes du client appartient au chef de projet, en lien direct avec le client ; les informations du responsable commercial peuvent servir de point de départ utile, mais doivent être confirmées à la source. Accepter directement la liste du responsable commercial sans vérification supplémentaire revient à fonder la documentation du projet sur une source secondaire sans validation du principal intéressé. Faire valider par le sponsor une liste encore non confirmée par le client ne résout pas le problème de fond, qui est l'absence de contact direct. Intégrer le responsable commercial à la gouvernance avant même de recueillir les attentes du client ajoute une étape organisationnelle sans rapport avec le besoin immédiat.",
+    "en": "The sales manager is not a designated stakeholder of the project, and his past exchanges with the client do not substitute for an expectation formally established for this specific project. The authority to document client expectations belongs to the project manager, working directly with the client; the sales manager's input can be a useful starting point but must be confirmed at the source. Accepting the sales manager's list directly without further verification bases project documentation on a secondary source without validation from the primary party. Having the sponsor approve a list not yet confirmed by the client does not address the underlying problem, which is the absence of direct contact. Bringing the sales manager into governance before even gathering the client's own expectations adds an organizational step unrelated to the immediate need."
+   },
+   "decision_atom": "Décider qui a l'autorité et la légitimité de documenter les attentes d'un client : une source interne indirecte ou le client lui-même.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le responsable commercial n'est pas partie prenante désignée du projet ; ses échanges sont passés et non spécifiques au projet actuel.",
+   "bascule": "Si le responsable commercial était une partie prenante désignée du projet avec un mandat explicite de recueil des attentes, sa liste pourrait être acceptée directement.",
+   "task_id": "PE6",
+   "level": 2,
+   "run_id": "20261015-0750",
+   "release": "qL2-PE6-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE7-20261015-0750-2-02",
+   "enabler": "Gather knowledge.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Pendant un atelier de collecte de connaissances avec trois équipes fournisseurs, deux équipes partagent ouvertement leurs méthodes, tandis que la troisième, dont les retards passés sont connus du chef de projet, ne communique que des généralités malgré des relances directes. Le chef de projet doit décider de la suite à donner avant la fin de l'atelier. Le manager de cette troisième équipe fournisseur n'a pas été associé à l'organisation de l'atelier. Que doit faire le chef de projet ?",
+    "en": "During a knowledge-gathering workshop with three supplier teams, two teams share their methods openly, while the third, whose past delays are known to the project manager, offers only generalities despite direct follow-up questions. The project manager must decide what to do before the workshop ends. This third supplier team's manager was not involved in organizing the workshop. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Clore l'atelier comme prévu et noter l'écart dans le compte-rendu, pour traitement à la prochaine revue de performance fournisseur.",
+     "Solliciter en aparté le manager de cette équipe fournisseur pour comprendre ce qui freine le partage avant la fin de l'atelier.",
+     "Demander publiquement à l'équipe fournisseur concernée de détailler ses méthodes devant les deux autres équipes présentes.",
+     "Inscrire une clause contractuelle de partage obligatoire de connaissances pour le prochain cycle d'engagement avec ce fournisseur."
+    ],
+    "en": [
+     "Close the workshop as planned and note the gap in the minutes, for handling at the next supplier performance review.",
+     "Privately approach this supplier team's manager to understand what is limiting the sharing before the workshop ends.",
+     "Publicly ask the supplier team in question to detail its methods in front of the two other teams present.",
+     "Write a mandatory knowledge-sharing clause into the contract for the next engagement cycle with this supplier."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le manager de cette équipe n'ayant pas été associé à l'organisation de l'atelier, il est probable que le blocage vienne d'un manque de cadrage plutôt que d'une mauvaise volonté : solliciter ce manager en aparté, pendant que l'atelier se poursuit, permet de lever l'obstacle au bon niveau et au bon moment, sans attendre un cycle de revue plus tardif ni court-circuiter la relation. Clore l'atelier et reporter le sujet à la revue de performance traite un problème immédiat comme s'il pouvait attendre, alors que l'occasion de récupérer l'information se referme avec l'atelier. Demander publiquement des précisions devant les deux autres équipes risque de braquer une équipe déjà en difficulté, sans garantir que l'origine du blocage soit résolue. Ajouter une clause contractuelle pour le prochain cycle répond à un besoin futur, mais n'apporte rien à la collecte en cours et suppose un problème structurel qui n'a pas encore été diagnostiqué.",
+    "en": "Since this team's manager was not involved in organizing the workshop, the lack of sharing is more likely due to missing context than reluctance: approaching the manager privately, while the workshop continues, addresses the obstacle at the right level and at the right time, without waiting for a later review cycle or bypassing the relationship. Closing the workshop and deferring the matter to the performance review treats an immediate problem as if it could wait, while the opportunity to recover the information closes with the workshop. Publicly asking for details in front of the other two teams risks putting an already struggling team on the defensive, without ensuring the root cause is resolved. Adding a contractual clause for the next cycle addresses a future need but does nothing for the current collection effort and assumes a structural problem that has not yet been diagnosed."
+   },
+   "decision_atom": "Décider comment réagir, pendant l'atelier, au silence relatif d'une équipe fournisseur sur ses méthodes, sachant que son manager n'a pas été associé à l'organisation.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "Le manager de l'équipe peu loquace n'a pas été associé à l'organisation de l'atelier, ce qui pointe vers un défaut de cadrage plutôt qu'un refus.",
+   "bascule": "Si le manager avait déjà été consulté et avait refusé explicitement de participer, reporter le sujet à la revue deviendrait défendable.",
+   "task_id": "PE7",
+   "level": 3,
+   "run_id": "20261015-0750",
+   "release": "qL3-PE7-20261015-0750-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE7-20261015-0750-2-05",
+   "enabler": "Foster an environment for knowledge transfer.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors d'une session de partage de connaissances, un membre junior de l'équipe pose une question jugée élémentaire par deux collègues plus expérimentés, qui échangent un bref regard amusé sans commentaire audible. Le membre junior termine néanmoins sa question et obtient une réponse complète de l'animateur. C'est la première fois qu'un tel échange de regards est observé par le chef de projet pendant ces sessions. Que doit faire le chef de projet ?",
+    "en": "During a knowledge-sharing session, a junior team member asks a question that two more experienced colleagues consider elementary, exchanging a brief amused glance without audible comment. The junior member nevertheless finishes the question and receives a full answer from the facilitator. This is the first time the project manager has observed such an exchange of glances during these sessions. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Continuer d'observer les sessions suivantes pour voir si ce type de réaction se reproduit avant d'envisager une intervention.",
+     "Rappeler publiquement, en fin de session, les règles de respect attendues entre participants lors du partage de connaissances.",
+     "Organiser un entretien individuel avec les deux collègues concernés pour clarifier l'attitude attendue en session de partage.",
+     "Modifier le format des sessions pour permettre aux questions d'être posées de façon anonyme plutôt qu'à voix haute."
+    ],
+    "en": [
+     "Continue observing the following sessions to see if this kind of reaction recurs before considering any intervention.",
+     "Publicly remind participants, at the end of the session, of the expected standards of respect during knowledge-sharing.",
+     "Hold an individual conversation with the two colleagues involved to clarify the attitude expected during sharing sessions.",
+     "Change the session format to allow questions to be submitted anonymously instead of asked aloud."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Il s'agit d'un échange de regards bref, sans commentaire audible, observé pour la première fois, et la question du membre junior a reçu une réponse complète sans incident visible : les faits ne justifient pas encore une intervention, et continuer d'observer permet de vérifier s'il s'agit d'un épisode isolé ou d'un schéma qui se répète, avant d'agir. Rappeler publiquement les règles de respect en fin de session traite un épisode mineur et non confirmé comme un problème établi, ce qui risque de braquer l'ensemble du groupe sur un incident que peu auront même remarqué. Organiser un entretien individuel avec les deux collègues engage une démarche correctrice formelle pour un geste isolé et ambigu, disproportionnée tant qu'aucune récurrence n'est constatée. Modifier le format des sessions pour rendre les questions anonymes est un changement structurel durable, décidé à partir d'un seul épisode mineur, alors que rien n'indique encore que le problème soit structurel.",
+    "en": "This was a brief exchange of glances, with no audible comment, observed for the first time, and the junior member's question received a full answer with no visible incident: the facts do not yet justify intervention, and continuing to observe makes it possible to check whether this is an isolated episode or a recurring pattern before acting. Publicly reminding participants of respect standards at the end of the session treats a minor, unconfirmed episode as an established problem, risking putting the whole group on edge over an incident few may have even noticed. Holding an individual conversation with the two colleagues launches a formal corrective step over an isolated and ambiguous gesture, disproportionate while no recurrence has been observed. Changing the session format to make questions anonymous is a lasting structural change, decided from a single minor episode, when nothing yet indicates the problem is structural."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à un bref échange de regards amusé lors d'une question jugée élémentaire, observé pour la première fois.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'échange de regards est bref, sans commentaire audible, observé pour la première fois, et la question a reçu une réponse complète sans incident visible.",
+   "bascule": "Si ce type d'échange de regards se répétait sur plusieurs sessions, un rappel public ou un entretien individuel deviendrait justifié.",
+   "task_id": "PE7",
+   "level": 3,
+   "run_id": "20261015-0750",
+   "release": "qL3-PE7-20261015-0750-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-PE8-20261015-0750-2-02",
+   "enabler": "Support reporting and governance processes.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un rapport de gouvernance mensuel doit inclure une évaluation des risques majeurs du projet. L'analyste chargé de produire le rapport remarque que la liste des risques fournie par le registre n'a pas été mise à jour depuis six semaines, alors que le propriétaire du registre est le responsable des risques, distinct de lui. Que doit-il faire en priorité ?",
+    "en": "A monthly governance report must include an assessment of the project's major risks. The analyst producing the report notices that the risk list from the register has not been updated in six weeks, even though the register owner is the risk manager, a different person from him. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander au responsable des risques de mettre à jour le registre avant d'intégrer les données dans le rapport.",
+     "Mettre à jour lui-même le registre à partir des informations dont il dispose pour respecter le calendrier du rapport.",
+     "Publier le rapport en signalant l'ancienneté du registre.",
+     "Retirer la section sur les risques majeurs du rapport."
+    ],
+    "en": [
+     "Ask the risk manager to update the register before incorporating the data into the report.",
+     "Update the register himself using the information he has available to meet the report's schedule.",
+     "Publish the report flagging the register's age.",
+     "Remove the major risks section from the report."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le registre des risques appartient au responsable des risques, et non à l'analyste : la mise à jour relève de son rôle, et la demander avant d'intégrer les données respecte cette répartition tout en traitant le problème à la source. Mettre à jour le registre lui-même outrepasse son rôle et crée une donnée dont il n'a pas la responsabilité normale. Publier en signalant l'ancienneté du registre contourne le problème de fond sans le résoudre. Retirer la section sur les risques majeurs prive la gouvernance d'une information essentielle alors qu'une simple sollicitation du bon interlocuteur suffit à la rétablir.",
+    "en": "The risk register belongs to the risk manager, not the analyst: updating it is his role, and asking for that update before incorporating the data respects this division of responsibility while addressing the issue at its source. Updating the register himself oversteps his role and creates data he is not normally responsible for. Publishing while flagging the register's age sidesteps the underlying problem without resolving it. Removing the major risks section deprives governance of essential information when simply asking the right person could restore it."
+   },
+   "decision_atom": "Décider qui doit mettre à jour une donnée de gouvernance obsolète avant son intégration dans un rapport.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le registre des risques appartient formellement au responsable des risques, une personne distincte de l'analyste qui produit le rapport.",
+   "bascule": "Si l'analyste était lui-même le propriétaire désigné du registre des risques, le mettre à jour lui-même deviendrait la bonne réponse.",
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20261015-0750",
+   "release": "qL2-PE8-20261015-0750-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE8-20261015-0750-2-04",
+   "enabler": "Define a communication strategy.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit définir la stratégie de communication pour un programme impliquant trois équipes dans des fuseaux horaires différents. Il a déjà identifié les parties prenantes et leurs préférences générales, mais n'a pas encore déterminé quels canaux conviennent à quels types de messages. Par quelle étape doit-il commencer ?",
+    "en": "A project manager must define the communication strategy for a program involving three teams across different time zones. He has already identified the stakeholders and their general preferences, but has not yet determined which channels suit which types of messages. Which step should he start with?"
+   },
+   "options": {
+    "fr": [
+     "Organiser une réunion de lancement avec les trois équipes du programme, pour présenter le calendrier global.",
+     "Demander à chaque équipe du programme de proposer son propre canal préféré pour les échanges courants.",
+     "Classer les types de messages du programme par urgence et par audience avant de choisir les canaux associés.",
+     "Déployer un outil de messagerie unique pour standardiser immédiatement les échanges entre équipes."
+    ],
+    "en": [
+     "Organize a kickoff meeting with the program's three teams, to present the overall schedule.",
+     "Ask each of the program's teams to propose its own preferred channel for routine exchanges.",
+     "Classify the program's message types by urgency and audience before selecting the associated channels.",
+     "Roll out a single messaging tool to immediately standardize exchanges across teams."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les préférences des parties prenantes sont connues mais le lien entre types de messages et canaux ne l'est pas encore : classer les messages par urgence et par audience fournit la base nécessaire pour choisir des canaux adaptés, plutôt que de les choisir à l'aveugle. Organiser une réunion de lancement avec les trois équipes du programme, pour présenter le calendrier global, traite un aspect de communication sans construire la logique qui reliera message et canal. Demander à chaque équipe du programme son canal préféré pour les échanges courants fragmente la stratégie avant même qu'un cadre commun existe. Déployer un outil unique pour standardiser immédiatement les échanges entre équipes fixe une solution avant d'avoir analysé quels messages l'exigent réellement.",
+    "en": "Stakeholder preferences are known, but the link between message types and channels is not yet: classifying messages by urgency and audience provides the foundation needed to choose suitable channels, rather than choosing them blindly. Organizing a kickoff meeting with the program's three teams, to present the overall schedule, addresses one aspect of communication without building the logic that will connect message to channel. Asking each of the program's teams for its preferred channel for routine exchanges fragments the strategy before any common framework exists. Rolling out a single tool to immediately standardize exchanges across teams locks in a solution before analyzing which messages actually require it."
+   },
+   "decision_atom": "Décider par quelle étape commencer la définition des canaux de communication quand les préférences des parties prenantes sont connues mais pas encore reliées aux types de messages.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Les parties prenantes et leurs préférences sont déjà identifiées, mais aucun lien n'a encore été établi entre types de messages et canaux appropriés.",
+   "bascule": "Si l'analyse des types de messages avait déjà été faite, déployer un outil unique immédiatement deviendrait une étape défendable.",
+   "task_id": "PE8",
+   "level": 2,
+   "run_id": "20261015-0750",
+   "release": "qL2-PE8-20261015-0750-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20261015-0750-1-01",
+   "enabler": "Define scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet relit l'énoncé de contenu avant diffusion et remarque une formulation imprécise sur un critère esthétique mineur d'un livrable secondaire, sans incidence sur les fonctionnalités ni sur les coûts. Le même document contient par ailleurs une description claire et complète de tous les livrables principaux. Que doit-il faire en priorité ?",
+    "en": "A project manager reviews the scope statement before distribution and notices an imprecise wording about a minor aesthetic criterion for a secondary deliverable, with no impact on functionality or cost. The same document otherwise contains a clear and complete description of all primary deliverables. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Corriger la formulation dans le document avant diffusion et signaler le changement mineur dans le message d'envoi.",
+     "Convoquer une session de clarification du contenu avec l'ensemble des parties prenantes et recueillir leurs avis sur cette formulation.",
+     "Transmettre le document aux parties prenantes et demander une validation complète de chaque critère énoncé dans le texte.",
+     "Suspendre la diffusion du document et attendre qu'un atelier de reformulation complète soit organisé avec l'équipe."
+    ],
+    "en": [
+     "Correct the wording in the document before distribution and flag the minor change in the cover message.",
+     "Convene a scope clarification session with all stakeholders and gather their input on this wording.",
+     "Send the document to stakeholders and request full validation of every criterion stated in the text.",
+     "Hold the document's distribution and wait until a full rewording workshop is organized with the team."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'écart constaté est mineur, circonscrit à un critère esthétique d'un livrable secondaire, sans conséquence sur les fonctionnalités ni sur les coûts : il peut être corrigé directement et signalé dans le message d'envoi, ce qui maintient la transparence sans alourdir le processus. Convoquer une session de clarification avec toutes les parties prenantes et recueillir leurs avis sur cette formulation mobilise un effort disproportionné pour un point qui ne requiert pas de débat collectif. Transmettre le document et demander une validation complète de chaque critère énoncé dans le texte revient à traiter l'ensemble du document comme suspect alors qu'une seule formulation pose problème. Suspendre la diffusion et attendre qu'un atelier complet soit organisé avec l'équipe retarde la transmission d'un contenu par ailleurs clair et complet pour un défaut localisé qui ne le justifie pas.",
+    "en": "The gap identified is minor, limited to an aesthetic criterion of a secondary deliverable, with no effect on functionality or cost: it can be corrected directly and flagged in the cover message, preserving transparency without adding process weight. Convening a clarification session with all stakeholders and gathering their input on this wording mobilizes disproportionate effort for a point that does not require collective debate. Sending the document and requesting full validation of every criterion stated in the text treats the entire document as suspect when only one wording is at issue. Holding distribution and waiting until a full rewording workshop is organized with the team delays transmission of an otherwise clear and complete document over a localized flaw that does not warrant it."
+   },
+   "decision_atom": "Décider de l'ampleur du processus de correction face à une imprécision mineure dans l'énoncé de contenu.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'imprécision porte sur un critère esthétique mineur d'un livrable secondaire, sans incidence sur fonctionnalités ni coûts, dans un document par ailleurs clair et complet.",
+   "bascule": "Si l'imprécision touchait un livrable principal avec incidence sur les coûts ou les fonctionnalités, la session de clarification deviendrait justifiée.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20261015-0750",
+   "release": "qL2-PR2-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR2-20261015-0750-1-03",
+   "enabler": "Obtain stakeholder agreement on project scope.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Le directeur métier habituellement chargé d'approuver le périmètre du projet est en congé prolongé. Son adjoint, qui participe activement aux ateliers depuis le début, se propose de signer l'accord de périmètre à sa place pour respecter l'échéance de validation. Aucune délégation écrite n'a été établie entre les deux personnes pour cette décision. Que doit faire le chef de projet en priorité ?",
+    "en": "The business director usually responsible for approving the project scope is on extended leave. His deputy, who has actively participated in the workshops from the start, offers to sign the scope agreement in his place to meet the validation deadline. No written delegation has been established between the two people for this decision. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Accepter la signature de l'adjoint, car sa participation active aux ateliers atteste sa connaissance du périmètre du projet.",
+     "Reporter toute signature jusqu'au retour du directeur métier, sans égard pour la durée de son absence prolongée.",
+     "Vérifier auprès de l'organisation si l'adjoint détient l'autorité de délégation requise avant d'accepter sa signature.",
+     "Demander au sponsor du projet de signer directement l'accord de périmètre à la place du directeur métier absent."
+    ],
+    "en": [
+     "Accept the deputy's signature, as his active participation in the workshops demonstrates his knowledge of the project scope.",
+     "Postpone any signature until the business director returns, regardless of how long his extended absence lasts.",
+     "Check with the organization whether the deputy holds the required delegation authority before accepting his signature.",
+     "Ask the project sponsor to sign the scope agreement directly in place of the absent business director."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Aucune délégation écrite n'existe entre le directeur métier et son adjoint pour cette décision précise : la familiarité de l'adjoint avec le contenu des ateliers ne lui confère pas l'autorité d'engager son organisation sur le périmètre. Accepter sa signature car sa participation active atteste sa connaissance du périmètre du projet substitue une connaissance du sujet à un pouvoir de décision qui ne lui a pas été conféré. Reporter toute signature jusqu'au retour du directeur, sans égard pour la durée de son absence prolongée, bloque inutilement le projet si une telle autorité peut être confirmée rapidement ailleurs dans l'organisation. Demander au sponsor de signer à la place du directeur métier absent déplace l'approbation vers une instance qui n'a pas la responsabilité métier de ce périmètre.",
+    "en": "No written delegation exists between the business director and his deputy for this specific decision: the deputy's familiarity with the workshop content does not grant him the authority to commit his organization on scope. Accepting his signature because his active participation demonstrates his knowledge of the project scope substitutes subject-matter familiarity for a decision-making power he has not been granted. Postponing any signature until the director's return, regardless of how long his extended absence lasts, needlessly blocks the project if such authority can be confirmed quickly elsewhere in the organization. Asking the sponsor to sign in place of the absent business director shifts approval to a body that does not hold business responsibility for this scope."
+   },
+   "decision_atom": "Décider qui a l'autorité de signer l'accord de périmètre quand le titulaire habituel est absent et qu'un délégué se propose spontanément.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Aucune délégation écrite n'a été établie entre le titulaire et l'adjoint pour cette décision précise.",
+   "bascule": "Si une délégation écrite existait déjà entre le directeur et son adjoint pour ce type de décision, accepter sa signature deviendrait la réponse correcte.",
+   "task_id": "PR2",
+   "level": 2,
+   "run_id": "20261015-0750",
+   "release": "qL2-PR2-20261015-0750-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
