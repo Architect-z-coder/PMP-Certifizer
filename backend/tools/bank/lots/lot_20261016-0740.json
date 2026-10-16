@@ -1,0 +1,273 @@
+{
+ "run_id": "20261016-0740",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL1-PR4-20261016-0740-2-01",
+   "enabler": "Define and plan resources based on requirements.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Une cheffe de projet prépare le plan de ressources pour un livrable technique. L'équipe de conception a identifié les grandes fonctions à développer, mais les spécifications détaillées des composants ne seront finalisées que dans trois semaines. Un fournisseur propose de réserver dès maintenant un lot de matériel spécialisé correspondant aux fonctions connues. Que doit faire la cheffe de projet ?",
+    "en": "A project manager is preparing the resource plan for a technical deliverable. The design team has identified the main functions to be built, but detailed component specifications will not be finalized for three more weeks. A supplier offers to reserve specialized equipment now, matching the known functions. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Confirmer la réservation du matériel proposé auprès du fournisseur, puisque les fonctions principales sont déjà connues de l'équipe de conception.",
+     "Demander au fournisseur un devis détaillé pour chaque fonction identifiée, puis comparer les options disponibles avant toute décision.",
+     "Informer le sponsor de l'offre du fournisseur et lui demander de valider le calendrier d'achat du matériel spécialisé.",
+     "Attendre la finalisation des spécifications détaillées avant de déterminer la quantité et le type de matériel à réserver."
+    ],
+    "en": [
+     "Confirm the reservation of the proposed equipment with the supplier, since the main functions are already known to the design team.",
+     "Ask the supplier for a detailed quote for each identified function, then compare the available options before any decision.",
+     "Inform the sponsor of the supplier's offer and ask them to approve the purchase schedule for the specialized equipment.",
+     "Wait for the detailed specifications to be finalized before determining the quantity and type of equipment to reserve."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Les spécifications détaillées des composants ne sont pas encore connues : réserver maintenant, sur la seule base des fonctions générales, risque de figer un choix de matériel inadapté une fois les détails arrêtés. Attendre la finalisation des spécifications permet de définir précisément la quantité et le type de matériel réellement nécessaires. Confirmer la réservation auprès du fournisseur dès maintenant anticipe une décision sur une base encore incomplète. Demander un devis détaillé par fonction puis comparer les options ne résout pas le problème : les fonctions elles-mêmes ne sont pas encore stabilisées au niveau des composants. Informer le sponsor et lui demander de valider le calendrier d'achat déplace la décision vers une approbation de calendrier, alors que le vrai sujet est le manque d'information technique, pas une question de gouvernance.",
+    "en": "The detailed component specifications are not yet known: reserving equipment now, based only on general functions, risks locking in a choice of equipment that may not fit once details are set. Waiting for the specifications to be finalized allows the quantity and type of equipment actually needed to be defined precisely. Confirming the reservation with the supplier now commits to a decision on an incomplete basis. Requesting a detailed quote per function and then comparing the options does not solve the problem: the functions themselves are not yet stabilized at the component level. Informing the sponsor and asking them to approve the purchase schedule shifts the decision toward schedule approval, when the real issue is a lack of technical information, not a governance matter."
+   },
+   "decision_atom": "Décider si l'on réserve du matériel spécialisé dès que les fonctions générales sont connues ou si l'on attend les spécifications détaillées des composants.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Les spécifications détaillées des composants ne seront finalisées que dans trois semaines ; seules les grandes fonctions sont connues.",
+   "bascule": "Si les spécifications détaillées des composants étaient déjà finalisées, réserver immédiatement deviendrait la bonne décision.",
+   "task_id": "PR4",
+   "level": 1,
+   "run_id": "20261016-0740",
+   "release": "qL1-PR4-20261016-0740-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR5-20261016-0740-1-01",
+   "enabler": "Manage suppliers and contracts.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un fournisseur signale une rupture ponctuelle d'approvisionnement chez l'un de ses propres sous-traitants, susceptible de retarder une livraison intermédiaire. Le contrat prévoit que le fournisseur gère ses propres sous-traitants. Que doit faire le chef de projet ?",
+    "en": "A vendor reports a one-time supply disruption at one of its own subcontractors, which may delay an intermediate delivery. The contract specifies that the vendor manages its own subcontractors. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Contacter directement le sous-traitant du fournisseur et lui demander un plan de remise à niveau.",
+     "Demander au service achats de renégocier la clause de sous-traitance et de la finaliser avant la prochaine livraison.",
+     "Demander au fournisseur son plan de mitigation, puisque le contrat le rend responsable de ses sous-traitants.",
+     "Transmettre l'information au sponsor et le laisser décider de l'action à mener avec le fournisseur."
+    ],
+    "en": [
+     "Contact the vendor's subcontractor directly and ask them for a recovery plan.",
+     "Ask the procurement department to renegotiate the subcontracting clause and finalize it before the next delivery.",
+     "Request the vendor's mitigation plan, since the contract holds it responsible for its subcontractors.",
+     "Forward the information to the sponsor and let them decide on the action to take with the vendor."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le contrat place la gestion des sous-traitants sous la responsabilité du fournisseur : c'est donc à lui de produire un plan de mitigation, et au chef de projet de l'exiger de son interlocuteur contractuel. Contacter directement le sous-traitant et lui demander un plan contourne cette chaîne de responsabilité que le contrat établit. Renégocier la clause de sous-traitance et la finaliser est disproportionné face à un incident ponctuel et ne relève pas de l'urgence immédiate. Transmettre au sponsor et le laisser décider fait remonter une décision que le chef de projet a l'autorité et la responsabilité de traiter lui-même avec le fournisseur.",
+    "en": "The contract places subcontractor management under the vendor's responsibility, so it is the vendor who must produce a mitigation plan, and the project manager who must request it through the contractual relationship. Contacting the subcontractor directly and asking them for a plan bypasses the chain of responsibility the contract establishes. Renegotiating the subcontracting clause and finalizing it is disproportionate for a one-time incident and is not urgent. Forwarding the matter to the sponsor and letting them decide escalates a decision the project manager has both the authority and the responsibility to handle directly with the vendor."
+   },
+   "decision_atom": "Décider qui doit produire le plan de réponse à une perturbation ponctuelle chez un sous-traitant du fournisseur.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le contrat stipule explicitement que le fournisseur gère ses propres sous-traitants.",
+   "bascule": "Si le contrat autorisait un contact direct avec les sous-traitants en cas d'incident, contacter directement deviendrait défendable.",
+   "task_id": "PR5",
+   "level": 1,
+   "run_id": "20261016-0740",
+   "release": "qL1-PR5-20261016-0740-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR5-20261016-0740-1-05",
+   "enabler": "Select preferred contract types.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pour un composant dont les spécifications techniques sont encore susceptibles d'évoluer en cours de réalisation, l'équipe d'achats hésite entre deux types de contrats. L'un fixe un prix global dès la signature, l'autre permet d'ajuster le périmètre au fil des découvertes techniques. Quel critère doit guider le choix ?",
+    "en": "For a component whose technical specifications may still evolve during execution, the procurement team is deciding between two contract types. One fixes an overall price at signature, the other allows scope to be adjusted as technical discoveries emerge. What criterion should guide the choice?"
+   },
+   "options": {
+    "fr": [
+     "La rapidité avec laquelle le contrat peut être signé pour ne pas retarder le démarrage.",
+     "La facilité de négociation du prix final du contrat avec le fournisseur pressenti pour la mission.",
+     "La capacité du contrat à absorber des ajustements de périmètre sans tout renégocier.",
+     "La réputation du fournisseur sur des projets comparables déjà livrés dans le même secteur."
+    ],
+    "en": [
+     "How quickly the contract can be signed so as not to delay the start of work.",
+     "How easily the final contract price can be negotiated with the vendor preferred for the assignment.",
+     "The contract's ability to absorb scope adjustments without renegotiating everything.",
+     "The vendor's reputation on comparable projects already delivered in the same sector."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les spécifications techniques peuvent encore évoluer : le critère déterminant est donc la capacité du contrat à s'adapter à ces ajustements sans devoir tout renégocier à chaque changement. La rapidité de signature ne tient pas compte du risque d'évolution du périmètre une fois le contrat figé. La facilité de négociation du prix final du contrat avec le fournisseur pressenti porte sur la conclusion de l'accord, pas sur sa capacité à encaisser des changements ultérieurs. La réputation du fournisseur sur des projets comparables déjà livrés dans le même secteur est une information utile ailleurs, mais ne détermine pas quel type de contrat convient à une incertitude de périmètre.",
+    "en": "The technical specifications may still evolve, so the determining criterion is the contract's ability to accommodate these adjustments without requiring a full renegotiation each time. Speed of signing ignores the risk of scope evolution once the contract is locked in. Ease of negotiating the final contract price with the preferred vendor concerns closing the deal, not its ability to absorb later changes. The vendor's reputation on comparable projects already delivered in the same sector is useful information elsewhere, but it does not determine which contract type suits scope uncertainty."
+   },
+   "decision_atom": "Décider du critère déterminant pour choisir un type de contrat quand le périmètre technique est encore susceptible d'évoluer.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les spécifications techniques du composant sont encore susceptibles d'évoluer en cours de réalisation.",
+   "bascule": "Si les spécifications techniques étaient déjà stabilisées et figées, la rapidité de signature deviendrait un critère recevable.",
+   "task_id": "PR5",
+   "level": 1,
+   "run_id": "20261016-0740",
+   "release": "qL1-PR5-20261016-0740-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR6-20261016-0740-1-01",
+   "enabler": "Anticipate future finance challenges.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet pilote un programme pluriannuel dont le contrat prévoit une révision tarifaire indexée sur un indice de matières premières publié trimestriellement. L'indice du dernier trimestre a bondi de façon inhabituelle, mais la clause contractuelle ne déclenche un ajustement qu'après confirmation sur deux trimestres consécutifs. Le budget actuel absorbe sans difficulté un trimestre de hausse isolée. Que doit faire le chef de projet dès maintenant ?",
+    "en": "A project manager leads a multi-year program whose contract includes a price revision clause indexed to a commodity index published quarterly. Last quarter's index spiked unusually, but the contractual clause only triggers an adjustment after confirmation over two consecutive quarters. The current budget comfortably absorbs a single isolated quarter of increase. What should the project manager do right now?"
+   },
+   "options": {
+    "fr": [
+     "Demander au fournisseur une renégociation anticipée du prix fixe, en s'appuyant sur le seul trimestre de hausse déjà publié par l'indice.",
+     "Modifier dès maintenant la réserve pour imprévus, afin de couvrir une hausse équivalente à deux trimestres consécutifs, et en informer le sponsor.",
+     "Transmettre au comité de gouvernance une demande de révision du plan de financement, fondée sur le trimestre en cours et son impact budgétaire.",
+     "Documenter le scénario de hausse confirmée et préparer une option de financement à activer si le second trimestre confirme la tendance."
+    ],
+    "en": [
+     "Ask the supplier for an early renegotiation of the fixed price, based solely on the one quarter of increase already published by the index.",
+     "Adjust the contingency reserve right now to cover an increase equivalent to two consecutive quarters, and inform the sponsor accordingly.",
+     "Submit a funding plan revision request to the governance board, based on the current quarter and its budget impact alone.",
+     "Document the confirmed-increase scenario and prepare a funding option to activate if the second quarter confirms the trend."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le contrat ne déclenche un ajustement qu'après deux trimestres consécutifs de hausse, et le budget absorbe sans difficulté un trimestre isolé : rien n'oblige à agir immédiatement sur le financement. Préparer le scénario et l'option de financement permet d'anticiper sans engager de ressources ni de démarches prématurées. Demander une renégociation anticipée au fournisseur s'appuie sur un seul trimestre déjà publié, alors que la clause contractuelle exige une confirmation sur deux ; c'est agir avant que le fait déclencheur n'existe. Modifier la réserve dès maintenant et en informer le sponsor engage une ressource financière pour un risque qui n'est pas encore confirmé, alors que le budget actuel suffit. Saisir la gouvernance sur la base du trimestre en cours et de son impact budgétaire revient à escalader un signal qui n'a pas encore atteint le seuil contractuel de confirmation.",
+    "en": "The contract only triggers an adjustment after two consecutive quarters of increase, and the current budget comfortably absorbs one isolated quarter: nothing requires immediate funding action. Documenting the scenario and preparing the funding option allows anticipation without committing resources or acting prematurely. Asking the supplier for early renegotiation relies on just one quarter already published, while the contractual clause requires two-quarter confirmation — acting before the triggering fact exists. Adjusting the reserve right now and informing the sponsor accordingly commits financial resources to a risk that is not yet confirmed, when the current budget is sufficient. Escalating to governance based on the current quarter and its budget impact alone raises a signal that has not yet reached the contractual confirmation threshold."
+   },
+   "decision_atom": "Décider s'il faut agir financièrement maintenant sur un signal de hausse tarifaire qui n'a pas encore atteint le seuil contractuel de confirmation.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "La clause contractuelle exige une confirmation sur deux trimestres consécutifs, et un seul trimestre de hausse est observé ; le budget absorbe ce trimestre isolé sans difficulté.",
+   "bascule": "Si le second trimestre avait déjà confirmé la hausse, ajuster la réserve immédiatement deviendrait la bonne réponse.",
+   "task_id": "PR6",
+   "level": 3,
+   "run_id": "20261016-0740",
+   "release": "qL3-PR6-20261016-0740-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR6-20261016-0740-1-04",
+   "enabler": "Plan spend tracking throughout the project life cycle.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un chef de projet met en place le dispositif de suivi des dépenses pour un projet de transformation qui comporte à la fois des lots de travaux internes et des prestations externes facturées au forfait. Les outils de suivi des achats externes sont déjà en place dans l'entreprise, tandis que le système de suivi des coûts internes doit être configuré pour ce projet. Le premier jalon de facturation externe intervient dans trois semaines ; la première revue de coûts internes n'est prévue que dans deux mois. Comment le chef de projet doit-il organiser la mise en place du suivi ?",
+    "en": "A project manager is setting up spend tracking for a transformation project that includes both internal work packages and externally contracted fixed-price services. External procurement tracking tools are already in place company-wide, while the internal cost tracking system still needs to be configured for this project. The first external billing milestone occurs in three weeks; the first internal cost review is not scheduled for another two months. How should the project manager organize the setup of spend tracking?"
+   },
+   "options": {
+    "fr": [
+     "Configurer les deux dispositifs de suivi simultanément, pour garantir une cohérence méthodologique commune dès le lancement du projet.",
+     "Attendre que le système de suivi des coûts internes soit configuré et validé, avant d'activer le suivi des prestations externes.",
+     "Activer en priorité le suivi des prestations externes déjà outillé, puis configurer le suivi des coûts internes avant la revue à deux mois.",
+     "Configurer d'abord le suivi des coûts internes, car il structure l'ensemble du dispositif de reporting financier et budgétaire du projet."
+    ],
+    "en": [
+     "Configure both tracking systems simultaneously, to ensure shared methodological consistency from the project's launch.",
+     "Wait until the internal cost tracking system is configured and validated, before activating tracking of external services.",
+     "Activate tracking of external services first since the tooling already exists, then configure internal cost tracking before the two-month review.",
+     "Configure internal cost tracking first, since it structures the project's entire financial and budget reporting setup."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le premier jalon de facturation externe arrive dans trois semaines et l'outil correspondant existe déjà : il n'y a aucune raison de le retarder pour attendre un dispositif interne dont l'échéance réelle est dans deux mois. Activer d'abord le suivi externe, déjà prêt, puis configurer le suivi interne avant sa propre échéance respecte l'urgence réelle de chaque volet. Configurer les deux simultanément pour une cohérence méthodologique commune mobilise des efforts sur le suivi interne alors que rien ne presse avant deux mois, au risque de retarder la mise en place du suivi externe qui, lui, est urgent. Attendre que le suivi interne soit configuré et validé avant d'activer le suivi externe fait courir le risque de rater le jalon de facturation dans trois semaines pour une échéance qui n'arrive que bien plus tard. Configurer d'abord le suivi interne au nom de sa portée structurante sur le reporting financier et budgétaire ignore que l'urgence calendaire pointe vers l'externe, pas vers l'interne.",
+    "en": "The first external billing milestone arrives in three weeks and the corresponding tool already exists: there is no reason to delay it while waiting for an internal system whose real deadline is two months away. Activating external tracking first, since it is already ready, then configuring internal tracking before its own deadline respects the actual urgency of each stream. Configuring both simultaneously for shared methodological consistency spends effort on internal tracking when nothing is pressing for two months, risking delay of the external tracking setup, which is in fact urgent. Waiting for internal tracking to be configured and validated before activating external tracking risks missing the billing milestone in three weeks for a deadline that is much further away. Configuring internal tracking first on account of its structuring scope over financial and budget reporting ignores that calendar urgency points toward the external stream, not the internal one."
+   },
+   "decision_atom": "Décider dans quel ordre activer deux dispositifs de suivi des dépenses dont les échéances et l'état de préparation diffèrent.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le suivi externe est déjà outillé et son premier jalon arrive dans trois semaines ; le suivi interne reste à configurer et son échéance est dans deux mois.",
+   "bascule": "Si les deux jalons arrivaient en même temps, configurer les deux dispositifs simultanément deviendrait justifié.",
+   "task_id": "PR6",
+   "level": 3,
+   "run_id": "20261016-0740",
+   "release": "qL3-PR6-20261016-0740-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-PR7-20261016-0740-1-01",
+   "enabler": "Execute a quality management plan.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'un test d'intégration, une cheffe de projet constate qu'un paramètre de configuration logicielle produit un résultat inattendu sur un sous-module secondaire. Le plan de management de la qualité prévoit deux pistes : un ajustement de configuration réversible en quelques minutes, ou une modification du code source du module, qui nécessiterait une nouvelle série de tests de régression complète. Aucune échéance contractuelle n'est menacée. Que doit-elle privilégier en premier ?",
+    "en": "During an integration test, a project manager finds that a software configuration parameter produces an unexpected result on a secondary sub-module. The quality management plan allows two paths: a configuration adjustment reversible within minutes, or a source code change to the module, which would require a full regression test cycle. No contractual deadline is at risk. What should she prioritize first?"
+   },
+   "options": {
+    "fr": [
+     "Modifier directement le code source du module pour traiter la cause présumée la plus probable du résultat inattendu.",
+     "Transmettre le résultat inattendu à l'équipe d'architecture pour qu'elle statue sur la conception du sous-module.",
+     "Tester l'ajustement de configuration réversible avant d'envisager une modification plus engageante du code source.",
+     "Planifier une revue de qualité élargie associant plusieurs équipes avant toute intervention sur le sous-module."
+    ],
+    "en": [
+     "Directly modify the module's source code to address the most likely presumed cause of the unexpected result.",
+     "Forward the unexpected result to the architecture team so it can rule on the sub-module's design.",
+     "Test the reversible configuration adjustment before considering a more committing source code change.",
+     "Schedule a broader quality review involving several teams before any intervention on the sub-module."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Tester l'ajustement de configuration réversible avant d'envisager une modification plus engageante du code source est la bonne séquence : l'énoncé précise qu'aucune échéance n'est menacée et que cette option se résout en quelques minutes, ce qui permet de vérifier l'hypothèse la moins coûteuse à défaire avant de s'engager sur une voie qui exige une régression complète. Modifier directement le code source saute cette étape réversible et engage une charge de test disproportionnée pour un problème pas encore diagnostiqué. Transmettre à l'équipe d'architecture déplace la décision vers un rôle dont l'intervention n'est pas justifiée tant que la piste simple n'a pas été écartée. Planifier une revue élargie introduit un délai et une mobilisation d'équipes sans rapport avec l'ampleur du problème observé.",
+    "en": "Testing the reversible configuration adjustment before considering a more committing source code change is the right sequence: the scenario states that no deadline is at risk and that this option resolves within minutes, allowing the least costly hypothesis to be checked before committing to a path that requires full regression testing. Directly modifying the source code skips this reversible step and commits a disproportionate testing effort to a problem not yet diagnosed. Forwarding to the architecture team shifts the decision to a role whose involvement isn't justified until the simple path has been ruled out. Scheduling a broader review introduces a delay and team mobilization out of proportion with the issue observed."
+   },
+   "decision_atom": "Décider quelle piste de correction tester en premier face à un résultat de test inattendu.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Aucune échéance contractuelle n'est menacée et l'ajustement de configuration est réversible en quelques minutes.",
+   "bascule": "Si le sous-module était déjà connu pour nécessiter impérativement une modification de code (configuration non disponible), modifier le code deviendrait la bonne réponse.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20261016-0740",
+   "release": "qL2-PR7-20261016-0740-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR7-20261016-0740-1-04",
+   "enabler": "Conduct ongoing quality reviews.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe termine le développement d'un module et prévoit de le livrer au client dans trois jours. Le planning de revues qualité du projet prévoit une revue intermédiaire après 50 % d'avancement, que l'équipe n'a pas réalisée faute de disponibilité. Le module est maintenant achevé mais pas encore livré. Que doit faire le chef de projet ?",
+    "en": "A team finishes developing a module and plans to deliver it to the client in three days. The project's quality review schedule calls for an interim review at 50% completion, which the team skipped due to availability constraints. The module is now finished but not yet delivered. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Procéder à la livraison prévue, la revue intermédiaire manquée n'ayant plus d'objet sur un module achevé.",
+     "Organiser une revue qualité complète du module avant la livraison, en remplacement de celle non tenue.",
+     "Signaler l'absence de revue intermédiaire dans le rapport de clôture, à traiter lors du bilan de projet.",
+     "Demander au client de valider lui-même la qualité du module avant toute livraison officielle."
+    ],
+    "en": [
+     "Proceed with the planned delivery, since the missed interim review no longer applies to a finished module.",
+     "Organize a full quality review of the module before delivery, in place of the one that did not take place.",
+     "Report the missing interim review in the closure report, to be addressed during the project review.",
+     "Ask the client to validate the module's quality directly before any official delivery."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Organiser une revue qualité complète avant la livraison compense, tant qu'il en est encore temps, l'absence de la revue intermédiaire prévue au planning : le module n'est pas encore livré, la fenêtre pour vérifier sa qualité avant qu'il n'atteigne le client est donc toujours ouverte. Procéder à la livraison prévue traite la revue manquée comme sans objet alors que rien ne remplace la vérification qu'elle devait apporter. Signaler l'absence de revue dans le rapport de clôture reporte à après la livraison un contrôle qui doit se faire avant. Demander au client de valider lui-même la qualité transfère une responsabilité de vérification interne vers une partie qui ne doit intervenir qu'après livraison validée.",
+    "en": "Organizing a full quality review before delivery compensates, while there is still time, for the missing interim review scheduled in the plan: the module has not been delivered yet, so the window to verify its quality before it reaches the client is still open. Proceeding with the planned delivery treats the missed review as moot, when nothing replaces the verification it was meant to provide. Reporting the missing review in the closure report pushes to after delivery a check that must happen before. Asking the client to validate the quality directly shifts an internal verification responsibility to a party that should only step in after validated delivery."
+   },
+   "decision_atom": "Décider à quel moment compenser une revue qualité intermédiaire manquée par rapport à la livraison du livrable.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le module est achevé mais pas encore livré : la fenêtre pour vérifier sa qualité avant la livraison est encore ouverte.",
+   "bascule": "Si le module avait déjà été livré au client, une revue a posteriori documentée dans le rapport de clôture deviendrait l'option pertinente.",
+   "task_id": "PR7",
+   "level": 2,
+   "run_id": "20261016-0740",
+   "release": "qL2-PR7-20261016-0740-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
