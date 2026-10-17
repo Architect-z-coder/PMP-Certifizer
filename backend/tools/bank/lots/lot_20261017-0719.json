@@ -1,0 +1,159 @@
+{
+ "run_id": "20261017-0719",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PR3-20261017-0719-1-01",
+   "enabler": "Evaluate delivery options to demonstrate value.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Une équipe livre un module interne qui automatise une vérification manuelle répétitive. Le gain mesuré après mise en service est une réduction de quinze minutes par semaine pour trois utilisateurs, nettement en dessous de l'estimation initiale qui avait motivé le choix d'une mise en production complète avec formation dédiée et support renforcé pendant un mois. Le chef de projet doit décider de la suite. Que doit-il faire en priorité ?",
+    "en": "A team delivers an internal module automating a repetitive manual check. The measured gain after rollout is a fifteen-minute weekly saving for three users, well below the initial estimate that justified a full production release with dedicated training and a month of reinforced support. The project manager must decide on next steps. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Réduire le support renforcé à un simple canal de questions et retirer la formation dédiée, proportionnellement au gain réellement observé.",
+     "Maintenir le support renforcé pendant le mois prévu, respecter l'engagement de calendrier pris envers les utilisateurs, et ne pas le raccourcir.",
+     "Étendre le module à d'autres équipes dès maintenant, pour amortir l'investissement initial sur un périmètre plus large et mutualisé.",
+     "Suspendre le module et revenir à la vérification manuelle, puisque le gain mesuré ne couvre pas le coût de la formation engagée."
+    ],
+    "en": [
+     "Scale the reinforced support down to a simple question channel and drop the dedicated training, in proportion to the gain actually observed.",
+     "Keep the reinforced support for the planned month, honor the schedule commitment made to the users, and leave it unchanged.",
+     "Extend the module to other teams right away, to spread the initial investment over a wider and shared scope of adoption.",
+     "Suspend the module and revert to the manual check, since the measured gain does not cover the training cost incurred."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le gain réel est très inférieur à ce qui avait justifié le dispositif de déploiement initial : la réponse appropriée consiste à alléger ce dispositif à hauteur de la valeur réellement démontrée, en gardant un canal de support minimal sans la formation complète. Maintenir le support renforcé pendant le mois prévu, au nom du respect de l'engagement de calendrier pris envers les utilisateurs, ignore que l'ampleur du dispositif n'avait de sens que pour un gain plus important. Étendre le module à d'autres équipes, pour mutualiser l'investissement sur un périmètre plus large, suppose que le problème vient de l'échelle alors que le gain unitaire mesuré est déjà faible, ce qui ne répond pas à la question posée par la mesure. Suspendre le module et revenir à la vérification manuelle traite un gain modeste comme un échec total, alors qu'une réduction de quinze minutes par semaine reste une valeur positive qui ne justifie pas un abandon complet.",
+    "en": "The real gain is far below what justified the initial rollout setup: the appropriate response is to scale that setup down to match the value actually demonstrated, keeping a minimal support channel without the full training. Keeping the reinforced support for the planned month, in order to honor the schedule commitment made to the users, ignores that the scale of the setup only made sense for a larger gain. Extending the module to other teams, to spread the investment over a wider shared scope, assumes the issue is one of scale, when the measured per-user gain is already small, which does not address what the measurement shows. Suspending the module and reverting to the manual check treats a modest gain as a total failure, when a fifteen-minute weekly saving remains a positive value that does not warrant full abandonment."
+   },
+   "decision_atom": "Décider de l'ampleur du dispositif de déploiement à maintenir après mesure d'un gain réel très inférieur à l'estimation qui l'avait justifié.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le gain mesuré (15 minutes/semaine pour 3 utilisateurs) est nettement en dessous de l'estimation ayant motivé un déploiement complet avec formation et support renforcé.",
+   "bascule": "Si le gain mesuré avait été proche de l'estimation initiale, maintenir le dispositif complet serait la bonne réponse.",
+   "task_id": "PR3",
+   "level": 3,
+   "run_id": "20261017-0719",
+   "release": "qL3-PR3-20261017-0719-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-PR8-20261017-0719-2-01",
+   "enabler": "Create a project schedule.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet construit l'échéancier initial d'un projet logiciel. L'équipe d'architecture technique a identifié des dépendances entre composants, mais ces dépendances n'ont pas encore été formalisées dans l'outil de planification. Le chef de projet doit décider qui saisit ces dépendances dans l'échéancier avant la première revue de planification. Que doit-il faire ?",
+    "en": "A project manager is building the initial schedule for a software project. The technical architecture team has identified dependencies between components, but these dependencies have not yet been entered into the scheduling tool. The project manager must decide who enters these dependencies into the schedule before the first planning review. What should they do?"
+   },
+   "options": {
+    "fr": [
+     "Demander à l'équipe d'architecture de documenter les dépendances dans un fichier séparé, que le chef de projet transposera ensuite dans l'outil.",
+     "Saisir lui-même les dépendances dans l'échéancier à partir de sa compréhension générale du produit, pour respecter le délai de la revue.",
+     "Organiser une séance avec l'équipe d'architecture pour que les responsables techniques saisissent directement les dépendances dans l'outil de planification.",
+     "Confier la saisie des dépendances au contrôleur de projet, qui maintient déjà l'outil de planification au quotidien."
+    ],
+    "en": [
+     "Ask the architecture team to document the dependencies in a separate file, which the project manager will later transpose into the tool.",
+     "Enter the dependencies into the schedule themselves based on their general understanding of the product, to meet the review deadline.",
+     "Organize a session with the architecture team so the technical leads enter the dependencies directly into the scheduling tool.",
+     "Assign the dependency entry task to the project controller, who already maintains the scheduling tool day to day."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les dépendances techniques entre composants ont été identifiées par l'équipe d'architecture : ce sont les responsables techniques qui détiennent la connaissance exacte de ces liens. Organiser une séance où ils saisissent eux-mêmes les dépendances dans l'outil garantit que l'échéancier reflète la réalité technique, sans étape de transcription qui introduirait des erreurs. Demander un fichier séparé que le chef de projet retranscrira ajoute une étape intermédiaire inutile et un risque d'erreur de transposition. Saisir les dépendances à partir d'une compréhension générale du produit revient à deviner des liens techniques que le chef de projet ne maîtrise pas précisément. Confier la tâche au contrôleur de projet place la décision chez quelqu'un qui maintient l'outil mais ne détient pas la connaissance technique des dépendances elles-mêmes.",
+    "en": "The technical dependencies between components were identified by the architecture team: the technical leads hold the precise knowledge of these links. Organizing a session where they enter the dependencies directly into the tool ensures the schedule reflects technical reality, without a transcription step that could introduce errors. Asking for a separate file that the project manager will later transpose adds an unnecessary intermediate step and a risk of transposition error. Entering the dependencies based on a general understanding of the product means guessing at technical links the project manager does not precisely master. Assigning the task to the project controller places the decision with someone who maintains the tool but does not hold the technical knowledge of the dependencies themselves."
+   },
+   "decision_atom": "Décider qui saisit les dépendances techniques identifiées dans l'outil de planification avant la revue.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Les dépendances ont été identifiées par l'équipe d'architecture technique, pas par le chef de projet.",
+   "bascule": "Si le chef de projet détenait déjà une documentation technique complète et validée des dépendances, les saisir lui-même deviendrait défendable.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20261017-0719",
+   "release": "qL2-PR8-20261017-0719-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PR8-20261017-0719-2-03",
+   "enabler": "Prepare a schedule based on the selected development approach",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet prépare l'échéancier d'un projet qui combinera une approche agile pour le développement produit et une approche prédictive pour les lots d'infrastructure réglementés. L'équipe propose de bâtir immédiatement un échéancier unique et détaillé pour l'ensemble du projet. Le chef de projet doit décider dans quel ordre avancer. Que doit-il faire ?",
+    "en": "A project manager is preparing the schedule for a project that will combine an agile approach for product development and a predictive approach for regulated infrastructure work packages. The team proposes immediately building a single, detailed schedule for the entire project. The project manager must decide in what order to proceed. What should they do?"
+   },
+   "options": {
+    "fr": [
+     "Confirmer d'abord l'approche de développement retenue pour chaque lot de travail, puis bâtir l'échéancier correspondant à chacune des approches.",
+     "Construire un échéancier détaillé unique couvrant l'ensemble du projet, puis répartir ensuite les lots selon l'approche de développement de chacun.",
+     "Lancer en parallèle la construction de l'échéancier détaillé et la confirmation de l'approche de développement pour chaque lot.",
+     "Bâtir l'échéancier détaillé des lots d'infrastructure réglementés en priorité, avant de clarifier l'approche des lots produit agiles."
+    ],
+    "en": [
+     "First confirm the development approach selected for each work package, then build the schedule corresponding to each approach.",
+     "Build a single detailed schedule covering the entire project first, then allocate the work packages according to each one's development approach.",
+     "Launch in parallel the construction of the detailed schedule and the confirmation of the development approach for each work package.",
+     "Build the detailed schedule for the regulated infrastructure work packages first, before clarifying the approach for the agile product work packages."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le projet combine deux approches différentes selon les lots de travail, et l'échéancier d'une approche agile ne se construit pas de la même manière que celui d'une approche prédictive. Confirmer d'abord l'approche de chaque lot avant de bâtir l'échéancier correspondant garantit que la structure retenue correspond réellement à la façon dont le travail sera exécuté. Construire d'abord un échéancier détaillé unique pour ensuite répartir les lots inverse l'ordre logique : l'échéancier doit découler de l'approche, pas l'inverse. Lancer les deux étapes en parallèle expose à devoir refaire l'échéancier si l'approche confirmée diffère de l'hypothèse de départ. Prioriser les lots d'infrastructure réglementés avant de clarifier l'approche des lots produit laisse une partie du projet sans fondement méthodologique établi.",
+    "en": "The project combines two different approaches depending on the work package, and an agile schedule is not built the same way as a predictive one. Confirming each work package's approach first, then building the corresponding schedule, ensures the structure chosen truly matches how the work will be executed. Building a single detailed schedule first and then allocating work packages reverses the logical order: the schedule should follow from the approach, not the other way around. Launching both steps in parallel risks having to redo the schedule if the confirmed approach differs from the initial assumption. Prioritizing the regulated infrastructure work packages before clarifying the approach for the product work packages leaves part of the project without an established methodological basis."
+   },
+   "decision_atom": "Décider dans quel ordre confirmer l'approche de développement et construire l'échéancier détaillé d'un projet hybride.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le projet combine deux approches différentes selon les lots, et l'équipe propose de construire l'échéancier détaillé avant toute confirmation d'approche par lot.",
+   "bascule": "Si l'approche de chaque lot était déjà formellement confirmée et documentée, construire directement l'échéancier détaillé deviendrait l'ordre correct.",
+   "task_id": "PR8",
+   "level": 2,
+   "run_id": "20261017-0719",
+   "release": "qL2-PR8-20261017-0719-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR8-20261017-0719-1-01",
+   "enabler": "Prepare a schedule based on the selected development approach",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Dans un projet hybride, l'équipe construit l'échéancier détaillé des deux premiers incréments agiles pendant que la phase de déploiement finale reste planifiée en cycle prédictif. Le chef de projet doit décider comment représenter le séquencement des incréments suivants (3 à 6), dont le contenu dépendra des retours utilisateurs des deux premiers. Figer maintenant leur contenu et leurs dates précises faciliterait la communication avec les parties prenantes externes, mais ce contenu n'est pas encore connu avec certitude. Que doit-il faire ?",
+    "en": "In a hybrid project, the team is building the detailed schedule for the first two agile increments while the final deployment phase remains planned predictively. The project manager must decide how to represent the sequencing of the following increments (3 through 6), whose content will depend on feedback from the first two. Fixing their exact content and dates now would ease communication with external stakeholders, but that content is not yet known with certainty. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Figer dès maintenant le contenu détaillé des incréments 3 à 6, fixer leurs dates précises pour l'ensemble du projet, et donner ainsi aux parties prenantes externes une visibilité complète.",
+     "Demander au sponsor d'arbitrer, lors de la prochaine revue de gouvernance, entre une planification détaillée immédiate et une planification par vagues.",
+     "Représenter les incréments 3 à 6 par des fenêtres temporelles indicatives et détailler leur contenu au fur et à mesure que les retours des premiers incréments arrivent.",
+     "Planifier les incréments 3 à 6 avec le même niveau de détail que la phase de déploiement finale, aligner leur format sur celui de l'échéancier global, et appliquer ce choix dès à présent pour l'ensemble du projet."
+    ],
+    "en": [
+     "Fix now the detailed content of increments 3 through 6, and set their exact dates for the entire project.",
+     "Ask the sponsor to decide, at the next governance review, between immediate detailed planning and rolling wave planning.",
+     "Represent increments 3 through 6 as indicative time windows and detail their content as feedback from the first increments arrives.",
+     "Plan increments 3 through 6 with the same level of detail as the final deployment phase, aligning their format with the overall schedule from the outset."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le contenu des incréments 3 à 6 dépend de retours qui n'existent pas encore : le figer maintenant revient à verrouiller une décision sur la base d'une information qui va changer. Représenter ces incréments par des fenêtres indicatives et les détailler progressivement garde l'échéancier réversible là où l'incertitude est réelle, tout en conservant une structure globale lisible pour les parties prenantes. Figer dès maintenant le contenu détaillé des incréments 3 à 6 et fixer leurs dates précises pour l'ensemble du projet donne une impression de clarté qui sera démentie dès les premiers retours utilisateurs, obligeant à refaire le travail. Planifier ces incréments avec le même niveau de détail que la phase de déploiement finale, en alignant leur format sur celui de l'échéancier global dès à présent, ignore que cette phase, elle, repose sur un périmètre stable et prévisible — les deux situations ne sont pas comparables. Faire arbitrer le sponsor, lors d'une revue de gouvernance, entre deux approches de planification relève d'un choix méthodologique que le chef de projet est positionné pour trancher lui-même, sans avoir besoin d'escalader une décision déjà guidée par l'approche de développement choisie pour le projet.",
+    "en": "The content of increments 3 through 6 depends on feedback that does not exist yet: fixing it now means locking in a decision based on information that will change. Representing these increments as indicative time windows and detailing them progressively keeps the schedule reversible where uncertainty is real, while preserving a readable overall structure for stakeholders. Fixing now the detailed content of increments 3 through 6, and setting their exact dates for the entire project, creates an impression of clarity that the first user feedback will contradict, forcing rework. Planning these increments with the same level of detail as the final deployment phase, aligning their format with the overall schedule from the outset, ignores that this phase rests on a stable, predictable scope — the two situations are not comparable. Asking the sponsor to decide, at a governance review, between two planning approaches hands off a methodological choice that the project manager is positioned to make directly, without escalating a decision already guided by the project's chosen development approach."
+   },
+   "decision_atom": "Décider comment représenter dans l'échéancier des incréments futurs dont le contenu dépend de retours pas encore reçus.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le contenu des incréments 3 à 6 dépend de retours utilisateurs qui n'existent pas encore au moment de planifier.",
+   "bascule": "Si le contenu de ces incréments était déjà connu avec certitude (exigences figées et validées), le figer maintenant deviendrait la bonne réponse.",
+   "task_id": "PR8",
+   "level": 3,
+   "run_id": "20261017-0719",
+   "release": "qL3-PR8-20261017-0719-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  }
+ ]
+}
