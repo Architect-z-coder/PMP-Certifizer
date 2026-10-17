@@ -1,0 +1,67 @@
+// Source: 21st.dev — "Vertical Titled Stepper" by @sean0205 (demo id 29815, demo "Default")
+// https://21st.dev/@sean0205/components/c-stepper-15
+// Changes for Certifizer: French copy; hard-coded steps became the `steps`/`value` props (same markup).
+"use client";
+
+import type React from "react";
+import { CheckIcon, LoaderCircleIcon } from "lucide-react";
+
+import {
+  Stepper,
+  StepperContent,
+  StepperIndicator,
+  StepperItem,
+  StepperNav,
+  StepperPanel,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
+} from "@/components/ui/stepper";
+
+const defaultSteps = [{ title: "Compte" }, { title: "Profil" }, { title: "Relecture" }];
+
+export default function VerticalTitledStepper({ steps = defaultSteps, value = 2, panelClassName = "w-56 text-center text-sm" }: { steps?: { title: string; content?: React.ReactNode }[]; value?: number; panelClassName?: string }) {
+  return (
+    <div className="flex items-center justify-center">
+      <Stepper
+        className="flex flex-col items-center justify-center gap-10"
+        defaultValue={value}
+        orientation="vertical"
+        indicators={{
+          completed: <CheckIcon className="size-3.5" />,
+          loading: <LoaderCircleIcon className="size-3.5 animate-spin" />,
+        }}
+      >
+        <StepperNav>
+          {steps.map((step, index) => (
+            <StepperItem
+              key={index}
+              step={index + 1}
+              className="relative items-start not-last:flex-1"
+            >
+              <StepperTrigger className="items-start gap-2.5 pb-12 last:pb-0">
+                <StepperIndicator className="data-[state=completed]:bg-success data-[state=completed]:text-white">
+                  {index + 1}
+                </StepperIndicator>
+                <div className="mt-0.5 text-left">
+                  <StepperTitle>{step.title}</StepperTitle>
+                </div>
+              </StepperTrigger>
+              {index < steps.length - 1 && (
+                <StepperSeparator className="group-data-[state=completed]/step:bg-success absolute inset-y-0 top-7 left-3 -order-1 m-0 -translate-x-1/2 group-data-[orientation=vertical]/stepper-nav:h-[calc(100%-2rem)]" />
+              )}
+            </StepperItem>
+          ))}
+        </StepperNav>
+
+        <StepperPanel className={panelClassName}>
+          {steps.map((step, index) => (
+            <StepperContent key={index} value={index + 1}>
+              {step.content ?? `${step.title}`}
+            </StepperContent>
+          ))}
+        </StepperPanel>
+      </Stepper>
+    </div>
+  );
+}
