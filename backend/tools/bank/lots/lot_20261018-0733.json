@@ -1,0 +1,387 @@
+{
+ "run_id": "20261018-0733",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PR7-20261018-0733-1-05",
+   "enabler": "Conduct ongoing quality reviews.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors d'une revue qualité continue, l'équipe identifie deux options pour corriger un défaut récurrent sur un composant logiciel : une correction du code source, documentée et testée sur un environnement isolé, ou une modification directe en production via un correctif temporaire déjà utilisé sur un projet similaire. Le correctif temporaire est plus rapide à déployer mais devient difficile à retirer une fois en place. Que doit décider l'équipe lors de cette revue ?",
+    "en": "During an ongoing quality review, the team identifies two options to fix a recurring defect in a software component: a source code fix, documented and tested in an isolated environment, or a direct production change via a temporary patch already used on a similar project. The temporary patch is faster to deploy but becomes hard to remove once in place. What should the team decide during this review?"
+   },
+   "options": {
+    "fr": [
+     "Déployer le correctif temporaire en production dès cette revue, car il a déjà fait ses preuves sur un projet comparable au vôtre.",
+     "Planifier le déploiement du correctif temporaire pour la prochaine fenêtre de maintenance, afin de limiter l'impact sur les utilisateurs.",
+     "Retenir la correction du code source testée en environnement isolé, malgré un déploiement plus tardif que le correctif temporaire.",
+     "Combiner les deux approches en déployant le correctif temporaire pendant la finalisation de la correction du code source."
+    ],
+    "en": [
+     "Deploy the temporary patch in production as soon as this review, because it has already proven itself on a project comparable to yours.",
+     "Schedule the temporary patch deployment for the next maintenance window, to limit impact on users.",
+     "Choose the source code fix tested in an isolated environment, despite a later deployment than the temporary patch.",
+     "Combine both approaches by deploying the temporary patch during the finalization of the source code fix."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Le scénario précise que le correctif temporaire devient difficile à retirer une fois en place, ce qui en fait une décision peu réversible malgré sa rapidité. Déployer ce correctif dès la revue profite de la rapidité sans tenir compte de cette difficulté à revenir en arrière si un problème apparaît. Planifier son déploiement pour la prochaine fenêtre de maintenance ne change rien à cette irréversibilité, seulement à son calendrier. Combiner les deux approches installe quand même le correctif difficile à retirer, avec le risque que la correction définitive du code source soit repoussée une fois le symptôme apparemment réglé. Retenir la correction du code source testée en environnement isolé accepte un déploiement plus tardif pour conserver une solution que l'équipe peut encore ajuster ou annuler sans contrainte technique durable.",
+    "en": "The scenario states that the temporary patch becomes hard to remove once in place, making it a decision with limited reversibility despite its speed. Deploying it as soon as this review takes advantage of the speed without accounting for this difficulty in reversing course if a problem appears. Scheduling its deployment for the next maintenance window does not change this irreversibility, only its timing. Combining both approaches still installs the hard-to-remove patch, with the risk that the definitive source code fix gets delayed once the symptom appears resolved. Choosing the source code fix tested in an isolated environment accepts a later deployment in order to keep a solution the team can still adjust or cancel without a lasting technical constraint."
+   },
+   "decision_atom": "Décider, lors d'une revue qualité, entre une correction rapide mais difficile à retirer et une correction plus lente mais réversible.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Le correctif temporaire, bien que rapide, devient difficile à retirer une fois en place, contrairement à la correction du code source testée en environnement isolé.",
+   "bascule": "Si le correctif temporaire restait facilement réversible une fois déployé, le déployer immédiatement deviendrait défendable.",
+   "task_id": "PR7",
+   "level": 3,
+   "run_id": "20261018-0733",
+   "release": "qL3-PR7-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PR10-20261018-0733-1-03",
+   "enabler": "Obtain project stakeholder approval of project completion.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un projet arrive à son terme. Le chef de projet a préparé le dossier de clôture et souhaite obtenir l'approbation formelle de l'achèvement. Le sponsor désigné dans la charte est en congé prolongé ; son adjoint direct suit le projet depuis le début et connaît tous les livrables. Qui doit approuver l'achèvement du projet ?",
+    "en": "A project is reaching its end. The project manager has prepared the closure package and seeks formal approval of completion. The sponsor named in the charter is on extended leave; their direct deputy has followed the project from the start and knows all deliverables. Who should approve project completion?"
+   },
+   "options": {
+    "fr": [
+     "Le délégué désigné du sponsor, dans le cadre de l'autorité qui lui a été formellement confiée.",
+     "L'équipe projet elle-même, puisqu'elle connaît mieux que quiconque l'état des livrables produits.",
+     "Le prochain chef de projet du portefeuille, pour assurer une continuité de jugement sur ce dossier.",
+     "Le client final, puisqu'il est le principal bénéficiaire des livrables produits par l'équipe."
+    ],
+    "en": [
+     "The sponsor's designated delegate, acting under the authority formally assigned to them.",
+     "The project team itself, since it knows the deliverables' status better than anyone involved.",
+     "The next portfolio project manager, to ensure continuity of judgment on this file.",
+     "The end client, since they are the primary beneficiary of the outputs the team delivered."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'approbation de l'achèvement est un acte d'autorité qui doit venir de la personne mandatée pour l'exercer ; en l'absence du sponsor, cette autorité revient à son délégué formellement désigné, et non à quiconque connaît bien le projet. L'équipe projet connaît l'état des livrables produits mais n'a pas la position d'autorité nécessaire pour approuver sa propre production. Le prochain chef de projet du portefeuille n'a aucun mandat pour assurer une continuité de jugement sur ce projet précis. Le client final peut avoir un avis sur les livrables produits par l'équipe, mais l'approbation formelle de clôture relève de la gouvernance interne du projet, pas de sa seule satisfaction.",
+    "en": "Approval of completion is an act of authority that must come from the person mandated to exercise it; in the sponsor's absence, that authority falls to their formally designated delegate, not to whoever happens to know the project well. The project team knows the deliverables' status but lacks the authority position needed to approve its own work. The next portfolio project manager has no mandate to ensure continuity of judgment on this specific project. The end client may have an opinion on the outputs the team delivered, but formal closure approval belongs to the project's internal governance, not to client satisfaction alone."
+   },
+   "decision_atom": "Décider qui doit approuver formellement l'achèvement du projet quand le sponsor titulaire est indisponible.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le sponsor est en congé prolongé ; son adjoint direct a un mandat formel et suit le projet depuis le début.",
+   "bascule": "Si personne n'avait de délégation formelle de l'autorité du sponsor, il aurait fallu escalader plus haut, pas confier l'approbation à l'équipe.",
+   "task_id": "PR10",
+   "level": 1,
+   "run_id": "20261018-0733",
+   "release": "qL1-PR10-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PR10-20261018-0733-1-05",
+   "enabler": "Conclude activities to close the project or phase (e.g., final lessons learned, retrospectives, procurement, financials, resources).",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un projet se termine. Deux activités restent à mener : la clôture financière des comptes du projet et la libération des membres de l'équipe vers d'autres affectations. Le chef de projet constate que certaines factures fournisseurs sont encore en attente de traitement. Dans quel ordre doit-il procéder ?",
+    "en": "A project is closing. Two activities remain: financial closure of the project accounts and release of team members to other assignments. The project manager notices that some vendor invoices are still pending processing. In what order should they proceed?"
+   },
+   "options": {
+    "fr": [
+     "Libérer l'équipe en premier, puis traiter les factures en attente avec les ressources disponibles.",
+     "Mener les deux activités en parallèle, pour ne pas retarder la libération de l'équipe.",
+     "Traiter les factures en attente avant de finaliser la clôture financière et de libérer l'équipe.",
+     "Libérer l'équipe et transférer les factures en attente au service comptable pour suivi ultérieur."
+    ],
+    "en": [
+     "Release the team first, then process the pending invoices with available resources.",
+     "Run both activities in parallel, to avoid delaying the team's release.",
+     "Process the pending invoices before finalizing financial closure and releasing the team.",
+     "Release the team and transfer the pending invoices to the accounting department for follow-up."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Les factures fournisseurs en attente font partie intégrante de la clôture financière : tant qu'elles ne sont pas traitées, les comptes du projet ne peuvent pas être considérés comme clos, et libérer l'équipe avant risque de priver le chef de projet des personnes qui connaissent le contexte de ces factures. Libérer l'équipe en premier revient à traiter la clôture financière comme une activité secondaire pouvant se faire sans expertise projet disponible. Mener les deux activités en parallèle expose au même risque de perte de connaissance pendant le traitement des factures. Libérer l'équipe et transférer les factures au service comptable déplace la responsabilité de la clôture financière du projet sans garantir que le contexte nécessaire soit transmis.",
+    "en": "Pending vendor invoices are an integral part of financial closure: until they are processed, the project accounts cannot be considered closed, and releasing the team first risks losing the people who know the context behind these invoices. Releasing the team first treats financial closure as a secondary activity that can proceed without available project expertise. Running both activities in parallel exposes the same risk of losing context while invoices are processed. Releasing the team and transferring the invoices to accounting shifts responsibility for the project's financial closure away without ensuring the necessary context is passed on."
+   },
+   "decision_atom": "Décider de l'ordre entre traiter les factures fournisseurs en attente et libérer l'équipe projet.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Des factures fournisseurs restent en attente de traitement au moment où la libération de l'équipe est envisagée.",
+   "bascule": "Si aucune facture n'avait été en attente, libérer l'équipe avant la clôture financière formelle serait devenu sans risque.",
+   "task_id": "PR10",
+   "level": 1,
+   "run_id": "20261018-0733",
+   "release": "qL1-PR10-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PR10-20261018-0733-2-01",
+   "enabler": "Validate readiness for transition (e.g., to operations team or next phase).",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un projet de migration d'infrastructure approche de sa transition vers l'équipe d'exploitation. Deux options techniques restent ouvertes pour le basculement final : la première bascule immédiatement tout le trafic vers le nouvel environnement et démantèle l'ancien dans la foulée pour libérer les coûts de double hébergement ; la seconde bascule progressivement par lots tout en maintenant l'ancien environnement actif pendant deux semaines. L'équipe d'exploitation signale qu'elle n'a encore validé en conditions réelles qu'une partie des scénarios de restauration. Que doit décider le chef de projet pour la transition ?",
+    "en": "An infrastructure migration project is approaching transition to the operations team. Two technical options remain open for the final cutover: the first switches all traffic immediately to the new environment and decommissions the old one right away to stop dual-hosting costs; the second switches gradually in batches while keeping the old environment active for two weeks. The operations team reports that it has only validated part of the restoration scenarios under real conditions so far. What should the project manager decide for the transition?"
+   },
+   "options": {
+    "fr": [
+     "Retenir le basculement progressif par lots, en gardant l'ancien environnement actif le temps que les scénarios de restauration restants soient validés.",
+     "Retenir le basculement immédiat avec démantèlement rapide de l'ancien environnement, pour éliminer sans délai les coûts de double hébergement signalés par les finances.",
+     "Retenir le basculement immédiat vers le nouvel environnement, puis programmer une restauration complète depuis une sauvegarde si un scénario non validé se manifeste.",
+     "Retenir le basculement progressif par lots, mais démanteler l'ancien environnement dès le premier lot migré pour limiter les coûts de double hébergement."
+    ],
+    "en": [
+     "Choose the gradual batch cutover, keeping the old environment active until the remaining restoration scenarios are validated.",
+     "Choose the immediate cutover with rapid decommissioning of the old environment, to eliminate the dual-hosting costs flagged by finance without delay.",
+     "Choose the immediate cutover to the new environment, then schedule a full restore from backup if an unvalidated scenario materializes.",
+     "Choose the gradual batch cutover, but decommission the old environment after the first migrated batch to limit dual-hosting costs."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'équipe d'exploitation n'a validé qu'une partie des scénarios de restauration : tant que cette couverture n'est pas complète, il faut conserver un chemin de retour en arrière. Le basculement progressif avec l'ancien environnement maintenu offre exactement cela, sans empêcher la migration d'avancer. Le basculement immédiat avec démantèlement rapide de l'ancien environnement supprime ce filet au moment où il est le plus nécessaire, pour un motif de coût qui ne compense pas le risque. Basculer immédiatement vers le nouvel environnement puis prévoir une restauration depuis une sauvegarde ne protège pas contre les scénarios non validés : une sauvegarde ne remplace pas un environnement vivant capable d'absorber le trafic pendant l'investigation. Et démanteler après le premier lot réintroduit le même problème avant que la validation ne soit achevée, rendant le gain de progressivité inutile.",
+    "en": "The operations team has validated only part of the restoration scenarios, so a path back must remain available until that coverage is complete. The gradual cutover with the old environment kept active provides exactly that, without stopping the migration from moving forward. The immediate cutover with rapid decommissioning of the old environment removes this safety net exactly when it is most needed, for a cost reason that does not offset the risk. Switching immediately to the new environment and then planning a restore from backup does not protect against unvalidated scenarios: a backup cannot replace a live environment able to absorb traffic during investigation. And decommissioning after the first batch reintroduces the same problem before validation is finished, defeating the purpose of going gradual."
+   },
+   "decision_atom": "Décider quelle stratégie de basculement technique adopter pour la transition vers l'exploitation.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "L'équipe d'exploitation n'a validé qu'une partie des scénarios de restauration en conditions réelles.",
+   "bascule": "Si tous les scénarios de restauration avaient été validés, le basculement immédiat avec démantèlement deviendrait défendable.",
+   "task_id": "PR10",
+   "level": 3,
+   "run_id": "20261018-0733",
+   "release": "qL3-PR10-20261018-0733-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PR10-20261018-0733-2-03",
+   "enabler": "Determine criteria to successfully close the project or phase.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors de la revue de clôture d'une phase, le chef de projet constate qu'un des critères d'acceptation définis en début de phase — un délai de réponse du support technique inférieur à deux heures — n'a été respecté que dans 85 % des cas, contre les 95 % exigés. L'écart concerne uniquement les demandes soumises un jour férié, situation non anticipée lors de la définition des critères. Le reste des engagements est pleinement atteint. Comment traiter cet écart pour clôturer la phase ?",
+    "en": "During a phase closure review, the project manager finds that one acceptance criterion set at the start of the phase — technical support response time under two hours — was met only 85% of the time, against the required 95%. The gap is entirely tied to requests submitted on public holidays, a situation not anticipated when the criteria were defined. All other commitments are fully met. How should this gap be handled to close the phase?"
+   },
+   "options": {
+    "fr": [
+     "Reporter la clôture de la phase jusqu'à ce que le taux de réponse atteigne 95 % sur l'ensemble des jours, jours fériés compris, auprès du support technique.",
+     "Laisser l'écart hors du rapport de clôture de la phase, puisque les autres critères sont pleinement atteints et que l'écart reste circonscrit aux jours fériés.",
+     "Documenter l'écart circonscrit aux jours fériés, obtenir l'accord du client sur une exception limitée à ce cas, et clôturer la phase.",
+     "Escalader l'écart constaté sur le délai de réponse au comité de gouvernance du programme, pour qu'il statue sur l'ensemble des critères de la phase."
+    ],
+    "en": [
+     "Delay phase closure until the technical support response rate reaches 95% across all days, including public holidays.",
+     "Leave the gap out of the phase closure report, since the other criteria are fully met and the gap stays confined to public holidays.",
+     "Document the gap as limited to public holidays, obtain the client's agreement on a narrow exception for this case, and close the phase.",
+     "Escalate the observed response-time gap to the program governance board, so it can rule on all of the phase's criteria."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'écart est circonscrit à une cause précise, non anticipée et clairement identifiée — les jours fériés — et tout le reste des engagements est tenu. La réponse proportionnée consiste à nommer cet écart, le faire accepter formellement par le client comme exception limitée, et avancer. Reporter la clôture jusqu'à un taux de 95 % sur tous les jours, fériés compris, auprès du support technique traite un écart localisé comme s'il remettait en cause l'ensemble de la phase, ce que les faits ne justifient pas. Laisser l'écart hors du rapport de clôture de la phase, à l'inverse, traite une anomalie réelle comme si elle n'existait pas, ce qui expose la phase à une contestation ultérieure. Escalader l'écart constaté sur le délai de réponse au comité de gouvernance du programme pour qu'il statue sur tous les critères de la phase mobilise une instance supérieure pour un désaccord localisé qui se résout au niveau du client.",
+    "en": "The gap has a specific, previously unanticipated and clearly identified cause — public holidays — and every other commitment is met. The proportionate response is to name this gap, have the client formally accept it as a limited exception, and move forward. Delaying closure until the technical support response rate reaches 95% on all days, holidays included, treats a localized gap as if it called the entire phase into question, which the facts do not support. Leaving the gap out of the phase closure report, conversely, treats a real anomaly as if it did not exist, exposing the phase to later challenge. Escalating the observed response-time gap to the program governance board to rule on all of the phase's criteria pulls in a higher body for a localized disagreement that is resolved at the client level."
+   },
+   "decision_atom": "Décider comment traiter un écart circonscrit sur un critère de clôture de phase.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "L'écart est entièrement expliqué par une cause précise et non anticipée (les jours fériés), et tout le reste est conforme.",
+   "bascule": "Si l'écart avait touché l'ensemble des jours sans cause identifiable, reporter la clôture deviendrait justifié.",
+   "task_id": "PR10",
+   "level": 3,
+   "run_id": "20261018-0733",
+   "release": "qL3-PR10-20261018-0733-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-BE2-20261018-0733-1-01",
+   "enabler": "Analyze the consequences of noncompliance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Lors d'un contrôle interne, un chef de projet découvre qu'un sous-traitant n'a pas appliqué une exigence de sécurité incendie prévue au cahier des charges réglementaire depuis trois semaines. L'équipe de conformité interne de l'organisation traite habituellement ce type d'écart, mais elle est en pleine réorganisation et aucun point de contact n'est joignable cette semaine. Aucun incident ne s'est encore produit. Que doit-il faire en priorité ?",
+    "en": "During an internal review, a project manager discovers that a subcontractor has not applied a fire-safety requirement specified in the regulatory specifications for three weeks. The organization's internal compliance team usually handles this type of gap, but it is undergoing a reorganization and no contact point is reachable this week. No incident has occurred yet. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Documenter l'écart constaté dans le registre de suivi en attendant que l'équipe de conformité redevienne joignable.",
+     "Demander au sous-traitant de corriger l'écart de son côté et clore le sujet une fois la confirmation reçue par courriel du responsable de chantier.",
+     "Inscrire le point à l'ordre du jour de la prochaine revue mensuelle de conformité prévue dans trois semaines avec le comité concerné.",
+     "Transmettre l'écart au responsable hiérarchique de l'équipe de conformité pour obtenir une décision pendant l'indisponibilité de son équipe."
+    ],
+    "en": [
+     "Document the gap in the tracking log while waiting for the compliance team to become reachable again.",
+     "Ask the subcontractor to correct the gap independently and close the matter once confirmation is received by email from the site supervisor.",
+     "Add the item to the agenda of the next monthly compliance review scheduled in three weeks with the relevant committee.",
+     "Escalate the gap to the compliance team's line manager to obtain a decision while the team is unreachable."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Une exigence de sécurité incendie reste en écart depuis trois semaines : le risque pour les personnes ne peut pas attendre le retour de l'équipe habituelle. Transmettre l'écart au responsable hiérarchique de l'équipe de conformité permet d'obtenir une décision sans attendre que le canal normal redevienne disponible, ce qui correspond à la gravité du sujet. Documenter l'écart dans le registre de suivi en attendant laisse perdurer une situation à risque sans que personne compétent ne tranche. Demander au sous-traitant de s'auto-corriger et clore le sujet sur sa seule confirmation retire à l'organisation le contrôle sur une exigence réglementaire qui engage sa propre responsabilité. Attendre la revue mensuelle avec le comité concerné traite un enjeu de sécurité immédiate comme un point de gestion ordinaire, alors que le délai de trois semaines supplémentaire est inacceptable au vu de la nature du risque.",
+    "en": "A fire-safety requirement has remained unmet for three weeks: the risk to people cannot wait for the usual team to become available again. Escalating the gap to the compliance team's line manager secures a decision without waiting for the normal channel to reopen, matching the seriousness of the issue. Documenting the gap in the tracking log while waiting leaves a safety risk unresolved with no competent authority deciding on it. Asking the subcontractor to self-correct and closing the matter on that confirmation alone hands control over a regulatory requirement to the party whose performance is in question. Waiting for the monthly review with the relevant committee treats an immediate safety matter as routine business, and the additional three-week delay is not acceptable given the nature of the risk."
+   },
+   "decision_atom": "Décider à qui transmettre un écart de sécurité incendie non corrigé quand le canal de conformité habituel est indisponible.",
+   "axe_de_decision": "l'escalade",
+   "indice_decisif": "L'écart concerne une exigence de sécurité incendie (risque pour les personnes) et dure depuis trois semaines, sans canal de conformité disponible.",
+   "bascule": "Si l'écart portait sur un point administratif mineur sans risque pour les personnes, attendre le retour du canal normal deviendrait défendable.",
+   "task_id": "BE2",
+   "level": 2,
+   "run_id": "20261018-0733",
+   "release": "qL2-BE2-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE2-20261018-0733-1-05",
+   "enabler": "Measure the extent to which the project is in compliance.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet doit évaluer le niveau de conformité d'un projet à une norme de qualité avant la revue trimestrielle prévue dans dix jours. Un premier contrôle partiel, réalisé la semaine dernière sur un seul des trois sites concernés, montre un taux de conformité satisfaisant. Les deux autres sites n'ont pas encore été contrôlés selon le plan de mesure défini. Que doit faire le chef de projet ?",
+    "en": "A project manager must assess the project's level of compliance with a quality standard before the quarterly review scheduled in ten days. A first partial check, performed last week on only one of the three sites involved, shows a satisfactory compliance rate. The other two sites have not yet been checked according to the defined measurement plan. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Présenter dès maintenant le taux de conformité du premier site à la revue trimestrielle pour gagner du temps sur le calendrier.",
+     "Demander au site le moins avancé de réaliser son contrôle en priorité, avant les deux autres sites concernés.",
+     "Extrapoler le taux de conformité du premier site aux deux autres sites pour obtenir un résultat global immédiat.",
+     "Achever les contrôles sur les deux sites restants avant de présenter un taux de conformité global à la revue."
+    ],
+    "en": [
+     "Present the compliance rate of the first site now at the quarterly review to save time on the schedule.",
+     "Ask the least advanced site to carry out its check first, ahead of the other two remaining sites.",
+     "Extrapolate the first site's compliance rate to the other two sites to obtain an immediate overall result.",
+     "Complete the checks on the two remaining sites before presenting an overall compliance rate at the review."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le plan de mesure prévoit un contrôle sur les trois sites, et dix jours restent disponibles avant la revue trimestrielle : ce délai permet d'achever les contrôles restants avant de présenter un résultat. Achever les contrôles sur les deux sites restants avant de présenter un taux global garantit que la mesure communiquée reflète l'ensemble du projet, conformément au plan établi. Présenter dès maintenant le taux du premier site pour gagner du temps sur le calendrier donnerait une image partielle du projet en la faisant passer pour une mesure globale. Extrapoler le résultat d'un site aux deux autres traite un échantillon unique comme une preuve suffisante pour l'ensemble, sans contrôle réel sur ces sites. Demander au site le moins avancé de passer en priorité réorganise l'ordre des contrôles sans accélérer la disponibilité d'une mesure complète dans le délai imparti.",
+    "en": "The measurement plan calls for checks at all three sites, and ten days remain before the quarterly review, which is enough time to complete the remaining checks before presenting a result. Completing the checks on the two remaining sites before presenting an overall rate ensures that the reported measure reflects the whole project, consistent with the established plan. Presenting the first site's rate now to save time on the schedule would give a partial picture of the project while framing it as an overall measure. Extrapolating one site's result to the other two treats a single sample as sufficient evidence for the whole, without any actual check on those sites. Asking the least advanced site to go first simply reorders the checks without speeding up the availability of a complete measure within the available time."
+   },
+   "decision_atom": "Décider s'il faut présenter un taux de conformité basé sur une mesure partielle ou achever le plan de mesure avant de rapporter.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le plan de mesure couvre trois sites, un seul a été contrôlé, et dix jours restent disponibles avant la revue.",
+   "bascule": "Si la revue trimestrielle avait lieu dans deux jours, sans aucune possibilité de compléter les contrôles à temps, présenter le résultat partiel en le signalant comme tel deviendrait défendable.",
+   "task_id": "BE2",
+   "level": 2,
+   "run_id": "20261018-0733",
+   "release": "qL2-BE2-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE3-20261018-0733-1-02",
+   "enabler": "Communicate the status of proposed changes.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une demande de changement a été approuvée par le comité de contrôle des changements il y a deux jours. L'équipe technique commence tout juste à évaluer les tâches nécessaires à sa mise en œuvre, sans avoir encore de calendrier ni de ressources confirmées. Le sponsor, qui suit ce changement de près, n'a reçu aucune nouvelle depuis l'approbation. Que doit faire le chef de projet en priorité ?",
+    "en": "A change request was approved by the change control board two days ago. The technical team is just beginning to assess the tasks required for implementation, without a confirmed schedule or resources yet. The sponsor, who is closely tracking this change, has heard nothing since the approval. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Attendre que le calendrier soit arrêté et que les ressources nécessaires soient confirmées avant de communiquer un plan complet au sponsor.",
+     "Informer le sponsor de l'approbation et préciser que le calendrier détaillé suivra une fois l'évaluation technique terminée.",
+     "Transmettre au sponsor le dernier rapport d'avancement global du projet et le laisser repérer la mention du changement parmi d'autres sujets.",
+     "Demander à l'équipe technique d'accélérer son évaluation des tâches et de produire un calendrier complet de mise en œuvre dès demain."
+    ],
+    "en": [
+     "Wait until the schedule is finalized and the required implementation resources are confirmed before communicating a complete plan to the sponsor.",
+     "Inform the sponsor of the approval and specify that the detailed schedule will follow once the technical assessment is complete.",
+     "Forward the sponsor the latest overall project status report and let them find the mention of the change among other topics.",
+     "Ask the technical team to speed up their task assessment and produce a complete implementation schedule by tomorrow."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le sponsor suit ce changement de près et n'a rien reçu depuis l'approbation : il a besoin d'un statut maintenant, pas d'un plan complet. Attendre que le calendrier soit arrêté et que les ressources soient confirmées fait dépendre la communication d'un travail qui vient de commencer, alors qu'un statut intermédiaire honnête est déjà disponible. Transmettre le rapport d'avancement global et laisser le sponsor y repérer lui-même la mention du changement noie l'information dans un document qui ne répond pas à l'attention particulière qu'il porte à ce changement précis. Demander à l'équipe d'accélérer son évaluation des tâches pour produire un calendrier de mise en œuvre dès demain fait porter une pression artificielle sur l'équipe au lieu de simplement communiquer l'état réel des choses. Informer immédiatement de l'approbation, en situant clairement ce qui reste à préciser, correspond à ce que l'on sait réellement à cet instant.",
+    "en": "The sponsor is closely tracking this change and has heard nothing since approval: they need a status now, not a complete plan. Waiting for the schedule to be finalized and the resources confirmed makes communication depend on work that has just begun, when an honest interim status is already available. Forwarding the overall status report and leaving the sponsor to find the mention of the change buries the information in a document that does not match the particular attention this sponsor is giving to this specific change. Asking the technical team to speed up their task assessment and produce a full implementation schedule by tomorrow creates artificial pressure instead of simply communicating the real state of things. Informing the sponsor immediately of the approval, while clearly stating what remains to be defined, matches what is actually known at this moment."
+   },
+   "decision_atom": "Décider s'il faut communiquer un statut maintenant ou attendre d'avoir un plan complet.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Le sponsor suit le changement de près et n'a reçu aucune nouvelle depuis deux jours, alors que le calendrier n'est pas encore défini.",
+   "bascule": "Si le sponsor ne suivait pas ce changement de près et n'avait exprimé aucune attente de statut, attendre un plan complet deviendrait raisonnable.",
+   "task_id": "BE3",
+   "level": 2,
+   "run_id": "20261018-0733",
+   "release": "qL2-BE3-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE5-20261018-0733-1-01",
+   "enabler": "Execute a risk management plan (e.g., risk response for security and managing sustainability risks).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un projet informatique utilise un composant open source dont une vulnérabilité mineure vient d'être publiée. Le registre des risques qualifie ce type de faille, sur ce composant non critique, de risque à impact faible. Aucune exploitation active n'est signalée. Que doit faire la cheffe de projet en priorité ?",
+    "en": "An IT project uses an open-source component for which a minor vulnerability has just been published. The risk register rates this type of flaw, on this non-critical component, as low impact. No active exploitation has been reported. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Planifier la mise à jour du composant lors du prochain cycle de maintenance régulier, conformément au niveau de risque enregistré.",
+     "Déclencher une intervention d'urgence hors cycle, en mobilisant l'équipe technique pour corriger le composant avant la fin de la journée.",
+     "Transférer le traitement de cette faille à l'équipe de sécurité, qui doit requalifier le niveau de risque dans le registre sans délai.",
+     "Suspendre l'utilisation du composant dans tous les environnements de production jusqu'à la publication d'un correctif officiel."
+    ],
+    "en": [
+     "Schedule the component update during the next regular maintenance cycle, consistent with the recorded risk level.",
+     "Trigger an emergency out-of-cycle intervention, mobilizing the technical team to patch the component before the end of the day.",
+     "Hand off this flaw to the security team, which must requalify the risk level in the register without delay.",
+     "Suspend use of the component across all production environments until an official patch is released."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le registre des risques qualifie déjà ce type de faille, sur ce composant non critique, de risque à impact faible, et aucune exploitation active n'est signalée : planifier la mise à jour lors du prochain cycle de maintenance régulier applique une réponse proportionnée à un risque déjà évalué comme faible. Déclencher une intervention d'urgence hors cycle en mobilisant l'équipe technique traite une faille mineure non exploitée comme une crise, ce que rien dans l'énoncé ne justifie. Transférer le traitement à l'équipe de sécurité pour une requalification immédiate du niveau de risque mobilise une ressource d'escalade alors que la qualification existante est encore valable. Suspendre l'utilisation du composant dans tous les environnements de production applique une mesure d'arrêt disproportionnée à une vulnérabilité que le registre classe lui-même comme mineure. Planifier la mise à jour au cycle régulier reste la réponse qui correspond au niveau de risque réellement documenté.",
+    "en": "The risk register already rates this type of flaw, on this non-critical component, as low impact, and no active exploitation has been reported: scheduling the update during the next regular maintenance cycle applies a response proportionate to a risk already assessed as low. Triggering an emergency out-of-cycle intervention by mobilizing the technical team treats a minor, non-exploited flaw as a crisis, which nothing in the scenario supports. Handing off the issue to the security team for immediate requalification of the risk level mobilizes an escalation resource while the existing rating still holds. Suspending use of the component across all production environments applies a disruptive stop to a vulnerability the register itself classifies as minor. Scheduling the update for the regular cycle remains the response that matches the risk level actually documented."
+   },
+   "decision_atom": "Décider de l'ampleur de la réponse à apporter à une vulnérabilité de sécurité déjà qualifiée de faible impact.",
+   "axe_de_decision": "la proportionnalité de la réponse",
+   "indice_decisif": "Le registre qualifie déjà ce type de faille, sur ce composant non critique, de risque à impact faible, et aucune exploitation active n'est signalée.",
+   "bascule": "Si une exploitation active de la faille avait été signalée, l'intervention d'urgence deviendrait la réponse correcte.",
+   "task_id": "BE5",
+   "level": 2,
+   "run_id": "20261018-0733",
+   "release": "qL2-BE5-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE5-20261018-0733-1-05",
+   "enabler": "Communicate the status of a risk impact on the project.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un risque identifié depuis le début du projet vient de se matérialiser et affecte directement la date de livraison d'un lot clé. Le chef de projet doit en informer les parties prenantes. Que doit-il faire en premier ?",
+    "en": "A risk identified since the start of the project has just materialized and directly affects the delivery date of a key work package. The project manager must inform stakeholders. What should they do first?"
+   },
+   "options": {
+    "fr": [
+     "Évaluer l'ampleur réelle de l'impact sur le calendrier avant de communiquer un statut aux parties prenantes.",
+     "Convoquer immédiatement une réunion d'urgence avec le sponsor pour annoncer la matérialisation du risque.",
+     "Diffuser une alerte générale à toutes les parties prenantes dès la confirmation de la matérialisation du risque.",
+     "Mettre à jour le registre des risques en clôturant l'entrée correspondante avant toute communication."
+    ],
+    "en": [
+     "Assess the actual extent of the schedule impact before communicating a status to stakeholders.",
+     "Immediately call an emergency meeting with the sponsor to announce the risk's materialization.",
+     "Broadcast a general alert to all stakeholders as soon as the risk's materialization is confirmed.",
+     "Update the risk register by closing the corresponding entry before any communication."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le risque vient tout juste de se matérialiser et affecte la date de livraison, mais l'ampleur réelle de cet impact n'est pas encore connue : évaluer cette ampleur avant de communiquer permet de transmettre un statut fondé sur une information exploitable plutôt que sur une alerte vague. Convoquer immédiatement une réunion d'urgence avec le sponsor court-circuite cette évaluation et risque de communiquer une estimation non vérifiée. Diffuser une alerte générale dès la confirmation produit la même information incomplète, mais à un public plus large, amplifiant l'incertitude au lieu de la clarifier. Mettre à jour le registre en clôturant l'entrée traite à tort un risque matérialisé comme un risque terminé, alors qu'il devient un problème actif à gérer. Évaluer d'abord l'ampleur de l'impact est l'étape qui permet ensuite une communication utile et précise.",
+    "en": "The risk has just materialized and affects the delivery date, but the actual extent of this impact is not yet known: assessing that extent before communicating allows a status to be conveyed based on usable information rather than a vague alert. Immediately calling an emergency meeting with the sponsor bypasses this assessment and risks communicating an unverified estimate. Broadcasting a general alert as soon as confirmation arrives produces the same incomplete information, but to a wider audience, amplifying uncertainty instead of clarifying it. Updating the register by closing the entry wrongly treats a materialized risk as a finished one, when it has instead become an active issue to manage. Assessing the extent of the impact first is the step that then enables useful and accurate communication."
+   },
+   "decision_atom": "Décider de la première action à mener quand un risque vient de se matérialiser et affecte le calendrier, avant de communiquer un statut.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "Le risque vient tout juste de se matérialiser et l'ampleur réelle de son impact sur le calendrier n'est pas encore connue.",
+   "bascule": "Si l'ampleur de l'impact était déjà connue et chiffrée au moment de la matérialisation, convoquer immédiatement le sponsor deviendrait la bonne première action.",
+   "task_id": "BE5",
+   "level": 2,
+   "run_id": "20261018-0733",
+   "release": "qL2-BE5-20261018-0733-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
