@@ -1,0 +1,83 @@
+{
+ "run_id": "20261019-0816",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-BE8-20261019-0816-1-01",
+   "enabler": "Survey changes to the external business environment (e.g., regulations, technology, geopolitical, market).",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une cheffe de projet lit dans une lettre d'information sectorielle qu'une agence de normalisation « envisagerait » de revoir un seuil technique touchant son produit. Aucune publication officielle, aucune date, aucun texte consultable ne sont disponibles ; l'article cite une source anonyme proche du dossier. Que doit-elle faire en priorité ?",
+    "en": "A project manager reads in an industry newsletter that a standards agency is said to be \"considering\" revising a technical threshold affecting her product. There is no official publication, no date, and no accessible text; the article cites an anonymous source close to the matter. What should she do first?"
+   },
+   "options": {
+    "fr": [
+     "Ajuster dès maintenant les spécifications techniques du produit afin d'anticiper le seuil évoqué par l'article de la lettre d'information.",
+     "Rechercher une confirmation de la source officielle de l'agence avant de qualifier ce signal comme un changement avéré.",
+     "Transmettre l'article au sponsor en le présentant comme un changement réglementaire confirmé que le projet doit prendre en compte.",
+     "Inscrire le nouveau seuil au registre des risques du projet comme une menace déjà matérialisée pesant sur le produit."
+    ],
+    "en": [
+     "Adjust the product's technical specifications now to anticipate the threshold mentioned in the newsletter article.",
+     "Seek confirmation from the agency's official source before treating this signal as a confirmed change.",
+     "Forward the article to the sponsor, presenting it as a confirmed regulatory change to plan for.",
+     "Log the new threshold in the project's risk register as a threat already materialized for the product."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "L'énoncé précise qu'il n'existe ni publication officielle, ni date, ni texte consultable : seule une rumeur de source anonyme circule. Vérifier auprès de la source officielle de l'agence est la seule action qui établit si un changement réel est en cours avant d'engager le projet sur cette base. Ajuster les spécifications dès maintenant traite une rumeur comme un fait acquis et expose le produit à des changements inutiles si le seuil n'évolue pas comme décrit. Transmettre l'article au sponsor comme un changement confirmé propage une information non vérifiée à un niveau de décision supérieur. Inscrire le seuil au registre des risques comme une menace déjà matérialisée confond une rumeur non confirmée avec un événement avéré, ce qui fausse la priorisation des risques réels.",
+    "en": "The scenario specifies that there is no official publication, no date, and no accessible text — only an anonymous-source rumor is circulating. Checking with the agency's official source is the only action that establishes whether a real change is underway before committing the project to it. Adjusting specifications now treats a rumor as an established fact and exposes the product to needless changes if the threshold does not evolve as described. Forwarding the article to the sponsor as a confirmed change spreads unverified information to a higher decision level. Logging the threshold in the risk register as an already-materialized threat confuses an unconfirmed rumor with a proven event, which distorts the prioritization of real risks."
+   },
+   "decision_atom": "Décider s'il faut traiter une rumeur réglementaire non confirmée comme un changement avéré avant de vérifier la source.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'article cite une source anonyme, sans publication officielle, date ni texte consultable.",
+   "bascule": "Si l'agence avait publié officiellement une consultation ou un projet de texte daté, inscrire le risque deviendrait défendable.",
+   "task_id": "BE8",
+   "level": 2,
+   "run_id": "20261019-0816",
+   "release": "qL2-BE8-20261019-0816-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-PE2-20261019-0816-1-01",
+   "enabler": "Analyze the context for the conflict.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Deux membres d'une équipe expriment des positions opposées sur la priorité à donner à une tâche technique, lors d'un point d'avancement. Aucun des deux n'a encore exposé les raisons de sa position, et la réunion se termine dans dix minutes. Que doit faire le chef de projet en priorité ?",
+    "en": "Two team members express opposing positions on the priority of a technical task during a status meeting. Neither has yet explained the reasoning behind their position, and the meeting ends in ten minutes. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Trancher immédiatement en faveur de la tâche la plus urgente selon le planning.",
+     "Demander à chacun des deux membres de documenter sa position par écrit, avec les arguments techniques associés, avant la prochaine réunion d'équipe.",
+     "Transmettre le désaccord au sponsor du projet, en précisant les deux tâches techniques concernées, pour qu'il arbitre la priorité entre elles.",
+     "Programmer un échange court avec les deux membres juste après la réunion pour entendre leurs raisons respectives."
+    ],
+    "en": [
+     "Decide immediately in favor of the more urgent task per the schedule.",
+     "Ask each of the two members to document their position in writing, including their technical arguments, before the next team meeting.",
+     "Forward the disagreement, with details of the two technical tasks concerned, to the project sponsor to arbitrate priority between them.",
+     "Schedule a short conversation with both members right after the meeting to hear their respective reasons."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Trancher en faveur de la tâche jugée la plus urgente règle le calendrier mais pas le désaccord : les raisons des deux membres n'ont pas été entendues, et une décision prise sans elles risque de rouvrir le conflit plus tard. Demander une documentation écrite, avec les arguments techniques associés, avant la prochaine réunion repousse inutilement l'échange alors qu'un moment est disponible tout de suite après la séance. Transmettre au sponsor, en précisant les tâches concernées, est prématuré : rien n'indique que le désaccord dépasse ce que le chef de projet peut traiter lui-même, et aucune tentative de compréhension n'a encore eu lieu. Programmer un échange court juste après la réunion permet de recueillir les raisons de chacun pendant que la réunion elle-même reste productive, ce qui est la condition nécessaire avant d'analyser correctement le contexte du conflit.",
+    "en": "Deciding in favor of the task deemed more urgent settles the schedule but not the disagreement: neither member's reasoning has been heard, and a decision made without it risks reopening the conflict later. Asking for written documentation, including their technical arguments, before the next meeting needlessly delays the conversation when a moment is available right after this session. Forwarding to the sponsor, with details of the tasks concerned, is premature: nothing indicates the disagreement is beyond what the project manager can handle, and no attempt at understanding has yet occurred. Scheduling a short conversation right after the meeting allows both members' reasoning to be heard while keeping the meeting itself productive, which is the necessary condition before properly analyzing the conflict's context."
+   },
+   "decision_atom": "Décider quand recueillir les raisons des deux parties avant d'agir sur un désaccord naissant.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "Aucune des deux personnes n'a encore exposé ses raisons et la réunion se termine dans dix minutes.",
+   "bascule": "Si les raisons des deux personnes avaient déjà été exposées pendant la réunion, trancher immédiatement deviendrait défendable.",
+   "task_id": "PE2",
+   "level": 2,
+   "run_id": "20261019-0816",
+   "release": "qL2-PE2-20261019-0816-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
