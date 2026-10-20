@@ -1,0 +1,197 @@
+{
+ "run_id": "20261020-0801",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL2-BE6-20261020-0801-2-01",
+   "enabler": "Utilize lessons learned.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Une équipe termine un jalon majeur et identifie un enseignement utile sur la configuration d'un environnement de test. L'atelier formel de clôture, où les enseignements sont habituellement consolidés avec les données de performance associées, est prévu dans trois semaines. Que doit faire le chef de projet dès maintenant ?",
+    "en": "A team completes a major milestone and identifies a useful lesson about test environment configuration. The formal closeout workshop, where lessons are usually consolidated with the associated performance data, is scheduled in three weeks. What should the project manager do right now?"
+   },
+   "options": {
+    "fr": [
+     "Attendre l'atelier de clôture pour consigner l'enseignement et le rapprocher des données de performance du jalon.",
+     "Organiser immédiatement une réunion dédiée pour présenter cet enseignement et le diffuser à l'ensemble du programme.",
+     "Demander au comité de gouvernance d'examiner l'enseignement et d'approuver formellement sa consignation.",
+     "Noter dès maintenant l'enseignement dans un registre provisoire, à affiner lors de l'atelier avec les données complètes."
+    ],
+    "en": [
+     "Wait for the closeout workshop to log the lesson and align it with the milestone's performance data.",
+     "Immediately organize a dedicated meeting to present this lesson and share it across the entire program.",
+     "Ask the governance board to review the lesson and formally approve its logging.",
+     "Record the lesson now in a provisional register, to be refined at the workshop with the complete data."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "L'enseignement est frais et utile tout de suite pour d'autres équipes ; attendre trois semaines risque de le perdre ou de le déformer. Le consigner provisoirement, puis l'enrichir avec les données de performance lors de l'atelier, préserve l'information sans attendre ni la figer prématurément. Attendre l'atelier pour consigner l'enseignement et le rapprocher des données retarde sans raison un enseignement déjà exploitable. Organiser une réunion dédiée pour le présenter et le diffuser à tout le programme est disproportionné pour un enseignement ponctuel qui n'a pas encore été validé par les données. Faire examiner l'enseignement par un comité de gouvernance et approuver formellement sa consignation avant même de le noter confond la consignation d'un retour d'expérience, qui relève du chef de projet, avec une décision nécessitant une validation formelle.",
+    "en": "The lesson is fresh and immediately useful to other teams; waiting three weeks risks losing or distorting it. Logging it provisionally now, then enriching it with performance data at the workshop, preserves the information without delay or premature closure. Waiting for the workshop to log the lesson and align it with the data needlessly delays an already usable lesson. Organizing a dedicated meeting to present it and share it across the whole program is disproportionate for a single lesson not yet validated by data. Having a governance board review the lesson and formally approve its logging before it is even recorded confuses capturing a lesson learned, which is the project manager's role, with a decision requiring formal validation."
+   },
+   "decision_atom": "Décider s'il faut consigner immédiatement un enseignement frais ou attendre l'atelier formel de clôture.",
+   "axe_de_decision": "le moment",
+   "indice_decisif": "L'atelier formel, où l'enseignement serait normalement consolidé avec les données de performance, n'a lieu que dans trois semaines.",
+   "bascule": "Si l'atelier avait lieu le lendemain, attendre deviendrait une politique raisonnable.",
+   "task_id": "BE6",
+   "level": 2,
+   "run_id": "20261020-0801",
+   "release": "qL2-BE6-20261020-0801-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL2-BE6-20261020-0801-2-04",
+   "enabler": "Utilize lessons learned.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Au démarrage d'un nouveau projet, le chef de projet consulte le registre des enseignements de projets antérieurs similaires et y trouve une recommandation pertinente sur la gestion des fournisseurs critiques. Dans quel ordre doit-il procéder pour l'exploiter utilement ?",
+    "en": "At the start of a new project, the project manager reviews the lessons learned register from previous similar projects and finds a relevant recommendation about managing critical suppliers. In what order should he proceed to use it effectively?"
+   },
+   "options": {
+    "fr": [
+     "Intégrer directement la recommandation telle quelle dans le plan de gestion des approvisionnements du projet.",
+     "Présenter la recommandation au comité de gouvernance et obtenir son accord préalable à toute action.",
+     "Évaluer la pertinence de la recommandation par rapport au contexte actuel, puis l'adapter au plan du projet.",
+     "Transmettre la recommandation à l'équipe d'approvisionnement, qui décide seule de son usage final."
+    ],
+    "en": [
+     "Directly integrate the recommendation as-is into the project's procurement management plan.",
+     "Present the recommendation to the governance board and obtain its prior approval for any action.",
+     "Assess the recommendation's relevance to the current context, then adapt it into the project plan.",
+     "Forward the recommendation to the procurement team, which alone decides on its final use."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Un enseignement issu d'un projet antérieur reste contextuel : il doit d'abord être examiné à la lumière du projet actuel avant d'être traduit en action, ce qui respecte l'ordre évaluation puis adaptation. Intégrer directement la recommandation telle quelle dans le plan du projet saute l'étape de vérification du contexte, alors que rien n'indique que les deux projets sont identiques. La présenter au comité de gouvernance et obtenir son accord préalable à toute action surestime le niveau de validation requis pour exploiter un enseignement, qui relève du jugement du chef de projet. La transmettre à l'équipe d'approvisionnement, qui décide seule de son usage final, sans l'avoir évaluée reporte sur une autre équipe un travail d'analyse qui doit précéder toute diffusion.",
+    "en": "A lesson from a prior project remains context-dependent: it must first be examined against the current project before being translated into action, respecting the order of assessment then adaptation. Directly integrating the recommendation as-is into the project's plan skips the step of checking context, even though nothing indicates the two projects are identical. Presenting it to the governance board and obtaining its prior approval for any action overstates the validation level needed to apply a lesson learned, which is a matter of the project manager's judgment. Forwarding it to the procurement team, which alone decides on its final use, without having assessed it shifts onto another team an analysis step that should precede any dissemination."
+   },
+   "decision_atom": "Décider de l'ordre des étapes pour exploiter un enseignement issu d'un projet antérieur similaire.",
+   "axe_de_decision": "l'ordre des actions",
+   "indice_decisif": "L'enseignement provient d'un projet antérieur similaire, mais rien n'indique qu'il est identique au projet actuel.",
+   "bascule": "Si le projet antérieur était identique en tout point de contexte, intégrer directement la recommandation deviendrait acceptable.",
+   "task_id": "BE6",
+   "level": 2,
+   "run_id": "20261020-0801",
+   "release": "qL2-BE6-20261020-0801-2",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE2-20261020-0801-1-01",
+   "enabler": "Implement an agreed-on resolution strategy.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Deux membres d'une équipe acceptent, en réunion, une stratégie de résolution test : alterner la responsabilité de la revue de code chaque semaine, pendant un mois, avant de décider d'une règle permanente. Le chef de projet doit lancer la mise en œuvre. Que doit-il faire ?",
+    "en": "Two team members agree, in a meeting, to a trial resolution strategy: alternating code review ownership weekly for one month before deciding on a permanent rule. The project manager must begin implementation. What should he do?"
+   },
+   "options": {
+    "fr": [
+     "Formaliser l'alternance comme règle permanente dès la première semaine, pour clore rapidement le désaccord initial.",
+     "Confier la revue de code en continu à la personne la plus expérimentée, en complément de l'alternance convenue.",
+     "Démarrer l'alternance hebdomadaire telle qu'acceptée, avec un point de réévaluation à la fin du mois convenu.",
+     "Transmettre au sponsor le détail de l'accord avant de lancer l'alternance, pour qu'il valide le principe retenu."
+    ],
+    "en": [
+     "Make the alternation a permanent rule starting the first week, to close the initial disagreement quickly.",
+     "Assign code review continuously to the most experienced person, in addition to the agreed alternation.",
+     "Start the weekly alternation as agreed, with a review point at the end of the agreed month.",
+     "Forward the agreement details to the sponsor before starting the alternation, so he approves the arrangement."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'accord porte explicitement sur une période d'essai d'un mois avant toute décision permanente. Démarrer l'alternance telle qu'acceptée, avec un point de réévaluation à l'échéance convenue, respecte exactement ce qui a été négocié et garde la porte ouverte pour ajuster si besoin. Formaliser l'alternance comme règle permanente dès la première semaine contredit le caractère test de l'accord : rien dans l'énoncé n'indique que les parties ont renoncé à la période d'essai. Confier la revue en continu à la personne la plus expérimentée revient à ne pas appliquer l'accord conclu, alors que les deux membres y ont consenti. Transmettre au sponsor le détail de l'accord avant de lancer l'alternance retarde sans raison la mise en œuvre d'un accord déjà validé par les parties concernées, qui n'ont pas besoin d'une validation supplémentaire pour un arrangement temporaire interne à l'équipe.",
+    "en": "The agreement explicitly covers a one-month trial period before any permanent decision. Starting the alternation as agreed, with a review point at the agreed deadline, matches exactly what was negotiated and leaves room to adjust later. Making the alternation permanent starting the first week contradicts the trial nature of the agreement: nothing indicates the parties gave up the trial period. Assigning review continuously to the most experienced person effectively fails to apply the agreement the two members consented to. Forwarding the agreement details to the sponsor before starting delays, without cause, the implementation of an arrangement already agreed by the parties involved, who do not need further approval for a temporary internal team arrangement."
+   },
+   "decision_atom": "Décider comment lancer la mise en œuvre d'une stratégie de résolution déjà acceptée mais conçue comme un essai temporaire.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "L'accord porte explicitement sur une période d'essai d'un mois avant toute décision permanente.",
+   "bascule": "Si l'accord initial avait explicitement renoncé à la période d'essai pour une adoption immédiate et permanente, la formaliser dès la première semaine deviendrait correct.",
+   "task_id": "PE2",
+   "level": 1,
+   "run_id": "20261020-0801",
+   "release": "qL1-PE2-20261020-0801-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE2-20261020-0801-2-05",
+   "enabler": "Communicate conflict management principles with the team and external stakeholders.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un partenaire externe impliqué dans une phase du projet critique publiquement, lors d'un comité mixte, la façon dont une tension interne récente a été gérée par l'équipe projet. Ce partenaire n'a pas participé à la résolution du conflit et n'en connaît que des éléments partiels. Le chef de projet, responsable de la gestion des conflits sur le projet, est présent dans la salle. Qui doit répondre sur les principes appliqués, et comment ?",
+    "en": "An external partner involved in one phase of the project publicly criticizes, during a joint steering meeting, how the project team recently handled an internal tension. This partner did not take part in resolving the conflict and only knows partial elements of it. The project manager, responsible for conflict management on the project, is present in the room. Who should respond regarding the principles applied, and how?"
+   },
+   "options": {
+    "fr": [
+     "Les deux personnes directement impliquées dans le conflit interne, en exposant devant le partenaire les détails personnels de leur différend et son origine.",
+     "Le chef de projet, en rappelant les principes de gestion des conflits appliqués, sans entrer dans les détails personnels du différend.",
+     "Le sponsor du projet, en validant publiquement a posteriori devant le partenaire la décision prise par le chef de projet.",
+     "Un facilitateur externe neutre, invité spécialement pour arbitrer devant le comité mixte la critique formulée par le partenaire."
+    ],
+    "en": [
+     "The two people directly involved in the internal conflict, by sharing with the partner the personal details of their disagreement and its origin.",
+     "The project manager, by recalling the conflict management principles applied, without going into the personal details of the disagreement.",
+     "The project sponsor, by publicly validating after the fact, in front of the partner, the decision made by the project manager.",
+     "A neutral external facilitator, specially brought in to arbitrate before the joint committee the criticism raised by the partner."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Le chef de projet porte la responsabilité de la gestion des conflits sur le projet et est présent dans la salle : il lui revient de répondre en rappelant les principes appliqués, sans exposer les détails personnels d'un différend que le partenaire externe ne connaît que partiellement. Faire répondre les deux personnes directement impliquées expose devant le partenaire des détails personnels et l'origine du différend à un partenaire qui n'a pas à en connaître le détail. Faire intervenir le sponsor pour valider la décision devant le partenaire mobilise une autorité supérieure pour une critique que le chef de projet peut répondre directement. Convoquer un facilitateur externe neutre pour arbitrer devant le comité mixte traite une critique publique comme un conflit non résolu, alors que la question porte sur l'explication des principes déjà appliqués.",
+    "en": "The project manager holds responsibility for conflict management on the project and is present in the room: it falls to them to respond by recalling the principles applied, without disclosing personal details of a disagreement the external partner only partially knows. Having the two people directly involved respond shares with the partner personal details and the origin of the disagreement with a partner who has no need to know them. Bringing in the sponsor to validate the decision in front of the partner engages a higher authority for a criticism the project manager can address directly. Calling in a neutral external facilitator to arbitrate before the joint committee treats a public criticism as an unresolved conflict, when the actual question concerns explaining principles already applied."
+   },
+   "decision_atom": "Décider qui doit répondre à une critique publique externe sur la gestion d'un conflit interne, et selon quel registre d'information.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le chef de projet, responsable de la gestion des conflits, est présent dans la salle au moment de la critique publique.",
+   "bascule": "Si le chef de projet n'avait pas été présent dans la salle, faire répondre le sponsor en son nom deviendrait défendable.",
+   "task_id": "PE2",
+   "level": 3,
+   "run_id": "20261020-0801",
+   "release": "qL3-PE2-20261020-0801-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE3-20261020-0801-1-04",
+   "enabler": "Represent the voice of the team.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "En comité de pilotage, un sponsor critique le rythme de livraison de l'équipe, sans avoir consulté le chef de projet au préalable. L'équipe n'est pas présente à cette réunion. Que doit faire le chef de projet ?",
+    "en": "In a steering committee meeting, a sponsor criticizes the team's delivery pace without having consulted the project manager beforehand. The team is not present at this meeting. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Apporter en réunion le contexte que l'équipe n'a pas pu exposer elle-même, avant toute conclusion du comité.",
+     "Transmettre la critique telle quelle à l'équipe absente, pour qu'elle réponde directement au sponsor.",
+     "Attendre la fin du comité pour vérifier si l'équipe souhaite réagir à la critique du sponsor.",
+     "Demander au sponsor de reformuler sa critique par écrit avant d'y répondre en comité."
+    ],
+    "en": [
+     "Bring to the meeting the context the team could not present itself, before the committee draws any conclusion.",
+     "Pass the criticism on as is to the absent team, so they can respond directly to the sponsor.",
+     "Wait until the committee ends to check whether the team wants to respond to the sponsor's criticism.",
+     "Ask the sponsor to put the criticism in writing before responding to it at the committee."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "L'équipe n'est pas présente et ne peut donc pas se défendre elle-même : il revient au chef de projet d'apporter le contexte manquant pendant la réunion, avant que le comité ne tire des conclusions sur une base incomplète. Transmettre la critique à l'équipe absente pour qu'elle réponde directement laisse sans réponse immédiate une critique formulée devant le sponsor, alors que l'équipe est absente. Attendre la fin du comité pour vérifier la réaction de l'équipe à la critique du sponsor retarde une clarification nécessaire pendant que la critique reste sans contrepoint devant les décideurs. Demander une reformulation écrite du sponsor avant d'y répondre en comité ne répond pas au besoin immédiat de contexte en réunion.",
+    "en": "The team is not present and therefore cannot defend itself: it falls to the project manager to bring the missing context during the meeting, before the committee draws conclusions on an incomplete basis. Passing the criticism to the absent team so they can respond directly leaves the criticism unanswered right when it was raised in front of the sponsor, while the team is absent. Waiting until the committee ends to check the team's reaction to the sponsor's criticism delays a needed clarification while the criticism stands unchallenged in front of decision-makers. Asking the sponsor to put it in writing before responding at the committee does not address the immediate need for context during the meeting."
+   },
+   "decision_atom": "Décider qui doit répondre à une critique du sponsor sur le rythme de livraison, en l'absence de l'équipe visée.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'équipe n'est pas présente à la réunion et ne peut donc pas apporter elle-même le contexte manquant.",
+   "bascule": "Si l'équipe était présente à la réunion, la laisser répondre elle-même deviendrait la bonne approche.",
+   "task_id": "PE3",
+   "level": 1,
+   "run_id": "20261020-0801",
+   "release": "qL1-PE3-20261020-0801-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
