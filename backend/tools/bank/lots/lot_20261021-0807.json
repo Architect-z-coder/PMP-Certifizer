@@ -1,0 +1,235 @@
+{
+ "run_id": "20261021-0807",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL3-PE3-20261021-0807-1-04",
+   "enabler": "Represent the voice of the team.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors d'une réunion de direction, un responsable de département affirme que l'équipe projet « prend des raccourcis sur la qualité » pour tenir les délais. Le chef de projet, présent, sait que cette affirmation repose sur une remarque isolée entendue en couloir, sans exemple précis. Aucun membre de l'équipe n'est présent pour répondre. Que doit faire le chef de projet ?",
+    "en": "During a leadership meeting, a department manager states that the project team is \"cutting corners on quality\" to meet deadlines. The project leader, present in the room, knows this claim rests on an isolated hallway remark, with no specific example given. No team member is present to respond. What should the project leader do?"
+   },
+   "options": {
+    "fr": [
+     "Reconnaître la préoccupation du responsable de département et promettre un renforcement immédiat des contrôles qualité dès cette réunion de direction.",
+     "Entendre la remarque et attendre un moment plus propice pour y répondre, afin d'éviter de donner du poids à une affirmation non étayée devant la direction.",
+     "Proposer d'organiser une revue qualité formelle à l'initiative du responsable de département, en clôturant le point pour cette réunion de direction.",
+     "Demander au responsable de département de préciser sur quels éléments concrets repose son affirmation, avant de rapporter le point à l'équipe."
+    ],
+    "en": [
+     "Acknowledge the department manager's concern and promise an immediate reinforcement of quality controls at this very leadership meeting.",
+     "Hear the remark and wait for a more suitable moment to respond, in order to avoid giving weight to an unsubstantiated claim in front of leadership.",
+     "Propose that the department manager initiate a formal quality review, closing the matter for this particular leadership meeting.",
+     "Ask the department manager to specify what concrete elements support the claim, before reporting it back to the team."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Représenter la voix de l'équipe absente exige de ne pas laisser une affirmation non étayée s'installer, mais aussi de ne pas la traiter comme un fait avant d'en connaître le contenu réel ; demander des éléments concrets protège l'équipe sans la défendre sur une base inconnue. Promettre un renforcement immédiat des contrôles qualité dès cette réunion de direction valide implicitement l'accusation alors que rien ne la confirme, et engage l'équipe sans l'avoir consultée. Entendre la remarque et attendre un moment plus propice pour y répondre, afin d'éviter de donner du poids à une affirmation non étayée devant la direction, expose l'équipe absente à voir cette affirmation circuler sans contradiction en son absence. Proposer une revue qualité à l'initiative du responsable de département, en clôturant le point pour cette réunion de direction, traite une remarque isolée comme si elle justifiait déjà une action formelle, alors qu'aucun exemple précis n'a été avancé.",
+    "en": "Representing the voice of the absent team means not letting an unsubstantiated claim stand unchallenged, but also not treating it as fact before knowing what it actually rests on; asking for concrete elements protects the team without defending it on an unknown basis. Promising an immediate reinforcement of quality controls at this very leadership meeting implicitly validates the accusation when nothing confirms it, and commits the team without consulting it. Hearing the remark and waiting for a more suitable moment to respond, in order to avoid giving weight to an unsubstantiated claim in front of leadership, leaves the absent team exposed to that claim circulating unchallenged in their absence. Proposing that the department manager initiate a formal quality review, closing the matter for this particular leadership meeting, treats an isolated remark as if it already justified formal action, when no specific example has been given."
+   },
+   "decision_atom": "Décider comment réagir à une accusation visant l'équipe, en son absence, fondée sur une remarque isolée et non vérifiée.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "L'affirmation repose sur une remarque isolée entendue en couloir, sans exemple précis.",
+   "bascule": "Si le responsable de département avait cité des exemples précis et documentés, organiser une revue qualité deviendrait approprié.",
+   "task_id": "PE3",
+   "level": 3,
+   "run_id": "20261021-0807",
+   "release": "qL3-PE3-20261021-0807-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE4-20261021-0807-1-01",
+   "enabler": "Identify stakeholders.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Pendant une réunion technique, un ingénieur mentionne en aparté qu'une équipe de conformité externe, jusqu'ici non mentionnée, devra approuver le livrable final. Le chef de projet n'a jamais vu cette équipe citée dans aucun document du projet. Que doit-il faire en priorité ?",
+    "en": "During a technical meeting, an engineer mentions in passing that an external compliance team, never mentioned before, will need to approve the final deliverable. The project manager has never seen this team referenced in any project document. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander à l'ingénieur de transmettre lui-même cette information à l'équipe de conformité externe, puis suivre la confirmation de réception.",
+     "Ajouter l'équipe de conformité externe au registre des parties prenantes, avec un niveau d'influence élevé noté dès la réunion technique.",
+     "Vérifier l'existence et le rôle réel de cette équipe de conformité externe avant de l'enregistrer comme partie prenante.",
+     "Informer le sponsor qu'une nouvelle contrainte de conformité externe vient d'apparaître, et lui demander son avis sur la suite."
+    ],
+    "en": [
+     "Ask the engineer to forward this information directly to the external compliance team, then follow up on the confirmation received.",
+     "Add the external compliance team to the stakeholder register, noting a high influence level right from the technical meeting.",
+     "Verify the existence and actual role of this external compliance team before recording it as a stakeholder.",
+     "Inform the sponsor that a new external compliance constraint has just appeared, and ask for his view on next steps."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'information vient d'un aparté et n'a jamais été confirmée dans aucun document du projet : avant d'enregistrer une entité comme partie prenante, le chef de projet doit vérifier qu'elle existe réellement et comprendre son rôle exact. Ajouter l'équipe au registre avec un niveau d'influence élevé noté dès la réunion technique revient à fonder une décision structurante sur une rumeur non vérifiée. Déléguer la transmission à l'ingénieur puis suivre la confirmation de réception ne règle rien : ce n'est pas lui qui identifie les parties prenantes du projet. Informer le sponsor et lui demander son avis avant toute vérification risque de propager une information encore incertaine.",
+    "en": "The information comes from a side comment and has never been confirmed in any project document: before recording an entity as a stakeholder, the project manager must verify that it actually exists and understand its real role. Adding the team to the register, noting a high influence level right from the technical meeting, bases a structural decision on an unverified rumor. Delegating the forwarding to the engineer and then following up on confirmation solves nothing: identifying project stakeholders is not his responsibility. Informing the sponsor and asking for his view before any verification risks spreading information that is still uncertain."
+   },
+   "decision_atom": "Décider s'il faut enregistrer immédiatement une entité mentionnée en aparté comme partie prenante ou vérifier d'abord son existence et son rôle.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "L'information vient d'un aparté en réunion technique et n'apparaît dans aucun document du projet.",
+   "bascule": "Si l'équipe de conformité externe était déjà citée dans un document contractuel du projet, l'ajouter directement au registre deviendrait défendable.",
+   "task_id": "PE4",
+   "level": 1,
+   "run_id": "20261021-0807",
+   "release": "qL1-PE4-20261021-0807-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE4-20261021-0807-1-02",
+   "enabler": "Analyze stakeholders.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un membre de l'équipe affirme qu'un responsable métier a « beaucoup d'influence » sur le projet, car il parle souvent en réunion. Ce responsable n'a pourtant signé aucune décision clé et n'apparaît dans aucune chaîne d'approbation du projet. Le chef de projet envisage de reclasser ce responsable comme partie prenante à forte influence. Que doit-il faire en priorité ?",
+    "en": "A team member claims that a business manager has 'a lot of influence' on the project because he often speaks up in meetings. This manager has not signed off on any key decision, however, and does not appear in any approval chain of the project. The project manager is considering reclassifying this manager as a high-influence stakeholder. What should he do first?"
+   },
+   "options": {
+    "fr": [
+     "Demander au membre de l'équipe de documenter par écrit les raisons de son observation, puis archiver cette note dans le journal du projet.",
+     "Organiser une réunion avec le responsable métier pour clarifier ses attentes vis-à-vis du projet et le calendrier de ses décisions.",
+     "Maintenir la classification actuelle du responsable métier jusqu'à la prochaine revue planifiée, reportée après le prochain jalon.",
+     "Examiner les chaînes d'approbation et les décisions effectivement prises pour objectiver le niveau d'influence réel."
+    ],
+    "en": [
+     "Ask the team member to document in writing the reasons for this observation, then file this note in the project log.",
+     "Hold a meeting with the business manager to clarify his expectations regarding the project and his decision timeline.",
+     "Keep the manager's current classification until the next scheduled review, postponed to after the upcoming milestone.",
+     "Examine the approval chains and the decisions actually made to objectively assess the real level of influence."
+    ]
+   },
+   "answer_index": 3,
+   "rationale": {
+    "fr": "Le constat initial repose sur une impression — parler souvent en réunion — alors que le registre des approbations ne montre aucune décision signée par ce responsable. Avant de reclasser l'influence d'une partie prenante, il faut s'appuyer sur des éléments vérifiables comme les chaînes d'approbation et les décisions réelles, pas sur une observation comportementale isolée. Documenter par écrit l'observation initiale puis l'archiver dans le journal du projet ne change rien à sa nature : la source reste une perception, pas une preuve. Clarifier les attentes du responsable et son calendrier de décisions est utile mais répond à une autre question que celle du niveau d'influence. Maintenir la classification jusqu'à la prochaine revue, reportée après le prochain jalon, revient à ne pas traiter le signal du tout.",
+    "en": "The initial observation is based on an impression — speaking up often in meetings — while the approval record shows no decision signed by this manager. Before reclassifying a stakeholder's influence, one should rely on verifiable elements such as approval chains and actual decisions, not on an isolated behavioral observation. Documenting the initial observation in writing and then filing it in the project log does not change its nature: the source remains a perception, not evidence. Clarifying the manager's expectations and his decision timeline is useful but answers a different question than the level of influence. Keeping the classification until the next scheduled review, postponed to after the upcoming milestone, leaves the signal unaddressed."
+   },
+   "decision_atom": "Décider s'il faut reclasser l'influence d'une partie prenante sur la base d'une observation comportementale ou vérifier d'abord des éléments objectifs.",
+   "axe_de_decision": "le seuil de preuve",
+   "indice_decisif": "Le responsable métier n'a signé aucune décision clé et n'apparaît dans aucune chaîne d'approbation du projet.",
+   "bascule": "Si le responsable métier apparaissait dans une chaîne d'approbation récente, reclasser son influence sur cette base deviendrait défendable sans examen supplémentaire.",
+   "task_id": "PE4",
+   "level": 1,
+   "run_id": "20261021-0807",
+   "release": "qL1-PE4-20261021-0807-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE4-20261021-0807-2-01",
+   "enabler": "Optimize alignment among stakeholder needs, expectations, and project objectives.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Deux sponsors de rang équivalent, issus de directions différentes, demandent chacun que le prochain jalon livre en priorité leur propre périmètre fonctionnel. Le plan de management des parties prenantes ne désigne pas d'arbitre pour ce type de désaccord, et le comité de pilotage ne se réunit que dans trois semaines. Chaque sponsor affirme avoir déjà l'accord informel du commanditaire exécutif, sans preuve écrite d'aucun côté. Que doit faire le chef de projet en priorité ?",
+    "en": "Two sponsors of equal rank, from different departments, each ask that the next milestone prioritize their own functional scope. The stakeholder management plan does not designate an arbiter for this type of disagreement, and the steering committee does not meet for another three weeks. Each sponsor claims to already have informal agreement from the executive sponsor, with no written confirmation from either side. What should the project manager do first?"
+   },
+   "options": {
+    "fr": [
+     "Donner la priorité au sponsor dont le périmètre a l'échéance contractuelle la plus proche, pour limiter le risque de retard.",
+     "Demander au commanditaire exécutif de confirmer par écrit lequel des deux accords informels est valide avant de prioriser.",
+     "Répartir l'effort du jalon à parts égales entre les deux périmètres, le temps que le comité de pilotage tranche dans trois semaines.",
+     "Organiser une réunion entre les deux sponsors pour qu'ils négocient directement un compromis sur l'ordre de livraison."
+    ],
+    "en": [
+     "Prioritize the sponsor whose scope has the nearest contractual deadline, to limit the risk of delay.",
+     "Ask the executive sponsor to confirm in writing which of the two informal agreements is valid before prioritizing.",
+     "Split the milestone effort evenly between both scopes until the steering committee decides in three weeks.",
+     "Set up a meeting between the two sponsors so they can negotiate a compromise on delivery order directly."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "Les deux sponsors invoquent un accord du commanditaire exécutif qu'aucun des deux ne peut prouver. Tant que cette autorité réelle n'a pas confirmé sa position, aucune priorisation n'a de fondement légitime : prioriser l'échéance contractuelle la plus proche traite un symptôme sans résoudre qui a le dernier mot, et expose le chef de projet à avoir choisi le mauvais camp. Répartir l'effort à parts égales évite la décision plutôt que de la prendre, et dégrade probablement les deux livraisons pendant trois semaines. Faire négocier les deux sponsors entre eux est séduisant mais place le chef de projet en simple arbitre de style, alors que le désaccord porte sur un mandat venu d'au-dessus d'eux deux : seul le commanditaire exécutif peut dire lequel des deux accords informels existe réellement, et c'est cette confirmation qu'il faut obtenir avant toute priorisation.",
+    "en": "Both sponsors invoke an agreement from the executive sponsor that neither can prove. Until that actual authority confirms its position, no prioritization has a legitimate basis: prioritizing the nearest contractual deadline treats a symptom without resolving who truly has the final say, and risks the project manager having backed the wrong side. Splitting the effort evenly avoids the decision rather than making it, and likely degrades both deliveries for three weeks. Having the two sponsors negotiate directly is tempting but turns the project manager into a referee of style, when the disagreement is actually about a mandate from above both of them: only the executive sponsor can confirm which informal agreement actually exists, and that confirmation must come before any prioritization."
+   },
+   "decision_atom": "Décider comment traiter un désaccord de priorité entre deux sponsors de rang égal invoquant chacun un accord informel non prouvé.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Les deux sponsors affirment avoir l'accord du commanditaire exécutif, mais aucun des deux ne peut le prouver par écrit.",
+   "bascule": "Si un des deux sponsors produisait une confirmation écrite du commanditaire exécutif, le prioriser deviendrait la bonne réponse.",
+   "task_id": "PE4",
+   "level": 3,
+   "run_id": "20261021-0807",
+   "release": "qL3-PE4-20261021-0807-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL3-PE4-20261021-0807-2-04",
+   "enabler": "Analyze and tailor communication to stakeholder needs.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Un responsable métier clé exprime, dans un courriel adressé au chef de projet, que les points d'avancement actuels ne répondent plus à ses attentes : il souhaiterait des indicateurs orientés sur l'impact pour son activité plutôt que sur l'avancement des tâches. Le chef de projet délègue habituellement la production des points d'avancement à l'analyste du projet. Qui doit échanger avec ce responsable pour clarifier ses attentes ?",
+    "en": "A key business stakeholder states, in an email to the project manager, that the current status updates no longer meet his needs: he would like metrics focused on impact to his business rather than on task progress. The project manager usually delegates the production of status updates to the project analyst. Who should talk to this stakeholder to clarify his expectations?"
+   },
+   "options": {
+    "fr": [
+     "Le chef de projet, puisque le courriel lui a été adressé directement et que le besoin concerne la relation avec ce responsable.",
+     "L'analyste du projet, qui produit déjà les points d'avancement et connaît le détail des indicateurs actuellement utilisés.",
+     "Le sponsor du projet, afin que la demande d'un changement de format bénéficie d'un soutien hiérarchique approprié.",
+     "L'équipe projet dans son ensemble, lors de la prochaine rétrospective, pour recueillir plusieurs points de vue sur le format."
+    ],
+    "en": [
+     "The project manager, since the email was addressed to him directly and the need concerns the relationship with this stakeholder.",
+     "The project analyst, who already produces the status updates and knows the detail of the metrics currently used.",
+     "The project sponsor, so that the request for a format change benefits from appropriate hierarchical support.",
+     "The project team as a whole, during the next retrospective, to gather several viewpoints on the format."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le courriel est adressé directement au chef de projet, et ce que demande le responsable métier n'est pas une correction technique d'indicateur mais une évolution de ce qu'il attend de la communication projet — une question qui relève de la relation avec cette partie prenante, pas de la production du livrable. L'analyste connaît le détail des indicateurs actuels, mais ce n'est pas lui que le responsable a sollicité, et la décision à prendre porte sur des attentes, pas sur une mécanique de calcul. Impliquer le sponsor avant d'avoir clarifié la demande ajoute un niveau hiérarchique à une conversation qui n'en a pas encore besoin. Attendre la prochaine rétrospective pour une demande déjà formulée et adressée nommément retarde une clarification que rien n'empêche de faire immédiatement. C'est au chef de projet, destinataire de la demande et responsable de l'adéquation entre communication et attentes des parties prenantes, de mener cet échange.",
+    "en": "The email is addressed directly to the project manager, and what the business stakeholder is asking for is not a technical fix to a metric but a shift in what he expects from project communication — a matter of the relationship with this stakeholder, not of producing the deliverable. The analyst knows the detail of current metrics, but he is not the one the stakeholder reached out to, and the decision to make is about expectations, not calculation mechanics. Involving the sponsor before the request has been clarified adds a hierarchical layer to a conversation that does not yet need one. Waiting for the next retrospective for a request already made and addressed by name delays a clarification that nothing prevents from happening immediately. It is up to the project manager, as the recipient of the request and the person responsible for aligning communication with stakeholder expectations, to have this conversation."
+   },
+   "decision_atom": "Décider qui doit clarifier une demande de changement de format de reporting adressée nommément au chef de projet.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Le courriel exprimant l'insatisfaction est adressé directement au chef de projet, pas à l'analyste qui produit les rapports.",
+   "bascule": "Si le courriel avait été adressé à l'analyste ou portait sur une question purement technique de calcul, le déléguer à l'analyste deviendrait défendable.",
+   "task_id": "PE4",
+   "level": 3,
+   "run_id": "20261021-0807",
+   "release": "qL3-PE4-20261021-0807-2",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL2-PE5-20261021-0807-1-05",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 2,
+   "prompt": {
+    "fr": "Un chef de projet observe qu'une partie prenante, classée comme ayant une influence faible, s'est montrée particulièrement active lors d'une seule réunion récente, posant de nombreuses questions sur l'orientation du projet. Aucun changement de rôle ou de responsabilité la concernant n'a été signalé par ailleurs. Que doit faire le chef de projet ?",
+    "en": "A project manager observes that a stakeholder, currently classified as low influence, was unusually active during one recent meeting, asking many questions about the project's direction. No change in her role or responsibilities has otherwise been reported. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Reclasser immédiatement cette partie prenante en influence élevée sur la base de son comportement observé lors de cette réunion.",
+     "Ignorer cette observation et maintenir la classification actuelle sans chercher à en comprendre l'origine.",
+     "Observer son implication sur les prochaines interactions et vérifier si des éléments objectifs justifient une révision de sa classification.",
+     "Solliciter l'avis du sponsor du projet sur l'opportunité de reclasser cette partie prenante, dès la fin de la réunion."
+    ],
+    "en": [
+     "Immediately reclassify this stakeholder as high influence based on her observed behavior during that meeting.",
+     "Ignore this observation and keep the current classification without looking into where it comes from.",
+     "Observe her involvement over the next few interactions and check whether objective elements justify revising her classification.",
+     "Ask the project sponsor for an opinion on whether to reclassify this stakeholder, right after the meeting ends."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "Une activité inhabituelle lors d'une seule réunion, sans changement de rôle ou de responsabilité rapporté par ailleurs, ne constitue pas une preuve suffisante pour modifier une classification : la révision reste réversible et peut attendre des éléments plus solides. Observer les prochaines interactions et chercher des éléments objectifs permet de confirmer ou d'infirmer ce signal sans figer une décision prématurée. Reclasser immédiatement sur la base d'un seul épisode traite une observation ponctuelle comme si elle était déjà confirmée. Maintenir la classification sans chercher à comprendre l'origine du comportement revient à écarter un signal qui mérite au moins d'être suivi. Solliciter le sponsor dès la fin de la réunion escalade une question que le chef de projet peut d'abord clarifier par lui-même en observant la suite des événements.",
+    "en": "Unusual activity during a single meeting, with no reported change in role or responsibilities, is not sufficient evidence to change a classification: the revision remains reversible and can wait for stronger signals. Observing the next few interactions and looking for objective elements makes it possible to confirm or rule out this signal without locking in a premature decision. Reclassifying immediately based on one episode treats a single occurrence as already confirmed. Keeping the classification without looking into the behavior's origin dismisses a signal that at least deserves to be followed. Asking the sponsor right after the meeting escalates a question the project manager can first clarify on his own by watching how things unfold."
+   },
+   "decision_atom": "Décider s'il faut reclasser l'influence d'une partie prenante sur la base d'une observation comportementale isolée ou vérifier d'abord des éléments objectifs.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "L'activité inhabituelle n'a été observée que lors d'une seule réunion, et aucun changement de rôle ou de responsabilité n'a été signalé par ailleurs.",
+   "bascule": "Si un changement de rôle ou de responsabilité avait été confirmé en parallèle, reclasser immédiatement deviendrait justifié.",
+   "task_id": "PE5",
+   "level": 2,
+   "run_id": "20261021-0807",
+   "release": "qL2-PE5-20261021-0807-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
