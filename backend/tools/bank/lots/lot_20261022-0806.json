@@ -1,0 +1,197 @@
+{
+ "run_id": "20261022-0806",
+ "author_model": "claude-sonnet-5",
+ "auditor_model": "claude-opus-5",
+ "items": [
+  {
+   "id": "qL1-PE5-20261022-0806-1-01",
+   "enabler": "Categorize stakeholders.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Dans l'équipe projet, un analyste senior classe un responsable métier en « forte influence, faible intérêt » sur la matrice des parties prenantes. Un coordinateur junior, qui a eu un échange récent avec ce responsable, pense qu'il faudrait plutôt le classer en « forte influence, fort intérêt » et le dit en réunion d'équipe. Le chef de projet n'a pas encore tranché. Que doit-il faire ?",
+    "en": "Within the project team, a senior analyst classifies a business manager as 'high influence, low interest' on the stakeholder matrix. A junior coordinator, who recently spoke with that manager, believes he should instead be classified as 'high influence, high interest' and raises this in a team meeting. The project manager has not yet decided. What should the project manager do?"
+   },
+   "options": {
+    "fr": [
+     "Confirmer la classification de l'analyste senior, dont l'expérience sur des parties prenantes similaires justifie de trancher en sa faveur.",
+     "Passer en revue les éléments avancés par les deux personnes et trancher lui-même la classification en s'appuyant sur des critères partagés.",
+     "Demander au coordinateur junior de formaliser par écrit son échange récent avant toute mise à jour de la matrice.",
+     "Soumettre le désaccord au sponsor du projet pour qu'il arbitre la classification retenue."
+    ],
+    "en": [
+     "Confirm the senior analyst's classification, since her experience with similar stakeholders justifies deciding in her favor.",
+     "Review the points raised by both team members and decide the classification himself using shared criteria.",
+     "Ask the junior coordinator to put the recent conversation in writing before any update to the matrix.",
+     "Refer the disagreement to the project sponsor to arbitrate the classification to be used."
+    ]
+   },
+   "answer_index": 1,
+   "rationale": {
+    "fr": "La classification des parties prenantes relève de la responsabilité du chef de projet, qui dispose de l'autorité et de la vue d'ensemble nécessaires pour arbitrer entre deux avis internes à son équipe. Confirmer d'emblée l'avis de l'analyste senior revient à trancher sur la base de l'ancienneté plutôt que sur les faits disponibles. Demander une formalisation écrite avant toute décision retarde sans nécessité un arbitrage que le chef de projet peut mener dès maintenant avec les informations données par les deux personnes. Escalader au sponsor un désaccord interne à l'équipe, qui porte sur une classification que le chef de projet est positionné pour trancher lui-même, revient à céder une décision qui lui appartient.",
+    "en": "Classifying stakeholders is the project manager's responsibility, and he has the authority and overview needed to weigh two views from within his own team. Immediately confirming the senior analyst's view means deciding based on seniority rather than the facts at hand. Asking for a written account before any decision needlessly delays a call the project manager can already make with the information both people have shared. Escalating to the sponsor a disagreement internal to the team, over a classification the project manager is positioned to resolve himself, means giving up a decision that is his to make."
+   },
+   "decision_atom": "Décider qui tranche une classification contestée entre deux membres de l'équipe projet, en l'absence de toute instance externe impliquée.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le désaccord oppose deux membres de l'équipe projet elle-même (analyste senior et coordinateur junior), sans partie externe à la gouvernance du projet.",
+   "bascule": "Si l'analyste senior avait présenté des éléments factuels récents tandis que le junior n'avait qu'une impression, confirmer son avis deviendrait défendable sur le fond — mais resterait une décision du chef de projet, pas une déférence automatique à l'ancienneté.",
+   "task_id": "PE5",
+   "level": 1,
+   "run_id": "20261022-0806",
+   "release": "qL1-PE5-20261022-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE5-20261022-0806-1-04",
+   "enabler": "Organize and act on mentoring opportunities.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Lors d'un point d'équipe, le chef de projet remarque qu'un membre junior maîtrise déjà bien l'analyse des risques, alors qu'un collègue plus expérimenté dans un autre domaine peine encore sur ce sujet depuis plusieurs semaines. Aucun des deux n'a formulé de demande. Qui doit organiser une opportunité de mentorat entre eux ?",
+    "en": "During a team check-in, the project manager notices that a junior member already handles risk analysis well, while a more experienced colleague in a different area has been struggling with this topic for several weeks. Neither has made a request. Who should organize a mentoring opportunity between them?"
+   },
+   "options": {
+    "fr": [
+     "Le chef de projet, qui propose aux deux personnes une opportunité de mentorat adaptée à ce qu'il a observé.",
+     "Le membre junior, qui doit proposer lui-même son aide à son collègue plus expérimenté.",
+     "Le collègue en difficulté, qui doit d'abord formuler une demande explicite de mentorat.",
+     "Le responsable des ressources humaines, qui gère les parcours de montée en compétence."
+    ],
+    "en": [
+     "The project manager, who offers both people a mentoring opportunity suited to what he has observed.",
+     "The junior member, who should offer his help to his more experienced colleague himself.",
+     "The struggling colleague, who should first make an explicit request for mentoring.",
+     "The human resources manager, who oversees skill development pathways."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le chef de projet est la personne qui a observé l'écart de compétence dans le cadre du projet et qui a la position nécessaire pour mettre en relation les deux personnes de façon appropriée. Attendre que le membre junior propose spontanément son aide à un collègue plus expérimenté ignore l'écart hiérarchique perçu qui peut légitimement le retenir de le faire de sa propre initiative. Attendre que le collègue en difficulté formule une demande explicite laisse perdurer une difficulté déjà identifiée, alors qu'aucune demande n'a été nécessaire pour que le chef de projet la constate. Renvoyer le sujet aux ressources humaines pour une situation ponctuelle et interne à l'équipe projette sur une autre fonction une action que le chef de projet peut organiser directement.",
+    "en": "The project manager is the person who observed the skill gap within the project and is positioned to connect the two people appropriately. Waiting for the junior member to spontaneously offer help to a more experienced colleague overlooks the perceived hierarchy that may reasonably hold him back from doing so on his own. Waiting for the struggling colleague to make an explicit request lets an already-identified difficulty continue, when no request was needed for the project manager to notice it. Referring this one-off, team-internal matter to human resources shifts to another function an action the project manager can organize directly."
+   },
+   "decision_atom": "Décider qui doit initier une opportunité de mentorat entre deux membres de l'équipe quand aucun des deux n'a formulé de demande.",
+   "axe_de_decision": "le propriétaire",
+   "indice_decisif": "Aucune demande n'a été formulée par l'un ou l'autre ; l'écart de compétence a été observé directement par le chef de projet dans le cadre du projet.",
+   "bascule": "Si le collègue en difficulté avait déjà exprimé une gêne à demander de l'aide, attendre sa demande deviendrait encore moins défendable ; à l'inverse, s'il avait refusé une offre précédente, attendre serait plus justifié.",
+   "task_id": "PE5",
+   "level": 1,
+   "run_id": "20261022-0806",
+   "release": "qL1-PE5-20261022-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL3-PE5-20261022-0806-1-03",
+   "enabler": "Facilitate discussions to align expectations.",
+   "difficulty": 3,
+   "prompt": {
+    "fr": "Lors d'un atelier d'alignement entre deux équipes métier aux attentes divergentes sur le périmètre d'une fonctionnalité, le facilitateur propose un compromis que les deux parties acceptent sur-le-champ, visiblement soulagées de clore la discussion après une heure tendue. Le compromis réduit la portée initialement demandée par l'une des équipes de près de moitié. Aucune des deux équipes n'a eu le temps d'évaluer l'impact de ce compromis sur ses propres engagements en aval. Que doit faire le facilitateur en priorité ?",
+    "en": "During an alignment workshop between two business teams with diverging expectations on a feature's scope, the facilitator proposes a compromise that both parties accept on the spot, visibly relieved to close the discussion after a tense hour. The compromise cuts the scope originally requested by one team by nearly half. Neither team has had time to assess the compromise's impact on its own downstream commitments. What should the facilitator do first?"
+   },
+   "options": {
+    "fr": [
+     "Acter immédiatement le compromis comme accord final, puis le transmettre au comité de pilotage pour clôturer le point.",
+     "Reformuler le compromis sous une forme détaillée, puis le soumettre de nouveau aux deux équipes pour confirmation écrite.",
+     "Présenter le compromis comme une proposition provisoire et fixer un court délai pour que chaque équipe en vérifie l'impact en aval.",
+     "Demander à chaque équipe de désigner un représentant, chargé de surveiller l'application du compromis dans les semaines suivantes."
+    ],
+    "en": [
+     "Record the compromise immediately as final agreement, then forward it to the steering committee to close the item.",
+     "Rephrase the compromise in a more detailed form, then resubmit it to both teams for written confirmation.",
+     "Present the compromise as a provisional proposal and set a short window for each team to check its downstream impact.",
+     "Ask each team to designate a representative, tasked with monitoring the compromise's application over the following weeks."
+    ]
+   },
+   "answer_index": 2,
+   "rationale": {
+    "fr": "L'acceptation rapide des deux équipes reflète un soulagement de sortir d'une discussion tendue, pas une évaluation réelle de l'impact d'une réduction de portée de moitié sur leurs engagements en aval : le facilitateur a donc intérêt à garder la décision réversible le temps de cette vérification. Acter le compromis comme définitif, puis le transmettre au comité de pilotage, fige un accord qui n'a pas encore été testé par ceux qui devront le tenir. Reformuler le compromis en détail, puis redemander une confirmation écrite, ne change rien au problème de fond : les équipes confirmeraient encore sans avoir vérifié l'impact en aval. Désigner des représentants chargés de surveiller l'application du compromis suppose que le compromis est déjà bon et se contente d'en organiser le suivi, alors que c'est sa validité même qui reste à établir.",
+    "en": "Both teams' quick acceptance reflects relief at ending a tense discussion, not a real assessment of how halving the requested scope affects their downstream commitments: the facilitator therefore has reason to keep the decision reversible while that check happens. Recording the compromise as final, then forwarding it to the steering committee, locks in an agreement that has not yet been tested by those who will have to deliver against it. Rephrasing the compromise in more detail, then asking for written confirmation again, does not address the underlying issue: the teams would still be confirming without having checked downstream impact. Assigning representatives tasked with monitoring the compromise's application assumes the compromise is already sound and only arranges follow-up, when its validity is exactly what still needs to be established."
+   },
+   "decision_atom": "Décider s'il faut acter un compromis d'atelier comme définitif ou le garder réversible le temps d'une vérification d'impact.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "Les deux équipes ont accepté rapidement par soulagement de clore une discussion tendue, sans avoir évalué l'impact en aval d'une réduction de portée de moitié.",
+   "bascule": "Si les deux équipes avaient eu le temps, avant la réunion, d'évaluer l'impact d'une réduction de portée de cette ampleur, acter le compromis comme définitif deviendrait défendable.",
+   "task_id": "PE5",
+   "level": 3,
+   "run_id": "20261022-0806",
+   "release": "qL3-PE5-20261022-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "pending_sme"
+  },
+  {
+   "id": "qL1-PE6-20261022-0806-1-04",
+   "enabler": "Align and maintain outcomes to internal and external customer expectations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un client externe demande une modification mineure et facilement réversible de l'interface d'un livrable, pour mieux correspondre à ses attentes initiales mal retranscrites. La modification peut être annulée en quelques minutes si elle ne convient pas. Le chef de projet dispose d'une fenêtre de test avant la livraison finale. Comment doit-il procéder ?",
+    "en": "An external client requests a minor, easily reversible change to a deliverable's interface, to better match their initial expectations that were poorly captured. The change can be undone in a few minutes if it does not fit. The project manager has a testing window before final delivery. How should they proceed?"
+   },
+   "options": {
+    "fr": [
+     "Appliquer la modification dans l'environnement de test et recueillir l'avis du client avant la livraison finale.",
+     "Documenter la demande comme changement formel et la faire approuver par le comité de pilotage avant toute mise en œuvre.",
+     "Reporter la modification à la prochaine itération et l'intégrer avec d'autres ajustements similaires déjà recensés.",
+     "Demander au client de confirmer la modification par écrit et attendre cette confirmation avant d'engager tout travail."
+    ],
+    "en": [
+     "Apply the change in the test environment and gather the client's feedback before final delivery.",
+     "Document the request as a formal change and have it approved by the steering committee before any implementation.",
+     "Postpone the change to the next iteration and bundle it with other similar adjustments already identified.",
+     "Ask the client to confirm the change in writing and wait for that confirmation before starting any work."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "La modification est mineure, facilement réversible, et une fenêtre de test existe avant la livraison finale : ces conditions permettent de vérifier rapidement si le changement répond bien aux attentes, sans risque durable. Appliquer la modification en environnement de test et recueillir l'avis du client exploite cette réversibilité pour ajuster l'alignement avant que la livraison ne soit figée. Documenter la demande comme changement formel et la faire approuver par le comité de pilotage avant toute mise en œuvre introduit un formalisme disproportionné pour un ajustement mineur et réversible. Reporter la modification à la prochaine itération et l'intégrer avec d'autres ajustements déjà recensés retarde sans raison la correction d'un malentendu déjà identifié, alors qu'une fenêtre de test est disponible maintenant. Demander une confirmation écrite et attendre cette confirmation avant tout travail traite une demande réversible et peu coûteuse comme si elle portait un risque qui justifierait cette prudence supplémentaire.",
+    "en": "The change is minor, easily reversible, and a testing window exists before final delivery: these conditions allow quickly checking whether the change truly matches expectations, without lasting risk. Applying the change in the test environment and gathering the client's feedback uses this reversibility to adjust alignment before delivery is locked in. Documenting the request as a formal change and having it approved by the steering committee before any implementation introduces disproportionate formality for a minor, reversible adjustment. Postponing the change to the next iteration and bundling it with other already identified adjustments needlessly delays fixing an already identified misunderstanding, when a testing window is available now. Asking for written confirmation and waiting for it before starting any work treats a reversible, low-cost request as if it carried a risk that would justify this extra caution."
+   },
+   "decision_atom": "Décider comment traiter une demande de modification mineure et réversible avant la livraison finale.",
+   "axe_de_decision": "la réversibilité",
+   "indice_decisif": "La modification est mineure, facilement réversible en quelques minutes, et une fenêtre de test existe avant la livraison finale.",
+   "bascule": "Si la modification touchait une fonctionnalité critique et difficile à annuler, la faire approuver formellement par le comité de pilotage deviendrait la bonne réponse.",
+   "task_id": "PE6",
+   "level": 1,
+   "run_id": "20261022-0806",
+   "release": "qL1-PE6-20261022-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  },
+  {
+   "id": "qL1-PE6-20261022-0806-1-05",
+   "enabler": "Identify internal and external customer expectations.",
+   "difficulty": 1,
+   "prompt": {
+    "fr": "Un membre de l'équipe projet, sans lien direct avec la relation client, propose de rédiger lui-même la liste des attentes d'un client interne pour accélérer le démarrage d'une nouvelle phase. Le chef de projet est disponible et personne n'a encore été désigné pour cette tâche. Que doit décider le chef de projet ?",
+    "en": "A project team member, with no direct link to client relations, offers to draft the list of an internal client's expectations themselves to speed up the start of a new phase. The project manager is available and no one has yet been assigned to this task. What should the project manager decide?"
+   },
+   "options": {
+    "fr": [
+     "Confirmer que la rédaction reste rattachée au chef de projet, en lien direct avec le client interne.",
+     "Accepter la proposition pour gagner du temps et confier la rédaction au membre de l'équipe, qui connaît bien le projet.",
+     "Demander au membre de l'équipe de rédiger une première version et de la transmettre ensuite pour validation.",
+     "Proposer que le membre de l'équipe et le chef de projet rédigent la liste ensemble lors d'un atelier commun."
+    ],
+    "en": [
+     "Confirm that drafting stays with the project manager, in direct contact with the internal client.",
+     "Accept the proposal to save time and assign the drafting to the team member, who knows the project well.",
+     "Ask the team member to draft a first version and then submit it for validation.",
+     "Propose that the team member and the project manager draft the list together during a joint workshop."
+    ]
+   },
+   "answer_index": 0,
+   "rationale": {
+    "fr": "Le membre de l'équipe n'a pas de lien direct avec la relation client, et le chef de projet est disponible pour mener cette tâche lui-même : rien ne justifie de confier à un tiers sans accès direct au client la responsabilité d'identifier ses attentes. Confirmer que la rédaction reste rattachée au chef de projet, en lien direct avec le client interne, garantit que les attentes documentées proviennent d'un échange réel avec la bonne source. Accepter la proposition pour gagner du temps et confier la rédaction au membre de l'équipe place la tâche entre les mains d'une personne qui devra reconstituer les attentes sans dialogue direct avec le client, même si elle connaît bien le projet. Demander une première version à transmettre ensuite pour validation introduit une étape intermédiaire inutile alors que le chef de projet, disponible, peut traiter directement avec le client. Rédiger la liste ensemble lors d'un atelier commun dilue la responsabilité de l'échange avec le client sans que cela soit nécessaire, puisque le chef de projet peut s'en charger seul.",
+    "en": "The team member has no direct link to client relations, and the project manager is available to handle this task directly: nothing justifies giving responsibility for identifying expectations to someone without direct client access. Confirming that drafting stays with the project manager, in direct contact with the internal client, ensures the documented expectations come from a real exchange with the right source. Accepting the proposal to save time and assigning the drafting to the team member puts the task in the hands of someone who would have to reconstruct expectations without direct dialogue with the client, even if they know the project well. Asking for a first draft to be submitted for validation afterward adds an unnecessary intermediate step when the available project manager can deal with the client directly. Drafting the list together during a joint workshop unnecessarily dilutes responsibility for the client exchange, since the project manager can handle it alone."
+   },
+   "decision_atom": "Décider qui doit mener l'identification des attentes d'un client interne quand un membre sans lien avec le client se propose, alors que le chef de projet est disponible.",
+   "axe_de_decision": "l'autorité",
+   "indice_decisif": "Le membre volontaire n'a pas de lien direct avec la relation client, et le chef de projet est disponible pour mener la tâche lui-même.",
+   "bascule": "Si le membre de l'équipe avait un lien direct établi avec ce client interne, accepter sa proposition deviendrait défendable.",
+   "task_id": "PE6",
+   "level": 1,
+   "run_id": "20261022-0806",
+   "release": "qL1-PE6-20261022-0806-1",
+   "author_model": "claude-sonnet-5",
+   "status": "approved"
+  }
+ ]
+}
