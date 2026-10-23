@@ -1,0 +1,48 @@
+/* Écran « Mes faiblesses » (ui2). Only what chantier.css does not already provide; colours through the tokens only. */
+.weak .tgt { grid-template-columns: 1.25fr 1fr; align-items: start; }
+.weak .tcol { display: grid; gap: 8px; min-width: 0; }
+.weak .tfoot { font-size: 11.5px; line-height: 1.5; max-width: 60ch; }
+
+/* the target (mock-up .tmap) */
+.weak .tmap { width: 100%; height: auto; display: block; }
+.weak .t-sec { fill: color-mix(in oklab, var(--bg) 92%, transparent); opacity: .9; }
+.weak .t-sec.people { fill: color-mix(in oklab, var(--people) 7%, var(--bg)); }
+.weak .t-sec.process { fill: color-mix(in oklab, var(--process) 7%, var(--bg)); }
+.weak .t-sec.biz { fill: color-mix(in oklab, var(--biz) 8%, var(--bg)); }
+.weak .t-r { fill: none; stroke: var(--line); stroke-width: 1.2; }
+.weak .t-sep { stroke: var(--line); stroke-width: 1; }
+.weak .t-sl { font: 700 10.5px var(--display); }
+.weak .t-rl { font: 500 8.5px var(--mono); fill: var(--muted); letter-spacing: .04em; }
+.weak .t-ok { fill: var(--ok); }
+.weak .t-ring { fill: var(--bg); stroke-width: 2.2; }
+.weak .t-ring.now { stroke: var(--process); }
+.weak .t-dot { fill: var(--process); }
+.weak .t-ring.weak { stroke: var(--risk); stroke-width: 2.6; }
+.weak .t-ring.open { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 2 2; }
+.weak .t-x { font: 800 11px var(--display); fill: var(--risk); }
+.weak .t-l { font: 400 8.6px var(--body); fill: var(--muted); }
+.weak .t-l.b { font: 600 9.4px var(--body); fill: var(--fg); }
+
+/* the remedies (mock-up .rem) */
+.weak .rems { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.weak .rem { --c: var(--fg); border: 1px solid var(--line); border-left: 4px solid var(--c); padding: 10px 14px 12px; background: var(--bg); border-radius: 0 12px 12px 0; display: grid; gap: 5px; min-width: 0; }
+.weak .rem > * { min-width: 0; }
+.weak .rem.d-people { --c: var(--people); } .weak .rem.d-process { --c: var(--process); } .weak .rem.d-biz { --c: var(--biz); }
+.weak .rem .top { justify-content: space-between; flex-wrap: nowrap; }
+.weak .rem .kind { white-space: normal; }
+.weak .rem .rank { flex: none; }
+.weak .rem h4 { font-size: 15px; line-height: 1.3; }
+.weak .rem p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.weak .rem .btn { justify-self: start; margin-top: 2px; }
+.weak .nofrag h4 { font-size: 15px; }
+.weak .notes { font-size: 12px; line-height: 1.55; display: grid; gap: 4px; }
+.weak .notes b { color: var(--fg); }
+
+@media (max-width: 720px) {
+  .weak .tgt { grid-template-columns: minmax(0, 1fr); }
+  .weak .rem .btn, .weak .nofrag .btn { width: 100%; }
+  .weak .hd .row { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .weak, .weak * { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,29 @@
+/* Écran « Aujourd'hui » (ui2). Only what chantier.css does not already provide; colours through the tokens only. */
+.today .khd { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.today .khd .link { display: inline-flex; align-items: center; min-height: 40px; }
+.today .thr { font-size: 11.5px; line-height: 1.5; }
+.today .noev { font-size: 13px; }
+.today .idx .big small .soon { margin-left: 6px; vertical-align: middle; }
+.today .now h4 { font-size: 16px; line-height: 1.3; }
+.today .lever { font-size: 13px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; line-height: 1.4; }
+.today .asgl { font-size: 11.5px; }
+
+/* the three domain cells */
+.today .dom .nm { font: 700 13px var(--display); }
+.today .dom .n { font: 900 30px/1 var(--display); font-stretch: 112%; font-variant-numeric: tabular-nums; }
+.today .dom-people .n { color: var(--people); } .today .dom-people .bar2 i { background: var(--people); }
+.today .dom-process .n { color: var(--process); } .today .dom-process .bar2 i { background: var(--process); }
+.today .dom-biz .n { color: var(--biz); } .today .dom-biz .bar2 i { background: var(--biz); }
+
+/* due mistakes: the prompt is clamped to two lines */
+.today .q { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+.today .miss .list > div { align-items: center; }
+
+@media (max-width: 720px) {
+  .today .miss .list > div { flex-wrap: wrap; row-gap: 6px; }
+  .today .miss .list .l { flex: 1 1 100%; }
+  .today .now .btn, .today .asg .btn, .today .miss .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .today, .today * { transition: none !important; animation: none !important; }
+}
