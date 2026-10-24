@@ -19,19 +19,19 @@
       },
       "options": {
         "fr": [
+          "Nulle part : le chef de projet les fixe lui-même au fil de l'eau",
           "Dans l'échéancier de référence",
-          "Dans le cadre de gouvernance du projet (charte, instances de décision, seuils d'escalade)",
           "Dans le registre des parties prenantes",
-          "Nulle part : le chef de projet les fixe lui-même au fil de l'eau"
+          "Dans le cadre de gouvernance du projet (charte, instances de décision, seuils d'escalade)"
         ],
         "en": [
+          "Nowhere: the project manager sets them as they go",
           "In the schedule baseline",
-          "In the project governance framework (charter, decision bodies, escalation thresholds)",
           "In the stakeholder register",
-          "Nowhere: the project manager sets them as they go"
+          "In the project governance framework (charter, decision bodies, escalation thresholds)"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "La gouvernance établit qui décide quoi : la charte donne l'autorité du chef de projet, et le cadre de gouvernance fixe les seuils d'escalade et les instances. Ni l'échéancier ni le registre des parties prenantes ne confèrent une autorité, et un chef de projet ne s'auto-attribue jamais ses limites.",
         "en": "Governance establishes who decides what: the charter grants the project manager's authority, and the governance framework sets escalation thresholds and decision bodies. Neither the schedule nor the stakeholder register confers authority, and a project manager never self-assigns their own limits."
@@ -52,18 +52,18 @@
       "options": {
         "fr": [
           "Accepter pour préserver la relation avec ce directeur, puis informer le sponsor à son retour",
+          "Attendre le retour du sponsor sans rien tracer, pour ne froisser personne",
           "Accepter si l'impact reste inférieur à 10 % du budget",
-          "Ne pas engager le travail : enregistrer la demande comme demande de changement et la router vers l'instance de gouvernance prévue",
-          "Attendre le retour du sponsor sans rien tracer, pour ne froisser personne"
+          "Ne pas engager le travail : enregistrer la demande comme demande de changement et la router vers l'instance de gouvernance prévue"
         ],
         "en": [
           "Accept to preserve the relationship with this director, then inform the sponsor on their return",
+          "Wait for the sponsor's return without recording anything, so as not to upset anyone",
           "Accept if the impact stays below 10% of budget",
-          "Do not start the work: log the request as a change request and route it to the designated governance body",
-          "Wait for the sponsor's return without recording anything, so as not to upset anyone"
+          "Do not start the work: log the request as a change request and route it to the designated governance body"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 3,
       "rationale": {
         "fr": "L'autorité de gouvernance ne se contourne pas par l'influence hiérarchique : la demande est légitime à examiner, mais par le chemin défini — demande de changement, instance de décision. « Régulariser plus tard » transforme une faveur orale en engagement non autorisé. Ne rien tracer est aussi une faute : la demande existe et doit entrer dans le système.",
         "en": "Governance authority is not bypassed by hierarchical influence: the request deserves consideration, but through the defined path — change request, decision body. 'Formalizing later' turns a verbal favour into an unauthorized commitment. Recording nothing is also a fault: the request exists and must enter the system."
@@ -83,19 +83,19 @@
       },
       "options": {
         "fr": [
+          "Comme des recommandations à suivre si le budget le permet",
           "Comme des risques que le sponsor peut choisir d'accepter",
           "Comme des contraintes non négociables, intégrées aux exigences, à la qualité et aux risques du projet",
-          "Comme un sujet du service juridique, sans impact sur la planification",
-          "Comme des recommandations à suivre si le budget le permet"
+          "Comme un sujet du service juridique, sans impact sur la planification"
         ],
         "en": [
+          "As recommendations to follow if the budget allows",
           "As risks the sponsor may choose to accept",
           "As non-negotiable constraints, integrated into the project's requirements, quality, and risks",
-          "As a legal department topic, with no impact on planning",
-          "As recommendations to follow if the budget allows"
+          "As a legal department topic, with no impact on planning"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Une exigence de conformité n'est pas une option ni un risque « acceptable » : c'est une contrainte qui structure les exigences, les critères qualité et l'analyse de risques. Le juridique éclaire, mais l'intégration au plan du projet relève de l'équipe de projet.",
         "en": "A compliance requirement is neither optional nor an 'acceptable' risk: it is a constraint that shapes requirements, quality criteria, and risk analysis. Legal advises, but integrating it into the project plan is the project team's job."
@@ -115,19 +115,19 @@
       },
       "options": {
         "fr": [
-          "Suivre la décision du sponsor : c'est lui qui porte le risque",
           "Refuser l'exploitation avant l'essai, exposer l'impact et chercher des options légitimes de compression sur d'autres activités, en informant la gouvernance",
+          "Réduire discrètement l'étendue de l'essai pour tenir la date",
           "Accepter, à condition de transférer contractuellement le risque au sous-traitant d'essais",
-          "Réduire discrètement l'étendue de l'essai pour tenir la date"
+          "Suivre la décision du sponsor : c'est lui qui porte le risque"
         ],
         "en": [
-          "Follow the sponsor's decision: they carry the risk",
           "Refuse operation before the test, expose the impact, and seek legitimate compression options on other activities, informing governance",
+          "Quietly reduce the scope of the test to hold the date",
           "Accept, provided the risk is contractually transferred to the testing subcontractor",
-          "Quietly reduce the scope of the test to hold the date"
+          "Follow the sponsor's decision: they carry the risk"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Une obligation réglementaire ne s'arbitre pas contre le délai, et l'autorité du sponsor ne la rend pas contournable : la non-conformité expose l'organisation, pas seulement le projet. La bonne posture combine fermeté sur l'exigence, transparence vers la gouvernance et recherche de leviers légitimes (compression, réordonnancement) pour limiter le retard.",
         "en": "A regulatory obligation cannot be traded against schedule, and the sponsor's authority does not make it bypassable: non-compliance exposes the organization, not just the project. The right posture combines firmness on the requirement, transparency towards governance, and legitimate levers (compression, resequencing) to limit the delay."
@@ -149,14 +149,14 @@
         "fr": [
           "Le registre des risques",
           "Le plan de management des risques",
-          "Le rapport d'avancement le plus récent",
-          "Aucun : ces seuils restent implicites et se jugent au cas par cas"
+          "Aucun : ces seuils restent implicites et se jugent au cas par cas",
+          "Le rapport d'avancement le plus récent"
         ],
         "en": [
           "The risk register",
           "The risk management plan",
-          "The latest status report",
-          "None: these thresholds remain implicit and are judged case by case"
+          "None: these thresholds remain implicit and are judged case by case",
+          "The latest status report"
         ]
       },
       "answer_index": 1,
@@ -179,16 +179,16 @@
       },
       "options": {
         "fr": [
-          "Appliquer la réponse quand même : elle a déjà été décidée et budgétée",
+          "Transférer le risque secondaire au fournisseur de secours par une clause contractuelle, sans autre évaluation",
           "Accepter le risque secondaire sans analyse, car il n'existait pas au départ",
           "Réévaluer la stratégie avec le propriétaire du risque : comparer l'exposition résiduelle plus secondaire à l'exposition initiale, et envisager une autre réponse",
-          "Transférer le risque secondaire au fournisseur de secours par une clause contractuelle, sans autre évaluation"
+          "Appliquer la réponse quand même : elle a déjà été décidée et budgétée"
         ],
         "en": [
-          "Apply the response anyway: it has already been decided and budgeted",
+          "Transfer the secondary risk to the backup supplier through a contract clause, with no further evaluation",
           "Accept the secondary risk without analysis, since it did not exist initially",
           "Re-evaluate the strategy with the risk owner: compare residual plus secondary exposure to the original exposure, and consider another response",
-          "Transfer the secondary risk to the backup supplier through a contract clause, with no further evaluation"
+          "Apply the response anyway: it has already been decided and budgeted"
         ]
       },
       "answer_index": 2,
@@ -211,19 +211,19 @@
       },
       "options": {
         "fr": [
+          "Améliorer la façon de travailler de l'équipe par des actions concrètes décidées ensemble",
           "Identifier les membres de l'équipe responsables des retards",
           "Produire un rapport formel pour le sponsor",
-          "Améliorer la façon de travailler de l'équipe par des actions concrètes décidées ensemble",
           "Vérifier que le périmètre de l'itération a été entièrement livré"
         ],
         "en": [
+          "Improve how the team works through concrete actions decided together",
           "Identify which team members are responsible for delays",
           "Produce a formal report for the sponsor",
-          "Improve how the team works through concrete actions decided together",
           "Verify that the iteration scope was fully delivered"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 0,
       "rationale": {
         "fr": "La rétrospective porte sur le processus, pas sur les personnes ni sur le contenu livré : l'équipe examine ce qui a bien ou mal fonctionné et décide d'améliorations concrètes pour l'itération suivante. La revue du livrable est un autre rituel, et la recherche de coupables détruit précisément la sécurité qui rend la rétrospective utile.",
         "en": "The retrospective is about the process, not people or delivered content: the team examines what worked or not and decides concrete improvements for the next iteration. Reviewing the deliverable is a different ritual, and blame destroys exactly the safety that makes retrospectives useful."
@@ -275,15 +275,15 @@
       },
       "options": {
         "fr": [
-          "Accepter la correction rapide : c'est la moins coûteuse à court terme",
-          "Conduire une analyse de cause racine, corriger le processus qui produit le défaut, et mettre à jour les actifs organisationnels pour les lots et projets suivants",
           "Renforcer les contrôles de fin de lot pour intercepter le défaut avant livraison",
+          "Conduire une analyse de cause racine, corriger le processus qui produit le défaut, et mettre à jour les actifs organisationnels pour les lots et projets suivants",
+          "Accepter la correction rapide : c'est la moins coûteuse à court terme",
           "Ouvrir une réserve budgétaire dédiée pour absorber les reprises futures"
         ],
         "en": [
-          "Accept the quick fix: it is the cheapest in the short term",
-          "Run a root-cause analysis, fix the process that produces the defect, and update organizational assets for subsequent packages and projects",
           "Strengthen end-of-package inspections to catch the defect before delivery",
+          "Run a root-cause analysis, fix the process that produces the defect, and update organizational assets for subsequent packages and projects",
+          "Accept the quick fix: it is the cheapest in the short term",
           "Open a dedicated budget reserve to absorb future rework"
         ]
       },
@@ -308,18 +308,18 @@
       "options": {
         "fr": [
           "Demander à la direction d'imposer l'outil par consigne hiérarchique",
-          "Comprendre les causes de la résistance, puis y répondre par la communication, la formation et des relais internes",
           "Retarder le déploiement jusqu'à ce que la résistance disparaisse d'elle-même",
+          "Comprendre les causes de la résistance, puis y répondre par la communication, la formation et des relais internes",
           "Ajouter des fonctionnalités pour rendre l'outil plus attractif"
         ],
         "en": [
           "Ask management to impose the tool through a hierarchical directive",
-          "Understand the causes of the resistance, then address them through communication, training, and internal champions",
           "Delay deployment until the resistance fades on its own",
+          "Understand the causes of the resistance, then address them through communication, training, and internal champions",
           "Add features to make the tool more attractive"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La résistance est une information, pas un obstacle à écraser : elle révèle des craintes, des habitudes ou des besoins non couverts. La conduite du changement commence par les comprendre, puis mobilise communication, formation et relais. L'imposition hiérarchique produit une conformité de façade — et l'inaction ne convertit personne.",
         "en": "Resistance is information, not an obstacle to crush: it reveals fears, habits, or unmet needs. Change management starts by understanding them, then mobilizes communication, training, and champions. Hierarchical imposition produces surface compliance — and inaction converts no one."
@@ -339,19 +339,19 @@
       },
       "options": {
         "fr": [
-          "Clôturer : le livrable est conforme, l'adoption relève de l'exploitation",
-          "Prolonger unilatéralement le projet jusqu'à atteindre l'adoption cible",
           "Alerter le sponsor et le propriétaire des bénéfices, activer les actions de conduite du changement prévues et organiser la responsabilité de l'adoption dans la transition — sans présenter la livraison technique comme le succès du projet",
+          "Prolonger unilatéralement le projet jusqu'à atteindre l'adoption cible",
+          "Clôturer : le livrable est conforme, l'adoption relève de l'exploitation",
           "Relancer une campagne de formation identique à la première"
         ],
         "en": [
-          "Close: the deliverable is compliant, adoption belongs to operations",
-          "Unilaterally extend the project until target adoption is reached",
           "Alert the sponsor and benefits owner, activate the planned change-management actions, and organize adoption ownership in the transition — without presenting technical delivery as project success",
+          "Unilaterally extend the project until target adoption is reached",
+          "Close: the deliverable is compliant, adoption belongs to operations",
           "Rerun a training campaign identical to the first one"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 0,
       "rationale": {
         "fr": "Un livrable conforme sans adoption ne produit aucun bénéfice : clôturer en silence transfère un échec déguisé à l'exploitation. Mais le chef de projet ne peut pas non plus prolonger seul le projet — c'est une décision de gouvernance. La bonne réponse rend le problème visible aux propriétaires du bénéfice, active la conduite du changement et fixe qui portera l'adoption après la transition.",
         "en": "A compliant deliverable without adoption produces no benefit: closing silently hands a disguised failure to operations. But the project manager also cannot extend the project alone — that is a governance decision. The right answer makes the problem visible to benefit owners, activates change management, and settles who will own adoption after transition."
@@ -371,19 +371,19 @@
       },
       "options": {
         "fr": [
-          "Le chef de projet, tant que les bénéfices ne sont pas atteints",
-          "Le propriétaire des bénéfices côté métier, désigné dans le plan de réalisation des bénéfices",
+          "Personne : les bénéfices se constatent d'eux-mêmes",
           "Le PMO, car il consolide tous les indicateurs",
-          "Personne : les bénéfices se constatent d'eux-mêmes"
+          "Le chef de projet, tant que les bénéfices ne sont pas atteints",
+          "Le propriétaire des bénéfices côté métier, désigné dans le plan de réalisation des bénéfices"
         ],
         "en": [
-          "The project manager, until the benefits are achieved",
-          "The business-side benefits owner, designated in the benefits realization plan",
+          "No one: benefits materialize on their own",
           "The PMO, since it consolidates all indicators",
-          "No one: benefits materialize on their own"
+          "The project manager, until the benefits are achieved",
+          "The business-side benefits owner, designated in the benefits realization plan"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le projet s'arrête, la réalisation des bénéfices continue : elle passe au métier, à travers un propriétaire des bénéfices nommé dans le plan de réalisation. Le chef de projet organise cette passation à la clôture, mais son mandat prend fin — et des bénéfices sans propriétaire sont des bénéfices que personne ne mesurera.",
         "en": "The project stops, benefits realization continues: it passes to the business, through a benefits owner named in the realization plan. The project manager organizes this handover at closure, but their mandate ends — and benefits without an owner are benefits no one will measure."
@@ -403,16 +403,16 @@
       },
       "options": {
         "fr": [
-          "Continuer : arrêter maintenant gaspillerait les 60 % déjà dépensés",
           "Accélérer l'exécution pour livrer avant que l'arrêt de la ligne soit décidé",
+          "Réduire les coûts restants de 20 % et poursuivre le plan initial",
           "Déclencher une revue du business case avec le sponsor et la gouvernance : réorienter, réduire ou arrêter le projet selon la valeur restante",
-          "Réduire les coûts restants de 20 % et poursuivre le plan initial"
+          "Continuer : arrêter maintenant gaspillerait les 60 % déjà dépensés"
         ],
         "en": [
-          "Continue: stopping now would waste the 60% already spent",
           "Accelerate execution to deliver before the line shutdown is decided",
+          "Cut remaining costs by 20% and continue the original plan",
           "Trigger a business case review with the sponsor and governance: redirect, reduce, or stop the project based on remaining value",
-          "Cut remaining costs by 20% and continue the original plan"
+          "Continue: stopping now would waste the 60% already spent"
         ]
       },
       "answer_index": 2,
@@ -435,19 +435,19 @@
       },
       "options": {
         "fr": [
-          "Que l'outil fait réellement gagner du temps à l'équipe",
           "Les politiques de l'organisation sur l'usage de l'IA, la confidentialité et la protection des données, avant toute utilisation",
           "Rien : chaque membre de l'équipe décide de ses propres outils",
-          "Que les concurrents utilisent déjà des outils comparables"
+          "Que les concurrents utilisent déjà des outils comparables",
+          "Que l'outil fait réellement gagner du temps à l'équipe"
         ],
         "en": [
-          "That the tool actually saves the team time",
           "The organization's policies on AI usage, confidentiality, and data protection, before any use",
           "Nothing: each team member decides on their own tools",
-          "That competitors already use comparable tools"
+          "That competitors already use comparable tools",
+          "That the tool actually saves the team time"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Introduire une IA dans le flux de travail, c'est potentiellement exposer des données du projet à un service externe : la première vérification est le cadre — politiques d'usage de l'IA, confidentialité, protection des données. Le gain de productivité se mesure ensuite, à l'intérieur de ce cadre, jamais à sa place.",
         "en": "Bringing AI into the workflow potentially exposes project data to an external service: the first check is the framework — AI usage policies, confidentiality, data protection. Productivity gains are assessed afterwards, within that framework, never instead of it."
@@ -467,19 +467,19 @@
       },
       "options": {
         "fr": [
-          "Attendre la promulgation : agir sur un texte non voté serait prématuré",
-          "Faire modifier la conception par l'équipe technique, sans demande de changement puisque rien n'est encore obligatoire",
+          "Ajouter une réserve budgétaire forfaitaire et poursuivre sans autre analyse",
           "Évaluer dès maintenant l'impact (périmètre, coût, délai), l'inscrire au registre des risques, et soumettre les options à la gouvernance via la maîtrise des changements",
-          "Ajouter une réserve budgétaire forfaitaire et poursuivre sans autre analyse"
+          "Attendre la promulgation : agir sur un texte non voté serait prématuré",
+          "Faire modifier la conception par l'équipe technique, sans demande de changement puisque rien n'est encore obligatoire"
         ],
         "en": [
-          "Wait for enactment: acting on an unvoted text would be premature",
-          "Have the technical team change the design, without a change request since nothing is mandatory yet",
+          "Add a lump-sum budget reserve and continue with no further analysis",
           "Assess the impact now (scope, cost, schedule), record it in the risk register, and submit options to governance through change control",
-          "Add a lump-sum budget reserve and continue with no further analysis"
+          "Wait for enactment: acting on an unvoted text would be premature",
+          "Have the technical team change the design, without a change request since nothing is mandatory yet"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 1,
       "rationale": {
         "fr": "Surveiller l'environnement externe n'a de valeur que si l'information déclenche une analyse avant que la contrainte devienne un fait accompli : attendre la promulgation, c'est choisir de subir une reprise plus coûteuse. Mais anticiper ne veut pas dire agir sans autorisation — l'impact s'évalue, s'inscrit au registre des risques, et les options remontent à la gouvernance par la maîtrise des changements.",
         "en": "Scanning the external environment only has value if the information triggers analysis before the constraint becomes a fait accompli: waiting for enactment means choosing costlier rework. But anticipating does not mean acting without authorization — the impact is assessed, recorded in the risk register, and options go to governance through change control."

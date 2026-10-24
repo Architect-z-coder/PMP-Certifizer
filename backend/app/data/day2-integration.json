@@ -47,19 +47,19 @@
       },
       "options": {
         "fr": [
-          "Le chef de projet seul",
           "Le sponsor / initiateur",
+          "L'équipe projet",
           "Le bureau qualité",
-          "L'équipe projet"
+          "Le chef de projet seul"
         ],
         "en": [
-          "The project manager alone",
           "The sponsor / initiator",
+          "The project team",
           "The quality office",
-          "The project team"
+          "The project manager alone"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "La charte est émise par le sponsor (qui a l'autorité de financer) ; elle autorise le projet et donne autorité au PM, qui peut aider à la rédiger.",
         "en": "The charter is issued by the sponsor (who can fund it); it authorizes the project and empowers the PM, who may help draft it."
@@ -80,15 +80,15 @@
       "options": {
         "fr": [
           "Elle clôt le projet",
-          "Elle détaille la WBS",
+          "Elle fixe le budget final",
           "Elle démarre formellement le projet et donne autorité au PM",
-          "Elle fixe le budget final"
+          "Elle détaille la WBS"
         ],
         "en": [
           "Closes the project",
-          "Details the WBS",
+          "Sets the final budget",
           "Formally starts the project and gives the PM authority",
-          "Sets the final budget"
+          "Details the WBS"
         ]
       },
       "answer_index": 2,
@@ -111,19 +111,19 @@
       },
       "options": {
         "fr": [
-          "Commencer l'exécution du travail",
-          "Créer la WBS",
+          "Clore l'initialisation",
           "Élaborer le plan de management du projet",
-          "Clore l'initialisation"
+          "Commencer l'exécution du travail",
+          "Créer la WBS"
         ],
         "en": [
-          "Start executing the work",
-          "Create the WBS",
+          "Close initiation",
           "Develop the project management plan",
-          "Close initiation"
+          "Start executing the work",
+          "Create the WBS"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 1,
       "rationale": {
         "fr": "Après la charte, on élabore d'abord le plan de management (4.2), qui cadre le reste, dont la WBS.",
         "en": "After the charter, you first develop the management plan (4.2), which frames the rest, including the WBS."
@@ -143,19 +143,19 @@
       },
       "options": {
         "fr": [
-          "Périmètre, qualité, risque",
           "Périmètre, échéancier, coûts",
-          "Coûts, ressources, communication",
-          "Délais, risque, approvisionnement"
+          "Périmètre, qualité, risque",
+          "Délais, risque, approvisionnement",
+          "Coûts, ressources, communication"
         ],
         "en": [
-          "Scope, quality, risk",
           "Scope, schedule, cost",
-          "Cost, resource, communications",
-          "Schedule, risk, procurement"
+          "Scope, quality, risk",
+          "Schedule, risk, procurement",
+          "Cost, resource, communications"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Les 3 baselines sont périmètre, échéancier et coûts ; combinées, elles forment la baseline de mesure de la performance (PMB).",
         "en": "The 3 baselines are scope, schedule, and cost; combined they form the performance measurement baseline (PMB)."
@@ -175,19 +175,19 @@
       },
       "options": {
         "fr": [
-          "Directement par le PM",
           "Par accord verbal du sponsor",
           "Uniquement via la maîtrise intégrée des modifications (4.6)",
+          "Directement par le PM",
           "Il ne peut jamais changer"
         ],
         "en": [
-          "Directly by the PM",
           "By the sponsor's verbal agreement",
           "Only via Perform Integrated Change Control (4.6)",
+          "Directly by the PM",
           "It can never change"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 1,
       "rationale": {
         "fr": "Après baseline, toute modification passe par 4.6 (demande de changement, évaluation, décision).",
         "en": "After baselining, every change goes through 4.6 (change request, evaluation, decision)."
@@ -207,16 +207,16 @@
       },
       "options": {
         "fr": [
-          "Work Performance Reports (WPR)",
+          "Une demande de changement",
           "Work Performance Information (WPI)",
           "Work Performance Data (WPD)",
-          "Une demande de changement"
+          "Work Performance Reports (WPR)"
         ],
         "en": [
-          "Work Performance Reports (WPR)",
+          "A change request",
           "Work Performance Information (WPI)",
           "Work Performance Data (WPD)",
-          "A change request"
+          "Work Performance Reports (WPR)"
         ]
       },
       "answer_index": 2,
@@ -241,14 +241,14 @@
         "fr": [
           "La charte du projet",
           "Les livrables",
-          "Le registre des risques",
-          "La WBS"
+          "La WBS",
+          "Le registre des risques"
         ],
         "en": [
           "The project charter",
           "Deliverables",
-          "The risk register",
-          "The WBS"
+          "The WBS",
+          "The risk register"
         ]
       },
       "answer_index": 1,
@@ -272,18 +272,18 @@
       "options": {
         "fr": [
           "Explicite",
-          "Tacite",
+          "Archivée",
           "Documentée",
-          "Archivée"
+          "Tacite"
         ],
         "en": [
           "Explicit",
-          "Tacit",
+          "Archived",
           "Documented",
-          "Archived"
+          "Tacit"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Tacite = personnelle, difficile à exprimer ; explicite = formalisable immédiatement. 4.4 exige de partager les deux, pas seulement de capitaliser.",
         "en": "Tacit = personal, hard to express; explicit = readily documented. 4.4 requires sharing both, not just capturing."
@@ -303,19 +303,19 @@
       },
       "options": {
         "fr": [
-          "Le registre des leçons apprises",
           "Le change log",
           "Le rapport final",
-          "La charte"
+          "La charte",
+          "Le registre des leçons apprises"
         ],
         "en": [
-          "The lessons learned register",
           "The change log",
           "The final report",
-          "The charter"
+          "The charter",
+          "The lessons learned register"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le registre des leçons apprises est créé tôt, enrichi en continu, puis finalisé à la clôture.",
         "en": "The lessons learned register is created early, enriched continuously, then finalized at closing."
@@ -335,19 +335,19 @@
       },
       "options": {
         "fr": [
-          "Charte et WBS",
-          "Rapports de performance (WPR) et demandes de changement",
           "Livrables et budget",
-          "Plan de communication et risques"
+          "Charte et WBS",
+          "Plan de communication et risques",
+          "Rapports de performance (WPR) et demandes de changement"
         ],
         "en": [
-          "Charter and WBS",
-          "Work performance reports (WPR) and change requests",
           "Deliverables and budget",
-          "Communications plan and risks"
+          "Charter and WBS",
+          "Communications plan and risks",
+          "Work performance reports (WPR) and change requests"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "4.5 produit les WPR (information compilée et communiquée) et les demandes de changement qui partent vers 4.6.",
         "en": "4.5 produces WPR (compiled, communicated information) and the change requests that flow to 4.6."
@@ -368,15 +368,15 @@
       "options": {
         "fr": [
           "Action corrective",
-          "Action préventive",
+          "Mise à jour",
           "Réparation de défaut",
-          "Mise à jour"
+          "Action préventive"
         ],
         "en": [
           "Corrective action",
-          "Preventive action",
+          "Update",
           "Defect repair",
-          "Update"
+          "Preventive action"
         ]
       },
       "answer_index": 2,
@@ -399,19 +399,19 @@
       },
       "options": {
         "fr": [
-          "Oui, toujours",
           "Non, elle n'est pas requise tant que les baselines ne sont pas approuvées",
-          "Seulement si le CCB existe",
-          "Seulement pour les coûts"
+          "Oui, toujours",
+          "Seulement pour les coûts",
+          "Seulement si le CCB existe"
         ],
         "en": [
-          "Yes, always",
           "No, it isn't required until baselines are approved",
-          "Only if a CCB exists",
-          "Only for cost"
+          "Yes, always",
+          "Only for cost",
+          "Only if a CCB exists"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Tant que les baselines ne sont pas posées, il n'y a pas de référence à protéger ; la maîtrise formelle des changements démarre après leur approbation.",
         "en": "Until baselines exist, there is no reference to protect; formal change control begins after they are approved."
@@ -431,19 +431,19 @@
       },
       "options": {
         "fr": [
-          "Archiver les informations du projet",
+          "Élaborer la WBS",
           "Transférer le livrable final",
           "Libérer les ressources de l'équipe",
-          "Élaborer la WBS"
+          "Archiver les informations du projet"
         ],
         "en": [
-          "Archive project information",
+          "Develop the WBS",
           "Transition the final deliverable",
           "Release the team's resources",
-          "Develop the WBS"
+          "Archive project information"
         ]
       },
-      "answer_index": 3,
+      "answer_index": 0,
       "rationale": {
         "fr": "La WBS se crée en planification (périmètre). La clôture archive, transfère, libère les ressources et produit le rapport final.",
         "en": "The WBS is created in planning (scope). Closure archives, transitions, releases resources, and produces the final report."

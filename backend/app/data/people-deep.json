@@ -19,16 +19,16 @@
       },
       "options": {
         "fr": [
-          "Envoyer à chacun une liste détaillée de ses tâches",
+          "Demander au sponsor d'imposer les priorités",
           "Co-construire avec l'équipe une vision partagée du résultat et des critères de succès, reliée à la charte",
-          "Organiser un team building récréatif",
-          "Demander au sponsor d'imposer les priorités"
+          "Envoyer à chacun une liste détaillée de ses tâches",
+          "Organiser un team building récréatif"
         ],
         "en": [
-          "Send each member a detailed task list",
+          "Ask the sponsor to impose priorities",
           "Co-create with the team a shared vision of the outcome and success criteria, linked to the charter",
-          "Run a recreational team-building event",
-          "Ask the sponsor to impose priorities"
+          "Send each member a detailed task list",
+          "Run a recreational team-building event"
         ]
       },
       "answer_index": 1,
@@ -51,19 +51,19 @@
       },
       "options": {
         "fr": [
-          "Accepter : plus de contrôle créera de la discipline",
           "Établir avec l'équipe des accords de travail (working agreements), créer des espaces d'échange sûrs et montrer l'exemple de la transparence",
           "Réduire les réunions pour éviter les silences gênants",
-          "Identifier et sanctionner ceux qui retiennent l'information"
+          "Identifier et sanctionner ceux qui retiennent l'information",
+          "Accepter : plus de contrôle créera de la discipline"
         ],
         "en": [
-          "Accept: more control will create discipline",
           "Establish team working agreements, create safe spaces for exchange, and model transparency personally",
           "Reduce meetings to avoid awkward silences",
-          "Identify and sanction those hoarding information"
+          "Identify and sanction those hoarding information",
+          "Accept: more control will create discipline"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "La confiance se bâtit par des accords explicites, la sécurité psychologique et l'exemplarité — pas par la surveillance, qui confirme la défiance. Réduire les échanges aggrave l'isolement ; sanctionner détruit la sécurité psychologique.",
         "en": "Trust is built through explicit agreements, psychological safety, and leading by example — not surveillance, which confirms distrust. Fewer exchanges deepen isolation; sanctions destroy psychological safety."
@@ -83,19 +83,19 @@
       },
       "options": {
         "fr": [
+          "Raccourcir les itérations pour créer de l'urgence",
           "Proposer une prime de fin de projet",
           "Reconnecter visiblement le travail de l'équipe à la valeur et aux bénéfices attendus, par exemple via une revue avec les utilisateurs",
-          "Raccourcir les itérations pour créer de l'urgence",
           "Ne rien faire : la motivation fluctue naturellement"
         ],
         "en": [
+          "Shorten iterations to create urgency",
           "Offer an end-of-project bonus",
           "Visibly reconnect the team's work to expected value and benefits, e.g. through a review with users",
-          "Shorten iterations to create urgency",
           "Do nothing: motivation naturally fluctuates"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La motivation durable est intrinsèque : voir l'impact et la valeur de son travail. La prime est un levier extrinsèque de court terme ; l'urgence artificielle épuise ; l'inaction laisse la dérive s'installer. L'ECO 2026 insiste sur la livraison de valeur.",
         "en": "Durable motivation is intrinsic: seeing the impact and value of one's work. Bonuses are short-term extrinsic levers; artificial urgency burns people out; inaction lets the drift settle. The 2026 ECO emphasizes value delivery."
@@ -115,19 +115,19 @@
       },
       "options": {
         "fr": [
-          "Trancher immédiatement pour montrer son autorité",
-          "Faciliter une résolution collaborative : ramener la discussion aux intérêts et à des critères objectifs (exigences, coût du cycle de vie, risque)",
           "Escalader au sponsor pour qu'il décide",
-          "Couper la poire en deux : moitié de chaque solution"
+          "Couper la poire en deux : moitié de chaque solution",
+          "Trancher immédiatement pour montrer son autorité",
+          "Faciliter une résolution collaborative : ramener la discussion aux intérêts et à des critères objectifs (exigences, coût du cycle de vie, risque)"
         ],
         "en": [
-          "Decide immediately to assert authority",
-          "Facilitate collaborative problem-solving: bring the discussion back to interests and objective criteria (requirements, life-cycle cost, risk)",
           "Escalate to the sponsor to decide",
-          "Split the difference: half of each solution"
+          "Split the difference: half of each solution",
+          "Decide immediately to assert authority",
+          "Facilitate collaborative problem-solving: bring the discussion back to interests and objective criteria (requirements, life-cycle cost, risk)"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Collaborer / résoudre le problème est le mode de résolution le plus durable : il traite les intérêts, pas les positions. Imposer ou escalader trop tôt laisse un perdant ; le compromis arbitraire dégrade souvent les deux solutions.",
         "en": "Collaborate / problem-solve is the most durable resolution mode: it addresses interests, not positions. Forcing or escalating too early leaves a loser; arbitrary compromise often degrades both solutions."
@@ -147,16 +147,16 @@
       },
       "options": {
         "fr": [
-          "Attendre : tant que le travail ne souffre pas, ce n'est pas un conflit",
-          "Aborder la tension tôt, en privé avec les intéressés, pour comprendre et désamorcer avant l'escalade",
           "En parler devant toute l'équipe à la prochaine rétrospective",
-          "Séparer les deux membres sur des lots différents"
+          "Aborder la tension tôt, en privé avec les intéressés, pour comprendre et désamorcer avant l'escalade",
+          "Séparer les deux membres sur des lots différents",
+          "Attendre : tant que le travail ne souffre pas, ce n'est pas un conflit"
         ],
         "en": [
-          "Wait: as long as work doesn't suffer, it's not a conflict",
-          "Address the tension early, privately with those involved, to understand and defuse before it escalates",
           "Raise it in front of the whole team at the next retrospective",
-          "Separate the two members onto different work packages"
+          "Address the tension early, privately with those involved, to understand and defuse before it escalates",
+          "Separate the two members onto different work packages",
+          "Wait: as long as work doesn't suffer, it's not a conflict"
         ]
       },
       "answer_index": 1,
@@ -179,19 +179,19 @@
       },
       "options": {
         "fr": [
-          "Exiger du membre qu'il priorise le projet",
-          "Négocier directement avec le manager fonctionnel un accord clair d'affectation, en s'appuyant sur les engagements de ressources du projet",
+          "Remplacer le membre par quelqu'un de plus disponible",
           "Se plaindre du manager fonctionnel auprès de la direction",
-          "Remplacer le membre par quelqu'un de plus disponible"
+          "Exiger du membre qu'il priorise le projet",
+          "Négocier directement avec le manager fonctionnel un accord clair d'affectation, en s'appuyant sur les engagements de ressources du projet"
         ],
         "en": [
-          "Demand that the member prioritize the project",
-          "Negotiate directly with the functional manager a clear allocation agreement, grounded in the project's resource commitments",
+          "Replace the member with someone more available",
           "Complain about the functional manager to senior management",
-          "Replace the member with someone more available"
+          "Demand that the member prioritize the project",
+          "Negotiate directly with the functional manager a clear allocation agreement, grounded in the project's resource commitments"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le conflit est entre managers, pas la faute du membre : le chef de projet le résout à son niveau, par la négociation avec le manager fonctionnel sur la base des accords de ressources. Faire pression sur le membre ou l'écarter punit la victime ; escalader d'emblée court-circuite la relation.",
         "en": "The conflict is between managers, not the member's fault: the PM resolves it at their level, negotiating with the functional manager based on resource agreements. Pressuring or removing the member punishes the victim; escalating first short-circuits the relationship."
@@ -211,19 +211,19 @@
       },
       "options": {
         "fr": [
-          "Réaffecter les tâches bloquées à d'autres membres",
-          "Prendre en charge la levée des obstacles auprès de l'organisation et protéger la capacité de l'équipe à s'auto-organiser",
           "Documenter les blocages dans le rapport mensuel",
-          "Demander à l'équipe de contourner les procédures"
+          "Demander à l'équipe de contourner les procédures",
+          "Prendre en charge la levée des obstacles auprès de l'organisation et protéger la capacité de l'équipe à s'auto-organiser",
+          "Réaffecter les tâches bloquées à d'autres membres"
         ],
         "en": [
-          "Reassign the blocked tasks to other members",
-          "Own the removal of impediments with the organization and protect the team's ability to self-organize",
           "Document the blockers in the monthly report",
-          "Ask the team to bypass the procedures"
+          "Ask the team to bypass the procedures",
+          "Own the removal of impediments with the organization and protect the team's ability to self-organize",
+          "Reassign the blocked tasks to other members"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Le leader serviteur sert l'équipe : il lève les obstacles, protège la concentration et favorise l'auto-organisation. Réaffecter masque le problème ; documenter sans agir ne débloque rien ; contourner les procédures crée un risque de conformité.",
         "en": "The servant leader serves the team: removing impediments, protecting focus, enabling self-organization. Reassigning masks the problem; documenting without acting unblocks nothing; bypassing procedures creates a compliance risk."
@@ -243,19 +243,19 @@
       },
       "options": {
         "fr": [
-          "Continuer la délégation totale pour ne pas casser la dynamique",
           "Un style plus directif et pédagogique au début (cadrer, montrer, coacher), puis déléguer progressivement à mesure que la maturité grandit",
           "Un style autoritaire permanent puisque l'équipe a dérivé",
-          "Laisser l'équipe choisir elle-même son mode de management"
+          "Laisser l'équipe choisir elle-même son mode de management",
+          "Continuer la délégation totale pour ne pas casser la dynamique"
         ],
         "en": [
-          "Continue full delegation to preserve the dynamic",
           "A more directive, coaching style at first (frame, show, coach), then progressively delegate as maturity grows",
           "A permanently authoritarian style since the team drifted",
-          "Let the team choose its own management mode"
+          "Let the team choose its own management mode",
+          "Continue full delegation to preserve the dynamic"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Le leadership situationnel adapte le style à la maturité de l'équipe : une équipe junior a besoin de cadrage et de coaching, puis d'autonomie croissante. La délégation totale prématurée a déjà échoué ; l'autoritarisme permanent tue la motivation.",
         "en": "Situational leadership adapts style to team maturity: a junior team needs framing and coaching, then growing autonomy. Premature full delegation already failed; permanent authoritarianism kills motivation."
@@ -275,19 +275,19 @@
       },
       "options": {
         "fr": [
-          "Annoncer des heures supplémentaires obligatoires",
           "Écouter, reconnaître l'effort fourni et les émotions, puis ré-ancrer l'équipe sur des objectifs atteignables avant de bâtir le plan de rattrapage",
+          "Transmettre tel quel le message de pression du sponsor",
           "Identifier publiquement les responsables du retard",
-          "Transmettre tel quel le message de pression du sponsor"
+          "Annoncer des heures supplémentaires obligatoires"
         ],
         "en": [
-          "Announce mandatory overtime",
           "Listen, acknowledge the effort and the emotions, then re-anchor the team on achievable goals before building the recovery plan",
+          "Pass the sponsor's pressure message straight through",
           "Publicly identify who caused the delay",
-          "Pass the sponsor's pressure message straight through"
+          "Announce mandatory overtime"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'intelligence émotionnelle précède le plan : reconnaître l'état de l'équipe restaure la capacité d'agir. La pression brute ou la recherche de coupables aggrave la défensive ; un bon leader absorbe la pression du sponsor au lieu de la relayer telle quelle.",
         "en": "Emotional intelligence precedes the plan: acknowledging the team's state restores its capacity to act. Raw pressure or blame-hunting deepens defensiveness; a good leader absorbs sponsor pressure instead of relaying it raw."
@@ -339,16 +339,16 @@
       },
       "options": {
         "fr": [
-          "Les remplacer immédiatement par des profils confirmés",
+          "Réduire la qualité attendue du livrable pour tenir le délai",
           "Évaluer l'écart, puis organiser une montée en compétence ciblée (formation courte, binômage avec un expert) intégrée au plan",
           "Leur demander de se former le soir, hors temps de travail",
-          "Réduire la qualité attendue du livrable pour tenir le délai"
+          "Les remplacer immédiatement par des profils confirmés"
         ],
         "en": [
-          "Replace them immediately with experienced profiles",
+          "Lower the deliverable's expected quality to hold the deadline",
           "Assess the gap, then organize targeted upskilling (short training, pairing with an expert) integrated into the plan",
           "Ask them to self-train in the evenings, outside work hours",
-          "Lower the deliverable's expected quality to hold the deadline"
+          "Replace them immediately with experienced profiles"
         ]
       },
       "answer_index": 1,
@@ -371,19 +371,19 @@
       },
       "options": {
         "fr": [
-          "Le maintenir sur ses tâches actuelles : le projet passe d'abord",
-          "Reconnaître sa contribution et lui confier des responsabilités élargies (mentorat, lot plus complexe) alignées avec ses aspirations",
           "Lui promettre une promotion qu'on ne contrôle pas",
-          "Prévenir les RH qu'il faut préparer son remplacement"
+          "Prévenir les RH qu'il faut préparer son remplacement",
+          "Reconnaître sa contribution et lui confier des responsabilités élargies (mentorat, lot plus complexe) alignées avec ses aspirations",
+          "Le maintenir sur ses tâches actuelles : le projet passe d'abord"
         ],
         "en": [
-          "Keep them on their current tasks: the project comes first",
-          "Recognize their contribution and entrust them with expanded responsibilities (mentoring, a more complex work package) aligned with their aspirations",
           "Promise a promotion the PM doesn't control",
-          "Warn HR to prepare their replacement"
+          "Warn HR to prepare their replacement",
+          "Recognize their contribution and entrust them with expanded responsibilities (mentoring, a more complex work package) aligned with their aspirations",
+          "Keep them on their current tasks: the project comes first"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La reconnaissance et le développement retiennent les talents : responsabilités élargies, mentorat, défis à la hauteur. Le figer le fera partir ; promettre hors de son autorité détruit la confiance ; préparer le remplacement abandonne la partie.",
         "en": "Recognition and growth retain talent: expanded responsibilities, mentoring, worthy challenges. Freezing them in place will drive them out; promising beyond one's authority destroys trust; preparing a replacement gives up the game."
@@ -404,18 +404,18 @@
       "options": {
         "fr": [
           "Signaler son absentéisme au sponsor pour le forcer à venir",
-          "Le rencontrer en tête-à-tête pour comprendre la cause de son désengagement, puis adapter la stratégie d'engagement (format, fréquence, canal)",
+          "Retirer son nom du registre des parties prenantes",
           "Considérer son silence comme une approbation tacite",
-          "Retirer son nom du registre des parties prenantes"
+          "Le rencontrer en tête-à-tête pour comprendre la cause de son désengagement, puis adapter la stratégie d'engagement (format, fréquence, canal)"
         ],
         "en": [
           "Report their absenteeism to the sponsor to force attendance",
-          "Meet them one-on-one to understand the cause of the disengagement, then adapt the engagement strategy (format, frequency, channel)",
+          "Remove their name from the stakeholder register",
           "Treat their silence as tacit approval",
-          "Remove their name from the stakeholder register"
+          "Meet them one-on-one to understand the cause of the disengagement, then adapt the engagement strategy (format, frequency, channel)"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "On diagnostique avant d'escalader : comprendre la cause (surcharge, désaccord, format inadapté) permet d'adapter l'engagement. Forcer via le sponsor brûle la relation ; l'approbation tacite est un piège classique ; on ne supprime pas une partie prenante clé du registre.",
         "en": "Diagnose before escalating: understanding the cause (overload, disagreement, wrong format) lets you adapt engagement. Forcing via the sponsor burns the relationship; tacit approval is a classic trap; you don't delete a key stakeholder from the register."
@@ -435,19 +435,19 @@
       },
       "options": {
         "fr": [
+          "Demander à la direction de le recadrer",
           "Le contourner et avancer avec les services favorables",
-          "L'impliquer tôt dans la conception, écouter ses préoccupations et montrer concrètement les bénéfices pour son équipe",
           "Attendre qu'il parte à la retraite ou change de poste",
-          "Demander à la direction de le recadrer"
+          "L'impliquer tôt dans la conception, écouter ses préoccupations et montrer concrètement les bénéfices pour son équipe"
         ],
         "en": [
+          "Ask senior management to rein him in",
           "Bypass him and move ahead with supportive departments",
-          "Involve him early in the design, listen to his concerns, and show his team's benefits concretely",
           "Wait for him to retire or change roles",
-          "Ask senior management to rein him in"
+          "Involve him early in the design, listen to his concerns, and show his team's benefits concretely"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Une partie prenante influente et résistante se gagne par l'implication précoce et le traitement de ses préoccupations réelles. La contourner ou la faire recadrer transforme la résistance en opposition organisée ; attendre laisse la résistance se cristalliser.",
         "en": "An influential, resistant stakeholder is won by early involvement and addressing real concerns. Bypassing or having them reined in turns resistance into organized opposition; waiting lets resistance crystallize."
@@ -469,14 +469,14 @@
         "fr": [
           "Rien : l'analyse des parties prenantes a été faite au démarrage",
           "Mettre à jour l'analyse des parties prenantes et le plan d'engagement, et bâtir tôt la relation avec le nouveau directeur",
-          "Attendre que le nouveau directeur se manifeste de lui-même",
-          "Envoyer au nouveau directeur toute la documentation du projet"
+          "Envoyer au nouveau directeur toute la documentation du projet",
+          "Attendre que le nouveau directeur se manifeste de lui-même"
         ],
         "en": [
           "Nothing: stakeholder analysis was done at kickoff",
           "Update the stakeholder analysis and engagement plan, and build the relationship with the new director early",
-          "Wait for the new director to reach out on their own",
-          "Send the new director the project's entire documentation"
+          "Send the new director the project's entire documentation",
+          "Wait for the new director to reach out on their own"
         ]
       },
       "answer_index": 1,
@@ -499,19 +499,19 @@
       },
       "options": {
         "fr": [
+          "Reporter la décision à la prochaine version",
           "Trancher lui-même pour débloquer",
-          "Faciliter une négociation fondée sur les intérêts et des critères objectifs (valeur métier, urgence réglementaire, coût du retard) pour bâtir un accord",
           "Programmer les deux exigences et laisser l'équipe absorber",
-          "Reporter la décision à la prochaine version"
+          "Faciliter une négociation fondée sur les intérêts et des critères objectifs (valeur métier, urgence réglementaire, coût du retard) pour bâtir un accord"
         ],
         "en": [
+          "Defer the decision to the next release",
           "Decide himself to unblock",
-          "Facilitate an interest-based negotiation using objective criteria (business value, regulatory urgency, cost of delay) to build an agreement",
           "Schedule both requirements and let the team absorb it",
-          "Defer the decision to the next release"
+          "Facilitate an interest-based negotiation using objective criteria (business value, regulatory urgency, cost of delay) to build an agreement"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le chef de projet facilite : ramener les parties des positions vers les intérêts, avec des critères objectifs partagés. Trancher seul lui fait porter le conflit ; surcharger l'équipe transfère le problème ; reporter sans accord laisse le blocage intact.",
         "en": "The PM facilitates: moving parties from positions to interests, with shared objective criteria. Deciding alone makes him own the conflict; overloading the team transfers the problem; deferring without agreement leaves the deadlock intact."
@@ -531,19 +531,19 @@
       },
       "options": {
         "fr": [
-          "Céder pour préserver la relation et les délais",
           "Négocier de manière raisonnée : séparer la relation du problème, s'appuyer sur le contrat, et formaliser tout échange de valeur équilibré",
-          "Menacer de résilier le contrat",
-          "Ignorer la demande et espérer qu'elle disparaisse"
+          "Céder pour préserver la relation et les délais",
+          "Ignorer la demande et espérer qu'elle disparaisse",
+          "Menacer de résilier le contrat"
         ],
         "en": [
-          "Give in to preserve the relationship and the schedule",
           "Negotiate on principle: separate the relationship from the problem, anchor on the contract, and formalize any balanced value exchange",
-          "Threaten to terminate the contract",
-          "Ignore the request and hope it goes away"
+          "Give in to preserve the relationship and the schedule",
+          "Ignore the request and hope it goes away",
+          "Threaten to terminate the contract"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "La négociation raisonnée sépare les personnes du problème et s'appuie sur des références objectives (le contrat). Céder sous pression invite la prochaine demande ; menacer escalade ; ignorer laisse l'ambiguïté — et le risque sur les livraisons — s'installer.",
         "en": "Principled negotiation separates people from the problem and anchors on objective references (the contract). Giving in invites the next demand; threats escalate; ignoring lets ambiguity — and the delivery risk — settle in."
@@ -595,19 +595,19 @@
       },
       "options": {
         "fr": [
+          "Répartir ses tâches sur l'équipe dès maintenant",
           "Lui demander de copier tous ses fichiers sur le serveur avant de partir",
           "Bâtir un plan de transfert : binômage avec un successeur, sessions de partage ciblées sur le savoir tacite critique, documentation des points clés",
-          "Prévoir de le rappeler en consultant en cas de problème",
-          "Répartir ses tâches sur l'équipe dès maintenant"
+          "Prévoir de le rappeler en consultant en cas de problème"
         ],
         "en": [
+          "Spread his tasks across the team right away",
           "Ask him to copy all his files to the server before leaving",
           "Build a transfer plan: pairing with a successor, targeted sharing sessions on critical tacit knowledge, documentation of key points",
-          "Plan to call him back as a consultant if problems arise",
-          "Spread his tasks across the team right away"
+          "Plan to call him back as a consultant if problems arise"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Le savoir critique est largement tacite : il se transfère par binômage et sessions structurées, pas par copie de fichiers. Compter sur un rappel en consultant est un pari ; répartir les tâches sans transfert répartit surtout l'ignorance.",
         "en": "Critical knowledge is largely tacit: it transfers through pairing and structured sessions, not file copies. Betting on a consultant call-back is a gamble; spreading tasks without transfer mostly spreads ignorance."
@@ -627,19 +627,19 @@
       },
       "options": {
         "fr": [
-          "Aucun : la clôture est le moment officiel des retours d'expérience",
           "Les leçons se capturent en continu (fin de phase, rétrospectives, incidents) pour bénéficier au projet EN COURS — à la clôture, il est trop tard pour lui",
+          "Il faudrait plutôt les recueillir uniquement au démarrage",
           "Les retours d'expérience relèvent du PMO, pas du chef de projet",
-          "Il faudrait plutôt les recueillir uniquement au démarrage"
+          "Aucun : la clôture est le moment officiel des retours d'expérience"
         ],
         "en": [
-          "None: closure is the official moment for lessons learned",
           "Lessons are captured continuously (phase ends, retrospectives, incidents) so the CURRENT project benefits — at closure it's too late for it",
+          "They should instead be collected only at kickoff",
           "Lessons learned are the PMO's job, not the project manager's",
-          "They should instead be collected only at kickoff"
+          "None: closure is the official moment for lessons learned"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "La gestion des connaissances (4.4) est continue : les leçons capturées en cours de route corrigent le projet lui-même. La clôture consolide et transfère à l'organisation, mais n'est pas le seul moment. C'est un piège d'examen classique.",
         "en": "Knowledge management (4.4) is continuous: lessons captured along the way correct the current project itself. Closure consolidates and transfers to the organization, but is not the only moment. This is a classic exam trap."
@@ -660,18 +660,18 @@
       "options": {
         "fr": [
           "Allonger les documents de passation à chaque départ",
+          "Compter sur la mémoire du chef de projet comme référence",
           "Installer un dispositif vivant : référentiel de connaissances accessible, mentorat des arrivants et communautés de pratique",
-          "Interdire les rotations de personnel sur le projet",
-          "Compter sur la mémoire du chef de projet comme référence"
+          "Interdire les rotations de personnel sur le projet"
         ],
         "en": [
           "Make handover documents longer at each departure",
+          "Rely on the project manager's memory as the reference",
           "Install a living system: an accessible knowledge repository, mentoring for newcomers, and communities of practice",
-          "Forbid staff rotations on the project",
-          "Rely on the project manager's memory as the reference"
+          "Forbid staff rotations on the project"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Le transfert durable combine savoir explicite (référentiel vivant) et tacite (mentorat, communautés de pratique). Les documents-fleuves ne sont pas lus ; interdire les rotations est irréaliste ; la mémoire d'une seule personne est un point unique de défaillance.",
         "en": "Durable transfer combines explicit knowledge (a living repository) and tacit knowledge (mentoring, communities of practice). Doorstop documents go unread; forbidding rotations is unrealistic; one person's memory is a single point of failure."
@@ -692,18 +692,18 @@
       "options": {
         "fr": [
           "Envoyer le même rapport complet à tout le monde pour être équitable",
+          "Créer une newsletter mensuelle unique",
           "Analyser les besoins d'information de chaque audience et adapter contenu, canal et fréquence (synthèse décisionnelle pour la direction, brief opérationnel rapide pour le terrain)",
-          "Réduire globalement la communication pour éviter la surcharge",
-          "Créer une newsletter mensuelle unique"
+          "Réduire globalement la communication pour éviter la surcharge"
         ],
         "en": [
           "Send the same full report to everyone to be fair",
+          "Create a single monthly newsletter",
           "Analyze each audience's information needs and tailor content, channel, and frequency (decision summary for management, quick operational brief for the field)",
-          "Reduce communication overall to avoid overload",
-          "Create a single monthly newsletter"
+          "Reduce communication overall to avoid overload"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La communication se planifie par audience : bon contenu, bon canal, bonne fréquence, pour la bonne personne. Le rapport unique pour tous sur-informe les uns et sous-informe les autres ; réduire globalement ou mensualiser aggrave le retard du terrain.",
         "en": "Communication is planned per audience: right content, right channel, right frequency, for the right person. One-size-fits-all over-informs some and under-informs others; cutting overall or going monthly worsens the field's lag."
@@ -723,19 +723,19 @@
       },
       "options": {
         "fr": [
-          "Imposer un modèle d'e-mail standardisé unique",
           "Adapter la communication : privilégier des échanges synchrones pour les sujets sensibles, expliciter l'intention, vérifier la compréhension et convenir de normes d'équipe",
           "Limiter la communication à l'écrit pour garder des traces",
-          "Demander à chacun d'écrire plus longuement pour être précis"
+          "Demander à chacun d'écrire plus longuement pour être précis",
+          "Imposer un modèle d'e-mail standardisé unique"
         ],
         "en": [
-          "Impose a single standardized e-mail template",
           "Adapt communication: prefer synchronous exchanges for sensitive topics, make intent explicit, check understanding, and agree on team norms",
           "Restrict communication to writing to keep records",
-          "Ask everyone to write at greater length to be precise"
+          "Ask everyone to write at greater length to be precise",
+          "Impose a single standardized e-mail template"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "En contexte multiculturel et virtuel, le canal compte autant que le message : synchrone pour le sensible, intention explicite, boucle de vérification, normes convenues ensemble. Les gabarits ou les e-mails plus longs ne traitent pas l'écart d'interprétation.",
         "en": "In multicultural virtual settings, the channel matters as much as the message: synchronous for sensitive topics, explicit intent, verification loops, jointly agreed norms. Templates or longer e-mails don't address the interpretation gap."
@@ -755,19 +755,19 @@
       },
       "options": {
         "fr": [
-          "Passer le rapport hebdomadaire en rapport quotidien",
-          "Mettre en place un tableau de bord accessible en libre-service (communication de type « pull » / radiateur d'information), en complément des rapports clés",
+          "Lui expliquer que le rapport hebdomadaire est suffisant",
           "Lui transférer les comptes rendus internes de l'équipe",
-          "Lui expliquer que le rapport hebdomadaire est suffisant"
+          "Passer le rapport hebdomadaire en rapport quotidien",
+          "Mettre en place un tableau de bord accessible en libre-service (communication de type « pull » / radiateur d'information), en complément des rapports clés"
         ],
         "en": [
-          "Turn the weekly report into a daily report",
-          "Set up a self-service dashboard (pull-type communication / information radiator), complementing the key reports",
+          "Explain that the weekly report is sufficient",
           "Forward him the team's internal minutes",
-          "Explain that the weekly report is sufficient"
+          "Turn the weekly report into a daily report",
+          "Set up a self-service dashboard (pull-type communication / information radiator), complementing the key reports"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Un besoin d'information « à la demande » se sert en mode pull : tableau de bord ou radiateur d'information à jour, consultable librement. Multiplier les rapports push surcharge tout le monde ; les comptes rendus internes ne sont pas calibrés pour un sponsor ; refuser ignore un besoin légitime.",
         "en": "An 'on-demand' information need is served in pull mode: an up-to-date self-service dashboard or information radiator. Multiplying push reports overloads everyone; internal minutes aren't calibrated for a sponsor; refusing ignores a legitimate need."

@@ -24,19 +24,19 @@
       },
       "options": {
         "fr": [
-          "Mobiliser l'équipe : le sponsor a donné un ordre verbal",
           "Obtenir la charte signée, qui fonde votre autorité et le financement",
-          "Élaborer le plan de management avant toute chose",
-          "Lancer l'identification des parties prenantes en parallèle"
+          "Lancer l'identification des parties prenantes en parallèle",
+          "Mobiliser l'équipe : le sponsor a donné un ordre verbal",
+          "Élaborer le plan de management avant toute chose"
         ],
         "en": [
-          "Mobilize the team — the sponsor gave a verbal go",
           "Get the charter signed, which establishes your authority and funding",
-          "Develop the project management plan first",
-          "Start identifying stakeholders in parallel"
+          "Start identifying stakeholders in parallel",
+          "Mobilize the team — the sponsor gave a verbal go",
+          "Develop the project management plan first"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Sans charte signée, le PM n'a ni autorité formelle ni financement autorisé. Un ordre verbal n'est pas défendable au premier conflit. La charte précède la planification (4.2) et l'autorité d'engager des ressources.",
         "en": "Without a signed charter the PM has no formal authority and no authorized funding. A verbal go isn't defensible at the first conflict. The charter precedes planning (4.2) and the authority to commit resources."
@@ -58,19 +58,19 @@
       },
       "options": {
         "fr": [
-          "Les objectifs mesurables et critères de succès",
-          "Le nom du chef de projet et son niveau d'autorité",
           "La structure de découpage du travail (WBS) détaillée",
-          "Les risques de haut niveau et jalons sommaires"
+          "Le nom du chef de projet et son niveau d'autorité",
+          "Les risques de haut niveau et jalons sommaires",
+          "Les objectifs mesurables et critères de succès"
         ],
         "en": [
-          "Measurable objectives and success criteria",
-          "The project manager's name and authority level",
           "The detailed work breakdown structure (WBS)",
-          "High-level risks and summary milestones"
+          "The project manager's name and authority level",
+          "High-level risks and summary milestones",
+          "Measurable objectives and success criteria"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 0,
       "rationale": {
         "fr": "La charte reste de haut niveau : objectifs, autorité du PM, risques et jalons sommaires. La WBS est un produit de la planification du périmètre (5.4), pas de la charte. Confondre les deux est un piège classique.",
         "en": "The charter stays high-level: objectives, PM authority, high-level risks and summary milestones. The WBS is an output of scope planning (5.4), not the charter. Confusing the two is a classic trap."
@@ -92,19 +92,19 @@
       },
       "options": {
         "fr": [
-          "Continuer : la décision de lancer revient au sponsor, pas au PM",
-          "Remonter au sponsor le défaut d'alignement sur la valeur avant d'investir davantage",
           "Réduire le budget pour limiter le risque financier",
-          "Documenter l'écart dans le registre des risques et poursuivre"
+          "Documenter l'écart dans le registre des risques et poursuivre",
+          "Remonter au sponsor le défaut d'alignement sur la valeur avant d'investir davantage",
+          "Continuer : la décision de lancer revient au sponsor, pas au PM"
         ],
         "en": [
-          "Proceed — the decision to launch is the sponsor's, not the PM's",
-          "Raise the value/alignment gap to the sponsor before investing further",
           "Cut the budget to limit financial risk",
-          "Log the gap in the risk register and continue"
+          "Log the gap in the risk register and continue",
+          "Raise the value/alignment gap to the sponsor before investing further",
+          "Proceed — the decision to launch is the sponsor's, not the PM's"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "L'orientation 2026 met la valeur et l'alignement stratégique au cœur du rôle. Un projet sans contribution à la valeur doit être questionné tôt auprès du sponsor — pas simplement journalisé. Poursuivre gaspille des ressources sur un projet possiblement injustifié.",
         "en": "The 2026 orientation puts value and strategic alignment at the centre of the role. A project with no value contribution should be challenged early with the sponsor — not merely logged. Proceeding wastes resources on a possibly unjustified project."
@@ -126,19 +126,19 @@
       },
       "options": {
         "fr": [
-          "Le contrat signé avec le maître d'ouvrage uniquement",
           "Une charte/note de lancement interne qui nomme le PM et alloue les ressources",
+          "Le contrat signé avec le maître d'ouvrage uniquement",
           "Le cahier des charges technique",
           "Le planning directeur (master schedule)"
         ],
         "en": [
-          "The signed contract with the owner only",
           "An internal launch charter/note that names the PM and allocates resources",
+          "The signed contract with the owner only",
           "The technical specification",
           "The master schedule"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Le contrat externe déclenche le projet, mais l'autorité interne du PM de l'entrepreneur vient d'une charte/note de lancement interne qui le nomme et engage les ressources. Le contrat seul n'attribue pas l'autorité interne ; le cahier des charges et le planning sont des produits ultérieurs.",
         "en": "The external contract triggers the work, but the contractor PM's internal authority comes from an internal launch charter/note that names them and commits resources. The contract alone doesn't grant internal authority; the spec and schedule are later outputs."
@@ -160,19 +160,19 @@
       },
       "options": {
         "fr": [
-          "Dans le plan de gestion des risques",
-          "Dans la charte et/ou le registre des hypothèses",
           "Dans le registre des leçons apprises",
-          "Dans le journal des problèmes (issue log)"
+          "Dans le journal des problèmes (issue log)",
+          "Dans le plan de gestion des risques",
+          "Dans la charte et/ou le registre des hypothèses"
         ],
         "en": [
-          "In the risk management plan",
-          "In the charter and/or the assumption log",
           "In the lessons learned register",
-          "In the issue log"
+          "In the issue log",
+          "In the risk management plan",
+          "In the charter and/or the assumption log"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Les hypothèses/contraintes de haut niveau apparaissent dans la charte et sont suivies dans le registre des hypothèses. Le journal des problèmes traite d'événements réalisés ; les leçons apprises capitalisent l'expérience — autres usages.",
         "en": "High-level assumptions/constraints appear in the charter and are tracked in the assumption log. The issue log handles realized events; lessons learned capture experience — different purposes."
@@ -195,18 +195,18 @@
       "options": {
         "fr": [
           "Accepter : livrer vite crée plus de valeur que planifier",
-          "Expliquer que le plan intègre les références de base qui permettront de piloter et de maîtriser les changements",
+          "Demander au sponsor d'arbitrer sans donner d'avis",
           "Démarrer l'exécution et planifier en parallèle sans référence",
-          "Demander au sponsor d'arbitrer sans donner d'avis"
+          "Expliquer que le plan intègre les références de base qui permettront de piloter et de maîtriser les changements"
         ],
         "en": [
           "Agree — delivering fast creates more value than planning",
-          "Explain that the plan sets the baselines that make control and change management possible",
+          "Ask the sponsor to decide without offering a view",
           "Start executing and plan in parallel with no baseline",
-          "Ask the sponsor to decide without offering a view"
+          "Explain that the plan sets the baselines that make control and change management possible"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le plan de management intègre les références (périmètre, échéancier, coûts) sans lesquelles on ne peut mesurer l'écart ni maîtriser les changements (4.6). Sauter la planification supprime la base de pilotage. Le PM conseille avec son jugement, il ne se défausse pas.",
         "en": "The PM plan integrates the baselines (scope, schedule, cost) without which you can't measure variance or control change (4.6). Skipping planning removes the basis for control. The PM advises with judgement rather than abdicating."
@@ -228,19 +228,19 @@
       },
       "options": {
         "fr": [
-          "Entièrement prédictif pour tout maîtriser",
           "Entièrement agile pour rester flexible",
           "Hybride : prédictif sur le cœur figé, itératif sur la partie incertaine",
+          "Entièrement prédictif pour tout maîtriser",
           "Indéfini : on décidera en exécution"
         ],
         "en": [
-          "Fully predictive to control everything",
           "Fully agile to stay flexible",
           "Hybrid: predictive on the fixed core, iterative on the uncertain part",
+          "Fully predictive to control everything",
           "Undecided — we'll choose during execution"
         ]
       },
-      "answer_index": 2,
+      "answer_index": 1,
       "rationale": {
         "fr": "Le choix se tailore selon le contexte (PMBOK 7). Un cœur figé et régulé appelle le prédictif ; une partie à périmètre incertain bénéficie de l'itératif — donc hybride. Tout-prédictif rigidifie l'incertain ; tout-agile fragilise le cœur régulé. L'approche se décide dans le plan, pas plus tard.",
         "en": "The choice is tailored to context (PMBOK 7). A fixed, regulated core calls for predictive; an uncertain-scope part benefits from iterative — hence hybrid. All-predictive rigidifies the uncertain part; all-agile undermines the regulated core. The approach is set in the plan, not later."
@@ -262,19 +262,19 @@
       },
       "options": {
         "fr": [
-          "Périmètre, échéancier, coûts",
           "Qualité, risques, communications",
-          "Charte, WBS, registre des parties prenantes",
-          "Délais, ressources, approvisionnements"
+          "Périmètre, échéancier, coûts",
+          "Délais, ressources, approvisionnements",
+          "Charte, WBS, registre des parties prenantes"
         ],
         "en": [
-          "Scope, schedule, cost",
           "Quality, risk, communications",
-          "Charter, WBS, stakeholder register",
-          "Schedule, resources, procurement"
+          "Scope, schedule, cost",
+          "Schedule, resources, procurement",
+          "Charter, WBS, stakeholder register"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 1,
       "rationale": {
         "fr": "La référence de mesure de la performance combine les références de périmètre, d'échéancier et de coûts. Les autres sont des plans subsidiaires ou des documents, pas des références de base.",
         "en": "The performance measurement baseline combines the scope, schedule and cost baselines. The others are subsidiary plans or documents, not baselines."
@@ -296,19 +296,19 @@
       },
       "options": {
         "fr": [
+          "Externaliser ces lots pour éviter de les planifier",
           "Bloquer la planification jusqu'à tout connaître",
           "Planifier par vagues (rolling wave) : détailler le proche, esquisser le lointain",
-          "Inventer des estimations précises pour combler les vides",
-          "Externaliser ces lots pour éviter de les planifier"
+          "Inventer des estimations précises pour combler les vides"
         ],
         "en": [
+          "Outsource those packages to avoid planning them",
           "Halt planning until everything is known",
           "Use rolling-wave planning: detail the near term, outline the far term",
-          "Invent precise estimates to fill the gaps",
-          "Outsource those packages to avoid planning them"
+          "Invent precise estimates to fill the gaps"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "L'élaboration progressive / planification par vagues détaille ce qui est connaissable maintenant et affine plus tard. Tout bloquer paralyse ; inventer des chiffres crée une fausse précision dangereuse.",
         "en": "Progressive elaboration / rolling-wave planning details what is knowable now and refines later. Halting everything paralyzes the project; inventing numbers creates dangerous false precision."
@@ -330,19 +330,19 @@
       },
       "options": {
         "fr": [
-          "L'approbation formelle (baseline) par le sponsor / les parties prenantes clés",
-          "La validation du premier livrable",
           "La signature des contrats d'approvisionnement",
-          "La tenue de la première réunion d'avancement"
+          "La validation du premier livrable",
+          "La tenue de la première réunion d'avancement",
+          "L'approbation formelle (baseline) par le sponsor / les parties prenantes clés"
         ],
         "en": [
-          "Formal approval (baselining) by the sponsor / key stakeholders",
-          "Validation of the first deliverable",
           "Signing the procurement contracts",
-          "Holding the first status meeting"
+          "Validation of the first deliverable",
+          "Holding the first status meeting",
+          "Formal approval (baselining) by the sponsor / key stakeholders"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 3,
       "rationale": {
         "fr": "On fige (baseline) le plan par une approbation formelle avant d'exécuter, pour disposer d'une référence opposable. La validation des livrables (5.5) et les réunions surviennent ensuite.",
         "en": "You baseline the plan with formal approval before executing, to have a reference you can hold work against. Deliverable validation (5.5) and meetings come afterwards."
@@ -398,16 +398,16 @@
       },
       "options": {
         "fr": [
-          "Les rapports sur la performance du travail",
-          "Les livrables",
           "Les demandes de changement approuvées",
-          "La référence de base du périmètre"
+          "Les livrables",
+          "La référence de base du périmètre",
+          "Les rapports sur la performance du travail"
         ],
         "en": [
-          "Work performance reports",
-          "Deliverables",
           "Approved change requests",
-          "The scope baseline"
+          "Deliverables",
+          "The scope baseline",
+          "Work performance reports"
         ]
       },
       "answer_index": 1,
@@ -432,19 +432,19 @@
       },
       "options": {
         "fr": [
-          "Données de performance du travail (work performance data)",
           "Informations sur la performance du travail",
           "Rapports sur la performance du travail",
+          "Données de performance du travail (work performance data)",
           "Mesures de la maîtrise de la qualité"
         ],
         "en": [
-          "Work performance data",
           "Work performance information",
           "Work performance reports",
+          "Work performance data",
           "Quality control measurements"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 2,
       "rationale": {
         "fr": "Les observations brutes = données (4.3). Analysées contre les références, elles deviennent des informations (4.5) ; mises en forme pour communication, des rapports. Le piège est de confondre données et rapports.",
         "en": "Raw observations = data (4.3). Analyzed against baselines they become information (4.5); packaged for communication, reports. The trap is confusing data with reports."
@@ -466,19 +466,19 @@
       },
       "options": {
         "fr": [
-          "Dans le registre des risques ; aucune autre action",
-          "Dans le journal des problèmes (issue log) ; lancer la résolution et, si besoin, une demande de changement",
+          "Dans la charte ; alerter uniquement le sponsor",
           "Dans le registre des leçons apprises ; clôturer le risque",
-          "Dans la charte ; alerter uniquement le sponsor"
+          "Dans le journal des problèmes (issue log) ; lancer la résolution et, si besoin, une demande de changement",
+          "Dans le registre des risques ; aucune autre action"
         ],
         "en": [
-          "In the risk register; no further action",
-          "In the issue log; start resolution and, if needed, raise a change request",
+          "In the charter; only alert the sponsor",
           "In the lessons learned register; close the risk",
-          "In the charter; only alert the sponsor"
+          "In the issue log; start resolution and, if needed, raise a change request",
+          "In the risk register; no further action"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Un risque réalisé devient un problème : il se suit dans le journal des problèmes, on lance la résolution et, si la réponse touche une référence, on passe par une demande de changement (4.6). Le registre des risques tracera le basculement, mais l'instrument de pilotage devient le journal des problèmes.",
         "en": "A realized risk becomes an issue: track it in the issue log, drive resolution, and if the response touches a baseline, route a change request (4.6). The risk register records the transition, but the issue log becomes the control instrument."
@@ -500,19 +500,19 @@
       },
       "options": {
         "fr": [
-          "Demander une prolongation de son contrat coûte que coûte",
           "Organiser le transfert des connaissances tacites (pairage, documentation, leçons apprises) avant le départ",
-          "Attendre son remplaçant et lui faire tout redécouvrir",
-          "Geler les tâches concernées jusqu'à recrutement"
+          "Geler les tâches concernées jusqu'à recrutement",
+          "Demander une prolongation de son contrat coûte que coûte",
+          "Attendre son remplaçant et lui faire tout redécouvrir"
         ],
         "en": [
-          "Demand a contract extension at any cost",
           "Organize transfer of tacit knowledge (pairing, documentation, lessons learned) before departure",
-          "Wait for a replacement and let them rediscover everything",
-          "Freeze the affected tasks until a hire is made"
+          "Freeze the affected tasks until a hire is made",
+          "Demand a contract extension at any cost",
+          "Wait for a replacement and let them rediscover everything"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Gérer les connaissances vise à préserver le savoir tacite et explicite. Le pairage, la documentation et les leçons apprises capturent ce qui partirait sinon avec la personne. Prolonger à tout prix ou geler le travail ne transfèrent pas le savoir.",
         "en": "Managing project knowledge aims to preserve tacit and explicit knowledge. Pairing, documentation and lessons learned capture what would otherwise leave with the person. Extending at any cost or freezing work doesn't transfer knowledge."
@@ -534,16 +534,16 @@
       },
       "options": {
         "fr": [
-          "Uniquement à la clôture du projet",
+          "Seulement en cas d'incident majeur",
           "En continu, tout au long du projet",
           "Seulement à la fin de chaque phase contractuelle",
-          "Seulement en cas d'incident majeur"
+          "Uniquement à la clôture du projet"
         ],
         "en": [
-          "Only at project closure",
+          "Only when a major incident occurs",
           "Continuously, throughout the project",
           "Only at the end of each contractual phase",
-          "Only when a major incident occurs"
+          "Only at project closure"
         ]
       },
       "answer_index": 1,
@@ -568,19 +568,19 @@
       },
       "options": {
         "fr": [
-          "Savoir explicite ; le diffuser tel quel",
           "Savoir tacite ; l'expliciter via partage, démonstrations et documentation",
           "Savoir obsolète ; l'ignorer",
+          "Savoir explicite ; le diffuser tel quel",
           "Savoir contractuel ; le verrouiller"
         ],
         "en": [
-          "Explicit knowledge; circulate it as-is",
           "Tacit knowledge; make it explicit through sharing, demos and documentation",
           "Obsolete knowledge; ignore it",
+          "Explicit knowledge; circulate it as-is",
           "Contractual knowledge; lock it down"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Le savoir-faire non écrit est tacite. La gestion des connaissances cherche à l'expliciter et à le partager (interactions, démonstrations, documentation) pour qu'il ne dépende plus d'individus.",
         "en": "Undocumented know-how is tacit. Knowledge management seeks to make it explicit and shareable (interactions, demos, documentation) so it no longer depends on individuals."
@@ -602,15 +602,15 @@
       },
       "options": {
         "fr": [
-          "Tout va bien, les indices sont proches de 1",
-          "En dépassement de coûts et en retard ; analyser les causes et envisager une action corrective via demande de changement",
           "En avance et sous budget ; accélérer",
+          "En dépassement de coûts et en retard ; analyser les causes et envisager une action corrective via demande de changement",
+          "Tout va bien, les indices sont proches de 1",
           "Indices non significatifs ; ignorer"
         ],
         "en": [
-          "All fine, the indices are close to 1",
-          "Over budget and behind schedule; analyze causes and consider corrective action via a change request",
           "Ahead and under budget; speed up",
+          "Over budget and behind schedule; analyze causes and consider corrective action via a change request",
+          "All fine, the indices are close to 1",
           "Indices not meaningful; ignore"
         ]
       },
@@ -636,19 +636,19 @@
       },
       "options": {
         "fr": [
-          "Corriger directement le travail puis informer après coup",
           "Émettre une demande de changement, la faire évaluer en maîtrise intégrée (4.6), puis exécuter si approuvée",
-          "Mettre à jour la référence de base soi-même pour refléter la réalité",
-          "Attendre la prochaine revue trimestrielle"
+          "Attendre la prochaine revue trimestrielle",
+          "Corriger directement le travail puis informer après coup",
+          "Mettre à jour la référence de base soi-même pour refléter la réalité"
         ],
         "en": [
-          "Fix the work directly, then inform afterwards",
           "Raise a change request, have it assessed in integrated change control (4.6), then implement if approved",
-          "Update the baseline yourself to reflect reality",
-          "Wait for the next quarterly review"
+          "Wait for the next quarterly review",
+          "Fix the work directly, then inform afterwards",
+          "Update the baseline yourself to reflect reality"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Les actions correctives/préventives naissent du suivi (4.5) mais transitent par la maîtrise intégrée des changements (4.6) avant exécution (4.3). Modifier soi-même une référence court-circuite la gouvernance.",
         "en": "Corrective/preventive actions originate in monitoring (4.5) but pass through integrated change control (4.6) before execution (4.3). Editing a baseline yourself short-circuits governance."
@@ -670,19 +670,19 @@
       },
       "options": {
         "fr": [
+          "Registre des problèmes",
           "Données de performance du travail",
           "Rapports sur la performance du travail",
-          "Demandes de changement",
-          "Registre des problèmes"
+          "Demandes de changement"
         ],
         "en": [
+          "Issue register",
           "Work performance data",
           "Work performance reports",
-          "Change requests",
-          "Issue register"
+          "Change requests"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Mis en forme pour décision/communication, c'est un rapport de performance (sortie de 4.5). Les données sont brutes (4.3) ; l'information est l'analyse intermédiaire.",
         "en": "Packaged for decision/communication, it's a work performance report (an output of 4.5). Data is raw (4.3); information is the intermediate analysis."
@@ -704,19 +704,19 @@
       },
       "options": {
         "fr": [
-          "EAC = BAC (l'écart se résorbera seul)",
           "EAC = BAC / CPI",
+          "EAC = BAC + AC",
           "EAC = AC seulement",
-          "EAC = BAC + AC"
+          "EAC = BAC (l'écart se résorbera seul)"
         ],
         "en": [
-          "EAC = BAC (the variance will fix itself)",
           "EAC = BAC / CPI",
+          "EAC = BAC + AC",
           "EAC = AC only",
-          "EAC = BAC + AC"
+          "EAC = BAC (the variance will fix itself)"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Quand l'écart actuel est représentatif, EAC = BAC / CPI. Supposer une auto-correction (EAC = BAC) est optimiste et non défendable ; les autres formules ne correspondent pas à ce cas.",
         "en": "When the current variance is typical, EAC = BAC / CPI. Assuming self-correction (EAC = BAC) is optimistic and indefensible; the other formulas don't fit this case."
@@ -738,14 +738,14 @@
       },
       "options": {
         "fr": [
-          "Refuser : c'est hors périmètre",
           "Accepter pour satisfaire le client",
+          "Refuser : c'est hors périmètre",
           "Documenter la demande et analyser son impact sur périmètre/délais/coûts/risques/qualité avant toute décision",
           "Demander au sponsor de trancher immédiatement"
         ],
         "en": [
-          "Refuse — it's out of scope",
           "Accept to keep the customer happy",
+          "Refuse — it's out of scope",
           "Document the request and assess its impact on scope/schedule/cost/risk/quality before any decision",
           "Ask the sponsor to decide immediately"
         ]
@@ -772,19 +772,19 @@
       },
       "options": {
         "fr": [
+          "L'équipe qui réalise le travail",
           "Le chef de projet seul",
           "Le comité de maîtrise des changements (CCB)",
-          "L'équipe qui réalise le travail",
           "Le fournisseur concerné"
         ],
         "en": [
+          "The team doing the work",
           "The project manager alone",
           "The change control board (CCB)",
-          "The team doing the work",
           "The affected vendor"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La décision revient au CCB selon les règles définies dans le plan. Le PM prépare l'analyse d'impact et applique la décision, mais ne décide pas seul (sauf délégation explicite).",
         "en": "The decision belongs to the CCB per the rules in the plan. The PM prepares the impact analysis and implements the decision but doesn't decide alone (unless explicitly delegated)."
@@ -806,19 +806,19 @@
       },
       "options": {
         "fr": [
-          "On exécute sans toucher aux références",
-          "On met à jour les références impactées, puis « Diriger et gérer le travail » exécute le changement approuvé",
           "On clôture le projet pour repartir sur une nouvelle charte",
-          "On informe seulement le client, sans rien changer"
+          "On informe seulement le client, sans rien changer",
+          "On exécute sans toucher aux références",
+          "On met à jour les références impactées, puis « Diriger et gérer le travail » exécute le changement approuvé"
         ],
         "en": [
-          "Implement without touching the baselines",
-          "Update the impacted baselines, then 'Direct and Manage Work' implements the approved change",
           "Close the project and restart from a new charter",
-          "Just inform the customer, change nothing"
+          "Just inform the customer, change nothing",
+          "Implement without touching the baselines",
+          "Update the impacted baselines, then 'Direct and Manage Work' implements the approved change"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Un changement approuvé met à jour les références concernées (périmètre/échéancier/coûts) puis est exécuté en 4.3. Exécuter sans actualiser les références fait diverger le plan de la réalité et casse le pilotage.",
         "en": "An approved change updates the impacted baselines (scope/schedule/cost) and is then implemented in 4.3. Implementing without updating the baselines makes the plan diverge from reality and breaks control."
@@ -840,19 +840,19 @@
       },
       "options": {
         "fr": [
+          "Problème qualité ; ouvrir une non-conformité",
           "Excellente initiative ; l'encourager",
-          "Gold plating : hors périmètre et hors maîtrise des changements ; recadrer et évaluer l'impact",
           "Changement mineur ; l'intégrer silencieusement",
-          "Problème qualité ; ouvrir une non-conformité"
+          "Gold plating : hors périmètre et hors maîtrise des changements ; recadrer et évaluer l'impact"
         ],
         "en": [
+          "Quality issue; open a nonconformity",
           "Great initiative; encourage it",
-          "Gold plating: out of scope and outside change control; reset and assess impact",
           "Minor change; fold it in silently",
-          "Quality issue; open a nonconformity"
+          "Gold plating: out of scope and outside change control; reset and assess impact"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Ajouter au-delà du périmètre approuvé (gold plating) consomme des ressources, introduit du risque et contourne la gouvernance. Le PM recadre vers la maîtrise des changements et évalue l'impact, au lieu d'encourager ou d'intégrer en douce.",
         "en": "Adding beyond the approved scope (gold plating) consumes resources, introduces risk and bypasses governance. The PM redirects to change control and assesses impact, instead of encouraging or quietly folding it in."
@@ -874,19 +874,19 @@
       },
       "options": {
         "fr": [
-          "La gestion de la configuration (versions, statut, traçabilité des éléments)",
           "Le registre des parties prenantes",
           "Le plan de communication",
-          "La réserve de management"
+          "La réserve de management",
+          "La gestion de la configuration (versions, statut, traçabilité des éléments)"
         ],
         "en": [
-          "Configuration management (versions, status, traceability of items)",
           "The stakeholder register",
           "The communications plan",
-          "The management reserve"
+          "The management reserve",
+          "Configuration management (versions, status, traceability of items)"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 3,
       "rationale": {
         "fr": "La gestion de la configuration assure que chacun travaille sur la bonne version approuvée (identification, statut, traçabilité). C'est le volet « produit » de la maîtrise des changements, distinct du volet « décision » (CCB).",
         "en": "Configuration management ensures everyone works from the correct approved version (identification, status, traceability). It's the 'product' side of change control, distinct from the 'decision' side (CCB)."
@@ -908,19 +908,19 @@
       },
       "options": {
         "fr": [
-          "Disperser l'équipe immédiatement ; un projet annulé ne se clôture pas",
-          "Réaliser une clôture formelle : raisons documentées, transfert des éléments utilisables, leçons apprises, archivage, libération des ressources",
           "Attendre une éventuelle relance avant toute action",
-          "Transférer le budget restant à un autre projet"
+          "Transférer le budget restant à un autre projet",
+          "Disperser l'équipe immédiatement ; un projet annulé ne se clôture pas",
+          "Réaliser une clôture formelle : raisons documentées, transfert des éléments utilisables, leçons apprises, archivage, libération des ressources"
         ],
         "en": [
-          "Disband the team immediately — a cancelled project isn't closed",
-          "Perform a formal closure: documented reasons, transfer of usable items, lessons learned, archiving, resource release",
           "Wait for a possible restart before doing anything",
-          "Transfer the remaining budget to another project"
+          "Transfer the remaining budget to another project",
+          "Disband the team immediately — a cancelled project isn't closed",
+          "Perform a formal closure: documented reasons, transfer of usable items, lessons learned, archiving, resource release"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Même annulé, un projet se clôture formellement (4.7) : on documente les raisons, on transfère ce qui est récupérable, on capitalise les leçons et on archive. Disperser sans clôturer perd la traçabilité et l'auditabilité.",
         "en": "Even when cancelled, a project is formally closed (4.7): document the reasons, transfer what's salvageable, capture lessons, and archive. Disbanding without closing loses traceability and auditability."
@@ -942,19 +942,19 @@
       },
       "options": {
         "fr": [
-          "L'acceptation formelle des livrables par le client/sponsor",
           "Le paiement de la dernière facture fournisseur",
           "La mise à jour du planning",
+          "L'acceptation formelle des livrables par le client/sponsor",
           "Le rapport d'avancement final uniquement"
         ],
         "en": [
-          "Formal acceptance of the deliverables by the customer/sponsor",
           "Payment of the last vendor invoice",
           "An updated schedule",
+          "Formal acceptance of the deliverables by the customer/sponsor",
           "The final progress report only"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 2,
       "rationale": {
         "fr": "La clôture suppose l'acceptation formelle des livrables (lien avec « Valider le périmètre » 5.5). Sans acceptation, on ne peut pas clore proprement. Les autres éléments sont utiles mais ne conditionnent pas l'acceptation.",
         "en": "Closure requires formal acceptance of the deliverables (linked to 'Validate Scope' 5.5). Without acceptance you can't close cleanly. The other items are useful but don't constitute acceptance."
@@ -976,19 +976,19 @@
       },
       "options": {
         "fr": [
-          "Archiver les documents et s'arrêter là",
           "Organiser le transfert vers l'exploitation et la réalisation des bénéfices (formation, exploitation, suivi de la valeur)",
-          "Libérer l'équipe avant tout transfert",
-          "Repousser le transfert à la prochaine revue budgétaire"
+          "Archiver les documents et s'arrêter là",
+          "Repousser le transfert à la prochaine revue budgétaire",
+          "Libérer l'équipe avant tout transfert"
         ],
         "en": [
-          "Archive the documents and stop there",
           "Arrange handover to operations and benefits realization (training, run, value tracking)",
-          "Release the team before any handover",
-          "Defer handover to the next budget review"
+          "Archive the documents and stop there",
+          "Defer handover to the next budget review",
+          "Release the team before any handover"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'orientation 2026 insiste sur la valeur : un livrable accepté ne crée de la valeur qu'une fois transféré à l'exploitation et ses bénéfices suivis. Archiver seul, ou libérer l'équipe avant le transfert, laisse la valeur non réalisée.",
         "en": "The 2026 orientation stresses value: an accepted deliverable only creates value once handed to operations and its benefits tracked. Archiving alone, or releasing the team before handover, leaves value unrealized."
@@ -1010,16 +1010,16 @@
       },
       "options": {
         "fr": [
-          "Rien : les contrats se clôturent d'eux-mêmes",
+          "Le transfert des contrats à un autre projet",
           "La clôture des approvisionnements : vérifier la livraison conforme, régler les litiges, formaliser la clôture contractuelle",
           "Le renouvellement automatique des contrats",
-          "Le transfert des contrats à un autre projet"
+          "Rien : les contrats se clôturent d'eux-mêmes"
         ],
         "en": [
-          "Nothing — contracts close themselves",
+          "Transfer of the contracts to another project",
           "Procurement closure: verify conforming delivery, settle disputes, formalize contract closure",
           "Automatic renewal of the contracts",
-          "Transfer of the contracts to another project"
+          "Nothing — contracts close themselves"
         ]
       },
       "answer_index": 1,
@@ -1044,16 +1044,16 @@
       },
       "options": {
         "fr": [
-          "La charte du projet",
+          "Le journal des problèmes encore ouvert",
           "Le registre / rapport des leçons apprises",
-          "La référence de base des coûts",
-          "Le journal des problèmes encore ouvert"
+          "La charte du projet",
+          "La référence de base des coûts"
         ],
         "en": [
-          "The project charter",
+          "The still-open issue log",
           "The lessons learned register / report",
-          "The cost baseline",
-          "The still-open issue log"
+          "The project charter",
+          "The cost baseline"
         ]
       },
       "answer_index": 1,

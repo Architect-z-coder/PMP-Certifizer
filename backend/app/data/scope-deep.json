@@ -20,18 +20,18 @@
       "options": {
         "fr": [
           "Retenir l'exigence de la partie prenante la plus haut placée",
-          "Faciliter la convergence (ateliers, priorisation) et tracer chaque exigence dans la matrice de traçabilité",
           "Choisir soi-même l'exigence la plus simple à réaliser",
+          "Faciliter la convergence (ateliers, priorisation) et tracer chaque exigence dans la matrice de traçabilité",
           "Repousser la décision à la phase d'exécution"
         ],
         "en": [
           "Take the most senior stakeholder's requirement",
-          "Facilitate convergence (workshops, prioritization) and trace each requirement in the traceability matrix",
           "Pick the requirement that's easiest to build",
+          "Facilitate convergence (workshops, prioritization) and trace each requirement in the traceability matrix",
           "Defer the decision to execution"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "On recueille et concilie les exigences par des techniques de groupe puis on les trace (matrice de traçabilité). Trancher par la hiérarchie ou la facilité ignore la valeur réelle et crée du retravail.",
         "en": "Requirements are gathered and reconciled through group techniques, then traced (traceability matrix). Deciding by rank or ease ignores real value and creates rework."
@@ -51,19 +51,19 @@
       },
       "options": {
         "fr": [
-          "Estimer les durées des activités",
-          "Relier chaque exigence à son origine et à son livrable, jusqu'à la vérification",
           "Séquencer les activités du projet",
-          "Calculer le budget"
+          "Calculer le budget",
+          "Estimer les durées des activités",
+          "Relier chaque exigence à son origine et à son livrable, jusqu'à la vérification"
         ],
         "en": [
-          "Estimate activity durations",
-          "Link each requirement to its origin and deliverable, through to verification",
           "Sequence project activities",
-          "Compute the budget"
+          "Compute the budget",
+          "Estimate activity durations",
+          "Link each requirement to its origin and deliverable, through to verification"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "La matrice de traçabilité suit chaque exigence de son origine jusqu'à sa réalisation et sa vérification, garantissant qu'aucune n'est perdue ni ajoutée.",
         "en": "The traceability matrix follows each requirement from origin to delivery and verification, ensuring none is lost or added."
@@ -83,19 +83,19 @@
       },
       "options": {
         "fr": [
-          "Ils sont identiques",
-          "Le périmètre produit = caractéristiques du livrable ; le périmètre projet = travail à réaliser pour le livrer",
           "Le périmètre produit concerne les délais ; le périmètre projet la qualité",
-          "Le périmètre projet ne comprend pas le périmètre produit"
+          "Le périmètre projet ne comprend pas le périmètre produit",
+          "Ils sont identiques",
+          "Le périmètre produit = caractéristiques du livrable ; le périmètre projet = travail à réaliser pour le livrer"
         ],
         "en": [
-          "They are identical",
-          "Product scope = the deliverable's features; project scope = the work needed to deliver it",
           "Product scope is about schedule; project scope about quality",
-          "Project scope excludes product scope"
+          "Project scope excludes product scope",
+          "They are identical",
+          "Product scope = the deliverable's features; project scope = the work needed to deliver it"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le périmètre produit décrit les caractéristiques/fonctions du livrable ; le périmètre projet décrit le travail nécessaire pour le produire. Le second englobe le premier.",
         "en": "Product scope describes the deliverable's features/functions; project scope describes the work required to produce it. The latter encompasses the former."
@@ -115,16 +115,16 @@
       },
       "options": {
         "fr": [
-          "Pour rallonger le document",
-          "Pour cadrer les attentes et prévenir le glissement de périmètre en disant ce qui n'est PAS livré",
           "Parce que le contrat l'impose toujours",
-          "Pour estimer les coûts"
+          "Pour cadrer les attentes et prévenir le glissement de périmètre en disant ce qui n'est PAS livré",
+          "Pour estimer les coûts",
+          "Pour rallonger le document"
         ],
         "en": [
-          "To make the document longer",
-          "To frame expectations and prevent scope creep by stating what is NOT delivered",
           "Because the contract always requires it",
-          "To estimate costs"
+          "To frame expectations and prevent scope creep by stating what is NOT delivered",
+          "To estimate costs",
+          "To make the document longer"
         ]
       },
       "answer_index": 1,
@@ -148,15 +148,15 @@
       "options": {
         "fr": [
           "La règle des 100% (la SDP doit couvrir tout le travail, et rien de plus)",
-          "La loi de Parkinson",
           "Le chemin critique",
-          "Le nivellement des ressources"
+          "Le nivellement des ressources",
+          "La loi de Parkinson"
         ],
         "en": [
           "The 100% rule (the WBS must capture all the work, and only the work)",
-          "Parkinson's law",
           "The critical path",
-          "Resource leveling"
+          "Resource leveling",
+          "Parkinson's law"
         ]
       },
       "answer_index": 0,
@@ -179,19 +179,19 @@
       },
       "options": {
         "fr": [
-          "L'énoncé du périmètre, la SDP et le dictionnaire de la SDP",
-          "La charte, le budget et l'échéancier",
           "La matrice de traçabilité seule",
-          "Le registre des risques et le plan qualité"
+          "La charte, le budget et l'échéancier",
+          "Le registre des risques et le plan qualité",
+          "L'énoncé du périmètre, la SDP et le dictionnaire de la SDP"
         ],
         "en": [
-          "The scope statement, the WBS, and the WBS dictionary",
-          "The charter, budget, and schedule",
           "The traceability matrix alone",
-          "The risk register and quality plan"
+          "The charter, budget, and schedule",
+          "The risk register and quality plan",
+          "The scope statement, the WBS, and the WBS dictionary"
         ]
       },
-      "answer_index": 0,
+      "answer_index": 3,
       "rationale": {
         "fr": "La référence de base du périmètre = énoncé du périmètre + SDP + dictionnaire de la SDP. C'est la référence contre laquelle on maîtrise les changements de périmètre.",
         "en": "The scope baseline = scope statement + WBS + WBS dictionary. It's the reference against which scope changes are controlled."
@@ -211,19 +211,19 @@
       },
       "options": {
         "fr": [
-          "Jusqu'à la tâche individuelle d'une heure",
           "Jusqu'au lot de travail : assez petit pour estimer coût et durée de façon fiable et en assigner la responsabilité",
-          "Jusqu'à un seul niveau, toujours",
-          "Jusqu'à ce que chaque élément tienne sur une page"
+          "Jusqu'à ce que chaque élément tienne sur une page",
+          "Jusqu'à la tâche individuelle d'une heure",
+          "Jusqu'à un seul niveau, toujours"
         ],
         "en": [
-          "To the individual one-hour task",
           "To the work package: small enough to reliably estimate cost and duration and assign responsibility",
-          "To a single level, always",
-          "Until each element fits on one page"
+          "Until each element fits on one page",
+          "To the individual one-hour task",
+          "To a single level, always"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "On décompose jusqu'au lot de travail — le niveau où l'on peut estimer et affecter la responsabilité de façon fiable. Trop fin devient de la micro-gestion ; trop grossier empêche l'estimation.",
         "en": "Decompose to the work-package level — where you can reliably estimate and assign responsibility. Too fine becomes micromanagement; too coarse prevents estimation."
@@ -243,19 +243,19 @@
       },
       "options": {
         "fr": [
-          "Le clore directement : la conformité suffit",
           "Obtenir l'acceptation formelle du client (Valider le périmètre) — la validation est externe, la maîtrise qualité était interne",
+          "Le clore directement : la conformité suffit",
           "Relancer une inspection qualité",
           "Mettre à jour le budget"
         ],
         "en": [
-          "Close it directly — correctness is enough",
           "Get formal customer acceptance (Validate Scope) — validation is external, quality control was internal",
+          "Close it directly — correctness is enough",
           "Run another quality inspection",
           "Update the budget"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Maîtriser la qualité (8.3) = conformité, en interne. Valider le périmètre (5.5) = acceptation formelle par le client, en externe. Un livrable correct n'est « terminé » qu'une fois accepté.",
         "en": "Control Quality (8.3) = correctness, internal. Validate Scope (5.5) = formal customer acceptance, external. A correct deliverable is only 'done' once accepted."
@@ -275,15 +275,15 @@
       },
       "options": {
         "fr": [
-          "Valider le périmètre d'abord, puis maîtriser la qualité",
-          "Maîtriser la qualité (conformité interne) d'abord, puis valider le périmètre (acceptation client)",
           "Les deux en même temps, indifféremment",
+          "Maîtriser la qualité (conformité interne) d'abord, puis valider le périmètre (acceptation client)",
+          "Valider le périmètre d'abord, puis maîtriser la qualité",
           "Seulement à la clôture, jamais avant"
         ],
         "en": [
-          "Validate Scope first, then Control Quality",
-          "Control Quality (internal correctness) first, then Validate Scope (customer acceptance)",
           "Both at once, interchangeably",
+          "Control Quality (internal correctness) first, then Validate Scope (customer acceptance)",
+          "Validate Scope first, then Control Quality",
           "Only at closure, never before"
         ]
       },
@@ -307,16 +307,16 @@
       },
       "options": {
         "fr": [
-          "Bonne réactivité — rien à faire",
-          "Glissement de périmètre (scope creep) : ajout non contrôlé ; recadrer vers la maîtrise intégrée des changements et évaluer l'impact",
           "Gold plating de la part du client",
-          "Une non-conformité qualité"
+          "Glissement de périmètre (scope creep) : ajout non contrôlé ; recadrer vers la maîtrise intégrée des changements et évaluer l'impact",
+          "Une non-conformité qualité",
+          "Bonne réactivité — rien à faire"
         ],
         "en": [
-          "Good responsiveness — nothing to do",
-          "Scope creep: an uncontrolled addition; redirect through integrated change control and assess impact",
           "Gold plating by the client",
-          "A quality nonconformity"
+          "Scope creep: an uncontrolled addition; redirect through integrated change control and assess impact",
+          "A quality nonconformity",
+          "Good responsiveness — nothing to do"
         ]
       },
       "answer_index": 1,
@@ -339,19 +339,19 @@
       },
       "options": {
         "fr": [
-          "Scope creep ; risque nul",
-          "Gold plating ; consomme ressources, ajoute du risque et n'ajoute pas de valeur reconnue par le client",
           "Élaboration progressive ; risque nul",
-          "Nivellement ; risque de retard"
+          "Nivellement ; risque de retard",
+          "Gold plating ; consomme ressources, ajoute du risque et n'ajoute pas de valeur reconnue par le client",
+          "Scope creep ; risque nul"
         ],
         "en": [
-          "Scope creep; no risk",
-          "Gold plating; consumes resources, adds risk, and adds no value the customer recognizes",
           "Progressive elaboration; no risk",
-          "Leveling; risk of delay"
+          "Leveling; risk of delay",
+          "Gold plating; consumes resources, adds risk, and adds no value the customer recognizes",
+          "Scope creep; no risk"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Ajouter au-delà du périmètre à sa propre initiative = gold plating. Cela dépense des ressources et introduit du risque pour une valeur non demandée. On s'en tient au périmètre approuvé.",
         "en": "Adding beyond scope on one's own initiative = gold plating. It spends resources and adds risk for value that wasn't requested. Stick to the approved scope."
@@ -372,18 +372,18 @@
       "options": {
         "fr": [
           "Il est figé dès le départ comme en prédictif",
+          "Il est décidé uniquement par le chef de projet",
           "Il est élaboré progressivement via un backlog priorisé et affiné à chaque itération",
-          "Il n'existe pas de périmètre en agile",
-          "Il est décidé uniquement par le chef de projet"
+          "Il n'existe pas de périmètre en agile"
         ],
         "en": [
           "It is fixed up front as in predictive",
+          "It is decided by the project manager alone",
           "It is elaborated progressively via a prioritized, refined backlog each iteration",
-          "There is no scope in agile",
-          "It is decided by the project manager alone"
+          "There is no scope in agile"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "En agile/hybride, le périmètre s'affine par un backlog priorisé, itération après itération (élaboration progressive), au lieu d'être figé dans une référence dès le départ.",
         "en": "In agile/hybrid, scope is refined through a prioritized backlog, iteration by iteration (progressive elaboration), rather than fixed in a baseline up front."
@@ -403,19 +403,19 @@
       },
       "options": {
         "fr": [
-          "Aucune, ce sont des synonymes",
           "Le changement légitime passe par la maîtrise intégrée des changements (évalué, approuvé, référence mise à jour) ; le glissement est non contrôlé",
-          "Le changement est toujours refusé, le glissement toujours accepté",
-          "Le glissement vient du client, le changement de l'équipe"
+          "Aucune, ce sont des synonymes",
+          "Le glissement vient du client, le changement de l'équipe",
+          "Le changement est toujours refusé, le glissement toujours accepté"
         ],
         "en": [
-          "None, they're synonyms",
           "A legitimate change goes through integrated change control (assessed, approved, baseline updated); creep is uncontrolled",
-          "A change is always refused, creep always accepted",
-          "Creep comes from the client, a change from the team"
+          "None, they're synonyms",
+          "Creep comes from the client, a change from the team",
+          "A change is always refused, creep always accepted"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Un changement légitime est évalué et approuvé via 4.6, puis la référence est mise à jour. Le glissement échappe à ce contrôle. La discipline de gouvernance fait toute la différence.",
         "en": "A legitimate change is assessed and approved via 4.6, then the baseline is updated. Creep escapes that control. The governance discipline is the whole difference."

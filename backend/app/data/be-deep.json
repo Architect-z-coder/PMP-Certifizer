@@ -19,19 +19,19 @@
       },
       "options": {
         "fr": [
-          "Ils sont identiques",
-          "La gouvernance fixe le cadre de décision, d'autorité et de surveillance ; le management exécute le travail à l'intérieur de ce cadre",
           "La gouvernance concerne l'équipe ; le management le client",
-          "La gouvernance n'existe que dans les projets publics"
+          "La gouvernance n'existe que dans les projets publics",
+          "La gouvernance fixe le cadre de décision, d'autorité et de surveillance ; le management exécute le travail à l'intérieur de ce cadre",
+          "Ils sont identiques"
         ],
         "en": [
-          "They are identical",
-          "Governance sets the framework of decision rights, authority, and oversight; management executes the work within that frame",
           "Governance is about the team; management about the client",
-          "Governance exists only in public projects"
+          "Governance exists only in public projects",
+          "Governance sets the framework of decision rights, authority, and oversight; management executes the work within that frame",
+          "They are identical"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La gouvernance définit qui décide, quelles limites d'autorité et quels contrôles s'appliquent ; le management conduit le travail dans ce cadre. En 2026, la gouvernance est élevée en Tâche 1 du domaine Environnement d'affaires.",
         "en": "Governance defines who decides, what authority limits and controls apply; management runs the work within that frame. In 2026, governance is elevated to Task 1 of the Business Environment domain."
@@ -83,19 +83,19 @@
       },
       "options": {
         "fr": [
-          "Un cadre identique et lourd pour tous",
-          "Une gouvernance adaptée (tailoring) à la complexité et au risque, ni sur- ni sous-dimensionnée",
           "Aucune gouvernance pour les petits projets",
-          "La gouvernance est fixée par le chef de projet seul"
+          "La gouvernance est fixée par le chef de projet seul",
+          "Un cadre identique et lourd pour tous",
+          "Une gouvernance adaptée (tailoring) à la complexité et au risque, ni sur- ni sous-dimensionnée"
         ],
         "en": [
-          "An identical, heavy framework for all",
-          "Governance tailored to complexity and risk, neither over- nor under-sized",
           "No governance for small projects",
-          "Governance is set by the PM alone"
+          "Governance is set by the PM alone",
+          "An identical, heavy framework for all",
+          "Governance tailored to complexity and risk, neither over- nor under-sized"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "La gouvernance s'adapte au contexte : un cadre proportionné à la taille, au risque et à l'importance. Trop lourde, elle étouffe ; trop légère, elle laisse dériver.",
         "en": "Governance is tailored to context: a framework proportionate to size, risk, and significance. Too heavy, it smothers; too light, it lets things drift."
@@ -115,16 +115,16 @@
       },
       "options": {
         "fr": [
-          "Les traiter à la fin, à la clôture",
-          "Les identifier et les classifier, puis les intégrer au plan et à la maîtrise du projet",
           "Supposer que le client s'en charge",
-          "Les ignorer si elles ralentissent le projet"
+          "Les identifier et les classifier, puis les intégrer au plan et à la maîtrise du projet",
+          "Les ignorer si elles ralentissent le projet",
+          "Les traiter à la fin, à la clôture"
         ],
         "en": [
-          "Handle them at the end, at closure",
-          "Identify and classify them, then build them into the plan and controls",
           "Assume the client handles them",
-          "Ignore them if they slow the project"
+          "Identify and classify them, then build them into the plan and controls",
+          "Ignore them if they slow the project",
+          "Handle them at the end, at closure"
         ]
       },
       "answer_index": 1,
@@ -147,15 +147,15 @@
       },
       "options": {
         "fr": [
-          "Livrer quand même et espérer que personne ne le remarque",
-          "Évaluer l'impact, traiter la cause, corriger via la maîtrise des changements, et documenter — la conformité prime sur le planning",
           "Cacher le constat au commanditaire",
+          "Évaluer l'impact, traiter la cause, corriger via la maîtrise des changements, et documenter — la conformité prime sur le planning",
+          "Livrer quand même et espérer que personne ne le remarque",
           "Attendre la prochaine phase"
         ],
         "en": [
-          "Deliver anyway and hope nobody notices",
-          "Assess impact, address the cause, correct it through change control, and document — compliance outranks schedule",
           "Hide the finding from the sponsor",
+          "Assess impact, address the cause, correct it through change control, and document — compliance outranks schedule",
+          "Deliver anyway and hope nobody notices",
           "Wait for the next phase"
         ]
       },
@@ -180,18 +180,18 @@
       "options": {
         "fr": [
           "Comme un slogan sans impact sur le plan",
-          "Comme des exigences à part entière : intégrées au périmètre, à la qualité, aux risques et aux critères de succès",
           "Uniquement en communication externe",
-          "En les repoussant après la livraison"
+          "En les repoussant après la livraison",
+          "Comme des exigences à part entière : intégrées au périmètre, à la qualité, aux risques et aux critères de succès"
         ],
         "en": [
           "As a slogan with no effect on the plan",
-          "As real requirements: built into scope, quality, risk, and success criteria",
           "Only in external communications",
-          "By deferring them until after delivery"
+          "By deferring them until after delivery",
+          "As real requirements: built into scope, quality, risk, and success criteria"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "La durabilité/ESG devient un contenu testable en 2026 : on la traite comme des exigences réelles, intégrées au périmètre, à la qualité, aux risques et aux critères de succès — pas comme un habillage.",
         "en": "Sustainability/ESG becomes testable content in 2026: treat it as real requirements woven into scope, quality, risk, and success criteria — not as window dressing."
@@ -211,19 +211,19 @@
       },
       "options": {
         "fr": [
-          "Les deux sont des risques",
-          "Le futur incertain est un risque (registre des risques) ; le blocage actuel est un problème/issue (journal des problèmes)",
           "Les deux sont des problèmes",
-          "Aucun des deux ne se suit"
+          "Les deux sont des risques",
+          "Aucun des deux ne se suit",
+          "Le futur incertain est un risque (registre des risques) ; le blocage actuel est un problème/issue (journal des problèmes)"
         ],
         "en": [
-          "Both are risks",
-          "The uncertain future one is a risk (risk register); today's blocker is an issue (issue log)",
           "Both are issues",
-          "Neither is tracked"
+          "Both are risks",
+          "Neither is tracked",
+          "The uncertain future one is a risk (risk register); today's blocker is an issue (issue log)"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Un risque est un événement futur incertain ; un problème (issue) est déjà survenu et agit maintenant. On les suit dans des registres distincts et on les traite différemment.",
         "en": "A risk is an uncertain future event; an issue has already occurred and is acting now. They're tracked in separate logs and handled differently."
@@ -243,19 +243,19 @@
       },
       "options": {
         "fr": [
-          "Éviter (avoid)",
-          "Transférer (transfer)",
           "Accepter (accept)",
-          "Exploiter (exploit)"
+          "Éviter (avoid)",
+          "Exploiter (exploit)",
+          "Transférer (transfer)"
         ],
         "en": [
-          "Avoid",
-          "Transfer",
           "Accept",
-          "Exploit"
+          "Avoid",
+          "Exploit",
+          "Transfer"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Transférer déplace l'impact d'une menace à un tiers (assurance, garantie, clause). Éviter supprimerait la cause ; atténuer réduirait probabilité/impact ; accepter ne ferait rien de proactif. Exploiter concerne les opportunités.",
         "en": "Transfer shifts a threat's impact to a third party (insurance, warranty, clause). Avoid would remove the cause; mitigate would reduce probability/impact; accept would do nothing proactive. Exploit is for opportunities."
@@ -275,19 +275,19 @@
       },
       "options": {
         "fr": [
+          "Réserve de contingence",
           "Risque résiduel",
           "Risque secondaire",
-          "Risque inhérent",
-          "Réserve de contingence"
+          "Risque inhérent"
         ],
         "en": [
+          "Contingency reserve",
           "Residual risk",
           "Secondary risk",
-          "Inherent risk",
-          "Contingency reserve"
+          "Inherent risk"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Un risque secondaire naît directement d'une réponse au risque. À distinguer du risque résiduel, qui est ce qui subsiste après la réponse. Les deux doivent être consignés au registre.",
         "en": "A secondary risk arises directly from a risk response. Distinct from residual risk, which is what remains after the response. Both belong in the register."
@@ -308,18 +308,18 @@
       "options": {
         "fr": [
           "Uniquement à la clôture, une seule fois",
+          "Seulement si le projet échoue",
           "En continu, tout au long du projet, pour ajuster immédiatement (pas seulement à la fin)",
-          "Jamais, c'est bureaucratique",
-          "Seulement si le projet échoue"
+          "Jamais, c'est bureaucratique"
         ],
         "en": [
           "Only at closure, once",
+          "Only if the project fails",
           "Continuously, throughout the project, to adjust immediately (not only at the end)",
-          "Never — it's bureaucratic",
-          "Only if the project fails"
+          "Never — it's bureaucratic"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "L'amélioration continue capitalise en continu : rétrospectives régulières, ajustements immédiats, mise à jour des actifs organisationnels. Attendre la clôture prive le projet en cours de ces gains.",
         "en": "Continuous improvement captures value throughout: regular retrospectives, immediate adjustments, updated organizational assets. Waiting for closure denies the running project those gains."
@@ -339,19 +339,19 @@
       },
       "options": {
         "fr": [
-          "Blâmer la personne responsable",
-          "Traiter la cause du processus par de petites améliorations itératives, et mesurer l'effet",
+          "Attendre une réorganisation complète",
           "Ignorer, ce n'est pas au périmètre",
-          "Attendre une réorganisation complète"
+          "Traiter la cause du processus par de petites améliorations itératives, et mesurer l'effet",
+          "Blâmer la personne responsable"
         ],
         "en": [
-          "Blame the responsible person",
-          "Address the process cause with small, iterative improvements, and measure the effect",
+          "Wait for a full reorganization",
           "Ignore it — out of scope",
-          "Wait for a full reorganization"
+          "Address the process cause with small, iterative improvements, and measure the effect",
+          "Blame the responsible person"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "L'amélioration continue vise le processus, pas la personne : petites boucles d'amélioration mesurées (esprit Kaizen). Blâmer casse la confiance ; attendre un grand soir empêche les gains immédiats.",
         "en": "Continuous improvement targets the process, not the person: small, measured improvement loops (Kaizen spirit). Blame breaks trust; waiting for a big-bang prevents immediate gains."
@@ -371,19 +371,19 @@
       },
       "options": {
         "fr": [
-          "Rien — la conformité technique suffit",
-          "La gestion du changement organisationnel : préparer, engager et accompagner l'adoption par les personnes",
           "Un budget plus élevé",
-          "Un chemin critique plus court"
+          "Un chemin critique plus court",
+          "La gestion du changement organisationnel : préparer, engager et accompagner l'adoption par les personnes",
+          "Rien — la conformité technique suffit"
         ],
         "en": [
-          "Nothing — technical compliance is enough",
-          "Organizational change management: preparing, engaging, and supporting people's adoption",
           "A bigger budget",
-          "A shorter critical path"
+          "A shorter critical path",
+          "Organizational change management: preparing, engaging, and supporting people's adoption",
+          "Nothing — technical compliance is enough"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La valeur ne se réalise que si le changement est adopté. Livrer un outil conforme sans préparer les personnes (communication, formation, accompagnement, sponsor visible) mène au rejet. La conduite du changement fait partie du rôle.",
         "en": "Value is only realized if the change is adopted. Delivering a compliant tool without preparing people (communication, training, support, visible sponsor) leads to rejection. Change management is part of the role."
@@ -403,16 +403,16 @@
       },
       "options": {
         "fr": [
-          "L'imposer par l'autorité seule",
+          "Retirer le changement définitivement",
           "Comprendre la cause de la résistance, impliquer les parties prenantes tôt et communiquer le « pourquoi » et les bénéfices",
-          "Attendre que la résistance cesse d'elle-même",
-          "Retirer le changement définitivement"
+          "L'imposer par l'autorité seule",
+          "Attendre que la résistance cesse d'elle-même"
         ],
         "en": [
-          "Impose it by authority alone",
+          "Withdraw the change permanently",
           "Understand the root of the resistance, involve stakeholders early, and communicate the 'why' and the benefits",
-          "Wait for resistance to fade on its own",
-          "Withdraw the change permanently"
+          "Impose it by authority alone",
+          "Wait for resistance to fade on its own"
         ]
       },
       "answer_index": 1,
@@ -435,19 +435,19 @@
       },
       "options": {
         "fr": [
-          "Rester invisible et déléguer tout au chef de projet",
           "Porter et rendre visible le changement, débloquer les obstacles et soutenir activement l'adoption",
-          "Approuver le budget puis disparaître",
-          "Gérer les tâches quotidiennes de l'équipe"
+          "Rester invisible et déléguer tout au chef de projet",
+          "Gérer les tâches quotidiennes de l'équipe",
+          "Approuver le budget puis disparaître"
         ],
         "en": [
-          "Stay invisible and delegate everything to the PM",
           "Champion and visibly back the change, clear obstacles, and actively support adoption",
-          "Approve the budget then disappear",
-          "Manage the team's daily tasks"
+          "Stay invisible and delegate everything to the PM",
+          "Manage the team's daily tasks",
+          "Approve the budget then disappear"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Un sponsor actif et visible est le premier facteur de réussite d'un changement : il porte le « pourquoi », débloque les obstacles et soutient l'adoption. Un sponsor absent condamne souvent le changement.",
         "en": "An active, visible sponsor is the top success factor in change: they carry the 'why', clear obstacles, and support adoption. An absent sponsor often dooms the change."
@@ -467,19 +467,19 @@
       },
       "options": {
         "fr": [
-          "Oui : délais + budget = succès",
           "Pas pleinement : le succès se mesure aussi à la valeur/aux bénéfices réalisés, pas seulement aux livrables",
+          "Oui, tant que le client a signé",
           "Impossible à juger",
-          "Oui, tant que le client a signé"
+          "Oui : délais + budget = succès"
         ],
         "en": [
-          "Yes: on time + on budget = success",
           "Not fully: success is also measured by value/benefits realized, not only by outputs",
+          "Yes, as long as the client signed off",
           "Impossible to judge",
-          "Yes, as long as the client signed off"
+          "Yes: on time + on budget = success"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'ECO 2026 déplace la définition du succès vers la valeur et les bénéfices réalisés, au-delà du triangle délais-coût-périmètre. Des livrables conformes sans bénéfices ne constituent pas un plein succès.",
         "en": "The 2026 ECO shifts the definition of success toward value and realized benefits, beyond the time-cost-scope triangle. Compliant outputs without benefits aren't a full success."
@@ -499,16 +499,16 @@
       },
       "options": {
         "fr": [
-          "Continuer coûte que coûte jusqu'à la livraison",
+          "Ignorer, ce n'est pas son rôle",
           "Le signaler à la gouvernance : un projet dont le cas d'affaires n'est plus valable peut devoir être réorienté ou arrêté",
           "Modifier discrètement les livrables",
-          "Ignorer, ce n'est pas son rôle"
+          "Continuer coûte que coûte jusqu'à la livraison"
         ],
         "en": [
-          "Continue at all costs until delivery",
+          "Ignore it — not their role",
           "Raise it to governance: a project whose business case is no longer valid may need to be redirected or stopped",
           "Quietly change the deliverables",
-          "Ignore it — not their role"
+          "Continue at all costs until delivery"
         ]
       },
       "answer_index": 1,
@@ -531,19 +531,19 @@
       },
       "options": {
         "fr": [
-          "Tout livrer en une seule fois à la fin",
           "Livrer par incréments prioritisés (ex. produit minimum viable), pour réaliser et valider des bénéfices tôt",
           "Attendre que tout le périmètre soit figé",
+          "Tout livrer en une seule fois à la fin",
           "Retarder toute livraison jusqu'à certitude totale"
         ],
         "en": [
-          "Deliver everything at once at the end",
           "Deliver in prioritized increments (e.g. a minimum viable product), to realize and validate benefits early",
           "Wait until the entire scope is frozen",
+          "Deliver everything at once at the end",
           "Delay any delivery until total certainty"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "La livraison de valeur incrémentale (MVP, incréments priorisés) réalise des bénéfices et valide les hypothèses tôt — au cœur de l'approche agile/hybride que privilégie l'examen 2026.",
         "en": "Incremental value delivery (MVP, prioritized increments) realizes benefits and validates assumptions early — central to the agile/hybrid approach the 2026 exam favors."
@@ -564,18 +564,18 @@
       "options": {
         "fr": [
           "Un actif organisationnel — l'ignorer",
-          "Un facteur environnemental de l'entreprise (EEF) : évaluer l'impact et l'intégrer via la maîtrise des changements",
+          "Un problème interne à l'équipe",
           "Un risque secondaire — le supprimer",
-          "Un problème interne à l'équipe"
+          "Un facteur environnemental de l'entreprise (EEF) : évaluer l'impact et l'intégrer via la maîtrise des changements"
         ],
         "en": [
           "An organizational process asset — ignore it",
-          "An enterprise environmental factor (EEF): assess the impact and integrate it through change control",
+          "An internal team issue",
           "A secondary risk — delete it",
-          "An internal team issue"
+          "An enterprise environmental factor (EEF): assess the impact and integrate it through change control"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Les facteurs environnementaux de l'entreprise (EEF) — réglementation, marché, contexte — s'imposent au projet. On en évalue l'impact et on les intègre via la maîtrise des changements, plutôt que de les subir.",
         "en": "Enterprise environmental factors (EEFs) — regulation, market, context — are imposed on the project. Assess their impact and integrate them through change control, rather than being blindsided."
@@ -595,19 +595,19 @@
       },
       "options": {
         "fr": [
-          "Refuser tout outil d'IA par principe",
           "Exploiter l'IA comme aide à la décision, tout en gardant le jugement, l'éthique et la responsabilité humains",
           "Déléguer toutes les décisions à l'IA",
+          "Refuser tout outil d'IA par principe",
           "Cacher l'usage de l'IA aux parties prenantes"
         ],
         "en": [
-          "Refuse all AI tools on principle",
           "Leverage AI as decision support while keeping human judgment, ethics, and accountability",
           "Delegate all decisions to the AI",
+          "Refuse all AI tools on principle",
           "Hide AI usage from stakeholders"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'IA en gestion de projet — contenu nouveau en 2026 — augmente l'analyse et le reporting, mais le jugement, l'éthique et la responsabilité restent humains. Ni rejet de principe, ni délégation aveugle.",
         "en": "AI in project management — new 2026 content — augments analysis and reporting, but judgment, ethics, and accountability stay human. Neither blanket refusal nor blind delegation."
@@ -627,19 +627,19 @@
       },
       "options": {
         "fr": [
-          "Ce n'est pas nécessaire une fois la charte signée",
           "Parce que des changements externes peuvent modifier la valeur, les risques ou la validité du projet, exigeant une adaptation",
           "Uniquement pour le marketing",
+          "Ce n'est pas nécessaire une fois la charte signée",
           "Seulement à la clôture"
         ],
         "en": [
-          "It's unnecessary once the charter is signed",
           "Because external shifts can change the project's value, risks, or validity, requiring adaptation",
           "Only for marketing",
+          "It's unnecessary once the charter is signed",
           "Only at closure"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'environnement externe évolue : un changement de marché, de réglementation ou de technologie peut modifier la valeur, les risques ou la raison d'être du projet. La veille permet d'adapter à temps plutôt que de subir.",
         "en": "The external environment evolves: a market, regulatory, or technology shift can change the project's value, risks, or rationale. Scanning enables timely adaptation rather than being caught out."

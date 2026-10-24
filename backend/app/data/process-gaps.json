@@ -19,19 +19,19 @@
       },
       "options": {
         "fr": [
-          "Rassurer : le plan a été approuvé, on s'y tient",
           "Restructurer la livraison en incréments de valeur : livrer tôt les éléments à plus forte valeur, recueillir du feedback et ajuster",
+          "Ajouter une clause de non-responsabilité au plan",
           "Accélérer le projet en ajoutant des ressources",
-          "Ajouter une clause de non-responsabilité au plan"
+          "Rassurer : le plan a été approuvé, on s'y tient"
         ],
         "en": [
-          "Reassure: the plan was approved, we stick to it",
           "Restructure delivery into value increments: deliver highest-value elements early, gather feedback, and adjust",
+          "Add a disclaimer clause to the plan",
           "Accelerate the project by adding resources",
-          "Add a disclaimer clause to the plan"
+          "Reassure: the plan was approved, we stick to it"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "La livraison par la valeur privilégie des incréments précoces à forte valeur : le projet capture de la valeur plus tôt et peut s'adapter au marché. S'accrocher au plan ou accélérer un « big bang » ne réduit pas le risque d'obsolescence.",
         "en": "Value-based delivery favors early, high-value increments: the project captures value sooner and can adapt to the market. Clinging to the plan or accelerating a big bang doesn't reduce the obsolescence risk."
@@ -51,19 +51,19 @@
       },
       "options": {
         "fr": [
-          "Le projet est un succès : délais et budget tenus",
-          "Le livrable (output) est là, mais la valeur (outcome) ne se réalise pas : analyser les causes d'adoption et agir avec le métier",
           "C'est le problème de l'exploitation, plus du projet",
-          "Lancer une campagne d'e-mails pour promouvoir le portail"
+          "Lancer une campagne d'e-mails pour promouvoir le portail",
+          "Le projet est un succès : délais et budget tenus",
+          "Le livrable (output) est là, mais la valeur (outcome) ne se réalise pas : analyser les causes d'adoption et agir avec le métier"
         ],
         "en": [
-          "The project is a success: on time and on budget",
-          "The output is there, but the value (outcome) isn't materializing: analyze adoption causes and act with the business",
           "That's operations' problem now, not the project's",
-          "Launch an e-mail campaign to promote the portal"
+          "Launch an e-mail campaign to promote the portal",
+          "The project is a success: on time and on budget",
+          "The output is there, but the value (outcome) isn't materializing: analyze adoption causes and act with the business"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "L'ECO 2026 mesure le succès par la valeur et les bénéfices, pas seulement par le triangle délai-coût-périmètre. Un livrable non adopté ne réalise pas de valeur : on diagnostique (besoin, ergonomie, conduite du changement) et on agit. Se déclarer « succès » ou se défausser est le piège.",
         "en": "The 2026 ECO measures success by value and benefits, not just the time-cost-scope triangle. An unadopted deliverable realizes no value: diagnose (need, usability, change management) and act. Declaring 'success' or passing the buck is the trap."
@@ -83,19 +83,19 @@
       },
       "options": {
         "fr": [
-          "Terminer le projet : tant d'argent a déjà été investi",
           "Réévaluer le business case avec le sponsor et recommander de pivoter ou d'arrêter : les coûts passés ne justifient pas de détruire de la valeur future",
+          "Continuer en attendant que quelqu'un d'autre pose la question",
           "Réduire discrètement le périmètre pour finir plus vite",
-          "Continuer en attendant que quelqu'un d'autre pose la question"
+          "Terminer le projet : tant d'argent a déjà été investi"
         ],
         "en": [
-          "Finish the project: so much money is already invested",
           "Reassess the business case with the sponsor and recommend pivoting or stopping: past costs don't justify destroying future value",
+          "Continue and wait for someone else to raise the question",
           "Quietly cut scope to finish faster",
-          "Continue and wait for someone else to raise the question"
+          "Finish the project: so much money is already invested"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Raisonner « on a déjà dépensé » est le biais des coûts irrécupérables (sunk cost). La décision se prend sur la valeur FUTURE : réévaluer le business case et recommander en transparence — y compris l'arrêt. C'est de l'intendance (stewardship).",
         "en": "Reasoning 'we've already spent' is the sunk-cost fallacy. The decision rests on FUTURE value: reassess the business case and recommend transparently — including termination. That is stewardship."
@@ -115,19 +115,19 @@
       },
       "options": {
         "fr": [
-          "Escalader immédiatement au sponsor",
-          "Négocier avec le manager fonctionnel : rappeler les engagements du plan de ressources, comprendre sa contrainte et chercher un arrangement (calendrier partagé, profil équivalent)",
           "Recruter un consultant externe sans attendre",
-          "Décaler le lot critique et absorber le retard"
+          "Décaler le lot critique et absorber le retard",
+          "Escalader immédiatement au sponsor",
+          "Négocier avec le manager fonctionnel : rappeler les engagements du plan de ressources, comprendre sa contrainte et chercher un arrangement (calendrier partagé, profil équivalent)"
         ],
         "en": [
-          "Escalate immediately to the sponsor",
-          "Negotiate with the functional manager: recall the resource plan commitments, understand his constraint, and seek an arrangement (shared calendar, equivalent profile)",
           "Hire an external consultant right away",
-          "Slip the critical work package and absorb the delay"
+          "Slip the critical work package and absorb the delay",
+          "Escalate immediately to the sponsor",
+          "Negotiate with the functional manager: recall the resource plan commitments, understand his constraint, and seek an arrangement (shared calendar, equivalent profile)"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "L'obtention des ressources (9.3) passe d'abord par la négociation avec le détenteur des ressources, sur la base des engagements documentés. L'escalade vient si la négociation échoue ; recruter ou glisser le planning sont des décisions prématurées avant d'avoir négocié.",
         "en": "Acquiring resources (9.3) starts with negotiating with the resource owner, based on documented commitments. Escalation comes if negotiation fails; hiring or slipping the schedule are premature before negotiating."
@@ -147,19 +147,19 @@
       },
       "options": {
         "fr": [
+          "Imposer le silence sur les désaccords en réunion",
           "L'équipe est mal composée : demander des remplacements",
           "C'est la phase de tension (storming) du développement d'équipe : faciliter activement, clarifier rôles et règles communes pour passer à la normalisation",
-          "Ignorer : les adultes règlent leurs différends seuls",
-          "Imposer le silence sur les désaccords en réunion"
+          "Ignorer : les adultes règlent leurs différends seuls"
         ],
         "en": [
+          "Ban disagreements from being voiced in meetings",
           "The team is badly composed: request replacements",
           "This is the storming stage of team development: facilitate actively, clarify roles and shared rules to move toward norming",
-          "Ignore it: adults settle their own differences",
-          "Ban disagreements from being voiced in meetings"
+          "Ignore it: adults settle their own differences"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Le storming est une étape normale (Tuckman : forming, storming, norming, performing) : le rôle du leader est d'accompagner activement — clarifier les rôles, poser les règles — pas de remplacer les gens ni d'étouffer le conflit, ce qui fige l'équipe dans la tension.",
         "en": "Storming is a normal stage (Tuckman: forming, storming, norming, performing): the leader's role is to actively facilitate — clarify roles, set rules — not replace people or suppress conflict, which freezes the team in tension."
@@ -179,15 +179,15 @@
       },
       "options": {
         "fr": [
-          "Accepter les livraisons partielles et improviser le stockage",
-          "Maîtriser les ressources physiques : comparer l'utilisation réelle au plan, analyser les écarts (approvisionnement, logistique) et déclencher les actions correctives via le processus de changement",
           "Suspendre toutes les livraisons jusqu'à nouvel ordre",
+          "Maîtriser les ressources physiques : comparer l'utilisation réelle au plan, analyser les écarts (approvisionnement, logistique) et déclencher les actions correctives via le processus de changement",
+          "Accepter les livraisons partielles et improviser le stockage",
           "Transférer le problème au responsable du chantier"
         ],
         "en": [
-          "Accept the partial deliveries and improvise storage",
-          "Control physical resources: compare actual usage to plan, analyze the gaps (procurement, logistics), and trigger corrective actions through the change process",
           "Suspend all deliveries until further notice",
+          "Control physical resources: compare actual usage to plan, analyze the gaps (procurement, logistics), and trigger corrective actions through the change process",
+          "Accept the partial deliveries and improvise storage",
           "Hand the problem to the site manager"
         ]
       },
@@ -211,19 +211,19 @@
       },
       "options": {
         "fr": [
-          "Aucun : le forfait protège toujours l'acheteur",
-          "Avec un périmètre incertain, le forfait pousse le vendeur à gonfler sa marge de risque ou à multiplier les réclamations : un contrat à coûts remboursables ou en régie encadrée est souvent plus adapté",
           "Le forfait est illégal pour les technologies émergentes",
-          "Le forfait empêche toute relation avec le vendeur"
+          "Le forfait empêche toute relation avec le vendeur",
+          "Aucun : le forfait protège toujours l'acheteur",
+          "Avec un périmètre incertain, le forfait pousse le vendeur à gonfler sa marge de risque ou à multiplier les réclamations : un contrat à coûts remboursables ou en régie encadrée est souvent plus adapté"
         ],
         "en": [
-          "None: fixed price always protects the buyer",
-          "With uncertain scope, fixed price pushes the seller to inflate risk margins or multiply claims: a cost-reimbursable or controlled T&M contract often fits better",
           "Fixed price is illegal for emerging technologies",
-          "Fixed price prevents any relationship with the seller"
+          "Fixed price prevents any relationship with the seller",
+          "None: fixed price always protects the buyer",
+          "With uncertain scope, fixed price pushes the seller to inflate risk margins or multiply claims: a cost-reimbursable or controlled T&M contract often fits better"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le type de contrat répartit le risque : un forfait exige un périmètre bien défini. Sur un périmètre flou, le vendeur se protège (prix gonflé, réclamations) et l'acheteur paie l'incertitude autrement. C'est un grand classique de l'examen.",
         "en": "Contract type allocates risk: fixed price requires well-defined scope. On fuzzy scope, the seller protects himself (inflated price, claims) and the buyer pays for uncertainty another way. A great exam classic."
@@ -243,19 +243,19 @@
       },
       "options": {
         "fr": [
+          "Demander à l'ingénieur de rembourser les travaux",
           "Payer la facture pour préserver la relation",
           "Traiter le cas via l'administration du contrat : rappeler la clause d'ordres écrits, évaluer le travail réellement réalisé et régulariser par le processus formel — puis verrouiller la discipline côté équipe",
-          "Refuser tout paiement et menacer le fournisseur",
-          "Demander à l'ingénieur de rembourser les travaux"
+          "Refuser tout paiement et menacer le fournisseur"
         ],
         "en": [
+          "Ask the engineer to reimburse the work",
           "Pay the invoice to preserve the relationship",
           "Handle it through contract administration: recall the written-orders clause, assess the work actually done, and regularize via the formal process — then lock in discipline on the team side",
-          "Refuse all payment and threaten the supplier",
-          "Ask the engineer to reimburse the work"
+          "Refuse all payment and threaten the supplier"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "La maîtrise des approvisionnements (12.3) passe par l'administration du contrat : les changements suivent la voie contractuelle formelle. Payer sans process valide le précédent ; refuser brutalement expose au litige. Et la vraie correction est interne : plus d'instructions orales.",
         "en": "Control Procurements (12.3) works through contract administration: changes follow the formal contractual path. Paying without process validates the precedent; brute refusal invites litigation. And the real fix is internal: no more oral instructions."
@@ -275,19 +275,19 @@
       },
       "options": {
         "fr": [
-          "Uniquement le prix d'achat le plus bas",
           "Coût complet (cycle de vie), disponibilité des compétences, criticité stratégique du savoir-faire, risques et délais de chaque option",
+          "Uniquement le prix d'achat le plus bas",
           "La préférence personnelle du sponsor",
           "Toujours faire en interne pour garder le contrôle"
         ],
         "en": [
-          "Only the lowest purchase price",
           "Full life-cycle cost, skills availability, strategic criticality of the know-how, and each option's risks and lead times",
+          "Only the lowest purchase price",
           "The sponsor's personal preference",
           "Always build in-house to keep control"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "Le make-or-buy compare les options sur le coût complet, les capacités internes, la valeur stratégique du savoir-faire, les risques et les délais — pas seulement le prix d'achat. « Toujours en interne » ou « toujours le moins cher » sont des réflexes, pas des analyses.",
         "en": "Make-or-buy compares options on full cost, internal capabilities, strategic value of the know-how, risks, and lead times — not just purchase price. 'Always in-house' or 'always cheapest' are reflexes, not analyses."
@@ -307,19 +307,19 @@
       },
       "options": {
         "fr": [
-          "Le projet est en retard et sous le budget",
           "Le projet est en avance sur l'échéancier mais dépense plus que prévu pour le travail réalisé : la dérive des coûts est la préoccupation prioritaire",
+          "Les deux indices doivent être multipliés pour conclure",
           "Le projet est en avance et sous le budget : tout va bien",
-          "Les deux indices doivent être multipliés pour conclure"
+          "Le projet est en retard et sous le budget"
         ],
         "en": [
-          "The project is behind schedule and under budget",
           "The project is ahead of schedule but spending more than planned for the work performed: cost overrun is the priority concern",
+          "The two indices must be multiplied to conclude",
           "The project is ahead and under budget: all is well",
-          "The two indices must be multiplied to conclude"
+          "The project is behind schedule and under budget"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "CPI < 1 : chaque unité de travail coûte plus que prévu (dérive de coûts). SPI > 1 : avance sur l'échéancier. L'avance peut d'ailleurs expliquer le surcoût (accélération payée cher). Lire correctement CPI/SPI est un incontournable de l'examen.",
         "en": "CPI < 1: each unit of work costs more than planned (cost overrun). SPI > 1: ahead of schedule. The acceleration may even explain the overrun (bought speed). Reading CPI/SPI correctly is an exam must."
@@ -371,16 +371,16 @@
       },
       "options": {
         "fr": [
-          "La réserve de management, sur simple décision du chef de projet",
+          "Aucune : demander une rallonge budgétaire au client",
           "La réserve pour aléas (contingency), prévue pour les risques identifiés et gérée dans la référence de base des coûts par le chef de projet",
-          "La réserve de management, car toutes les réserves sont identiques",
-          "Aucune : demander une rallonge budgétaire au client"
+          "La réserve de management, sur simple décision du chef de projet",
+          "La réserve de management, car toutes les réserves sont identiques"
         ],
         "en": [
-          "The management reserve, at the PM's sole discretion",
+          "None: request a budget extension from the client",
           "The contingency reserve, set aside for identified risks and managed within the cost baseline by the project manager",
-          "The management reserve, since all reserves are the same",
-          "None: request a budget extension from the client"
+          "The management reserve, at the PM's sole discretion",
+          "The management reserve, since all reserves are the same"
         ]
       },
       "answer_index": 1,
@@ -404,18 +404,18 @@
       "options": {
         "fr": [
           "Accepter : plus d'inspections = plus de qualité",
-          "Remonter à la cause racine (procédé, qualification, matériaux) et renforcer la prévention : la qualité se construit dans le processus, elle ne s'inspecte pas à la fin",
           "Sanctionner les soudeurs responsables",
-          "Assouplir les critères d'acceptation pour réduire les reprises"
+          "Assouplir les critères d'acceptation pour réduire les reprises",
+          "Remonter à la cause racine (procédé, qualification, matériaux) et renforcer la prévention : la qualité se construit dans le processus, elle ne s'inspecte pas à la fin"
         ],
         "en": [
           "Accept: more inspections = more quality",
-          "Trace the root cause (process, qualification, materials) and strengthen prevention: quality is built into the process, not inspected in at the end",
           "Sanction the responsible welders",
-          "Loosen acceptance criteria to reduce rework"
+          "Loosen acceptance criteria to reduce rework",
+          "Trace the root cause (process, qualification, materials) and strengthen prevention: quality is built into the process, not inspected in at the end"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Principe fondamental : la prévention prime sur l'inspection. Doubler les inspections détecte plus de défauts mais n'en réduit pas la production ; l'analyse de cause racine et l'amélioration du procédé traitent la source. Assouplir les critères sacrifie la qualité.",
         "en": "Core principle: prevention over inspection. Doubling inspections catches more defects but doesn't reduce their creation; root-cause analysis and process improvement treat the source. Loosening criteria sacrifices quality."
@@ -436,18 +436,18 @@
       "options": {
         "fr": [
           "La loi de Murphy",
-          "Le coût de la qualité : réduire les coûts de conformité (prévention, évaluation) augmente les coûts de non-conformité (défaillances internes et externes), souvent bien plus élevés",
+          "La compression des délais (crashing)",
           "Le chemin critique",
-          "La compression des délais (crashing)"
+          "Le coût de la qualité : réduire les coûts de conformité (prévention, évaluation) augmente les coûts de non-conformité (défaillances internes et externes), souvent bien plus élevés"
         ],
         "en": [
           "Murphy's law",
-          "Cost of quality: cutting conformance costs (prevention, appraisal) inflates non-conformance costs (internal and external failures), often far higher",
+          "Schedule crashing",
           "The critical path",
-          "Schedule crashing"
+          "Cost of quality: cutting conformance costs (prevention, appraisal) inflates non-conformance costs (internal and external failures), often far higher"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 3,
       "rationale": {
         "fr": "Le coût de la qualité distingue conformité (prévention + évaluation) et non-conformité (défaillances internes/externes). Économiser sur la prévention transfère — en l'amplifiant — le coût vers les défaillances. Les défaillances externes (chez le client) sont les plus chères.",
         "en": "Cost of quality separates conformance (prevention + appraisal) from non-conformance (internal/external failures). Saving on prevention shifts — and amplifies — cost into failures. External failures (at the customer) are the costliest."
@@ -467,19 +467,19 @@
       },
       "options": {
         "fr": [
-          "Les mentionner dans l'annexe RSE du rapport final",
           "Les intégrer au plan de management de la qualité : métriques mesurables, critères d'acceptation, contrôles planifiés — au même rang que les exigences techniques",
-          "Les traiter uniquement si le budget le permet en fin de projet",
-          "Les déléguer entièrement au département développement durable"
+          "Les déléguer entièrement au département développement durable",
+          "Les mentionner dans l'annexe RSE du rapport final",
+          "Les traiter uniquement si le budget le permet en fin de projet"
         ],
         "en": [
-          "Mention them in the final report's CSR annex",
           "Integrate them into the quality management plan: measurable metrics, acceptance criteria, planned controls — on par with technical requirements",
-          "Address them only if budget allows at project end",
-          "Delegate them entirely to the sustainability department"
+          "Delegate them entirely to the sustainability department",
+          "Mention them in the final report's CSR annex",
+          "Address them only if budget allows at project end"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'ECO 2026 fait de la durabilité un contenu testable : les exigences ESG se traitent comme des exigences — métriques, critères d'acceptation, contrôles — intégrées au plan qualité. Les reléguer en annexe ou en option de fin de projet garantit qu'elles ne seront pas tenues.",
         "en": "The 2026 ECO makes sustainability testable content: ESG requirements are handled as requirements — metrics, acceptance criteria, controls — integrated into the quality plan. Relegating them to an annex or end-of-project option guarantees they won't be met."
@@ -499,19 +499,19 @@
       },
       "options": {
         "fr": [
-          "Suivre le sponsor : c'est lui le responsable hiérarchique",
-          "Présenter le statut réel avec les faits, accompagné d'un plan de redressement et d'options : l'intégrité du reporting fonde la confiance de la gouvernance",
           "Présenter « orange » mais glisser la vérité en aparté",
-          "Ne pas présenter de statut ce mois-ci"
+          "Ne pas présenter de statut ce mois-ci",
+          "Présenter le statut réel avec les faits, accompagné d'un plan de redressement et d'options : l'intégrité du reporting fonde la confiance de la gouvernance",
+          "Suivre le sponsor : c'est lui le responsable hiérarchique"
         ],
         "en": [
-          "Follow the sponsor: he's the hierarchical authority",
-          "Present the real status with facts, accompanied by a recovery plan and options: reporting integrity underpins governance trust",
           "Present 'amber' but slip the truth in a side conversation",
-          "Skip this month's status report"
+          "Skip this month's status report",
+          "Present the real status with facts, accompanied by a recovery plan and options: reporting integrity underpins governance trust",
+          "Follow the sponsor: he's the hierarchical authority"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Le reporting sincère est une exigence d'éthique et de gouvernance : la valeur d'un statut vient de sa fiabilité. Un « rouge » accompagné d'un plan de redressement est crédible ; un « orange » maquillé détruit la confiance quand la vérité éclate — et elle éclate.",
         "en": "Truthful reporting is an ethics and governance requirement: a status is only worth its reliability. A 'red' with a recovery plan is credible; a doctored 'amber' destroys trust when the truth surfaces — and it does."
@@ -533,14 +533,14 @@
         "fr": [
           "Ajouter encore des indicateurs pour être exhaustif",
           "Recentrer le rapport sur l'essentiel décisionnel : tendances des références de base, valeur livrée, risques majeurs, décisions attendues — chaque indicateur doit servir une décision",
-          "Supprimer le rapport mensuel devenu inutile",
-          "Envoyer les données brutes et laisser le comité trier"
+          "Envoyer les données brutes et laisser le comité trier",
+          "Supprimer le rapport mensuel devenu inutile"
         ],
         "en": [
           "Add even more indicators to be exhaustive",
           "Refocus the report on decision essentials: baseline trends, value delivered, top risks, decisions needed — every indicator must serve a decision",
-          "Drop the now-useless monthly report",
-          "Send raw data and let the committee sort it out"
+          "Send raw data and let the committee sort it out",
+          "Drop the now-useless monthly report"
         ]
       },
       "answer_index": 1,
@@ -563,19 +563,19 @@
       },
       "options": {
         "fr": [
-          "Attendre la revue : c'est le canal officiel prévu",
-          "Informer sans délai le sponsor et les parties prenantes clés, avec l'analyse d'impact et des options de redressement — les mauvaises nouvelles ne s'améliorent pas en vieillissant",
           "Attendre d'être certain à 100% du retard exact",
-          "L'annoncer d'abord au client pour prendre les devants"
+          "L'annoncer d'abord au client pour prendre les devants",
+          "Informer sans délai le sponsor et les parties prenantes clés, avec l'analyse d'impact et des options de redressement — les mauvaises nouvelles ne s'améliorent pas en vieillissant",
+          "Attendre la revue : c'est le canal officiel prévu"
         ],
         "en": [
-          "Wait for the review: it's the planned official channel",
-          "Inform the sponsor and key stakeholders without delay, with an impact analysis and recovery options — bad news doesn't improve with age",
           "Wait until 100% certain of the exact delay",
-          "Announce it to the client first to get ahead of it"
+          "Announce it to the client first to get ahead of it",
+          "Inform the sponsor and key stakeholders without delay, with an impact analysis and recovery options — bad news doesn't improve with age",
+          "Wait for the review: it's the planned official channel"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Les mauvaises nouvelles se communiquent tôt, avec analyse et options : chaque semaine de silence réduit les marges de manœuvre de la gouvernance. Attendre la revue ou la certitude absolue est le piège ; court-circuiter le sponsor vers le client en est un autre.",
         "en": "Bad news is communicated early, with analysis and options: every week of silence shrinks governance's room to act. Waiting for the review or absolute certainty is one trap; bypassing the sponsor to the client is another."
@@ -595,19 +595,19 @@
       },
       "options": {
         "fr": [
-          "Dissoudre l'équipe le jour même : le projet n'existe plus",
-          "Conduire une clôture formelle : documenter l'état des livrables, clôturer les contrats, archiver, consigner les leçons et libérer les ressources de façon ordonnée",
+          "Poursuivre discrètement en espérant un revirement",
           "Laisser les contrats fournisseurs expirer d'eux-mêmes",
-          "Poursuivre discrètement en espérant un revirement"
+          "Conduire une clôture formelle : documenter l'état des livrables, clôturer les contrats, archiver, consigner les leçons et libérer les ressources de façon ordonnée",
+          "Dissoudre l'équipe le jour même : le projet n'existe plus"
         ],
         "en": [
-          "Disband the team that same day: the project no longer exists",
-          "Run a formal closure: document deliverable status, close contracts, archive, capture lessons, and release resources in an orderly way",
+          "Quietly continue hoping for a reversal",
           "Let supplier contracts lapse on their own",
-          "Quietly continue hoping for a reversal"
+          "Run a formal closure: document deliverable status, close contracts, archive, capture lessons, and release resources in an orderly way",
+          "Disband the team that same day: the project no longer exists"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 2,
       "rationale": {
         "fr": "Un projet annulé se clôt formellement (4.7) : état des livrables, clôture contractuelle, archives, leçons apprises, libération ordonnée des ressources. Abandonner sans clore laisse des engagements ouverts, des litiges potentiels et un savoir perdu.",
         "en": "A cancelled project is formally closed (4.7): deliverable status, contract closure, archives, lessons learned, orderly resource release. Walking away leaves open commitments, potential disputes, and lost knowledge."
@@ -627,19 +627,19 @@
       },
       "options": {
         "fr": [
-          "Organiser la fête de fin de projet",
           "Obtenir l'acceptation formelle des livrables par le client / sponsor selon les critères définis",
+          "Supprimer les accès et archiver les documents",
           "Réaffecter immédiatement toute l'équipe",
-          "Supprimer les accès et archiver les documents"
+          "Organiser la fête de fin de projet"
         ],
         "en": [
-          "Organize the end-of-project party",
           "Obtain formal acceptance of the deliverables by the client / sponsor per the defined criteria",
+          "Remove access rights and archive documents",
           "Immediately reassign the whole team",
-          "Remove access rights and archive documents"
+          "Organize the end-of-project party"
         ]
       },
-      "answer_index": 1,
+      "answer_index": 0,
       "rationale": {
         "fr": "L'acceptation formelle des livrables est la porte d'entrée de la clôture : sans elle, libérer l'équipe ou archiver expose à des reprises sans ressources. La séquence : acceptation → clôture contractuelle et administrative → leçons → libération → archivage.",
         "en": "Formal deliverable acceptance is the gateway to closure: without it, releasing the team or archiving exposes you to rework with no resources. The sequence: acceptance → contract and admin closure → lessons → release → archiving."
@@ -659,16 +659,16 @@
       },
       "options": {
         "fr": [
-          "Rien : l'exploitation commence après le projet, c'est son problème",
+          "La prolongation indéfinie du projet en support",
           "Un transfert organisé vers l'exploitation : documentation, formation, période d'accompagnement et relais de la mesure des bénéfices vers l'organisation",
-          "Une simple réunion de remise des clés",
-          "La prolongation indéfinie du projet en support"
+          "Rien : l'exploitation commence après le projet, c'est son problème",
+          "Une simple réunion de remise des clés"
         ],
         "en": [
-          "Nothing: operations starts after the project, it's their problem",
+          "Extending the project indefinitely as support",
           "An organized transition to operations: documentation, training, a support period, and handover of benefits measurement to the organization",
-          "A simple key-handover meeting",
-          "Extending the project indefinitely as support"
+          "Nothing: operations starts after the project, it's their problem",
+          "A simple key-handover meeting"
         ]
       },
       "answer_index": 1,
