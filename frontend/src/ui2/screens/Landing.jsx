@@ -14,7 +14,27 @@ import { ECO_DOMAINS } from "../../pmp.js";
 import { useGsap } from "../motion.js";
 import { gsap, ScrollTrigger, AFTER_PINS, ScrollProgress, Reveal, VideoScrollHero, HorizontalScrollGallery, RevealImageMask, ScrollRevealImage, Film } from "./landing-parts.jsx";
 
-const M = (f) => `${import.meta.env.BASE_URL}ui2/${f}`;
+// Media are imported (not served from public/): Vite emits them only in the build that reaches this module,
+// i.e. VITE_UI=chantier. The default build never references them, so it never ships them.
+import boardPoster from "../assets/board-poster.webp";
+import boardMp4 from "../assets/board.mp4";
+import colleagues from "../assets/colleagues.webp";
+import learnerPhoto from "../assets/learner.webp";
+import pmPoster from "../assets/pm-poster.webp";
+import pmMp4 from "../assets/pm.mp4";
+import scenarioPhoto from "../assets/scenario.webp";
+import siteEngineer from "../assets/site-engineer.webp";
+import sitePoster from "../assets/site-poster.webp";
+import siteMp4 from "../assets/site.mp4";
+import teamRoadmap from "../assets/team-roadmap.webp";
+import trainerPhoto from "../assets/trainer.webp";
+
+const MEDIA = {
+  "board-poster.webp": boardPoster, "board.mp4": boardMp4, "colleagues.webp": colleagues, "learner.webp": learnerPhoto,
+  "pm-poster.webp": pmPoster, "pm.mp4": pmMp4, "scenario.webp": scenarioPhoto, "site-engineer.webp": siteEngineer,
+  "site-poster.webp": sitePoster, "site.mp4": siteMp4, "team-roadmap.webp": teamRoadmap, "trainer.webp": trainerPhoto,
+};
+const M = (f) => MEDIA[f];
 const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const readLS = (k) => { try { return localStorage.getItem(k) || ""; } catch { return ""; } };
 const writeLS = (k, v) => { try { localStorage.setItem(k, v); } catch { /* private mode */ } };

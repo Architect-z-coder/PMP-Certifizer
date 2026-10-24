@@ -4,6 +4,7 @@
 - Vercel → Project → Settings → Environment Variables : `VITE_UI` = `chantier` sur l'environnement **Preview** seulement, puis redéployer (Vite fige la variable au build). **Production ne doit pas recevoir `VITE_UI`** : sans elle, l'interface actuelle est servie, inchangée.
 - `VITE_API_URL` : si elle manque (Preview), ui2 appelle `https://pmp-cerifizer.onrender.com` (`ui2/apiBase.js`, repli posé sur `fetch` dans ui2 seulement ; `api.js` n'est pas modifié). Si elle est présente, elle est utilisée telle quelle.
 - CORS côté Render : `CORS_ORIGINS` ne contient que le domaine de production ; ajouter l'origine de la Preview (ex. `https://pmp-certifizer-git-ui-lab-<scope>.vercel.app`, sans barre finale, séparée par une virgule), sinon le navigateur bloque les appels API depuis la Preview.
+- `frontend/.env.production` fixe `VITE_UI=` (vide) par défaut pour tout `vite build`. Une variable définie dans Vercel ou en ligne de commande l'emporte toujours sur ce fichier. Sans valeur définie, Vite ne peut pas éliminer l'import de ui2 au build et le build par défaut embarquerait les médias ui2. Avec ce fichier, le build par défaut ne contient ni code ni média ui2 (vérifié).
 - En local : `cd frontend && VITE_UI=chantier VITE_API_URL=http://localhost:8000 npm run dev` (ou `frontend/.env`, voir `.env.example`).
 - Le bascule est dans `frontend/src/main.jsx` (seul fichier existant modifié) : `VITE_UI === "chantier"` charge `ui2/App2.jsx` paresseusement, sinon `App.jsx`. Le build par défaut n'embarque ni le code ni la CSS de ui2 (vérifié).
 
@@ -25,7 +26,7 @@
 - Textes qui n'étaient qu'en français dans ui-lab (Gantt, réseau, livrables, cohorte, pied de page) : version anglaise ajoutée.
 - Mouvement réduit : réglage du système, ou bouton « Réduire les animations » en pied de page (`cz_ui2_reduced`). Films remplacés par leurs affiches, scènes à l'état final.
 - Deux défauts hérités de ui-lab corrigés : la galerie des livrables défile vraiment (hauteur 300vh au lieu de 300 %, qui retombait à « auto »), et les animations des photos, de la galerie et de l'image formateur se mesurent après les scènes épinglées (elles jouaient hors écran).
-- Médias (`frontend/public/ui2/`, 12 fichiers, 1 093 Ko au total contre 1 864 Ko dans ui-lab) : films ré-encodés H.264 sans son (site 318 Ko, pm 158 Ko, board 148 Ko en 960 px), photos WebP 900 px qualité 72, affiches inchangées. Vite copie `public/` dans tous les builds : le build par défaut contient donc ces 12 fichiers statiques, mais aucun code ui2.
+- Médias (`frontend/src/ui2/assets/`, 12 fichiers, 1 093 Ko au total contre 1 864 Ko dans ui-lab) : films ré-encodés H.264 sans son (site 318 Ko, pm 158 Ko, board 148 Ko en 960 px), photos WebP 900 px qualité 72, affiches inchangées. Ils sont importés par `Landing.jsx` : Vite ne les émet (noms hachés, dans `dist/assets/`) que dans le build `VITE_UI=chantier`. Le build par défaut ne contient ni code ni média ui2.
 
 ## Arrondis
 - Tous les pourcentages de ui2 (indice de la barre, domaines, tâches) sont désormais tronqués, jamais arrondis au-dessus (`engine.js` `pct`) : 33,51 s'affiche 33. La page de présentation promet que l'indice n'est jamais arrondi pour rassurer.
