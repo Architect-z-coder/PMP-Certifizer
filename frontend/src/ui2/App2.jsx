@@ -87,7 +87,11 @@ export default function App2() {
     writeLS("cz_learner", id); writeLS("cz_name", nm); writeLS("cz_role", r); if (cohortCode) writeLS("cz_cohort", cohortCode);
     setLearner(id); setLearnerName(nm); setRole(r); if (cohortCode) setCohort(cohortCode);
     setAccess(null);
-    if (parseHash().screen === "presentation") go("today");
+    if (parseHash().screen === "presentation") {
+      // switch the route in the same render (go() waits for hashchange, which would paint the Présentation once)
+      try { window.history.replaceState(null, "", window.location.pathname + window.location.search + hrefTo("today")); } catch { /* */ }
+      setRoute({ screen: "today", params: {} });
+    }
   };
   const signOut = () => { ["cz_learner", "cz_name", "cz_role", "cz_cohort"].forEach((k) => writeLS(k, null)); setLearner(""); setLearnerName(""); setRole(""); setCohort(""); setAccess(null); go("today"); };
   const clearToken = (which) => {

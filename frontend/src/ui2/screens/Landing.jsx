@@ -12,7 +12,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./landing.css";
 import { ECO_DOMAINS } from "../../pmp.js";
 import { useGsap } from "../motion.js";
-import { gsap, ScrollTrigger, ScrollProgress, Reveal, VideoScrollHero, HorizontalScrollGallery, RevealImageMask, ScrollRevealImage, Film } from "./landing-parts.jsx";
+import { gsap, ScrollTrigger, AFTER_PINS, ScrollProgress, Reveal, VideoScrollHero, HorizontalScrollGallery, RevealImageMask, ScrollRevealImage, Film } from "./landing-parts.jsx";
 
 const M = (f) => `${import.meta.env.BASE_URL}ui2/${f}`;
 const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -62,21 +62,32 @@ const READY_LABEL = { fr: "En construction", en: "Building" };      // engine ti
 const RR = 160, CIRC = 2 * Math.PI * RR;
 const DOMAINS = ECO_DOMAINS.map((d) => ({ id: d.id, fr: d.fr, en: d.en, weight: d.wt }));
 
-export default function Landing({ lang, setLang, reduced: osReduced, signedIn, onCta }) {
-  const t = (fr, en) => (lang === "en" && en ? en : fr);
+/** Holds the motion choice (OS setting or the footer toggle) and remounts the page body when it changes: GSAP's revert
+ *  restores the start state of what it animated, so the body is rebuilt fresh, straight in its final state. */
+export default function Landing({ reduced: osReduced, ...props }) {
   const [userReduced, setUserReduced] = useState(() => readLS("cz_ui2_reduced") === "true");
   const reduced = osReduced || userReduced;
   const toggleMotion = () => { const v = !userReduced; setUserReduced(v); writeLS("cz_ui2_reduced", String(v)); };
+  useEffect(() => { window.scrollTo(0, 0); }, []);   // the page starts at the top
+  return <LandingBody key={reduced ? "still" : "motion"} {...props} reduced={reduced} osReduced={osReduced} userReduced={userReduced} onToggleMotion={toggleMotion} />;
+}
+
+function LandingBody({ lang, setLang, reduced, osReduced, userReduced, onToggleMotion, signedIn, onCta }) {
+  const t = (fr, en) => (lang === "en" && en ? en : fr);
   const mainRef = useRef(null);
 
-  // the page starts at the top; ScrollTrigger re-measures when the language or the web fonts change the layout
-  useEffect(() => { window.scrollTo(0, 0); }, []);
-  useEffect(() => { requestAnimationFrame(() => ScrollTrigger.refresh()); }, [lang, reduced]);
+  // ScrollTrigger re-measures when the language or the web fonts change the layout (App2 adds the font stylesheet
+  // after this effect runs, so wait for each font load to finish rather than for document.fonts.ready alone)
+  useEffect(() => { requestAnimationFrame(() => ScrollTrigger.refresh()); }, [lang]);
   useEffect(() => {
-    let live = true;
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (live) ScrollTrigger.refresh(); });
-    return () => { live = false; };
-  }, []);
+    const fonts = document.fonts;
+    if (!fonts || reduced) return undefined;
+    let raf = 0;
+    const refresh = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => ScrollTrigger.refresh()); };
+    fonts.addEventListener("loadingdone", refresh);
+    fonts.ready.then(refresh);
+    return () => { fonts.removeEventListener("loadingdone", refresh); cancelAnimationFrame(raf); };
+  }, [reduced]);
 
   const cta = (view) => (e) => { if (e) e.preventDefault(); onCta(view); };
   const jump = (id) => (e) => {
@@ -125,8 +136,10 @@ export default function Landing({ lang, setLang, reduced: osReduced, signedIn, o
         .from(".truths p", { x: -14, opacity: 0, stagger: 0.18, duration: 0.4 }, 0.55);
       return () => { steps.forEach((li) => li.classList.remove("on")); };
     });
-    el.querySelectorAll(".meter i").forEach((m) => gsap.from(m, { scaleX: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: m, start: "top 90%", once: true } }));
-    requestAnimationFrame(() => ScrollTrigger.refresh());
+    el.querySelectorAll(".meter i").forEach((m) => gsap.from(m, { scaleX: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: m, start: "top 90%", once: true, refreshPriority: AFTER_PINS } }));
+    // the parts' triggers were created before these pins: re-sort (pins first, by refreshPriority) and re-measure
+    ScrollTrigger.sort();
+    ScrollTrigger.refresh();
   }, [reduced], reduced);
 
   // deliverables: per-card entrances driven by the gallery's containerAnimation (as in the 21st gallery demo)
@@ -134,12 +147,12 @@ export default function Landing({ lang, setLang, reduced: osReduced, signedIn, o
     if (!root.current) return undefined;
     const ctx = gsap.context(() => {
       const ph = root.current.querySelector(".doc.photo");
-      if (ph) gsap.fromTo(ph, { clipPath: "inset(0 0 100% 0 round 16px)" }, { clipPath: "inset(0 0 0% 0 round 16px)", duration: 1, ease: "expo.out", scrollTrigger: { trigger: ".hz", start: "top 60%", toggleActions: "play none none reverse" } });
+      if (ph) gsap.fromTo(ph, { clipPath: "inset(0 0 100% 0 round 16px)" }, { clipPath: "inset(0 0 0% 0 round 16px)", duration: 1, ease: "expo.out", scrollTrigger: { trigger: ".hz", start: "top 60%", toggleActions: "play none none reverse", refreshPriority: AFTER_PINS - 1 } });
       root.current.querySelectorAll(".doc:not(.photo)").forEach((doc) => {
-        const st = { trigger: doc, containerAnimation: hz, start: "left 82%", toggleActions: "play none none reverse" };
+        const st = { trigger: doc, containerAnimation: hz, start: "left 82%", toggleActions: "play none none reverse", refreshPriority: AFTER_PINS - 1 };
         gsap.from(doc.querySelectorAll(".rl, tr, .node"), { scaleX: 0, opacity: 0, transformOrigin: "0 50%", stagger: 0.05, duration: 0.6, ease: "power3.out", scrollTrigger: st });
         gsap.from(doc.querySelector(".stamp, .lvl"), { scale: 1.6, opacity: 0, rotate: -12, duration: 0.5, delay: 0.35, ease: "back.out(2.4)", scrollTrigger: { ...st } });
-        gsap.fromTo(doc, { rotate: 2.5, y: 30 }, { rotate: 0, y: 0, ease: "none", scrollTrigger: { trigger: doc, containerAnimation: hz, start: "left right", end: "left 40%", scrub: true } });
+        gsap.fromTo(doc, { rotate: 2.5, y: 30 }, { rotate: 0, y: 0, ease: "none", scrollTrigger: { trigger: doc, containerAnimation: hz, start: "left right", end: "left 40%", scrub: true, refreshPriority: AFTER_PINS - 1 } });
       });
     }, root);
     return () => ctx.revert();
@@ -361,8 +374,8 @@ export default function Landing({ lang, setLang, reduced: osReduced, signedIn, o
 
       <footer className="wrap">
         <span>{t("Les chiffres de cette page sont des exemples. Votre indice réel ne vient que de vos réponses.", "The numbers on this page are examples. Your real readiness comes only from your answers.")}</span>
-        <span className="mono">{t("Animations : GSAP ScrollTrigger · composants 21st.dev adaptés : « Reveal » (@asanshay), « Scroll Progress » (@cnippet-dev), « Horizontal Scroll Gallery » (@pulkitxm), « Video Scroll Hero » (@isaiahbjork), « Reveal Image Mask » (@daiwiikharihar), « Scroll Reveal Image » (@unlumen). Photos et films générés pour l'illustration.", "Motion: GSAP ScrollTrigger · adapted 21st.dev components: “Reveal” (@asanshay), “Scroll Progress” (@cnippet-dev), “Horizontal Scroll Gallery” (@pulkitxm), “Video Scroll Hero” (@isaiahbjork), “Reveal Image Mask” (@daiwiikharihar), “Scroll Reveal Image” (@unlumen). Photos and films generated for illustration.")}</span>
-        {!osReduced && <button type="button" className="link" onClick={toggleMotion} aria-pressed={userReduced}>{userReduced ? t("Réactiver les animations", "Turn animations back on") : t("Réduire les animations", "Reduce animations")}</button>}
+        <span className="mono">{t("Motion : GSAP ScrollTrigger · composants 21st.dev adaptés : « Reveal » (@asanshay), « Scroll Progress » (@cnippet-dev), « Horizontal Scroll Gallery » (@pulkitxm), « Video Scroll Hero » (@isaiahbjork), « Reveal Image Mask » (@daiwiikharihar), « Scroll Reveal Image » (@unlumen). Photos et films générés pour l'illustration.", "Motion: GSAP ScrollTrigger · adapted 21st.dev components: “Reveal” (@asanshay), “Scroll Progress” (@cnippet-dev), “Horizontal Scroll Gallery” (@pulkitxm), “Video Scroll Hero” (@isaiahbjork), “Reveal Image Mask” (@daiwiikharihar), “Scroll Reveal Image” (@unlumen). Photos and films generated for illustration.")}</span>
+        {!osReduced && <button type="button" className="link" onClick={onToggleMotion} aria-pressed={userReduced}>{userReduced ? t("Réactiver les animations", "Turn animations back on") : t("Réduire les animations", "Reduce animations")}</button>}
       </footer>
     </div>
   );

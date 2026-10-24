@@ -24,6 +24,7 @@
 - Honnêteté : les chiffres d'exemple portent « Exemple » ; l'indice d'exemple est tronqué (54, pas 55) et les gains du chemin critique sont les leviers de l'apprenant d'exemple, tronqués. Le pied de page « Rien n'est enregistré » devient « Les chiffres de cette page sont des exemples. Votre indice réel ne vient que de vos réponses. »
 - Textes qui n'étaient qu'en français dans ui-lab (Gantt, réseau, livrables, cohorte, pied de page) : version anglaise ajoutée.
 - Mouvement réduit : réglage du système, ou bouton « Réduire les animations » en pied de page (`cz_ui2_reduced`). Films remplacés par leurs affiches, scènes à l'état final.
+- Deux défauts hérités de ui-lab corrigés : la galerie des livrables défile vraiment (hauteur 300vh au lieu de 300 %, qui retombait à « auto »), et les animations des photos, de la galerie et de l'image formateur se mesurent après les scènes épinglées (elles jouaient hors écran).
 - Médias (`frontend/public/ui2/`, 12 fichiers, 1 093 Ko au total contre 1 864 Ko dans ui-lab) : films ré-encodés H.264 sans son (site 318 Ko, pm 158 Ko, board 148 Ko en 960 px), photos WebP 900 px qualité 72, affiches inchangées. Vite copie `public/` dans tous les builds : le build par défaut contient donc ces 12 fichiers statiques, mais aucun code ui2.
 
 ## Arrondis

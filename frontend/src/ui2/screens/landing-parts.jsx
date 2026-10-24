@@ -8,6 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 export { gsap, ScrollTrigger };
 
+/* The parts mount before Landing creates its three pinned scenes (React runs child effects first). A negative
+   refreshPriority makes ScrollTrigger measure them AFTER the pins, so their start/end include the pin spacing. */
+export const AFTER_PINS = -1;
+
 // A film, by the MEDIA.md rules: muted, looping, playsinline, with a poster; plays only while on screen
 // (IntersectionObserver, threshold 0.15); with reduced motion the poster alone is shown. Films are decorative
 // (aria-hidden), so every caption lives in the DOM next to them.
@@ -32,8 +36,8 @@ export function ScrollProgress({ reduced }) {
   useEffect(() => {
     if (reduced || !ref.current) return undefined;
     const setProg = gsap.quickTo(ref.current, "scaleX", { duration: 0.5, ease: "power3.out" });
-    const st = ScrollTrigger.create({ start: 0, end: "max", onUpdate: (s) => setProg(s.progress) });
-    return () => st.kill();
+    const st = ScrollTrigger.create({ start: 0, end: "max", refreshPriority: AFTER_PINS, onUpdate: (s) => setProg(s.progress) });
+    return () => { st.kill(); if (setProg.tween) setProg.tween.kill(); };
   }, [reduced]);
   if (reduced) return null;
   return <div ref={ref} className="progress" aria-hidden="true" />;
@@ -45,7 +49,7 @@ export function Reveal({ children, className, index = 0, as: Tag = "div", reduce
   const ref = useRef(null);
   useLayoutEffect(() => {
     if (reduced || !ref.current) return undefined;
-    const tween = gsap.from(ref.current, { opacity: 0, y: 40, filter: "blur(10px)", duration: 0.6, ease: "power2.out", delay: index * 0.15, clearProps: "filter", scrollTrigger: { trigger: ref.current, start: "top 80%", once: true } });
+    const tween = gsap.from(ref.current, { opacity: 0, y: 40, filter: "blur(10px)", duration: 0.6, ease: "power2.out", delay: index * 0.15, clearProps: "filter", scrollTrigger: { trigger: ref.current, start: "top 80%", once: true, refreshPriority: AFTER_PINS } });
     return () => { tween.scrollTrigger?.kill(); tween.revert(); };
   }, [reduced, index]);
   return <Tag ref={ref} className={className} {...rest}>{children}</Tag>;
@@ -59,7 +63,7 @@ export function VideoScrollHero({ src, poster, startScale = 0.25, children, redu
   const frame = useRef(null);
   useLayoutEffect(() => {
     if (reduced || !root.current) return undefined;
-    const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "bottom bottom", scrub: 0.8 } });
+    const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "bottom bottom", scrub: 0.8, refreshPriority: AFTER_PINS } });
     tl.fromTo(frame.current, { scale: startScale, borderRadius: 28 }, { scale: 1, borderRadius: 0, ease: "power2.inOut", duration: 1 })
       .from(frame.current.querySelectorAll(".reel-cap > *"), { y: 30, opacity: 0, stagger: 0.12, duration: 0.4 }, 0.55);
     return () => { tl.scrollTrigger?.kill(); tl.revert(); };
@@ -80,13 +84,14 @@ export function VideoScrollHero({ src, poster, startScale = 0.25, children, redu
 // viewport; scroll progress maps to translateX on a flex track. Changes: a GSAP ScrollTrigger (scrub 0.6,
 // invalidateOnRefresh) whose tween is handed to `onAnimation` (containerAnimation for the cards); the cleanup that
 // `onAnimation` returns runs on unmount; reduced motion → the track scrolls sideways (overflow-x: auto).
-export function HorizontalScrollGallery({ children, intro, scrollHeight = "300%", reduced, onAnimation, regionLabel, ...rest }) {
+// The runway is 300vh (ui-lab's "300%" resolved to auto inside its auto-height wrapper: the track barely moved).
+export function HorizontalScrollGallery({ children, intro, scrollHeight = "300vh", reduced, onAnimation, regionLabel, ...rest }) {
   const wrapper = useRef(null);
   const track = useRef(null);
   useLayoutEffect(() => {
     if (reduced || !wrapper.current || !track.current) return undefined;
     const dist = () => Math.max(0, track.current.scrollWidth - window.innerWidth + 32);
-    const t = gsap.to(track.current, { x: () => -dist(), ease: "none", scrollTrigger: { trigger: wrapper.current, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true } });
+    const t = gsap.to(track.current, { x: () => -dist(), ease: "none", scrollTrigger: { trigger: wrapper.current, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true, refreshPriority: AFTER_PINS } });
     const undo = onAnimation ? onAnimation(t) : null;
     return () => { if (typeof undo === "function") undo(); t.scrollTrigger?.kill(); t.revert(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,7 +118,7 @@ export function RevealImageMask({ src, alt, shape = "rounded", className = "", c
     if (reduced || !img.current) return undefined;
     const from = shape === "circle" ? "circle(16% at 50% 50%)" : "inset(30% round 10%)";
     const to = shape === "circle" ? "circle(75% at 50% 50%)" : "inset(0% round 0%)";
-    const tween = gsap.fromTo(img.current, { clipPath: from }, { clipPath: to, ease: "none", scrollTrigger: { trigger: ref.current, start: "top 85%", end: "bottom 15%", scrub: 0.8 } });
+    const tween = gsap.fromTo(img.current, { clipPath: from }, { clipPath: to, ease: "none", scrollTrigger: { trigger: ref.current, start: "top 85%", end: "bottom 15%", scrub: 0.8, refreshPriority: AFTER_PINS } });
     return () => { tween.scrollTrigger?.kill(); tween.revert(); };
   }, [reduced, shape]);
   return (
@@ -132,7 +137,7 @@ export function ScrollRevealImage({ src, alt, boxHeight = "46vh", fromWidth = "4
   const inner = useRef(null);
   useLayoutEffect(() => {
     if (reduced || !box.current) return undefined;
-    const tl = gsap.timeline({ scrollTrigger: { trigger: box.current, start: "top bottom", end: "top top", scrub: 1 } });
+    const tl = gsap.timeline({ scrollTrigger: { trigger: box.current, start: "top bottom", end: "top top", scrub: 1, refreshPriority: AFTER_PINS } });
     tl.fromTo(box.current, { width: fromWidth, borderRadius: fromRadius }, { width: toWidth, ease: "none", duration: 1 }, 0)
       .fromTo(box.current, { borderRadius: fromRadius }, { borderRadius: toRadius, ease: "none", duration: 1 - radiusStart }, radiusStart)
       .fromTo(inner.current, { scale: fromScale }, { scale: toScale, ease: "none", duration: 1 }, 0);
