@@ -13,6 +13,7 @@ export const MENU = [
 ];
 export const SCREEN_TITLE = {};
 MENU.forEach((G) => G.it.forEach((it) => { SCREEN_TITLE[it[0]] = { fr: it[1], en: it[2], group: G.g }; }));
+SCREEN_TITLE.presentation = { fr: "Présentation", en: "Presentation", group: null };
 
 export function Brand({ onClick }) {
   return (
@@ -62,6 +63,7 @@ export function Bar({ lang, setLang, screen, go, readinessScore, cohort, learner
               <div className="lang" role="group" aria-label={T("Langue", "Language")}>
                 {["fr", "en"].map((l) => <button key={l} type="button" aria-pressed={lang === l} onClick={() => setLang(l)}>{l.toUpperCase()}</button>)}
               </div>
+              <button type="button" className="link" onClick={() => pick("presentation")}>{T("Présentation", "Presentation")}</button>
               <button type="button" className="link" onClick={() => { setOpen(false); onSignOut(); }}>{T("Changer d'utilisateur", "Switch user")}</button>
             </div>
             <p className="why"><span>ECO PMP 2026 · 3 {T("domaines", "domains")} · 26 {T("tâches", "tasks")} · 33/41/26 %</span>{T("Une famille par intention : apprendre, travailler sur votre projet, être mesuré, vous retrouver. Un écran montre une seule chose.", "One family per intention: learn, work on your project, be measured, find yourself. A screen shows one thing.")}</p>

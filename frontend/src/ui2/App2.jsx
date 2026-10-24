@@ -8,6 +8,7 @@ import { useReducedMotion } from "./motion.js";
 import { Bar, SCREEN_TITLE } from "./Chrome.jsx";
 import Access from "./Access.jsx";
 import Placeholder from "./Placeholder.jsx";
+import Landing from "./screens/Landing.jsx";
 import Today from "./screens/Today.jsx";
 import Quiz from "./screens/Quiz.jsx";
 import MasteryMap from "./screens/MasteryMap.jsx";
@@ -41,6 +42,7 @@ export default function App2() {
   const [me, setMe] = useState(null);
   const [mastery, setMastery] = useState(null);     // {mastery, recommended, processes}
   const [readiness, setReadiness] = useState(null); // {readiness, top_levers, stale_mastered}
+  const [access, setAccess] = useState(null);       // signed out: null = Présentation, "main" | "class" | "trainer" = Access
   const [tokens, setTokens] = useState(() => { try { const u = new URLSearchParams(window.location.search); return { magic: u.get("magic") || "", invite: u.get("invite") || "" }; } catch { return { magic: "", invite: "" }; } });
 
   // Fonts are loaded here, at runtime, because index.html is shared with the current interface.
@@ -58,9 +60,13 @@ export default function App2() {
   }, []);
   useEffect(() => { document.documentElement.lang = lang; }, [lang]);
   useEffect(() => {
+    if ((!learner && !access && !tokens.magic && !tokens.invite) || (learner && route.screen === "presentation")) {
+      document.title = lang === "en" ? "Certifizer · Prepare the PMP on your real project" : "Certifizer · Préparez le PMP sur votre vrai chantier";
+      return;
+    }
     const t = SCREEN_TITLE[route.screen];
     document.title = `${t ? (lang === "en" ? t.en : t.fr) : "Certifizer"} · Certifizer`;
-  }, [route.screen, lang]);
+  }, [route.screen, lang, learner, access, tokens.magic, tokens.invite]);
   // keep the free-tier backend warm, like the current interface
   useEffect(() => { pingHealth(); const id = setInterval(pingHealth, 10 * 60 * 1000); return () => clearInterval(id); }, []);
 
@@ -80,20 +86,30 @@ export default function App2() {
   const signIn = (id, nm, r, cohortCode) => {
     writeLS("cz_learner", id); writeLS("cz_name", nm); writeLS("cz_role", r); if (cohortCode) writeLS("cz_cohort", cohortCode);
     setLearner(id); setLearnerName(nm); setRole(r); if (cohortCode) setCohort(cohortCode);
+    setAccess(null);
+    if (parseHash().screen === "presentation") go("today");
   };
-  const signOut = () => { ["cz_learner", "cz_name", "cz_role", "cz_cohort"].forEach((k) => writeLS(k, null)); setLearner(""); setLearnerName(""); setRole(""); setCohort(""); go("today"); };
+  const signOut = () => { ["cz_learner", "cz_name", "cz_role", "cz_cohort"].forEach((k) => writeLS(k, null)); setLearner(""); setLearnerName(""); setRole(""); setCohort(""); setAccess(null); go("today"); };
   const clearToken = (which) => {
     try { const u = new URL(window.location.href); u.searchParams.delete(which); window.history.replaceState({}, "", u.pathname + (u.search || "") + u.hash); } catch { /* */ }
     setTokens((t) => ({ ...t, [which]: "" }));
   };
 
-  if (!learner || tokens.magic || tokens.invite) {
+  if (tokens.magic || tokens.invite) {
     return <Access lang={lang} setLang={setLang} currentId={learner} currentName={learnerName} onSignIn={signIn} magicToken={tokens.magic} inviteToken={tokens.invite} clearToken={clearToken} />;
+  }
+  if (!learner) {
+    if (!access) return <Landing lang={lang} setLang={setLang} reduced={reduced} signedIn={false} onCta={(view) => { setAccess(view || "main"); window.scrollTo(0, 0); }} />;
+    return <Access lang={lang} setLang={setLang} currentId={learner} currentName={learnerName} onSignIn={signIn} magicToken="" inviteToken="" clearToken={clearToken} initialView={access} onBack={() => setAccess(null)} key={access} />;
+  }
+  // a signed-in user can open the Présentation again from the menu; its calls to action lead back to Aujourd'hui
+  if (route.screen === "presentation") {
+    return <Landing lang={lang} setLang={setLang} reduced={reduced} signedIn onCta={() => go("today")} />;
   }
 
   const T = (a, b) => (lang === "en" ? b : a);
   const isTrainer = role === "trainer" || ["formateur", "trainer", "coach"].includes((learner || "").toLowerCase()) || (me && me.is_trainer && role === "trainer");
-  const rScore = readiness && readiness.readiness ? Math.round(readiness.readiness.score * 100) : null;
+  const rScore = readiness && readiness.readiness ? Math.floor(readiness.readiness.score * 100 + 1e-9) : null; // never rounded up
   const common = { lang, learner, learnerName, me, mastery, readiness, params: route.params, go, onGraded, refresh, reduced };
   const screen = route.screen;
   const title = SCREEN_TITLE[screen] ? T(SCREEN_TITLE[screen].fr, SCREEN_TITLE[screen].en) : screen;

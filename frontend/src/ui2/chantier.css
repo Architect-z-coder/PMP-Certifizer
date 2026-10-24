@@ -99,11 +99,22 @@ textarea.field { min-height: 96px; resize: vertical; line-height: 1.5; }
 .gate .box { width: 100%; max-width: 420px; display: grid; gap: 12px; }
 .gate .brand { display: flex; align-items: center; gap: 9px; font: 800 20px var(--display); font-stretch: 110%; }
 .gate h1 { font-size: 26px; font-weight: 800; font-stretch: 106%; }
+.gate .back { justify-self: start; min-height: 40px; color: var(--muted); }
 
-@media (max-width: 900px) { .menu .side { display: none; } .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1040px) {
+  /* the panel no longer fits beside the brand: pin it to the viewport edges so it never overflows */
+  .menu { position: fixed; top: calc(var(--bar) + 4px); left: 14px; right: 14px; width: auto; max-height: calc(100dvh - var(--bar) - 16px); overflow: auto; overscroll-behavior: contain; }
+}
+@media (max-width: 900px) {
+  /* the side block (user, language, Présentation, switch user) stays reachable on small screens, under the families */
+  .menu .side { margin-left: 0; width: 100%; min-width: 0; text-align: left; border-left: 0; border-top: 1px solid var(--panel-line); padding: 10px 0 0; justify-items: start; }
+  .menu .side .lang, .menu .side .link { justify-self: start; }
+  .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 720px) {
   .tn { gap: 6px; } .tn .b span { display: none; } .tn .dd .g { display: none; } .tn .rd .lbl { display: none; }
-  .menu { flex-direction: column; gap: 10px; width: calc(100vw - 20px); left: -4px; max-height: calc(100dvh - 80px); overflow: auto; }
+  /* one column that scrolls (no wrap: a wrapping column pushed the last block off-screen), pinned to the viewport edges */
+  .menu { position: fixed; top: calc(var(--bar) + 4px); left: 10px; right: 10px; width: auto; flex-direction: column; flex-wrap: nowrap; gap: 10px; max-height: calc(100dvh - var(--bar) - 16px); overflow: auto; overscroll-behavior: contain; }
   .menu .why { display: none; }
   .g2, .g3, .g4, .g21, .g12 { grid-template-columns: minmax(0, 1fr); }
   .flow { grid-template-columns: minmax(0, 1fr); } .flow div::after { display: none; }

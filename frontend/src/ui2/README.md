@@ -12,7 +12,22 @@
 - Une conversation (`screens/Chat.jsx`) pilotée par `mode` : Expliquer, Cas d'examen, Relier à mon projet, Cas réel. Même charge utile que `send()` aujourd'hui (`mode`, `focus`, `lang`, `project_context`, `lens`).
 - Accès (`Access.jsx`) : mêmes fonctions et mêmes clés `cz_learner`, `cz_name`, `cz_role` ; nom, code de classe, lien magique, lien d'invitation. Clés ajoutées : `cz_cohort` (code affiché dans la barre), `cz_ui2_lang`, `cz_ui2_project`.
 - Scènes terrain, Préparation, Portrait, Réglages, cockpit formateur : « bientôt dans cette version », avec retour vers Aujourd'hui.
+- Menu : sur téléphone et tablette, le panneau tient dans l'écran et le bloc du bas (nom, langue, Présentation, changer d'utilisateur) reste visible.
 - `tokens.css` = jetons de la maquette · `chantier.css` = composants partagés · `engine.js` = lecture des charges utiles · `motion.js` = GSAP + `prefers-reduced-motion`.
+
+## Présentation (page d'entrée)
+- `screens/Landing.jsx` (+ `landing-parts.jsx`, `landing.css`) : la page d'entrée Chantier de `ui-lab/chantier.html` (`Story.jsx`), même texte, mêmes sections, mêmes images et films, même mouvement GSAP (ScrollTrigger). Lenis (défilement doux) n'est pas repris : ce serait une nouvelle dépendance.
+- Qui la voit : toute personne non connectée (pas de `cz_learner`). Une personne connectée va directement à Aujourd'hui. Un lien magique ou d'invitation ouvre directement l'accès.
+- Chaque appel à l'action ouvre l'écran d'accès existant (`Access.jsx`) : « Commencer » et « Faire mon diagnostic » sur l'entrée par nom, « J'ai un code de classe » sur le code de classe, « Accès formateur » et « Créer une séance ciblée » sur l'accès formateur. Un lien « ← Présentation » ramène à la page.
+- « J'ai un code de classe » est ajouté sous le bouton principal et dans l'appel final (absent de la page ui-lab).
+- Connecté : menu → « Présentation » (`#/presentation`) ; ses boutons mènent alors à Aujourd'hui, pas à l'accès.
+- Honnêteté : les chiffres d'exemple portent « Exemple » ; l'indice d'exemple est tronqué (54, pas 55) et les gains du chemin critique sont les leviers de l'apprenant d'exemple, tronqués. Le pied de page « Rien n'est enregistré » devient « Les chiffres de cette page sont des exemples. Votre indice réel ne vient que de vos réponses. »
+- Textes qui n'étaient qu'en français dans ui-lab (Gantt, réseau, livrables, cohorte, pied de page) : version anglaise ajoutée.
+- Mouvement réduit : réglage du système, ou bouton « Réduire les animations » en pied de page (`cz_ui2_reduced`). Films remplacés par leurs affiches, scènes à l'état final.
+- Médias (`frontend/public/ui2/`, 12 fichiers, 1 093 Ko au total contre 1 864 Ko dans ui-lab) : films ré-encodés H.264 sans son (site 318 Ko, pm 158 Ko, board 148 Ko en 960 px), photos WebP 900 px qualité 72, affiches inchangées. Vite copie `public/` dans tous les builds : le build par défaut contient donc ces 12 fichiers statiques, mais aucun code ui2.
+
+## Arrondis
+- Tous les pourcentages de ui2 (indice de la barre, domaines, tâches) sont désormais tronqués, jamais arrondis au-dessus (`engine.js` `pct`) : 33,51 s'affiche 33. La page de présentation promet que l'indice n'est jamais arrondi pour rassurer.
 
 ## Stations → tâches ECO (`stations.js`, premier jet à relire)
 | Station | Tâches pmp.js | Ids moteur (`top_levers`) | Zone « Me tester » |

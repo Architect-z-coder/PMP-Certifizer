@@ -14,10 +14,11 @@ function Logo() {
 }
 
 /** onSignIn(learnerId, name, role, cohortCode?) — the parent writes localStorage and continues. */
-export default function Access({ lang, setLang, currentId, currentName, onSignIn, magicToken, inviteToken, clearToken }) {
+export default function Access({ lang, setLang, currentId, currentName, onSignIn, magicToken, inviteToken, clearToken, initialView = "main", onBack }) {
   const t = (k) => (T0[k] ? T0[k][lang] : k);
   const T = (a, b) => (lang === "en" ? b : a);
-  const [view, setView] = useState("main"); // main | class | recover | trainer | email
+  // main | class | recover | trainer | email — a call to action of the Présentation can open "class" or "trainer" directly
+  const [view, setView] = useState(["class", "trainer", "recover"].includes(initialView) ? initialView : "main");
   const [name, setName] = useState("");
   const [code, setCode] = useState(""); const [cname, setCname] = useState("");
   const [email, setEmail] = useState("");
@@ -153,7 +154,9 @@ export default function Access({ lang, setLang, currentId, currentName, onSignIn
   }
   return (
     <div className="gate">
-      <div className="box">{body}<Lang /><p className="muted" style={{ fontSize: 11.5 }}>{T("Interface Chantier · ECO PMP 2026 · 3 domaines · 26 tâches · 33/41/26 %", "Chantier interface · ECO PMP 2026 · 3 domains · 26 tasks · 33/41/26 %")}</p></div>
+      <div className="box">
+        {onBack && <button type="button" className="link back" onClick={onBack}>← {T("Présentation", "Presentation")}</button>}
+        {body}<Lang /><p className="muted" style={{ fontSize: 11.5 }}>{T("Interface Chantier · ECO PMP 2026 · 3 domaines · 26 tâches · 33/41/26 %", "Chantier interface · ECO PMP 2026 · 3 domains · 26 tasks · 33/41/26 %")}</p></div>
     </div>
   );
 }

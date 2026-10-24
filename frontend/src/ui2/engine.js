@@ -15,7 +15,8 @@ ECO_DOMAINS.forEach((d) => (ECO_TASKS[d.id] || []).forEach((t) => ALL_TASKS.push
 export const TASK_BY_ID = Object.fromEntries(ALL_TASKS.map((t) => [t.id, t]));
 export const DOMAIN_BY_ID = Object.fromEntries(ECO_DOMAINS.map((d) => [d.id, d]));
 
-export const pct = (x) => Math.round((x || 0) * 100);
+/** Score 0..1 → whole percent, never rounded up (54.7 → 54): the Présentation promises the index is never rounded to reassure. */
+export const pct = (x) => Math.floor((x || 0) * 100 + 1e-9);
 export const L = (o, lang) => (o ? (lang === "en" ? o.en : o.fr) || o.fr || "" : "");
 
 /** Per-task evidence from getMastery(): same rollup as the current Journey view
