@@ -1,0 +1,49 @@
+/* « Me tester » — layout of the question screen. Shared blocks (.msg .opt .card .chip .btn) come from chantier.css. */
+.qz .hd .row { align-items: center; }
+.qz .hd h3 .qz-topic { font-weight: 600; font-stretch: 100%; color: var(--muted); }
+
+/* « Sujet » select, compact and pill-shaped like the chips next to it */
+.qz-subj { display: inline-flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; }
+.qz-subj > span { font: 500 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.qz-subj select { font: 500 12px var(--mono); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; min-height: 40px; padding: 6px 12px; max-width: 260px; min-width: 0; cursor: pointer; }
+.qz-subj select:hover { border-color: var(--fg); }
+.qz-subj select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* session progress */
+.qz-prog { display: grid; gap: 8px; }
+.qz-assign { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; } .qz-assign strong { font: 700 15px var(--display); }
+.qz-bar { display: flex; align-items: center; gap: 10px; } .qz-bar .mono { white-space: nowrap; color: var(--muted); font-variant-numeric: tabular-nums; } .qz-bar .bar2 { flex: 1 1 auto; } .qz-bar .bar2 i { transition: width .3s ease; }
+
+/* two columns */
+.qz-left, .qz-right { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.qz-opts { display: grid; gap: 8px; }
+.qz-stem { font-size: 15px; font-weight: 500; line-height: 1.55; color: var(--fg); }
+.qz .opt .txt { flex: 1 1 auto; min-width: 0; }
+.qz .opt .chip { margin-left: auto; align-self: center; }
+.qz .opt .mark { color: var(--ok); font-weight: 700; }
+.qz-why:focus { outline: none; } .qz-why:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.qz .opt.wait { border-color: var(--fg); }
+.qz .opt[disabled] { opacity: .92; } .qz .opt.ok, .qz .opt.ko { opacity: 1; }
+.qz-foot { display: flex; justify-content: flex-end; }
+.qz-foot .link { font-size: 12px; color: var(--muted); min-height: 40px; display: inline-flex; align-items: center; }
+.qz-foot .link[disabled] { color: var(--ok); text-decoration: none; cursor: default; }
+
+/* the rationale (dark card = the system's voice) */
+.qz-hint { border-style: dashed; }
+.qz-why .qz-verdict { font: 700 16px var(--display); } .qz-why .qz-verdict.good { color: var(--ok); } .qz-why .qz-verdict.bad { color: var(--accent); }
+.qz-why .qz-rationale { white-space: pre-wrap; font-size: 13.5px; line-height: 1.6; }
+.qz-why .chip { border-color: var(--panel-line); color: var(--panel-mut); justify-self: start; }
+.qz-why .row { margin-top: 4px; }
+
+/* states */
+.qz-state { max-width: 560px; }
+.qz-done { max-width: 560px; }
+
+@media (max-width: 720px) {
+  .qz .hd .row { width: 100%; }
+  .qz-subj { width: 100%; } .qz-subj select { flex: 1 1 auto; max-width: none; }
+  .qz-why .row .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qz .opt, .qz .btn, .qz-bar .bar2 i, .qz-subj select { transition: none; }
+}

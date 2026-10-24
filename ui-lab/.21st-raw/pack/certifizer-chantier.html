@@ -1,0 +1,691 @@
+<title>Certifizer Chantier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long scroll told like a construction schedule — hero Gantt, then four pinned "work packages", then the call to action. */
+:root {
+  --bg: #F1F2EE;
+  --bg-2: #E7E9E3;
+  --fg: #12161C;
+  --muted: #59616B;
+  --line: #CDD2CA;
+  --accent: #F0A21A;      /* safety amber: the one action, the critical path */
+  --accent-ink: #8A5800;  /* amber for text on light ground */
+  --panel: #12161C;       /* dark work surface */
+  --panel-fg: #EEF0EA;
+  --people: #7E62B5;
+  --process: #23879A;
+  --biz: #C97F0F;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1217; --bg-2: #151A21; --fg: #E9ECE5; --muted: #9AA3AC; --line: #27303A;
+    --accent: #F4B23C; --accent-ink: #F4B23C; --panel: #1A2029; --panel-fg: #EEF0EA;
+    --people: #A48BDA; --process: #3FB2C6; --biz: #E8A23A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1217; --bg-2: #151A21; --fg: #E9ECE5; --muted: #9AA3AC; --line: #27303A;
+  --accent: #F4B23C; --accent-ink: #F4B23C; --panel: #1A2029; --panel-fg: #EEF0EA;
+  --people: #A48BDA; --process: #3FB2C6; --biz: #E8A23A; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.wrap { padding-inline: clamp(16px, 4vw, 56px); max-width: 1320px; margin-inline: auto; }
+.mono { font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em; }
+.eyebrow { font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(38px, 6vw, 84px); font-weight: 800; font-stretch: 112%; line-height: .95; letter-spacing: -.02em; }
+p { margin: 0; max-width: 62ch; }
+.lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); }
+
+/* progress (port of 21st "Scroll Progress", cnippet-dev) */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); z-index: 60; }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in oklab, var(--bg) 82%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.bar.scrolled { border-bottom-color: var(--line); }
+.bar-in { display: flex; align-items: center; gap: 20px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-stretch: 110%; font-size: 19px; text-decoration: none; }
+.nav { display: flex; gap: 22px; margin-left: auto; font-size: 14.5px; }
+.nav a { text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--fg); }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.lang button { border: 0; background: none; font: 500 12px var(--mono); padding: 4px 10px; border-radius: 999px; color: var(--muted); cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.btn { display: inline-flex; align-items: center; gap: 10px; border: 0; border-radius: 999px; padding: 13px 22px; font: 600 15px var(--body); cursor: pointer; text-decoration: none; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s; }
+.btn-primary { background: var(--accent); color: #1A1204; box-shadow: 0 10px 30px -14px var(--accent); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -14px var(--accent); }
+.btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--fg); }
+.btn .arr { transition: transform .25s; }
+.btn:hover .arr { transform: translateX(3px); }
+@media (max-width: 760px) { .nav { display: none; } .bar .btn { display: none; } .lang { margin-left: auto; } }
+
+/* hero */
+.hero { padding-block: clamp(36px, 7vw, 96px) clamp(40px, 6vw, 80px); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+@media (max-width: 960px) { .hero { grid-template-columns: 1fr; } }
+.hero h1 { font-size: clamp(42px, 5.6vw, 92px); font-weight: 900; font-stretch: 118%; line-height: .9; letter-spacing: -.035em; }
+.hero h1 .ln { display: block; overflow: hidden; padding-bottom: .06em; }
+.hero h1 .ln > span { display: inline-block; }
+.hero h1 .site { color: var(--accent-ink); position: relative; }
+.hero h1 .site::after { content: ""; position: absolute; left: 0; right: .2em; bottom: .02em; height: .09em; background: var(--accent); transform-origin: 0 50%; transform: scaleX(var(--u, 1)); }
+.hero .lead { margin-top: 26px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 34px; color: var(--muted); }
+.facts b { color: var(--fg); font-family: var(--display); font-stretch: 110%; font-size: 22px; font-weight: 800; display: block; line-height: 1.1; }
+
+/* gantt */
+.gantt { border: 1px solid var(--line); border-radius: 18px; background: var(--bg-2); padding: 18px 18px 14px; position: relative; overflow: hidden; }
+.gantt-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.gantt-head h3 { font-size: 15px; font-weight: 700; font-stretch: 100%; }
+.gantt svg { width: 100%; height: auto; display: block; }
+.tag { font: 500 11px var(--mono); color: var(--muted); border: 1px dashed var(--line); border-radius: 99px; padding: 2px 8px; }
+
+/* pinned scenes */
+.scene { position: relative; }
+.stage { min-height: 100vh; min-height: 100svh; display: grid; align-content: center; padding-block: 72px; }
+.scene-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 72px); align-items: center; }
+@media (max-width: 960px) { .scene-grid { grid-template-columns: 1fr; } .stage { padding-block: 56px; } }
+.scene-copy { display: grid; gap: 20px; }
+.viz { width: 100%; height: auto; display: block; overflow: visible; }
+.weights { display: flex; gap: 22px; flex-wrap: wrap; }
+.weight b { font-family: var(--display); font-weight: 900; font-stretch: 116%; font-size: clamp(34px, 4.2vw, 56px); line-height: 1; display: block; font-variant-numeric: tabular-nums; }
+.weight > span { font-size: 14px; color: var(--muted); }
+
+/* critical path steps */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.steps li { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); transition: border-color .3s, background .3s; position: relative; }
+.steps .n { width: 30px; height: 30px; border-radius: 99px; display: grid; place-items: center; font: 600 13px var(--mono); border: 1.5px solid var(--line); color: var(--muted); transition: all .3s; }
+.steps li.on { border-color: var(--accent); }
+.steps li.on .n { background: var(--accent); border-color: var(--accent); color: #1A1204; }
+.steps .t { font-weight: 600; font-size: 15.5px; }
+.steps .g { font: 500 12px var(--mono); color: var(--muted); }
+.steps li.locked .t, .steps li.locked .g { filter: blur(3px); user-select: none; }
+.prem { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font: 600 11px var(--mono); letter-spacing: .06em; color: var(--accent-ink); background: var(--bg); padding: 3px 8px; border-radius: 99px; border: 1px solid var(--accent); }
+
+/* horizontal deliverables (port of 21st "Horizontal Scroll Gallery", pulkitxm) */
+.hz { position: relative; }
+.hz-pin { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: minmax(0, 1fr); align-content: center; gap: 36px; padding-block: 72px; overflow: hidden; }
+.hz-track { display: flex; gap: clamp(16px, 2vw, 28px); padding-inline: clamp(16px, 4vw, 56px); width: max-content; will-change: transform; }
+.doc { width: min(420px, 78vw); flex: 0 0 auto; aspect-ratio: 4 / 5; max-width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; grid-template-rows: auto auto 1fr auto; gap: 14px; box-shadow: 0 30px 60px -44px rgba(0,0,0,.45); }
+.doc h3 { font-size: 22px; font-weight: 800; font-stretch: 108%; }
+.doc .meta { display: flex; justify-content: space-between; color: var(--muted); }
+.doc .body { display: grid; align-content: start; gap: 9px; }
+.doc .row { height: 10px; border-radius: 6px; background: var(--line); transform-origin: 0 50%; }
+.doc .row.k { background: color-mix(in oklab, var(--accent) 70%, var(--line)); }
+.doc table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.doc td, .doc th { border-bottom: 1px solid var(--line); padding: 6px 4px; text-align: left; }
+.doc th { font: 500 11px var(--mono); color: var(--muted); }
+.lvl { font: 600 11px var(--mono); padding: 2px 7px; border-radius: 99px; background: color-mix(in oklab, var(--accent) 22%, transparent); color: var(--accent-ink); }
+.stamp { justify-self: start; font: 600 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--process); border: 1.5px solid var(--process); border-radius: 6px; padding: 4px 10px; transform: rotate(-4deg); }
+.wbs { display: grid; gap: 8px; }
+.wbs .node { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-size: 13px; }
+.wbs .kids { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.wbs .kids .node { font-size: 12px; padding: 6px 8px; }
+.hz-intro { width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: end; }
+@media (max-width: 760px) { .hz-intro { grid-template-columns: 1fr; } }
+
+/* honest portrait */
+.mirror { background: var(--panel); color: var(--panel-fg); border-radius: clamp(20px, 3vw, 36px); margin-inline: clamp(8px, 2vw, 24px); }
+.mirror .lead { color: color-mix(in oklab, var(--panel-fg) 70%, transparent); }
+.mirror .eyebrow { color: var(--accent); }
+.ring-wrap { position: relative; width: min(440px, 100%); max-width: 100%; aspect-ratio: 1; margin-inline: auto; }
+.ring-num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ring-num b { font-family: var(--display); font-weight: 900; font-stretch: 120%; font-size: clamp(64px, 9vw, 120px); line-height: .9; font-variant-numeric: tabular-nums; }
+.ring-num > span { font: 500 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-top: 10px; }
+.truths { display: grid; gap: 14px; margin-top: 8px; }
+.truths p { padding-left: 18px; border-left: 2px solid color-mix(in oklab, var(--panel-fg) 22%, transparent); }
+
+/* trainers + cta */
+.trainers { padding-block: clamp(80px, 10vw, 140px) 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 72px); align-items: center; }
+@media (max-width: 960px) { .trainers { grid-template-columns: 1fr; } }
+.cohort { border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 14px; background: var(--bg-2); }
+.cohort-row { display: grid; grid-template-columns: minmax(0, 1fr) 120px 44px; gap: 12px; align-items: center; font-size: 14px; }
+.meter { height: 8px; border-radius: 9px; background: var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; border-radius: 9px; transform-origin: 0 50%; }
+.cta { padding-block: clamp(80px, 12vw, 180px); text-align: left; display: grid; gap: 28px; }
+.cta h2 { font-size: clamp(44px, 9vw, 140px); font-stretch: 120%; font-weight: 900; }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 13.5px; display: grid; gap: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn .arr, .steps li, .steps .n { transition: none; }
+}
+/* media: photos + films */
+.hero-media { position: relative; padding-bottom: clamp(70px, 9vw, 120px); }
+.hero-photo { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 4.4; max-width: 100%; background: var(--bg-2); }
+.hero-photo img, .hero-photo video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-media .gantt { position: absolute; left: clamp(-36px, -3vw, -12px); right: 18%; bottom: 0; box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(8px); }
+@media (max-width: 960px) { .hero-media { padding-bottom: 0; } .hero-media .gantt { position: relative; left: auto; right: auto; bottom: auto; margin: -56px 12px 0; } .hero-photo { aspect-ratio: 4 / 3.6; } }
+.credit { position: absolute; top: 12px; right: 12px; font: 500 11px var(--mono); color: #fff; background: rgba(18,22,28,.55); padding: 3px 8px; border-radius: 99px; }
+.reel { position: relative; }
+.reel-pin { height: 100vh; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+.reel-frame { position: relative; width: 100%; height: 100%; clip-path: inset(14% 16% round 28px); will-change: clip-path; }
+.reel-frame video, .reel-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,13,18,.85), rgba(10,13,18,.25) 60%, rgba(10,13,18,.05)); }
+.reel-cap { position: absolute; left: 0; right: 0; bottom: clamp(28px, 7vh, 72px); z-index: 2; color: #fff; display: grid; gap: 10px; }
+.reel-cap h2 { color: #fff; font-size: clamp(32px, 5vw, 72px); max-width: 16ch; }
+.reel-cap p { color: rgba(255,255,255,.9); max-width: 46ch; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+.reel-cap .eyebrow { color: var(--accent); }
+.hz-intro { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) !important; align-items: center; gap: clamp(20px, 4vw, 56px); }
+@media (max-width: 860px) { .hz-intro { grid-template-columns: minmax(0, 1fr) !important; } .hz-film { display: none; } }
+.hz-film { border-radius: 18px; overflow: hidden; aspect-ratio: 16 / 9; max-width: 100%; background: var(--bg-2); position: relative; }
+.hz-film video, .hz-film img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.doc.photo { padding: 0; overflow: hidden; position: relative; display: block; }
+.doc.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.doc.photo figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 20px; color: #fff; background: linear-gradient(to top, rgba(10,13,18,.8), transparent); font-weight: 600; }
+.people { padding-block: clamp(80px, 10vw, 140px) 20px; display: grid; gap: 28px; }
+.people-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2vw, 24px); }
+@media (max-width: 760px) { .people-grid { grid-template-columns: 1fr; } }
+.person { margin: 0; display: grid; gap: 12px; }
+.person .ph { border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 5; max-width: 100%; background: var(--bg-2); }
+.person img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.08); }
+.person figcaption { display: grid; gap: 2px; }
+.person figcaption b { font-family: var(--display); font-stretch: 106%; font-size: 19px; }
+.person figcaption span { color: var(--muted); font-size: 15px; }
+.trainer-photo { border-radius: 40px; overflow: hidden; aspect-ratio: 16 / 10; max-width: 100%; margin-top: 24px; background: var(--bg-2); }
+.trainer-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cta-film { position: relative; overflow: hidden; color: #fff; margin-top: clamp(60px, 8vw, 110px); }
+.cta-film video, .cta-film .poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cta-film::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(10,13,18,.88) 0%, rgba(10,13,18,.62) 45%, rgba(10,13,18,.15) 100%); }
+.cta-film .cta { position: relative; z-index: 2; }
+.cta-film .cta h2 { color: #fff; max-width: 13ch; }
+.cta-film .eyebrow { color: var(--accent); }
+.cta-film .btn-ghost { color: #fff; border-color: rgba(255,255,255,.4); }
+.cta-film .btn-ghost:hover { border-color: #fff; }
+.ph-note { font: 500 12px var(--mono); color: var(--muted); }
+</style>
+
+<div class="progress" aria-hidden="true"></div>
+
+<header class="bar" id="bar">
+  <div class="wrap bar-in">
+    <a class="brand" href="#top" aria-label="Certifizer, accueil">
+      <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 L34 31 L6 31 Z" fill="none" stroke="var(--accent)" stroke-width="2.8" stroke-linejoin="round"/><circle cx="20" cy="6" r="3.2" fill="var(--accent)"/><circle cx="6" cy="31" r="3.2" fill="var(--fg)"/><circle cx="34" cy="31" r="3.2" fill="var(--process)"/></svg>
+      Certifizer
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#taches" data-en="The 26 tasks">Les 26 tâches</a>
+      <a href="#chemin" data-en="Critical path">Chemin critique</a>
+      <a href="#projet" data-en="Your project">Votre projet</a>
+      <a href="#formateurs" data-en="Trainers">Formateurs</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Langue">
+      <button type="button" aria-pressed="true" data-lang="fr">FR</button>
+      <button type="button" aria-pressed="false" data-lang="en">EN</button>
+    </div>
+    <a class="btn btn-primary" href="#commencer" data-en="Start">Commencer</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <div>
+      <p class="eyebrow" data-en="PMP exam prep · ECO 2026">Préparation PMP · ECO 2026</p>
+      <h1 id="hero-title" style="margin-top:18px">
+        <span class="ln"><span data-en="Prepare the PMP">Préparez le PMP</span></span>
+        <span class="ln"><span data-en="on your real">sur votre vrai</span></span>
+        <span class="ln"><span class="site" data-en="project.">chantier.</span></span>
+      </h1>
+      <p class="lead" data-en="Adaptive, bilingual preparation built on the 2026 exam outline. You practise on your own project, and your readiness score is never inflated.">Une préparation adaptative et bilingue, fidèle au plan d'examen 2026. Vous vous entraînez sur votre propre projet, et votre indice de préparation n'est jamais gonflé.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#commencer"><span data-en="Take my diagnostic">Faire mon diagnostic</span> <span class="arr" aria-hidden="true">→</span></a>
+        <a class="btn btn-ghost" href="#chemin" data-en="See how it works">Voir comment ça marche</a>
+      </div>
+      <div class="facts">
+        <div><b>26</b><span data-en="ECO 2026 tasks">tâches ECO 2026</span></div>
+        <div><b>33 · 41 · 26</b><span data-en="domain weights, %">poids des domaines, %</span></div>
+        <div><b>FR / EN</b><span data-en="everywhere">partout</span></div>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-photo"><img src="media/site-engineer.webp" alt="Une ingénieure en casque et gilet de sécurité consulte un plan sur sa tablette devant un chantier au coucher du soleil" width="1000" height="1241" fetchpriority="high"></div>
+      <figure class="gantt" aria-label="Exemple d'échéancier de préparation sur six semaines">
+      <div class="gantt-head"><h3 data-en="Your preparation schedule">Votre échéancier de préparation</h3><span class="tag" data-en="Example">Exemple</span></div>
+      <svg id="gantt" viewBox="0 0 560 330" role="img" aria-labelledby="gantt-t"><title id="gantt-t">Sept lots de travail répartis sur six semaines, le lot critique en ambre</title></svg>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Film: grows to full screen on scroll (adapted from 21st "Video Scroll Hero", @isaiahbjork) -->
+  <section class="reel" aria-labelledby="treel">
+    <div class="reel-pin" data-pin="reel">
+      <div class="reel-frame" id="reel-frame">
+        <video class="film" muted loop playsinline preload="metadata" poster="media/site-poster.webp" aria-hidden="true"><source src="media/site.mp4" type="video/mp4"></video>
+        <div class="reel-cap wrap">
+          <p class="eyebrow" data-en="Your project is the textbook">Votre projet sert de manuel</p>
+          <h2 id="treel" data-en="Every PMP notion, tied to a real worksite.">Chaque notion PMP, reliée à un vrai chantier.</h2>
+          <p data-en="Risks, schedule, stakeholders: you revise them on the project you actually run.">Risques, échéancier, parties prenantes : vous les révisez sur le projet que vous menez vraiment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 1: 26 tasks converge into 3 domains -->
+  <section class="scene" id="taches" aria-labelledby="t1">
+    <div class="wrap stage" data-pin="tasks">
+      <div class="scene-grid">
+        <div class="scene-copy">
+          <p class="eyebrow" data-en="The exam blueprint">Le plan de l'examen</p>
+          <h2 id="t1" data-en="26 tasks. Three domains.">26 tâches. Trois domaines.</h2>
+          <p class="lead" data-en="Every question you answer is tied to one of the 26 tasks of the ECO 2026, weighted exactly as on exam day.">Chaque question que vous traitez est rattachée à l'une des 26 tâches de l'ECO 2026, pondérée exactement comme le jour de l'examen.</p>
+          <div class="weights">
+            <div class="weight"><b style="color:var(--people)"><span class="count" data-to="33">33</span> %</b><span data-en="People">Personnes</span></div>
+            <div class="weight"><b style="color:var(--process)"><span class="count" data-to="41">41</span> %</b><span data-en="Process">Processus</span></div>
+            <div class="weight"><b style="color:var(--biz)"><span class="count" data-to="26">26</span> %</b><span data-en="Business env.">Environnement d'affaires</span></div>
+          </div>
+        </div>
+        <svg class="viz" id="dots" viewBox="0 0 640 520" role="img" aria-label="26 points qui se regroupent en trois domaines : 8 tâches Personnes, 10 Processus, 8 Environnement d'affaires"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 2: critical path lights up -->
+  <section class="scene" id="chemin" aria-labelledby="t2">
+    <div class="wrap stage" data-pin="path">
+      <div class="scene-grid">
+        <div class="scene-copy">
+          <p class="eyebrow" data-en="Your critical path">Votre chemin critique</p>
+          <h2 id="t2" data-en="Four steps. In the right order.">Quatre étapes. Dans le bon ordre.</h2>
+          <p class="lead" data-en="Certifizer finds the tasks that hold back your whole preparation, then orders them so each one unlocks the next.">Certifizer repère les tâches qui freinent toute votre préparation, puis les ordonne pour que chacune débloque la suivante.</p>
+          <ol class="steps" aria-label="Étapes du chemin critique (exemple)">
+            <li data-step="0"><span class="n">1</span><span class="t" data-en="Manage risk">Gérer les risques</span><span class="g">+4,1 pts</span></li>
+            <li data-step="1"><span class="n">2</span><span class="t" data-en="Plan & manage schedule">Planifier & gérer l'échéancier</span><span class="g">+3,2 pts</span></li>
+            <li data-step="2" class="locked"><span class="n">3</span><span class="t">Gérer les finances du projet</span><span class="g">+2,6 pts</span><span class="prem">Premium</span></li>
+            <li data-step="3" class="locked"><span class="n">4</span><span class="t">Mobiliser les parties prenantes</span><span class="g">+1,9 pts</span><span class="prem">Premium</span></li>
+          </ol>
+        </div>
+        <svg class="viz" id="pert" viewBox="0 0 660 440" role="img" aria-label="Réseau de tâches : le chemin critique s'allume en ambre, du diagnostic à l'examen"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 3: deliverables, horizontal -->
+  <section class="hz" id="projet" aria-labelledby="t3">
+    <div class="hz-pin" data-pin="hz">
+      <div class="wrap hz-intro">
+        <div class="scene-copy">
+          <p class="eyebrow" data-en="Relate to my project">Relier à mon projet</p>
+          <h2 id="t3" data-en="Revision that produces real work.">Réviser en produisant du vrai travail.</h2>
+          <p class="lead" data-en="You describe your project. You come out with real PMP deliverables, reviewed against PMI rubrics and validated by your trainer.">Vous décrivez votre projet. Vous en sortez avec de vrais livrables PMP, évalués selon des grilles PMI et validés par votre formateur.</p>
+          <span class="tag" style="justify-self:start" data-en="Example: pumping station project">Exemple : projet de station de pompage</span>
+        </div>
+        <div class="hz-film"><video class="film" muted loop playsinline preload="metadata" poster="media/board-poster.webp" aria-hidden="true"><source src="media/board.mp4" type="video/mp4"></video></div>
+      </div>
+      <div class="hz-track" id="track">
+        <figure class="doc photo" style="margin:0">
+          <img src="media/team-roadmap.webp" alt="Une équipe projet annote une feuille de route imprimée avec des notes adhésives" width="1000" height="1241" loading="lazy">
+          <figcaption data-en="Your team, your roadmap">Votre équipe, votre feuille de route</figcaption>
+        </figure>
+        <article class="doc" aria-label="Charte de projet">
+          <div class="meta mono"><span>DOC-01</span><span>v3</span></div>
+          <h3>Charte de projet</h3>
+          <div class="body">
+            <div class="row k" style="width:42%"></div><div class="row" style="width:96%"></div><div class="row" style="width:88%"></div><div class="row" style="width:70%"></div>
+            <div class="row k" style="width:36%; margin-top:10px"></div><div class="row" style="width:92%"></div><div class="row" style="width:80%"></div>
+            <div class="row k" style="width:48%; margin-top:10px"></div><div class="row" style="width:84%"></div>
+          </div>
+          <span class="stamp">Validé · formateur</span>
+        </article>
+        <article class="doc" aria-label="Registre des risques">
+          <div class="meta mono"><span>DOC-02</span><span>v2</span></div>
+          <h3>Registre des risques</h3>
+          <div class="body">
+            <table>
+              <thead><tr><th>Risque</th><th>P×I</th><th>Réponse</th></tr></thead>
+              <tbody>
+                <tr><td>Retard livraison pompes</td><td class="mono">0,6</td><td>Atténuer</td></tr>
+                <tr><td>Crue en saison</td><td class="mono">0,4</td><td>Éviter</td></tr>
+                <tr><td>Permis tardif</td><td class="mono">0,3</td><td>Transférer</td></tr>
+                <tr><td>Hausse de l'acier</td><td class="mono">0,3</td><td>Accepter</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="lvl">Niveau 3 · infléchit une décision</span>
+        </article>
+        <article class="doc" aria-label="Structure de découpage du projet">
+          <div class="meta mono"><span>DOC-03</span><span>v1</span></div>
+          <h3>WBS</h3>
+          <div class="body wbs">
+            <div class="node">1. Station de pompage</div>
+            <div class="kids"><div class="node">1.1 Génie civil</div><div class="node">1.2 Équipements</div><div class="node">1.3 Mise en service</div></div>
+            <div class="kids"><div class="node">1.1.1 Fondations</div><div class="node">1.2.1 Pompes</div><div class="node">1.3.1 Essais</div></div>
+          </div>
+          <span class="lvl">Niveau 2 · décrit</span>
+        </article>
+        <article class="doc" aria-label="Plan de communication">
+          <div class="meta mono"><span>DOC-04</span><span>v1</span></div>
+          <h3>Plan de communication</h3>
+          <div class="body">
+            <table>
+              <thead><tr><th>Partie prenante</th><th>Canal</th><th>Rythme</th></tr></thead>
+              <tbody>
+                <tr><td>Maître d'ouvrage</td><td>Comité</td><td class="mono">Mensuel</td></tr>
+                <tr><td>Riverains</td><td>Réunion</td><td class="mono">Trimestriel</td></tr>
+                <tr><td>Équipe chantier</td><td>Point</td><td class="mono">Quotidien</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="lvl">En cours</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 4: honest portrait -->
+  <section class="mirror" aria-labelledby="t4">
+    <div class="wrap stage" data-pin="ring">
+      <div class="scene-grid">
+        <div class="scene-copy">
+          <p class="eyebrow" data-en="Your portrait">Votre portrait</p>
+          <h2 id="t4" data-en="A mirror, not a trophy.">Un miroir, pas un trophée.</h2>
+          <p class="lead" data-en="Your readiness score counts only what your answers prove. A task you have never practised counts for zero.">Votre indice ne compte que ce que vos réponses prouvent. Une tâche jamais travaillée compte pour zéro.</p>
+          <div class="truths">
+            <p data-en="It never rounds up to reassure you.">Il n'est jamais arrondi pour vous rassurer.</p>
+            <p data-en="It can go down when a skill fades.">Il peut redescendre quand une compétence s'efface.</p>
+            <p data-en="It always names the next task to work on.">Il nomme toujours la prochaine tâche à travailler.</p>
+          </div>
+        </div>
+        <div class="ring-wrap">
+          <svg class="viz" id="ring" viewBox="0 0 400 400" aria-hidden="true"></svg>
+          <div class="ring-num" role="img" aria-label="Préparation estimée : 54 %, en construction (exemple)"><b><span id="ringval">54</span> %</b><span data-en="Building · example">En construction · exemple</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap people" aria-labelledby="tpeople">
+    <div class="sec-intro scene-copy" data-reveal>
+      <p class="eyebrow" data-en="Who it is for">Pour qui</p>
+      <h2 id="tpeople" data-en="People who run projects for real.">Ceux qui mènent de vrais projets.</h2>
+    </div>
+    <div class="people-grid">
+      <figure class="person"><div class="ph mask"><img src="media/colleagues.webp" alt="Deux collègues échangent autour d'un document et d'une tablette" width="1000" height="1241" loading="lazy"></div>
+        <figcaption><b data-en="In pairs or in a cohort">En binôme ou en cohorte</b><span data-en="Your trainer follows the group, task by task.">Votre formateur suit le groupe, tâche par tâche.</span></figcaption></figure>
+      <figure class="person"><div class="ph mask"><img src="media/scenario.webp" alt="Une cheffe de projet réfléchit devant un scénario sur son ordinateur" width="1000" height="1241" loading="lazy"></div>
+        <figcaption><b data-en="Fifteen minutes when you can">Quinze minutes quand vous pouvez</b><span data-en="Short sessions built from your recent mistakes.">Des séances courtes, construites sur vos erreurs récentes.</span></figcaption></figure>
+      <figure class="person"><div class="ph mask"><img src="media/learner.webp" alt="Un ingénieur révise à son bureau avec un carnet de notes" width="1000" height="1241" loading="lazy"></div>
+        <figcaption><b data-en="On your own project">Sur votre propre projet</b><span data-en="Each notion applied to the work on your desk.">Chaque notion appliquée au travail sur votre bureau.</span></figcaption></figure>
+    </div>
+    <p class="ph-note" data-en="Illustrative photos">Photos d'illustration</p>
+  </section>
+
+  <section class="wrap trainers" id="formateurs" aria-labelledby="t5">
+    <div class="scene-copy" data-reveal>
+      <p class="eyebrow" data-en="For trainers">Pour les formateurs</p>
+      <h2 id="t5" data-en="See what holds the cohort back.">Voyez ce qui freine la cohorte.</h2>
+      <p class="lead" data-en="Each morning, one brief: the topics blocking the group, who needs support, and one click to assign a targeted session.">Chaque matin, un brief : les sujets qui bloquent le groupe, qui accompagner, et un clic pour assigner une séance ciblée.</p>
+      <div class="trainer-photo" id="trainer-photo"><img src="media/trainer.webp" alt="Une formatrice présente le tableau de bord de la cohorte à six apprenants" width="1000" height="1241" loading="lazy"></div>
+    </div>
+    <div class="cohort" data-reveal aria-label="Exemple de cohorte PMP-2026-A">
+      <div class="gantt-head"><h3 class="mono" style="font-size:13px">Cohorte PMP-2026-A · 18 apprenant·es</h3><span class="tag">Exemple</span></div>
+      <div class="cohort-row"><span>Gérer les risques</span><span class="meter"><i style="width:39%;background:var(--biz)"></i></span><span class="mono">39 %</span></div>
+      <div class="cohort-row"><span>Échéancier</span><span class="meter"><i style="width:46%;background:var(--process)"></i></span><span class="mono">46 %</span></div>
+      <div class="cohort-row"><span>Parties prenantes</span><span class="meter"><i style="width:52%;background:var(--people)"></i></span><span class="mono">52 %</span></div>
+      <div class="cohort-row"><span>Gouvernance</span><span class="meter"><i style="width:61%;background:var(--biz)"></i></span><span class="mono">61 %</span></div>
+      <button class="btn btn-ghost" type="button" style="justify-self:start" data-en="Create a targeted session">Créer une séance ciblée</button>
+    </div>
+  </section>
+
+  <section class="cta-film" id="commencer" aria-labelledby="t6">
+    <img class="poster" src="media/pm-poster.webp" alt="" aria-hidden="true">
+    <video class="film" muted loop playsinline preload="metadata" poster="media/pm-poster.webp" aria-hidden="true"><source src="media/pm.mp4" type="video/mp4"></video>
+  <div class="wrap cta">
+    <p class="eyebrow" data-reveal data-en="Fifteen minutes is enough">Quinze minutes suffisent</p>
+    <h2 id="t6" data-reveal data-en="Start where you really are.">Commencez là où vous en êtes vraiment.</h2>
+    <div class="hero-cta" data-reveal>
+      <a class="btn btn-primary" href="#top"><span data-en="Take my diagnostic">Faire mon diagnostic</span> <span class="arr" aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="#formateurs" data-en="Trainer access">Accès formateur</a>
+    </div>
+  </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span data-en="Visual preview with sample data. Nothing here is saved.">Aperçu visuel avec données d'exemple. Rien n'est enregistré.</span>
+  <span class="mono">Motion : GSAP ScrollTrigger · Lenis · adapté de 21st.dev « Reveal » (@asanshay), « Scroll Progress » (@cnippet-dev), « Horizontal Scroll Gallery » (@pulkitxm), « Video Scroll Hero » (@isaiahbjork), « Reveal Image Mask » (@daiwiikharihar), « Scroll Reveal Image » (@unlumen). Photos et films générés pour l'illustration.</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const el = (tag, attrs = {}, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; };
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hasGsap = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
+
+  /* ---------- language ---------- */
+  const tr = [...document.querySelectorAll("[data-en]")];
+  tr.forEach((n) => { n.dataset.fr = n.textContent; });
+  document.querySelectorAll(".lang button").forEach((b) => b.addEventListener("click", () => {
+    const en = b.dataset.lang === "en";
+    document.documentElement.lang = en ? "en" : "fr";
+    document.querySelectorAll(".lang button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    tr.forEach((n) => { n.textContent = en ? n.dataset.en : n.dataset.fr; });
+    if (hasGsap) ScrollTrigger.refresh();
+  }));
+
+  /* ---------- hero Gantt ---------- */
+  const g = document.getElementById("gantt");
+  const rows = [
+    ["Diagnostic", 0, 0.8, "process"], ["Personnes", 0.6, 2.4, "people"], ["Processus", 1.2, 3.6, "process"],
+    ["Gérer les risques", 1.8, 3.4, "accent"], ["Échéancier", 3.4, 4.6, "accent"], ["Env. d'affaires", 2.4, 4.8, "biz"], ["Examen blanc", 5.0, 5.9, "fg"],
+  ];
+  const X0 = 150, W = 390, wk = W / 6, R0 = 34, RH = 40;
+  for (let w = 0; w <= 6; w++) {
+    el("line", { x1: X0 + w * wk, x2: X0 + w * wk, y1: 18, y2: R0 + rows.length * RH - 6, stroke: css("--line"), "stroke-width": 1 }, g);
+    if (w < 6) { const t = el("text", { x: X0 + w * wk + 6, y: 14, "font-family": "JetBrains Mono, monospace", "font-size": 11, fill: css("--muted") }, g); t.textContent = "S" + (w + 1); }
+  }
+  const bars = [];
+  rows.forEach(([label, a, b, c], i) => {
+    const y = R0 + i * RH;
+    const t = el("text", { x: 0, y: y + 17, "font-family": "Public Sans, sans-serif", "font-size": 13, fill: css("--fg") }, g); t.textContent = label;
+    const color = c === "accent" ? css("--accent") : c === "fg" ? css("--fg") : css("--" + c);
+    const r = el("rect", { x: X0 + a * wk, y: y + 4, width: (b - a) * wk, height: 18, rx: 9, fill: color }, g);
+    bars.push(r);
+  });
+  // critical link between the two amber bars
+  const link = el("path", { d: `M ${X0 + 3.4 * wk} ${R0 + 3 * RH + 13} C ${X0 + 3.5 * wk} ${R0 + 3 * RH + 30}, ${X0 + 3.3 * wk} ${R0 + 4 * RH - 6}, ${X0 + 3.4 * wk + 2} ${R0 + 4 * RH + 6}`, fill: "none", stroke: css("--accent"), "stroke-width": 2, "stroke-dasharray": "4 4" }, g);
+  const today = el("g", {}, g);
+  el("line", { x1: 0, x2: 0, y1: 22, y2: R0 + rows.length * RH - 4, stroke: css("--fg"), "stroke-width": 1.5 }, today);
+  el("circle", { cx: 0, cy: 22, r: 4, fill: css("--fg") }, today);
+  const tl = el("text", { x: 6, y: R0 + rows.length * RH - 8, "font-family": "JetBrains Mono, monospace", "font-size": 11, fill: css("--fg") }, today); tl.textContent = "aujourd'hui";
+  today.setAttribute("transform", `translate(${X0 + 2.3 * wk},0)`);
+
+  /* ---------- scene 1: dots ---------- */
+  const dots = document.getElementById("dots");
+  const groups = [{ id: "people", n: 8, cx: 120 }, { id: "process", n: 10, cx: 320 }, { id: "biz", n: 8, cx: 520 }];
+  let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const dotEls = [];
+  groups.forEach((gr) => {
+    const cols = 2, gap = 46, rowsN = Math.ceil(gr.n / cols);
+    for (let i = 0; i < gr.n; i++) {
+      const col = i % cols, row = Math.floor(i / cols);
+      const fx = gr.cx + (col - 0.5) * gap + (row % 2 ? 10 : -10), fy = 470 - (rowsN - 1 - row) * gap - 20;
+      const sx = 30 + rnd() * 580, sy = 30 + rnd() * 400;
+      const c = el("circle", { cx: sx, cy: sy, r: 15, fill: css("--line") }, dots);
+      dotEls.push({ c, fx, fy, color: css("--" + gr.id) });
+    }
+    const base = el("line", { x1: gr.cx - 60, x2: gr.cx + 60, y1: 500, y2: 500, stroke: css("--line"), "stroke-width": 2 }, dots);
+  });
+
+  /* ---------- scene 2: PERT ---------- */
+  const pert = document.getElementById("pert");
+  const N = {
+    S: [40, 220, "Diagnostic"], R: [190, 120, "Risques"], I: [190, 330, "Intégration"], E: [340, 120, "Échéancier"],
+    Q: [340, 330, "Qualité"], F: [480, 200, "Finances"], C: [480, 360, "Communication"], P: [600, 120, "Parties prenantes"], X: [620, 300, "Examen"],
+  };
+  const edges = [["S","R",1],["S","I",0],["R","E",1],["I","Q",0],["I","E",0],["E","F",1],["Q","F",0],["Q","C",0],["F","P",1],["C","X",0],["P","X",1]];
+  const edgeEls = edges.map(([a, b, crit]) => {
+    const [x1, y1] = N[a], [x2, y2] = N[b];
+    const mx = (x1 + x2) / 2;
+    const p = el("path", { d: `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`, fill: "none", stroke: crit ? css("--accent") : css("--line"), "stroke-width": crit ? 4 : 2, "stroke-linecap": "round", opacity: crit ? 1 : 1 }, pert);
+    const len = p.getTotalLength(); p.style.strokeDasharray = len; p.style.strokeDashoffset = crit ? len : 0;
+    return { p, len, crit };
+  });
+  const nodeEls = {};
+  Object.entries(N).forEach(([k, [x, y, label]]) => {
+    const gg = el("g", {}, pert);
+    const crit = ["S", "R", "E", "F", "P", "X"].includes(k);
+    const c = el("circle", { cx: x, cy: y, r: k === "S" || k === "X" ? 14 : 11, fill: css("--bg"), stroke: crit ? css("--fg") : css("--line"), "stroke-width": 2.5 }, gg);
+    const t = el("text", { x, y: y - 22, "text-anchor": "middle", "font-family": "Public Sans, sans-serif", "font-size": 14, "font-weight": 600, fill: crit ? css("--fg") : css("--muted") }, gg);
+    t.textContent = label;
+    nodeEls[k] = c;
+  });
+
+  /* ---------- scene 4: ring ---------- */
+  const ring = document.getElementById("ring");
+  const RR = 160, CIRC = 2 * Math.PI * RR;
+  el("circle", { cx: 200, cy: 200, r: RR, fill: "none", stroke: "rgba(255,255,255,.12)", "stroke-width": 26 }, ring);
+  // thresholds 50 / 70 / 85
+  [[50, "50"], [70, "70"], [85, "85"]].forEach(([v, lab]) => {
+    const a = (v / 100) * Math.PI * 2 - Math.PI / 2;
+    el("line", { x1: 200 + Math.cos(a) * (RR - 20), y1: 200 + Math.sin(a) * (RR - 20), x2: 200 + Math.cos(a) * (RR + 20), y2: 200 + Math.sin(a) * (RR + 20), stroke: "rgba(255,255,255,.45)", "stroke-width": 2 }, ring);
+    const t = el("text", { x: 200 + Math.cos(a) * (RR + 34), y: 200 + Math.sin(a) * (RR + 34) + 4, "text-anchor": "middle", "font-family": "JetBrains Mono, monospace", "font-size": 12, fill: "rgba(255,255,255,.6)" }, ring); t.textContent = lab;
+  });
+  const arc = el("circle", { cx: 200, cy: 200, r: RR, fill: "none", stroke: css("--accent"), "stroke-width": 26, "stroke-linecap": "round", transform: "rotate(-90 200 200)", "stroke-dasharray": CIRC, "stroke-dashoffset": CIRC * (1 - 0.54) }, ring);
+
+  /* ---------- final states (no GSAP or reduced motion) ---------- */
+  const finalStates = () => {
+    dotEls.forEach((d) => { d.c.setAttribute("cx", d.fx); d.c.setAttribute("cy", d.fy); d.c.setAttribute("fill", d.color); });
+    edgeEls.forEach((e) => { e.p.style.strokeDashoffset = 0; });
+    Object.entries(nodeEls).forEach(([k, c]) => { if (["S","R","E","F","P","X"].includes(k)) { c.setAttribute("fill", css("--accent")); c.setAttribute("stroke", css("--accent")); } });
+    document.querySelectorAll(".steps li").forEach((li) => li.classList.add("on"));
+  };
+
+  /* films: play only when visible; never autoplay with reduced motion */
+  const films = [...document.querySelectorAll("video.film")];
+  if (!reduced && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((ents) => ents.forEach((en) => {
+      const v = en.target; if (en.isIntersecting) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } else v.pause();
+    }), { threshold: 0.15 });
+    films.forEach((v) => io.observe(v));
+  } else { films.forEach((v) => { v.removeAttribute("autoplay"); v.pause(); }); }
+
+  if (!hasGsap || reduced) {
+    const rf = document.getElementById("reel-frame"); if (rf) rf.style.clipPath = "inset(0 round 0)";
+    finalStates();
+    const tr2 = document.getElementById("track"); if (tr2) { tr2.parentElement.style.overflowX = "auto"; tr2.parentElement.style.overflowY = "hidden"; }
+    return;
+  }
+
+  /* ---------- motion ---------- */
+  gsap.registerPlugin(ScrollTrigger);
+  const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.95 });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
+    const id = a.getAttribute("href"); const t = id === "#top" ? 0 : document.querySelector(id);
+    if (t === null) return; e.preventDefault(); lenis.scrollTo(t, { offset: -64, duration: 1.4 });
+  }));
+
+  // progress bar: spring-like follow (21st Scroll Progress: damping 50 / stiffness 200)
+  const prog = document.querySelector(".progress");
+  const setProg = gsap.quickTo(prog, "scaleX", { duration: 0.5, ease: "power3.out" });
+  ScrollTrigger.create({ start: 0, end: "max", onUpdate: (s) => setProg(s.progress) });
+  ScrollTrigger.create({ start: 8, end: "max", toggleClass: { targets: "#bar", className: "scrolled" } });
+
+  // hero load sequence
+  const heroTl = gsap.timeline({ defaults: { ease: "expo.out" } });
+  heroTl.from(".hero h1 .ln > span", { yPercent: 110, duration: 1.15, stagger: 0.09 })
+    .fromTo(".hero h1 .site", { "--u": 0 }, { "--u": 1, duration: 0.9, ease: "power3.inOut" }, "-=0.55")
+    .from(".hero .eyebrow, .hero .lead, .hero-cta, .facts > div", { y: 18, opacity: 0, filter: "blur(8px)", duration: 0.8, stagger: 0.06 }, "-=1.0")
+    .from(bars, { attr: { width: 0 }, duration: 1.0, stagger: 0.07, ease: "power4.out" }, 0.25)
+    .from(link, { opacity: 0, duration: 0.6 }, "-=0.3");
+  // ambient: "today" line drifts through the week
+  gsap.to(today, { attr: { transform: `translate(${X0 + 2.9 * wk},0)` }, duration: 6, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1.6 });
+  // gentle parallax on the gantt card
+  gsap.to(".hero-media .gantt", { yPercent: -10, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+
+  const mm = gsap.matchMedia();
+  mm.add({ desk: "(min-width: 961px)", mob: "(max-width: 960px)" }, (ctx) => {
+    const { desk } = ctx.conditions;
+    const pinLen = desk ? "+=140%" : "+=110%";
+
+    // film grows to full screen (21st Video Scroll Hero: 25% -> full; here a clip-path inset for performance)
+    gsap.timeline({ scrollTrigger: { trigger: '[data-pin="reel"]', start: "top top", end: desk ? "+=120%" : "+=90%", scrub: 0.8, pin: true } })
+      .fromTo("#reel-frame", { clipPath: desk ? "inset(14% 16% round 28px)" : "inset(18% 6% round 22px)" }, { clipPath: "inset(0% 0% round 0px)", ease: "power2.inOut", duration: 1 })
+      .from(".reel-cap > *", { y: 30, opacity: 0, stagger: 0.12, duration: 0.4 }, 0.55);
+
+    // scene 1: scattered -> three domains
+    const t1 = gsap.timeline({ scrollTrigger: { trigger: '[data-pin="tasks"]', start: "top top", end: pinLen, scrub: 0.8, pin: true } });
+    dotEls.forEach((d, i) => {
+      t1.to(d.c, { attr: { cx: d.fx, cy: d.fy, fill: d.color }, duration: 1, ease: "power3.inOut" }, (i % 13) * 0.025);
+    });
+    document.querySelectorAll("#taches .count").forEach((n) => {
+      const o = { v: 0 };
+      t1.fromTo(o, { v: 0 }, { v: +n.dataset.to, duration: 0.8, ease: "power2.out", onUpdate: () => (n.textContent = Math.round(o.v)) }, 0.3);
+    });
+
+    // scene 2: critical path draws and lights in four steps
+    const t2 = gsap.timeline({ scrollTrigger: { trigger: '[data-pin="path"]', start: "top top", end: desk ? "+=180%" : "+=140%", scrub: 0.8, pin: true } });
+    const seq = [["S", "R", 0], ["R", "E", 1], ["E", "F", 2], ["F", "P", 3], ["P", "X", -1]];
+    const steps = [...document.querySelectorAll(".steps li")];
+    t2.to(nodeEls.S, { attr: { fill: css("--accent"), stroke: css("--accent") }, duration: 0.2 });
+    const segDur = 1.25, head = 0.2, total = head + seq.length * segDur;
+    seq.forEach(([a, b]) => {
+      const e = edgeEls[edges.findIndex((q) => q[0] === a && q[1] === b)];
+      t2.to(e.p, { strokeDashoffset: 0, duration: 1, ease: "none" })
+        .to(nodeEls[b], { attr: { fill: css("--accent"), stroke: css("--accent"), r: b === "X" ? 18 : 15 }, duration: 0.25, ease: "back.out(3)" });
+    });
+    const lightSteps = (p) => steps.forEach((li, i) => li.classList.toggle("on", p >= (head + segDur * (i + 1)) / total));
+    t2.eventCallback("onUpdate", () => lightSteps(t2.progress()));
+
+    // scene 3: horizontal deliverables (pin + translate, as in the 21st gallery)
+    const track = document.getElementById("track");
+    const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 32);
+    const hz = gsap.to(track, { x: () => -dist(), ease: "none", scrollTrigger: { trigger: '[data-pin="hz"]', start: "top top", end: () => "+=" + (dist() + window.innerHeight * 0.4), scrub: 0.6, pin: true, invalidateOnRefresh: true } });
+    const ph = document.querySelector(".doc.photo");
+    if (ph) gsap.fromTo(ph, { clipPath: "inset(0 0 100% 0 round 16px)" }, { clipPath: "inset(0 0 0% 0 round 16px)", duration: 1, ease: "expo.out", scrollTrigger: { trigger: '[data-pin="hz"]', start: "top 60%", toggleActions: "play none none reverse" } });
+    document.querySelectorAll(".doc:not(.photo)").forEach((doc) => {
+      const st = { trigger: doc, containerAnimation: hz, start: "left 82%", toggleActions: "play none none reverse" };
+      gsap.from(doc.querySelectorAll(".row, tr, .node"), { scaleX: 0, opacity: 0, transformOrigin: "0 50%", stagger: 0.05, duration: 0.6, ease: "power3.out", scrollTrigger: st });
+      gsap.from(doc.querySelector(".stamp, .lvl"), { scale: 1.6, opacity: 0, rotate: -12, duration: 0.5, delay: 0.35, ease: "back.out(2.4)", scrollTrigger: { ...st } });
+      gsap.fromTo(doc, { rotate: 2.5, y: 30 }, { rotate: 0, y: 0, ease: "none", scrollTrigger: { trigger: doc, containerAnimation: hz, start: "left right", end: "left 40%", scrub: true } });
+    });
+
+    // scene 4: the ring fills to 54 and stops
+    const val = document.getElementById("ringval");
+    gsap.set(arc, { attr: { "stroke-dashoffset": CIRC } });
+    const o = { v: 0 };
+    gsap.timeline({ scrollTrigger: { trigger: '[data-pin="ring"]', start: "top top", end: desk ? "+=110%" : "+=90%", scrub: 0.8, pin: true } })
+      .to(o, { v: 54, duration: 1, ease: "power2.inOut", onUpdate: () => { val.textContent = Math.round(o.v); arc.setAttribute("stroke-dashoffset", CIRC * (1 - o.v / 100)); } })
+      .from(".truths p", { x: -14, opacity: 0, stagger: 0.18, duration: 0.4 }, 0.55);
+
+    return () => {};
+  });
+
+  // reveal (21st "Reveal": opacity 0, y 40, blur 10px -> clear, stagger 0.15s)
+  gsap.utils.toArray("[data-reveal]").forEach((n, i) => {
+    gsap.from(n, { y: 40, opacity: 0, filter: "blur(10px)", duration: 0.8, ease: "power2.out", delay: (i % 3) * 0.15,
+      scrollTrigger: { trigger: n, start: "top 85%", once: true } });
+  });
+  // photos open out of a mask (21st "Reveal Image Mask", @daiwiikharihar)
+  document.querySelectorAll(".person").forEach((f, i) => {
+    const tl = gsap.timeline({ scrollTrigger: { trigger: f, start: "top 85%", once: true }, delay: i * 0.12 });
+    tl.fromTo(f.querySelector(".mask"), { clipPath: "inset(100% 0 0 0 round 18px)" }, { clipPath: "inset(0% 0 0 0 round 18px)", duration: 1.1, ease: "expo.out" })
+      .to(f.querySelector("img"), { scale: 1, duration: 1.4, ease: "expo.out" }, 0)
+      .from(f.querySelector("figcaption"), { y: 14, opacity: 0, duration: 0.6 }, 0.35);
+  });
+  // trainer photo widens and softens its corners on scroll (21st "Scroll Reveal Image", @unlumen)
+  gsap.fromTo("#trainer-photo", { scale: 0.86, borderRadius: 48 }, { scale: 1, borderRadius: 18, ease: "none", scrollTrigger: { trigger: "#trainer-photo", start: "top bottom", end: "center 55%", scrub: true } });
+  // hero photo: slow parallax inside its frame
+  gsap.fromTo(".hero-photo img", { scale: 1.12, yPercent: -4 }, { scale: 1.02, yPercent: 4, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+  document.querySelectorAll(".meter i").forEach((m) => gsap.from(m, { scaleX: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: m, start: "top 90%", once: true } }));
+  window.addEventListener("load", () => ScrollTrigger.refresh());
+})();
+</script>
