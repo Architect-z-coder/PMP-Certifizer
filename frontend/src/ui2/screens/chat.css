@@ -1,0 +1,63 @@
+/* Écran « Chat » (ui2) : Expliquer · Cas d'examen · Relier à mon projet · Cas réel. Only what chantier.css does not already
+   provide (.msg .card .chip .btn .field .live .list .dot come from there); colours through the tokens only. */
+.chat .hd .row { align-items: center; }
+
+/* two columns: the conversation on the left, the side panel on the right (DOM order is side first, for mobile) */
+.chat .chat-grid { align-items: start; }
+.chat .conv-col { grid-column: 1; grid-row: 1; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.chat .side { grid-column: 2; grid-row: 1; display: grid; gap: 10px; align-content: start; min-width: 0; position: sticky; top: calc(var(--bar) + 14px); }
+.chat .side .hint { font-size: 11.5px; line-height: 1.5; }
+.chat select.field { cursor: pointer; }
+
+/* the conversation: scrolls on its own on desktop so the input stays in view */
+.chat .conv { display: grid; gap: 8px; align-content: start; min-width: 0; min-height: 180px; max-height: clamp(320px, calc(100dvh - var(--bar) - 300px), 760px); overflow-y: auto; padding: 2px; scroll-behavior: auto; }
+.chat .conv .live { padding: 4px 2px; }
+.chat .msg p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.chat .msg .row { margin-top: 4px; }
+.chat .chat-end { height: 1px; }
+.chat .chat-empty { display: grid; gap: 8px; justify-items: start; border: 1px dashed var(--line); border-radius: 14px; padding: 16px 18px; background: var(--bg); }
+.chat .chat-empty p { line-height: 1.55; max-width: 56ch; }
+.chat .chat-empty .btn { white-space: normal; text-align: left; }
+
+/* the input row */
+.chat .ask { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: end; }
+.chat .ask textarea.field { min-height: 56px; }
+.chat .ask .link { grid-column: 1 / -1; justify-self: end; font-size: 12px; color: var(--muted); min-height: 40px; display: inline-flex; align-items: center; }
+
+/* seats (coreflexion) */
+.chat .seats { display: grid; gap: 6px; }
+.chat .seat { display: grid; gap: 3px; text-align: left; padding: 9px 11px; min-height: 40px; min-width: 0; border: 1px solid var(--line); border-radius: 11px; background: var(--bg); color: inherit; cursor: pointer; transition: border-color .2s, background .2s; }
+.chat .seat > * { min-width: 0; }
+.chat .seat .row { flex-wrap: nowrap; }
+.chat .seat b { font: 600 13px var(--body); }
+.chat .seat .muted { font-size: 11.5px; line-height: 1.4; padding-left: 17px; }
+.chat .seat:hover { border-color: var(--fg); }
+.chat .seat[aria-pressed="true"] { background: var(--bg-2); }
+.chat .seat-moa[aria-pressed="true"] { border-color: var(--process); }
+.chat .seat-moe[aria-pressed="true"] { border-color: var(--biz); }
+.chat .seat-both[aria-pressed="true"] { border-color: var(--people); }
+/* seat colours (same hues as LENS[].c of pmp.js, through the dark-mode-aware tokens) */
+.chat .seat-moa .dot, .chat .dot.seat-moa { background: var(--process); }
+.chat .seat-moe .dot, .chat .dot.seat-moe { background: var(--biz); }
+.chat .seat-both .dot, .chat .dot.seat-both { background: var(--people); }
+.chat .dot.seat-none { background: var(--muted); }
+
+/* reflexes list */
+.chat .refl .list > div { align-items: flex-start; padding: 5px 0; }
+.chat .refl .list .l { align-items: flex-start; line-height: 1.45; }
+.chat .refl .list .l .dot { margin-top: 5px; }
+.chat .refl .list .l span:last-child { overflow-wrap: anywhere; }
+.chat .del { flex: none; width: 40px; height: 40px; margin: -6px -8px -6px 0; border-radius: 99px; border: 1px solid transparent; background: none; color: var(--muted); font: 500 18px/1 var(--mono); cursor: pointer; display: grid; place-items: center; }
+.chat .del:hover { border-color: var(--line); color: var(--fg); }
+
+@media (max-width: 720px) {
+  .chat .hd .row { width: 100%; }
+  /* one column: the side panel (inputs) comes first, the conversation below it */
+  .chat .side, .chat .conv-col { grid-column: auto; grid-row: auto; }
+  .chat .side { position: static; }
+  .chat .conv { max-height: none; overflow: visible; min-height: 0; }
+  .chat .chat-empty .btn { width: 100%; justify-content: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat, .chat * { transition: none !important; animation: none !important; }
+}

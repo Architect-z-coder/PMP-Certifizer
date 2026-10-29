@@ -1,0 +1,34 @@
+/* Certifizer — interface « Chantier » (ui2). Design tokens copied exactly from certifizer-maquette.html.
+   Light values, dark variants and the three fonts are the mock-up's. Nothing here is invented. */
+:root {
+  --bg: #F1F2EE; --bg-2: #E7E9E3; --fg: #12161C; --muted: #59616B; --line: #CDD2CA;
+  --accent: #F0A21A; --accent-ink: #8A5800; --panel: #12161C; --panel-fg: #EEF0EA; --panel-2: #1B2129; --panel-line: #2A323C; --panel-mut: #98A2AD;
+  --people: #7E62B5; --process: #23879A; --biz: #C97F0F; --ok: #2F8A5B; --warn: #B7791F; --risk: #B9472E;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif; --body: "Public Sans", system-ui, -apple-system, sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --bar: 58px;
+  --on-accent: #1A1204;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0E1217; --bg-2: #151A21; --fg: #E9ECE5; --muted: #9AA3AC; --line: #27303A; --accent: #F4B23C; --accent-ink: #F4B23C;
+  --panel: #0A0D11; --panel-fg: #EEF0EA; --panel-2: #141920; --panel-line: #232B35; --panel-mut: #8E99A5;
+  --people: #A48BDA; --process: #3FB2C6; --biz: #E8A23A; --ok: #5CC28D; --warn: #E3A64A; --risk: #E8775C; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0E1217; --bg-2: #151A21; --fg: #E9ECE5; --muted: #9AA3AC; --line: #27303A; --accent: #F4B23C; --accent-ink: #F4B23C;
+  --panel: #0A0D11; --panel-fg: #EEF0EA; --panel-2: #141920; --panel-line: #232B35; --panel-mut: #8E99A5;
+  --people: #A48BDA; --process: #3FB2C6; --biz: #E8A23A; --ok: #5CC28D; --warn: #E3A64A; --risk: #E8775C; color-scheme: dark; }
+
+/* base — index.html paints the body navy inline for the current UI; the Chantier shell overrides it. */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; min-height: 100%; }
+body { background: var(--bg) !important; color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, h4 { font-family: var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; } button { font: inherit; color: inherit; }
+a { color: inherit; }
+img, svg { max-width: 100%; }
+.mono { font-family: var(--mono); font-size: 11.5px; letter-spacing: .03em; }
+.eyebrow { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+.muted { color: var(--muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }

@@ -1,0 +1,85 @@
+/* « Carte et chemin critique » (ui2). Only what chantier.css does not already provide; colours through the tokens only.
+   Map drawing ported from the mock-up's .jmap / .jleg (hard-coded blue replaced by var(--process)). */
+
+/* three areas: map (+ caption) · critical path list · the dark card, sticky on the right */
+.mm .mm-grid { grid-template-columns: minmax(0, 2.4fr) minmax(240px, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "map side" "path side"; align-items: start; }
+.mm .mapbox { grid-area: map; display: grid; gap: 10px; min-width: 0; }
+.mm .path { grid-area: path; }
+.mm .side { grid-area: side; position: sticky; top: calc(var(--bar) + 16px); scroll-margin-top: calc(var(--bar) + 12px); }
+
+/* legend */
+.mm .jleg { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 11.5px; color: var(--muted); align-items: center; min-width: 0; }
+.mm .jleg span { display: inline-flex; align-items: center; gap: 6px; }
+.mm .jleg i { width: 12px; height: 12px; border-radius: 99px; display: inline-block; box-sizing: border-box; flex: none; }
+.mm .jleg .i-full { background: var(--ok); }
+.mm .jleg .i-now { border: 2px solid var(--process); }
+.mm .jleg .i-weak { border: 2px solid var(--risk); }
+.mm .jleg .i-lock { border: 2px dashed var(--line); }
+.mm .jleg .lvl { margin-left: auto; }
+
+/* the map (760×420 viewBox, scales with its column) */
+.mm .jmap { width: 100%; height: auto; display: block; font-family: var(--body); }
+.mm .jmap .lv { font: 500 9.5px var(--mono); fill: var(--muted); letter-spacing: .04em; }
+.mm .jmap .here { font: 500 9.5px var(--mono); fill: var(--accent-ink); letter-spacing: .04em; }
+.mm .jmap .col { stroke: var(--line); stroke-dasharray: 2 6; }
+.mm .jmap .ed { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.mm .jmap g.nd { cursor: pointer; outline: none; }
+.mm .jmap .lblbg { fill: var(--bg); stroke: var(--line); stroke-width: .8; transition: stroke .15s; }
+.mm .jmap .lbl { font-size: 8.8px; fill: var(--fg); }
+.mm .jmap g.nd:hover .lblbg { stroke: var(--fg); }
+.mm .jmap g.nd.sel .lblbg { stroke: var(--fg); stroke-width: 1.2; }
+.mm .jmap g.nd:focus-visible .lblbg { stroke: var(--accent); stroke-width: 1.6; }
+.mm .jmap .here, .mm .jmap .halo, .mm .jmap .next { pointer-events: none; }
+.mm .jmap g.nd.sel .lbl { font-weight: 700; }
+.mm .jmap .bdg rect { fill: color-mix(in oklab, var(--accent) 22%, var(--bg)); }
+.mm .jmap .bdg text { font: 600 7.8px var(--mono); fill: var(--accent-ink); }
+.mm .jmap .g-full { fill: var(--ok); }
+.mm .jmap .g-check { fill: none; stroke: var(--panel-fg); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.mm .jmap .g-ring { fill: var(--bg); stroke-width: 2.4; }
+.mm .jmap .g-ring.progress { stroke: var(--process); }
+.mm .jmap .g-ring.fragile { stroke: var(--risk); }
+.mm .jmap .g-ring.untested, .mm .jmap .g-ring.lock { stroke: var(--line); stroke-dasharray: 3 3; }
+.mm .jmap .g-dot { fill: var(--process); }
+.mm .jmap .g-bang { fill: none; stroke: var(--risk); stroke-width: 2.4; stroke-linecap: round; }
+.mm .jmap .g-lock { fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.mm .jmap .halo { fill: none; stroke: var(--accent); stroke-width: 2; opacity: .55; transform-box: fill-box; transform-origin: center; animation: mm-halo 2.2s ease-out infinite; }
+@keyframes mm-halo { 0% { transform: scale(.7); opacity: .8; } 100% { transform: scale(2.1); opacity: 0; } }
+.mm .jmap .next { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 7 6; }
+
+/* caption under the map */
+.mm .cap { font-size: 12px; line-height: 1.5; color: var(--muted); padding: 0 4px; }
+
+/* the four levers: each row is a button that selects its station */
+.mm .levers > button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 8px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; color: inherit; font: inherit; font-size: 13px; text-align: left; cursor: pointer; min-width: 0; }
+.mm .levers > button:last-child { border-bottom: 0; }
+.mm .levers > button:hover .nm { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+.mm .levers .ix { width: 24px; height: 24px; border-radius: 99px; display: grid; place-items: center; font: 600 11px var(--mono); background: var(--bg-2); flex: none; }
+.mm .levers > button[aria-pressed="true"] .ix { background: var(--accent); color: var(--on-accent); }
+.mm .levers .nm { flex: 1 1 auto; min-width: 0; line-height: 1.35; }
+.mm .levers .chip, .mm .levers .mono { flex: none; }
+
+/* the dark card: state · name · evidence · tasks · step · one action */
+.mm .side h4 { font-size: 17px; line-height: 1.25; }
+.mm .side .ev { font: 500 12px var(--mono); color: var(--panel-mut); }
+.mm .side .tasks > div { display: grid; gap: 4px; padding: 8px 0; border-bottom: 1px solid var(--panel-line); }
+.mm .side .tasks > div:last-child { border-bottom: 0; }
+.mm .side .tasks .tname { font-size: 12.5px; line-height: 1.35; }
+.mm .side .tasks .tr { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.mm .side .tasks .mono { color: var(--panel-mut); }
+.mm .side .chip.nt { border-color: var(--panel-line); color: var(--panel-mut); }
+.mm .side .stp { font: 500 11px var(--mono); letter-spacing: .04em; color: var(--accent); }
+.mm .side .soon { border-color: var(--panel-line); color: var(--panel-mut); justify-self: start; }
+.mm .side .act { margin-top: 4px; }
+
+@media (max-width: 820px) {
+  .mm .mm-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-template-areas: "map" "side" "path"; }
+  .mm .side { position: static; }
+  .mm .jleg .lvl { margin-left: 0; flex: 1 1 100%; }
+}
+@media (max-width: 720px) {
+  .mm .side .act .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mm .jmap .halo { animation: none; }
+  .mm, .mm * { transition: none !important; animation: none !important; }
+}
