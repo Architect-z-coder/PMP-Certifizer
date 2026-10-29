@@ -81,6 +81,16 @@ See `Adaptive Learning — Data model & loop (design).md` for the full model.
 - [ ] Cohort dashboard for the trainer (group weak areas)
 - [ ] Reuse the engine for CAPLPA / a competency framework → competency management
 
+## MCP servers (Claude Code)
+`.mcp.json` at the repo root registers two project-scoped MCP servers for Claude Code on Windows:
+
+| Server | What it needs |
+|---|---|
+| `blender` | `uv` installed (`uvx.exe` under `%USERPROFILE%\.local\bin`), Python 3.12, and the [Blender MCP add-on](https://github.com/ahujasid/blender-mcp) running inside Blender. |
+| `meshy` | Node/npx and a Meshy API key exported as `MESHY_API_KEY` in your shell before launching Claude Code. |
+
+Both placeholders are expanded from your environment, so no personal path or key is committed. On macOS/Linux change the `blender` command to plain `uvx` and the `meshy` command to `npx` with `["-y", "@meshy-ai/meshy-mcp-server"]`.
+
 ## Question bank
 Curated questions live in `backend/app/data/*.json` (see `day2-integration.json`). **To add a day**, drop a new bank file in that folder — it loads automatically on startup (idempotent, keyed by each item's `id`). Quiz mode serves these curated items with **no LLM call** (free + deterministic); the model is used only for Explain / Scenario / Relate.
 
