@@ -81,15 +81,35 @@ See `Adaptive Learning — Data model & loop (design).md` for the full model.
 - [ ] Cohort dashboard for the trainer (group weak areas)
 - [ ] Reuse the engine for CAPLPA / a competency framework → competency management
 
-## MCP servers (Claude Code)
-`.mcp.json` at the repo root registers two project-scoped MCP servers for Claude Code on Windows:
+## Blender and Meshy in Claude (MCP)
+Run the installer once on each computer. It adds both MCP servers to every Claude app there:
 
-| Server | What it needs |
-|---|---|
-| `blender` | `uv` installed (`uvx.exe` under `%USERPROFILE%\.local\bin`), Python 3.12, and the [Blender MCP add-on](https://github.com/ahujasid/blender-mcp) running inside Blender. |
-| `meshy` | Node/npx and a Meshy API key exported as `MESHY_API_KEY` in your shell before launching Claude Code. |
+- **Claude Code**, in every project (user scope, through the `claude` CLI).
+- **Claude Desktop**, through `claude_desktop_config.json`, including Microsoft Store installs on Windows.
 
-Both placeholders are expanded from your environment, so no personal path or key is committed. On macOS/Linux change the `blender` command to plain `uvx` and the `meshy` command to `npx` with `["-y", "@meshy-ai/meshy-mcp-server"]`.
+Before you run it:
+1. Install Node.js 18+ and [uv](https://docs.astral.sh/uv/) (on Windows: `winget install --id=astral-sh.uv -e`).
+2. Get a Meshy API key at https://www.meshy.ai/developers/keys (Pro plan or above).
+3. Install the Blender add-on with `uvx --python 3.12 mcp-for-blender install-addon`, then enable **Interface: MCP for Blender** under Edit → Preferences → Add-ons.
+
+```bash
+node scripts/install-claude-mcp.mjs
+```
+
+The script asks for the Meshy key with hidden typing, or reads `MESHY_API_KEY`. The key goes only into that computer's Claude config files, never into this repo. `--dry-run` shows the changes without writing anything, and `--no-blender` or `--no-meshy` installs a single server. Re-running it is safe, and it backs up the Claude Desktop config before each change. Afterwards, quit Claude Desktop from the system tray and reopen it, and check Claude Code with `claude mcp list`. Use one Claude app at a time with Blender, because they share the add-on's port. Meshy saves downloads to a `meshy_output/` folder in the current project, which git ignores here.
+
+**Cloud sessions (claude.ai/code)** don't read your computer's config. Blender can't run there, because it needs Blender open on your desktop. Meshy can, set up once per cloud environment in its settings (cloud environment menu → Edit):
+
+1. Under **Network secrets**, add a secret for host `api.meshy.ai` with header `Authorization`, prefix `Bearer`, and your Meshy key as the value. Sessions can then reach that host, and the key never enters the session.
+2. Under **Setup script**, add:
+
+   ```bash
+   claude mcp add-json -s user meshy '{"command":"npx","args":["-y","@meshy-ai/meshy-mcp-server"],"env":{"MESHY_API_KEY":"set-by-network-secret"}}' || true
+   ```
+
+New sessions in that environment load Meshy in every repository. If Meshy calls still fail with 401, use an environment variable instead: set `MESHY_API_KEY` to your key, add `api.meshy.ai` under Allowed domains, and change the script's value to `${MESHY_API_KEY}`. Anyone who uses that environment can read its variables.
+
+**claude.ai chat on the web and phone** can't use either server. Custom connectors there need a public HTTPS MCP server, and Meshy doesn't host one. Blender only works next to the Blender app on your computer.
 
 ## Question bank
 Curated questions live in `backend/app/data/*.json` (see `day2-integration.json`). **To add a day**, drop a new bank file in that folder — it loads automatically on startup (idempotent, keyed by each item's `id`). Quiz mode serves these curated items with **no LLM call** (free + deterministic); the model is used only for Explain / Scenario / Relate.
