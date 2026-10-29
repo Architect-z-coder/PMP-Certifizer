@@ -81,22 +81,24 @@ See `Adaptive Learning — Data model & loop (design).md` for the full model.
 - [ ] Cohort dashboard for the trainer (group weak areas)
 - [ ] Reuse the engine for CAPLPA / a competency framework → competency management
 
-## Blender and Meshy in Claude (MCP)
-Run the installer once on each computer. It adds both MCP servers to every Claude app there:
+## 3D tools in Claude: Blender, Meshy and Spline (MCP)
+On Windows, `scripts/setup-3d-toolchain.ps1` sets up the Blender and Meshy MCP servers and the Meshy skill pack for Claude Code and the Claude desktop app, and checks Spline. Run it from a normal PowerShell window, not an admin one:
 
-- **Claude Code**, in every project (user scope, through the `claude` CLI).
-- **Claude Desktop**, through `claude_desktop_config.json`, including Microsoft Store installs on Windows.
-
-Before you run it:
-1. Install Node.js 18+ and [uv](https://docs.astral.sh/uv/) (on Windows: `winget install --id=astral-sh.uv -e`).
-2. Get a Meshy API key at https://www.meshy.ai/developers/keys (Pro plan or above).
-3. Install the Blender add-on with `uvx --python 3.12 mcp-for-blender install-addon`, then enable **Interface: MCP for Blender** under Edit → Preferences → Add-ons.
-
-```bash
-node scripts/install-claude-mcp.mjs
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\setup-3d-toolchain.ps1
 ```
 
-The script asks for the Meshy key with hidden typing, or reads `MESHY_API_KEY`. The key goes only into that computer's Claude config files, never into this repo. `--dry-run` shows the changes without writing anything, and `--no-blender` or `--no-meshy` installs a single server. Re-running it is safe, and it backs up the Claude Desktop config before each change. Afterwards, quit Claude Desktop from the system tray and reopen it, and check Claude Code with `claude mcp list`. Use one Claude app at a time with Blender, because they share the add-on's port. Meshy saves downloads to a `meshy_output/` folder in the current project, which git ignores here.
+It works through seven steps and checks each one before moving on:
+
+1. It installs whatever is missing of Node.js LTS, uv, Blender and git with winget. It asks first, and says which installs need admin rights. It prints the full paths of `uvx.exe` and `blender.exe`.
+2. It downloads the MCP for Blender add-on, then installs and enables it with Blender in background mode. Close Blender first.
+3. It reads `MESHY_API_KEY` from your user environment variables and shows only its last 4 characters. It asks for the key if it is missing, and checks it with Meshy's free balance call. It then installs the Meshy skill pack into Claude Code.
+4. It registers `blender` and `meshy` in Claude Code at user scope and runs `claude mcp list`. There, Meshy reads the key from `MESHY_API_KEY` at launch.
+5. It merges the same servers into `claude_desktop_config.json`, after a backup, and validates the file. The desktop app needs the key itself in that file.
+6. It looks for Spline, offers a winget install, or opens the download page. Then it checks whether Spline registered itself, and can add Spline's hosted server to Claude Code.
+7. It prints a status table.
+
+Afterwards, restart the Claude desktop app. In Blender, press N, open the **MCP for Blender** tab and click **Connect to MCP server**. Use one Claude app at a time with Blender. Meshy saves downloads to a `meshy_output/` folder in the current project, which git ignores here.
 
 **Cloud sessions (claude.ai/code)** don't read your computer's config. Blender can't run there, because it needs Blender open on your desktop. Meshy can, set up once per cloud environment in its settings (cloud environment menu → Edit):
 
@@ -109,7 +111,7 @@ The script asks for the Meshy key with hidden typing, or reads `MESHY_API_KEY`. 
 
 New sessions in that environment load Meshy in every repository. If Meshy calls still fail with 401, use an environment variable instead: set `MESHY_API_KEY` to your key, add `api.meshy.ai` under Allowed domains, and change the script's value to `${MESHY_API_KEY}`. Anyone who uses that environment can read its variables.
 
-**claude.ai chat on the web and phone** can't use either server. Custom connectors there need a public HTTPS MCP server, and Meshy doesn't host one. Blender only works next to the Blender app on your computer.
+**claude.ai chat on the web and phone** can't use Blender or Meshy. Custom connectors there need a public HTTPS MCP server, and Meshy doesn't host one. Blender only works next to the Blender app on your computer. Spline does host one, at `https://mcp.spline.design/mcp`, which can be added under Settings → Connectors.
 
 ## Question bank
 Curated questions live in `backend/app/data/*.json` (see `day2-integration.json`). **To add a day**, drop a new bank file in that folder — it loads automatically on startup (idempotent, keyed by each item's `id`). Quiz mode serves these curated items with **no LLM call** (free + deterministic); the model is used only for Explain / Scenario / Relate.
